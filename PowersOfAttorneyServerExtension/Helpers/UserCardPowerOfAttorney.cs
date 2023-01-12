@@ -344,7 +344,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
         /// <summary>
         /// Признак доверенности в рамках передоверия
         /// </summary>
-        public bool IsRetrusted() => mrpSection[Fields.BasicPOA] != null;
+        public bool IsRetrusted() => mrpSection[Fields.ParentalPowerOfAttorney] != null;
 
         public IEnumerable<string> RepresentativePowers => powersSection.Select(t => t.GetStringValue(Fields.PowersTextDescription));
 

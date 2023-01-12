@@ -1,10 +1,14 @@
-﻿using DocsVision.WebClient.Extensibility;
+﻿using Autofac;
+
+using DocsVision.WebClient.Extensibility;
+
+using PowersOfAttorneyServerExtension.Services;
 
 using System;
 using System.Diagnostics;
 using System.Reflection;
 
-namespace LicenseCheckServerExtension
+namespace PowersOfAttorneyServerExtension
 {
     /// <summary>
     /// Задаёт описание расширения для WebClient, которое задано в текущей сборке
@@ -35,5 +39,14 @@ namespace LicenseCheckServerExtension
         {
             get { return new Version(FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).FileVersion); }
         }
+
+        #region WebClientExtension Overrides
+
+        public override void InitializeContainer(global::Autofac.ContainerBuilder containerBuilder)
+        {
+            containerBuilder.RegisterType<PowersOfAttorneyDemoService>().As<IPowersOfAttorneyDemoService>().SingleInstance();
+        }
+
+        #endregion
     }
 }

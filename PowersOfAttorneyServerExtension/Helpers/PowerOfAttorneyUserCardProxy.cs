@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-using static DocsVision.BackOffice.ObjectModel.Services.Entities.PowerOfAttorneyData;
+using static DocsVision.BackOffice.ObjectModel.Services.Entities.PowerOfAttorneyFNSData;
 using static DocsVision.BackOffice.ObjectModel.Services.Entities.PowerOfAttorneyFNSDOVBBData;
 
 
@@ -200,7 +200,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
         {
             RevocationPossibleType revocationPossibleType = ConverToEnumWithFixIndex<RevocationPossibleType>(userCard.RevocationPossibleType);
             RetrustRevocationPossibleType? retrustRevocationPossibleType = ConverToEnumWithFixIndex<RetrustRevocationPossibleType>(userCard.RetrustRevocationPossibleType);
-            RevocationCondition? revocationCondition = ConverToEnumWithFixIndex<RevocationCondition>(userCard.RevocationCondition.Value);
+            RevocationCondition? revocationCondition = ConverToEnumWithFixIndex<RevocationCondition>(userCard.RevocationCondition);
             string revocationConditionDescription = userCard.RevocationConditionDescription;
 
             return new IrrevocablePowerOfAttorneyInfo(revocationPossibleType, retrustRevocationPossibleType, revocationCondition, revocationConditionDescription);
@@ -208,6 +208,12 @@ namespace PowersOfAttorneyServerExtension.Helpers
 
         private PrincipalInfo GetPrincipalInfo()
         {
+            // Пример рассчитан только на доверителя-организацию 
+            if (userCard.PrincipalType != PrincipalTypeRussianEntity)
+            {
+                throw new NotSupportedException();
+            }
+
             return new PrincipalInfo(GetRussianLegalEntityPrincipalInfo(), GetFio(userCard.Signer));
         }
 
@@ -292,7 +298,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
             var legalAddress = princOrg.Addresses.FirstOrDefault(t => t.AddressType == StaffAddresseAddressType.LegalAddress)?.Address;
             var actualAddress = princOrg.Addresses.FirstOrDefault(t => t.AddressType == StaffAddresseAddressType.ContactAddress)?.Address;
 
-            return new RussianEntityInfo(name, ogrn, kpp, inn, legalAddress, actualAddress);
+            return new RussianEntityInfo(name, ogrn, inn, kpp, legalAddress, actualAddress);
         }
 
         private static TEnum ConverToEnumWithFixIndex<TEnum>(int enumIndex) where TEnum : struct
