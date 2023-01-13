@@ -50,7 +50,7 @@ namespace PowersOfAttorneyServerExtension.Services
             return userCardPowerOfAttorney.PowerOfAttorneyCardId.Value;
         }
 
-        public Guid RetrustPowerOfAttorney(ObjectContext context, Guid powerOfAttorneyUserCardId)
+        public Guid CreateRetrustPowerOfAttorney(ObjectContext context, Guid powerOfAttorneyUserCardId)
         {
             var userCardPowerOfAttorney = GetUserCardPowerOfAttorney(context, powerOfAttorneyUserCardId);
 

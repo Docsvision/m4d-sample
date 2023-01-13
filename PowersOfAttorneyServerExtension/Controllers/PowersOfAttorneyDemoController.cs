@@ -1,18 +1,18 @@
 ﻿using DocsVision.Platform.WebClient;
-using DocsVision.Platform.WebClient.Helpers;
 using DocsVision.Platform.WebClient.Models;
+using DocsVision.Platform.WebClient.Models.Generic;
 
 using PowersOfAttorneyServerExtension.Services;
 
 using System;
-using System.Web.Mvc;
+using System.Web.Http;
 
 namespace PowersOfAttorneyServerExtension.Controllers
 {
     /// <summary>
     /// Представляет собой контроллер для проверки лицензии
     /// </summary>
-    public class PowersOfAttorneyDemoController : Controller
+    public class PowersOfAttorneyDemoController : ApiController
     {
         private readonly ICurrentObjectContextProvider currentObjectContextProvider;
         private readonly IPowersOfAttorneyDemoService powersOfAttorneyDemoService;
@@ -32,7 +32,7 @@ namespace PowersOfAttorneyServerExtension.Controllers
         /// <param name="powerOfAttorneyUserCardId">User card of Power of attorney</param>
         /// <returns>ID of created power of attorney</returns>
         [HttpPost]
-        public ActionResult CreatePowerOfAttorney(Guid powerOfAttorneyUserCardId)
+        public CommonResponse<Guid> CreatePowerOfAttorney(Guid powerOfAttorneyUserCardId)
         {
             var context = currentObjectContextProvider.GetOrCreateCurrentSessionContext().ObjectContext;
             Guid powerOfAttorneyId;
@@ -42,10 +42,10 @@ namespace PowersOfAttorneyServerExtension.Controllers
             }
             catch (Exception ex)
             {
-                return CreateErrorResponse(ex.ToString());
+                return CommonResponse.CreateError< Guid>(ex.ToString());
             }
 
-            return CreateSuccessResponse(powerOfAttorneyId);
+            return CommonResponse.CreateSuccess(powerOfAttorneyId);
         }
 
         /// <summary>
@@ -54,21 +54,21 @@ namespace PowersOfAttorneyServerExtension.Controllers
         /// <param name="powerOfAttorneyUserCardId">User card of Power of attorney</param>
         /// <returns>ID of created power of attorney</returns>
         [HttpPost]
-        public ActionResult RetrustPowerOfAttorney(Guid powerOfAttorneyUserCardId)
+        public CommonResponse<Guid> CreateRetrustPowerOfAttorney(Guid powerOfAttorneyUserCardId)
         {
             var context = currentObjectContextProvider.GetOrCreateCurrentSessionContext().ObjectContext;
 
             Guid powerOfAttorneyId;
             try
             {
-                powerOfAttorneyId = powersOfAttorneyDemoService.RetrustPowerOfAttorney(context, powerOfAttorneyUserCardId);
+                powerOfAttorneyId = powersOfAttorneyDemoService.CreateRetrustPowerOfAttorney(context, powerOfAttorneyUserCardId);
             }
             catch (Exception ex)
             {
-                return CreateErrorResponse(ex.ToString());
+                return CommonResponse.CreateError<Guid>(ex.ToString());
             }
 
-            return CreateSuccessResponse(powerOfAttorneyId);
+            return CommonResponse.CreateSuccess(powerOfAttorneyId);
         }
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace PowersOfAttorneyServerExtension.Controllers
         /// <param name="powerOfAttorneyUserCardId">User card of Power of attorney</param>
         /// <returns>System power of attorney card ID</returns>
         [HttpGet]
-        public ActionResult GetPowerOfAttorneyCardId(Guid powerOfAttorneyUserCardId)
+        public CommonResponse<Guid> GetPowerOfAttorneyCardId(Guid powerOfAttorneyUserCardId)
         {
             var context = currentObjectContextProvider.GetOrCreateCurrentSessionContext().ObjectContext;
 
@@ -88,28 +88,10 @@ namespace PowersOfAttorneyServerExtension.Controllers
             }
             catch (Exception ex)
             {
-                return CreateErrorResponse(ex.ToString());
+                return CommonResponse.CreateError<Guid>(ex.ToString());
             }
 
-            return CreateSuccessResponse(powerOfAttorneyId);
-        }
-
-        private static ActionResult CreateErrorResponse(string message)
-        {
-            return new ContentResult
-            {
-                Content = JsonHelper.SerializeToJson(CommonResponse.CreateError(message)),
-                ContentType = "application/json"
-            };
-        }
-
-        private static ActionResult CreateSuccessResponse<TData>(TData data)
-        {
-            return new ContentResult
-            {
-                Content = JsonHelper.SerializeToJson(CommonResponse.CreateSuccess(data)),
-                ContentType = "application/json"
-            };
+            return CommonResponse.CreateSuccess(powerOfAttorneyId);
         }
     }
 }
