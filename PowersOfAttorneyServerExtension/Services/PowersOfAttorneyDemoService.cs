@@ -28,7 +28,7 @@ namespace PowersOfAttorneyServerExtension.Services
             var powerOfAttorney = powerOfAttorneyProxyService.CreatePowerOfAttorney(powerOfAttorneyData,
                                                                                     representativeID,
                                                                                     signerID,
-                                                                                    PowerOfAttorneyFNSDOVBBDataProxy.PowerOfAttorneyTypeId);
+                                                                                    UserCardToPowerOfAttorneyDataConverter.PowerOfAttorneyTypeId);
             var powerOfAttorneyId = powerOfAttorney.GetObjectId();
             
             // Сохраним ИД созданной СКД в ПКД

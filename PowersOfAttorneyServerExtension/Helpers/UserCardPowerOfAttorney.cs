@@ -72,7 +72,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
         /// <summary>
         /// Дата выдачи документа, удостоверяющего физлицо, действующее без доверенности
         /// </summary>
-        public string IssueDateOfDocumentProvingIdentityOfIAWPOA => mrpSection.GetStringValue(Fields.IssueDateOfDocumentProvingIdentityOfIAWPOA);
+        public DateTime IssueDateOfDocumentProvingIdentityOfIAWPOA => mrpSection.GetDateValue(Fields.IssueDateOfDocumentProvingIdentityOfIAWPOA) ?? throw new ArgumentNullException("Дата выдачи документа, удостоверяющего физлицо, действующее без доверенности");
 
         /// <summary>
         /// Наименование учредительного документа организации-доверителя
@@ -82,7 +82,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
         /// <summary>
         /// Тип уполномоченного представителя
         /// </summary>
-        public int RepresentativeType => mrpSection.GetIntValue(Fields.TypeOfAuthorizedRepresentative) ?? throw new ArgumentNullException();
+        public int RepresentativeType => mrpSection.GetIntValue(Fields.TypeOfAuthorizedRepresentative) ?? throw new ArgumentNullException("Тип уполномоченного представителя");
 
         /// <summary>
         /// ИНН физического лица-представителя
@@ -107,12 +107,12 @@ namespace PowersOfAttorneyServerExtension.Helpers
         /// <summary>
         /// Код вида документа, удостоверяющего личность физлица-представителя
         /// </summary>
-        public int RepresentativeIndividualDocumentKind => mrpSection.GetIntValue(Fields.KindCodeOfDocumentProvingIdentityRepresentative) ?? throw new ArgumentNullException();
+        public int? RepresentativeIndividualDocumentKind => mrpSection.GetIntValue(Fields.KindCodeOfDocumentProvingIdentityRepresentative);
 
         /// <summary>
         /// Дата выдачи документа, удостоверяющего физлицо-представителя
         /// </summary>
-        public DateTime RepresentativeIndividualDocumentIssueDate => mrpSection.GetDateValue(Fields.IssueDateOfDocumentProvingIdentityOfRepresentative) ?? throw new ArgumentNullException();
+        public DateTime RepresentativeIndividualDocumentIssueDate => mrpSection.GetDateValue(Fields.IssueDateOfDocumentProvingIdentityOfRepresentative) ?? throw new ArgumentNullException("Дата выдачи документа, удостоверяющего физлицо-представителя");
 
         /// <summary>
         /// Индивидуальный предприниматель-представитель
@@ -127,7 +127,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
         /// <summary>
         /// Дата выдачи документа, подтверждающего полномочия физлица, действующего без доверенности
         /// </summary>
-        public DateTime PrincipalWithoutPowerOfAttorneyIndividualDocumentIssueDate => mrpSection.GetDateValue(Fields.IssueDateOfDocumentConfirmingPowersOfIAWPOA) ?? throw new ArgumentNullException();
+        public DateTime? PrincipalWithoutPowerOfAttorneyIndividualDocumentIssueDate => mrpSection.GetDateValue(Fields.IssueDateOfDocumentConfirmingPowersOfIAWPOA);
 
         /// <summary>
         /// Организация-представитель
@@ -142,12 +142,12 @@ namespace PowersOfAttorneyServerExtension.Helpers
         /// <summary>
         /// Код страны гражданства иностранного представителя
         /// </summary>
-        public int CodeOfCitizenshipForForeignRepresentative => mrpSection.GetIntValue(Fields.CodeOfCitizenshipForForeignRepresentative) ?? throw new ArgumentNullException();
+        public int CodeOfCitizenshipForForeignRepresentative => mrpSection.GetIntValue(Fields.CodeOfCitizenshipForForeignRepresentative) ?? throw new ArgumentNullException("Код страны гражданства иностранного представителя");
 
         /// <summary>
         /// Признак гражданства представителя
         /// </summary>
-        public int RepresentativeCitizenshipType => mrpSection.GetIntValue(Fields.SignOfCitizenshipOfRepresentative) ?? throw new ArgumentNullException();
+        public int RepresentativeCitizenshipType => mrpSection.GetIntValue(Fields.SignOfCitizenshipOfRepresentative) ?? throw new ArgumentNullException(" Признак гражданства представителя");
 
         /// <summary>
         /// Место рождения представителя
@@ -172,7 +172,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
         /// <summary>
         /// Код страны гражданства для иностранного физлица, действующего без доверенности
         /// </summary>
-        public int PrincipalWithoutPowerOfAttorneyIndividualCountryCode => mrpSection.GetIntValue(Fields.CodeOfCitizenshipForForeignIAWPOA) ?? throw new ArgumentNullException();
+        public int PrincipalWithoutPowerOfAttorneyIndividualCountryCode => mrpSection.GetIntValue(Fields.CodeOfCitizenshipForForeignIAWPOA) ?? throw new ArgumentNullException("Код страны гражданства для иностранного физлица, действующего без доверенности");
 
         /// <summary>
         /// Серия и номер документа, удостоверяющего личность физлица-представителя
@@ -192,7 +192,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
         /// <summary>
         /// Тип доверителя
         /// </summary>
-        public int PrincipalType => mrpSection.GetIntValue(Fields.PrincipalType) ?? throw new ArgumentNullException();
+        public int PrincipalType => mrpSection.GetIntValue(Fields.PrincipalType) ?? throw new ArgumentNullException("Тип доверителя");
 
         /// <summary>
         /// Доверенность, на основании которой осуществляется передоверие
@@ -217,12 +217,12 @@ namespace PowersOfAttorneyServerExtension.Helpers
         /// <summary>
         /// Дата совершения доверенности
         /// </summary>
-        public DateTime PowerOfAttorneyStartDate => mrpSection.GetDateValue(Fields.PowerOfAttorneyStartDate) ?? throw new ArgumentNullException();
+        public DateTime PowerOfAttorneyStartDate => mrpSection.GetDateValue(Fields.PowerOfAttorneyStartDate) ?? throw new ArgumentNullException("Дата совершения доверенности");
 
         /// <summary>
         /// Дата окончания действия доверенности
         /// </summary>
-        public DateTime PowerOfAttorneyEndDate => mrpSection.GetDateValue(Fields.PowerOfAttorneyEndDate) ?? throw new ArgumentNullException();
+        public DateTime PowerOfAttorneyEndDate => mrpSection.GetDateValue(Fields.PowerOfAttorneyEndDate) ?? throw new ArgumentNullException("Дата окончания действия доверенности");
 
         /// <summary>
         /// Основная (первоначальная) доверенность
@@ -232,7 +232,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
         /// <summary>
         /// Признак наличия гражданства лица, действующего без доверенности
         /// </summary>
-        public int PrincipalWithoutPowerOfAttorneyIndividualCitizenship => mrpSection.GetIntValue(Fields.SignOfCitizenshipfIAWPOA) ?? throw new ArgumentNullException();
+        public int PrincipalWithoutPowerOfAttorneyIndividualCitizenship => mrpSection.GetIntValue(Fields.SignOfCitizenshipfIAWPOA) ?? throw new ArgumentNullException("Признак наличия гражданства лица, действующего без доверенности");
 
         /// <summary>
         /// Код подразделения органа, выдавшего документ, удостоверяющий физлицо, действующее без доверенности
@@ -303,12 +303,12 @@ namespace PowersOfAttorneyServerExtension.Helpers
         /// <summary>
         /// Возможность оформления передоверия
         /// </summary>
-        public int RetrustType => mrpSection.GetIntValue(Fields.PossibilityOfSubstitution) ?? throw new ArgumentNullException();
+        public int RetrustType => mrpSection.GetIntValue(Fields.PossibilityOfSubstitution) ?? throw new ArgumentNullException("Возможность оформления передоверия");
 
         /// <summary>
         /// Совместные полномочия
         /// </summary>
-        public int JointRepresentation => mrpSection.GetIntValue(Fields.JointPowers) ?? throw new ArgumentNullException();
+        public int JointRepresentation => mrpSection.GetIntValue(Fields.JointPowers) ?? throw new ArgumentNullException("Совместные полномочия");
 
         /// <summary>
         /// Признак передоверия безотзывной доверенности
@@ -318,17 +318,17 @@ namespace PowersOfAttorneyServerExtension.Helpers
         /// <summary>
         /// Признак утраты полномочий при передоверии
         /// </summary>
-        public int LossOfAuthorityType => mrpSection.GetIntValue(Fields.LossOfPowersUponSubstitution) ?? throw new ArgumentNullException();
+        public int? LossOfAuthorityType => mrpSection.GetIntValue(Fields.LossOfPowersUponSubstitution);
 
         /// <summary>
         /// Код вида документа, удостоверяющий физлицо, действующее без доверенности
         /// </summary>
-        public int PrincipalWithoutPowerOfAttorneyIndividualDocumentKindCode => mrpSection.GetIntValue(Fields.KindCodeOfDocumentProvingIdentityOfIAWPOA) ?? throw new ArgumentNullException();
+        public int? PrincipalWithoutPowerOfAttorneyIndividualDocumentKindCode => mrpSection.GetIntValue(Fields.KindCodeOfDocumentProvingIdentityOfIAWPOA);
 
         /// <summary>
         /// Признак безотзывной доверенности
         /// </summary>
-        public int RevocationPossibleType => mrpSection.GetIntValue(Fields.IrrevocablePowerOfAttorney) ?? throw new ArgumentNullException();
+        public int RevocationPossibleType => mrpSection.GetIntValue(Fields.IrrevocablePowerOfAttorney) ?? throw new ArgumentNullException("Признак безотзывной доверенности");
 
         /// <summary>
         /// Признак безотзывной доверенности
@@ -358,7 +358,14 @@ namespace PowersOfAttorneyServerExtension.Helpers
 
         public PowerOfAttorneyFNSDOVBBData ConvertToPowerOfAttorneyFNSDOVBBData()
         {
-            return PowerOfAttorneyFNSDOVBBDataProxy.Create(this);
+            try
+            {
+                return UserCardToPowerOfAttorneyDataConverter.Convert(this);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Заполнены не все обязательные данные или данные некорректны. Измените данные и повторите сохранение. Дополнительная информация: {ex}");
+            }
         }
 
 

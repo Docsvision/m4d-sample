@@ -12,24 +12,24 @@ using static DocsVision.BackOffice.ObjectModel.Services.Entities.PowerOfAttorney
 
 namespace PowersOfAttorneyServerExtension.Helpers
 {
-    internal class PowerOfAttorneyFNSDOVBBDataProxy
+    internal class UserCardToPowerOfAttorneyDataConverter
     {
         public static readonly Guid PowerOfAttorneyTypeId = new Guid("1395D276-DE1F-46D3-B724-242D6889ECEB");
-        
+
         private readonly UserCardPowerOfAttorney userCard;
 
         private const int PrincipalTypeRussianEntity = 2;
         private const int LossOfPowersUponSubstitutionLost = 1;
 
 
-        private PowerOfAttorneyFNSDOVBBDataProxy(UserCardPowerOfAttorney userCard)
+        private UserCardToPowerOfAttorneyDataConverter(UserCardPowerOfAttorney userCard)
         {
             this.userCard = userCard;
         }
 
-        public static PowerOfAttorneyFNSDOVBBData Create(UserCardPowerOfAttorney userCard)
+        public static PowerOfAttorneyFNSDOVBBData Convert(UserCardPowerOfAttorney userCard)
         {
-            return new PowerOfAttorneyFNSDOVBBDataProxy(userCard)
+            return new UserCardToPowerOfAttorneyDataConverter(userCard)
                 .GetPowerOfAttorneyFNSDOVBBData();
         }
 
@@ -71,12 +71,21 @@ namespace PowersOfAttorneyServerExtension.Helpers
             var jointRepresentationType = ConverToEnumWithFixIndex<JointRepresentationType>(userCard.JointRepresentation);
             var irrevocablePowerOfAttorneyInfo = GetIrrevocablePowerOfAttorneyInfo();
             // Для заполнения МЧД требуется название организации-владельца информационной системы - возьмём данные подписанта
-            var organizationName = userCard.Signer.Unit.FullName;
-            var lossOfAuthorityType = userCard.LossOfAuthorityType == LossOfPowersUponSubstitutionLost ? PowerOfAttorneyLossOfAuthorityType.Lost : PowerOfAttorneyLossOfAuthorityType.NotLost;
+            var organizationName = userCard.Signer.Unit.Name;
+            PowerOfAttorneyLossOfAuthorityType? lossOfAuthorityType = GetPowerOfAttorneyLossOfAuthorityType(userCard.LossOfAuthorityType);
 
             return new PowerOfAttorneyInfo(powerOfAttorneyId, startDate, endDate, retrustType, jointRepresentationType, irrevocablePowerOfAttorneyInfo, organizationName, lossOfAuthorityType: lossOfAuthorityType);
         }
 
+        private PowerOfAttorneyLossOfAuthorityType? GetPowerOfAttorneyLossOfAuthorityType(int? lossOfAuthorityType)
+        {
+            if (lossOfAuthorityType == null)
+                return null;
+
+            return userCard.LossOfAuthorityType == LossOfPowersUponSubstitutionLost
+                ? PowerOfAttorneyLossOfAuthorityType.Lost
+                : PowerOfAttorneyLossOfAuthorityType.NotLost;
+        }
 
         private List<RepresentativePowerInfo> GetRepresentativePowersInfo()
         {
@@ -113,7 +122,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
             var birthPlace = userCard.RepresentativeIndividualBirthPlace;
             var phone = employee.Phone;
             var gender = GetGender(employee);
-            var residenceAddress = GetRepresentativeIndividualResidenceAddress();
+            var residenceAddress = GetAddressInfo(userCard.RepresentativeIndividualAddressSubjectRfCode, userCard.RepresentativeIndividualAddress);
             var identityCard = GetRepresentativeIdentityCard();
 
             return new IndividualInfo(birthDate, citizenshipType, birthPlace, phone, gender, residenceAddress: residenceAddress, identityCard: identityCard);
@@ -121,6 +130,9 @@ namespace PowersOfAttorneyServerExtension.Helpers
 
         private IdentityCardOfIndividual GetRepresentativeIdentityCard()
         {
+            if (userCard.RepresentativeIndividualDocumentKind == null)
+                return null;
+            
             var documentKind = (DocumentKindCode)userCard.RepresentativeIndividualDocumentKind;
             var documentSeriesNumber = userCard.RepresentativeIndividualDocumentSeries;
             var issueDate = userCard.RepresentativeIndividualDocumentIssueDate;
@@ -130,8 +142,11 @@ namespace PowersOfAttorneyServerExtension.Helpers
             return new IdentityCardOfIndividual(documentKind, documentSeriesNumber, issueDate, issuer, issuerCode);
         }
 
-        private AddressInfo GetRepresentativeIndividualResidenceAddress()
+        private AddressInfo GetAddressInfo(string rfCode, string address)
         {
+            if (string.IsNullOrEmpty(rfCode) && string.IsNullOrEmpty(address))
+                return null;
+
             return new AddressInfo(userCard.RepresentativeIndividualAddressSubjectRfCode, userCard.RepresentativeIndividualAddress);
         }
 
@@ -157,7 +172,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
         private LegalEntityInfo GetLegalEntityInfo()
         {
             var princOrg = userCard.PrincipalOrganization;
-            var name = princOrg.FullName;
+            var name = princOrg.Name;
             var inn = princOrg.INN;
             var kpp = princOrg.KPP;
             var ogrn = princOrg.OGRN;
@@ -175,7 +190,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
             if (address == null)
                 return null;
 
-            return new AddressInfo(userCard.RepresentativeOrganizationLegalAddressSubjectRfCode, address.Address);
+            return GetAddressInfo(userCard.RepresentativeOrganizationLegalAddressSubjectRfCode, address.Address);
         }
 
         private AddressInfo GetAddress(StaffUnit staffUnit)
@@ -184,14 +199,14 @@ namespace PowersOfAttorneyServerExtension.Helpers
             if (address == null)
                 return null;
 
-            return new AddressInfo(userCard.RepresentativeOrganizationAddressSubjectRfCode, address.Address);
+            return GetAddressInfo(userCard.RepresentativeOrganizationAddressSubjectRfCode, address.Address);
         }
 
         private RetrustPowerOfAttorneyInfo GetRetrustPowerOfAttorneyInfo()
         {
             var parentPowerOfAttorneySerializedData = userCard.ParentalPowerOfAttorney.MainInfo.MachineReadablePowerOfAttorney;
             var powerOfAttorneyInfo = GetPowerOfAttorneyInfo();
-            
+
             return new RetrustPowerOfAttorneyInfo(parentPowerOfAttorneySerializedData, powerOfAttorneyInfo);
         }
 
@@ -242,23 +257,29 @@ namespace PowersOfAttorneyServerExtension.Helpers
 
         private ConfirmationOfAuthorityDocument GetConfirmationOfAuthorityDocument()
         {
-            return new ConfirmationOfAuthorityDocument(userCard.PrincipalWithoutPowerOfAttorneyIndividualDocumentIssueDate, userCard.PrincipalWithoutPowerOfAttorneyIndividualDocumentIssuer, userCard.PrincipalWithoutPowerOfAttorneyIndividualDocument);
+            if (userCard.PrincipalWithoutPowerOfAttorneyIndividualDocumentIssueDate == null)
+                return null;
+
+            return new ConfirmationOfAuthorityDocument(userCard.PrincipalWithoutPowerOfAttorneyIndividualDocumentIssueDate.Value, userCard.PrincipalWithoutPowerOfAttorneyIndividualDocumentIssuer, userCard.PrincipalWithoutPowerOfAttorneyIndividualDocument);
         }
 
         private LegalEntityInfo GetPrincipalWithoutPowerOfAttorneyLegalEntityInfo()
         {
             var princOrg = userCard.PrincipalWithoutPowerOfAttorneyOrganization;
-           
-            var name = princOrg.FullName;
+
+            if (princOrg == null)
+                return null;
+
+            var name = princOrg.Name;
             var inn = princOrg.INN;
             var kpp = princOrg.KPP;
             var ogrn = princOrg.OGRN;
             var constituentDocument = userCard.PrincipalWithoutPowerOfAttorneyOrganizationConstituentDocument;
             var phone = princOrg.Phone;
 
-            var legalAddress = new AddressInfo(userCard.PrincipalWithoutPowerOfAttorneyOrganizationLegalAddressSubjectRfCode, userCard.PrincipalWithoutPowerOfAttorneyOrganizationLegalAddress);
+            var legalAddress = GetAddressInfo(userCard.PrincipalWithoutPowerOfAttorneyOrganizationLegalAddressSubjectRfCode, userCard.PrincipalWithoutPowerOfAttorneyOrganizationLegalAddress);
 
-            var actualAddress = new AddressInfo(userCard.PrincipalWithoutPowerOfAttorneyOrganizationAddressSubjectRfCode, userCard.PrincipalWithoutPowerOfAttorneyOrganizationAddress);
+            var actualAddress = GetAddressInfo(userCard.PrincipalWithoutPowerOfAttorneyOrganizationAddressSubjectRfCode, userCard.PrincipalWithoutPowerOfAttorneyOrganizationAddress);
 
             return new LegalEntityInfo(name, inn, kpp, ogrn, constituentDocument, phone, registrationAddress: legalAddress, actualAddress: actualAddress);
         }
@@ -270,31 +291,36 @@ namespace PowersOfAttorneyServerExtension.Helpers
             var birthPlace = userCard.PrincipalWithoutPowerOfAttorneyIndividualBirthPlace;
             var phone = emlpoyee.Phone;
             var gender = GetGender(emlpoyee);
-            var residenceAddress = new AddressInfo(userCard.PrincipalWithoutPowerOfAttorneyIndividualAddressSubjectRfCode, userCard.PrincipalWithoutPowerOfAttorneyIndividualAddress);
-            var identityCard = GetIdentityCard();
+            AddressInfo residenceAddress = GetAddressInfo(userCard.PrincipalWithoutPowerOfAttorneyIndividualAddressSubjectRfCode, userCard.PrincipalWithoutPowerOfAttorneyIndividualAddress);
+           
+            var identityCard = GetPrincipalWithoutPowerOfAttorneyIdentityCard();
 
             return new IndividualInfo(birthDate, citizenshipType, birthPlace, phone, gender, residenceAddress: residenceAddress, identityCard: identityCard);
         }
 
-        private IdentityCardOfIndividual GetIdentityCard()
+        private IdentityCardOfIndividual GetPrincipalWithoutPowerOfAttorneyIdentityCard()
         {
+            if (userCard.PrincipalWithoutPowerOfAttorneyIndividualDocumentKindCode == null)
+                return null;
+
             var kind = (DocumentKindCode)userCard.PrincipalWithoutPowerOfAttorneyIndividualDocumentKindCode;
             var seriesNumber = userCard.PrincipalWithoutPowerOfAttorneyIndividualDocumentSeries;
-            var issueDate = userCard.PrincipalWithoutPowerOfAttorneyIndividualDocumentIssueDate;
+            var issueDate = userCard.IssueDateOfDocumentProvingIdentityOfIAWPOA;
+            
             var issuer = userCard.PrincipalWithoutPowerOfAttorneyIndividualDocumentIssuer;
             var issuerCode = userCard.PrincipalWithoutPowerOfAttorneyIndividualDocumentIssuerCode;
-            
+
             return new IdentityCardOfIndividual(kind, seriesNumber, issueDate, issuer, issuerCode);
         }
 
         private RussianEntityInfo GetRussianEntityInfo()
         {
             var princOrg = userCard.PrincipalOrganization;
-            var name = princOrg.FullName;
+            var name = princOrg.Name;
             var inn = princOrg.INN;
             var kpp = princOrg.KPP;
             var ogrn = princOrg.OGRN;
-            var legalAddress = princOrg.Addresses.FirstOrDefault(t => t.AddressType == StaffAddresseAddressType.LegalAddress)?.Address;
+            var legalAddress = princOrg.Addresses.FirstOrDefault(t => t.AddressType == StaffAddresseAddressType.LegalAddress)?.Address ?? throw new Exception("Не найден юридический адрес");
             var actualAddress = princOrg.Addresses.FirstOrDefault(t => t.AddressType == StaffAddresseAddressType.ContactAddress)?.Address;
 
             return new RussianEntityInfo(name, ogrn, inn, kpp, legalAddress, actualAddress);
