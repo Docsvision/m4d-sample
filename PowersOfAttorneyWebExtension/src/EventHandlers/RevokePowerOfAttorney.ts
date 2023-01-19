@@ -7,5 +7,5 @@ export const revokePowerOfAttorney = async (sender: CustomButton) => {
     const powerOfAttorneyUserCardId = sender.layout.getService($CardId);
     const powerOfAttorneyId = await sender.layout.getService($PowersOfAttorneyDemoController).getPowerOfAttorneyCardId(powerOfAttorneyUserCardId);
     await sender.layout.getService($PowerOfAttorneyApiController).requestRevocationPowerOfAttorney(powerOfAttorneyId);
-    await sender.layout.getService($PowerOfAttorneyApiController).RevokePowerOfAttorney({powerOfAttorneyId: powerOfAttorneyId, withChildsPowerOfAttorney: true});
+    await sender.layout.getService($PowerOfAttorneyApiController).revokePowerOfAttorney({powerOfAttorneyId: powerOfAttorneyId, withChildrenPowerOfAttorney: true});
 }
