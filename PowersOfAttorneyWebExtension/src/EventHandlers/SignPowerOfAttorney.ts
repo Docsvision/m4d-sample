@@ -4,8 +4,7 @@ import { $PowerOfAttorneyApiController } from '@docsvision/webclient/Generated/D
 import { $PowersOfAttorneyDemoController } from "../ServerRequests.ts/PowersOfAttorneyDemoController";
 import { Crypto, getBstrBase64 } from "@docsvision/webclient/Libs/CryptoPro/Crypto";
 import { EncryptedAttribute, EncryptedInfo } from "@docsvision/webclient/Legacy/EncryptedInfo";
-import { doNothing } from "@docsvision/web/utils/common";
-import { IEncryptedInfo } from "@docsvision/webclient/BackOffice/$DigitalSignature";
+import { doNothing } from 'docsvision.web/utils/common';
 
 
 export const signPowerOfAttorney = async (sender: CustomButton) => {
@@ -18,12 +17,12 @@ export const signPowerOfAttorney = async (sender: CustomButton) => {
                 hideSimpleSign: true
             },
             onCreateSignature: async (options) => {
-                const signatureData = await sender.layout.getService($PowerOfAttorneyApiController).getMachineReadablePowerOfAttorney(powerOfAttorneyId) as any;
+                const signatureData = await sender.layout.getService($PowerOfAttorneyApiController).getMachineReadablePowerOfAttorneyData(powerOfAttorneyId);
                 const info = new EncryptedInfo(options.method.certificateInfo.thumberprint);
                 info.Attributes.push(new EncryptedAttribute(Crypto.DocumentNameOIDAttribute, getBstrBase64(signatureData.fileName)));
-                const signature = Crypto.SignData(info, signatureData.data);
-                await sender.layout.getService($PowerOfAttorneyApiController).attachSignatureToPowerOfAttorney(powerOfAttorneyId, signature)
-                return {} as IEncryptedInfo
+                const signature = Crypto.SignData(info, signatureData.content);
+                await sender.layout.getService($PowerOfAttorneyApiController).attachSignatureToPowerOfAttorney({powerOfAttorneyId, signature})
+                return {};
             },
             onAttachSignatureToCard: doNothing
         });
