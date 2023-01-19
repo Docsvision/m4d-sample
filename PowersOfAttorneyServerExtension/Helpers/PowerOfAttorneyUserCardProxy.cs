@@ -35,7 +35,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
 
         private PowerOfAttorneyFNSDOVBBData GetPowerOfAttorneyFNSDOVBBData()
         {
-            return new PowerOfAttorneyFNSDOVBBData(GenerateFileID(userCard.PowerOfAttorneyId),
+            return new PowerOfAttorneyFNSDOVBBData(userCard.PowerOfAttorneyId,
                                                    CreatePowerOfAttorneyDocument());
         }
 
@@ -80,8 +80,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
 
         private List<RepresentativePowerInfo> GetRepresentativePowersInfo()
         {
-            // В примере нет связи со справочником полномочий - д.б. устанавлен флаг isTextPower
-            return userCard.RepresentativePowers.Select(pow => new RepresentativePowerInfo(pow, true)).ToList();
+            return userCard.RepresentativePowers.Select(pow => new RepresentativePowerInfo(pow)).ToList();
         }
 
         private RepresentativeInfo GetRepresentativeInfo()
