@@ -6,5 +6,11 @@ import { $PowersOfAttorneyDemoController } from "../ServerRequests.ts/PowersOfAt
 export const exportPowerOfAttorney = async (sender: CustomButton) => {
     const powerOfAttorneyUserCardId = sender.layout.getService($CardId);
     const powerOfAttorneyId = await sender.layout.getService($PowersOfAttorneyDemoController).getPowerOfAttorneyCardId(powerOfAttorneyUserCardId);
-    await sender.layout.getService($PowerOfAttorneyApiController).exportPowerOfAttorney({ powerOfAttorneyId, withSignature: true });
+    try {
+        const url  = sender.layout.params.services.urlResolver.resolveApiUrl("exportPowerOfAttorney", "powerOfAttorneyApi");
+        const request = `${url}?powerOfAttorneyId=${powerOfAttorneyId}&withSignature=true`;
+        sender.layout.params.services.fileDownload.download(request);
+    } catch (err) {
+        throw err;
+    } 
 }
