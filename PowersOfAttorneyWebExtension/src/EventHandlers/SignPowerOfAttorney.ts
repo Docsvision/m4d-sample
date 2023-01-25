@@ -5,12 +5,13 @@ import { $PowersOfAttorneyDemoController } from "../ServerRequests.ts/PowersOfAt
 import { Crypto, getBstrBase64 } from "@docsvision/webclient/Libs/CryptoPro/Crypto";
 import { EncryptedAttribute, EncryptedInfo } from "@docsvision/webclient/Legacy/EncryptedInfo";
 import { IEncryptedInfo } from "@docsvision/webclient/BackOffice/$DigitalSignature";
+import { $MessageWindow } from "@docsvision/web/components/modals/message-box";
 
 
 export const signPowerOfAttorney = async (sender: CustomButton) => {
     const powerOfAttorneyUserCardId = sender.layout.getService($CardId);
     const powerOfAttorneyId = await sender.layout.getService($PowersOfAttorneyDemoController).getPowerOfAttorneyCardId(powerOfAttorneyUserCardId);
-    sender.layout.params.services.digitalSignature.showDocumentSignDialog(powerOfAttorneyUserCardId,
+    await sender.layout.params.services.digitalSignature.showDocumentSignDialog(powerOfAttorneyUserCardId,
         {
             signWithoutLabel: true,
             dialogProps: {
@@ -32,6 +33,7 @@ export const signPowerOfAttorney = async (sender: CustomButton) => {
             },
             onAttachSignatureToCard: async () => {}
         });
+    sender.layout.getService($MessageWindow).showInfo("Доверенность подписана");
 }
 
 
