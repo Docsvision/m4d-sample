@@ -5,6 +5,6 @@ import { $PowersOfAttorneyDemoController } from "../ServerRequests.ts/PowersOfAt
 
 export const createRetrustPowerOfAttorney = async (sender: CustomButton) => {
     const powerOfAttorneyUserCardId = sender.layout.getService($CardId);
-    await sender.layout.getService($PowersOfAttorneyDemoController).retrustPowerOfAttorney(powerOfAttorneyUserCardId);
+    await sender.layout.getService($PowersOfAttorneyDemoController).createRetrustPowerOfAttorney(powerOfAttorneyUserCardId);
     sender.layout.getService($MessageWindow).showInfo("Доверенность сформирована");
 }

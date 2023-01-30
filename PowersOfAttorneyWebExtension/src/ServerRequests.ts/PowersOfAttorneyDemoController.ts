@@ -10,8 +10,8 @@ export class PowersOfAttorneyDemoController {
         return this.services.requestManager.post(`api/PowersOfAttorneyDemo/CreatePowerOfAttorney?powerOfAttorneyUserCardId=${powerOfAttorneyUserCardId}`, "");
     }
 
-    retrustPowerOfAttorney(powerOfAttorneyUserCardId: string): Promise<string | null> {
-        return this.services.requestManager.post(`api/PowersOfAttorneyDemo/RetrustPowerOfAttorney?powerOfAttorneyUserCardId=${powerOfAttorneyUserCardId}`, "");
+    createRetrustPowerOfAttorney(powerOfAttorneyUserCardId: string): Promise<string | null> {
+        return this.services.requestManager.post(`api/PowersOfAttorneyDemo/CreateRetrustPowerOfAttorney?powerOfAttorneyUserCardId=${powerOfAttorneyUserCardId}`, "");
     }
 
     getPowerOfAttorneyCardId(powerOfAttorneyUserCardId: string): Promise<string | null> {
