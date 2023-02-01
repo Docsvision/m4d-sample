@@ -197,7 +197,18 @@ namespace PowersOfAttorneyServerExtension.Helpers
         /// <summary>
         /// Доверенность, на основании которой осуществляется передоверие
         /// </summary>
-        public PowerOfAttorney ParentalPowerOfAttorney => GetReferenceFromMrpSectionField<PowerOfAttorney>(Fields.ParentalPowerOfAttorney);
+        public Document ParentalPowerOfAttorneyUserCard => GetReferenceFromMrpSectionField<Document>(Fields.ParentalPowerOfAttorney);
+        
+        public PowerOfAttorney ParentalPowerOfAttorney
+        {
+            get
+            {
+                var machineReadablePowerOfAttorneySectionRow = ParentalPowerOfAttorneyUserCard.GetSection(machineReadablePowerOfAttorneySectionId)[0] as BaseCardSectionRow;
+                var powerOfAttorney = GetReferenceFromSectionField<PowerOfAttorney>(machineReadablePowerOfAttorneySectionRow, Fields.PowerOfAttorneyCardId);
+                return powerOfAttorney ?? throw new ArgumentNullException("Доверенность, на основании которой осуществляется передоверие, не найдена");
+            }
+        }
+     
 
         /// <summary>
         /// Доверитель физлицо
