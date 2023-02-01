@@ -44,7 +44,7 @@ namespace PowersOfAttorneyServerExtension.Services
 
             if (userCardPowerOfAttorney.PowerOfAttorneyCardId == null)
             {
-                throw new Exception("В ПКД отсутствует идентификатор СКД");
+                throw new Exception(Resources.Error_PoaIDNotFoundInUserCard);
             }
             
             return userCardPowerOfAttorney.PowerOfAttorneyCardId.Value;
@@ -78,7 +78,7 @@ namespace PowersOfAttorneyServerExtension.Services
             var card = context.GetObject<Document>(documentId);
             if (card == null)
             {
-                throw new Exception($"ПКД {documentId} не найдена");
+                throw new Exception(string.Format(Resources.Error_UserCardNotFound, documentId));
             }
 
             return new UserCardPowerOfAttorney(card, context);
