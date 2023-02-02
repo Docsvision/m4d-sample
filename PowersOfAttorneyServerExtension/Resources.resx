@@ -117,6 +117,51 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Error_EmptyCodeOfCitizenshipForForeignRepresentative" xml:space="preserve">
+    <value>The country code of the foreign representative's citizenship is not specified</value>
+  </data>
+  <data name="Error_EmptyIssueDateOfDocumentProvingIdentity" xml:space="preserve">
+    <value>The date of issue of the document certifying an individual acting without a power of attorney is not specified</value>
+  </data>
+  <data name="Error_EmptyJointRepresentation" xml:space="preserve">
+    <value>The attribute of joint powers is not specified</value>
+  </data>
+  <data name="Error_EmptyPowerOfAttorneyEndDate" xml:space="preserve">
+    <value>The expiration date of the power of attorney is not specified</value>
+  </data>
+  <data name="Error_EmptyPowerOfAttorneyStartDate" xml:space="preserve">
+    <value>The date of the power of attorney is not specified</value>
+  </data>
+  <data name="Error_EmptyPrincipalType" xml:space="preserve">
+    <value>The type of principal is not specified</value>
+  </data>
+  <data name="Error_EmptyPrincipalWithoutPowerOfAttorneyIndividualCitizenship" xml:space="preserve">
+    <value>The indication of the citizenship of a person acting without a power of attorney is not specified</value>
+  </data>
+  <data name="Error_EmptyPrincipalWithoutPowerOfAttorneyIndividualCountryCode" xml:space="preserve">
+    <value>The country of citizenship code is not specified for a foreign individual acting without a power of attorney</value>
+  </data>
+  <data name="Error_EmptyRepresentativeCitizenshipType" xml:space="preserve">
+    <value>The nationality of the representative is not specified</value>
+  </data>
+  <data name="Error_EmptyRepresentativeIndividualDocumentIssueDate" xml:space="preserve">
+    <value>The date of issue of the document certifying the individual representative is not specified</value>
+  </data>
+  <data name="Error_EmptyRepresentativeType" xml:space="preserve">
+    <value>The type of authorized representative is not specified</value>
+  </data>
+  <data name="Error_EmptyRetrustType" xml:space="preserve">
+    <value>The possibility of making a transfer of trust is not selected</value>
+  </data>
+  <data name="Error_EmptyRevocationPossibleType" xml:space="preserve">
+    <value>The sign of an irrevocable power of attorney is not specified</value>
+  </data>
+  <data name="Error_IncorrectUserCardData" xml:space="preserve">
+    <value>Not all required data is filled in or the data is incorrect. Change the data and save again. \n Additional information: {0}"</value>
+  </data>
+  <data name="Error_ParentalPowerOfAttorneyNotFound" xml:space="preserve">
+    <value>The power of attorney on the basis of which the transfer is carried out was not found</value>
+  </data>
   <data name="Error_PoaIDNotFoundInUserCard" xml:space="preserve">
     <value>User power of attorney card does not have ID of system power of attorney card</value>
   </data>

@@ -117,6 +117,51 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Error_EmptyCodeOfCitizenshipForForeignRepresentative" xml:space="preserve">
+    <value>Не указан код страны гражданства иностранного представителя</value>
+  </data>
+  <data name="Error_EmptyIssueDateOfDocumentProvingIdentity" xml:space="preserve">
+    <value>Не указана дата выдачи документа, удостоверяющего физлицо, действующее без доверенности</value>
+  </data>
+  <data name="Error_EmptyJointRepresentation" xml:space="preserve">
+    <value>Не указан признак совместных полномочий</value>
+  </data>
+  <data name="Error_EmptyPowerOfAttorneyEndDate" xml:space="preserve">
+    <value>Не указана дата окончания действия доверенности</value>
+  </data>
+  <data name="Error_EmptyPowerOfAttorneyStartDate" xml:space="preserve">
+    <value>Не указана дата совершения доверенности</value>
+  </data>
+  <data name="Error_EmptyPrincipalType" xml:space="preserve">
+    <value>Не указан тип доверителя</value>
+  </data>
+  <data name="Error_EmptyPrincipalWithoutPowerOfAttorneyIndividualCitizenship" xml:space="preserve">
+    <value>Не указан признак наличия гражданства лица, действующего без доверенности</value>
+  </data>
+  <data name="Error_EmptyPrincipalWithoutPowerOfAttorneyIndividualCountryCode" xml:space="preserve">
+    <value>Не указан код страны гражданства для иностранного физ лица, действующего без доверенности</value>
+  </data>
+  <data name="Error_EmptyRepresentativeCitizenshipType" xml:space="preserve">
+    <value>Не указан признак гражданства представителя</value>
+  </data>
+  <data name="Error_EmptyRepresentativeIndividualDocumentIssueDate" xml:space="preserve">
+    <value>Не указана дата выдачи документа, удостоверяющего физлицо-представителя</value>
+  </data>
+  <data name="Error_EmptyRepresentativeType" xml:space="preserve">
+    <value>Не указан тип уполномоченного представителя</value>
+  </data>
+  <data name="Error_EmptyRetrustType" xml:space="preserve">
+    <value>Не выбрана возможность оформления передоверия</value>
+  </data>
+  <data name="Error_EmptyRevocationPossibleType" xml:space="preserve">
+    <value>Не указан признак безотзывной доверенности</value>
+  </data>
+  <data name="Error_IncorrectUserCardData" xml:space="preserve">
+    <value>Заполнены не все обязательные данные или данные некорректны. Измените данные и повторите сохранение. \n Дополнительная информация: {0}"</value>
+  </data>
+  <data name="Error_ParentalPowerOfAttorneyNotFound" xml:space="preserve">
+    <value>Не найдена доверенность, на основании которой осуществляется передоверие</value>
+  </data>
   <data name="Error_PoaIDNotFoundInUserCard" xml:space="preserve">
     <value>В пользовательской карточке доверенностей отсутствует идентификатор системной карточки доверенностей</value>
   </data>

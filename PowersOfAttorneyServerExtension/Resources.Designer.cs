@@ -61,6 +61,141 @@ namespace PowersOfAttorneyServerExtension {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The country code of the foreign representative&apos;s citizenship is not specified.
+        /// </summary>
+        internal static string Error_EmptyCodeOfCitizenshipForForeignRepresentative {
+            get {
+                return ResourceManager.GetString("Error_EmptyCodeOfCitizenshipForForeignRepresentative", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The date of issue of the document certifying an individual acting without a power of attorney is not specified.
+        /// </summary>
+        internal static string Error_EmptyIssueDateOfDocumentProvingIdentity {
+            get {
+                return ResourceManager.GetString("Error_EmptyIssueDateOfDocumentProvingIdentity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The attribute of joint powers is not specified.
+        /// </summary>
+        internal static string Error_EmptyJointRepresentation {
+            get {
+                return ResourceManager.GetString("Error_EmptyJointRepresentation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The expiration date of the power of attorney is not specified.
+        /// </summary>
+        internal static string Error_EmptyPowerOfAttorneyEndDate {
+            get {
+                return ResourceManager.GetString("Error_EmptyPowerOfAttorneyEndDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The date of the power of attorney is not specified.
+        /// </summary>
+        internal static string Error_EmptyPowerOfAttorneyStartDate {
+            get {
+                return ResourceManager.GetString("Error_EmptyPowerOfAttorneyStartDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The type of principal is not specified.
+        /// </summary>
+        internal static string Error_EmptyPrincipalType {
+            get {
+                return ResourceManager.GetString("Error_EmptyPrincipalType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The indication of the citizenship of a person acting without a power of attorney is not specified.
+        /// </summary>
+        internal static string Error_EmptyPrincipalWithoutPowerOfAttorneyIndividualCitizenship {
+            get {
+                return ResourceManager.GetString("Error_EmptyPrincipalWithoutPowerOfAttorneyIndividualCitizenship", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The country of citizenship code is not specified for a foreign individual acting without a power of attorney.
+        /// </summary>
+        internal static string Error_EmptyPrincipalWithoutPowerOfAttorneyIndividualCountryCode {
+            get {
+                return ResourceManager.GetString("Error_EmptyPrincipalWithoutPowerOfAttorneyIndividualCountryCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The nationality of the representative is not specified.
+        /// </summary>
+        internal static string Error_EmptyRepresentativeCitizenshipType {
+            get {
+                return ResourceManager.GetString("Error_EmptyRepresentativeCitizenshipType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The date of issue of the document certifying the individual representative is not specified.
+        /// </summary>
+        internal static string Error_EmptyRepresentativeIndividualDocumentIssueDate {
+            get {
+                return ResourceManager.GetString("Error_EmptyRepresentativeIndividualDocumentIssueDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The type of authorized representative is not specified.
+        /// </summary>
+        internal static string Error_EmptyRepresentativeType {
+            get {
+                return ResourceManager.GetString("Error_EmptyRepresentativeType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The possibility of making a transfer of trust is not selected.
+        /// </summary>
+        internal static string Error_EmptyRetrustType {
+            get {
+                return ResourceManager.GetString("Error_EmptyRetrustType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The sign of an irrevocable power of attorney is not specified.
+        /// </summary>
+        internal static string Error_EmptyRevocationPossibleType {
+            get {
+                return ResourceManager.GetString("Error_EmptyRevocationPossibleType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not all required data is filled in or the data is incorrect. Change the data and save again. \n Additional information: {0}&quot;.
+        /// </summary>
+        internal static string Error_IncorrectUserCardData {
+            get {
+                return ResourceManager.GetString("Error_IncorrectUserCardData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The power of attorney on the basis of which the transfer is carried out was not found.
+        /// </summary>
+        internal static string Error_ParentalPowerOfAttorneyNotFound {
+            get {
+                return ResourceManager.GetString("Error_ParentalPowerOfAttorneyNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to User power of attorney card does not have ID of system power of attorney card.
         /// </summary>
         internal static string Error_PoaIDNotFoundInUserCard {
