@@ -6,6 +6,7 @@ import * as CreateRetrustPowerOfAttorney from "./EventHandlers/CreateRetrustPowe
 import * as ExportPowerOfAttorney from "./EventHandlers/ExportPowerOfAttorney";
 import * as SignPowerOfAttorney from "./EventHandlers/SignPowerOfAttorney";
 import * as RevokePowerOfAttorney from "./EventHandlers/RevokePowerOfAttorney";
+import * as DeletePowerOfAttorney from "./EventHandlers/DeletePowerOfAttorney";
 import { $PowersOfAttorneyDemoController, PowersOfAttorneyDemoController } from "./ServerRequests.ts/PowersOfAttorneyDemoController";
 
 // Главная входная точка всего расширения
@@ -16,8 +17,8 @@ import { $PowersOfAttorneyDemoController, PowersOfAttorneyDemoController } from 
 // обработчики событий, сервисы и прочие сущности web-приложения.
 extensionManager.registerExtension({
     name: "Powers Of Attorney web extension",
-    version: "5.5.16",
-    globalEventHandlers: [ CreatePowerOfAttorney, CreateRetrustPowerOfAttorney, ExportPowerOfAttorney, SignPowerOfAttorney, RevokePowerOfAttorney ],
+    version: "5.5.17",
+    globalEventHandlers: [ CreatePowerOfAttorney, CreateRetrustPowerOfAttorney, ExportPowerOfAttorney, SignPowerOfAttorney, RevokePowerOfAttorney, DeletePowerOfAttorney ],
     layoutServices: [ 
         Service.fromFactory($PowersOfAttorneyDemoController, (services: $RequestManager) => new PowersOfAttorneyDemoController(services))
     ]
