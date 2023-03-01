@@ -357,7 +357,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
         /// </summary>
         public bool IsRetrusted() => mrpSection[Fields.ParentalPowerOfAttorney] != null;
 
-        public IEnumerable<string> RepresentativePowers => powersSection.Select(t => t.GetStringValue(Fields.PowersTextDescription));
+        public IEnumerable<string> RepresentativePowers => powersSection?.Select(t => t.GetStringValue(Fields.PowersTextDescription)) ?? Enumerable.Empty<string>();
 
         public StaffEmployee Signer => GetReferenceFromSectionField<StaffEmployee>(signerSection.First(), CardDocument.Signers.Signer);
 
