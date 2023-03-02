@@ -7,8 +7,9 @@ import { EncryptedAttribute, EncryptedInfo } from "@docsvision/webclient/Legacy/
 import { IEncryptedInfo } from "@docsvision/webclient/BackOffice/$DigitalSignature";
 import { $MessageWindow } from "@docsvision/web/components/modals/message-box";
 import { $Router } from "@docsvision/webclient/System/$Router";
+import { POWER_OF_ATTORNEY_KIND_ID, SIGN_OPERATION_POA, SIGN_OPERATION_SPOA } from "./Constants";
 
-const SIGN_OPERATION = "3c4bd506-899d-4e46-9c67-e949c907ad64";
+
 
 export const signPowerOfAttorney = async (sender: CustomButton) => {
     const powerOfAttorneyUserCardId = sender.layout.getService($CardId);
@@ -35,7 +36,13 @@ export const signPowerOfAttorney = async (sender: CustomButton) => {
             },
             onAttachSignatureToCard: async () => {}
         });
-    await sender.layout.changeState(SIGN_OPERATION);
+        
+    if (sender.layout.cardInfo.kindId === POWER_OF_ATTORNEY_KIND_ID) {
+        await sender.layout.changeState(SIGN_OPERATION_POA);
+    } else {
+        await sender.layout.changeState(SIGN_OPERATION_SPOA);
+    }
+    
     sender.layout.getService($Router).refresh();
     sender.layout.getService($MessageWindow).showInfo("Доверенность подписана");
 }
