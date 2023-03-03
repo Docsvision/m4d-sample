@@ -49,7 +49,7 @@
 
 ## Проверка примера
 
-1. Распакуйте PowersOfAttorneyCardsMetadata.zip и импортируйте данные (SampleCard.xml) в систему Docsvision.
+1. Распакуйте PowersOfAttorneyCardsMetadata.zip и импортируйте данные из архива в систему Docsvision.
 
 2. Распакуйте PowersOfAttorneySolution.zip и в Конструкторе web-разметок импортируйте решение Solution.xml.
 
