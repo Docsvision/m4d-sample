@@ -178,7 +178,7 @@ namespace PowersOfAttorneyServerExtension {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Not all required data is filled in or the data is incorrect. Change the data and save again. \n Additional information: {0}&quot;.
+        ///   Looks up a localized string similar to Not all required data is filled in or the data is incorrect. Change the data and save again&quot;.
         /// </summary>
         internal static string Error_IncorrectUserCardData {
             get {

@@ -2,6 +2,7 @@
 using DocsVision.BackOffice.ObjectModel;
 using DocsVision.BackOffice.ObjectModel.Services.Entities;
 using DocsVision.Platform.ObjectModel;
+using DocsVision.Platform.WebClient.Diagnostics;
 
 using System;
 using System.Collections.Generic;
@@ -375,7 +376,8 @@ namespace PowersOfAttorneyServerExtension.Helpers
             }
             catch (Exception ex)
             {
-                throw new Exception(String.Format(Resources.Error_IncorrectUserCardData, ex.ToString()));
+                Trace.TraceError(ex);
+                throw new Exception(Resources.Error_IncorrectUserCardData);
             }
         }
 
