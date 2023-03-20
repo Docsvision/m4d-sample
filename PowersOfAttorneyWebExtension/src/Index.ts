@@ -7,6 +7,10 @@ import * as ExportPowerOfAttorney from "./EventHandlers/ExportPowerOfAttorney";
 import * as SignPowerOfAttorney from "./EventHandlers/SignPowerOfAttorney";
 import * as RevokePowerOfAttorney from "./EventHandlers/RevokePowerOfAttorney";
 import * as DeletePowerOfAttorney from "./EventHandlers/DeletePowerOfAttorney";
+import * as CustomizePowerOfAttorneyCardForEditLayout  from "./EventHandlers/CustomizePowerOfAttorneyCardForEditLayout";
+import * as CustomizePowerOfAttorneyCardForViewCard from "./EventHandlers/CustomizePowerOfAttorneyCardForViewLayout";
+import * as CustomizeSubstitutionPowerOfAttorneyCardForEditLayout from "./EventHandlers/CustomizeSubstitutionPowerOfAttorneyCardForEditLayout";
+import * as CustomizeSubstitutionPowerOfAttorneyCardForViewLayout from "./EventHandlers/CustomizeSubstitutionPowerOfAttorneyCardForViewLayout";
 import { $PowersOfAttorneyDemoController, PowersOfAttorneyDemoController } from "./ServerRequests.ts/PowersOfAttorneyDemoController";
 
 // Главная входная точка всего расширения
@@ -18,7 +22,8 @@ import { $PowersOfAttorneyDemoController, PowersOfAttorneyDemoController } from 
 extensionManager.registerExtension({
     name: "Powers Of Attorney web extension",
     version: "5.5.17",
-    globalEventHandlers: [ CreatePowerOfAttorney, CreateRetrustPowerOfAttorney, ExportPowerOfAttorney, SignPowerOfAttorney, RevokePowerOfAttorney, DeletePowerOfAttorney ],
+    globalEventHandlers: [ CreatePowerOfAttorney, CreateRetrustPowerOfAttorney, ExportPowerOfAttorney, SignPowerOfAttorney, RevokePowerOfAttorney, DeletePowerOfAttorney,
+        CustomizePowerOfAttorneyCardForEditLayout, CustomizePowerOfAttorneyCardForViewCard, CustomizeSubstitutionPowerOfAttorneyCardForEditLayout, CustomizeSubstitutionPowerOfAttorneyCardForViewLayout ],
     layoutServices: [ 
         Service.fromFactory($PowersOfAttorneyDemoController, (services: $RequestManager) => new PowersOfAttorneyDemoController(services))
     ]
