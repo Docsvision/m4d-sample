@@ -12,6 +12,8 @@ import * as CustomizePowerOfAttorneyCardForViewCard from "./EventHandlers/Custom
 import * as CustomizeSubstitutionPowerOfAttorneyCardForEditLayout from "./EventHandlers/CustomizeSubstitutionPowerOfAttorneyCardForEditLayout";
 import * as CustomizeSubstitutionPowerOfAttorneyCardForViewLayout from "./EventHandlers/CustomizeSubstitutionPowerOfAttorneyCardForViewLayout";
 import { $PowersOfAttorneyDemoController, PowersOfAttorneyDemoController } from "./ServerRequests.ts/PowersOfAttorneyDemoController";
+import * as FillInTheFieldsAutomatically from "./EventHandlers/FillInTheFieldsAutomatically";
+import * as CustomizeInputFields from "./EventHandlers/CustomizeInputFields";
 
 // Главная входная точка всего расширения
 // Данный файл должен импортировать прямо или косвенно все остальные файлы, 
@@ -23,7 +25,8 @@ extensionManager.registerExtension({
     name: "Powers Of Attorney web extension",
     version: "5.5.17",
     globalEventHandlers: [ CreatePowerOfAttorney, CreateRetrustPowerOfAttorney, ExportPowerOfAttorney, SignPowerOfAttorney, RevokePowerOfAttorney, DeletePowerOfAttorney,
-        CustomizePowerOfAttorneyCardForEditLayout, CustomizePowerOfAttorneyCardForViewCard, CustomizeSubstitutionPowerOfAttorneyCardForEditLayout, CustomizeSubstitutionPowerOfAttorneyCardForViewLayout ],
+        CustomizePowerOfAttorneyCardForEditLayout, CustomizePowerOfAttorneyCardForViewCard, CustomizeSubstitutionPowerOfAttorneyCardForEditLayout, CustomizeSubstitutionPowerOfAttorneyCardForViewLayout,
+        FillInTheFieldsAutomatically, CustomizeInputFields ],
     layoutServices: [ 
         Service.fromFactory($PowersOfAttorneyDemoController, (services: $RequestManager) => new PowersOfAttorneyDemoController(services))
     ]
