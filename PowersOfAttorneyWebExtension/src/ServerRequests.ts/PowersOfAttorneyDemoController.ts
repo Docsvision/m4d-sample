@@ -17,6 +17,14 @@ export class PowersOfAttorneyDemoController {
     getPowerOfAttorneyCardId(powerOfAttorneyUserCardId: string): Promise<string | null> {
         return this.services.requestManager.get(`api/PowersOfAttorneyDemo/GetPowerOfAttorneyCardId?powerOfAttorneyUserCardId=${powerOfAttorneyUserCardId}`);
     }
+
+    createEMCHDPowerOfAttorney(powerOfAttorneyUserCardId: string): Promise<string | null> {
+        return this.services.requestManager.get(`api/PowersOfAttorneyDemo/CreateEMCHDPowerOfAttorney?powerOfAttorneyUserCardId=${powerOfAttorneyUserCardId}`)
+    }
+    
+    сreateEMCHDRetrustPowerOfAttorney(powerOfAttorneyUserCardId: string): Promise<string | null> {
+        return this.services.requestManager.get(`api/PowersOfAttorneyDemo/CreateEMCHDRetrustPowerOfAttorney?powerOfAttorneyUserCardId=${powerOfAttorneyUserCardId}`);
+    }
 }
 
 export type $PowersOfAttorneyDemoController = {  powersOfAttorneyDemoController: PowersOfAttorneyDemoController }
