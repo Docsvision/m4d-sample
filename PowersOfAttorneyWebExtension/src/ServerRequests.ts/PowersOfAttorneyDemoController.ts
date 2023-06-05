@@ -22,7 +22,7 @@ export class PowersOfAttorneyDemoController {
         return this.services.requestManager.get(`api/PowersOfAttorneyDemo/CreateEMCHDPowerOfAttorney?powerOfAttorneyUserCardId=${powerOfAttorneyUserCardId}`)
     }
     
-    сreateEMCHDRetrustPowerOfAttorney(powerOfAttorneyUserCardId: string): Promise<string | null> {
+    createEMCHDRetrustPowerOfAttorney(powerOfAttorneyUserCardId: string): Promise<string | null> {
         return this.services.requestManager.get(`api/PowersOfAttorneyDemo/CreateEMCHDRetrustPowerOfAttorney?powerOfAttorneyUserCardId=${powerOfAttorneyUserCardId}`);
     }
 }
