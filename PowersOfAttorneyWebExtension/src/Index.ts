@@ -11,7 +11,7 @@ import * as CustomizePowerOfAttorneyCardForEditLayout  from "./EventHandlers/Cus
 import * as CustomizePowerOfAttorneyCardForViewCard from "./EventHandlers/CustomizePowerOfAttorneyCardForViewLayout";
 import * as CustomizeSubstitutionPowerOfAttorneyCardForEditLayout from "./EventHandlers/CustomizeSubstitutionPowerOfAttorneyCardForEditLayout";
 import * as CustomizeSubstitutionPowerOfAttorneyCardForViewLayout from "./EventHandlers/CustomizeSubstitutionPowerOfAttorneyCardForViewLayout";
-import { $PowersOfAttorneyDemoController, PowersOfAttorneyDemoController } from "./ServerRequests.ts/PowersOfAttorneyDemoController";
+import { $PowersOfAttorneyDemoController, PowersOfAttorneyDemoController } from "./ServerRequests/PowersOfAttorneyDemoController";
 import * as FillInTheFieldsAutomatically from "./EventHandlers/FillInTheFieldsAutomatically";
 import * as CustomizeInputFields from "./EventHandlers/CustomizeInputFields";
 import * as CreateEMCHDRetrustPowerOfAttorney from "./EventHandlers/CreateEMCHDRetrustPowerOfAttorney";

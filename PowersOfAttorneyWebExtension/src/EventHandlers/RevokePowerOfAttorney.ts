@@ -1,6 +1,6 @@
 import { CustomButton } from "@docsvision/webclient/Platform/CustomButton";
 import { $CardId } from "@docsvision/webclient/System/LayoutServices";
-import { $PowersOfAttorneyDemoController } from "../ServerRequests.ts/PowersOfAttorneyDemoController";
+import { $PowersOfAttorneyDemoController } from "../ServerRequests/PowersOfAttorneyDemoController";
 import { $PowerOfAttorneyApiController } from '@docsvision/webclient/Generated/DocsVision.WebClient.Controllers';
 import { $MessageWindow } from "@docsvision/web/components/modals/message-box";
 import { $Router } from "@docsvision/webclient/System/$Router";

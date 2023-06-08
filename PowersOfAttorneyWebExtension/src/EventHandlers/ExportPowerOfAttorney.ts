@@ -1,7 +1,7 @@
 import { CustomButton } from "@docsvision/webclient/Platform/CustomButton";
 import { $CardId } from "@docsvision/webclient/System/LayoutServices";
 import { $PowerOfAttorneyApiController } from '@docsvision/webclient/Generated/DocsVision.WebClient.Controllers';;
-import { $PowersOfAttorneyDemoController } from "../ServerRequests.ts/PowersOfAttorneyDemoController";
+import { $PowersOfAttorneyDemoController } from "../ServerRequests/PowersOfAttorneyDemoController";
 
 export const exportPowerOfAttorneyWithSignature = async (sender: CustomButton) => {
     const powerOfAttorneyUserCardId = sender.layout.getService($CardId);
