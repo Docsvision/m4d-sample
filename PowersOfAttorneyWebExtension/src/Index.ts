@@ -16,6 +16,7 @@ import * as FillInTheFieldsAutomatically from "./EventHandlers/FillInTheFieldsAu
 import * as CustomizeInputFields from "./EventHandlers/CustomizeInputFields";
 import * as CreateEMCHDRetrustPowerOfAttorney from "./EventHandlers/CreateEMCHDRetrustPowerOfAttorney";
 import * as CreateEMCHDPowerOfAttorney from "./EventHandlers/CreateEMCHDPowerOfAttorney";
+import * as SignPowerOfAttorneyFromTask from "./EventHandlers/SignPowerOfAttorneyFromTask";
 
 // Главная входная точка всего расширения
 // Данный файл должен импортировать прямо или косвенно все остальные файлы, 
@@ -28,7 +29,7 @@ extensionManager.registerExtension({
     version: "5.5.17",
     globalEventHandlers: [ CreatePowerOfAttorney, CreateRetrustPowerOfAttorney, ExportPowerOfAttorney, SignPowerOfAttorney, RevokePowerOfAttorney, DeletePowerOfAttorney,
         CustomizePowerOfAttorneyCardForEditLayout, CustomizePowerOfAttorneyCardForViewCard, CustomizeSubstitutionPowerOfAttorneyCardForEditLayout, CustomizeSubstitutionPowerOfAttorneyCardForViewLayout,
-        FillInTheFieldsAutomatically, CustomizeInputFields, CreateEMCHDPowerOfAttorney, CreateEMCHDRetrustPowerOfAttorney ],
+        FillInTheFieldsAutomatically, CustomizeInputFields, CreateEMCHDPowerOfAttorney, CreateEMCHDRetrustPowerOfAttorney, SignPowerOfAttorneyFromTask ],
     layoutServices: [ 
         Service.fromFactory($PowersOfAttorneyDemoController, (services: $RequestManager) => new PowersOfAttorneyDemoController(services))
     ]

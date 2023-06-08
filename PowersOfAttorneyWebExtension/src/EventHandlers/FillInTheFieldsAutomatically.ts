@@ -48,7 +48,7 @@ export const onCeoDataChanged = async (sender: StaffDirectoryItems, args: IDataC
 
     if (args.newValue) {
         const data = await sender.layout.params.services.requestManager.get(`api/v1/cards/${STAFF_DIRECTORY_ID}/${EMPLOYEE_SECTION_ID}/${args.newValue.id}`) as any;
-        ceoPosition.params.value = data.fields.find(field => field.alias === "Position").value;
+        ceoPosition.params.value = data.fields.find(field => field.alias === "PositionName").value;
         ceoBirthDate.params.value = data.fields.find(field => field.alias === "BirthDate").value;
         ceoGender.params.value = data.fields.find(field => field.alias === "Gender").value;
         ceoPhone.params.value = data.fields.find(field => field.alias === "Phone").value;
