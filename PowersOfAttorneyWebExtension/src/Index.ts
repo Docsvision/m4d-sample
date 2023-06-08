@@ -14,7 +14,6 @@ import * as CustomizeSubstitutionPowerOfAttorneyCardForViewLayout from "./EventH
 import { $PowersOfAttorneyDemoController, PowersOfAttorneyDemoController } from "./ServerRequests/PowersOfAttorneyDemoController";
 import * as FillInTheFieldsAutomatically from "./EventHandlers/FillInTheFieldsAutomatically";
 import * as CustomizeInputFields from "./EventHandlers/CustomizeInputFields";
-import * as CreateEMCHDRetrustPowerOfAttorney from "./EventHandlers/CreateEMCHDRetrustPowerOfAttorney";
 import * as CreateEMCHDPowerOfAttorney from "./EventHandlers/CreateEMCHDPowerOfAttorney";
 import * as SignPowerOfAttorneyFromTask from "./EventHandlers/SignPowerOfAttorneyFromTask";
 
@@ -29,7 +28,7 @@ extensionManager.registerExtension({
     version: "5.5.17",
     globalEventHandlers: [ CreatePowerOfAttorney, CreateRetrustPowerOfAttorney, ExportPowerOfAttorney, SignPowerOfAttorney, RevokePowerOfAttorney, DeletePowerOfAttorney,
         CustomizePowerOfAttorneyCardForEditLayout, CustomizePowerOfAttorneyCardForViewCard, CustomizeSubstitutionPowerOfAttorneyCardForEditLayout, CustomizeSubstitutionPowerOfAttorneyCardForViewLayout,
-        FillInTheFieldsAutomatically, CustomizeInputFields, CreateEMCHDPowerOfAttorney, CreateEMCHDRetrustPowerOfAttorney, SignPowerOfAttorneyFromTask ],
+        FillInTheFieldsAutomatically, CustomizeInputFields, CreateEMCHDPowerOfAttorney, SignPowerOfAttorneyFromTask ],
     layoutServices: [ 
         Service.fromFactory($PowersOfAttorneyDemoController, (services: $RequestManager) => new PowersOfAttorneyDemoController(services))
     ]
