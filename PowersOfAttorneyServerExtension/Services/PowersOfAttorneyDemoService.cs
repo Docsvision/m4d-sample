@@ -1,10 +1,15 @@
 ﻿using DocsVision.BackOffice.ObjectModel;
+using DocsVision.BackOffice.ObjectModel.Services.Entities;
 using DocsVision.BackOffice.WebClient.PowersOfAttorney;
 using DocsVision.Platform.ObjectModel;
+
+using Microsoft.SqlServer.Server;
 
 using PowersOfAttorneyServerExtension.Helpers;
 
 using System;
+
+using static DocsVision.BackOffice.ObjectModel.Services.Entities.PowerOfAttorneyData;
 
 namespace PowersOfAttorneyServerExtension.Services
 {
@@ -17,24 +22,23 @@ namespace PowersOfAttorneyServerExtension.Services
             this.powerOfAttorneyProxyService = powerOfAttorneyProxyService;
         }
 
-        public Guid CreatePowerOfAttorney(ObjectContext context, Guid powerOfAttorneyUserCardId)
+        public Guid CreatePowerOfAttorney(ObjectContext context, Guid powerOfAttorneyUserCardId, Guid formatId)
         {
             var userCardPowerOfAttorney = GetUserCardPowerOfAttorney(context, powerOfAttorneyUserCardId);
+            var powerOfAttorneyData = GetPowerOfAttorneyData(userCardPowerOfAttorney, formatId);
 
-            var powerOfAttorneyData = userCardPowerOfAttorney.ConvertToPowerOfAttorneyFNSDOVBBData();
             var representativeID = userCardPowerOfAttorney.RepresentativeIndividual.GetObjectId();
             var signerID = userCardPowerOfAttorney.Signer.GetObjectId();
-
             var powerOfAttorney = powerOfAttorneyProxyService.CreatePowerOfAttorney(powerOfAttorneyData,
                                                                                     representativeID,
                                                                                     signerID,
-                                                                                    UserCardToPowerOfAttorneyDataConverter.PowerOfAttorneyTypeId);
+                                                                                    formatId);
             var powerOfAttorneyId = powerOfAttorney.GetObjectId();
-            
+
             // Сохраним ИД созданной СКД в ПКД
             userCardPowerOfAttorney.PowerOfAttorneyCardId = powerOfAttorneyId;
             context.AcceptChanges();
-            
+
             return powerOfAttorneyId;
         }
 
@@ -46,18 +50,19 @@ namespace PowersOfAttorneyServerExtension.Services
             {
                 throw new Exception(Resources.Error_PoaIDNotFoundInUserCard);
             }
-            
+
             return userCardPowerOfAttorney.PowerOfAttorneyCardId.Value;
         }
 
         public Guid CreateRetrustPowerOfAttorney(ObjectContext context, Guid powerOfAttorneyUserCardId)
         {
             var userCardPowerOfAttorney = GetUserCardPowerOfAttorney(context, powerOfAttorneyUserCardId);
-
-            var powerOfAttorneyData = userCardPowerOfAttorney.ConvertToPowerOfAttorneyFNSDOVBBData();
+            var parentPoaFormat = userCardPowerOfAttorney.ParentalPowerOfAttorney.MainInfo.PowerOfAttorneyFormat.GetObjectId();
+            var powerOfAttorneyData = GetPowerOfAttorneyData(userCardPowerOfAttorney, parentPoaFormat);
+            
             var representativeID = userCardPowerOfAttorney.RepresentativeIndividual.GetObjectId();
             var signerID = userCardPowerOfAttorney.Signer.GetObjectId();
-            
+
             var parentalPowerOfAttorney = userCardPowerOfAttorney.ParentalPowerOfAttorney.GetObjectId();
 
             var powerOfAttorney = powerOfAttorneyProxyService.RetrustPowerOfAttorney(powerOfAttorneyData,
@@ -65,11 +70,11 @@ namespace PowersOfAttorneyServerExtension.Services
                                                                                     signerID,
                                                                                     parentalPowerOfAttorney);
             var powerOfAttorneyId = powerOfAttorney.GetObjectId();
-            
+
             // Сохраним ИД созданной СКД в ПКД
             userCardPowerOfAttorney.PowerOfAttorneyCardId = powerOfAttorneyId;
             context.AcceptChanges();
-            
+
             return powerOfAttorneyId;
         }
 
@@ -82,6 +87,18 @@ namespace PowersOfAttorneyServerExtension.Services
             }
 
             return new UserCardPowerOfAttorney(card, context);
+        }
+
+        private PowerOfAttorneyData GetPowerOfAttorneyData(UserCardPowerOfAttorney userCard, Guid formatId)
+        {
+            if (formatId == PowerOfAttorneyFNSDOVBBData.FormatId)
+                return userCard.ConvertToPowerOfAttorneyFNSDOVBBData();
+
+            if (formatId == PowerOfAttorneyEMHCDData.FormatId)
+                return userCard.ConvertToPowerOfAttorneyEMHCDData();
+           
+                
+            throw new ArgumentOutOfRangeException(string.Format(Resources.InvalidPowerOfAttorneyFormat, formatId));
         }
     }
 }

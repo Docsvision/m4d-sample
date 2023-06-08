@@ -168,4 +168,7 @@
   <data name="Error_UserCardNotFound" xml:space="preserve">
     <value>User power of attorney card {0} not found</value>
   </data>
+  <data name="InvalidPowerOfAttorneyFormat" xml:space="preserve">
+    <value>Invalid power of attorney format: {0}</value>
+  </data>
 </root>

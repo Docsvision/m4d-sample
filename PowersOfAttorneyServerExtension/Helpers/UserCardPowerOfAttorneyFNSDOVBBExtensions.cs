@@ -1,39 +1,52 @@
-п»їusing DocsVision.BackOffice.ObjectModel;
+using DocsVision.BackOffice.ObjectModel;
 using DocsVision.BackOffice.ObjectModel.Services.Entities;
+using DocsVision.Platform.WebClient.Diagnostics;
+
+using PowersOfAttorneyServerExtension;
+using PowersOfAttorneyServerExtension.Helpers;
 
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 using static DocsVision.BackOffice.ObjectModel.Services.Entities.PowerOfAttorneyFNSData;
+
 using static DocsVision.BackOffice.ObjectModel.Services.Entities.PowerOfAttorneyFNSDOVBBData;
 
-
-
-namespace PowersOfAttorneyServerExtension.Helpers
+internal static class UserCardPowerOfAttorneyFNSDOVBBExtensions
 {
-    internal class UserCardToPowerOfAttorneyDataConverter
+    public static PowerOfAttorneyData ConvertToPowerOfAttorneyFNSDOVBBData(this UserCardPowerOfAttorney userCard)
     {
-        public static readonly Guid PowerOfAttorneyTypeId = new Guid("1395D276-DE1F-46D3-B724-242D6889ECEB");
+        try
+        {
+            return Converter.Convert(userCard);
+        }
+        catch (Exception ex)
+        {
+            Trace.TraceError(ex);
+            throw new Exception(Resources.Error_IncorrectUserCardData);
+        }
+    }
 
+    class Converter
+    {
         private readonly UserCardPowerOfAttorney userCard;
 
         private const int PrincipalTypeRussianEntity = 2;
         private const int LossOfPowersUponSubstitutionLost = 1;
 
 
-        private UserCardToPowerOfAttorneyDataConverter(UserCardPowerOfAttorney userCard)
+        private Converter(UserCardPowerOfAttorney userCard)
         {
-            this.userCard = userCard;
+            this.userCard = userCard ?? throw new ArgumentNullException(nameof(userCard));
         }
 
         public static PowerOfAttorneyFNSDOVBBData Convert(UserCardPowerOfAttorney userCard)
         {
-            return new UserCardToPowerOfAttorneyDataConverter(userCard)
-                .GetPowerOfAttorneyFNSDOVBBData();
+            return new Converter(userCard).Convert();
         }
 
-        private PowerOfAttorneyFNSDOVBBData GetPowerOfAttorneyFNSDOVBBData()
+        private PowerOfAttorneyFNSDOVBBData Convert()
         {
             return new PowerOfAttorneyFNSDOVBBData(userCard.PowerOfAttorneyId,
                                                    CreatePowerOfAttorneyDocument());
@@ -70,7 +83,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
             var retrustType = (PowerOfAttorneyRetrustType)userCard.RetrustType;
             var jointRepresentationType = ConverToEnumWithFixIndex<JointRepresentationType>(userCard.JointRepresentation);
             var irrevocablePowerOfAttorneyInfo = GetIrrevocablePowerOfAttorneyInfo();
-            // Р”Р»СЏ Р·Р°РїРѕР»РЅРµРЅРёСЏ РњР§Р” С‚СЂРµР±СѓРµС‚СЃСЏ РЅР°Р·РІР°РЅРёРµ РѕСЂРіР°РЅРёР·Р°С†РёРё-РІР»Р°РґРµР»СЊС†Р° РёРЅС„РѕСЂРјР°С†РёРѕРЅРЅРѕР№ СЃРёСЃС‚РµРјС‹ - РІРѕР·СЊРјС‘Рј РґР°РЅРЅС‹Рµ РїРѕРґРїРёСЃР°РЅС‚Р°
+            // Для заполнения МЧД требуется название организации-владельца информационной системы - возьмём данные подписанта
             var organizationName = userCard.Signer.Unit.Name;
             PowerOfAttorneyLossOfAuthorityType? lossOfAuthorityType = GetPowerOfAttorneyLossOfAuthorityType(userCard.LossOfAuthorityType);
 
@@ -132,7 +145,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
         {
             if (userCard.RepresentativeIndividualDocumentKind == null)
                 return null;
-            
+
             var documentKind = (DocumentKindCode)userCard.RepresentativeIndividualDocumentKind;
             var documentSeriesNumber = userCard.RepresentativeIndividualDocumentSeries;
             var issueDate = userCard.RepresentativeIndividualDocumentIssueDate;
@@ -160,7 +173,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
 
         private DelegatedAuthorityPrincipalInfo GetDelegatedAuthorityPrincipalInfo()
         {
-            // РџСЂРёРјРµСЂ СЂР°СЃСЃС‡РёС‚Р°РЅ С‚РѕР»СЊРєРѕ РЅР° РґРѕРІРµСЂРёС‚РµР»СЏ-РѕСЂРіР°РЅРёР·Р°С†РёСЋ 
+            // Пример рассчитан только на доверителя-организацию 
             if (userCard.PrincipalType != PrincipalTypeRussianEntity)
             {
                 throw new NotSupportedException();
@@ -222,7 +235,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
 
         private PrincipalInfo GetPrincipalInfo()
         {
-            // РџСЂРёРјРµСЂ СЂР°СЃСЃС‡РёС‚Р°РЅ С‚РѕР»СЊРєРѕ РЅР° РґРѕРІРµСЂРёС‚РµР»СЏ-РѕСЂРіР°РЅРёР·Р°С†РёСЋ 
+            // Пример рассчитан только на доверителя-организацию 
             if (userCard.PrincipalType != PrincipalTypeRussianEntity)
             {
                 throw new NotSupportedException();
@@ -292,7 +305,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
             var phone = emlpoyee.Phone;
             var gender = GetGender(emlpoyee);
             AddressInfo residenceAddress = GetAddressInfo(userCard.PrincipalWithoutPowerOfAttorneyIndividualAddressSubjectRfCode, userCard.PrincipalWithoutPowerOfAttorneyIndividualAddress);
-           
+
             var identityCard = GetPrincipalWithoutPowerOfAttorneyIdentityCard();
 
             return new IndividualInfo(birthDate, citizenshipType, birthPlace, phone, gender, residenceAddress: residenceAddress, identityCard: identityCard);
@@ -306,7 +319,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
             var kind = (DocumentKindCode)userCard.PrincipalWithoutPowerOfAttorneyIndividualDocumentKindCode;
             var seriesNumber = userCard.PrincipalWithoutPowerOfAttorneyIndividualDocumentSeries;
             var issueDate = userCard.IssueDateOfDocumentProvingIdentityOfIAWPOA;
-            
+
             var issuer = userCard.PrincipalWithoutPowerOfAttorneyIndividualDocumentIssuer;
             var issuerCode = userCard.PrincipalWithoutPowerOfAttorneyIndividualDocumentIssuerCode;
 
@@ -320,7 +333,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
             var inn = princOrg.INN;
             var kpp = princOrg.KPP;
             var ogrn = princOrg.OGRN;
-            var legalAddress = princOrg.Addresses.FirstOrDefault(t => t.AddressType == StaffAddresseAddressType.LegalAddress)?.Address ?? throw new Exception("РќРµ РЅР°Р№РґРµРЅ СЋСЂРёРґРёС‡РµСЃРєРёР№ Р°РґСЂРµСЃ");
+            var legalAddress = princOrg.Addresses.FirstOrDefault(t => t.AddressType == StaffAddresseAddressType.LegalAddress)?.Address ?? throw new Exception("Не найден юридический адрес");
             var actualAddress = princOrg.Addresses.FirstOrDefault(t => t.AddressType == StaffAddresseAddressType.ContactAddress)?.Address;
 
             return new RussianEntityInfo(name, ogrn, inn, kpp, legalAddress, actualAddress);
@@ -328,7 +341,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
 
         private static TEnum ConverToEnumWithFixIndex<TEnum>(int enumIndex) where TEnum : struct
         {
-            // Р’ РџРљР” РЅСѓРјРµСЂР°С†РёСЏ СЃ 0 - РІ РЎРљР” СЃ 1
+            // В ПКД нумерация с 0 - в СКД с 1
             return (TEnum)(object)(enumIndex + 1);
         }
 

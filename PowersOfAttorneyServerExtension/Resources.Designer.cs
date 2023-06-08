@@ -212,5 +212,14 @@ namespace PowersOfAttorneyServerExtension {
                 return ResourceManager.GetString("Error_UserCardNotFound", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid power of attorney format: {0}.
+        /// </summary>
+        internal static string InvalidPowerOfAttorneyFormat {
+            get {
+                return ResourceManager.GetString("InvalidPowerOfAttorneyFormat", resourceCulture);
+            }
+        }
     }
 }

@@ -12,7 +12,7 @@ namespace PowersOfAttorneyServerExtension.Services
         /// <summary>
         /// Создаёт СКД с МЧД формата ФНС
         /// </summary>
-        Guid CreatePowerOfAttorney(ObjectContext context, Guid powerOfAttorneyUserCardId);
+        Guid CreatePowerOfAttorney(ObjectContext context, Guid powerOfAttorneyUserCardId, Guid formatId);
 
         /// <summary>
         /// Создаёт СКД с МЧД формата ФНС в рамках передоверия

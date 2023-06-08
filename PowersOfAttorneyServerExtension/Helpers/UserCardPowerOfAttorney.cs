@@ -11,15 +11,21 @@ using System.Linq;
 
 namespace PowersOfAttorneyServerExtension.Helpers
 {
-    internal class UserCardPowerOfAttorney
+    internal partial class UserCardPowerOfAttorney
     {
         private static Guid machineReadablePowerOfAttorneySectionId = new Guid("3B9A9466-7569-4142-AF68-DE60263A9640");
-        private static Guid powersSectionId = new Guid("0838CD2A-27C4-4EE1-B599-2DF6586AD2A7");
+        private static Guid generalMachineReadablePowerOfAttorneySectionId = new Guid("29c1b4ef-48e4-47f0-ac67-c42cf68de986");
+        private static Guid powersWithCodesSectionId = new Guid("0838CD2A-27C4-4EE1-B599-2DF6586AD2A7");
+        private static Guid powersWithTextSectionId = new Guid("D78E3824-618D-44E4-98FF-045502363C3B");
 
         private readonly Document document;
         private readonly ObjectContext context;
+
         private readonly BaseCardSectionRow mrpSection;
-        private readonly IList<BaseCardSectionRow> powersSection;
+        private readonly BaseCardSectionRow genMchdSection;
+
+        private readonly IList<BaseCardSectionRow> powersWithCodesSection;
+        private readonly IList<BaseCardSectionRow> powersWithTextSection;
         private readonly IList<BaseCardSectionRow> signerSection;
 
         public UserCardPowerOfAttorney(Document document, ObjectContext context)
@@ -28,370 +34,74 @@ namespace PowersOfAttorneyServerExtension.Helpers
             this.context = context ?? throw new ArgumentNullException(nameof(context));
 
             mrpSection = (BaseCardSectionRow)document.GetSection(machineReadablePowerOfAttorneySectionId)[0];
-            powersSection = (IList<BaseCardSectionRow>)document.GetSection(powersSectionId);
+            genMchdSection = (BaseCardSectionRow)document.GetSection(generalMachineReadablePowerOfAttorneySectionId)[0];
+
+            powersWithCodesSection = (IList<BaseCardSectionRow>)document.GetSection(powersWithCodesSectionId);
+            powersWithTextSection = (IList<BaseCardSectionRow>)document.GetSection(powersWithTextSectionId);
             signerSection = (IList<BaseCardSectionRow>)document.GetSection(CardDocument.Signers.ID);
         }
 
-        /// <summary>
-        /// Описание условия отзыва
-        /// </summary>
-        public string RevocationConditionDescription => mrpSection.GetStringValue(Fields.DescriptionOfTheRevocationCondition);
 
-        /// <summary>
-        /// Номер доверенности
-        /// </summary>
-        /// <remarks>
-        /// В качестве альтернативного идентификатора доверенности берём идентификатор пользовательской карточки доверенности
-        /// </remarks>
-        public Guid PowerOfAttorneyId => mrpSection.GetGuidValue(Fields.PowerOfAttorneyID) ?? document.GetObjectId();
-
-        /// <summary>
-        /// Юридическое лицо, действующее без доверенности
-        /// </summary>
-        public StaffUnit PrincipalWithoutPowerOfAttorneyOrganization => GetReferenceFromMrpSectionField<StaffUnit>(Fields.EntityActingWithoutPowerOfAttorney);
-
-        /// <summary>
-        /// СНИЛС физического лица, действующего без доверенности
-        /// </summary>
-        public string PrincipalWithoutPowerOfAttorneyIndividualSnils => mrpSection.GetStringValue(Fields.SNILSOfIndividualActingWithoutPowerOfAttorney);
-
-        /// <summary>
-        /// Наименование учредительного документа организации, действующей без доверенности
-        /// </summary>
-        public string PrincipalWithoutPowerOfAttorneyOrganizationConstituentDocument => mrpSection.GetStringValue(Fields.NameOfConstituentDocumentofEntityActingWithoutPowerOfAttorney);
-
-        /// <summary>
-        /// Сведения об удостоверении документа, подтверждающего полномочия, если он удостоверен
-        /// </summary>
-        public string InformationAboutCertificationOfDocumentConfirmingPowers => mrpSection.GetStringValue(Fields.InformationAboutCertificationOfDocumentConfirmingPowers);
-
-        /// <summary>
-        /// Серия и номер документа, удостоверяющего физлицо, действующее без доверенности
-        /// </summary>
-        public string PrincipalWithoutPowerOfAttorneyIndividualDocumentSeries => mrpSection.GetStringValue(Fields.SeriesAndNumberOfDocumentProvingIdentityOfIAWPOA);
-
-        /// <summary>
-        /// Дата выдачи документа, удостоверяющего физлицо, действующее без доверенности
-        /// </summary>
-        public DateTime IssueDateOfDocumentProvingIdentityOfIAWPOA => mrpSection.GetDateValue(Fields.IssueDateOfDocumentProvingIdentityOfIAWPOA) ?? throw new ArgumentNullException(Resources.Error_EmptyIssueDateOfDocumentProvingIdentity);
-
-        /// <summary>
-        /// Наименование учредительного документа организации-доверителя
-        /// </summary>
-        public string PrincipalOrganizationConstituentDocument => mrpSection.GetStringValue(Fields.NameOfConstituentDocumentofPrincipal);
-
-        /// <summary>
-        /// Тип уполномоченного представителя
-        /// </summary>
-        public int RepresentativeType => mrpSection.GetIntValue(Fields.TypeOfAuthorizedRepresentative) ?? throw new ArgumentNullException(Resources.Error_EmptyRepresentativeType);
-
-        /// <summary>
-        /// ИНН физического лица-представителя
-        /// </summary>
-        public string RepresentativeIndividualInn => mrpSection.GetStringValue(Fields.INNOfIndividualRepresentative);
-
-        /// <summary>
-        /// Физическое лицо-представитель
-        /// </summary>
-        public StaffEmployee RepresentativeIndividual => GetReferenceFromMrpSectionField<StaffEmployee>(Fields.IndividualRepresentative);
-
-        /// <summary>
-        /// Адрес места жительства в РФ физлица-представителя
-        /// </summary>
-        public string RepresentativeIndividualAddress => mrpSection.GetStringValue(Fields.ResidentialAddressInRussiaForIndividualRepresentative);
-
-        /// <summary>
-        /// ИНН физического лица, действующего без доверенности
-        /// </summary>
-        public string PrincipalWithoutPowerOfAttorneyIndividualInn => mrpSection.GetStringValue(Fields.IINOfIndividualActingWithoutPowerOfAttorney);
-
-        /// <summary>
-        /// Код вида документа, удостоверяющего личность физлица-представителя
-        /// </summary>
-        public int? RepresentativeIndividualDocumentKind => mrpSection.GetIntValue(Fields.KindCodeOfDocumentProvingIdentityRepresentative);
-
-        /// <summary>
-        /// Дата выдачи документа, удостоверяющего физлицо-представителя
-        /// </summary>
-        public DateTime RepresentativeIndividualDocumentIssueDate => mrpSection.GetDateValue(Fields.IssueDateOfDocumentProvingIdentityOfRepresentative) ?? throw new ArgumentNullException(Resources.Error_EmptyRepresentativeIndividualDocumentIssueDate);
-
-        /// <summary>
-        /// Индивидуальный предприниматель-представитель
-        /// </summary>
-        public StaffUnit RepresentativeSoleProprietor => GetReferenceFromMrpSectionField<StaffUnit>(Fields.SoleProprietorRepresentative);
-
-        /// <summary>
-        /// СНИЛС представителя
-        /// </summary>
-        public string RepresentativeIndividualSnils => mrpSection.GetStringValue(Fields.SNILSOfRepresentative);
-
-        /// <summary>
-        /// Дата выдачи документа, подтверждающего полномочия физлица, действующего без доверенности
-        /// </summary>
-        public DateTime? PrincipalWithoutPowerOfAttorneyIndividualDocumentIssueDate => mrpSection.GetDateValue(Fields.IssueDateOfDocumentConfirmingPowersOfIAWPOA);
-
-        /// <summary>
-        /// Организация-представитель
-        /// </summary>
-        public StaffUnit RepresentativeEntity => GetReferenceFromMrpSectionField<StaffUnit>(Fields.EntityRepresentative);
-
-        /// <summary>
-        /// Наименование учредительного документа организации-представителя
-        /// </summary>
-        public string RepresentativeEntityDocument => mrpSection.GetStringValue(Fields.NameOfConstituentDocumentofRepresentative);
-
-        /// <summary>
-        /// Код страны гражданства иностранного представителя
-        /// </summary>
-        public int CodeOfCitizenshipForForeignRepresentative => mrpSection.GetIntValue(Fields.CodeOfCitizenshipForForeignRepresentative) ?? throw new ArgumentNullException(Resources.Error_EmptyCodeOfCitizenshipForForeignRepresentative);
-
-        /// <summary>
-        /// Признак гражданства представителя
-        /// </summary>
-        public int RepresentativeCitizenshipType => mrpSection.GetIntValue(Fields.SignOfCitizenshipOfRepresentative) ?? throw new ArgumentNullException(Resources.Error_EmptyRepresentativeCitizenshipType);
-
-        /// <summary>
-        /// Место рождения представителя
-        /// </summary>
-        public string RepresentativeIndividualBirthPlace => mrpSection.GetStringValue(Fields.PlaceOfBirthOfRepresentative);
-
-        /// <summary>
-        /// Наименование органа, выдавшего документ, удостоверяющий личность представителя
-        /// </summary>
-        public string RepresentativeIndividualDocumentIssuer => mrpSection.GetStringValue(Fields.NameOfAuthorityIssuedDocumentConfirmingidentityOfRepresentative);
-
-        /// <summary>
-        /// Наименование документа, подтверждающего полномочия физлица, действующего без доверенности
-        /// </summary>
-        public string PrincipalWithoutPowerOfAttorneyIndividualDocument => mrpSection.GetStringValue(Fields.NameOfDocumentConfirmingPowersOfIAWPOA);
-
-        /// <summary>
-        /// Наименование органа, выдавшего документ, удостоверяющий физлицо, действующее без доверенности
-        /// </summary>
-        public string PrincipalWithoutPowerOfAttorneyIndividualDocumentIssuer => mrpSection.GetStringValue(Fields.NameOfAuthorityIssuedDocumentProvingIdentityOfIAWPOA);
-
-        /// <summary>
-        /// Код страны гражданства для иностранного физлица, действующего без доверенности
-        /// </summary>
-        public int PrincipalWithoutPowerOfAttorneyIndividualCountryCode => mrpSection.GetIntValue(Fields.CodeOfCitizenshipForForeignIAWPOA) ?? throw new ArgumentNullException(Resources.Error_EmptyPrincipalWithoutPowerOfAttorneyIndividualCountryCode);
-
-        /// <summary>
-        /// Серия и номер документа, удостоверяющего личность физлица-представителя
-        /// </summary>
-        public string RepresentativeIndividualDocumentSeries => mrpSection.GetStringValue(Fields.SeriesAndNumberOfDocumentProvingIdentityOfRepresentative);
-
-        /// <summary>
-        /// Место рождения физлица, действующего без доверенности
-        /// </summary>
-        public string PrincipalWithoutPowerOfAttorneyIndividualBirthPlace => mrpSection.GetStringValue(Fields.PlaceOfBirthOfIndividualActingWithoutPowerOfAttorney);
-
-        /// <summary>
-        /// Номер записи об аккредитации
-        /// </summary>
-        public string RepresentativeForeignAccreditationRecordNumber => mrpSection.GetStringValue(Fields.AccreditationRecordNumber);
-
-        /// <summary>
-        /// Тип доверителя
-        /// </summary>
-        public int PrincipalType => mrpSection.GetIntValue(Fields.PrincipalType) ?? throw new ArgumentNullException(Resources.Error_EmptyPrincipalType);
-
-        /// <summary>
-        /// Доверенность, на основании которой осуществляется передоверие
-        /// </summary>
-        public Document ParentalPowerOfAttorneyUserCard => GetReferenceFromMrpSectionField<Document>(Fields.ParentalPowerOfAttorney);
-        
-        public PowerOfAttorney ParentalPowerOfAttorney
+        public List<PowersCode> GetPowersCodes()
         {
-            get
-            {
-                var machineReadablePowerOfAttorneySectionRow = ParentalPowerOfAttorneyUserCard.GetSection(machineReadablePowerOfAttorneySectionId)[0] as BaseCardSectionRow;
-                var powerOfAttorney = GetReferenceFromSectionField<PowerOfAttorney>(machineReadablePowerOfAttorneySectionRow, Fields.PowerOfAttorneyCardId);
-                return powerOfAttorney ?? throw new ArgumentNullException(Resources.Error_ParentalPowerOfAttorneyNotFound);
-            }
+            var powers = powersWithCodesSection?.Select(t => t.GetReferenceFieldValue<PowersCode>(context, Fields.PowersCode)) ?? Enumerable.Empty<PowersCode>();
+            return powers.ToList();
         }
-     
 
-        /// <summary>
-        /// Доверитель физлицо
-        /// </summary>
-        public StaffEmployee PrinciplalIndividual => GetReferenceFromMrpSectionField<StaffEmployee>(Fields.EmplPrincipal);
+        public JointExerPowersTypes? GetPowersCodesJointExer()
+        {
+            return powersWithCodesSection.First().GetEnumValue<JointExerPowersTypes>(Fields.JointExerPowers);
+        }
 
-        /// <summary>
-        /// Доверитель организация
-        /// </summary>
-        public StaffUnit PrincipalOrganization => GetReferenceFromMrpSectionField<StaffUnit>(Fields.OrgPrincipal);
+        public LossPowersSubstTypes? GetPowersCodesLossPowersSubst()
+        {
+            return powersWithCodesSection.First().GetEnumValue<LossPowersSubstTypes>(Fields.LossPowersSubst);
+        }
 
-        /// <summary>
-        /// Кем выдан документ, подтвержающий полномочия физлица, действующего без доверенности
-        /// </summary>
-        public string WhoIssuedDoctConfPowersIAWPOA => mrpSection.GetStringValue(Fields.WhoIssuedDoctConfPowersIAWPOA);
+        public JointExerPowersTypes? GetPowersTextJointExer()
+        {
+            return powersWithTextSection.First().GetEnumValue<JointExerPowersTypes>(Fields.JointExerPowers);
+        }
 
-        /// <summary>
-        /// Дата совершения доверенности
-        /// </summary>
-        public DateTime PowerOfAttorneyStartDate => mrpSection.GetDateValue(Fields.PowerOfAttorneyStartDate) ?? throw new ArgumentNullException(Resources.Error_EmptyPowerOfAttorneyStartDate);
+        public LossPowersSubstTypes? GetPowersTextLossPowersSubst()
+        {
+            return powersWithTextSection.First().GetEnumValue<LossPowersSubstTypes>(Fields.LossPowersSubst);
+        }
 
-        /// <summary>
-        /// Дата окончания действия доверенности
-        /// </summary>
-        public DateTime PowerOfAttorneyEndDate => mrpSection.GetDateValue(Fields.PowerOfAttorneyEndDate) ?? throw new ArgumentNullException(Resources.Error_EmptyPowerOfAttorneyEndDate);
-
-        /// <summary>
-        /// Основная (первоначальная) доверенность
-        /// </summary>
-        public PowerOfAttorney BasePowerOfAttorney => GetReferenceFromMrpSectionField<PowerOfAttorney>(Fields.BasicPOA);
-
-        /// <summary>
-        /// Признак наличия гражданства лица, действующего без доверенности
-        /// </summary>
-        public int PrincipalWithoutPowerOfAttorneyIndividualCitizenship => mrpSection.GetIntValue(Fields.SignOfCitizenshipfIAWPOA) ?? throw new ArgumentNullException(Resources.Error_EmptyPrincipalWithoutPowerOfAttorneyIndividualCitizenship);
-
-        /// <summary>
-        /// Код подразделения органа, выдавшего документ, удостоверяющий физлицо, действующее без доверенности
-        /// </summary>
-        public string PrincipalWithoutPowerOfAttorneyIndividualDocumentIssuerCode => mrpSection.GetStringValue(Fields.SubdivisionCodeOfAuthorityIssuedDocumentProvingIdentityOfIAWPOA);
-
-        /// <summary>
-        /// Код подразделения органа, выдавшего документ, удостоверяющий личность представителя
-        /// </summary>
-        public string RepresentativeIndividualDocumentIssuerCode => mrpSection.GetStringValue(Fields.SubdivisionCodeOfAuthorityIssuedDocumentConfirmingRepresentativeID);
-
-        /// <summary>
-        /// Адрес места жительства в РФ физлица, действующего без доверенности
-        /// </summary>
-        public string PrincipalWithoutPowerOfAttorneyIndividualAddress => mrpSection.GetStringValue(Fields.ResidentialAddressInRussiaForIndividualActingWithoutPowerOfAttorney);
-
-        /// <summary>
-        /// Cубъект РФ для физлица, действующего без доверенности
-        /// </summary>
-        public string PrincipalWithoutPowerOfAttorneyIndividualAddressSubjectRfCode => mrpSection.GetStringValue(Fields.CodeOfSubjectOfRussiaForIAWPOA);
-
-        /// <summary>
-        /// Адрес регистрации в РФ юрлица, действующего без доверенности
-        /// </summary>
-        public string PrincipalWithoutPowerOfAttorneyOrganizationLegalAddress => mrpSection.GetStringValue(Fields.RegistrationAddressInRussiaOfEAWPA);
-
-        /// <summary>
-        /// Фактический адрес нахождения в РФ юрлица, действующего без доверенности
-        /// </summary>
-        public string PrincipalWithoutPowerOfAttorneyOrganizationAddress => mrpSection.GetStringValue(Fields.ActualAddressInRussiaOfEAWPA);
-
-        /// <summary>
-        /// Адрес регистрации в РФ организации-представителя
-        /// </summary>
-        public string RepresentativeEntityLegalAddress => mrpSection.GetStringValue(Fields.RegistrationAddressInRussiaOfOrganizationRepresantative);
-
-        /// <summary>
-        /// Cубъект РФ места жительства физлица-представителя
-        /// </summary>
-        public string RepresentativeIndividualAddressSubjectRfCode => mrpSection.GetStringValue(Fields.CodeOfSubjectOfRussiaForIndividualRepresentative);
-
-        /// <summary>
-        /// Cубъект РФ для адреса регистрации юрлица, действующего без доверенности
-        /// </summary>
-        public string PrincipalWithoutPowerOfAttorneyOrganizationLegalAddressSubjectRfCode => mrpSection.GetStringValue(Fields.CodeOfSubjectOfRussiaForRegistrationAddressOfEAWPA);
-
-        /// <summary>
-        /// Cубъект РФ для адреса регистрации организации-представителя
-        /// </summary>
-        public string RepresentativeOrganizationLegalAddressSubjectRfCode => mrpSection.GetStringValue(Fields.CodeOfSubjectOfRussiaOfRegistrationAddressOfEntityRepresentative);
-
-        /// <summary>
-        /// Cубъект РФ для адреса фактического места нахождения организации-представителя
-        /// </summary>
-        public string RepresentativeOrganizationAddressSubjectRfCode => mrpSection.GetStringValue(Fields.CodeOfSubjectOfRussiaOfActualAddressOfEntityRepresentative);
-
-        /// <summary>
-        /// Адрес фактического места нахождения в РФ организации-представителя
-        /// </summary>
-        public string RepresentativeOrganizationAddress => mrpSection.GetStringValue(Fields.ActualAddressInRussiaOfEntityRepresentative);
-
-
-        /// <summary>
-        /// Cубъект РФ для фактического адреса нахождения юрлица, действующего без доверенности
-        /// </summary>
-        public string PrincipalWithoutPowerOfAttorneyOrganizationAddressSubjectRfCode => mrpSection.GetStringValue(Fields.SubjectOfRussiaForActualAddressEAWPA);
-
-        /// <summary>
-        /// Возможность оформления передоверия
-        /// </summary>
-        public int RetrustType => mrpSection.GetIntValue(Fields.PossibilityOfSubstitution) ?? throw new ArgumentNullException(Resources.Error_EmptyRetrustType);
-
-        /// <summary>
-        /// Совместные полномочия
-        /// </summary>
-        public int JointRepresentation => mrpSection.GetIntValue(Fields.JointPowers) ?? throw new ArgumentNullException(Resources.Error_EmptyJointRepresentation);
-
-        /// <summary>
-        /// Признак передоверия безотзывной доверенности
-        /// </summary>
-        public int? RetrustRevocationPossibleType => mrpSection.GetIntValue(Fields.TransferOfIrrevocablePowerOfAttorney);
+        public List<string> GetPowersText()
+        {
+            var powers = powersWithTextSection?.Select(t => t.GetStringValue(Fields.PowersTextDescription)) ?? Enumerable.Empty<string>();
+            return powers.ToList();
+        }
 
         /// <summary>
         /// Признак утраты полномочий при передоверии
         /// </summary>
-        public int? LossOfAuthorityType => mrpSection.GetIntValue(Fields.LossOfPowersUponSubstitution);
-
-        /// <summary>
-        /// Код вида документа, удостоверяющий физлицо, действующее без доверенности
-        /// </summary>
-        public int? PrincipalWithoutPowerOfAttorneyIndividualDocumentKindCode => mrpSection.GetIntValue(Fields.KindCodeOfDocumentProvingIdentityOfIAWPOA);
-
-        /// <summary>
-        /// Признак безотзывной доверенности
-        /// </summary>
-        public int RevocationPossibleType => mrpSection.GetIntValue(Fields.IrrevocablePowerOfAttorney) ?? throw new ArgumentNullException(Resources.Error_EmptyRevocationPossibleType);
-
-        /// <summary>
-        /// Признак безотзывной доверенности
-        /// </summary>
-        public int? RevocationCondition => mrpSection.GetIntValue(Fields.RevocationCondition);
-
-        /// <summary>
-        /// Физическое лицо, действующее без доверенности
-        /// </summary>
-        public StaffEmployee PrincipalWithoutPowerOfAttorneyIndividual => GetReferenceFromMrpSectionField<StaffEmployee>(Fields.IndividualActingWithoutPowerOfAttorney);
-
-
-        /// <summary>
-        /// Признак доверенности в рамках передоверия
-        /// </summary>
-        public bool IsRetrusted() => mrpSection[Fields.ParentalPowerOfAttorney] != null;
-
-        public IEnumerable<string> RepresentativePowers => powersSection?.Select(t => t.GetStringValue(Fields.PowersTextDescription)) ?? Enumerable.Empty<string>();
-
-        public StaffEmployee Signer => GetReferenceFromSectionField<StaffEmployee>(signerSection.First(), CardDocument.Signers.Signer);
-
-        public Guid? PowerOfAttorneyCardId
+        internal enum LossPowersSubstTypes
         {
-            get { return mrpSection.GetGuidValue(Fields.PowerOfAttorneyCardId); }
-            set { mrpSection[Fields.PowerOfAttorneyCardId] = value; }
+            /// <summary>
+            /// Не утрачиваются
+            /// </summary>
+            notLost = 1,
+            /// <summary>
+            /// Утрачиваются
+            /// </summary>
+            lost = 2
         }
 
-        public PowerOfAttorneyFNSDOVBBData ConvertToPowerOfAttorneyFNSDOVBBData()
+        /// <summary>
+        /// Признак совместного осуществления полномочий
+        /// </summary>
+        internal enum JointExerPowersTypes
         {
-            try
-            {
-                return UserCardToPowerOfAttorneyDataConverter.Convert(this);
-            }
-            catch (Exception ex)
-            {
-                Trace.TraceError(ex);
-                throw new Exception(Resources.Error_IncorrectUserCardData);
-            }
-        }
-
-
-        private T GetReferenceFromMrpSectionField<T>(string fieldAlias) where T : ObjectBase
-        {
-            return GetReferenceFromSectionField<T>(mrpSection, fieldAlias);
-        }
-
-        private T GetReferenceFromSectionField<T>(BaseCardSectionRow row, string fieldAlias) where T : ObjectBase
-        {
-            var id = row.GetGuidValue(fieldAlias);
-
-            return id != null ? context.GetObject<T>(id) : null;
+            /// <summary>
+            /// Индивидуальные
+            /// </summary>
+            individual,
+            /// <summary>
+            /// Совместные
+            /// </summary>
+            joint
         }
 
         private static class Fields
@@ -528,11 +238,14 @@ namespace PowersOfAttorneyServerExtension.Helpers
             public const string RevocationCondition = "RevocationCondition";
             // Физическое лицо, действующее без доверенности
             public const string IndividualActingWithoutPowerOfAttorney = "IndividualActingWithoutPowerOfAttorney";
-
             // Текстовое описание полномочий
             public const string PowersTextDescription = "PowersTextDescription";
             // Код полномочий
             public const string PowersCode = "PowersCode";
+            // Признак совместного осуществления полномочий
+            public const string JointExerPowers = "jointExerPowers";
+            // Признак утраты полномочий при передоверии
+            public const string LossPowersSubst = "lossPowersSubst";
         }
     }
 }

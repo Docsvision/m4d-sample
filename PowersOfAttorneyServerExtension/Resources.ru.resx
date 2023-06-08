@@ -168,4 +168,7 @@
   <data name="Error_UserCardNotFound" xml:space="preserve">
     <value>Пользовательская карточка доверенностей  {0} не найдена</value>
   </data>
+  <data name="InvalidPowerOfAttorneyFormat" xml:space="preserve">
+    <value>Недопустимый формат доверенности: {0}</value>
+  </data>
 </root>

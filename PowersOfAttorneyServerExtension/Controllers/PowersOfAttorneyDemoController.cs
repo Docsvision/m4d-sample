@@ -1,4 +1,5 @@
-﻿using DocsVision.Platform.WebClient;
+﻿using DocsVision.BackOffice.ObjectModel.Services.Entities;
+using DocsVision.Platform.WebClient;
 using DocsVision.Platform.WebClient.Models;
 using DocsVision.Platform.WebClient.Models.Generic;
 
@@ -34,18 +35,18 @@ namespace PowersOfAttorneyServerExtension.Controllers
         [HttpPost]
         public CommonResponse<Guid> CreatePowerOfAttorney(Guid powerOfAttorneyUserCardId)
         {
-            var context = currentObjectContextProvider.GetOrCreateCurrentSessionContext().ObjectContext;
-            Guid powerOfAttorneyId;
-            try
-            {
-                powerOfAttorneyId = powersOfAttorneyDemoService.CreatePowerOfAttorney(context, powerOfAttorneyUserCardId);
-            }
-            catch (Exception ex)
-            {
-                return CommonResponse.CreateError< Guid>(ex.ToString());
-            }
+            return CreatePowerOfAttorneyInternal(powerOfAttorneyUserCardId, PowerOfAttorneyFNSDOVBBData.FormatId);
+        }
 
-            return CommonResponse.CreateSuccess(powerOfAttorneyId);
+        /// <summary>
+        /// Creates new power of attorney with general format
+        /// </summary>
+        /// <param name="powerOfAttorneyUserCardId">User card of Power of attorney</param>
+        /// <returns>ID of created power of attorney</returns>
+        [HttpPost]
+        public CommonResponse<Guid> CreateEMCHDPowerOfAttorney(Guid powerOfAttorneyUserCardId)
+        {
+            return CreatePowerOfAttorneyInternal(powerOfAttorneyUserCardId, PowerOfAttorneyEMHCDData.FormatId);
         }
 
         /// <summary>
@@ -85,6 +86,22 @@ namespace PowersOfAttorneyServerExtension.Controllers
             try
             {
                 powerOfAttorneyId = powersOfAttorneyDemoService.GetPowerOfAttorneyCardId(context, powerOfAttorneyUserCardId);
+            }
+            catch (Exception ex)
+            {
+                return CommonResponse.CreateError<Guid>(ex.ToString());
+            }
+
+            return CommonResponse.CreateSuccess(powerOfAttorneyId);
+        }
+
+        private CommonResponse<Guid> CreatePowerOfAttorneyInternal(Guid powerOfAttorneyUserCardId, Guid formatId)
+        {
+            var context = currentObjectContextProvider.GetOrCreateCurrentSessionContext().ObjectContext;
+            Guid powerOfAttorneyId;
+            try
+            {
+                powerOfAttorneyId = powersOfAttorneyDemoService.CreatePowerOfAttorney(context, powerOfAttorneyUserCardId, formatId);
             }
             catch (Exception ex)
             {
