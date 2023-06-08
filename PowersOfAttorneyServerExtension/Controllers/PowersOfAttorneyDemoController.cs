@@ -57,19 +57,18 @@ namespace PowersOfAttorneyServerExtension.Controllers
         [HttpPost]
         public CommonResponse<Guid> CreateRetrustPowerOfAttorney(Guid powerOfAttorneyUserCardId)
         {
-            var context = currentObjectContextProvider.GetOrCreateCurrentSessionContext().ObjectContext;
+            return CreateRetrustPowerOfAttorneyInternal(powerOfAttorneyUserCardId, PowerOfAttorneyFNSDOVBBData.FormatId);
+        }
 
-            Guid powerOfAttorneyId;
-            try
-            {
-                powerOfAttorneyId = powersOfAttorneyDemoService.CreateRetrustPowerOfAttorney(context, powerOfAttorneyUserCardId);
-            }
-            catch (Exception ex)
-            {
-                return CommonResponse.CreateError<Guid>(ex.ToString());
-            }
-
-            return CommonResponse.CreateSuccess(powerOfAttorneyId);
+        /// <summary>
+        /// Creates retrusted power of attorney with general format
+        /// </summary>
+        /// <param name="powerOfAttorneyUserCardId">User card of Power of attorney</param>
+        /// <returns>ID of created power of attorney</returns>
+        [HttpPost]
+        public CommonResponse<Guid> CreateEMCHDRetrustPowerOfAttorney(Guid powerOfAttorneyUserCardId)
+        {
+            return CreateRetrustPowerOfAttorneyInternal(powerOfAttorneyUserCardId, PowerOfAttorneyEMHCDData.FormatId);
         }
 
         /// <summary>
@@ -102,6 +101,23 @@ namespace PowersOfAttorneyServerExtension.Controllers
             try
             {
                 powerOfAttorneyId = powersOfAttorneyDemoService.CreatePowerOfAttorney(context, powerOfAttorneyUserCardId, formatId);
+            }
+            catch (Exception ex)
+            {
+                return CommonResponse.CreateError<Guid>(ex.ToString());
+            }
+
+            return CommonResponse.CreateSuccess(powerOfAttorneyId);
+        }
+
+        private CommonResponse<Guid> CreateRetrustPowerOfAttorneyInternal(Guid powerOfAttorneyUserCardId, Guid formatId)
+        {
+            var context = currentObjectContextProvider.GetOrCreateCurrentSessionContext().ObjectContext;
+
+            Guid powerOfAttorneyId;
+            try
+            {
+                powerOfAttorneyId = powersOfAttorneyDemoService.CreateRetrustPowerOfAttorney(context, powerOfAttorneyUserCardId, formatId);
             }
             catch (Exception ex)
             {

@@ -117,6 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="EmchdRetrustNotImplemented" xml:space="preserve">
+    <value>Передоверие единого формата доверенностей не реализовано</value>
+  </data>
+  <data name="Error_DateIssCEOIDDocIsEmpty" xml:space="preserve">
+    <value>Не указан Дата выдачи документа, удостоверяющего личность руководителя организации</value>
+  </data>
+  <data name="Error_DateIssReprIDDocIsEmpty" xml:space="preserve">
+    <value>Не указан Дата выдачи документа, удостоверяющего личность представителя</value>
+  </data>
+  <data name="Error_DateTimeOfSignatureIsEmpty" xml:space="preserve">
+    <value>Не указана Дата и время подписи</value>
+  </data>
   <data name="Error_EmptyCodeOfCitizenshipForForeignRepresentative" xml:space="preserve">
     <value>Не указан код страны гражданства иностранного представителя</value>
   </data>
@@ -156,14 +168,47 @@
   <data name="Error_EmptyRevocationPossibleType" xml:space="preserve">
     <value>Не указан признак безотзывной доверенности</value>
   </data>
+  <data name="Error_GenRepresentativeIsEmpty" xml:space="preserve">
+    <value>Не указан Тип доверителя</value>
+  </data>
   <data name="Error_IncorrectUserCardData" xml:space="preserve">
     <value>Заполнены не все обязательные данные или данные некорректны. Измените данные и повторите сохранение</value>
+  </data>
+  <data name="Error_JointExerIsEmpty" xml:space="preserve">
+    <value>Не указан Признак совместного осуществления полномочий</value>
   </data>
   <data name="Error_ParentalPowerOfAttorneyNotFound" xml:space="preserve">
     <value>Не найдена доверенность, на основании которой осуществляется передоверие</value>
   </data>
+  <data name="Error_PayNotarActionIsEmpty" xml:space="preserve">
+    <value>Не указаны Сведения об уплате за совершение нотариального действия</value>
+  </data>
+  <data name="Error_PoaDateOfIssueIsEmpty" xml:space="preserve">
+    <value>Не указан Дата совершения (выдачи) доверенности</value>
+  </data>
   <data name="Error_PoaIDNotFoundInUserCard" xml:space="preserve">
     <value>В пользовательской карточке доверенностей отсутствует идентификатор системной карточки доверенностей</value>
+  </data>
+  <data name="Error_PoaKindIsEmpty" xml:space="preserve">
+    <value>Не указан Вид доверенности</value>
+  </data>
+  <data name="Error_PossibilityOfSubstitutionIsEmpty" xml:space="preserve">
+    <value>Не указан Признак возможности оформления передоверия</value>
+  </data>
+  <data name="Error_PowersTypeOfSEBIsEmpty" xml:space="preserve">
+    <value>Не указан Вид полномочий единоличного исполнительного органа</value>
+  </data>
+  <data name="Error_PrincipalTypeIsEmpty" xml:space="preserve">
+    <value>Не указан Тип доверителя</value>
+  </data>
+  <data name="Error_RevocIrrevPOAIsEmpty" xml:space="preserve">
+    <value>Не указано Условие отзыва безотзывной доверенности</value>
+  </data>
+  <data name="Error_SignTransferIrrevPOAIsEmpty" xml:space="preserve">
+    <value>Не указана Дата и время подписи</value>
+  </data>
+  <data name="Error_SinglePOAregnumberIsEmpty" xml:space="preserve">
+    <value>Не указан Единый регистрационный номер доверенности</value>
   </data>
   <data name="Error_UserCardNotFound" xml:space="preserve">
     <value>Пользовательская карточка доверенностей  {0} не найдена</value>

@@ -84,7 +84,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
                     return new PowerOfAttorneyEMHCDData.RepresentativePowersInfo
                     {
                         AuthorityType = PowerOfAttorneyEMHCDData.AuthorityType.Code,
-                        JointRepresentationType = Convert(jointExer ?? throw new ArgumentNullException(nameof(jointExer))),
+                        JointRepresentationType = Convert(jointExer ?? throw new ArgumentNullException(Resources.Error_JointExerIsEmpty)),
                         LossOfAuthorityType = Convert(lossPowersSubst),
                         MachineReadablePowersInfo = powersWithCodes.Select(power => new PowerOfAttorneyEMHCDData.MachineReadablePowersInfo
                         {
@@ -99,7 +99,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
                 return new PowerOfAttorneyEMHCDData.RepresentativePowersInfo
                 {
                     AuthorityType = PowerOfAttorneyEMHCDData.AuthorityType.Text,
-                    JointRepresentationType = Convert(jointExer ?? throw new ArgumentNullException(nameof(jointExer))),
+                    JointRepresentationType = Convert(jointExer ?? throw new ArgumentNullException(Resources.Error_JointExerIsEmpty)),
                     LossOfAuthorityType = Convert(lossPowersSubst),
                     PowersTextContent = userCard.GetPowersText().FirstOrDefault()
                 };
@@ -109,7 +109,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
             {
                 return new PowerOfAttorneyEMHCDData.RepresentativesInfo
                 {
-                    RepresentativeType = Convert(userCard.GenRepresentativeType ?? throw new ArgumentNullException(nameof(userCard.GenRepresentativeType))),
+                    RepresentativeType = Convert(userCard.GenRepresentativeType ?? throw new ArgumentNullException(Resources.Error_GenRepresentativeIsEmpty)),
                     Representative = CreateRepresentativePart(userCard.GenRepresentativeType.Value)
                 };
             }
@@ -155,7 +155,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
                         DocumentKindCode = userCard.GenTypeCodeReprIDDoc?.ToString(),
                         DocumentSerialNumber = userCard.GenSerNumReprIDDoc,
                         ExpDate = userCard.GenDateExpReprIDDoc,
-                        IssueDate = userCard.GenDateIssReprIDDoc ?? throw new ArgumentNullException(nameof(userCard.GenDateIssReprIDDoc)),
+                        IssueDate = userCard.GenDateIssReprIDDoc ?? throw new ArgumentNullException(Resources.Error_DateIssReprIDDocIsEmpty),
                         Issuer = userCard.GenAuthIssReprIDDoc,
                         IssuerCode = userCard.GenCodeAuthDivIssReprIDDoc
                     }
@@ -177,7 +177,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
             {
                 return new PowerOfAttorneyEMHCDData.PrincipalsInfo
                 {
-                    PrincipalType = Convert(userCard.GenPrincipalType ?? throw new ArgumentNullException(nameof(userCard.GenPrincipalType))),
+                    PrincipalType = Convert(userCard.GenPrincipalType ?? throw new ArgumentNullException(Resources.Error_PrincipalTypeIsEmpty)),
                     PrincipalInfo = CreatePrincipalPart(userCard.GenPrincipalType.Value)
                 };
             }
@@ -204,7 +204,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
             {
                 return new PowerOfAttorneyEMHCDData.PrincipalWithoutPowerOfAttorneyInfo
                 {
-                    AuthorityType = Convert(userCard.GenpPowersTypeOfSEB ?? throw new ArgumentNullException(nameof(userCard.GenpPowersTypeOfSEB))),
+                    AuthorityType = Convert(userCard.GenPowersTypeOfSEB ?? throw new ArgumentNullException(Resources.Error_PowersTypeOfSEBIsEmpty)),
                     IndividualInfo = CreateSeoIndividualInfoPart()
                 };
             }
@@ -240,7 +240,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
                             DocumentKindCode = userCard.GenTypeCodeCEOIDDoc?.ToString(),
                             DocumentSerialNumber = userCard.GenSerNumCEOIDDoc,
                             ExpDate = userCard.GenDateExpCEOIDDoc,
-                            IssueDate = userCard.GenDateIssCEOIDDoc ?? throw new ArgumentNullException(nameof(userCard.GenDateIssCEOIDDoc)),
+                            IssueDate = userCard.GenDateIssCEOIDDoc ?? throw new ArgumentNullException(Resources.Error_DateIssCEOIDDocIsEmpty),
                             Issuer = userCard.GenAuthIssCEOIDDoc,
                             IssuerCode = userCard.GenCodeAuthDivIssCEOIDDoc
                         },
@@ -299,11 +299,11 @@ namespace PowersOfAttorneyServerExtension.Helpers
                     PowerOfAttorneyEndDate = userCard.PowerOfAttorneyEndDate,
                     PowerOfAttorneyInternalNumber = userCard.GenInternalPOANumber,
                     PowerOfAttorneyInternalRegistrationDate = userCard.GenPoaInternRegDate,
-                    PowerOfAttorneyKind = Convert(userCard.GenPoaKind ?? throw new ArgumentNullException(nameof(userCard.GenPoaKind))),
+                    PowerOfAttorneyKind = Convert(userCard.GenPoaKind ?? throw new ArgumentNullException(Resources.Error_PoaKindIsEmpty)),
                     PowerOfAttorneyNotaryNumber = userCard.GenPoaRegNumNotarRegistry,
-                    PowerOfAttorneyNumber = userCard.GenSinglePOAregnumber ?? throw new ArgumentNullException(nameof(userCard.GenSinglePOAregnumber)),
-                    PowerOfAttorneyStartDate = userCard.GenPoaDateOfIssue ?? throw new ArgumentNullException(nameof(userCard.GenPoaDateOfIssue)),
-                    RetrustType = Convert(userCard.GenPossibilityOfSubstitution ?? throw new ArgumentNullException(nameof(userCard.GenPossibilityOfSubstitution))),
+                    PowerOfAttorneyNumber = userCard.GenSinglePOAregnumber ?? throw new ArgumentNullException(Resources.Error_SinglePOAregnumberIsEmpty),
+                    PowerOfAttorneyStartDate = userCard.GenPoaDateOfIssue ?? throw new ArgumentNullException(Resources.Error_PoaDateOfIssueIsEmpty),
+                    RetrustType = Convert(userCard.GenPossibilityOfSubstitution ?? throw new ArgumentNullException(Resources.Error_PossibilityOfSubstitutionIsEmpty)),
                     SubmittedPowerOfAttorneyTaxCode = userCard.GenTaxAuthPOASubmit,
                     TaxCode = new List<string> { userCard.GenTaxAuthPOAValid }
                 };
@@ -313,9 +313,9 @@ namespace PowersOfAttorneyServerExtension.Helpers
             {
                 return new PowerOfAttorneyEMHCDData.IrrevocablePowerOfAttorneyInfo
                 {
-                    RevocationCondition = userCard.GenRevocIrrevPOA ?? throw new ArgumentNullException(nameof(userCard.GenRevocIrrevPOA)),
+                    RevocationCondition = userCard.GenRevocIrrevPOA ?? throw new ArgumentNullException(Resources.Error_RevocIrrevPOAIsEmpty),
                     RevocationConditionDescription = userCard.RevocationConditionDescription,
-                    RevocationPossibleType = userCard.GenSignTransferIrrevPOA ?? throw new ArgumentNullException(nameof(userCard.GenSignTransferIrrevPOA))
+                    RevocationPossibleType = userCard.GenSignTransferIrrevPOA ?? throw new ArgumentNullException(Resources.Error_SignTransferIrrevPOAIsEmpty)
                 };
             }
 
@@ -334,7 +334,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
                     NotaryDeputyInfo = CreateNotaryDeputyInfoPart(),
                     NotaryInfo = CreateNotaryInfoPart(),
                     NotaryPaymentDiscount = userCard.GenAmountOfBenefGranted,
-                    NotaryPaymentPaid = userCard.GenPayNotarAction ?? throw new ArgumentNullException(nameof(userCard.GenPayNotarAction)),
+                    NotaryPaymentPaid = userCard.GenPayNotarAction ?? throw new ArgumentNullException(Resources.Error_PayNotarActionIsEmpty),
                     OtherDocumentTransferMethod = userCard.GenAnotherMethOfIss,
                     OtherInformationOfAuthenticationInscription = userCard.GenOtherInfoOfCertInscr,
                     Place = userCard.GenPoaIssuePlace
@@ -383,7 +383,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
                         MiddleName = userCard.GenPoaSignerMiddleName
                     },
                     PdfDocumentHash = System.Convert.FromBase64String(userCard.GenPdfDocHash),
-                    SignatureDate = userCard.GenDateTimeOfSignature ?? throw new ArgumentOutOfRangeException(nameof(userCard.GenDateTimeOfSignature)),
+                    SignatureDate = userCard.GenDateTimeOfSignature ?? throw new ArgumentOutOfRangeException(Resources.Error_DateTimeOfSignatureIsEmpty),
                     SignatureHash = System.Convert.FromBase64String(userCard.GenSignatureHash),
                     SignatureImage = System.Convert.FromBase64String(userCard.GenSignatureImage)
                 };

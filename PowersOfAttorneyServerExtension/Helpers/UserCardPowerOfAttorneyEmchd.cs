@@ -27,7 +27,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
         /// <summary>
         /// Вид полномочий единоличного исполнительного органа
         /// </summary>
-        public GenPowersTypeOfSEBTypes? GenpPowersTypeOfSEB => genMchdSection.GetEnumValue<GenPowersTypeOfSEBTypes>("powersTypeOfSEB");
+        public GenPowersTypeOfSEBTypes? GenPowersTypeOfSEB => genMchdSection.GetEnumValue<GenPowersTypeOfSEBTypes>("powersTypeOfSEB");
 
         /// <summary>
         /// Единоличным исполнительным органом выступает управляющая компания

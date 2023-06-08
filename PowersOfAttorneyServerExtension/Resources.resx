@@ -117,6 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="EmchdRetrustNotImplemented" xml:space="preserve">
+    <value>Retrust of general format of powers of attorney has not been implemented</value>
+  </data>
+  <data name="Error_DateIssCEOIDDocIsEmpty" xml:space="preserve">
+    <value>Date of issue of identity document of head of the organization is not specified</value>
+  </data>
+  <data name="Error_DateIssReprIDDocIsEmpty" xml:space="preserve">
+    <value>Date of issue of representative's identity document is not specified</value>
+  </data>
+  <data name="Error_DateTimeOfSignatureIsEmpty" xml:space="preserve">
+    <value>The date and time of the signature are not specified</value>
+  </data>
   <data name="Error_EmptyCodeOfCitizenshipForForeignRepresentative" xml:space="preserve">
     <value>The country code of the foreign representative's citizenship is not specified</value>
   </data>
@@ -156,14 +168,47 @@
   <data name="Error_EmptyRevocationPossibleType" xml:space="preserve">
     <value>The sign of an irrevocable power of attorney is not specified</value>
   </data>
+  <data name="Error_GenRepresentativeIsEmpty" xml:space="preserve">
+    <value>Type of principal is not specified</value>
+  </data>
   <data name="Error_IncorrectUserCardData" xml:space="preserve">
     <value>Not all required data is filled in or the data is incorrect. Change the data and save again"</value>
+  </data>
+  <data name="Error_JointExerIsEmpty" xml:space="preserve">
+    <value>Attribute of joint exercise of authority is not specified</value>
   </data>
   <data name="Error_ParentalPowerOfAttorneyNotFound" xml:space="preserve">
     <value>The power of attorney on the basis of which the transfer is carried out was not found</value>
   </data>
+  <data name="Error_PayNotarActionIsEmpty" xml:space="preserve">
+    <value>The information about the payment for the notarial action is not specified</value>
+  </data>
+  <data name="Error_PoaDateOfIssueIsEmpty" xml:space="preserve">
+    <value>The date of execution (issue) of the power of attorney is not specified</value>
+  </data>
   <data name="Error_PoaIDNotFoundInUserCard" xml:space="preserve">
     <value>User power of attorney card does not have ID of system power of attorney card</value>
+  </data>
+  <data name="Error_PoaKindIsEmpty" xml:space="preserve">
+    <value>Type of power of attorney is not specified</value>
+  </data>
+  <data name="Error_PossibilityOfSubstitutionIsEmpty" xml:space="preserve">
+    <value>The indication of the possibility of making a transfer is not specified</value>
+  </data>
+  <data name="Error_PowersTypeOfSEBIsEmpty" xml:space="preserve">
+    <value>Type of powers of sole executive body is not specified</value>
+  </data>
+  <data name="Error_PrincipalTypeIsEmpty" xml:space="preserve">
+    <value>Type of principal is not specified</value>
+  </data>
+  <data name="Error_RevocIrrevPOAIsEmpty" xml:space="preserve">
+    <value>The condition for revoking an irrevocable power of attorney is not specified</value>
+  </data>
+  <data name="Error_SignTransferIrrevPOAIsEmpty" xml:space="preserve">
+    <value>The date and time of the signature is not specified</value>
+  </data>
+  <data name="Error_SinglePOAregnumberIsEmpty" xml:space="preserve">
+    <value>The Single registration number of the power of attorney is not specified</value>
   </data>
   <data name="Error_UserCardNotFound" xml:space="preserve">
     <value>User power of attorney card {0} not found</value>

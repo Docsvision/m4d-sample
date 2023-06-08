@@ -10,14 +10,14 @@ namespace PowersOfAttorneyServerExtension.Services
     public interface IPowersOfAttorneyDemoService
     {
         /// <summary>
-        /// Создаёт СКД с МЧД формата ФНС
+        /// Создаёт СКД с МЧД указанного формата
         /// </summary>
         Guid CreatePowerOfAttorney(ObjectContext context, Guid powerOfAttorneyUserCardId, Guid formatId);
 
         /// <summary>
-        /// Создаёт СКД с МЧД формата ФНС в рамках передоверия
+        /// Создаёт СКД с МЧД указанного формата в рамках передоверия
         /// </summary>
-        Guid CreateRetrustPowerOfAttorney(ObjectContext context, Guid powerOfAttorneyUserCardId);
+        Guid CreateRetrustPowerOfAttorney(ObjectContext context, Guid powerOfAttorneyUserCardId, Guid formatId);
 
         /// <summary>
         /// Возвращает идентификатор СКД для переданной ПКД
