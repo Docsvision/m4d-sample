@@ -26,7 +26,7 @@ namespace PowersOfAttorneyServerExtension.Services
         {
             var userCardPowerOfAttorney = GetUserCardPowerOfAttorney(context, powerOfAttorneyUserCardId);
             var powerOfAttorneyData = GetPowerOfAttorneyData(userCardPowerOfAttorney, formatId);
-           
+
             var representativeID = GetRepresentative(userCardPowerOfAttorney, formatId);
             var signerID = GetSigner(userCardPowerOfAttorney, formatId);
             

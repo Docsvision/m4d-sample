@@ -435,7 +435,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
         public string GenSerNumReprIDDoc => genMchdSection.GetStringValue("serNumReprIDDoc");
 
         /// <summary>
-        /// Дата выдачи документ, удостоверяющего личность представителя
+        /// Дата выдачи документа, удостоверяющего личность представителя
         /// </summary>
         public DateTime? GenDateIssReprIDDoc => genMchdSection.GetDateValue("dateIssReprIDDoc");
 
@@ -487,7 +487,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
         /// <summary>
         /// Единый регистрационный номер доверенности
         /// </summary>
-        public Guid? GenSinglePOAregnumber => genMchdSection.GetGuidValue("singlePOAregnumber");
+        public Guid? GenSinglePOAregnumber => genMchdSection.GetGuidValue("singlePOAregnumber") ?? document.GetObjectId();
 
         /// <summary>
         /// Юрлицо-доверитель
@@ -612,7 +612,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
             irrecovablePOA = 2
         }
 
-  
+
         /// <summary>
         /// Признак возможности оформления передоверия
         /// </summary>

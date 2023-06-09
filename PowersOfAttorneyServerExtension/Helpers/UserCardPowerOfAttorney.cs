@@ -50,7 +50,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
 
         public JointExerPowersTypes? GetPowersCodesJointExer()
         {
-            return powersWithCodesSection.First().GetEnumValue<JointExerPowersTypes>(Fields.JointExerPowers);
+            return powersWithCodesSection.First().GetEnumValue<JointExerPowersTypes>(Fields.JointExerPowers1);
         }
 
         public LossPowersSubstTypes? GetPowersCodesLossPowersSubst()
@@ -244,6 +244,10 @@ namespace PowersOfAttorneyServerExtension.Helpers
             public const string PowersCode = "PowersCode";
             // Признак совместного осуществления полномочий
             public const string JointExerPowers = "jointExerPowers";
+            // Признак совместного осуществления полномочий в секции кодов доверенностей
+            public const string JointExerPowers1 = "jointExerPowers1";
+            
+
             // Признак утраты полномочий при передоверии
             public const string LossPowersSubst = "lossPowersSubst";
         }
