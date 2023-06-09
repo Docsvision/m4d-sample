@@ -29,11 +29,14 @@ namespace PowersOfAttorneyServerExtension.Services
 
             var representativeID = GetRepresentative(userCardPowerOfAttorney, formatId);
             var signerID = GetSigner(userCardPowerOfAttorney, formatId);
-            
+            var principalInn = GetPrincipalInn(userCardPowerOfAttorney, formatId);
+
             var powerOfAttorney = powerOfAttorneyProxyService.CreatePowerOfAttorney(powerOfAttorneyData,
                                                                                     representativeID,
                                                                                     signerID,
-                                                                                    formatId);
+                                                                                    formatId,
+                                                                                    powerOfAttorneyUserCardId,
+                                                                                    principalInn);
             var powerOfAttorneyId = powerOfAttorney.GetObjectId();
 
             // Сохраним ИД созданной СКД в ПКД
@@ -57,11 +60,14 @@ namespace PowersOfAttorneyServerExtension.Services
             var representativeID = GetRepresentative(userCardPowerOfAttorney, formatId);
             var signerID = GetSigner(userCardPowerOfAttorney, formatId);
             var parentalPowerOfAttorney = GetParentalPowerOfAttorney(userCardPowerOfAttorney, formatId);
+            var principalInn = GetPrincipalInn(userCardPowerOfAttorney, formatId);
 
             var powerOfAttorney = powerOfAttorneyProxyService.RetrustPowerOfAttorney(powerOfAttorneyData,
                                                                                     representativeID,
                                                                                     signerID,
-                                                                                    parentalPowerOfAttorney);
+                                                                                    parentalPowerOfAttorney,
+                                                                                    powerOfAttorneyUserCardId,
+                                                                                    principalInn);
             var powerOfAttorneyId = powerOfAttorney.GetObjectId();
 
             // Сохраним ИД созданной СКД в ПКД
@@ -116,6 +122,17 @@ namespace PowersOfAttorneyServerExtension.Services
             throw new ArgumentOutOfRangeException(string.Format(Resources.InvalidPowerOfAttorneyFormat, formatId));
         }
 
+        private string GetPrincipalInn(UserCardPowerOfAttorney userCardPowerOfAttorney, Guid formatId)
+        {
+            if (formatId == PowerOfAttorneyFNSDOVBBData.FormatId)
+                return userCardPowerOfAttorney.PrincipalOrganization?.INN;
+
+            if (formatId == PowerOfAttorneyEMHCDData.FormatId)
+                return userCardPowerOfAttorney.GenEntityPrinINN ?? userCardPowerOfAttorney.GenEntityPrincipal?.INN;
+
+            throw new ArgumentOutOfRangeException(string.Format(Resources.InvalidPowerOfAttorneyFormat, formatId));
+        }
+
         private PowerOfAttorneyData GetPowerOfAttorneyData(UserCardPowerOfAttorney userCard, Guid formatId)
         {
             if (formatId == PowerOfAttorneyFNSDOVBBData.FormatId)
@@ -123,8 +140,8 @@ namespace PowersOfAttorneyServerExtension.Services
 
             if (formatId == PowerOfAttorneyEMHCDData.FormatId)
                 return userCard.ConvertToPowerOfAttorneyEMHCDData();
-           
-                
+
+
             throw new ArgumentOutOfRangeException(string.Format(Resources.InvalidPowerOfAttorneyFormat, formatId));
         }
 
