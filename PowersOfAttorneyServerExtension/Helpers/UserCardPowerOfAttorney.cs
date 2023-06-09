@@ -50,22 +50,22 @@ namespace PowersOfAttorneyServerExtension.Helpers
 
         public JointExerPowersTypes? GetPowersCodesJointExer()
         {
-            return powersWithCodesSection.First().GetEnumValue<JointExerPowersTypes>(Fields.JointExerPowers1);
+            return powersWithCodesSection.FirstOrDefault()?.GetEnumValue<JointExerPowersTypes>(Fields.JointExerPowers1);
         }
 
         public LossPowersSubstTypes? GetPowersCodesLossPowersSubst()
         {
-            return powersWithCodesSection.First().GetEnumValue<LossPowersSubstTypes>(Fields.LossPowersSubst);
+            return powersWithCodesSection.FirstOrDefault()?.GetEnumValue<LossPowersSubstTypes>(Fields.LossPowersSubst);
         }
 
         public JointExerPowersTypes? GetPowersTextJointExer()
         {
-            return powersWithTextSection.First().GetEnumValue<JointExerPowersTypes>(Fields.JointExerPowers);
+            return powersWithTextSection.FirstOrDefault()?.GetEnumValue<JointExerPowersTypes>(Fields.JointExerPowers);
         }
 
         public LossPowersSubstTypes? GetPowersTextLossPowersSubst()
         {
-            return powersWithTextSection.First().GetEnumValue<LossPowersSubstTypes>(Fields.LossPowersSubst);
+            return powersWithTextSection.FirstOrDefault()?.GetEnumValue<LossPowersSubstTypes>(Fields.LossPowersSubst);
         }
 
         public List<string> GetPowersText()
