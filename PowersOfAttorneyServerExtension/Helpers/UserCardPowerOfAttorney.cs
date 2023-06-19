@@ -107,101 +107,101 @@ namespace PowersOfAttorneyServerExtension.Helpers
         private static class Fields
         {
             // Идентификатор системной карточки доверенности
-            public const string PowerOfAttorneyCardId = "PowerOfAttorneyCardId";
+            public const string PowerOfAttorneyCardId = "POASysCardId";
             // Описание условия отзыва
-            public const string DescriptionOfTheRevocationCondition = "DescriptionOfTheRevocationCondition";
+            public const string DescriptionOfTheRevocationCondition = "conditRevocIrrevPOA";
             // Номер доверенности
-            public const string PowerOfAttorneyID = "PowerOfAttorneyID";
+            public const string PowerOfAttorneyNumber = "singlePOAregnumber";
             // Юридическое лицо, действующее без доверенности
             public const string EntityActingWithoutPowerOfAttorney = "EntityActingWithoutPowerOfAttorney";
             // СНИЛС физического лица, действующего без доверенности
-            public const string SNILSOfIndividualActingWithoutPowerOfAttorney = "SNILSOfIndividualActingWithoutPowerOfAttorney";
+            public const string SNILSOfIndividualActingWithoutPowerOfAttorney = "ceoSNILS";
             // Наименование учредительного документа организации, действующей без доверенности
             public const string NameOfConstituentDocumentofEntityActingWithoutPowerOfAttorney = "NameOfConstituentDocumentofEntityActingWithoutPowerOfAttorney";
             // Сведения об удостоверении документа, подтверждающего полномочия, если он удостоверен
-            public const string InformationAboutCertificationOfDocumentConfirmingPowers = "InformationAboutCertificationOfDocumentConfirmingPowers";
+            public const string InformationAboutCertificationOfDocumentConfirmingPowers = "infoAttestDocConfCEOAuth";
             //Серия и номер документа, удостоверяющего физлицо, действующее без доверенности
-            public const string SeriesAndNumberOfDocumentProvingIdentityOfIAWPOA = "SeriesAndNumberOfDocumentProvingIdentityOfIAWPOA";
+            public const string SeriesAndNumberOfDocumentProvingIdentityOfIAWPOA = "serNumCEOIDDoc";
             //Дата выдачи документа, удостоверяющего физлицо, действующее без доверенности
-            public const string IssueDateOfDocumentProvingIdentityOfIAWPOA = "IssueDateOfDocumentProvingIdentityOfIAWPOA";
+            public const string IssueDateOfDocumentProvingIdentityOfIAWPOA = "dateIssCEOIDDoc";
             // Наименование учредительного документа организации-доверителя
-            public const string NameOfConstituentDocumentofPrincipal = "NameOfConstituentDocumentofPrincipal";
+            public const string NameOfConstituentDocumentofPrincipal = "constDocumentEntPrin";
             // Тип уполномоченного представителя
             public const string TypeOfAuthorizedRepresentative = "TypeOfAuthorizedRepresentative";
             // ИНН физического лица-представителя
-            public const string INNOfIndividualRepresentative = "INNOfIndividualRepresentative";
+            public const string INNOfIndividualRepresentative = "representativeINN";
             // Физическое лицо-представитель
-            public const string IndividualRepresentative = "IndividualRepresentative";
+            public const string IndividualRepresentative = "representative";
             // Адрес места жительства в РФ физлица-представителя
-            public const string ResidentialAddressInRussiaForIndividualRepresentative = "ResidentialAddressInRussiaForIndividualRepresentative";
+            public const string ResidentialAddressInRussiaForIndividualRepresentative = "reprAddrRussia";
             // НН физического лица, действующего без доверенности
-            public const string IINOfIndividualActingWithoutPowerOfAttorney = "IINOfIndividualActingWithoutPowerOfAttorney";
+            public const string IINOfIndividualActingWithoutPowerOfAttorney = "ceoIIN";
             // Код вида документа, удостоверяющего личность физлица-представителя
-            public const string KindCodeOfDocumentProvingIdentityRepresentative = "KindCodeOfDocumentProvingIdentityRepresentative";
+            public const string KindCodeOfDocumentProvingIdentityRepresentative = "typeCodeReprIDDoc";
             // Дата выдачи документа, удостоверяющего физлицо-представителя
-            public const string IssueDateOfDocumentProvingIdentityOfRepresentative = "IssueDateOfDocumentProvingIdentityOfRepresentative";
+            public const string IssueDateOfDocumentProvingIdentityOfRepresentative = "dateIssReprIDDoc";
             // Индивидуальный предприниматель-представитель
             public const string SoleProprietorRepresentative = "SoleProprietorRepresentative";
             // СНИЛС представителя
-            public const string SNILSOfRepresentative = "SNILSOfRepresentative";
+            public const string SNILSOfRepresentative = "representativeSNILS";
             // Текстовое описание полномочий
             public const string TextPowersDescription = "TextPowersDescription";
             // Дата выдачи документа, подтверждающего полномочия физлица, действующего без доверенности
-            public const string IssueDateOfDocumentConfirmingPowersOfIAWPOA = "IssueDateOfDocumentConfirmingPowersOfIAWPOA";
+            public const string IssueDateOfDocumentConfirmingPowersOfIAWPOA = "dateIssDocConfAuthCEO";
             // Организация-представитель
             public const string EntityRepresentative = "EntityRepresentative";
             // Наименование учредительного документа организации-представителя
             public const string NameOfConstituentDocumentofRepresentative = "NameOfConstituentDocumentofRepresentative";
             // Код страны гражданства иностранного представителя
-            public const string CodeOfCitizenshipForForeignRepresentative = "CodeOfCitizenshipForForeignRepresentative";
+            public const string CodeOfCitizenshipForForeignRepresentative = "reprCitizenship";
             // Признак гражданства представителя
-            public const string SignOfCitizenshipOfRepresentative = "SignOfCitizenshipOfRepresentative";
+            public const string SignOfCitizenshipOfRepresentative = "reprCitizenshipSign";
             // Место рождения представителя
-            public const string PlaceOfBirthOfRepresentative = "PlaceOfBirthOfRepresentative";
+            public const string PlaceOfBirthOfRepresentative = "reprDateOfBirth";
             // Наименование органа, выдавшего документ, удостоверяющий личность представителя
-            public const string NameOfAuthorityIssuedDocumentConfirmingidentityOfRepresentative = "NameOfAuthorityIssuedDocumentConfirmingidentityOfRepresentative";
+            public const string NameOfAuthorityIssuedDocumentConfirmingidentityOfRepresentative = "authIssReprIDDoc";
             // Наименование документа, подтверждающего полномочия физлица, действующего без доверенности
-            public const string NameOfDocumentConfirmingPowersOfIAWPOA = "NameOfDocumentConfirmingPowersOfIAWPOA";
+            public const string NameOfDocumentConfirmingPowersOfIAWPOA = "docConfAuthCEO";
             // Наименование органа, выдавшего документ, удостоверяющий физлицо, действующее без доверенности
-            public const string NameOfAuthorityIssuedDocumentProvingIdentityOfIAWPOA = "NameOfAuthorityIssuedDocumentProvingIdentityOfIAWPOA";
+            public const string NameOfAuthorityIssuedDocumentProvingIdentityOfIAWPOA = "authIssCEOIDDoc";
             // Код страны гражданства для иностранного физлица, действующего без доверенности
-            public const string CodeOfCitizenshipForForeignIAWPOA = "CodeOfCitizenshipForForeignIAWPOA";
+            public const string CodeOfCitizenshipForForeignIAWPOA = "ceoCitizenship";
             // Серия и номер документа, удостоверяющего личность физлица-представителя
-            public const string SeriesAndNumberOfDocumentProvingIdentityOfRepresentative = "SeriesAndNumberOfDocumentProvingIdentityOfRepresentative";
+            public const string SeriesAndNumberOfDocumentProvingIdentityOfRepresentative = "serNumReprIDDoc";
             // Место рождения физлица, действующего без доверенности
-            public const string PlaceOfBirthOfIndividualActingWithoutPowerOfAttorney = "PlaceOfBirthOfIndividualActingWithoutPowerOfAttorney";
+            public const string PlaceOfBirthOfIndividualActingWithoutPowerOfAttorney = "ceoPlaceOfBirth";
             // Номер записи об аккредитации
             public const string AccreditationRecordNumber = "AccreditationRecordNumber";
             // Тип доверителя
-            public const string PrincipalType = "PrincipalType";
+            public const string PrincipalType = "principalType";
             //Указать юридическое лицо
-            public const string IndicateEntity = "IndicateEntity";
+            public const string IndicateEntity = "mngtCompanySEB";
             //Доверенность, на основании которой осуществляется передоверие
-            public const string ParentalPowerOfAttorney = "parentalPowerOfAttorney";
+            public const string ParentalPowerOfAttorney = "ParentalPOACardLink";
             // Сведения об информационной системе, предоставляющей информацию о доверенности
             public const string InfoSysProvPOAData = "infoSysProvPOAData";
             // Доверитель (сотрудник в справочнике)
             public const string EmplPrincipal = "emplPrincipal";
             // Доверитель (организация в справочнике)
-            public const string OrgPrincipal = "orgPrincipal";
+            public const string OrgPrincipal = "entityPrincipal";
             // Кем выдан документ, подтвержающий полномочия физлица, действующего без доверенности
-            public const string WhoIssuedDoctConfPowersIAWPOA = "whoIssuedDoctConfPowersIAWPOA";
+            public const string WhoIssuedDoctConfPowersIAWPOA = "authIssDocConfCEOAuth";
             // Дата совершения доверенности
-            public const string PowerOfAttorneyStartDate = "PowerOfAttorneyStartDate";
+            public const string PowerOfAttorneyStartDate = "poaDateOfIssue";
             // Дата окончания действия доверенности
-            public const string PowerOfAttorneyEndDate = "PowerOfAttorneyEndDate";
+            public const string PowerOfAttorneyEndDate = "poaExpirationDate";
             //Основная (первоначальная) доверенность
             public const string BasicPOA = "BasicPOA";
             //Признак наличия гражданства лица, действующего без доверенности
-            public const string SignOfCitizenshipfIAWPOA = "SignOfCitizenshipfIAWPOA";
+            public const string SignOfCitizenshipfIAWPOA = "ceoCitizenshipSign";
             // Код подразделения органа, выдавшего документ, удостоверяющий физлицо, действующее без доверенности
-            public const string SubdivisionCodeOfAuthorityIssuedDocumentProvingIdentityOfIAWPOA = "SubdivisionCodeOfAuthorityIssuedDocumentProvingIdentityOfIAWPOA";
+            public const string SubdivisionCodeOfAuthorityIssuedDocumentProvingIdentityOfIAWPOA = "codeAuthDivIssCEOIDDoc";
             // Код подразделения органа, выдавшего документ, удостоверяющий личность представителя
-            public const string SubdivisionCodeOfAuthorityIssuedDocumentConfirmingRepresentativeID = "SubdivisionCodeOfAuthorityIssuedDocumentConfirmingRepresentativeID";
+            public const string SubdivisionCodeOfAuthorityIssuedDocumentConfirmingRepresentativeID = "codeAuthDivIssReprIDDoc";
             // Адрес места жительства в РФ физлица, действующего без доверенности
-            public const string ResidentialAddressInRussiaForIndividualActingWithoutPowerOfAttorney = "ResidentialAddressInRussiaForIndividualActingWithoutPowerOfAttorney";
+            public const string ResidentialAddressInRussiaForIndividualActingWithoutPowerOfAttorney = "ceoAddrRussia";
             // Cубъект РФ для физлица, действующего без доверенности
-            public const string CodeOfSubjectOfRussiaForIAWPOA = "CodeOfSubjectOfRussiaForIAWPOA";
+            public const string CodeOfSubjectOfRussiaForIAWPOA = "ceoAddrSubRussia";
             // Адрес регистрации в РФ юрлица, действующего без доверенности
             public const string RegistrationAddressInRussiaOfEAWPA = "RegistrationAddressInRussiaOfEAWPA";
             // Фактический адрес нахождения в РФ юрлица, действующего без доверенности
@@ -209,9 +209,9 @@ namespace PowersOfAttorneyServerExtension.Helpers
             // Адрес регистрации в РФ организации-представителя
             public const string RegistrationAddressInRussiaOfOrganizationRepresantative = "RegistrationAddressInRussiaOfOrganizationRepresantative";
             // Cубъект РФ места жительства физлица-представителя
-            public const string CodeOfSubjectOfRussiaForIndividualRepresentative = "CodeOfSubjectOfRussiaForIndividualRepresentative";
+            public const string CodeOfSubjectOfRussiaForIndividualRepresentative = "reprAddrSubRussia";
             // Cубъект РФ для адреса регистрации юрлица, действующего без доверенности
-            public const string CodeOfSubjectOfRussiaForRegistrationAddressOfEAWPA = "CodeOfSubjectOfRussiaForRegistrationAddressOfEAWPA";
+            public const string CodeOfSubjectOfRussiaForRegistrationAddressOfEAWPA = "SubjectOfRussiaForRegistrationAddressOfEAWPA";
             // Cубъект РФ для адреса регистрации организации-представителя
             public const string CodeOfSubjectOfRussiaOfRegistrationAddressOfEntityRepresentative = "CodeOfSubjectOfRussiaOfRegistrationAddressOfEntityRepresentative";
             // Cубъект РФ для адреса фактического места нахождения организации-представителя
@@ -223,21 +223,21 @@ namespace PowersOfAttorneyServerExtension.Helpers
             // Тип доверенности
             public const string PowerOfAttorneyType = "PowerOfAttorneyType";
             // Возможность оформления передоверия
-            public const string PossibilityOfSubstitution = "PossibilityOfSubstitution";
+            public const string PossibilityOfSubstitution = "possibilityOfSubstitution";
             // Совместные полномочия
-            public const string JointPowers = "JointPowers";
+            public const string JointPowers = "jointExerPowers";
             // Передоверие безотзывной доверенности
-            public const string TransferOfIrrevocablePowerOfAttorney = "TransferOfIrrevocablePowerOfAttorney";
+            public const string TransferOfIrrevocablePowerOfAttorney = "signTransferIrrevPOA";
             // Полномочия при передоверии
-            public const string LossOfPowersUponSubstitution = "LossOfPowersUponSubstitution";
+            public const string LossOfPowersUponSubstitution = "lossPowersTransfer";
             // Код вида документа, удостоверяющий физлицо, действующее без доверенности
-            public const string KindCodeOfDocumentProvingIdentityOfIAWPOA = "KindCodeOfDocumentProvingIdentityOfIAWPOA";
+            public const string KindCodeOfDocumentProvingIdentityOfIAWPOA = "typeCodeCEOIDDoc";
             // Признак безотзывной доверенности
-            public const string IrrevocablePowerOfAttorney = "IrrevocablePowerOfAttorney";
+            public const string IrrevocablePowerOfAttorney = "poaKind";
             // Условие отзыва
-            public const string RevocationCondition = "RevocationCondition";
+            public const string RevocationCondition = "revocIrrevPOA";
             // Физическое лицо, действующее без доверенности
-            public const string IndividualActingWithoutPowerOfAttorney = "IndividualActingWithoutPowerOfAttorney";
+            public const string IndividualActingWithoutPowerOfAttorney = "ceo";
             // Текстовое описание полномочий
             public const string PowersTextDescription = "PowersTextDescription";
             // Код полномочий
