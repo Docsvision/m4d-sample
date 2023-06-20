@@ -1,9 +1,27 @@
 import { EMPLOYEE_SECTION_ID, STAFF_DIRECTORY_ID, UNIT_STAFF_SECTION_ID } from "@docsvision/webclient/BackOffice/StaffDirectoryConstants";
 import { StaffDirectoryItems } from "@docsvision/webclient/BackOffice/StaffDirectoryItems";
-import { RadioGroup } from "@docsvision/webclient/Platform/RadioGroup";
+import { LayoutControl } from "@docsvision/webclient/System/BaseControl";
 import { IDataChangedEventArgs } from "@docsvision/webclient/System/IDataChangedEventArgs";
+import IMask from 'imask';
 
-export const onPrincipalDataChanged = async (sender: StaffDirectoryItems, args: IDataChangedEventArgs) => {
+export const customizeSingleFormatPowerOfAttorneyForEditLayout = async (sender: LayoutControl) => {
+    const controls = sender.layout.controls;
+    const entityPrincipal = controls.entityPrincipal;
+    const ceo = controls.ceo;
+    const representative = controls.representative;
+    const powersType = controls.powersType;
+
+    customizeInputFields();
+    onPowersTypeDataChanged(sender);
+
+    entityPrincipal.params.dataChanged.subscribe(onPrincipalDataChanged);
+    ceo.params.dataChanged.subscribe(onCeoDataChanged);
+    representative.params.dataChanged.subscribe(onRepresentativeDataChanged);
+    powersType.params.dataChanged.subscribe(onPowersTypeDataChanged);
+
+}
+
+const onPrincipalDataChanged = async (sender: StaffDirectoryItems, args: IDataChangedEventArgs) => {
     const controls = sender.layout.controls;
     const princINN = controls.princINN;
     const princKPP = controls.princKPP;
@@ -36,7 +54,7 @@ export const onPrincipalDataChanged = async (sender: StaffDirectoryItems, args: 
     }
 }
 
-export const onCeoDataChanged = async (sender: StaffDirectoryItems, args: IDataChangedEventArgs) => {
+const onCeoDataChanged = async (sender: StaffDirectoryItems, args: IDataChangedEventArgs) => {
     const controls = sender.layout.controls;
     const ceoPosition = controls.ceoPosition;
     const ceoBirthDate = controls.ceoBirthDate;
@@ -66,7 +84,7 @@ export const onCeoDataChanged = async (sender: StaffDirectoryItems, args: IDataC
     }  
 }
 
-export const onRepresentativeDataChanged = async (sender: StaffDirectoryItems, args: IDataChangedEventArgs) => {
+const onRepresentativeDataChanged = async (sender: StaffDirectoryItems, args: IDataChangedEventArgs) => {
     const controls = sender.layout.controls;
     const reprBirthDate = controls.reprBirthDate;
     const reprGender = controls.reprGender;
@@ -93,13 +111,45 @@ export const onRepresentativeDataChanged = async (sender: StaffDirectoryItems, a
     }
 }
 
-export const onSignPossIssSubstDataChanged = (sender: RadioGroup, args: IDataChangedEventArgs) => {
+
+const customizeInputFields = () => {
+    const codeTaxAuthSubmit = document.querySelector('[data-control-name="codeTaxAuthSubmit"]');
+    codeTaxAuthSubmit?.getElementsByTagName('input')[0].setAttribute("maxLength", "4");
+    const codeTaxAuthValid = document.querySelector('[data-control-name="codeTaxAuthValid"]');
+    codeTaxAuthValid?.getElementsByTagName('input')[0].setAttribute("maxLength", "4");
+    const ceoINN = document.querySelector('[data-control-name="ceoINN"]');
+    ceoINN?.getElementsByTagName('input')[0].setAttribute("maxLength", "12");
+    const ceoCitizenship = document.querySelector('[data-control-name="ceoCitizenship"]');
+    ceoCitizenship?.getElementsByTagName('input')[0].setAttribute("maxLength", "3");
+    const ceoAddrSubRus = document.querySelector('[data-control-name="ceoAddrSubRus"]');
+    ceoAddrSubRus?.getElementsByTagName('input')[0].setAttribute("maxLength", "3");
+    const reprINN = document.querySelector('[data-control-name="reprINN"]');
+    reprINN?.getElementsByTagName('input')[0].setAttribute("maxLength", "12");
+    const reprCitizenship = document.querySelector('[data-control-name="reprCitizenship"]');
+    reprCitizenship?.getElementsByTagName('input')[0].setAttribute("maxLength", "3");
+    const reprAddrSubRus = document.querySelector('[data-control-name="reprAddrSubRus"]');
+    reprAddrSubRus?.getElementsByTagName('input')[0].setAttribute("maxLength", "2");
+    const maskOptions = {
+        mask: '000-000-000 00'
+    }
+    const ceoSNILSInputElement = document.querySelector('[data-control-name="ceoSNILS"]')?.getElementsByTagName('input')[0];
+    IMask(ceoSNILSInputElement, maskOptions)
+    const reprSNILSInputElement = document.querySelector('[data-control-name="reprSNILS"]')?.getElementsByTagName('input')[0];
+    IMask(reprSNILSInputElement, maskOptions)
+}
+
+const onPowersTypeDataChanged = (sender: LayoutControl) => {
     const controls = sender.layout.controls;
-    if (args.newValue === "withoutSubstitution") {
-        controls.textPowersTable.params.columns[3].visibility = false;
-        controls.refPowersTable.params.columns[3].visibility = false;  
+    const powersType = controls.powersType;
+    const refPowersTable = controls.refPowersTable;
+    const textPowersDescr = controls.textPowersDescr;
+    if (powersType.params.value === "humReadPower") {
+        refPowersTable.params.visibility = false;
+        textPowersDescr.params.visibility = true;
+        textPowersDescr.params.required = true;
     } else {
-        controls.refPowersTable.params.columns[3].visibility = true;
-        controls.textPowersTable.params.columns[3].visibility = true;
-    }  
+        refPowersTable.params.visibility = true;
+        textPowersDescr.params.visibility = false;
+        textPowersDescr.params.required = false;
+    }
 }

@@ -12,10 +12,11 @@ import * as CustomizePowerOfAttorneyCardForViewCard from "./EventHandlers/Custom
 import * as CustomizeSubstitutionPowerOfAttorneyCardForEditLayout from "./EventHandlers/CustomizeSubstitutionPowerOfAttorneyCardForEditLayout";
 import * as CustomizeSubstitutionPowerOfAttorneyCardForViewLayout from "./EventHandlers/CustomizeSubstitutionPowerOfAttorneyCardForViewLayout";
 import { $PowersOfAttorneyDemoController, PowersOfAttorneyDemoController } from "./ServerRequests/PowersOfAttorneyDemoController";
-import * as FillInTheFieldsAutomatically from "./EventHandlers/FillInTheFieldsAutomatically";
-import * as CustomizeInputFields from "./EventHandlers/CustomizeInputFields";
+import * as CustomizeSingleFormatPowerOfAttorneyForEditLayout from "./EventHandlers/CustomizeSingleFormatPowerOfAttorneyForEditLayout";
+import * as CustomizeSingleFormatPowerOfAttorneyForViewLayout from "./EventHandlers/CustomizeSingleFormatPowerOfAttorneyForViewLayout";
 import * as CreateEMCHDPowerOfAttorney from "./EventHandlers/CreateEMCHDPowerOfAttorney";
 import * as SignPowerOfAttorneyFromTask from "./EventHandlers/SignPowerOfAttorneyFromTask";
+import * as ShowRequiredFields from "./EventHandlers/ShowRequiredFields";
 
 // Главная входная точка всего расширения
 // Данный файл должен импортировать прямо или косвенно все остальные файлы, 
@@ -28,7 +29,7 @@ extensionManager.registerExtension({
     version: "5.5.17",
     globalEventHandlers: [ CreatePowerOfAttorney, CreateRetrustPowerOfAttorney, ExportPowerOfAttorney, SignPowerOfAttorney, RevokePowerOfAttorney, DeletePowerOfAttorney,
         CustomizePowerOfAttorneyCardForEditLayout, CustomizePowerOfAttorneyCardForViewCard, CustomizeSubstitutionPowerOfAttorneyCardForEditLayout, CustomizeSubstitutionPowerOfAttorneyCardForViewLayout,
-        FillInTheFieldsAutomatically, CustomizeInputFields, CreateEMCHDPowerOfAttorney, SignPowerOfAttorneyFromTask ],
+        CustomizeSingleFormatPowerOfAttorneyForEditLayout, CustomizeSingleFormatPowerOfAttorneyForViewLayout, CreateEMCHDPowerOfAttorney, SignPowerOfAttorneyFromTask, ShowRequiredFields ],
     layoutServices: [ 
         Service.fromFactory($PowersOfAttorneyDemoController, (services: $RequestManager) => new PowersOfAttorneyDemoController(services))
     ]
