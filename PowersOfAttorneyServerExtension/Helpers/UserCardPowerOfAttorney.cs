@@ -227,15 +227,15 @@ namespace PowersOfAttorneyServerExtension.Helpers
             // Совместные полномочия
             public const string JointPowers = "jointExerPowers";
             // Передоверие безотзывной доверенности
-            public const string TransferOfIrrevocablePowerOfAttorney = "signTransferIrrevPOA";
+            public const string TransferOfIrrevocablePowerOfAttorney = "TransferOfIrrevocablePowerOfAttorney";
             // Полномочия при передоверии
             public const string LossOfPowersUponSubstitution = "lossPowersTransfer";
             // Код вида документа, удостоверяющий физлицо, действующее без доверенности
             public const string KindCodeOfDocumentProvingIdentityOfIAWPOA = "typeCodeCEOIDDoc";
             // Признак безотзывной доверенности
-            public const string IrrevocablePowerOfAttorney = "poaKind";
+            public const string IrrevocablePowerOfAttorney = "IrrevocablePowerOfAttorney";
             // Условие отзыва
-            public const string RevocationCondition = "revocIrrevPOA";
+            public const string RevocationCondition = "RevocationCondition";
             // Физическое лицо, действующее без доверенности
             public const string IndividualActingWithoutPowerOfAttorney = "ceo";
             // Текстовое описание полномочий
