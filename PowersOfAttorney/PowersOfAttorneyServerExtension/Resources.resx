@@ -195,6 +195,9 @@
   <data name="Error_PossibilityOfSubstitutionIsEmpty" xml:space="preserve">
     <value>The indication of the possibility of making a transfer is not specified</value>
   </data>
+  <data name="Error_PowersTypeIsEmpty" xml:space="preserve">
+    <value>Power type is not specified</value>
+  </data>
   <data name="Error_PowersTypeOfSEBIsEmpty" xml:space="preserve">
     <value>Type of powers of sole executive body is not specified</value>
   </data>

@@ -1,7 +1,10 @@
-﻿using DocsVision.BackOffice.ObjectModel;
+﻿using DocsVision.BackOffice.CardLib.CardDefs;
+using DocsVision.BackOffice.ObjectModel;
 using DocsVision.BackOffice.ObjectModel.Services.Entities;
 
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 using static DocsVision.BackOffice.ObjectModel.Services.Entities.PowerOfAttorneyEMHCDData;
 
@@ -596,6 +599,68 @@ namespace PowersOfAttorneyServerExtension.Helpers
 
         public NotarialActionParticipantStatus? GenNotarStatusOfEntPrin => genMchdSection.GetEnumValue<NotarialActionParticipantStatus>("notarStatusOfEntPrin");
 
+        public AuthorityType? GenPowersType => genMchdSection.GetEnumValue<AuthorityType>("powerType");
+
+        /// <summary>
+        /// Признак совместного осуществления полномочий
+        /// </summary>
+        public JointRepresentationType? GenJointExerPowers => genMchdSection.GetEnumValue<JointRepresentationType>("jointExerPowers");
+
+        /// <summary>
+        /// Признак утраты полномочий при передоверии
+        /// </summary>
+        public PowerOfAttorneyLossOfAuthorityType? GenLossPowersTransfer => genMchdSection.GetEnumValue<PowerOfAttorneyLossOfAuthorityType>("lossPowersTransfer");
+        
+        /// <summary>
+        /// Текстовое содержание полномочия
+        /// </summary>
+        public string GenPowerTextContent => genMchdSection.GetStringValue("powerTextContent");
+
+        public IEnumerable<PowersCode> GetPowersCodes()
+        {
+            return powersWithCodesSection?.Select(t => t.GetReferenceFieldValue<PowersCode>(context, Fields.PowersCode)) ?? Enumerable.Empty<PowersCode>();
+        }
+
+        /*
+
+        public List<PowersCode> GetPowersCodes()
+        {
+            var powers = powersWithCodesSection?.Select(t => t.GetReferenceFieldValue<PowersCode>(context, Fields.PowersCode)) ?? Enumerable.Empty<PowersCode>();
+            return powers.ToList();
+        }
+
+        public JointExerPowersTypes? GetPowersCodesJointExer()
+        {
+            return powersWithCodesSection.FirstOrDefault()?.GetEnumValue<JointExerPowersTypes>(Fields.JointExerPowers1);
+        }
+
+        public LossPowersSubstTypes? GetPowersCodesLossPowersSubst()
+        {
+            return powersWithCodesSection.FirstOrDefault()?.GetEnumValue<LossPowersSubstTypes>(Fields.LossPowersSubst);
+        }
+
+        public JointExerPowersTypes? GetPowersTextJointExer()
+        {
+            return powersWithTextSection.FirstOrDefault()?.GetEnumValue<JointExerPowersTypes>(Fields.JointExerPowers);
+        }
+
+        public LossPowersSubstTypes? GetPowersTextLossPowersSubst()
+        {
+            return powersWithTextSection.FirstOrDefault()?.GetEnumValue<LossPowersSubstTypes>(Fields.LossPowersSubst);
+        }
+
+        public string GetPowersText()
+        {
+            return genMchdSection.GetBoolValue("powerType")();
+        }*/
+
+        public List<string> GetPowersText()
+        {
+            var powers = powersWithTextSection?.Select(t => t.GetStringValue(Fields.PowersTextDescription)) ?? Enumerable.Empty<string>();
+            return powers.ToList();
+        }
+
+
 
         /// <summary>
         /// Вид доверенности
@@ -611,6 +676,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
             /// </summary>
             irrecovablePOA = 2
         }
+
 
 
         /// <summary>

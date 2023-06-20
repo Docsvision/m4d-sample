@@ -21,58 +21,22 @@ namespace PowersOfAttorneyServerExtension.Helpers
         private readonly Document document;
         private readonly ObjectContext context;
 
-        private readonly BaseCardSectionRow mrpSection;
         private readonly BaseCardSectionRow genMchdSection;
 
         private readonly IList<BaseCardSectionRow> powersWithCodesSection;
         private readonly IList<BaseCardSectionRow> powersWithTextSection;
-        private readonly IList<BaseCardSectionRow> signerSection;
 
         public UserCardPowerOfAttorney(Document document, ObjectContext context)
         {
             this.document = document ?? throw new ArgumentNullException(nameof(document));
             this.context = context ?? throw new ArgumentNullException(nameof(context));
 
-            mrpSection = (BaseCardSectionRow)document.GetSection(machineReadablePowerOfAttorneySectionId)[0];
             genMchdSection = (BaseCardSectionRow)document.GetSection(generalMachineReadablePowerOfAttorneySectionId)[0];
 
             powersWithCodesSection = (IList<BaseCardSectionRow>)document.GetSection(powersWithCodesSectionId);
             powersWithTextSection = (IList<BaseCardSectionRow>)document.GetSection(powersWithTextSectionId);
-            signerSection = (IList<BaseCardSectionRow>)document.GetSection(CardDocument.Signers.ID);
         }
 
-
-        public List<PowersCode> GetPowersCodes()
-        {
-            var powers = powersWithCodesSection?.Select(t => t.GetReferenceFieldValue<PowersCode>(context, Fields.PowersCode)) ?? Enumerable.Empty<PowersCode>();
-            return powers.ToList();
-        }
-
-        public JointExerPowersTypes? GetPowersCodesJointExer()
-        {
-            return powersWithCodesSection.FirstOrDefault()?.GetEnumValue<JointExerPowersTypes>(Fields.JointExerPowers1);
-        }
-
-        public LossPowersSubstTypes? GetPowersCodesLossPowersSubst()
-        {
-            return powersWithCodesSection.FirstOrDefault()?.GetEnumValue<LossPowersSubstTypes>(Fields.LossPowersSubst);
-        }
-
-        public JointExerPowersTypes? GetPowersTextJointExer()
-        {
-            return powersWithTextSection.FirstOrDefault()?.GetEnumValue<JointExerPowersTypes>(Fields.JointExerPowers);
-        }
-
-        public LossPowersSubstTypes? GetPowersTextLossPowersSubst()
-        {
-            return powersWithTextSection.FirstOrDefault()?.GetEnumValue<LossPowersSubstTypes>(Fields.LossPowersSubst);
-        }
-
-        public List<string> GetPowersText()
-        {
-            var powers = powersWithTextSection?.Select(t => t.GetStringValue(Fields.PowersTextDescription)) ?? Enumerable.Empty<string>();
-            return powers.ToList();
-        }
 
         /// <summary>
         /// Признак утраты полномочий при передоверии
@@ -97,11 +61,11 @@ namespace PowersOfAttorneyServerExtension.Helpers
             /// <summary>
             /// Индивидуальные
             /// </summary>
-            individual,
+            individual = 1,
             /// <summary>
             /// Совместные
             /// </summary>
-            joint
+            joint = 2
         }
 
         private static class Fields

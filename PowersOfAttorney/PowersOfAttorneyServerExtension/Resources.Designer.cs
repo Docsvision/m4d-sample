@@ -295,6 +295,15 @@ namespace PowersOfAttorneyServerExtension {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Power type is not specified.
+        /// </summary>
+        internal static string Error_PowersTypeIsEmpty {
+            get {
+                return ResourceManager.GetString("Error_PowersTypeIsEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Type of powers of sole executive body is not specified.
         /// </summary>
         internal static string Error_PowersTypeOfSEBIsEmpty {

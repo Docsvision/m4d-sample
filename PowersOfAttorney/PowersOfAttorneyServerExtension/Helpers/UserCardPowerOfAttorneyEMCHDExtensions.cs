@@ -65,36 +65,30 @@ namespace PowersOfAttorneyServerExtension.Helpers
 
             private PowerOfAttorneyEMHCDData.RepresentativePowersInfo CreateRepresentativePowersPart()
             {
-                var powersWithCodes = userCard.GetPowersCodes();
-                JointExerPowersTypes? jointExer;
-                LossPowersSubstTypes? lossPowersSubst;
-                if (powersWithCodes.Any())
-                {
-                    jointExer = userCard.GetPowersCodesJointExer();
-                    lossPowersSubst = userCard.GetPowersCodesLossPowersSubst();
+                var powersType = userCard.GenPowersType ?? throw new ApplicationException(Resources.Error_PowersTypeIsEmpty);
 
-                    return new PowerOfAttorneyEMHCDData.RepresentativePowersInfo
+                var part = new PowerOfAttorneyEMHCDData.RepresentativePowersInfo
+                {
+                    AuthorityType = powersType,
+                    JointRepresentationType = userCard.GenJointExerPowers ?? throw new ApplicationException(Resources.Error_JointExerIsEmpty),
+                };
+
+                if (userCard.GenLossPowersTransfer != null)
+                    part.LossOfAuthorityType = userCard.GenLossPowersTransfer;
+
+                if (powersType == PowerOfAttorneyEMHCDData.AuthorityType.Code)
+                {
+                    part.MachineReadablePowersInfo = userCard.GetPowersCodes().Select(power => new PowerOfAttorneyEMHCDData.MachineReadablePowersInfo
                     {
-                        AuthorityType = PowerOfAttorneyEMHCDData.AuthorityType.Code,
-                        JointRepresentationType = Convert(jointExer ?? throw new ApplicationException(Resources.Error_JointExerIsEmpty)),
-                        LossOfAuthorityType = Convert(lossPowersSubst),
-                        MachineReadablePowersInfo = powersWithCodes.Select(power => new PowerOfAttorneyEMHCDData.MachineReadablePowersInfo
-                        {
-                            PowersCode = power
-                        }).ToList()
-                    };
-                };
-
-                jointExer = userCard.GetPowersTextJointExer();
-                lossPowersSubst = userCard.GetPowersTextLossPowersSubst();
-
-                return new PowerOfAttorneyEMHCDData.RepresentativePowersInfo
+                        PowersCode = power
+                    }).ToList();
+                }
+                else
                 {
-                    AuthorityType = PowerOfAttorneyEMHCDData.AuthorityType.Text,
-                    JointRepresentationType = Convert(jointExer ?? throw new ApplicationException(Resources.Error_JointExerIsEmpty)),
-                    LossOfAuthorityType = Convert(lossPowersSubst),
-                    PowersTextContent = userCard.GetPowersText().FirstOrDefault()
-                };
+                    part.PowersTextContent = userCard.GenPowerTextContent;
+                }
+
+                return part;
             }
 
             private PowerOfAttorneyEMHCDData.RepresentativesInfo CreateRepresentativesPart()

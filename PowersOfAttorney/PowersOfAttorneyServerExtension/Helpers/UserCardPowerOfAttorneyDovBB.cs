@@ -231,12 +231,12 @@ namespace PowersOfAttorneyServerExtension.Helpers
         /// <summary>
         /// Cубъект РФ для адреса регистрации организации-представителя
         /// </summary>
-        public string RepresentativeOrganizationLegalAddressSubjectRfCode => mrpSection.GetStringValue(Fields.CodeOfSubjectOfRussiaOfRegistrationAddressOfEntityRepresentative);
+        public string RepresentativeOrganizationLegalAddressSubjectRfCode => genMchdSection.GetStringValue(Fields.CodeOfSubjectOfRussiaOfRegistrationAddressOfEntityRepresentative);
 
         /// <summary>
         /// Cубъект РФ для адреса фактического места нахождения организации-представителя
         /// </summary>
-        public string RepresentativeOrganizationAddressSubjectRfCode => mrpSection.GetStringValue(Fields.CodeOfSubjectOfRussiaOfActualAddressOfEntityRepresentative);
+        public string RepresentativeOrganizationAddressSubjectRfCode => genMchdSection.GetStringValue(Fields.CodeOfSubjectOfRussiaOfActualAddressOfEntityRepresentative);
 
 
         /// <summary>

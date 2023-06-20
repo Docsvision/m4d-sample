@@ -195,6 +195,9 @@
   <data name="Error_PossibilityOfSubstitutionIsEmpty" xml:space="preserve">
     <value>Не указан Признак возможности оформления передоверия</value>
   </data>
+  <data name="Error_PowersTypeIsEmpty" xml:space="preserve">
+    <value>Не указан Тип полномочия</value>
+  </data>
   <data name="Error_PowersTypeOfSEBIsEmpty" xml:space="preserve">
     <value>Не указан Вид полномочий единоличного исполнительного органа</value>
   </data>
