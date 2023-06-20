@@ -1,6 +1,6 @@
 import { LayoutControl } from "@docsvision/webclient/System/BaseControl";
 
-export const customizeSingleFormatPowerOfAttorneyForEditLayout = async (sender: LayoutControl) => {
+export const customizeSingleFormatPowerOfAttorneyForViewLayout = async (sender: LayoutControl) => {
     const controls = sender.layout.controls;
     const powersType = controls.powersType;
     const refPowersTable = controls.refPowersTable;
