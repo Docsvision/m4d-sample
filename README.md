@@ -27,11 +27,11 @@
 ## Сборка проекта
 
 1. Сборка серверной части.
-   1. Откройте решение Samples.sln
-   2. Соберите проект Other > PowersOfAttorney > PowersOfAttorneyServerExtension
+   1. Откройте решение PowersOfAttorney > PowersOfAttorneyServerExtension.sln
+   2. Соберите проект PowersOfAttorneyServerExtension
 
 2. Сборка клиентской части.
-   1. Откройте в командной строке папку Others > PowersOfAttorney > PowersOfAttorneyWebExtension.
+   1. Откройте в командной строке папку PowersOfAttorney > PowersOfAttorneyWebExtension.
 
    2. Выполните команды:
 
