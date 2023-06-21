@@ -1,4 +1,4 @@
-const ROOT = process.env.SamplesOutput || "../../../SamplesOutput"
+const ROOT = process.env.SamplesOutput || "./../SamplesOutput"
 const SITE_ROOT = `${ROOT}/Site`;
 const EXTENSION_NAME = "PowersOfAttorneyWebExtension";
 const MODULES_DIR = SITE_ROOT + "/Content/Modules";
