@@ -5,6 +5,7 @@ using DocsVision.Platform.ObjectModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 
 namespace PowersOfAttorneyServerExtension.Helpers
 {
@@ -81,7 +82,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
         /// <summary>
         /// Код вида документа, удостоверяющего личность физлица-представителя
         /// </summary>
-        public int? RepresentativeIndividualDocumentKind => genMchdSection.GetIntValue(Fields.KindCodeOfDocumentProvingIdentityRepresentative);
+        public DocumentKindTypes? RepresentativeIndividualDocumentKind => genMchdSection.GetEnumValue<DocumentKindTypes>(Fields.KindCodeOfDocumentProvingIdentityRepresentative);
 
         /// <summary>
         /// Дата выдачи документа, удостоверяющего физлицо-представителя
@@ -146,7 +147,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
         /// <summary>
         /// Тип доверителя
         /// </summary>
-        public int PrincipalType => genMchdSection.GetIntValue(Fields.PrincipalType) ?? throw new ArgumentNullException(Resources.Error_EmptyPrincipalType);
+        public GenPrincipalTypes PrincipalType => genMchdSection.GetEnumValue<GenPrincipalTypes>(Fields.PrincipalType) ?? throw new ArgumentNullException(Resources.Error_EmptyPrincipalType);
 
         /// <summary>
         /// Доверенность, на основании которой осуществляется передоверие
@@ -267,7 +268,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
         /// <summary>
         /// Код вида документа, удостоверяющий физлицо, действующее без доверенности
         /// </summary>
-        public int? PrincipalWithoutPowerOfAttorneyIndividualDocumentKindCode => genMchdSection.GetIntValue(Fields.KindCodeOfDocumentProvingIdentityOfIAWPOA);
+        public DocumentKindTypes? PrincipalWithoutPowerOfAttorneyIndividualDocumentKindCode => genMchdSection.GetEnumValue<DocumentKindTypes>(Fields.KindCodeOfDocumentProvingIdentityOfIAWPOA);
 
         /// <summary>
         /// Признак безотзывной доверенности
@@ -291,7 +292,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
         public bool IsRetrusted() => genMchdSection[Fields.ParentalPowerOfAttorney] != null;
 
 
-        public IEnumerable<string> RepresentativePowers => powersWithCodesSection?.Select(t => t.GetStringValue(Fields.PowersTextDescription)) ?? Enumerable.Empty<string>();
+        public IEnumerable<PowersCode> RepresentativePowers =>  powersWithCodesSection?.Select(t => t.GetReferenceFieldValue<PowersCode>(context, Fields.PowersCode)) ?? Enumerable.Empty<PowersCode>();
 
         public StaffEmployee Signer => genMchdSection.GetReferenceFieldValue<StaffEmployee>(context, "ceo");
 
@@ -304,5 +305,23 @@ namespace PowersOfAttorneyServerExtension.Helpers
 
         // Идентификатор конечного получателя файла доверенности
         public string GenFinalRecipientTaxID => genMchdSection.GetStringValue("taxAuthPOAValid");
+
+        public enum DocumentKindTypes
+        {
+            //
+            // Summary:
+            //     Паспорт иностранного гражданина
+            //
+            ForeignPassport = 10,
+
+            //
+            // Summary:
+            //     Паспорт гражданина Российской Федерации
+            //
+            // Remarks:
+            //     Код 21
+            Passport = 21
+        }
     }
+
 }

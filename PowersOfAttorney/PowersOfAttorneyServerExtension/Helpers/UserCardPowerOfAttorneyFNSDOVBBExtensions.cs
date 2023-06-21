@@ -12,6 +12,7 @@ using System.Linq;
 using static DocsVision.BackOffice.ObjectModel.Services.Entities.PowerOfAttorneyFNSData;
 
 using static DocsVision.BackOffice.ObjectModel.Services.Entities.PowerOfAttorneyFNSDOVBBData;
+using static PowersOfAttorneyServerExtension.Helpers.UserCardPowerOfAttorney;
 
 internal static class UserCardPowerOfAttorneyFNSDOVBBExtensions
 {
@@ -32,7 +33,6 @@ internal static class UserCardPowerOfAttorneyFNSDOVBBExtensions
     {
         private readonly UserCardPowerOfAttorney userCard;
 
-        private const int PrincipalTypeRussianEntity = 2;
         private const int LossOfPowersUponSubstitutionLost = 1;
 
 
@@ -146,13 +146,26 @@ internal static class UserCardPowerOfAttorneyFNSDOVBBExtensions
             if (userCard.RepresentativeIndividualDocumentKind == null)
                 return null;
 
-            var documentKind = (DocumentKindCode)userCard.RepresentativeIndividualDocumentKind;
+            var documentKind = Convert(userCard.RepresentativeIndividualDocumentKind.Value);
             var documentSeriesNumber = userCard.RepresentativeIndividualDocumentSeries;
             var issueDate = userCard.RepresentativeIndividualDocumentIssueDate;
             var issuer = userCard.RepresentativeIndividualDocumentIssuer;
             var issuerCode = userCard.RepresentativeIndividualDocumentIssuerCode;
 
             return new IdentityCardOfIndividual(documentKind, documentSeriesNumber, issueDate, issuer, issuerCode);
+        }
+
+        private DocumentKindCode Convert(DocumentKindTypes representativeIndividualDocumentKind)
+        {
+            switch (representativeIndividualDocumentKind)
+            {
+                case DocumentKindTypes.ForeignPassport:
+                    return DocumentKindCode.ForeignPassport;
+                case DocumentKindTypes.Passport:
+                    return DocumentKindCode.Passport;
+            }
+
+            throw new ArgumentOutOfRangeException(nameof(representativeIndividualDocumentKind));
         }
 
         private AddressInfo GetAddressInfo(string rfCode, string address)
@@ -174,7 +187,7 @@ internal static class UserCardPowerOfAttorneyFNSDOVBBExtensions
         private DelegatedAuthorityPrincipalInfo GetDelegatedAuthorityPrincipalInfo()
         {
             // Пример рассчитан только на доверителя-организацию 
-            if (userCard.PrincipalType != PrincipalTypeRussianEntity)
+            if (userCard.PrincipalType != UserCardPowerOfAttorney.GenPrincipalTypes.entity)
             {
                 throw new NotSupportedException();
             }
@@ -236,7 +249,7 @@ internal static class UserCardPowerOfAttorneyFNSDOVBBExtensions
         private PrincipalInfo GetPrincipalInfo()
         {
             // Пример рассчитан только на доверителя-организацию 
-            if (userCard.PrincipalType != PrincipalTypeRussianEntity)
+            if (userCard.PrincipalType != UserCardPowerOfAttorney.GenPrincipalTypes.entity)
             {
                 throw new NotSupportedException();
             }
@@ -316,7 +329,7 @@ internal static class UserCardPowerOfAttorneyFNSDOVBBExtensions
             if (userCard.PrincipalWithoutPowerOfAttorneyIndividualDocumentKindCode == null)
                 return null;
 
-            var kind = (DocumentKindCode)userCard.PrincipalWithoutPowerOfAttorneyIndividualDocumentKindCode;
+            var kind = Convert(userCard.PrincipalWithoutPowerOfAttorneyIndividualDocumentKindCode.Value);
             var seriesNumber = userCard.PrincipalWithoutPowerOfAttorneyIndividualDocumentSeries;
             var issueDate = userCard.IssueDateOfDocumentProvingIdentityOfIAWPOA;
 

@@ -621,39 +621,6 @@ namespace PowersOfAttorneyServerExtension.Helpers
             return powersWithCodesSection?.Select(t => t.GetReferenceFieldValue<PowersCode>(context, Fields.PowersCode)) ?? Enumerable.Empty<PowersCode>();
         }
 
-        /*
-
-        public List<PowersCode> GetPowersCodes()
-        {
-            var powers = powersWithCodesSection?.Select(t => t.GetReferenceFieldValue<PowersCode>(context, Fields.PowersCode)) ?? Enumerable.Empty<PowersCode>();
-            return powers.ToList();
-        }
-
-        public JointExerPowersTypes? GetPowersCodesJointExer()
-        {
-            return powersWithCodesSection.FirstOrDefault()?.GetEnumValue<JointExerPowersTypes>(Fields.JointExerPowers1);
-        }
-
-        public LossPowersSubstTypes? GetPowersCodesLossPowersSubst()
-        {
-            return powersWithCodesSection.FirstOrDefault()?.GetEnumValue<LossPowersSubstTypes>(Fields.LossPowersSubst);
-        }
-
-        public JointExerPowersTypes? GetPowersTextJointExer()
-        {
-            return powersWithTextSection.FirstOrDefault()?.GetEnumValue<JointExerPowersTypes>(Fields.JointExerPowers);
-        }
-
-        public LossPowersSubstTypes? GetPowersTextLossPowersSubst()
-        {
-            return powersWithTextSection.FirstOrDefault()?.GetEnumValue<LossPowersSubstTypes>(Fields.LossPowersSubst);
-        }
-
-        public string GetPowersText()
-        {
-            return genMchdSection.GetBoolValue("powerType")();
-        }*/
-
         public List<string> GetPowersText()
         {
             var powers = powersWithTextSection?.Select(t => t.GetStringValue(Fields.PowersTextDescription)) ?? Enumerable.Empty<string>();
