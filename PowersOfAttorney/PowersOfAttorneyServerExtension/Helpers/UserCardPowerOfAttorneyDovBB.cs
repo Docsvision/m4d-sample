@@ -1,11 +1,8 @@
-﻿using DocsVision.BackOffice.CardLib.CardDefs;
-using DocsVision.BackOffice.ObjectModel;
-using DocsVision.Platform.ObjectModel;
+﻿using DocsVision.BackOffice.ObjectModel;
 
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Remoting.Contexts;
 
 namespace PowersOfAttorneyServerExtension.Helpers
 {
@@ -292,7 +289,8 @@ namespace PowersOfAttorneyServerExtension.Helpers
         public bool IsRetrusted() => genMchdSection[Fields.ParentalPowerOfAttorney] != null;
 
 
-        public IEnumerable<PowersCode> RepresentativePowers =>  powersWithCodesSection?.Select(t => t.GetReferenceFieldValue<PowersCode>(context, Fields.PowersCode)) ?? Enumerable.Empty<PowersCode>();
+        public IEnumerable<PowersCode> RepresentativePowersCodes =>  powersWithCodesSection?.Select(t => t.GetReferenceFieldValue<PowersCode>(context, Fields.PowersCode)) ?? Enumerable.Empty<PowersCode>();  
+        public IEnumerable<string> RepresentativePowersText => powersWithTextSection?.Select(t => t.GetStringValue(Fields.PowersTextDescription)) ?? Enumerable.Empty<string>();
 
         public StaffEmployee Signer => genMchdSection.GetReferenceFieldValue<StaffEmployee>(context, "ceo");
 

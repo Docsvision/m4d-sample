@@ -138,6 +138,9 @@
   <data name="Error_EmptyJointRepresentation" xml:space="preserve">
     <value>The attribute of joint powers is not specified</value>
   </data>
+  <data name="Error_EmptyMachineReadablePowerOfAttorney" xml:space="preserve">
+    <value>Power of attorney data is not filled in</value>
+  </data>
   <data name="Error_EmptyPowerOfAttorneyEndDate" xml:space="preserve">
     <value>The expiration date of the power of attorney is not specified</value>
   </data>

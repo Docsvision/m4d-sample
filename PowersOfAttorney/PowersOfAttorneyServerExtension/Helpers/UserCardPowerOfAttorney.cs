@@ -1,19 +1,14 @@
-﻿using DocsVision.BackOffice.CardLib.CardDefs;
-using DocsVision.BackOffice.ObjectModel;
-using DocsVision.BackOffice.ObjectModel.Services.Entities;
+﻿using DocsVision.BackOffice.ObjectModel;
 using DocsVision.Platform.ObjectModel;
-using DocsVision.Platform.WebClient.Diagnostics;
 
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-
 namespace PowersOfAttorneyServerExtension.Helpers
 {
     internal partial class UserCardPowerOfAttorney
     {
-        private static Guid machineReadablePowerOfAttorneySectionId = new Guid("3B9A9466-7569-4142-AF68-DE60263A9640");
         private static Guid generalMachineReadablePowerOfAttorneySectionId = new Guid("29c1b4ef-48e4-47f0-ac67-c42cf68de986");
         private static Guid powersWithCodesSectionId = new Guid("0838CD2A-27C4-4EE1-B599-2DF6586AD2A7");
         private static Guid powersWithTextSectionId = new Guid("D78E3824-618D-44E4-98FF-045502363C3B");
@@ -30,8 +25,11 @@ namespace PowersOfAttorneyServerExtension.Helpers
         {
             this.document = document ?? throw new ArgumentNullException(nameof(document));
             this.context = context ?? throw new ArgumentNullException(nameof(context));
-
-            genMchdSection = (BaseCardSectionRow)document.GetSection(generalMachineReadablePowerOfAttorneySectionId)[0];
+            var genMchdSectionRows = (IList<BaseCardSectionRow>)document.GetSection(generalMachineReadablePowerOfAttorneySectionId);
+            if (!genMchdSectionRows.Any())
+                throw new ApplicationException(Resources.Error_EmptyMachineReadablePowerOfAttorney);
+            
+            genMchdSection = genMchdSectionRows[0];
 
             powersWithCodesSection = (IList<BaseCardSectionRow>)document.GetSection(powersWithCodesSectionId);
             powersWithTextSection = (IList<BaseCardSectionRow>)document.GetSection(powersWithTextSectionId);

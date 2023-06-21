@@ -124,6 +124,15 @@ namespace PowersOfAttorneyServerExtension {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Power of attorney data is not filled in.
+        /// </summary>
+        internal static string Error_EmptyMachineReadablePowerOfAttorney {
+            get {
+                return ResourceManager.GetString("Error_EmptyMachineReadablePowerOfAttorney", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The expiration date of the power of attorney is not specified.
         /// </summary>
         internal static string Error_EmptyPowerOfAttorneyEndDate {
