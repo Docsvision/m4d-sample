@@ -1,4 +1,5 @@
 import { Layout } from "@docsvision/webclient/System/Layout";
+import IMask from "imask";
 
 export const customizeSubstitutionPowerOfAttorneyCardForEditLayout = (sender: Layout) => {
     const controls = sender.layout.controls;
@@ -12,6 +13,7 @@ export const customizeSubstitutionPowerOfAttorneyCardForEditLayout = (sender: La
     const kindDocProvIdenReprSPOA = controls.kindDocProvIdenReprSPOA;
     const revocationConditionSPOA = controls.revocationConditionSPOA;
 
+    customizeInputFields()
     onDataChangedPossibilityOfSubstSPOA(sender);
     onDataChangedIrrevocableSPOA(sender);
     onDataChangedSubjSubstPowType(sender);
@@ -34,6 +36,20 @@ export const customizeSubstitutionPowerOfAttorneyCardForEditLayout = (sender: La
     kindDocProvIdenReprSolePrSPOA && kindDocProvIdenReprSolePrSPOA.params.dataChanged.subscribe(onDataChangedKindDocProvIdenReprSolePrSPOA);
     kindDocProvIdenReprSPOA.params.dataChanged.subscribe(onDataChangedKindDocProvIdenReprSPOA);
     revocationConditionSPOA.params.dataChanged.subscribe(onDataChangedConditionSPOA);
+}
+
+const customizeInputFields = () => {
+    const INNIndividual = document.querySelector('[data-control-name="INNIndividual"]');
+    INNIndividual?.getElementsByTagName('input')[0].setAttribute("maxLength", "12");
+    const reprINNSPOA = document.querySelector('[data-control-name="reprINNSPOA"]');
+    reprINNSPOA?.getElementsByTagName('input')[0].setAttribute("maxLength", "12");
+    const maskOptions = {
+        mask: '000-000-000 00'
+    }
+    const SNILSIndividualInputElement = document.querySelector('[data-control-name="SNILSIndividual"]')?.getElementsByTagName('input')[0];
+    IMask(SNILSIndividualInputElement, maskOptions);
+    const reprSNILSSPOAInputElement = document.querySelector('[data-control-name="reprSNILSSPOA"]')?.getElementsByTagName('input')[0];
+    IMask(reprSNILSSPOAInputElement, maskOptions);    
 }
 
 const onDataChangedKindDocProvIdenReprSPOA = (sender: Layout) => {
