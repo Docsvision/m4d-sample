@@ -10,8 +10,7 @@ import { ICancelableEventArgs } from "@docsvision/webclient/System/ICancelableEv
 
 export const signPowerOfAttorneyFromTask = async (sender: LayoutControl, e: ICancelableEventArgs<OperationExecutingEventArgs>) => {
     e.wait();
-    const signCompletionOperationId = "ce8418b9-6699-43e1-b429-e0a7a115e452";
-    if(e.data.operationData.completionOptionId === signCompletionOperationId) {
+    if(e.data.operationData.additionalInfo.decisionName === "Подписать") {
         const powerOfAttorneyUserCardId = sender.layout.controls.locationContainer.params.layoutModel.cardInfo.id
         await sender.layout.getService($PowersOfAttorneyDemoController).createPowerOfAttorney(powerOfAttorneyUserCardId);
         
