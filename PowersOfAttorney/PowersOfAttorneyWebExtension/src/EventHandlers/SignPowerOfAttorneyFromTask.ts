@@ -11,9 +11,15 @@ import { ICancelableEventArgs } from "@docsvision/webclient/System/ICancelableEv
 export const signPowerOfAttorneyFromTask = async (sender: LayoutControl, e: ICancelableEventArgs<OperationExecutingEventArgs>) => {
     e.wait();
     if(e.data.operationData.additionalInfo.decisionName === "Подписать") {
-        const powerOfAttorneyUserCardId = sender.layout.controls.locationContainer.params.layoutModel.cardInfo.id
-        await sender.layout.getService($PowersOfAttorneyDemoController).createPowerOfAttorney(powerOfAttorneyUserCardId);
-        
+        const powerOfAttorneyUserCardId = sender.layout.controls.locationContainer.params.layoutModel.cardInfo.id;
+        const powerOfAttorneyUserKindId = sender.layout.controls.locationContainer.params.layoutModel.cardInfo.kindId;
+        if (powerOfAttorneyUserKindId  === 'e1925a07-6f57-406d-9073-294381ea5aed') {
+            await sender.layout.getService($PowersOfAttorneyDemoController).createPowerOfAttorney(powerOfAttorneyUserCardId);
+        } else if (powerOfAttorneyUserKindId  === '9df7c9ab-a7b2-4061-ab3a-0c35814cdad8') {
+            await sender.layout.getService($PowersOfAttorneyDemoController).createRetrustPowerOfAttorney(powerOfAttorneyUserCardId);
+        } else if (powerOfAttorneyUserKindId  === '6ac009bc-fd9c-4b7a-ba69-eaed27675264') {
+            await sender.layout.getService($PowersOfAttorneyDemoController).createEMCHDPowerOfAttorney(powerOfAttorneyUserCardId);
+        }      
         const powerOfAttorneyId = await sender.layout.getService($PowersOfAttorneyDemoController).getPowerOfAttorneyCardId(powerOfAttorneyUserCardId);
         await sender.layout.params.services.digitalSignature.showDocumentSignDialog(powerOfAttorneyUserCardId,
             {
