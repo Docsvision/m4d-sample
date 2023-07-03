@@ -34,7 +34,6 @@ const onSubstPOABasisDataChanged = (sender: LayoutControl) => {
 
 const onCeoDataChanged = async (sender: StaffDirectoryItems, args: IDataChangedEventArgs) => {
     const controls = sender.layout.controls;
-    const ceoPosition = controls.ceoPosition;
     const ceoBirthDate = controls.ceoBirthDate;
     const ceoGender = controls.ceoGender;
     const ceoPhone = controls.ceoPhone;
@@ -44,7 +43,6 @@ const onCeoDataChanged = async (sender: StaffDirectoryItems, args: IDataChangedE
 
     if (args.newValue) {
         const data = await sender.layout.params.services.requestManager.get(`api/v1/cards/${STAFF_DIRECTORY_ID}/${EMPLOYEE_SECTION_ID}/${args.newValue.id}`) as any;
-        ceoPosition.params.value = data.fields.find(field => field.alias === "PositionName").value;
         ceoBirthDate.params.value = data.fields.find(field => field.alias === "BirthDate").value;
         ceoGender.params.value = data.fields.find(field => field.alias === "Gender").value;
         ceoPhone.params.value = data.fields.find(field => field.alias === "Phone").value;
@@ -52,7 +50,6 @@ const onCeoDataChanged = async (sender: StaffDirectoryItems, args: IDataChangedE
         numCEOID.params.value = data.fields.find(field => field.alias === "IDNumber").value;
         authIssCEOID.params.value = data.fields.find(field => field.alias === "IDIssuedBy").value;
     } else {
-        ceoPosition.params.value = "";
         ceoBirthDate.params.value = "";
         ceoGender.params.value = "";
         ceoPhone.params.value = "";
@@ -93,19 +90,15 @@ const onPowersTypeDataChanged = (sender: LayoutControl) => {
     const controls = sender.layout.controls;
     const powersType = controls.powersType;
     const refPowersTable = controls.refPowersTable;
-    const textPowersDescrBlock = controls.textPowersDescrBlock;
     const textPowersDescr = controls.textPowersDescr;
-    const refPowersCode = controls.refPowersCode;
     if (powersType.params.value === "humReadPower") {
-        textPowersDescrBlock.params.visibility = true;
+        textPowersDescr.params.visibility = true;
         textPowersDescr.params.required = true;
         refPowersTable.params.visibility = false;
-        refPowersCode.params.required = false;
     } else {
-        textPowersDescrBlock.params.visibility = false;
+        textPowersDescr.params.visibility = false;
         textPowersDescr.params.required = false;
         refPowersTable.params.visibility = true;
-        refPowersCode.params.required = true;
     }
 }
 

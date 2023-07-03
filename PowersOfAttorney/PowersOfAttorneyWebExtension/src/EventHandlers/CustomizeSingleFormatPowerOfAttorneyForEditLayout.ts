@@ -142,18 +142,14 @@ const onPowersTypeDataChanged = (sender: LayoutControl) => {
     const controls = sender.layout.controls;
     const powersType = controls.powersType;
     const refPowersTable = controls.refPowersTable;
-    const textPowersDescrBlock = controls.textPowersDescrBlock;
     const textPowersDescr = controls.textPowersDescr;
-    const refPowersCode = controls.refPowersCode;
     if (powersType.params.value === "humReadPower") {
-        textPowersDescrBlock.params.visibility = true;
+        textPowersDescr.params.visibility = true;
         textPowersDescr.params.required = true;
         refPowersTable.params.visibility = false;
-        refPowersCode.params.required = false;
     } else {
-        textPowersDescrBlock.params.visibility = false;
+        textPowersDescr.params.visibility = false;
         textPowersDescr.params.required = false;
         refPowersTable.params.visibility = true;
-        refPowersCode.params.required = true;
     }
 }

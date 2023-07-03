@@ -4,16 +4,16 @@ export const customizeSingleFormatSPOACardForViewLayout = (sender: LayoutControl
     const controls = sender.layout.controls;
     const powersType = controls.powersType;
     const refPowersTable = controls.refPowersTable;
-    const textPowersDescrBlock = controls.textPowersDescrBlock;
+    const textPowersDescr = controls.textPowersDescr;
     const substPOABasis = controls.substPOABasis;
     const parentalPOABlock = controls.parentalPOABlock;
 
     if (powersType.params.value === "humReadPower") {
         refPowersTable.params.visibility = false;
-        textPowersDescrBlock.params.visibility = true;
+        textPowersDescr.params.visibility = true;
     } else {
         refPowersTable.params.visibility = true;
-        textPowersDescrBlock.params.visibility = false;
+        textPowersDescr.params.visibility = false;
     }
 
     if (substPOABasis.params.value) {
