@@ -1,56 +1,34 @@
-import { EMPLOYEE_SECTION_ID, STAFF_DIRECTORY_ID, UNIT_STAFF_SECTION_ID } from "@docsvision/webclient/BackOffice/StaffDirectoryConstants";
+import { EMPLOYEE_SECTION_ID, STAFF_DIRECTORY_ID } from "@docsvision/webclient/BackOffice/StaffDirectoryConstants";
 import { StaffDirectoryItems } from "@docsvision/webclient/BackOffice/StaffDirectoryItems";
 import { LayoutControl } from "@docsvision/webclient/System/BaseControl";
 import { IDataChangedEventArgs } from "@docsvision/webclient/System/IDataChangedEventArgs";
-import IMask from 'imask';
+import IMask from "imask";
 
-export const customizeSingleFormatPowerOfAttorneyForEditLayout = async (sender: LayoutControl) => {
+export const customizeSingleFormatSPOACardForEditLayout = (sender: LayoutControl) => {
     const controls = sender.layout.controls;
-    const entityPrincipal = controls.entityPrincipal;
+    const substPOABasis = controls.substPOABasis;
     const ceo = controls.ceo;
     const representative = controls.representative;
     const powersType = controls.powersType;
 
-    customizeInputFields();
+    onSubstPOABasisDataChanged(sender);
     onPowersTypeDataChanged(sender);
+    customizeInputFields();
 
-    entityPrincipal.params.dataChanged.subscribe(onPrincipalDataChanged);
+    substPOABasis.params.dataChanged.subscribe(onSubstPOABasisDataChanged);
     ceo.params.dataChanged.subscribe(onCeoDataChanged);
     representative.params.dataChanged.subscribe(onRepresentativeDataChanged);
     powersType.params.dataChanged.subscribe(onPowersTypeDataChanged);
-
 }
 
-const onPrincipalDataChanged = async (sender: StaffDirectoryItems, args: IDataChangedEventArgs) => {
+const onSubstPOABasisDataChanged = (sender: LayoutControl) => {
     const controls = sender.layout.controls;
-    const princINN = controls.princINN;
-    const princKPP = controls.princKPP;
-    const princOGRN = controls.princOGRN;
-    const princPhone = controls.princPhone;
-    const princEmail = controls.princEmail;
-    const princAddrRus = controls.princAddrRus;
-
-    if (args.newValue) {
-        const data = await sender.layout.params.services.requestManager.get(`api/v1/cards/${STAFF_DIRECTORY_ID}/${UNIT_STAFF_SECTION_ID}/${args.newValue.id}`) as any;
-        princINN.params.value = data.fields.find(field => field.alias === "INN").value;
-        princKPP.params.value = data.fields.find(field => field.alias === "KPP").value;
-        princOGRN.params.value = data.fields.find(field => field.alias === "OGRN").value;
-        princPhone.params.value = data.fields.find(field => field.alias === "Phone").value;
-        princEmail.params.value = data.fields.find(field => field.alias === "Email").value;
-
-        const addressData = data.sections.find(section => section.id === "dc55dca5-5d69-4fc4-90b1-c62e93a91b73").rows[0];
-        const zipCode = addressData.fields.find(field => field.alias === "ZipCode").value;
-        const country = addressData.fields.find(field => field.alias === "Country").value;
-        const city = addressData.fields.find(field => field.alias === "City").value;
-        const address = addressData.fields.find(field => field.alias === "Address").value;
-        princAddrRus.params.value = `${zipCode} ${country} ${city} ${address}`;
+    const substPOABasis = controls.substPOABasis;
+    const parentalPOABlock = controls.parentalPOABlock;
+    if (substPOABasis.params.value) {
+        parentalPOABlock.params.visibility = true;
     } else {
-        princINN.params.value = "";
-        princKPP.params.value = "";
-        princOGRN.params.value = "";
-        princPhone.params.value = "";
-        princEmail.params.value = "";
-        princAddrRus.params.value = "";
+        parentalPOABlock.params.visibility = false;
     }
 }
 
@@ -111,6 +89,25 @@ const onRepresentativeDataChanged = async (sender: StaffDirectoryItems, args: ID
     }
 }
 
+const onPowersTypeDataChanged = (sender: LayoutControl) => {
+    const controls = sender.layout.controls;
+    const powersType = controls.powersType;
+    const refPowersTable = controls.refPowersTable;
+    const textPowersDescrBlock = controls.textPowersDescrBlock;
+    const textPowersDescr = controls.textPowersDescr;
+    const refPowersCode = controls.refPowersCode;
+    if (powersType.params.value === "humReadPower") {
+        textPowersDescrBlock.params.visibility = true;
+        textPowersDescr.params.required = true;
+        refPowersTable.params.visibility = false;
+        refPowersCode.params.required = false;
+    } else {
+        textPowersDescrBlock.params.visibility = false;
+        textPowersDescr.params.required = false;
+        refPowersTable.params.visibility = true;
+        refPowersCode.params.required = true;
+    }
+}
 
 const customizeInputFields = () => {
     const codeTaxAuthSubmit = document.querySelector('[data-control-name="codeTaxAuthSubmit"]');
@@ -136,24 +133,4 @@ const customizeInputFields = () => {
     IMask(ceoSNILSInputElement, maskOptions)
     const reprSNILSInputElement = document.querySelector('[data-control-name="reprSNILS"]')?.getElementsByTagName('input')[0];
     IMask(reprSNILSInputElement, maskOptions)
-}
-
-const onPowersTypeDataChanged = (sender: LayoutControl) => {
-    const controls = sender.layout.controls;
-    const powersType = controls.powersType;
-    const refPowersTable = controls.refPowersTable;
-    const textPowersDescrBlock = controls.textPowersDescrBlock;
-    const textPowersDescr = controls.textPowersDescr;
-    const refPowersCode = controls.refPowersCode;
-    if (powersType.params.value === "humReadPower") {
-        textPowersDescrBlock.params.visibility = true;
-        textPowersDescr.params.required = true;
-        refPowersTable.params.visibility = false;
-        refPowersCode.params.required = false;
-    } else {
-        textPowersDescrBlock.params.visibility = false;
-        textPowersDescr.params.required = false;
-        refPowersTable.params.visibility = true;
-        refPowersCode.params.required = true;
-    }
 }

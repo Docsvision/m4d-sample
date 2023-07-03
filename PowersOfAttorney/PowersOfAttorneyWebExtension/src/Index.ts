@@ -17,6 +17,9 @@ import * as CustomizeSingleFormatPowerOfAttorneyForViewLayout from "./EventHandl
 import * as CreateEMCHDPowerOfAttorney from "./EventHandlers/CreateEMCHDPowerOfAttorney";
 import * as SignPowerOfAttorneyFromTask from "./EventHandlers/SignPowerOfAttorneyFromTask";
 import * as ShowRequiredFields from "./EventHandlers/ShowRequiredFields";
+import * as CustomizeSingleFormatSPOACardForEditLayout from "./EventHandlers/CustomizeSingleFormatSPOACardForEditLayout";
+import * as CustomizeSingleFormatSPOACardForViewLayout from "./EventHandlers/CustomizeSingleFormatSPOACardForViewLayout";
+import * as CreateEMCHDRetrustPowerOfAttorney from "./EventHandlers/CreateEMCHDRetrustPowerOfAttorney";
 
 // Главная входная точка всего расширения
 // Данный файл должен импортировать прямо или косвенно все остальные файлы, 
@@ -29,7 +32,8 @@ extensionManager.registerExtension({
     version: "5.5.17",
     globalEventHandlers: [ CreatePowerOfAttorney, CreateRetrustPowerOfAttorney, ExportPowerOfAttorney, SignPowerOfAttorney, RevokePowerOfAttorney, DeletePowerOfAttorney,
         CustomizePowerOfAttorneyCardForEditLayout, CustomizePowerOfAttorneyCardForViewCard, CustomizeSubstitutionPowerOfAttorneyCardForEditLayout, CustomizeSubstitutionPowerOfAttorneyCardForViewLayout,
-        CustomizeSingleFormatPowerOfAttorneyForEditLayout, CustomizeSingleFormatPowerOfAttorneyForViewLayout, CreateEMCHDPowerOfAttorney, SignPowerOfAttorneyFromTask, ShowRequiredFields ],
+        CustomizeSingleFormatPowerOfAttorneyForEditLayout, CustomizeSingleFormatPowerOfAttorneyForViewLayout, CreateEMCHDPowerOfAttorney, SignPowerOfAttorneyFromTask, ShowRequiredFields, CustomizeSingleFormatSPOACardForEditLayout, 
+        CustomizeSingleFormatSPOACardForViewLayout, CreateEMCHDRetrustPowerOfAttorney ],
     layoutServices: [ 
         Service.fromFactory($PowersOfAttorneyDemoController, (services: $RequestManager) => new PowersOfAttorneyDemoController(services))
     ]
