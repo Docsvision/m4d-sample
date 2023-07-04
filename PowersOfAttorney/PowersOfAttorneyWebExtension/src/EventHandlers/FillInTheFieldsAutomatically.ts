@@ -50,7 +50,7 @@ export const onCeoDataChanged = async (sender: StaffDirectoryItems, args: IDataC
         const data = await sender.layout.params.services.requestManager.get(`api/v1/cards/${STAFF_DIRECTORY_ID}/${EMPLOYEE_SECTION_ID}/${args.newValue.id}`) as any;
         ceoPosition.params.value = data.fields.find(field => field.alias === "PositionName").value;
         ceoBirthDate.params.value = data.fields.find(field => field.alias === "BirthDate").value;
-        ceoGender.params.value = data.fields.find(field => field.alias === "Gender").value;
+        ceoGender.params.value = data.fields.find(field => field.alias === "Gender").value.toString();
         ceoPhone.params.value = data.fields.find(field => field.alias === "Phone").value;
         ceoEmail.params.value = data.fields.find(field => field.alias === "Email").value;
         numCEOID.params.value = data.fields.find(field => field.alias === "IDNumber").value;
@@ -78,7 +78,7 @@ export const onRepresentativeDataChanged = async (sender: StaffDirectoryItems, a
     if (args.newValue) {
         const data = await sender.layout.params.services.requestManager.get(`api/v1/cards/${STAFF_DIRECTORY_ID}/${EMPLOYEE_SECTION_ID}/${args.newValue.id}`) as any;
         reprBirthDate.params.value = data.fields.find(field => field.alias === "BirthDate").value;
-        reprGender.params.value = data.fields.find(field => field.alias === "Gender").value;
+        reprGender.params.value = data.fields.find(field => field.alias === "Gender").value.toString();
         reprPhone.params.value = data.fields.find(field => field.alias === "Phone").value;
         reprEmail.params.value = data.fields.find(field => field.alias === "Email").value;
         numReprID.params.value = data.fields.find(field => field.alias === "IDNumber").value;
