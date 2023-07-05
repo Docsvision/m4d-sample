@@ -81,13 +81,12 @@ internal static class UserCardPowerOfAttorneyFNSDOVBBExtensions
             var startDate = userCard.PowerOfAttorneyStartDate;
             var endDate = userCard.PowerOfAttorneyEndDate;
             var retrustType = (PowerOfAttorneyRetrustType)userCard.RetrustType;
-            var jointRepresentationType = ConverToEnumWithFixIndex<JointRepresentationType>(userCard.JointRepresentation);
             var irrevocablePowerOfAttorneyInfo = GetIrrevocablePowerOfAttorneyInfo();
             // Для заполнения МЧД требуется название организации-владельца информационной системы - возьмём данные подписанта
             var organizationName = userCard.Signer.Unit.Name;
             PowerOfAttorneyLossOfAuthorityType? lossOfAuthorityType = GetPowerOfAttorneyLossOfAuthorityType(userCard.LossOfAuthorityType);
 
-            return new PowerOfAttorneyInfo(powerOfAttorneyId, startDate, endDate, retrustType, jointRepresentationType, irrevocablePowerOfAttorneyInfo, organizationName, lossOfAuthorityType: lossOfAuthorityType);
+            return new PowerOfAttorneyInfo(powerOfAttorneyId, startDate, endDate, retrustType, userCard.JointRepresentation, irrevocablePowerOfAttorneyInfo, organizationName, lossOfAuthorityType: lossOfAuthorityType);
         }
 
         private PowerOfAttorneyLossOfAuthorityType? GetPowerOfAttorneyLossOfAuthorityType(int? lossOfAuthorityType)

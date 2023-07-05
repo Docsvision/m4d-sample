@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
+using static DocsVision.BackOffice.ObjectModel.Services.Entities.PowerOfAttorneyFNSData;
+
 namespace PowersOfAttorneyServerExtension.Helpers
 {
     internal partial class UserCardPowerOfAttorney
@@ -250,7 +252,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
         /// <summary>
         /// Совместные полномочия
         /// </summary>
-        public int JointRepresentation => genMchdSection.GetIntValue(Fields.JointPowers) ?? throw new ArgumentNullException(Resources.Error_EmptyJointRepresentation);
+        public JointRepresentationType JointRepresentation => genMchdSection.GetEnumValue<JointRepresentationType>("jointExerPowers") ?? throw new ArgumentNullException(Resources.Error_EmptyJointRepresentation);
 
         /// <summary>
         /// Признак передоверия безотзывной доверенности
