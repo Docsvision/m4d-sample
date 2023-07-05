@@ -1,4 +1,5 @@
 ﻿using DocsVision.BackOffice.ObjectModel;
+using DocsVision.BackOffice.ObjectModel.Services;
 using DocsVision.BackOffice.ObjectModel.Services.Entities;
 using DocsVision.BackOffice.WebClient.PowersOfAttorney;
 using DocsVision.Platform.ObjectModel;
@@ -16,10 +17,13 @@ namespace PowersOfAttorneyServerExtension.Services
     internal class PowersOfAttorneyDemoService : IPowersOfAttorneyDemoService
     {
         private readonly IPowerOfAttorneyProxyService powerOfAttorneyProxyService;
+        private readonly IPowerOfAttorneyService powerOfAttorneyService;
 
-        public PowersOfAttorneyDemoService(IPowerOfAttorneyProxyService powerOfAttorneyProxyService)
+        public PowersOfAttorneyDemoService(IPowerOfAttorneyProxyService powerOfAttorneyProxyService, 
+            IPowerOfAttorneyService powerOfAttorneyService)
         {
             this.powerOfAttorneyProxyService = powerOfAttorneyProxyService;
+            this.powerOfAttorneyService = powerOfAttorneyService;
         }
 
         public Guid CreatePowerOfAttorney(ObjectContext context, Guid powerOfAttorneyUserCardId, Guid formatId)
@@ -136,7 +140,7 @@ namespace PowersOfAttorneyServerExtension.Services
         private PowerOfAttorneyData GetPowerOfAttorneyData(UserCardPowerOfAttorney userCard, Guid formatId)
         {
             if (formatId == PowerOfAttorneyFNSDOVBBData.FormatId)
-                return userCard.ConvertToPowerOfAttorneyFNSDOVBBData();
+                return userCard.ConvertToPowerOfAttorneyFNSDOVBBData(powerOfAttorneyService);
 
             if (formatId == PowerOfAttorneyEMHCDData.FormatId)
                 return userCard.ConvertToPowerOfAttorneyEMHCDData();

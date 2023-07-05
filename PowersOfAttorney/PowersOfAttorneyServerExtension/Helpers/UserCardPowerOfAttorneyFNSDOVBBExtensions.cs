@@ -1,4 +1,5 @@
 using DocsVision.BackOffice.ObjectModel;
+using DocsVision.BackOffice.ObjectModel.Services;
 using DocsVision.BackOffice.ObjectModel.Services.Entities;
 using DocsVision.Platform.WebClient.Diagnostics;
 
@@ -16,11 +17,11 @@ using static PowersOfAttorneyServerExtension.Helpers.UserCardPowerOfAttorney;
 
 internal static class UserCardPowerOfAttorneyFNSDOVBBExtensions
 {
-    public static PowerOfAttorneyData ConvertToPowerOfAttorneyFNSDOVBBData(this UserCardPowerOfAttorney userCard)
+    public static PowerOfAttorneyData ConvertToPowerOfAttorneyFNSDOVBBData(this UserCardPowerOfAttorney userCard, IPowerOfAttorneyService powerOfAttorneyService)
     {
         try
         {
-            return Converter.Convert(userCard);
+            return Converter.Convert(userCard, powerOfAttorneyService);
         }
         catch (Exception ex)
         {
@@ -32,18 +33,19 @@ internal static class UserCardPowerOfAttorneyFNSDOVBBExtensions
     class Converter
     {
         private readonly UserCardPowerOfAttorney userCard;
-
+        private readonly IPowerOfAttorneyService powerOfAttorneyService;
         private const int LossOfPowersUponSubstitutionLost = 1;
 
 
-        private Converter(UserCardPowerOfAttorney userCard)
+        private Converter(UserCardPowerOfAttorney userCard, IPowerOfAttorneyService powerOfAttorneyService)
         {
             this.userCard = userCard ?? throw new ArgumentNullException(nameof(userCard));
+            this.powerOfAttorneyService = powerOfAttorneyService;
         }
 
-        public static PowerOfAttorneyFNSDOVBBData Convert(UserCardPowerOfAttorney userCard)
+        public static PowerOfAttorneyFNSDOVBBData Convert(UserCardPowerOfAttorney userCard, IPowerOfAttorneyService powerOfAttorneyService)
         {
-            return new Converter(userCard).Convert();
+            return new Converter(userCard, powerOfAttorneyService).Convert();
         }
 
         private PowerOfAttorneyFNSDOVBBData Convert()
@@ -247,10 +249,10 @@ internal static class UserCardPowerOfAttorneyFNSDOVBBExtensions
 
         private RetrustPowerOfAttorneyInfo GetRetrustPowerOfAttorneyInfo()
         {
-            var parentPowerOfAttorneySerializedData = userCard.ParentalPowerOfAttorney.MainInfo.MachineReadablePowerOfAttorney;
             var powerOfAttorneyInfo = GetPowerOfAttorneyInfo();
+            var powerOfAttorneyContent = powerOfAttorneyService.GetMachineReadablePowerOfAttorneyContent(userCard.ParentalPowerOfAttorney);
 
-            return new RetrustPowerOfAttorneyInfo(parentPowerOfAttorneySerializedData, powerOfAttorneyInfo);
+            return new RetrustPowerOfAttorneyInfo(powerOfAttorneyContent, powerOfAttorneyInfo);
         }
 
         private IrrevocablePowerOfAttorneyInfo GetIrrevocablePowerOfAttorneyInfo()
