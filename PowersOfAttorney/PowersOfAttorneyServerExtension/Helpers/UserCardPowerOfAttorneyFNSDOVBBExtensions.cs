@@ -80,13 +80,28 @@ internal static class UserCardPowerOfAttorneyFNSDOVBBExtensions
             var powerOfAttorneyId = userCard.PowerOfAttorneyId;
             var startDate = userCard.PowerOfAttorneyStartDate;
             var endDate = userCard.PowerOfAttorneyEndDate;
-            var retrustType = (PowerOfAttorneyRetrustType)userCard.RetrustType;
+            var retrustType = Convert(userCard.RetrustType);
             var irrevocablePowerOfAttorneyInfo = GetIrrevocablePowerOfAttorneyInfo();
             // Для заполнения МЧД требуется название организации-владельца информационной системы - возьмём данные подписанта
             var organizationName = userCard.Signer.Unit.Name;
             PowerOfAttorneyLossOfAuthorityType? lossOfAuthorityType = GetPowerOfAttorneyLossOfAuthorityType(userCard.LossOfAuthorityType);
 
             return new PowerOfAttorneyInfo(powerOfAttorneyId, startDate, endDate, retrustType, userCard.JointRepresentation, irrevocablePowerOfAttorneyInfo, organizationName, lossOfAuthorityType: lossOfAuthorityType);
+        }
+
+        private PowerOfAttorneyRetrustType Convert(GenPossibilityOfSubstitutionTypes002 retrustType)
+        {
+            switch (retrustType)
+            {
+                case GenPossibilityOfSubstitutionTypes002.withoutSubstitution:
+                    return PowerOfAttorneyRetrustType.None;
+                case GenPossibilityOfSubstitutionTypes002.onetimeSubstitution:
+                    return PowerOfAttorneyRetrustType.OneTime;
+                case GenPossibilityOfSubstitutionTypes002.subsequentSubstitution:
+                    return PowerOfAttorneyRetrustType.Followed;
+            }
+
+            throw new ArgumentOutOfRangeException(nameof(retrustType));
         }
 
         private PowerOfAttorneyLossOfAuthorityType? GetPowerOfAttorneyLossOfAuthorityType(int? lossOfAuthorityType)
@@ -134,14 +149,13 @@ internal static class UserCardPowerOfAttorneyFNSDOVBBExtensions
         private IndividualInfo GetRepresentativeIndividualInfo(StaffEmployee employee)
         {
             var birthDate = employee.BirthDate;
-            var citizenshipType = ConverToEnumWithFixIndex<CitizenshipType>(userCard.RepresentativeCitizenshipType);
             var birthPlace = userCard.RepresentativeIndividualBirthPlace;
             var phone = employee.Phone;
             var gender = GetGender(employee);
             var residenceAddress = GetAddressInfo(userCard.RepresentativeIndividualAddressSubjectRfCode, userCard.RepresentativeIndividualAddress);
             var identityCard = GetRepresentativeIdentityCard();
 
-            return new IndividualInfo(birthDate, citizenshipType, birthPlace, phone, gender, residenceAddress: residenceAddress, identityCard: identityCard);
+            return new IndividualInfo(birthDate, userCard.RepresentativeCitizenshipType, birthPlace, phone, gender, residenceAddress: residenceAddress, identityCard: identityCard);
         }
 
         private IdentityCardOfIndividual GetRepresentativeIdentityCard()
@@ -316,7 +330,7 @@ internal static class UserCardPowerOfAttorneyFNSDOVBBExtensions
         private IndividualInfo GetPrincipalWithoutPowerOfAttorneyIndividual1Info(StaffEmployee emlpoyee)
         {
             var birthDate = emlpoyee.BirthDate;
-            var citizenshipType = ConverToEnumWithFixIndex<CitizenshipType>(userCard.PrincipalWithoutPowerOfAttorneyIndividualCitizenship);
+            var citizenshipType = userCard.PrincipalWithoutPowerOfAttorneyIndividualCitizenship;
             var birthPlace = userCard.PrincipalWithoutPowerOfAttorneyIndividualBirthPlace;
             var phone = emlpoyee.Phone;
             var gender = GetGender(emlpoyee);

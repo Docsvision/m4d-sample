@@ -106,7 +106,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
         /// <summary>
         /// Признак гражданства представителя
         /// </summary>
-        public int RepresentativeCitizenshipType => genMchdSection.GetIntValue(Fields.SignOfCitizenshipOfRepresentative) ?? throw new ArgumentNullException(Resources.Error_EmptyRepresentativeCitizenshipType);
+        public CitizenshipType RepresentativeCitizenshipType => genMchdSection.GetEnumValue<CitizenshipType>(Fields.SignOfCitizenshipOfRepresentative) ?? throw new ArgumentNullException(Resources.Error_EmptyRepresentativeCitizenshipType);
 
         /// <summary>
         /// Место рождения представителя
@@ -186,7 +186,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
         /// <summary>
         /// Признак наличия гражданства лица, действующего без доверенности
         /// </summary>
-        public int PrincipalWithoutPowerOfAttorneyIndividualCitizenship => genMchdSection.GetIntValue(Fields.SignOfCitizenshipfIAWPOA) ?? throw new ArgumentNullException(Resources.Error_EmptyPrincipalWithoutPowerOfAttorneyIndividualCitizenship);
+        public CitizenshipType PrincipalWithoutPowerOfAttorneyIndividualCitizenship => genMchdSection.GetEnumValue<CitizenshipType>(Fields.SignOfCitizenshipfIAWPOA) ?? throw new ArgumentNullException(Resources.Error_EmptyPrincipalWithoutPowerOfAttorneyIndividualCitizenship);
 
         /// <summary>
         /// Код подразделения органа, выдавшего документ, удостоверяющий физлицо, действующее без доверенности
@@ -246,8 +246,8 @@ namespace PowersOfAttorneyServerExtension.Helpers
 
         /// <summary>
         /// Возможность оформления передоверия
-        /// </summary>
-        public int RetrustType => genMchdSection.GetIntValue(Fields.PossibilityOfSubstitution) ?? throw new ArgumentNullException(Resources.Error_EmptyRetrustType);
+        /// </summary>        
+        public GenPossibilityOfSubstitutionTypes002 RetrustType => genMchdSection.GetEnumValue<GenPossibilityOfSubstitutionTypes002>(Fields.PossibilityOfSubstitution) ?? throw new ArgumentNullException(Resources.Error_EmptyRetrustType);
 
         /// <summary>
         /// Совместные полномочия
@@ -321,6 +321,25 @@ namespace PowersOfAttorneyServerExtension.Helpers
             // Remarks:
             //     Код 21
             Passport = 21
+        }
+
+        /// <summary>
+        /// Признак возможности оформления передоверия
+        /// </summary>
+        internal enum GenPossibilityOfSubstitutionTypes002
+        {
+            /// <summary>
+            /// Без права передоверия
+            /// </summary>
+            withoutSubstitution = 1,
+            /// <summary>
+            /// Однократное передоверие
+            /// </summary>
+            onetimeSubstitution = 2,
+            /// <summary>
+            /// С правом последующего передоверия
+            /// </summary>
+            subsequentSubstitution = 3
         }
     }
 
