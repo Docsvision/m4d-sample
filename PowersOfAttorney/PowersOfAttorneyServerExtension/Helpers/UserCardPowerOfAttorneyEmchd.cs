@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-using static DocsVision.BackOffice.ObjectModel.Services.Entities.PowerOfAttorneyEMHCDData;
+using static DocsVision.BackOffice.ObjectModel.Services.Entities.PowerOfAttorneyEMCHDData;
 
 namespace PowersOfAttorneyServerExtension.Helpers
 {
@@ -580,12 +580,12 @@ namespace PowersOfAttorneyServerExtension.Helpers
         /// <summary>
         /// Пол руководителя организации
         /// </summary>
-        public PowerOfAttorneyEMHCDData.Gender? GenCeoGender => genMchdSection.GetEnumValue<PowerOfAttorneyEMHCDData.Gender>("ceoGender");
+        public PowerOfAttorneyEMCHDData.Gender? GenCeoGender => genMchdSection.GetEnumValue<PowerOfAttorneyEMCHDData.Gender>("ceoGender");
 
         /// <summary>
         /// Пол представителя
         /// </summary>
-        public PowerOfAttorneyEMHCDData.Gender? GenGenderOfRepresentative => genMchdSection.GetEnumValue<PowerOfAttorneyEMHCDData.Gender>("genderOfRepresentative");
+        public PowerOfAttorneyEMCHDData.Gender? GenGenderOfRepresentative => genMchdSection.GetEnumValue<PowerOfAttorneyEMCHDData.Gender>("genderOfRepresentative");
 
         /// <summary>
         /// Вид доверенности

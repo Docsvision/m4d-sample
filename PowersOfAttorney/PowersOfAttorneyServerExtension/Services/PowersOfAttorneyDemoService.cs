@@ -52,7 +52,7 @@ namespace PowersOfAttorneyServerExtension.Services
 
         public Guid CreateRetrustPowerOfAttorney(ObjectContext context, Guid powerOfAttorneyUserCardId, Guid formatId)
         {
-            if (formatId == PowerOfAttorneyEMHCDData.FormatId)
+            if (formatId == PowerOfAttorneyEMCHDData.FormatId)
             {
                 // В данном примере передоверие Единого формата не реализовано
                 throw new NotImplementedException(Resources.EmchdRetrustNotImplemented);
@@ -119,7 +119,7 @@ namespace PowersOfAttorneyServerExtension.Services
             if (formatId == PowerOfAttorneyFNSDOVBBData.FormatId)
                 return userCardPowerOfAttorney.RepresentativeIndividual.GetObjectId();
 
-            if (formatId == PowerOfAttorneyEMHCDData.FormatId)
+            if (formatId == PowerOfAttorneyEMCHDData.FormatId)
                 return userCardPowerOfAttorney.GenRepresentative.GetObjectId();
 
 
@@ -131,7 +131,7 @@ namespace PowersOfAttorneyServerExtension.Services
             if (formatId == PowerOfAttorneyFNSDOVBBData.FormatId)
                 return userCardPowerOfAttorney.PrincipalOrganization?.INN;
 
-            if (formatId == PowerOfAttorneyEMHCDData.FormatId)
+            if (formatId == PowerOfAttorneyEMCHDData.FormatId)
                 return userCardPowerOfAttorney.GenEntityPrinINN ?? userCardPowerOfAttorney.GenEntityPrincipal?.INN;
 
             throw new ArgumentOutOfRangeException(string.Format(Resources.InvalidPowerOfAttorneyFormat, formatId));
@@ -142,8 +142,8 @@ namespace PowersOfAttorneyServerExtension.Services
             if (formatId == PowerOfAttorneyFNSDOVBBData.FormatId)
                 return userCard.ConvertToPowerOfAttorneyFNSDOVBBData(PowerOfAttorneyService);
 
-            if (formatId == PowerOfAttorneyEMHCDData.FormatId)
-                return userCard.ConvertToPowerOfAttorneyEMHCDData();
+            if (formatId == PowerOfAttorneyEMCHDData.FormatId)
+                return userCard.ConvertToPowerOfAttorneyEMCHDData();
 
 
             throw new ArgumentOutOfRangeException(string.Format(Resources.InvalidPowerOfAttorneyFormat, formatId));
@@ -154,7 +154,7 @@ namespace PowersOfAttorneyServerExtension.Services
             if (formatId == PowerOfAttorneyFNSDOVBBData.FormatId)
                 return userCardPowerOfAttorney.Signer.GetObjectId();
 
-            if (formatId == PowerOfAttorneyEMHCDData.FormatId)
+            if (formatId == PowerOfAttorneyEMCHDData.FormatId)
                 return userCardPowerOfAttorney.GenCeo.GetObjectId();
 
             throw new ArgumentOutOfRangeException(string.Format(Resources.InvalidPowerOfAttorneyFormat, formatId));

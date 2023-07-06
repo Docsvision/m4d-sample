@@ -12,7 +12,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
 {
     internal static class UserCardPowerOfAttorneyEMCHDExtensions
     {
-        public static PowerOfAttorneyData ConvertToPowerOfAttorneyEMHCDData(this UserCardPowerOfAttorney userCard)
+        public static PowerOfAttorneyData ConvertToPowerOfAttorneyEMCHDData(this UserCardPowerOfAttorney userCard)
         {
             return Converter.Convert(userCard);
         }
@@ -26,14 +26,14 @@ namespace PowersOfAttorneyServerExtension.Helpers
                 this.userCard = userCard ?? throw new ArgumentNullException(nameof(userCard));
             }
 
-            public static PowerOfAttorneyEMHCDData Convert(UserCardPowerOfAttorney userCard)
+            public static PowerOfAttorneyEMCHDData Convert(UserCardPowerOfAttorney userCard)
             {
                 return new Converter(userCard).Convert();
             }
 
-            private PowerOfAttorneyEMHCDData Convert()
+            private PowerOfAttorneyEMCHDData Convert()
             {
-                return new PowerOfAttorneyEMHCDData(withEsia: false, withNotary: false, withTax: true)
+                return new PowerOfAttorneyEMCHDData(withEsia: false, withNotary: false, withTax: true)
                 {
                     Document = CreateDocumentPart(),
                     SenderID = $"{userCard.GenEntityPrinINN}{userCard.GenEntityPrinKPP}",
@@ -42,18 +42,18 @@ namespace PowersOfAttorneyServerExtension.Helpers
                 };
             }
 
-            private PowerOfAttorneyEMHCDData.PowerOfAttorneyDocument CreateDocumentPart()
+            private PowerOfAttorneyEMCHDData.PowerOfAttorneyDocument CreateDocumentPart()
             {
-                return new PowerOfAttorneyEMHCDData.PowerOfAttorneyDocument
+                return new PowerOfAttorneyEMCHDData.PowerOfAttorneyDocument
                 {
                     KND = userCard.GenKnd,
                     PowerOfAttorneyData = CreatePowerOfAttorneyDataPart()
                 };
             }
 
-            private PowerOfAttorneyEMHCDData.PowerOfAttorneyDocumentData CreatePowerOfAttorneyDataPart()
+            private PowerOfAttorneyEMCHDData.PowerOfAttorneyDocumentData CreatePowerOfAttorneyDataPart()
             {
-                return new PowerOfAttorneyEMHCDData.PowerOfAttorneyDocumentData
+                return new PowerOfAttorneyEMCHDData.PowerOfAttorneyDocumentData
                 {
                     //NotaryCertificateInfo = CreateNotaryCertificateInfoPart(),
                     PowerOfAttorney = CreatePowerOfAttorneyPart(),
@@ -63,11 +63,11 @@ namespace PowersOfAttorneyServerExtension.Helpers
                 };
             }
 
-            private PowerOfAttorneyEMHCDData.RepresentativePowersInfo CreateRepresentativePowersPart()
+            private PowerOfAttorneyEMCHDData.RepresentativePowersInfo CreateRepresentativePowersPart()
             {
                 var powersType = userCard.GenPowersType ?? throw new ApplicationException(Resources.Error_PowersTypeIsEmpty);
 
-                var part = new PowerOfAttorneyEMHCDData.RepresentativePowersInfo
+                var part = new PowerOfAttorneyEMCHDData.RepresentativePowersInfo
                 {
                     AuthorityType = powersType,
                     JointRepresentationType = userCard.GenJointExerPowers ?? throw new ApplicationException(Resources.Error_JointExerIsEmpty),
@@ -76,9 +76,9 @@ namespace PowersOfAttorneyServerExtension.Helpers
                 if (userCard.GenLossPowersTransfer != null)
                     part.LossOfAuthorityType = userCard.GenLossPowersTransfer;
 
-                if (powersType == PowerOfAttorneyEMHCDData.AuthorityType.Code)
+                if (powersType == PowerOfAttorneyEMCHDData.AuthorityType.Code)
                 {
-                    part.MachineReadablePowersInfo = userCard.GetPowersCodes().Select(power => new PowerOfAttorneyEMHCDData.MachineReadablePowersInfo
+                    part.MachineReadablePowersInfo = userCard.GetPowersCodes().Select(power => new PowerOfAttorneyEMCHDData.MachineReadablePowersInfo
                     {
                         PowersCode = power
                     }).ToList();
@@ -91,22 +91,22 @@ namespace PowersOfAttorneyServerExtension.Helpers
                 return part;
             }
 
-            private PowerOfAttorneyEMHCDData.RepresentativesInfo CreateRepresentativesPart()
+            private PowerOfAttorneyEMCHDData.RepresentativesInfo CreateRepresentativesPart()
             {
-                return new PowerOfAttorneyEMHCDData.RepresentativesInfo
+                return new PowerOfAttorneyEMCHDData.RepresentativesInfo
                 {
                     RepresentativeType = Convert(userCard.GenRepresentativeType ?? throw new ApplicationException(Resources.Error_GenRepresentativeIsEmpty)),
                     Representative = CreateRepresentativePart(userCard.GenRepresentativeType.Value)
                 };
             }
 
-            private PowerOfAttorneyEMHCDData.RepresentativeInfo CreateRepresentativePart(GenRepresentativeTypes representativeType)
+            private PowerOfAttorneyEMCHDData.RepresentativeInfo CreateRepresentativePart(GenRepresentativeTypes representativeType)
             {
                 // Представитель-физлицо
                 if (representativeType == GenRepresentativeTypes.individual)
-                    return new PowerOfAttorneyEMHCDData.RepresentativeInfo
+                    return new PowerOfAttorneyEMCHDData.RepresentativeInfo
                     {
-                        Individual = new PowerOfAttorneyEMHCDData.SoleExecutiveIndividualInfo
+                        Individual = new PowerOfAttorneyEMCHDData.SoleExecutiveIndividualInfo
                         {
                             Inn = userCard.GenRepresentativeINN,
                             IndividualInfo = CreateRepresentativeIndividualInfoPart(),
@@ -118,9 +118,9 @@ namespace PowersOfAttorneyServerExtension.Helpers
                 throw new ArgumentOutOfRangeException(nameof(representativeType));
             }
 
-            private PowerOfAttorneyEMHCDData.IndividualInfo CreateRepresentativeIndividualInfoPart()
+            private PowerOfAttorneyEMCHDData.IndividualInfo CreateRepresentativeIndividualInfoPart()
             {
-                return new PowerOfAttorneyEMHCDData.IndividualInfo
+                return new PowerOfAttorneyEMCHDData.IndividualInfo
                 {
                     BirthDate = userCard.GenReprDateOfBirth,
                     BirthPlace = userCard.GenReprPlaceOfBirth,
@@ -128,14 +128,14 @@ namespace PowersOfAttorneyServerExtension.Helpers
                     CitizenshipType = userCard.GenReprCitizenshipSign,
                     ContactPhone = userCard.GenReprPhoneNum,
                     EMail = userCard.GenReprEmail,
-                    Fio = new PowerOfAttorneyEMHCDData.FIO
+                    Fio = new PowerOfAttorneyEMCHDData.FIO
                     {
                         FirstName = userCard.GenRepresentative.FirstName,
                         LastName = userCard.GenRepresentative.LastName,
                         MiddleName = userCard.GenRepresentative.MiddleName
                     },
                     Gender = userCard.GenGenderOfRepresentative,
-                    IdentityCard = new PowerOfAttorneyEMHCDData.IdentityCardOfIndividual
+                    IdentityCard = new PowerOfAttorneyEMCHDData.IdentityCardOfIndividual
                     {
                         DocumentKindCode = userCard.GenTypeCodeReprIDDoc?.ToString(),
                         DocumentSerialNumber = userCard.GenSerNumReprIDDoc,
@@ -147,24 +147,24 @@ namespace PowersOfAttorneyServerExtension.Helpers
                 };
             }
 
-            private PowerOfAttorneyEMHCDData.PrincipalsInfo CreatePrincipalsPart()
+            private PowerOfAttorneyEMCHDData.PrincipalsInfo CreatePrincipalsPart()
             {
-                return new PowerOfAttorneyEMHCDData.PrincipalsInfo
+                return new PowerOfAttorneyEMCHDData.PrincipalsInfo
                 {
                     PrincipalType = Convert(userCard.GenPrincipalType ?? throw new ApplicationException(Resources.Error_PrincipalTypeIsEmpty)),
                     PrincipalInfo = CreatePrincipalPart(userCard.GenPrincipalType.Value)
                 };
             }
 
-            private PowerOfAttorneyEMHCDData.PrincipalInfo CreatePrincipalPart(GenPrincipalTypes principalType)
+            private PowerOfAttorneyEMCHDData.PrincipalInfo CreatePrincipalPart(GenPrincipalTypes principalType)
             {
                 if (principalType == GenPrincipalTypes.entity)
-                    return new PowerOfAttorneyEMHCDData.PrincipalInfo
+                    return new PowerOfAttorneyEMCHDData.PrincipalInfo
                     {
-                        RussianEntity = new PowerOfAttorneyEMHCDData.RussianLegalEntityPrincipalInfo
+                        RussianEntity = new PowerOfAttorneyEMCHDData.RussianLegalEntityPrincipalInfo
                         {
                             EntityInfo = CreatePrincipalEntityInfoPart(),
-                            PrincipalsWithoutPowerOfAttorneyInfo = new List<PowerOfAttorneyEMHCDData.PrincipalWithoutPowerOfAttorneyInfo> { CreatePrincipalsWithoutPowerOfAttorneyInfoPart() },
+                            PrincipalsWithoutPowerOfAttorneyInfo = new List<PowerOfAttorneyEMCHDData.PrincipalWithoutPowerOfAttorneyInfo> { CreatePrincipalsWithoutPowerOfAttorneyInfoPart() },
                             SoleExecutiveIsIndividual = userCard.GenIndSEB == true,
                             SoleExecutiveIsManagementCompany = userCard.GenMngtCompanySEB == true,
                             SoleExecutiveIsSoleProprietor = userCard.GenSolePropSEB == true
@@ -174,27 +174,27 @@ namespace PowersOfAttorneyServerExtension.Helpers
                 throw new ArgumentOutOfRangeException(nameof(principalType));
             }
 
-            private PowerOfAttorneyEMHCDData.PrincipalWithoutPowerOfAttorneyInfo CreatePrincipalsWithoutPowerOfAttorneyInfoPart()
+            private PowerOfAttorneyEMCHDData.PrincipalWithoutPowerOfAttorneyInfo CreatePrincipalsWithoutPowerOfAttorneyInfoPart()
             {
-                return new PowerOfAttorneyEMHCDData.PrincipalWithoutPowerOfAttorneyInfo
+                return new PowerOfAttorneyEMCHDData.PrincipalWithoutPowerOfAttorneyInfo
                 {
                     AuthorityType = Convert(userCard.GenPowersTypeOfSEB ?? throw new ApplicationException(Resources.Error_PowersTypeOfSEBIsEmpty)),
                     IndividualInfo = CreateSeoIndividualInfoPart()
                 };
             }
 
-            private PowerOfAttorneyEMHCDData.SoleExecutiveIndividualInfo CreateSeoIndividualInfoPart()
+            private PowerOfAttorneyEMCHDData.SoleExecutiveIndividualInfo CreateSeoIndividualInfoPart()
             {
-                return new PowerOfAttorneyEMHCDData.SoleExecutiveIndividualInfo
+                return new PowerOfAttorneyEMCHDData.SoleExecutiveIndividualInfo
                 {
-                    ConfirmationDocument = new PowerOfAttorneyEMHCDData.ConfirmationOfAuthorityDocument
+                    ConfirmationDocument = new PowerOfAttorneyEMCHDData.ConfirmationOfAuthorityDocument
                     {
                         DocumentName = userCard.GenDocConfAuthCEO,
                         IdentityOfDocument = userCard.GenSerNumCEOIDDoc,
                         IssueDate = userCard.GenDateIssCEOIDDoc,
                         Issuer = userCard.GenAuthIssCEOIDDoc
                     },
-                    IndividualInfo = new PowerOfAttorneyEMHCDData.IndividualInfo
+                    IndividualInfo = new PowerOfAttorneyEMCHDData.IndividualInfo
                     {
                         BirthDate = userCard.GenCeoDateOfBirth,
                         BirthPlace = userCard.GenCeoPlaceOfBirth,
@@ -202,14 +202,14 @@ namespace PowersOfAttorneyServerExtension.Helpers
                         CitizenshipType = userCard.GenCeoCitizenshipSign,
                         ContactPhone = userCard.GenCeoPhoneNum,
                         EMail = userCard.GenCeoPhoneNum,
-                        Fio = new PowerOfAttorneyEMHCDData.FIO
+                        Fio = new PowerOfAttorneyEMCHDData.FIO
                         {
                             FirstName = userCard.GenCeo.FirstName,
                             LastName = userCard.GenCeo.LastName,
                             MiddleName = userCard.GenCeo.MiddleName
                         },
                         Gender = userCard.GenCeoGender,
-                        IdentityCard = new PowerOfAttorneyEMHCDData.IdentityCardOfIndividual
+                        IdentityCard = new PowerOfAttorneyEMCHDData.IdentityCardOfIndividual
                         {
                             DocumentKindCode = userCard.GenTypeCodeCEOIDDoc?.ToString(),
                             DocumentSerialNumber = userCard.GenSerNumCEOIDDoc,
@@ -218,7 +218,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
                             Issuer = userCard.GenAuthIssCEOIDDoc,
                             IssuerCode = userCard.GenCodeAuthDivIssCEOIDDoc
                         },
-                        ResidenceAddress = new PowerOfAttorneyEMHCDData.AddressInfo
+                        ResidenceAddress = new PowerOfAttorneyEMCHDData.AddressInfo
                         {
                             Address = userCard.GenCeoAddrRussia,
                             SubjectOfRussia = userCard.GenCeoAddrSubRussia,
@@ -233,11 +233,11 @@ namespace PowersOfAttorneyServerExtension.Helpers
                 };
             }
 
-            private PowerOfAttorneyEMHCDData.LegalEntityInfo CreatePrincipalEntityInfoPart()
+            private PowerOfAttorneyEMCHDData.LegalEntityInfo CreatePrincipalEntityInfoPart()
             {
-                return new PowerOfAttorneyEMHCDData.LegalEntityInfo
+                return new PowerOfAttorneyEMCHDData.LegalEntityInfo
                 {
-                    ConfirmationOfAuthorityDocument = new PowerOfAttorneyEMHCDData.ConfirmationOfAuthorityDocument
+                    ConfirmationOfAuthorityDocument = new PowerOfAttorneyEMCHDData.ConfirmationOfAuthorityDocument
                     {
                         DocumentName = userCard.GenDocConfAuthCEO,
                         IdentityOfDocument = userCard.GenSerNumCEOIDDoc,
@@ -248,7 +248,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
                     EMail = userCard.GenEmailEntPrin,
                     Inn = userCard.GenEntityPrinINN ?? userCard.GenEntityPrincipal.INN,
                     Kpp = userCard.GenEntityPrinKPP ?? userCard.GenEntityPrincipal.KPP,
-                    LegalAddress = new PowerOfAttorneyEMHCDData.AddressInfo
+                    LegalAddress = new PowerOfAttorneyEMCHDData.AddressInfo
                     {
                         FiasAddress = userCard.GenFiasEntAddrRussia,
                         FiasCode = userCard.GenEntFIASAddrID,
@@ -263,9 +263,9 @@ namespace PowersOfAttorneyServerExtension.Helpers
                 };
             }
 
-            private PowerOfAttorneyEMHCDData.PowerOfAttorneyInfo CreatePowerOfAttorneyPart()
+            private PowerOfAttorneyEMCHDData.PowerOfAttorneyInfo CreatePowerOfAttorneyPart()
             {
-                return new PowerOfAttorneyEMHCDData.PowerOfAttorneyInfo
+                return new PowerOfAttorneyEMCHDData.PowerOfAttorneyInfo
                 {
                     InformationSystemName = userCard.GenInfsysGenPOA,
                     IrrevocablePowerOfAttorneyInfo = userCard.GenPoaKind == GenPoaKindTypes.irrecovablePOA ? CreateIrrevocablePowerOfAttorneyInfoPart() : null,
@@ -283,9 +283,9 @@ namespace PowersOfAttorneyServerExtension.Helpers
                 };
             }
 
-            private PowerOfAttorneyEMHCDData.IrrevocablePowerOfAttorneyInfo CreateIrrevocablePowerOfAttorneyInfoPart()
+            private PowerOfAttorneyEMCHDData.IrrevocablePowerOfAttorneyInfo CreateIrrevocablePowerOfAttorneyInfoPart()
             {
-                return new PowerOfAttorneyEMHCDData.IrrevocablePowerOfAttorneyInfo
+                return new PowerOfAttorneyEMCHDData.IrrevocablePowerOfAttorneyInfo
                 {
                     RevocationCondition = userCard.GenRevocIrrevPOA ?? throw new ApplicationException(Resources.Error_RevocIrrevPOAIsEmpty),
                     RevocationConditionDescription = userCard.RevocationConditionDescription,
@@ -294,9 +294,9 @@ namespace PowersOfAttorneyServerExtension.Helpers
             }
 
 
-            private PowerOfAttorneyEMHCDData.NotaryCertificateInfo CreateNotaryCertificateInfoPart()
+            private PowerOfAttorneyEMCHDData.NotaryCertificateInfo CreateNotaryCertificateInfoPart()
             {
-                return new PowerOfAttorneyEMHCDData.NotaryCertificateInfo
+                return new PowerOfAttorneyEMCHDData.NotaryCertificateInfo
                 {
                     AdditionalInformation = userCard.GenAddInfo,
                     ElectronicDocumentTransferMethod = userCard.GenMethOfIssElNotarDoc,
@@ -304,7 +304,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
                     FromAttorneyToFNP = userCard.GenSendDocReprFNP,
                     FromDeclarantToFNP = userCard.GenSendDocApplFNP,
                     FromPrincipalToEPGU = userCard.GenSendDocPrinEPGU,
-                    HandwrittenSignature = new List<PowerOfAttorneyEMHCDData.HandwrittenSignature> { CreateHandwrittenSignaturePart() },
+                    HandwrittenSignature = new List<PowerOfAttorneyEMCHDData.HandwrittenSignature> { CreateHandwrittenSignaturePart() },
                     NotaryDeputyInfo = CreateNotaryDeputyInfoPart(),
                     NotaryInfo = CreateNotaryInfoPart(),
                     NotaryPaymentDiscount = userCard.GenAmountOfBenefGranted,
@@ -315,11 +315,11 @@ namespace PowersOfAttorneyServerExtension.Helpers
                 };
             }
 
-            private PowerOfAttorneyEMHCDData.NotaryInfo CreateNotaryInfoPart()
+            private PowerOfAttorneyEMCHDData.NotaryInfo CreateNotaryInfoPart()
             {
-                return new PowerOfAttorneyEMHCDData.NotaryInfo
+                return new PowerOfAttorneyEMCHDData.NotaryInfo
                 {
-                    Fio = new PowerOfAttorneyEMHCDData.FIO
+                    Fio = new PowerOfAttorneyEMCHDData.FIO
                     {
                         FirstName = userCard.GenNotaryName,
                         LastName = userCard.GenNotayLastName,
@@ -331,11 +331,11 @@ namespace PowersOfAttorneyServerExtension.Helpers
                 };
             }
 
-            private PowerOfAttorneyEMHCDData.NotaryDeputyInfo CreateNotaryDeputyInfoPart()
+            private PowerOfAttorneyEMCHDData.NotaryDeputyInfo CreateNotaryDeputyInfoPart()
             {
-                return new PowerOfAttorneyEMHCDData.NotaryDeputyInfo
+                return new PowerOfAttorneyEMCHDData.NotaryDeputyInfo
                 {
-                    Fio = new PowerOfAttorneyEMHCDData.FIO
+                    Fio = new PowerOfAttorneyEMCHDData.FIO
                     {
                         FirstName = userCard.GenInterimNotarytName,
                         LastName = userCard.GenInterimNotaryLastName,
@@ -346,11 +346,11 @@ namespace PowersOfAttorneyServerExtension.Helpers
                 };
             }
 
-            private PowerOfAttorneyEMHCDData.HandwrittenSignature CreateHandwrittenSignaturePart()
+            private PowerOfAttorneyEMCHDData.HandwrittenSignature CreateHandwrittenSignaturePart()
             {
-                return new PowerOfAttorneyEMHCDData.HandwrittenSignature
+                return new PowerOfAttorneyEMCHDData.HandwrittenSignature
                 {
-                    Fio = new PowerOfAttorneyEMHCDData.FIO
+                    Fio = new PowerOfAttorneyEMCHDData.FIO
                     {
                         FirstName = userCard.GenPoaSignerName,
                         LastName = userCard.GenPoaSignerLastName,
@@ -363,20 +363,20 @@ namespace PowersOfAttorneyServerExtension.Helpers
                 };
             }
 
-            private PowerOfAttorneyEMHCDData.SoleExecutiveAuthorityType Convert(GenPowersTypeOfSEBTypes authorityType)
+            private PowerOfAttorneyEMCHDData.SoleExecutiveAuthorityType Convert(GenPowersTypeOfSEBTypes authorityType)
             {
                 switch (authorityType)
                 {
                     case GenPowersTypeOfSEBTypes.individual:
-                        return PowerOfAttorneyEMHCDData.SoleExecutiveAuthorityType.Individual;
+                        return PowerOfAttorneyEMCHDData.SoleExecutiveAuthorityType.Individual;
                     case GenPowersTypeOfSEBTypes.joint:
-                        return PowerOfAttorneyEMHCDData.SoleExecutiveAuthorityType.Joint;
+                        return PowerOfAttorneyEMCHDData.SoleExecutiveAuthorityType.Joint;
                 }
                 throw new ArgumentOutOfRangeException(nameof(authorityType));
             }
 
 
-            private PowerOfAttorneyEMHCDData.PowerOfAttorneyLossOfAuthorityType? Convert(LossPowersSubstTypes? lossPowers)
+            private PowerOfAttorneyEMCHDData.PowerOfAttorneyLossOfAuthorityType? Convert(LossPowersSubstTypes? lossPowers)
             {
                 if (lossPowers == null)
                     return null;
@@ -384,56 +384,56 @@ namespace PowersOfAttorneyServerExtension.Helpers
                 switch (lossPowers.Value)
                 {
                     case LossPowersSubstTypes.notLost:
-                        return PowerOfAttorneyEMHCDData.PowerOfAttorneyLossOfAuthorityType.NotLost;
+                        return PowerOfAttorneyEMCHDData.PowerOfAttorneyLossOfAuthorityType.NotLost;
                     case LossPowersSubstTypes.lost:
-                        return PowerOfAttorneyEMHCDData.PowerOfAttorneyLossOfAuthorityType.Lost;
+                        return PowerOfAttorneyEMCHDData.PowerOfAttorneyLossOfAuthorityType.Lost;
                 }
 
                 throw new ArgumentOutOfRangeException(nameof(lossPowers));
             }
 
-            private PowerOfAttorneyEMHCDData.JointRepresentationType Convert(JointExerPowersTypes jointExer)
+            private PowerOfAttorneyEMCHDData.JointRepresentationType Convert(JointExerPowersTypes jointExer)
             {
                 switch (jointExer)
                 {
                     case JointExerPowersTypes.individual:
-                        return PowerOfAttorneyEMHCDData.JointRepresentationType.Individual;
+                        return PowerOfAttorneyEMCHDData.JointRepresentationType.Individual;
                     case JointExerPowersTypes.joint:
-                        return PowerOfAttorneyEMHCDData.JointRepresentationType.Joint;
+                        return PowerOfAttorneyEMCHDData.JointRepresentationType.Joint;
                 }
                 throw new ArgumentOutOfRangeException(nameof(jointExer));
             }
 
-            private PowerOfAttorneyEMHCDData.EntityType Convert(GenRepresentativeTypes entity)
+            private PowerOfAttorneyEMCHDData.EntityType Convert(GenRepresentativeTypes entity)
             {
                 switch (entity)
                 {
                     case GenRepresentativeTypes.entity:
-                        return PowerOfAttorneyEMHCDData.EntityType.RussianEntity;
+                        return PowerOfAttorneyEMCHDData.EntityType.RussianEntity;
                     case GenRepresentativeTypes.soleProprietor:
-                        return PowerOfAttorneyEMHCDData.EntityType.SoleProprietor;
+                        return PowerOfAttorneyEMCHDData.EntityType.SoleProprietor;
                     case GenRepresentativeTypes.individual:
-                        return PowerOfAttorneyEMHCDData.EntityType.Individual;
+                        return PowerOfAttorneyEMCHDData.EntityType.Individual;
                     case GenRepresentativeTypes.rusEntityBranch:
-                        return PowerOfAttorneyEMHCDData.EntityType.BranchOfEntity;
+                        return PowerOfAttorneyEMCHDData.EntityType.BranchOfEntity;
                     case GenRepresentativeTypes.foreignEntBranch:
-                        return PowerOfAttorneyEMHCDData.EntityType.BranchOfForeignEntity;
+                        return PowerOfAttorneyEMCHDData.EntityType.BranchOfForeignEntity;
                 }
                 throw new ArgumentOutOfRangeException(nameof(entity));
             }
 
-            private PowerOfAttorneyEMHCDData.PrincipalType Convert(GenPrincipalTypes entity)
+            private PowerOfAttorneyEMCHDData.PrincipalType Convert(GenPrincipalTypes entity)
             {
                 switch (entity)
                 {
                     case GenPrincipalTypes.entity:
-                        return PowerOfAttorneyEMHCDData.PrincipalType.RussianEntity;
+                        return PowerOfAttorneyEMCHDData.PrincipalType.RussianEntity;
                     case GenPrincipalTypes.foreignEntity:
-                        return PowerOfAttorneyEMHCDData.PrincipalType.ForeignEntity;
+                        return PowerOfAttorneyEMCHDData.PrincipalType.ForeignEntity;
                     case GenPrincipalTypes.soleProprietor:
-                        return PowerOfAttorneyEMHCDData.PrincipalType.SoleProprietor;
+                        return PowerOfAttorneyEMCHDData.PrincipalType.SoleProprietor;
                     case GenPrincipalTypes.individual:
-                        return PowerOfAttorneyEMHCDData.PrincipalType.Individual;
+                        return PowerOfAttorneyEMCHDData.PrincipalType.Individual;
                 }
                 throw new ArgumentOutOfRangeException(nameof(entity));
             }
@@ -453,14 +453,14 @@ namespace PowersOfAttorneyServerExtension.Helpers
             }
 
 
-            private PowerOfAttorneyEMHCDData.PowerOfAttorneyKind Convert(GenPoaKindTypes poaKind)
+            private PowerOfAttorneyEMCHDData.PowerOfAttorneyKind Convert(GenPoaKindTypes poaKind)
             {
                 switch (poaKind)
                 {
                     case GenPoaKindTypes.ordinaryPOA:
-                        return PowerOfAttorneyEMHCDData.PowerOfAttorneyKind.Regular;
+                        return PowerOfAttorneyEMCHDData.PowerOfAttorneyKind.Regular;
                     case GenPoaKindTypes.irrecovablePOA:
-                        return PowerOfAttorneyEMHCDData.PowerOfAttorneyKind.Irrevocable;
+                        return PowerOfAttorneyEMCHDData.PowerOfAttorneyKind.Irrevocable;
                 }
                 throw new ArgumentOutOfRangeException(nameof(poaKind));
             }

@@ -46,7 +46,7 @@ namespace PowersOfAttorneyServerExtension.Controllers
         [HttpPost]
         public CommonResponse<Guid> CreateEMCHDPowerOfAttorney(Guid powerOfAttorneyUserCardId)
         {
-            return CreatePowerOfAttorneyInternal(powerOfAttorneyUserCardId, PowerOfAttorneyEMHCDData.FormatId);
+            return CreatePowerOfAttorneyInternal(powerOfAttorneyUserCardId, PowerOfAttorneyEMCHDData.FormatId);
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace PowersOfAttorneyServerExtension.Controllers
         [HttpPost]
         public CommonResponse<Guid> CreateEMCHDRetrustPowerOfAttorney(Guid powerOfAttorneyUserCardId)
         {
-            return CreateRetrustPowerOfAttorneyInternal(powerOfAttorneyUserCardId, PowerOfAttorneyEMHCDData.FormatId);
+            return CreateRetrustPowerOfAttorneyInternal(powerOfAttorneyUserCardId, PowerOfAttorneyEMCHDData.FormatId);
         }
 
         /// <summary>
