@@ -136,6 +136,7 @@
   <ItemGroup>
     <Compile Include="Controllers\PowersOfAttorneyDemoController.cs" />
     <Compile Include="Helpers\BaseCardSectionRowExtensions.cs" />
+    <Compile Include="Helpers\StringExtensions.cs" />
     <Compile Include="Helpers\UserCardPowerOfAttorney.cs" />
     <Compile Include="Helpers\UserCardPowerOfAttorneyDovBB.cs" />
     <Compile Include="Helpers\UserCardPowerOfAttorneyEmchd.cs" />
@@ -169,9 +170,9 @@
   <PropertyGroup>
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
-	<PropertyGroup>
-		<AssemblyOriginatorKeyFile>..\..\StrongNameKey.snk</AssemblyOriginatorKeyFile>
-	</PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\..\StrongNameKey.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />

@@ -11,7 +11,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
     {
         public static string GetStringValue(this BaseCardSectionRow row, string field)
         {
-            return row[field]?.ToString();
+            return row[field]?.ToString().AsNullable();
         }
 
         public static TEnum? GetEnumValue<TEnum>(this BaseCardSectionRow row, string field) where TEnum : struct

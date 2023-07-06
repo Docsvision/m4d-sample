@@ -145,14 +145,14 @@ internal static class UserCardPowerOfAttorneyFNSDOVBBExtensions
 
         private FIO GetFio(StaffEmployee employee)
         {
-            return new FIO(employee.LastName, employee.FirstName, employee.MiddleName);
+            return new FIO(employee.LastName.AsNullable(), employee.FirstName.AsNullable(), employee.MiddleName.AsNullable());
         }
 
         private IndividualInfo GetRepresentativeIndividualInfo(StaffEmployee employee)
         {
             var birthDate = employee.BirthDate;
             var birthPlace = userCard.RepresentativeIndividualBirthPlace;
-            var phone = employee.Phone;
+            var phone = employee.Phone.AsNullable();
             var gender = GetGender(employee);
             var residenceAddress = GetAddressInfo(userCard.RepresentativeIndividualAddressSubjectRfCode, userCard.RepresentativeIndividualAddress);
             var identityCard = GetRepresentativeIdentityCard();
@@ -217,12 +217,12 @@ internal static class UserCardPowerOfAttorneyFNSDOVBBExtensions
         private LegalEntityInfo GetLegalEntityInfo()
         {
             var princOrg = userCard.PrincipalOrganization;
-            var name = princOrg.Name;
-            var inn = princOrg.INN;
-            var kpp = princOrg.KPP;
-            var ogrn = princOrg.OGRN;
+            var name = princOrg.Name.AsNullable();
+            var inn = princOrg.INN.AsNullable();
+            var kpp = princOrg.KPP.AsNullable();
+            var ogrn = princOrg.OGRN.AsNullable();
             var constituentDocument = userCard.PrincipalOrganizationConstituentDocument;
-            var phone = princOrg.Phone;
+            var phone = princOrg.Phone.AsNullable();
             var registrationAddress = GetLegalAddress(princOrg);
             var actualAddress = GetAddress(princOrg);
 
@@ -235,7 +235,7 @@ internal static class UserCardPowerOfAttorneyFNSDOVBBExtensions
             if (address == null)
                 return null;
 
-            return GetAddressInfo(userCard.RepresentativeOrganizationLegalAddressSubjectRfCode, address.Address);
+            return GetAddressInfo(userCard.RepresentativeOrganizationLegalAddressSubjectRfCode, address.Address.AsNullable());
         }
 
         private AddressInfo GetAddress(StaffUnit staffUnit)
@@ -244,7 +244,7 @@ internal static class UserCardPowerOfAttorneyFNSDOVBBExtensions
             if (address == null)
                 return null;
 
-            return GetAddressInfo(userCard.RepresentativeOrganizationAddressSubjectRfCode, address.Address);
+            return GetAddressInfo(userCard.RepresentativeOrganizationAddressSubjectRfCode, address.Address.AsNullable());
         }
 
         private RetrustPowerOfAttorneyInfo GetRetrustPowerOfAttorneyInfo()
@@ -291,7 +291,7 @@ internal static class UserCardPowerOfAttorneyFNSDOVBBExtensions
             var emlpoyee = userCard.PrincipalWithoutPowerOfAttorneyIndividual;
             var snils = userCard.PrincipalWithoutPowerOfAttorneyIndividualSnils;
             var individualInfo = GetPrincipalWithoutPowerOfAttorneyIndividual1Info(emlpoyee);
-            var position = emlpoyee.PositionName;
+            var position = emlpoyee.PositionName.AsNullable();
             var authorityConfirmingDocumentName = userCard.PrincipalWithoutPowerOfAttorneyIndividualDocument;
             var inn = userCard.PrincipalWithoutPowerOfAttorneyIndividualInn;
             var authorityConfirmingDocument = GetConfirmationOfAuthorityDocument();
@@ -315,12 +315,12 @@ internal static class UserCardPowerOfAttorneyFNSDOVBBExtensions
             if (princOrg == null)
                 return null;
 
-            var name = princOrg.Name;
-            var inn = princOrg.INN;
-            var kpp = princOrg.KPP;
-            var ogrn = princOrg.OGRN;
+            var name = princOrg.Name.AsNullable();
+            var inn = princOrg.INN.AsNullable();
+            var kpp = princOrg.KPP.AsNullable();
+            var ogrn = princOrg.OGRN.AsNullable();
             var constituentDocument = userCard.PrincipalWithoutPowerOfAttorneyOrganizationConstituentDocument;
-            var phone = princOrg.Phone;
+            var phone = princOrg.Phone.AsNullable();
 
             var legalAddress = GetAddressInfo(userCard.PrincipalWithoutPowerOfAttorneyOrganizationLegalAddressSubjectRfCode, userCard.PrincipalWithoutPowerOfAttorneyOrganizationLegalAddress);
 
@@ -334,7 +334,7 @@ internal static class UserCardPowerOfAttorneyFNSDOVBBExtensions
             var birthDate = emlpoyee.BirthDate;
             var citizenshipType = userCard.PrincipalWithoutPowerOfAttorneyIndividualCitizenship;
             var birthPlace = userCard.PrincipalWithoutPowerOfAttorneyIndividualBirthPlace;
-            var phone = emlpoyee.Phone;
+            var phone = emlpoyee.Phone.AsNullable();
             var gender = GetGender(emlpoyee);
             AddressInfo residenceAddress = GetAddressInfo(userCard.PrincipalWithoutPowerOfAttorneyIndividualAddressSubjectRfCode, userCard.PrincipalWithoutPowerOfAttorneyIndividualAddress);
 
@@ -361,10 +361,10 @@ internal static class UserCardPowerOfAttorneyFNSDOVBBExtensions
         private RussianEntityInfo GetRussianEntityInfo()
         {
             var princOrg = userCard.PrincipalOrganization;
-            var name = princOrg.Name;
-            var inn = princOrg.INN;
-            var kpp = princOrg.KPP;
-            var ogrn = princOrg.OGRN;
+            var name = princOrg.Name.AsNullable();
+            var inn = princOrg.INN.AsNullable();
+            var kpp = princOrg.KPP.AsNullable();
+            var ogrn = princOrg.OGRN.AsNullable();
             var legalAddress = princOrg.Addresses.FirstOrDefault(t => t.AddressType == StaffAddresseAddressType.LegalAddress)?.Address ?? throw new Exception("Не найден юридический адрес");
             var actualAddress = princOrg.Addresses.FirstOrDefault(t => t.AddressType == StaffAddresseAddressType.ContactAddress)?.Address;
 

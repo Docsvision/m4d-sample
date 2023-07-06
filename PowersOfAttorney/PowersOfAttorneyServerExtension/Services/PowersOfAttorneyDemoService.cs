@@ -132,7 +132,7 @@ namespace PowersOfAttorneyServerExtension.Services
                 return userCardPowerOfAttorney.PrincipalOrganization?.INN;
 
             if (formatId == PowerOfAttorneyEMCHDData.FormatId)
-                return userCardPowerOfAttorney.GenEntityPrinINN ?? userCardPowerOfAttorney.GenEntityPrincipal?.INN;
+                return userCardPowerOfAttorney.GenEntityPrinINN ?? userCardPowerOfAttorney.GenEntityPrincipal?.INN.AsNullable();
 
             throw new ArgumentOutOfRangeException(string.Format(Resources.InvalidPowerOfAttorneyFormat, formatId));
         }

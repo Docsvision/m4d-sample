@@ -110,7 +110,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
                         {
                             Inn = userCard.GenRepresentativeINN,
                             IndividualInfo = CreateRepresentativeIndividualInfoPart(),
-                            Position = userCard.GenRepresentativePosition ?? userCard.GenRepresentative.PositionName,
+                            Position = userCard.GenRepresentativePosition ?? userCard.GenRepresentative.PositionName.AsNullable(),
                             Snils = userCard.GenRepresentativeSNILS
                         }
                     };
@@ -130,9 +130,9 @@ namespace PowersOfAttorneyServerExtension.Helpers
                     EMail = userCard.GenReprEmail,
                     Fio = new PowerOfAttorneyEMCHDData.FIO
                     {
-                        FirstName = userCard.GenRepresentative.FirstName,
-                        LastName = userCard.GenRepresentative.LastName,
-                        MiddleName = userCard.GenRepresentative.MiddleName
+                        FirstName = userCard.GenRepresentative.FirstName.AsNullable(),
+                        LastName = userCard.GenRepresentative.LastName.AsNullable(),
+                        MiddleName = userCard.GenRepresentative.MiddleName.AsNullable()
                     },
                     Gender = userCard.GenGenderOfRepresentative,
                     IdentityCard = new PowerOfAttorneyEMCHDData.IdentityCardOfIndividual
@@ -204,9 +204,9 @@ namespace PowersOfAttorneyServerExtension.Helpers
                         EMail = userCard.GenCeoPhoneNum,
                         Fio = new PowerOfAttorneyEMCHDData.FIO
                         {
-                            FirstName = userCard.GenCeo.FirstName,
-                            LastName = userCard.GenCeo.LastName,
-                            MiddleName = userCard.GenCeo.MiddleName
+                            FirstName = userCard.GenCeo.FirstName.AsNullable(),
+                            LastName = userCard.GenCeo.LastName.AsNullable(),
+                            MiddleName = userCard.GenCeo.MiddleName.AsNullable()
                         },
                         Gender = userCard.GenCeoGender,
                         IdentityCard = new PowerOfAttorneyEMCHDData.IdentityCardOfIndividual
@@ -246,8 +246,8 @@ namespace PowersOfAttorneyServerExtension.Helpers
                     },
                     ConstituentDocument = userCard.GenConstDocumentEntPrin,
                     EMail = userCard.GenEmailEntPrin,
-                    Inn = userCard.GenEntityPrinINN ?? userCard.GenEntityPrincipal.INN,
-                    Kpp = userCard.GenEntityPrinKPP ?? userCard.GenEntityPrincipal.KPP,
+                    Inn = userCard.GenEntityPrinINN ?? userCard.GenEntityPrincipal.INN.AsNullable(),
+                    Kpp = userCard.GenEntityPrinKPP ?? userCard.GenEntityPrincipal.KPP.AsNullable(),
                     LegalAddress = new PowerOfAttorneyEMCHDData.AddressInfo
                     {
                         FiasAddress = userCard.GenFiasEntAddrRussia,
@@ -255,10 +255,10 @@ namespace PowersOfAttorneyServerExtension.Helpers
                         Address = userCard.GenEntAddrRussia,
                         SubjectOfRussia = userCard.GenEntAddrSubRussia,
                     },
-                    Name = userCard.GenEntityPrincipal.Name,
-                    Ogrn = userCard.GenEntPrinOGRN ?? userCard.GenEntityPrincipal.OGRN,
+                    Name = userCard.GenEntityPrincipal.Name.AsNullable(),
+                    Ogrn = userCard.GenEntPrinOGRN ?? userCard.GenEntityPrincipal.OGRN.AsNullable(),
                     ParticipantStatus = userCard.GenNotarStatusOfEntPrin,
-                    Phone = userCard.GenEntityPrincipal.Phone,
+                    Phone = userCard.GenEntityPrincipal.Phone.AsNullable(),
                     RegistrationNumber = null
                 };
             }
