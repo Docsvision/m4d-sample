@@ -3,6 +3,7 @@ using DocsVision.BackOffice.ObjectModel.Services;
 using DocsVision.BackOffice.ObjectModel.Services.Entities;
 using DocsVision.BackOffice.WebClient.PowersOfAttorney;
 using DocsVision.Platform.ObjectModel;
+using DocsVision.Platform.WebClient;
 
 using Microsoft.SqlServer.Server;
 
@@ -17,13 +18,12 @@ namespace PowersOfAttorneyServerExtension.Services
     internal class PowersOfAttorneyDemoService : IPowersOfAttorneyDemoService
     {
         private readonly IPowerOfAttorneyProxyService powerOfAttorneyProxyService;
-        private readonly IPowerOfAttorneyService powerOfAttorneyService;
+        private readonly ICurrentObjectContextProvider currentObjectContextProvider;
 
-        public PowersOfAttorneyDemoService(IPowerOfAttorneyProxyService powerOfAttorneyProxyService, 
-            IPowerOfAttorneyService powerOfAttorneyService)
+        public PowersOfAttorneyDemoService(IPowerOfAttorneyProxyService powerOfAttorneyProxyService, ICurrentObjectContextProvider currentObjectContextProvider)
         {
             this.powerOfAttorneyProxyService = powerOfAttorneyProxyService;
-            this.powerOfAttorneyService = powerOfAttorneyService;
+            this.currentObjectContextProvider = currentObjectContextProvider;
         }
 
         public Guid CreatePowerOfAttorney(ObjectContext context, Guid powerOfAttorneyUserCardId, Guid formatId)
@@ -140,7 +140,7 @@ namespace PowersOfAttorneyServerExtension.Services
         private PowerOfAttorneyData GetPowerOfAttorneyData(UserCardPowerOfAttorney userCard, Guid formatId)
         {
             if (formatId == PowerOfAttorneyFNSDOVBBData.FormatId)
-                return userCard.ConvertToPowerOfAttorneyFNSDOVBBData(powerOfAttorneyService);
+                return userCard.ConvertToPowerOfAttorneyFNSDOVBBData(PowerOfAttorneyService);
 
             if (formatId == PowerOfAttorneyEMHCDData.FormatId)
                 return userCard.ConvertToPowerOfAttorneyEMHCDData();
@@ -159,5 +159,7 @@ namespace PowersOfAttorneyServerExtension.Services
 
             throw new ArgumentOutOfRangeException(string.Format(Resources.InvalidPowerOfAttorneyFormat, formatId));
         }
+
+        private IPowerOfAttorneyService PowerOfAttorneyService => currentObjectContextProvider.GetOrCreateCurrentSessionContext().ObjectContext.GetService<IPowerOfAttorneyService>();
     }
 }
