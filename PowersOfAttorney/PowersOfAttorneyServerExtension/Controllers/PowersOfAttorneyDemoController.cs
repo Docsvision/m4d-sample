@@ -1,12 +1,18 @@
-﻿using DocsVision.BackOffice.ObjectModel.Services.Entities;
+﻿using DocsVision.BackOffice.ObjectModel;
+using DocsVision.BackOffice.ObjectModel.Services.Entities;
 using DocsVision.Platform.WebClient;
 using DocsVision.Platform.WebClient.Models;
 using DocsVision.Platform.WebClient.Models.Generic;
 
+using Microsoft.SqlServer.Server;
+
+using PowersOfAttorneyServerExtension.Models;
 using PowersOfAttorneyServerExtension.Services;
 
 using System;
 using System.Web.Http;
+
+using static DocsVision.BackOffice.ObjectModel.Services.Entities.PowerOfAttorneyEMCHDData;
 
 namespace PowersOfAttorneyServerExtension.Controllers
 {
@@ -92,6 +98,45 @@ namespace PowersOfAttorneyServerExtension.Controllers
             }
 
             return CommonResponse.CreateSuccess(powerOfAttorneyId);
+        }
+
+        /// <summary>
+        /// Return power Of attorney number by User power of attorney card ID
+        /// </summary>
+        /// <param name="powerOfAttorneyUserCardId">User card of Power of attorney</param>
+        /// <returns>Power Of attorney number</returns>
+        [HttpGet]
+        public CommonResponse<string> GetPowerOfAttorneyNumber(Guid powerOfAttorneyUserCardId)
+        {
+            var context = currentObjectContextProvider.GetOrCreateCurrentSessionContext().ObjectContext;
+
+            var powerOfAttorneyId = powersOfAttorneyDemoService.GetPowerOfAttorneyCardId(context, powerOfAttorneyUserCardId);
+            if(powerOfAttorneyId == Guid.Empty)
+                return CommonResponse.CreateError<string>(Resources.Error_PowerOfAttorneyNumberNotFound);
+
+            var powerOfAttorney = context.GetObject<PowerOfAttorney>(powerOfAttorneyId);
+            if (powerOfAttorney ==null || powerOfAttorney.MainInfo.PowerOfAttorneyNumber == Guid.Empty)
+                return CommonResponse.CreateError<string>(Resources.Error_PowerOfAttorneyNumberNotFound);
+
+            return CommonResponse.CreateSuccess(powerOfAttorney.MainInfo.PowerOfAttorneyNumber.ToString());
+        }
+
+        [HttpPost]
+        public CommonResponse<RequestRevocationResponse> RequestRevocationPowerOfAttorney([FromBody] RequestRevocationRequest request)
+        {
+            var context = currentObjectContextProvider.GetOrCreateCurrentSessionContext().ObjectContext;
+            RequestRevocationResponse result;
+
+            try
+            {
+                result = powersOfAttorneyDemoService.RequestRevocationPowerOfAttorney(context, request.PowerOfAttorneyUserCardId, request.RevocationType, request.RevocationReason);
+            }
+            catch (Exception ex)
+            {
+                return CommonResponse.CreateError<RequestRevocationResponse>(ex.ToString());
+            }
+
+            return CommonResponse.CreateSuccess(result);
         }
 
         private CommonResponse<Guid> CreatePowerOfAttorneyInternal(Guid powerOfAttorneyUserCardId, Guid formatId)

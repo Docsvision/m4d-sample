@@ -204,6 +204,9 @@
   <data name="Error_PossibilityOfSubstitutionIsEmpty" xml:space="preserve">
     <value>Не указан Признак возможности оформления передоверия</value>
   </data>
+  <data name="Error_PowerOfAttorneyNumberNotFound" xml:space="preserve">
+    <value>Отсутствует номер доверенности</value>
+  </data>
   <data name="Error_PowersTypeIsEmpty" xml:space="preserve">
     <value>Не указан Тип полномочия</value>
   </data>

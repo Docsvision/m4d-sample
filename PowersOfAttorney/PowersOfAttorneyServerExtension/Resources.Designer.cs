@@ -322,6 +322,15 @@ namespace PowersOfAttorneyServerExtension {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error_PowerOfAttorneyNumberNotFound.
+        /// </summary>
+        internal static string Error_PowerOfAttorneyNumberNotFound {
+            get {
+                return ResourceManager.GetString("Error_PowerOfAttorneyNumberNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Power type is not specified.
         /// </summary>
         internal static string Error_PowersTypeIsEmpty {

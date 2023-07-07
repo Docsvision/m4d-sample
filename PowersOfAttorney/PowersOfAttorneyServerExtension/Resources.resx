@@ -204,6 +204,9 @@
   <data name="Error_PossibilityOfSubstitutionIsEmpty" xml:space="preserve">
     <value>The indication of the possibility of making a transfer is not specified</value>
   </data>
+  <data name="Error_PowerOfAttorneyNumberNotFound" xml:space="preserve">
+    <value>Error_PowerOfAttorneyNumberNotFound</value>
+  </data>
   <data name="Error_PowersTypeIsEmpty" xml:space="preserve">
     <value>Power type is not specified</value>
   </data>

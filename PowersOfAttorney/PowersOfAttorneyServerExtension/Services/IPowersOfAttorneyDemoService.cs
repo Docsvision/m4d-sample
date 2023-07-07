@@ -1,4 +1,7 @@
-﻿using DocsVision.Platform.ObjectModel;
+﻿using DocsVision.BackOffice.ObjectModel;
+using DocsVision.Platform.ObjectModel;
+
+using PowersOfAttorneyServerExtension.Models;
 
 using System;
 
@@ -23,5 +26,10 @@ namespace PowersOfAttorneyServerExtension.Services
         /// Возвращает идентификатор СКД для переданной ПКД
         /// </summary>
         Guid GetPowerOfAttorneyCardId(ObjectContext context, Guid powerOfAttorneyUserCardId);
+        
+        /// <summary>
+        /// Формирует отзыв доверенности
+        /// </summary>
+        RequestRevocationResponse RequestRevocationPowerOfAttorney(ObjectContext context, Guid powerOfAttorneyUserCardId, PowerOfAttorneyRevocationType revocationType, string revocationReason);
     }
 }

@@ -142,6 +142,8 @@
     <Compile Include="Helpers\UserCardPowerOfAttorneyEmchd.cs" />
     <Compile Include="Helpers\UserCardPowerOfAttorneyEMCHDExtensions.cs" />
     <Compile Include="Helpers\UserCardPowerOfAttorneyFNSDOVBBExtensions.cs" />
+    <Compile Include="Models\RequestRevocationRequest.cs" />
+    <Compile Include="Models\RequestRevocationResponse.cs" />
     <Compile Include="PowersOfAttorneyWebClientExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources.Designer.cs">

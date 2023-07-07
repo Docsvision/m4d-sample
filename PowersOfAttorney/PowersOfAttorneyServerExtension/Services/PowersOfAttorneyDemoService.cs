@@ -8,6 +8,7 @@ using DocsVision.Platform.WebClient;
 using Microsoft.SqlServer.Server;
 
 using PowersOfAttorneyServerExtension.Helpers;
+using PowersOfAttorneyServerExtension.Models;
 
 using System;
 
@@ -81,6 +82,52 @@ namespace PowersOfAttorneyServerExtension.Services
             return powerOfAttorneyId;
         }
 
+        public RequestRevocationResponse RequestRevocationPowerOfAttorney(ObjectContext context, Guid powerOfAttorneyUserCardId, PowerOfAttorneyRevocationType revocationType, string revocationReason)
+        {
+            var userCardPowerOfAttorney = GetUserCardPowerOfAttorney(context, powerOfAttorneyUserCardId);
+
+            PowerOfAttorneyRevocationData revocationData = new PowerOfAttorneyRevocationData
+            {
+                RevocationReason = revocationReason,
+                RevocationType = revocationType
+            };
+
+            if (revocationType == PowerOfAttorneyRevocationType.Representative)
+            {
+                revocationData.ApplicantInfo = new PowerOfAttorneyRevocationApplicantInfo
+                {
+                    ApplicantType = PowerOfAttorneyRevocationApplicantType.Individual,
+                    FirstName = userCardPowerOfAttorney.GenRepresentative.FirstName,
+                    LastName = userCardPowerOfAttorney.GenRepresentative.LastName,
+                    MiddleName = userCardPowerOfAttorney.GenRepresentative.MiddleName,
+                    Inn = userCardPowerOfAttorney.GenRepresentativeINN,
+                    Snils = userCardPowerOfAttorney.GenRepresentativeSNILS,
+                    Phone = userCardPowerOfAttorney.GenReprPhoneNum
+                };
+            }
+            else
+            {
+                revocationData.ApplicantInfo = new PowerOfAttorneyRevocationApplicantInfo
+                {
+                    ApplicantType = PowerOfAttorneyRevocationApplicantType.Individual,
+                    FirstName = userCardPowerOfAttorney.GenCeo.FirstName,
+                    LastName = userCardPowerOfAttorney.GenCeo.LastName,
+                    MiddleName = userCardPowerOfAttorney.GenCeo.MiddleName,
+                    Inn = userCardPowerOfAttorney.GenCeoIIN,
+                    Snils = userCardPowerOfAttorney.GenCeoSNILS,
+                    Phone = userCardPowerOfAttorney.GenCeoPhoneNum
+                };
+            }
+
+            var data = powerOfAttorneyProxyService.RequestRevocationPowerOfAttorney(userCardPowerOfAttorney.PowerOfAttorneyCardId.Value, revocationData, out string fileName);
+            return new RequestRevocationResponse
+            {
+                Content = Convert.ToBase64String(data),
+                FileName = fileName
+            };
+        }
+
+
         public Guid GetPowerOfAttorneyCardId(ObjectContext context, Guid powerOfAttorneyUserCardId)
         {
             var userCardPowerOfAttorney = GetUserCardPowerOfAttorney(context, powerOfAttorneyUserCardId);
@@ -93,6 +140,11 @@ namespace PowersOfAttorneyServerExtension.Services
             return userCardPowerOfAttorney.PowerOfAttorneyCardId.Value;
         }
 
+        private PowerOfAttorney GetPowerOfAttorneyCard(ObjectContext context, Guid powerOfAttorneyUserCardId)
+        {
+            var powerOfAttorneyId = GetPowerOfAttorneyCardId(context, powerOfAttorneyUserCardId);
+            return context.GetObject<PowerOfAttorney>(powerOfAttorneyId);
+        }
 
         private UserCardPowerOfAttorney GetUserCardPowerOfAttorney(ObjectContext context, Guid documentId)
         {
