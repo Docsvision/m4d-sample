@@ -4,15 +4,11 @@ using DocsVision.Platform.WebClient;
 using DocsVision.Platform.WebClient.Models;
 using DocsVision.Platform.WebClient.Models.Generic;
 
-using Microsoft.SqlServer.Server;
-
 using PowersOfAttorneyServerExtension.Models;
 using PowersOfAttorneyServerExtension.Services;
 
 using System;
 using System.Web.Http;
-
-using static DocsVision.BackOffice.ObjectModel.Services.Entities.PowerOfAttorneyEMCHDData;
 
 namespace PowersOfAttorneyServerExtension.Controllers
 {
