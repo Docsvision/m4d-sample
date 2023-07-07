@@ -1,5 +1,6 @@
 import { $RequestManager } from "@docsvision/webclient/System/$RequestManager";
 import { serviceName } from "@docsvision/webclient/System/ServiceUtils";
+import { PowerOfAttorneyRevocationType } from "../Interfaces";
 
 export class PowersOfAttorneyDemoController {
     
@@ -25,6 +26,28 @@ export class PowersOfAttorneyDemoController {
     getPowerOfAttorneyCardId(powerOfAttorneyUserCardId: string): Promise<string | null> {
         return this.services.requestManager.get(`api/PowersOfAttorneyDemo/GetPowerOfAttorneyCardId?powerOfAttorneyUserCardId=${powerOfAttorneyUserCardId}`);
     }
+
+    getPowersOfAttorneyNumber(powerOfAttorneyUserCardId: string): Promise<string | null> {
+        return this.services.requestManager.get(`api/PowersOfAttorneyDemo/GetPowersOfAttorneyNumber?powerOfAttorneyUserCardId=${powerOfAttorneyUserCardId}`);
+    }
+
+    requestRevocationPowerOfAttorney(powerOfAttorneyUserCardId: string, revocationType: PowerOfAttorneyRevocationType ,revocationReason: string ): Promise<any> {
+        const data = {
+            powerOfAttorneyUserCardId: powerOfAttorneyUserCardId,
+            revocationType: revocationType,
+            revocationReason: revocationReason
+        }
+        return this.services.requestManager.post(`api/PowersOfAttorneyDemo/RequestRevocationPowerOfAttorney`, JSON.stringify(data));
+    }
+
+    attachSignatureToRevocation(powerOfAttorneyUserCardId: string, signature: number[]): Promise<void> {
+        const data = {
+            powerOfAttorneyUserCardId: powerOfAttorneyUserCardId,
+            signature: signature,
+        }
+        return this.services.requestManager.post(`api/PowersOfAttorneyDemo/AttachSignatureToRevocation`, JSON.stringify(data));
+    }
+
 }
 
 export type $PowersOfAttorneyDemoController = {  powersOfAttorneyDemoController: PowersOfAttorneyDemoController }

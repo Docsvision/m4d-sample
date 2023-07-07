@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ApplicationForRevocationOfThePowerOfAttorney" xml:space="preserve">
+    <value>Заявление на отзыв доверенности</value>
+  </data>
+  <data name="CancellationOfThePowerOfAttorneyByThePrincipal" xml:space="preserve">
+    <value>Отмена доверенности доверителем</value>
+  </data>
   <data name="EmchdRetrustNotImplemented" xml:space="preserve">
     <value>Передоверие единого формата доверенностей не реализовано</value>
   </data>
@@ -221,5 +227,26 @@
   </data>
   <data name="InvalidPowerOfAttorneyFormat" xml:space="preserve">
     <value>Недопустимый формат доверенности: {0}</value>
+  </data>
+  <data name="PowerOfAttorney" xml:space="preserve">
+    <value>Доверенность</value>
+  </data>
+  <data name="PowerOfAttorneyIsRevoked" xml:space="preserve">
+    <value>Доверенность отозвана</value>
+  </data>
+  <data name="Reason" xml:space="preserve">
+    <value>Причина</value>
+  </data>
+  <data name="RefusalOfTheRepresentativeFromThePowers" xml:space="preserve">
+    <value>Отказ представителя от полномочий</value>
+  </data>
+  <data name="SelectTheTypeOfApplicationForRevocation" xml:space="preserve">
+    <value>Выберите тип заявления на отзыв</value>
+  </data>
+  <data name="SignTheApplication" xml:space="preserve">
+    <value>Подписать заявление</value>
+  </data>
+  <data name="SpecifyTheReasonForCancellationOrRefusal" xml:space="preserve">
+    <value>Укажите причину отмены или отказа</value>
   </data>
 </root>

@@ -9,7 +9,6 @@ import { $PowersOfAttorneyDemoController } from "../ServerRequests/PowersOfAttor
 export const createEMCHDRetrustPowerOfAttorney = async (sender: CustomButton) => {
     const powerOfAttorneyUserCardId = sender.layout.getService($CardId);
     await sender.layout.getService($PowersOfAttorneyDemoController).createEMCHDRetrustPowerOfAttorney(powerOfAttorneyUserCardId);
-    sender.layout.getService($MessageWindow).showInfo("Доверенность сформирована");
     const operationId = sender.layout.layoutInfo.operations.find(operation => operation.alias === "Create").id;
     await sender.layout.getService($LayoutCardController).changeState({cardId: powerOfAttorneyUserCardId, operationId: operationId, timestamp: sender.layout.cardInfo.timestamp, comment: "", layoutParams: sender.layout.layoutInfo.layoutParams});
     sender.layout.getService($Router).refresh();

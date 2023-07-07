@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ApplicationForRevocationOfThePowerOfAttorney" xml:space="preserve">
+    <value>Application for revocation of the power of attorney</value>
+  </data>
+  <data name="CancellationOfThePowerOfAttorneyByThePrincipal" xml:space="preserve">
+    <value>Cancellation of the power of attorney by the principal</value>
+  </data>
   <data name="EmchdRetrustNotImplemented" xml:space="preserve">
     <value>Retrust of general format of powers of attorney has not been implemented</value>
   </data>
@@ -221,5 +227,26 @@
   </data>
   <data name="InvalidPowerOfAttorneyFormat" xml:space="preserve">
     <value>Invalid power of attorney format: {0}</value>
+  </data>
+  <data name="PowerOfAttorney" xml:space="preserve">
+    <value>Power of attorney</value>
+  </data>
+  <data name="PowerOfAttorneyIsRevoked" xml:space="preserve">
+    <value>Power of attorney is revoked</value>
+  </data>
+  <data name="Reason" xml:space="preserve">
+    <value>Reason</value>
+  </data>
+  <data name="RefusalOfTheRepresentativeFromThePowers" xml:space="preserve">
+    <value>Refusal of the representative from the powers</value>
+  </data>
+  <data name="SelectTheTypeOfApplicationForRevocation" xml:space="preserve">
+    <value>Select the type of application for revocation</value>
+  </data>
+  <data name="SignTheApplication" xml:space="preserve">
+    <value>Sign the application</value>
+  </data>
+  <data name="SpecifyTheReasonForCancellationOrRefusal" xml:space="preserve">
+    <value>Specify the reason for cancellation or refusal</value>
   </data>
 </root>
