@@ -12,7 +12,7 @@ export const createEMCHDPowerOfAttorney = async (sender: CustomButton) => {
     const powerOfAttorneyUserCardId = sender.layout.getService($CardId);
     const powerOfAttorneyId = sender.layout.controls.powerOfAttorneySysCard.params.value?.cardId;    
     if (powerOfAttorneyId) {
-        const cardInfo = await sender.layout.getService($PowerOfAttorneyApiController).getPowerOfAttorneyInfo(powerOfAttorneyUserCardId);
+        const cardInfo = await sender.layout.getService($PowerOfAttorneyApiController).getPowerOfAttorneyInfo(powerOfAttorneyId);
         const resources = sender.layout.getService($Resources);
         if (cardInfo.status == resources.PowerOfAttorney_StatusPreparation) {
             sender.layout.getService($LayoutCardController).delete({cardId: powerOfAttorneyId, isNew: false})
