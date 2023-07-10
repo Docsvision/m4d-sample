@@ -9,11 +9,13 @@ import { $PowersOfAttorneyDemoController } from "../ServerRequests/PowersOfAttor
 
 export const createRetrustPowerOfAttorney = async (sender: CustomButton) => {
     const powerOfAttorneyUserCardId = sender.layout.getService($CardId);
-    const cardInfo = await sender.layout.getService($PowerOfAttorneyApiController).getPowerOfAttorneyInfo(powerOfAttorneyUserCardId);
-    const resources =  sender.layout.getService($Resources);
-    if (cardInfo.status == resources.PowerOfAttorney_StatusPreparation) {
-        const powerOfAttorneyId = await sender.layout.getService($PowersOfAttorneyDemoController).getPowerOfAttorneyCardId(powerOfAttorneyUserCardId);
-        sender.layout.getService($LayoutCardController).delete({cardId: powerOfAttorneyId, isNew: false})
+    const powerOfAttorneyId = sender.layout.controls.powerOfAttorneySysCard.params.value?.cardId;    
+    if (powerOfAttorneyId) {
+        const cardInfo = await sender.layout.getService($PowerOfAttorneyApiController).getPowerOfAttorneyInfo(powerOfAttorneyUserCardId);
+        const resources = sender.layout.getService($Resources);
+        if (cardInfo.status == resources.PowerOfAttorney_StatusPreparation) {
+            sender.layout.getService($LayoutCardController).delete({cardId: powerOfAttorneyId, isNew: false})
+        }  
     }
     await sender.layout.getService($PowersOfAttorneyDemoController).createRetrustPowerOfAttorney(powerOfAttorneyUserCardId);
     const operationId = sender.layout.layoutInfo.operations.find(operation => operation.alias === "Create").id;
