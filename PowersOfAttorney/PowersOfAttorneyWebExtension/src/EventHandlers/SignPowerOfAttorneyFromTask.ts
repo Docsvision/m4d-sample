@@ -10,16 +10,16 @@ import { ICancelableEventArgs } from "@docsvision/webclient/System/ICancelableEv
 
 export const signPowerOfAttorneyFromTask = async (sender: LayoutControl, e: ICancelableEventArgs<OperationExecutingEventArgs>) => {
     e.wait();
-    if(e.data.operationData.additionalInfo.decisionName === "Подписать") {
+    if (e.data.operationData.additionalInfo.decisionName === "Подписать") {
         const powerOfAttorneyUserCardId = sender.layout.controls.locationContainer.params.layoutModel.cardInfo.id;
         const powerOfAttorneyUserKindId = sender.layout.controls.locationContainer.params.layoutModel.cardInfo.kindId;
-        if (powerOfAttorneyUserKindId  === 'e1925a07-6f57-406d-9073-294381ea5aed') {
+        if (powerOfAttorneyUserKindId === 'e1925a07-6f57-406d-9073-294381ea5aed') {
             await sender.layout.getService($PowersOfAttorneyDemoController).createPowerOfAttorney(powerOfAttorneyUserCardId);
-        } else if (powerOfAttorneyUserKindId  === '9df7c9ab-a7b2-4061-ab3a-0c35814cdad8') {
+        } else if (powerOfAttorneyUserKindId === '9df7c9ab-a7b2-4061-ab3a-0c35814cdad8') {
             await sender.layout.getService($PowersOfAttorneyDemoController).createRetrustPowerOfAttorney(powerOfAttorneyUserCardId);
-        } else if (powerOfAttorneyUserKindId  === '6ac009bc-fd9c-4b7a-ba69-eaed27675264') {
+        } else if (powerOfAttorneyUserKindId === '6ac009bc-fd9c-4b7a-ba69-eaed27675264') {
             await sender.layout.getService($PowersOfAttorneyDemoController).createEMCHDPowerOfAttorney(powerOfAttorneyUserCardId);
-        }      
+        }
         const powerOfAttorneyId = await sender.layout.getService($PowersOfAttorneyDemoController).getPowerOfAttorneyCardId(powerOfAttorneyUserCardId);
         await sender.layout.params.services.digitalSignature.showDocumentSignDialog(powerOfAttorneyUserCardId,
             {
@@ -32,25 +32,26 @@ export const signPowerOfAttorneyFromTask = async (sender: LayoutControl, e: ICan
                     const info = new EncryptedInfo(options.method.certificateInfo.thumberprint);
                     info.Attributes.push(new EncryptedAttribute(Crypto.DocumentNameOIDAttribute, getBstrBase64(signatureData.fileName)));
                     const signature = await Crypto.SignData(info, signatureData.content);
-                    if(signature) {
+                    if (signature) {
                         try {
-                            await sender.layout.getService($PowerOfAttorneyApiController).attachSignatureToPowerOfAttorney({powerOfAttorneyId, signature})
+                            await sender.layout.getService($PowerOfAttorneyApiController).attachSignatureToPowerOfAttorney({ powerOfAttorneyId, signature })
                             const signOperationIdPOA = sender.layout.controls.locationContainer.params.layoutModel.layoutModel.layoutInfo.operations.find(operation => operation.alias === "Sign").id;
-                            await sender.layout.getService($LayoutCardController).changeState({cardId:powerOfAttorneyUserCardId, operationId: signOperationIdPOA, timestamp: sender.layout.controls.locationContainer.params.layoutModel.cardInfo.timestamp, comment: "", layoutParams: sender.layout.controls.locationContainer.params.layoutModel.layoutModel.layoutInfo.layoutParams});
+                            await sender.layout.getService($LayoutCardController).changeState({ cardId: powerOfAttorneyUserCardId, operationId: signOperationIdPOA, timestamp: sender.layout.controls.locationContainer.params.layoutModel.cardInfo.timestamp, comment: "", layoutParams: sender.layout.controls.locationContainer.params.layoutModel.layoutModel.layoutInfo.layoutParams });
                             e.accept();
-                        } catch(err) {
+                        } catch (err) {
+                            console.error(err);
                             e.cancel()
-                        }   
+                        }
                     } else {
                         e.cancel()
                     }
                     return {} as IEncryptedInfo;
                 },
-                onAttachSignatureToCard: async () => {}
+                onAttachSignatureToCard: async () => { }
             });
-            
-        
+
+
     } else {
         e.accept();
-    } 
+    }
 }

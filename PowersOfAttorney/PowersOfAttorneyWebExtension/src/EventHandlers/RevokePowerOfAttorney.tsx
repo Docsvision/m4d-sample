@@ -22,7 +22,7 @@ import { ModalBackdrop } from "@docsvision/webclient/Helpers/ModalBackdrop";
 
 
 export const revokePowerOfAttorney = async (sender: CustomButton) => {
-    const items = [{key: PowerOfAttorneyRevocationType.Principal.toString(), value: resources.CancellationOfThePowerOfAttorneyByThePrincipal}, {key: PowerOfAttorneyRevocationType.Representative.toString(), value: resources.RefusalOfTheRepresentativeFromThePowers}]
+    const items = [{ key: PowerOfAttorneyRevocationType.Principal.toString(), value: resources.CancellationOfThePowerOfAttorneyByThePrincipal }, { key: PowerOfAttorneyRevocationType.Representative.toString(), value: resources.RefusalOfTheRepresentativeFromThePowers }]
     const powerOfAttorneyUserCardId = sender.layout.getService($CardId);
     const powerOfAttorneyNumber = await sender.layout.getService($PowersOfAttorneyDemoController).getPowerOfAttorneyNumber(powerOfAttorneyUserCardId);
     const powerOfAttorneyId = await sender.layout.getService($PowersOfAttorneyDemoController).getPowerOfAttorneyCardId(powerOfAttorneyUserCardId);
@@ -34,8 +34,8 @@ export const revokePowerOfAttorney = async (sender: CustomButton) => {
     };
 
     const createAndSignApplication = async () => {
-        
-        const signatureData =  await sender.layout.getService($PowersOfAttorneyDemoController).requestRevocationPowerOfAttorney(powerOfAttorneyUserCardId, +typeElement.params.value , reasonElement.value);
+
+        const signatureData = await sender.layout.getService($PowersOfAttorneyDemoController).requestRevocationPowerOfAttorney(powerOfAttorneyUserCardId, +typeElement.params.value, reasonElement.value);
         await sender.layout.params.services.digitalSignature.showDocumentSignDialog(powerOfAttorneyUserCardId,
             {
                 signWithoutLabel: true,
@@ -46,22 +46,22 @@ export const revokePowerOfAttorney = async (sender: CustomButton) => {
                     const info = new EncryptedInfo(options.method.certificateInfo.thumberprint);
                     info.Attributes.push(new EncryptedAttribute(Crypto.DocumentNameOIDAttribute, getBstrBase64(signatureData.fileName)));
                     const signature = await Crypto.SignData(info, signatureData.content);
-                    if(signature) {
+                    if (signature) {
                         try {
-                            await sender.layout.getService($PowerOfAttorneyApiController).attachSignatureToRevocationPowerOfAttorney({powerOfAttorneyId, signature});
-                            await sender.layout.getService($PowerOfAttorneyApiController).revokePowerOfAttorney({powerOfAttorneyId: powerOfAttorneyId, withChildrenPowerOfAttorney: true});
+                            await sender.layout.getService($PowerOfAttorneyApiController).attachSignatureToRevocationPowerOfAttorney({ powerOfAttorneyId, signature });
+                            await sender.layout.getService($PowerOfAttorneyApiController).revokePowerOfAttorney({ powerOfAttorneyId: powerOfAttorneyId, withChildrenPowerOfAttorney: true });
                             const operationId = sender.layout.layoutInfo.operations.find(operation => operation.alias === "To revoke").id;
                             await sender.layout.changeState(operationId);
                             sender.layout.getService($Router).refresh();
                             sender.layout.getService($MessageWindow).showInfo(resources.PowerOfAttorneyIsRevoked);
-                        } catch(err) {
-    
-                        }   
-                    } 
+                        } catch (err) {
+                            console.error(err);
+                        }
+                    }
                     return {} as IEncryptedInfo;
                 },
-                onAttachSignatureToCard: async () => {}
-            }); 
+                onAttachSignatureToCard: async () => { }
+            });
     }
 
     const modalHost = new ModalHost("common-dialog", () => (
@@ -71,9 +71,9 @@ export const revokePowerOfAttorney = async (sender: CustomButton) => {
                     <ModalDialogHeader>{resources.ApplicationForRevocationOfThePowerOfAttorney}</ModalDialogHeader>
                     <ModalDialogContent>
                         <div>{`${resources.PowerOfAttorney} № ${powerOfAttorneyNumber}`}</div>
-                        <RadioGroup ref={el=> typeElement = el} value={PowerOfAttorneyRevocationType.Principal.toString()} items={items} labelText={resources.SelectTheTypeOfApplicationForRevocation}></RadioGroup> 
+                        <RadioGroup ref={el => typeElement = el} value={PowerOfAttorneyRevocationType.Principal.toString()} items={items} labelText={resources.SelectTheTypeOfApplicationForRevocation}></RadioGroup>
                         <label>{resources.Reason}:</label>
-                        <textarea ref={el=> reasonElement = el} maxLength={150} rows={4} style={{height: "auto"}} placeholder={resources.SpecifyTheReasonForCancellationOrRefusal}></textarea>
+                        <textarea ref={el => reasonElement = el} maxLength={150} rows={4} style={{ height: "auto" }} placeholder={resources.SpecifyTheReasonForCancellationOrRefusal}></textarea>
                     </ModalDialogContent>
                     <ModalDialogButtonPanel>
                         <Button onClick={onSave} primaryButton={true}>{resources.SignTheApplication}</Button>
@@ -83,6 +83,6 @@ export const revokePowerOfAttorney = async (sender: CustomButton) => {
             </ModalDialog>
         </ModalBackdrop>
     ));
-    
+
     modalHost.mount();
 }

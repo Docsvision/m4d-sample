@@ -24,20 +24,20 @@ export const signPowerOfAttorney = async (sender: CustomButton) => {
                 const info = new EncryptedInfo(options.method.certificateInfo.thumberprint);
                 info.Attributes.push(new EncryptedAttribute(Crypto.DocumentNameOIDAttribute, getBstrBase64(signatureData.fileName)));
                 const signature = await Crypto.SignData(info, signatureData.content);
-                if(signature) {
+                if (signature) {
                     try {
-                        await sender.layout.getService($PowerOfAttorneyApiController).attachSignatureToPowerOfAttorney({powerOfAttorneyId, signature});
+                        await sender.layout.getService($PowerOfAttorneyApiController).attachSignatureToPowerOfAttorney({ powerOfAttorneyId, signature });
                         const operationId = sender.layout.layoutInfo.operations.find(operation => operation.alias === "Sign").id;
                         await sender.layout.changeState(operationId);
                         sender.layout.getService($Router).refresh();
                         sender.layout.getService($MessageWindow).showInfo("Доверенность подписана");
-                    } catch(err) {
-
-                    }   
-                } 
+                    } catch (err) {
+                        console.error(err);
+                    }
+                }
                 return {} as IEncryptedInfo;
             },
-            onAttachSignatureToCard: async () => {}
+            onAttachSignatureToCard: async () => { }
         });
 }
 
