@@ -4,6 +4,7 @@ import { $LayoutCardController, $PowerOfAttorneyApiController } from "@docsvisio
 import { CustomButton } from "@docsvision/webclient/Platform/CustomButton";
 import { $Router } from "@docsvision/webclient/System/$Router";
 import { $CardId } from "@docsvision/webclient/System/LayoutServices";
+import { resources } from "@docsvision/webclient/System/Resources";
 import { $PowersOfAttorneyDemoController } from "../ServerRequests/PowersOfAttorneyDemoController";
 
 
@@ -22,5 +23,5 @@ export const createEMCHDPowerOfAttorney = async (sender: CustomButton) => {
     const operationId = sender.layout.layoutInfo.operations.find(operation => operation.alias === "Create").id;
     await sender.layout.getService($LayoutCardController).changeState({cardId:powerOfAttorneyUserCardId, operationId: operationId, timestamp: sender.layout.cardInfo.timestamp, comment: "", layoutParams: sender.layout.layoutInfo.layoutParams});
     sender.layout.getService($Router).refresh();
-    sender.layout.getService($MessageWindow).showInfo("Доверенность сформирована");
+    sender.layout.getService($MessageWindow).showInfo(resources.PowerOfAttorneyGenerated);
 }

@@ -7,6 +7,7 @@ import { EncryptedAttribute, EncryptedInfo } from "@docsvision/webclient/Legacy/
 import { IEncryptedInfo } from "@docsvision/webclient/BackOffice/$DigitalSignature";
 import { $MessageWindow } from "@docsvision/web/components/modals/message-box";
 import { $Router } from "@docsvision/webclient/System/$Router";
+import { resources } from "@docsvision/webclient/System/Resources";
 
 
 
@@ -30,7 +31,7 @@ export const signPowerOfAttorney = async (sender: CustomButton) => {
                         const operationId = sender.layout.layoutInfo.operations.find(operation => operation.alias === "Sign").id;
                         await sender.layout.changeState(operationId);
                         sender.layout.getService($Router).refresh();
-                        sender.layout.getService($MessageWindow).showInfo("Доверенность подписана");
+                        sender.layout.getService($MessageWindow).showInfo(resources.PowerOfAttorneySigned);
                     } catch (err) {
                         console.error(err);
                     }

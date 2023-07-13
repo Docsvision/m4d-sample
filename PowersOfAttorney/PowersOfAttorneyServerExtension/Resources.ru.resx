@@ -234,8 +234,14 @@
   <data name="PowerOfAttorney" xml:space="preserve">
     <value>Доверенность</value>
   </data>
-  <data name="PowerOfAttorneyIsRevoked" xml:space="preserve">
+  <data name="PowerOfAttorneyGenerated" xml:space="preserve">
+    <value>Доверенность сформирована</value>
+  </data>
+  <data name="PowerOfAttorneyRevoked" xml:space="preserve">
     <value>Доверенность отозвана</value>
+  </data>
+  <data name="PowerOfAttorneySigned" xml:space="preserve">
+    <value>Доверенность подписана</value>
   </data>
   <data name="Reason" xml:space="preserve">
     <value>Причина</value>
@@ -251,5 +257,8 @@
   </data>
   <data name="SpecifyTheReasonForCancellationOrRefusal" xml:space="preserve">
     <value>Укажите причину отмены или отказа</value>
+  </data>
+  <data name="TheFollowingFieldsAreRequired" xml:space="preserve">
+    <value>Необходимо заполнить следующие поля</value>
   </data>
 </root>

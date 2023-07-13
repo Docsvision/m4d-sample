@@ -53,7 +53,7 @@ export const revokePowerOfAttorney = async (sender: CustomButton) => {
                             const operationId = sender.layout.layoutInfo.operations.find(operation => operation.alias === "To revoke").id;
                             await sender.layout.changeState(operationId);
                             sender.layout.getService($Router).refresh();
-                            sender.layout.getService($MessageWindow).showInfo(resources.PowerOfAttorneyIsRevoked);
+                            sender.layout.getService($MessageWindow).showInfo(resources.PowerOfAttorneyRevoked);
                         } catch (err) {
                             console.error(err);
                         }

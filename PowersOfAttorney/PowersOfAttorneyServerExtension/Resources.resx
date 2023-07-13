@@ -234,8 +234,14 @@
   <data name="PowerOfAttorney" xml:space="preserve">
     <value>Power of attorney</value>
   </data>
-  <data name="PowerOfAttorneyIsRevoked" xml:space="preserve">
-    <value>Power of attorney is revoked</value>
+  <data name="PowerOfAttorneyGenerated" xml:space="preserve">
+    <value>Power of attorney generated</value>
+  </data>
+  <data name="PowerOfAttorneyRevoked" xml:space="preserve">
+    <value>Power of attorney revoked</value>
+  </data>
+  <data name="PowerOfAttorneySigned" xml:space="preserve">
+    <value>Power of attorney signed</value>
   </data>
   <data name="Reason" xml:space="preserve">
     <value>Reason</value>
@@ -251,5 +257,8 @@
   </data>
   <data name="SpecifyTheReasonForCancellationOrRefusal" xml:space="preserve">
     <value>Specify the reason for cancellation or refusal</value>
+  </data>
+  <data name="TheFollowingFieldsAreRequired" xml:space="preserve">
+    <value>The following fields are required</value>
   </data>
 </root>

@@ -322,7 +322,7 @@ namespace PowersOfAttorneyServerExtension {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error_PowerOfAttorneyNumberNotFound.
+        ///   Ищет локализованную строку, похожую на Error_PowerOfAttorneyNumberNotFound.
         /// </summary>
         internal static string Error_PowerOfAttorneyNumberNotFound {
             get {
@@ -412,11 +412,29 @@ namespace PowersOfAttorneyServerExtension {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Power of attorney is revoked.
+        ///   Ищет локализованную строку, похожую на Power of attorney generated.
         /// </summary>
-        internal static string PowerOfAttorneyIsRevoked {
+        internal static string PowerOfAttorneyGenerated {
             get {
-                return ResourceManager.GetString("PowerOfAttorneyIsRevoked", resourceCulture);
+                return ResourceManager.GetString("PowerOfAttorneyGenerated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Power of attorney revoked.
+        /// </summary>
+        internal static string PowerOfAttorneyRevoked {
+            get {
+                return ResourceManager.GetString("PowerOfAttorneyRevoked", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Power of attorney signed.
+        /// </summary>
+        internal static string PowerOfAttorneySigned {
+            get {
+                return ResourceManager.GetString("PowerOfAttorneySigned", resourceCulture);
             }
         }
         
@@ -462,6 +480,15 @@ namespace PowersOfAttorneyServerExtension {
         internal static string SpecifyTheReasonForCancellationOrRefusal {
             get {
                 return ResourceManager.GetString("SpecifyTheReasonForCancellationOrRefusal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на The following fields are required.
+        /// </summary>
+        internal static string TheFollowingFieldsAreRequired {
+            get {
+                return ResourceManager.GetString("TheFollowingFieldsAreRequired", resourceCulture);
             }
         }
     }
