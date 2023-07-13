@@ -25,15 +25,16 @@ export const revokePowerOfAttorney = async (sender: CustomButton) => {
     const items = [{key: PowerOfAttorneyRevocationType.Principal.toString(), value: resources.CancellationOfThePowerOfAttorneyByThePrincipal}, {key: PowerOfAttorneyRevocationType.Representative.toString(), value: resources.RefusalOfTheRepresentativeFromThePowers}]
     const powerOfAttorneyUserCardId = sender.layout.getService($CardId);
     const powerOfAttorneyNumber = await sender.layout.getService($PowersOfAttorneyDemoController).getPowerOfAttorneyNumber(powerOfAttorneyUserCardId);
-    
+    const powerOfAttorneyId = await sender.layout.getService($PowersOfAttorneyDemoController).getPowerOfAttorneyCardId(powerOfAttorneyUserCardId);
     let typeElement = null;
     let reasonElement = null;
     const onSave = () => {
         createAndSignApplication();
+        modalHost.unmount();
     };
 
     const createAndSignApplication = async () => {
-        const powerOfAttorneyUserCardId = sender.layout.getService($CardId);
+        
         const signatureData =  await sender.layout.getService($PowersOfAttorneyDemoController).requestRevocationPowerOfAttorney(powerOfAttorneyUserCardId, +typeElement.params.value , reasonElement.value);
         await sender.layout.params.services.digitalSignature.showDocumentSignDialog(powerOfAttorneyUserCardId,
             {
@@ -47,7 +48,12 @@ export const revokePowerOfAttorney = async (sender: CustomButton) => {
                     const signature = await Crypto.SignData(info, signatureData.content);
                     if(signature) {
                         try {
-                            await sender.layout.getService($PowersOfAttorneyDemoController).attachSignatureToRevocation(powerOfAttorneyUserCardId, signature);
+                            await sender.layout.getService($PowerOfAttorneyApiController).attachSignatureToRevocationPowerOfAttorney({powerOfAttorneyId, signature});
+                            await sender.layout.getService($PowerOfAttorneyApiController).revokePowerOfAttorney({powerOfAttorneyId: powerOfAttorneyId, withChildrenPowerOfAttorney: true});
+                            const operationId = sender.layout.layoutInfo.operations.find(operation => operation.alias === "To revoke").id;
+                            await sender.layout.changeState(operationId);
+                            sender.layout.getService($Router).refresh();
+                            sender.layout.getService($MessageWindow).showInfo(resources.PowerOfAttorneyIsRevoked);
                         } catch(err) {
     
                         }   
@@ -56,13 +62,6 @@ export const revokePowerOfAttorney = async (sender: CustomButton) => {
                 },
                 onAttachSignatureToCard: async () => {}
             }); 
-    
-        const powerOfAttorneyId = await sender.layout.getService($PowersOfAttorneyDemoController).getPowerOfAttorneyCardId(powerOfAttorneyUserCardId);
-        await sender.layout.getService($PowerOfAttorneyApiController).revokePowerOfAttorney({powerOfAttorneyId: powerOfAttorneyId, withChildrenPowerOfAttorney: true});
-        const operationId = sender.layout.layoutInfo.operations.find(operation => operation.alias === "To revoke").id;
-        await sender.layout.changeState(operationId);
-        sender.layout.getService($Router).refresh();
-        sender.layout.getService($MessageWindow).showInfo(resources.PowerOfAttorneyIsRevoked);
     }
 
     const modalHost = new ModalHost("common-dialog", () => (

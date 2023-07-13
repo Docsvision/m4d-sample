@@ -39,15 +39,6 @@ export class PowersOfAttorneyDemoController {
         }
         return this.services.requestManager.post(`api/PowersOfAttorneyDemo/RequestRevocationPowerOfAttorney`, JSON.stringify(data));
     }
-
-    attachSignatureToRevocation(powerOfAttorneyUserCardId: string, signature: number[]): Promise<void> {
-        const data = {
-            powerOfAttorneyUserCardId: powerOfAttorneyUserCardId,
-            signature: signature,
-        }
-        return this.services.requestManager.post(`api/PowersOfAttorneyDemo/AttachSignatureToRevocation`, JSON.stringify(data));
-    }
-
 }
 
 export type $PowersOfAttorneyDemoController = {  powersOfAttorneyDemoController: PowersOfAttorneyDemoController }

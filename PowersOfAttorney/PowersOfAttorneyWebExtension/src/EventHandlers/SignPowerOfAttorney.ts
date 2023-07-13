@@ -26,7 +26,11 @@ export const signPowerOfAttorney = async (sender: CustomButton) => {
                 const signature = await Crypto.SignData(info, signatureData.content);
                 if(signature) {
                     try {
-                        await sender.layout.getService($PowerOfAttorneyApiController).attachSignatureToPowerOfAttorney({powerOfAttorneyId, signature})
+                        await sender.layout.getService($PowerOfAttorneyApiController).attachSignatureToPowerOfAttorney({powerOfAttorneyId, signature});
+                        const operationId = sender.layout.layoutInfo.operations.find(operation => operation.alias === "Sign").id;
+                        await sender.layout.changeState(operationId);
+                        sender.layout.getService($Router).refresh();
+                        sender.layout.getService($MessageWindow).showInfo("Доверенность подписана");
                     } catch(err) {
 
                     }   
@@ -35,12 +39,6 @@ export const signPowerOfAttorney = async (sender: CustomButton) => {
             },
             onAttachSignatureToCard: async () => {}
         });
-        
-    const operationId = sender.layout.layoutInfo.operations.find(operation => operation.alias === "Sign").id;
-    await sender.layout.changeState(operationId);
-    
-    sender.layout.getService($Router).refresh();
-    sender.layout.getService($MessageWindow).showInfo("Доверенность подписана");
 }
 
 
