@@ -7,6 +7,7 @@ using PowersOfAttorneyServerExtension.Services;
 using System;
 using System.Diagnostics;
 using System.Reflection;
+using System.Resources;
 
 namespace PowersOfAttorneyServerExtension
 {
@@ -45,6 +46,7 @@ namespace PowersOfAttorneyServerExtension
         public override void InitializeContainer(global::Autofac.ContainerBuilder containerBuilder)
         {
             containerBuilder.RegisterType<PowersOfAttorneyDemoService>().As<IPowersOfAttorneyDemoService>().SingleInstance();
+            containerBuilder.RegisterInstance(Resources.ResourceManager).As<ResourceManager>();
         }
 
         #endregion

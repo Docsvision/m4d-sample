@@ -7,27 +7,34 @@ import { $Router } from "@docsvision/webclient/System/$Router";
 import { EncryptedAttribute, EncryptedInfo } from "@docsvision/webclient/Legacy/EncryptedInfo";
 import { IEncryptedInfo } from "@docsvision/webclient/BackOffice/$DigitalSignature";
 import { Crypto, getBstrBase64 } from "@docsvision/webclient/Libs/CryptoPro/Crypto";
-import React, { useState } from "react";
+import React from "react";
 import { RadioGroup } from "@docsvision/webclient/Platform/RadioGroup";
-import { TextArea } from "@docsvision/webclient/Platform/TextArea";
-import { $MessageBox } from "@docsvision/webclient/System/$MessageBox";
-import { TextBox } from "@docsvision/webclient/Platform/TextBox";
-import { EditMode } from "@docsvision/webclient/System/EditMode";
 import { PowerOfAttorneyRevocationType } from "../Interfaces";
 import { resources } from '@docsvision/webclient/System/Resources';
+import { ModalDialogButtonPanel } from "@docsvision/webclient/Helpers/ModalDialog/ModalDialogButtonPanel";
+import { ModalHost } from "@docsvision/webclient/Helpers/ModalHost";
+import { Button } from "@docsvision/webclient/Helpers/Button";
+import { ModalDialogBox } from "@docsvision/webclient/Helpers/ModalDialog/ModalDialogBox";
+import { ModalDialog } from "@docsvision/webclient/Helpers/ModalDialog/ModalDialog";
+import { ModalDialogHeader } from "@docsvision/webclient/Helpers/ModalDialog/ModalDialogHeader";
+import { ModalDialogContent } from "@docsvision/webclient/Helpers/ModalDialog/ModalDialogContent";
+import { ModalBackdrop } from "@docsvision/webclient/Helpers/ModalBackdrop";
 
 
 export const revokePowerOfAttorney = async (sender: CustomButton) => {
+    const items = [{key: PowerOfAttorneyRevocationType.Principal.toString(), value: resources.CancellationOfThePowerOfAttorneyByThePrincipal}, {key: PowerOfAttorneyRevocationType.Representative.toString(), value: resources.RefusalOfTheRepresentativeFromThePowers}]
     const powerOfAttorneyUserCardId = sender.layout.getService($CardId);
-    const powerOfAttorneyNumber = await sender.layout.getService($PowersOfAttorneyDemoController).getPowersOfAttorneyNumber(powerOfAttorneyUserCardId);
-    const items = [{key: PowerOfAttorneyRevocationType.Principal.toString() , value: resources.CancellationOfThePowerOfAttorneyByThePrincipal }, {key: PowerOfAttorneyRevocationType.Representative.toString(), value: resources.RefusalOfTheRepresentativeFromThePowers}]
+    const powerOfAttorneyNumber = await sender.layout.getService($PowersOfAttorneyDemoController).getPowerOfAttorneyNumber(powerOfAttorneyUserCardId);
     
-    const [type, setType] = useState<PowerOfAttorneyRevocationType>(PowerOfAttorneyRevocationType.Principal);
-    const [reason, setReason] = useState<string>();
+    let typeElement = null;
+    let reasonElement = null;
+    const onSave = () => {
+        createAndSignApplication();
+    };
 
-    const createAndSignApplication = async () =>{
+    const createAndSignApplication = async () => {
         const powerOfAttorneyUserCardId = sender.layout.getService($CardId);
-        const signatureData =  await sender.layout.getService($PowersOfAttorneyDemoController).requestRevocationPowerOfAttorney(powerOfAttorneyUserCardId, type , reason);
+        const signatureData =  await sender.layout.getService($PowersOfAttorneyDemoController).requestRevocationPowerOfAttorney(powerOfAttorneyUserCardId, +typeElement.params.value , reasonElement.value);
         await sender.layout.params.services.digitalSignature.showDocumentSignDialog(powerOfAttorneyUserCardId,
             {
                 signWithoutLabel: true,
@@ -57,19 +64,26 @@ export const revokePowerOfAttorney = async (sender: CustomButton) => {
         sender.layout.getService($Router).refresh();
         sender.layout.getService($MessageWindow).showInfo(resources.PowerOfAttorneyIsRevoked);
     }
+
+    const modalHost = new ModalHost("common-dialog", () => (
+        <ModalBackdrop visible={true} onClick={() => modalHost.unmount()}>
+            <ModalDialog isOpen={true}>
+                <ModalDialogBox>
+                    <ModalDialogHeader>{resources.ApplicationForRevocationOfThePowerOfAttorney}</ModalDialogHeader>
+                    <ModalDialogContent>
+                        <div>{`${resources.PowerOfAttorney} № ${powerOfAttorneyNumber}`}</div>
+                        <RadioGroup ref={el=> typeElement = el} value={PowerOfAttorneyRevocationType.Principal.toString()} items={items} labelText={resources.SelectTheTypeOfApplicationForRevocation}></RadioGroup> 
+                        <label>{resources.Reason}:</label>
+                        <textarea ref={el=> reasonElement = el} maxLength={150} rows={4} style={{height: "auto"}} placeholder={resources.SpecifyTheReasonForCancellationOrRefusal}></textarea>
+                    </ModalDialogContent>
+                    <ModalDialogButtonPanel>
+                        <Button onClick={onSave} primaryButton={true}>{resources.SignTheApplication}</Button>
+                        <Button onClick={() => modalHost.unmount()}>{resources.Dialog_Cancel}</Button>
+                    </ModalDialogButtonPanel>
+                </ModalDialogBox>
+            </ModalDialog>
+        </ModalBackdrop>
+    ));
     
-    const  modalContent = (
-        <div>
-           <div>`{resources.PowerOfAttorney} № ${powerOfAttorneyNumber}`</div>
-           <RadioGroup items={items} value={type.toString()} dataChanged={(e) => setType(e.target.value)} labelText={resources.SelectTheTypeOfApplicationForRevocation}></RadioGroup> 
-           <TextArea useHtml={false} value={reason} dataChanged={(e) => setReason(e.target.value)} labelText={resources.Reason} placeHolder={resources.SpecifyTheReasonForCancellationOrRefusal}></TextArea>
-        </div>
-    );
-
-    const buttons = [
-        { name: resources.SignTheApplication, id: "open", onClick: createAndSignApplication}, 
-        { name: resources.Cancel, isCancel: true }]
-
-    sender.layout.getService($MessageBox).showCustom(modalContent, resources.ApplicationForRevocationOfThePowerOfAttorney, buttons)
+    modalHost.mount();
 }
-

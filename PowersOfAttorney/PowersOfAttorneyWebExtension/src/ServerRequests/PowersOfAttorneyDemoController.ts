@@ -27,15 +27,15 @@ export class PowersOfAttorneyDemoController {
         return this.services.requestManager.get(`api/PowersOfAttorneyDemo/GetPowerOfAttorneyCardId?powerOfAttorneyUserCardId=${powerOfAttorneyUserCardId}`);
     }
 
-    getPowersOfAttorneyNumber(powerOfAttorneyUserCardId: string): Promise<string | null> {
-        return this.services.requestManager.get(`api/PowersOfAttorneyDemo/GetPowersOfAttorneyNumber?powerOfAttorneyUserCardId=${powerOfAttorneyUserCardId}`);
+    getPowerOfAttorneyNumber(powerOfAttorneyUserCardId: string): Promise<string | null> {
+        return this.services.requestManager.get(`api/PowersOfAttorneyDemo/GetPowerOfAttorneyNumber?powerOfAttorneyUserCardId=${powerOfAttorneyUserCardId}`);
     }
 
     requestRevocationPowerOfAttorney(powerOfAttorneyUserCardId: string, revocationType: PowerOfAttorneyRevocationType ,revocationReason: string ): Promise<any> {
         const data = {
-            powerOfAttorneyUserCardId: powerOfAttorneyUserCardId,
-            revocationType: revocationType,
-            revocationReason: revocationReason
+            "powerOfAttorneyUserCardId": powerOfAttorneyUserCardId,
+            "revocationType": revocationType,
+            "revocationReason": revocationReason
         }
         return this.services.requestManager.post(`api/PowersOfAttorneyDemo/RequestRevocationPowerOfAttorney`, JSON.stringify(data));
     }
