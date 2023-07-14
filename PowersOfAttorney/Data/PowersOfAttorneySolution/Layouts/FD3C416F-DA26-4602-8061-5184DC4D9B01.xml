@@ -23,14 +23,12 @@
     <Property Name="BackgroundStyle" Value="0" Type="System.Int32, mscorlib" IsAvailable="false" />
   </Properties>
   <Bindings>
-    <Binding PropertyName="864908f1-4021-47bf-88e1-06b13d4ce7ad" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/3b9a9466-7569-4142-af68-de60263a9640/PowerOfAttorneyCardId" ConverterType="CardLinkConverter" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
+    <Binding PropertyName="864908f1-4021-47bf-88e1-06b13d4ce7ad" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/29c1b4ef-48e4-47f0-ac67-c42cf68de986/POASysCardId" ConverterType="CardLinkConverter" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
     <Binding PropertyName="3c0d9fed-c954-4618-bf36-a8d5b32695c4" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/29c1b4ef-48e4-47f0-ac67-c42cf68de986/OID" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
     <Binding PropertyName="6f7be3fa-1539-4e6f-a40b-dfa8738f70e0" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/29c1b4ef-48e4-47f0-ac67-c42cf68de986/TaxDocFormCode" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
     <Binding PropertyName="2f05e870-2b00-4002-9cb5-540fa776ab54" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/29c1b4ef-48e4-47f0-ac67-c42cf68de986/substitutionPOAInBasis" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
     <Binding PropertyName="7a88711e-4ed4-4a4f-b6b3-8464d1a5c369" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/29c1b4ef-48e4-47f0-ac67-c42cf68de986/OriginalPOACardLink" ConverterType="CardLinkConverter" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
-    <Binding PropertyName="dd481349-f5d0-453c-af0b-926c9ba1cdf1" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/29c1b4ef-48e4-47f0-ac67-c42cf68de986/OriginalPOACardLink" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
     <Binding PropertyName="94d01f15-1d57-4f56-bb9c-7a6db1b12b9a" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/29c1b4ef-48e4-47f0-ac67-c42cf68de986/ParentalPOACardLink" ConverterType="CardLinkConverter" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
-    <Binding PropertyName="f4ec6612-9c7b-46f0-a6b5-4c1f9df338e2" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/29c1b4ef-48e4-47f0-ac67-c42cf68de986/ParentalPOACardLink" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
     <Binding PropertyName="f19f4729-d750-4e57-b422-3b1571807f29" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/29c1b4ef-48e4-47f0-ac67-c42cf68de986/poaKind" ResolverType="ElementBinding" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
     <Binding PropertyName="858b2e0c-03d7-4ecf-aa9d-02bf2bc94085" BindingMode="0" ConverterType="Elements" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false">
       <Items />
@@ -613,7 +611,7 @@
                 <Property Name="Tag" Value="" Type="System.String, mscorlib" IsAvailable="true" />
                 <Property Name="LabelText" Value="bf04a922-bfeb-45ea-949b-62ed11dc40e2" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="true" />
                 <Property Name="StandardCssClass" Value="system-card-link" Type="System.String, mscorlib" IsAvailable="true" />
-                <Property Name="DataField" Value="PowerOfAttorneyCardId" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="DataField" Value="POASysCardId" Type="System.String, mscorlib" IsAvailable="true" />
                 <Property Name="Binding" Value="864908f1-4021-47bf-88e1-06b13d4ce7ad" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
                 <Property Name="EmptyText" Value="" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="true" />
                 <Property Name="FolderList" Value="" Type="System.String, mscorlib" ResolverType="FolderListResolver" IsAvailable="true" />
@@ -635,7 +633,7 @@
                 <Property Name="TabStop" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
                 <Property Name="Required" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
                 <Property Name="EditMode" Value="2" Type="System.Int32, mscorlib" IsAvailable="true" />
-                <Property Name="DataSource" Value="3b9a9466-7569-4142-af68-de60263a9640" Type="System.Guid, mscorlib" IsAvailable="true" />
+                <Property Name="DataSource" Value="29c1b4ef-48e4-47f0-ac67-c42cf68de986" Type="System.Guid, mscorlib" IsAvailable="true" />
                 <Property Name="ExtendedDataSource" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
                 <Property Name="IsInheritedEditOperation" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
                 <Property Name="Disabled" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
@@ -1000,34 +998,6 @@
                     <Property Name="LinkCardOpening" Value="" Type="System.String, mscorlib" IsAvailable="true" />
                   </Properties>
                 </Element>
-                <Element Id="a2ebfc10-2d3e-4a63-97ce-1f96089bbede" Type="LocationContainer" ResolverType="LocationControlResolver">
-                  <Properties>
-                    <Property Name="DataSource" Value="29c1b4ef-48e4-47f0-ac67-c42cf68de986" Type="System.Guid, mscorlib" IsAvailable="true" />
-                    <Property Name="DataField" Value="OriginalPOACardLink" Type="System.String, mscorlib" IsAvailable="true" />
-                    <Property Name="ExtendedDataSource" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
-                    <Property Name="Tag" Value="" Type="System.String, mscorlib" IsAvailable="true" />
-                    <Property Name="Name" Value="locationContainerOriginalPOA" Type="System.String, mscorlib" IsAvailable="true" />
-                    <Property Name="Visibility" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
-                      <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-                        <Desktop>true</Desktop>
-                        <Tablet>true</Tablet>
-                        <Smartphone>true</Smartphone>
-                        <CanChange>true</CanChange>
-                      </DeviceDependentPropertyOfBoolean>
-                    </Property>
-                    <Property Name="StandardCssClass" Value="system-layout-position" Type="System.String, mscorlib" IsAvailable="true" />
-                    <Property Name="LocationName" Value="6ac009bc-fd9c-4b7a-ba69-eaed27675264" Type="System.String, mscorlib" IsAvailable="false" />
-                    <Property Name="Async" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
-                    <Property Name="OwnerLayoutPart" Value="false" Type="System.Boolean, mscorlib" IsAvailable="false" />
-                    <Property Name="LayoutMode" Value="e8eab147-46bd-445b-af96-678513b224a8" Type="System.String, mscorlib" IsAvailable="true" />
-                    <Property Name="LocationSource" Value="1" Type="System.Int32, mscorlib" IsAvailable="true" />
-                    <Property Name="Binding" Value="dd481349-f5d0-453c-af0b-926c9ba1cdf1" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
-                    <Property Name="MaxHeight" Value="0" Type="System.Int32, mscorlib" IsAvailable="true" />
-                    <Property Name="Click" Value="" Type="System.String, mscorlib" IsAvailable="true" />
-                    <Property Name="MouseOver" Value="" Type="System.String, mscorlib" IsAvailable="true" />
-                    <Property Name="MouseOut" Value="" Type="System.String, mscorlib" IsAvailable="true" />
-                  </Properties>
-                </Element>
               </Elements>
             </Element>
             <Element Id="c4e2cbc2-3285-4dc9-8a51-b3523998a64c" Type="Block">
@@ -1160,34 +1130,6 @@
                     <Property Name="LinkFilePreviewing" Value="" Type="System.String, mscorlib" IsAvailable="true" />
                     <Property Name="LinkFilePreviewed" Value="" Type="System.String, mscorlib" IsAvailable="true" />
                     <Property Name="LinkCardOpening" Value="" Type="System.String, mscorlib" IsAvailable="true" />
-                  </Properties>
-                </Element>
-                <Element Id="257f8d2d-dbaa-4e34-8522-0b635b5aaced" Type="LocationContainer" ResolverType="LocationControlResolver">
-                  <Properties>
-                    <Property Name="DataSource" Value="29c1b4ef-48e4-47f0-ac67-c42cf68de986" Type="System.Guid, mscorlib" IsAvailable="true" />
-                    <Property Name="DataField" Value="ParentalPOACardLink" Type="System.String, mscorlib" IsAvailable="true" />
-                    <Property Name="ExtendedDataSource" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
-                    <Property Name="Tag" Value="" Type="System.String, mscorlib" IsAvailable="true" />
-                    <Property Name="Name" Value="locationContainerParentalPOA" Type="System.String, mscorlib" IsAvailable="true" />
-                    <Property Name="Visibility" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
-                      <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-                        <Desktop>true</Desktop>
-                        <Tablet>true</Tablet>
-                        <Smartphone>true</Smartphone>
-                        <CanChange>true</CanChange>
-                      </DeviceDependentPropertyOfBoolean>
-                    </Property>
-                    <Property Name="StandardCssClass" Value="system-layout-position" Type="System.String, mscorlib" IsAvailable="true" />
-                    <Property Name="LocationName" Value="6ac009bc-fd9c-4b7a-ba69-eaed27675264" Type="System.String, mscorlib" IsAvailable="false" />
-                    <Property Name="Async" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
-                    <Property Name="OwnerLayoutPart" Value="false" Type="System.Boolean, mscorlib" IsAvailable="false" />
-                    <Property Name="LayoutMode" Value="e8eab147-46bd-445b-af96-678513b224a8" Type="System.String, mscorlib" IsAvailable="true" />
-                    <Property Name="LocationSource" Value="1" Type="System.Int32, mscorlib" IsAvailable="true" />
-                    <Property Name="Binding" Value="f4ec6612-9c7b-46f0-a6b5-4c1f9df338e2" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
-                    <Property Name="MaxHeight" Value="0" Type="System.Int32, mscorlib" IsAvailable="true" />
-                    <Property Name="Click" Value="" Type="System.String, mscorlib" IsAvailable="true" />
-                    <Property Name="MouseOver" Value="" Type="System.String, mscorlib" IsAvailable="true" />
-                    <Property Name="MouseOut" Value="" Type="System.String, mscorlib" IsAvailable="true" />
                   </Properties>
                 </Element>
               </Elements>

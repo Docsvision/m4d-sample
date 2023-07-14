@@ -65,9 +65,7 @@
     <Binding PropertyName="4e3d5837-16b1-46ec-9f50-5f51dd4d02c1" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/29c1b4ef-48e4-47f0-ac67-c42cf68de986/TaxDocFormCode" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
     <Binding PropertyName="55741921-0cd5-4092-9973-e281d721118a" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/29c1b4ef-48e4-47f0-ac67-c42cf68de986/substitutionPOAInBasis" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
     <Binding PropertyName="f0f918b3-d283-49f0-b9e8-1fe1387c373c" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/29c1b4ef-48e4-47f0-ac67-c42cf68de986/OriginalPOACardLink" ConverterType="CardLinkConverter" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
-    <Binding PropertyName="27f9f154-12eb-4a9b-b053-2b55f02f4d34" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/29c1b4ef-48e4-47f0-ac67-c42cf68de986/OriginalPOACardLink" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
     <Binding PropertyName="4c7731e7-4345-4ab3-bd15-74fa03e922dc" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/29c1b4ef-48e4-47f0-ac67-c42cf68de986/ParentalPOACardLink" ConverterType="CardLinkConverter" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
-    <Binding PropertyName="3ba6ca02-08cb-463e-87cc-6a526d53d295" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/29c1b4ef-48e4-47f0-ac67-c42cf68de986/ParentalPOACardLink" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
     <Binding PropertyName="fcbced10-4adc-4b3c-8965-968fd0729248" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/29c1b4ef-48e4-47f0-ac67-c42cf68de986/poaKind" ResolverType="ElementBinding" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
     <Binding PropertyName="d1ed1fd4-45b1-4a80-960c-8310a5a9e917" BindingMode="0" ConverterType="Elements" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false">
       <Items />
@@ -1871,34 +1869,6 @@
                     <Property Name="LinkCardOpening" Value="" Type="System.String, mscorlib" IsAvailable="true" />
                   </Properties>
                 </Element>
-                <Element Id="9ebb2561-3892-47d8-8d06-bb4a172ca2d7" Type="LocationContainer" ResolverType="LocationControlResolver">
-                  <Properties>
-                    <Property Name="DataSource" Value="29c1b4ef-48e4-47f0-ac67-c42cf68de986" Type="System.Guid, mscorlib" IsAvailable="false" />
-                    <Property Name="DataField" Value="OriginalPOACardLink" Type="System.String, mscorlib" IsAvailable="false" />
-                    <Property Name="ExtendedDataSource" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="false" />
-                    <Property Name="Tag" Value="" Type="System.String, mscorlib" IsAvailable="true" />
-                    <Property Name="Name" Value="locationContainerOriginalPOA" Type="System.String, mscorlib" IsAvailable="true" />
-                    <Property Name="Visibility" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
-                      <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-                        <Desktop>true</Desktop>
-                        <Tablet>true</Tablet>
-                        <Smartphone>true</Smartphone>
-                        <CanChange>true</CanChange>
-                      </DeviceDependentPropertyOfBoolean>
-                    </Property>
-                    <Property Name="StandardCssClass" Value="system-layout-position" Type="System.String, mscorlib" IsAvailable="true" />
-                    <Property Name="LocationName" Value="6ac009bc-fd9c-4b7a-ba69-eaed27675264" Type="System.String, mscorlib" IsAvailable="true" />
-                    <Property Name="Async" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
-                    <Property Name="OwnerLayoutPart" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
-                    <Property Name="LayoutMode" Value="e8eab147-46bd-445b-af96-678513b224a8" Type="System.String, mscorlib" IsAvailable="true" />
-                    <Property Name="LocationSource" Value="0" Type="System.Int32, mscorlib" IsAvailable="true" />
-                    <Property Name="Binding" Value="27f9f154-12eb-4a9b-b053-2b55f02f4d34" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
-                    <Property Name="MaxHeight" Value="0" Type="System.Int32, mscorlib" IsAvailable="true" />
-                    <Property Name="Click" Value="" Type="System.String, mscorlib" IsAvailable="true" />
-                    <Property Name="MouseOver" Value="" Type="System.String, mscorlib" IsAvailable="true" />
-                    <Property Name="MouseOut" Value="" Type="System.String, mscorlib" IsAvailable="true" />
-                  </Properties>
-                </Element>
               </Elements>
             </Element>
             <Element Id="7c9d347b-c7a8-491e-90fb-cbcd5772d2fb" Type="Block">
@@ -2032,34 +2002,6 @@
                     <Property Name="LinkFilePreviewing" Value="" Type="System.String, mscorlib" IsAvailable="true" />
                     <Property Name="LinkFilePreviewed" Value="" Type="System.String, mscorlib" IsAvailable="true" />
                     <Property Name="LinkCardOpening" Value="" Type="System.String, mscorlib" IsAvailable="true" />
-                  </Properties>
-                </Element>
-                <Element Id="6438659f-254d-40d2-b963-c8bcf68e176a" Type="LocationContainer" ResolverType="LocationControlResolver">
-                  <Properties>
-                    <Property Name="DataSource" Value="29c1b4ef-48e4-47f0-ac67-c42cf68de986" Type="System.Guid, mscorlib" IsAvailable="true" />
-                    <Property Name="DataField" Value="ParentalPOACardLink" Type="System.String, mscorlib" IsAvailable="true" />
-                    <Property Name="ExtendedDataSource" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
-                    <Property Name="Tag" Value="" Type="System.String, mscorlib" IsAvailable="true" />
-                    <Property Name="Name" Value="locationContainerParentalPOA" Type="System.String, mscorlib" IsAvailable="true" />
-                    <Property Name="Visibility" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
-                      <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-                        <Desktop>true</Desktop>
-                        <Tablet>true</Tablet>
-                        <Smartphone>true</Smartphone>
-                        <CanChange>true</CanChange>
-                      </DeviceDependentPropertyOfBoolean>
-                    </Property>
-                    <Property Name="StandardCssClass" Value="system-layout-position" Type="System.String, mscorlib" IsAvailable="true" />
-                    <Property Name="LocationName" Value="6ac009bc-fd9c-4b7a-ba69-eaed27675264" Type="System.String, mscorlib" IsAvailable="false" />
-                    <Property Name="Async" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
-                    <Property Name="OwnerLayoutPart" Value="false" Type="System.Boolean, mscorlib" IsAvailable="false" />
-                    <Property Name="LayoutMode" Value="e8eab147-46bd-445b-af96-678513b224a8" Type="System.String, mscorlib" IsAvailable="true" />
-                    <Property Name="LocationSource" Value="1" Type="System.Int32, mscorlib" IsAvailable="true" />
-                    <Property Name="Binding" Value="3ba6ca02-08cb-463e-87cc-6a526d53d295" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
-                    <Property Name="MaxHeight" Value="0" Type="System.Int32, mscorlib" IsAvailable="true" />
-                    <Property Name="Click" Value="" Type="System.String, mscorlib" IsAvailable="true" />
-                    <Property Name="MouseOver" Value="" Type="System.String, mscorlib" IsAvailable="true" />
-                    <Property Name="MouseOut" Value="" Type="System.String, mscorlib" IsAvailable="true" />
                   </Properties>
                 </Element>
               </Elements>
