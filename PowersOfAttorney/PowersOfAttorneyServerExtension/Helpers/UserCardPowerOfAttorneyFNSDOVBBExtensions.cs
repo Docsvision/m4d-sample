@@ -26,7 +26,7 @@ internal static class UserCardPowerOfAttorneyFNSDOVBBExtensions
         catch (Exception ex)
         {
             Trace.TraceError(ex);
-            throw new Exception(Resources.Error_IncorrectUserCardData);
+            throw new Exception(String.Format(Resources.Error_IncorrectUserCardData, ex.Message));
         }
     }
 
@@ -291,7 +291,7 @@ internal static class UserCardPowerOfAttorneyFNSDOVBBExtensions
             var emlpoyee = userCard.PrincipalWithoutPowerOfAttorneyIndividual;
             var snils = userCard.PrincipalWithoutPowerOfAttorneyIndividualSnils;
             var individualInfo = GetPrincipalWithoutPowerOfAttorneyIndividual1Info(emlpoyee);
-            var position = emlpoyee.PositionName.AsNullable();
+            var position = emlpoyee.PositionName.AsNullable() ?? throw new Exception(String.Format(Resources.Error_PositionNotSpecified, emlpoyee.DisplayName));
             var authorityConfirmingDocumentName = userCard.PrincipalWithoutPowerOfAttorneyIndividualDocument;
             var inn = userCard.PrincipalWithoutPowerOfAttorneyIndividualInn;
             var authorityConfirmingDocument = GetConfirmationOfAuthorityDocument();
@@ -361,11 +361,12 @@ internal static class UserCardPowerOfAttorneyFNSDOVBBExtensions
         private RussianEntityInfo GetRussianEntityInfo()
         {
             var princOrg = userCard.PrincipalOrganization;
-            var name = princOrg.Name.AsNullable();
-            var inn = princOrg.INN.AsNullable();
-            var kpp = princOrg.KPP.AsNullable();
-            var ogrn = princOrg.OGRN.AsNullable();
-            var legalAddress = princOrg.Addresses.FirstOrDefault(t => t.AddressType == StaffAddresseAddressType.LegalAddress)?.Address ?? throw new Exception("Не найден юридический адрес");
+            var name = princOrg.Name.AsNullable() ?? throw new Exception(String.Format(Resources.Error_OrgNameNotSpecified, princOrg.Name));
+            var inn = princOrg.INN.AsNullable() ?? throw new Exception(String.Format(Resources.Error_InnNotSpecified, princOrg.Name));
+            var kpp = princOrg.KPP.AsNullable() ?? throw new Exception(String.Format(Resources.Error_KppNotSpecified, princOrg.Name));
+            var ogrn = princOrg.OGRN.AsNullable() ?? throw new Exception(String.Format(Resources.Error_OgrnNotSpecified, princOrg.Name));
+            var legalAddress = princOrg.Addresses.FirstOrDefault(t => t.AddressType == StaffAddresseAddressType.LegalAddress)?.Address ?? 
+                throw new Exception(String.Format(Resources.Error_LegalAddressNotSpecified, princOrg.Name));
             var actualAddress = princOrg.Addresses.FirstOrDefault(t => t.AddressType == StaffAddresseAddressType.ContactAddress)?.Address;
 
             return new RussianEntityInfo(name, ogrn, inn, kpp, legalAddress, actualAddress);

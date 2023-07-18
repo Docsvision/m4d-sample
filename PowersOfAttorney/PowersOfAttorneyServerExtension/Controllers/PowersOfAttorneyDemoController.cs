@@ -83,15 +83,8 @@ namespace PowersOfAttorneyServerExtension.Controllers
         {
             var context = currentObjectContextProvider.GetOrCreateCurrentSessionContext().ObjectContext;
 
-            Guid powerOfAttorneyId;
-            try
-            {
-                powerOfAttorneyId = powersOfAttorneyDemoService.GetPowerOfAttorneyCardId(context, powerOfAttorneyUserCardId);
-            }
-            catch (Exception ex)
-            {
-                return CommonResponse.CreateError<Guid>(ex.ToString());
-            }
+            Guid powerOfAttorneyId = powersOfAttorneyDemoService.GetPowerOfAttorneyCardId(context, powerOfAttorneyUserCardId);
+            
 
             return CommonResponse.CreateSuccess(powerOfAttorneyId);
         }
@@ -121,32 +114,14 @@ namespace PowersOfAttorneyServerExtension.Controllers
         public CommonResponse<RequestRevocationResponse> RequestRevocationPowerOfAttorney([FromBody] RequestRevocationRequest request)
         {
             var context = currentObjectContextProvider.GetOrCreateCurrentSessionContext().ObjectContext;
-            RequestRevocationResponse result;
-
-            try
-            {
-                result = powersOfAttorneyDemoService.RequestRevocationPowerOfAttorney(context, request.PowerOfAttorneyUserCardId, request.RevocationType, request.RevocationReason);
-            }
-            catch (Exception ex)
-            {
-                return CommonResponse.CreateError<RequestRevocationResponse>(ex.ToString());
-            }
-
+            RequestRevocationResponse result = powersOfAttorneyDemoService.RequestRevocationPowerOfAttorney(context, request.PowerOfAttorneyUserCardId, request.RevocationType, request.RevocationReason);
             return CommonResponse.CreateSuccess(result);
         }
 
         private CommonResponse<Guid> CreatePowerOfAttorneyInternal(Guid powerOfAttorneyUserCardId, Guid formatId)
         {
             var context = currentObjectContextProvider.GetOrCreateCurrentSessionContext().ObjectContext;
-            Guid powerOfAttorneyId;
-            try
-            {
-                powerOfAttorneyId = powersOfAttorneyDemoService.CreatePowerOfAttorney(context, powerOfAttorneyUserCardId, formatId);
-            }
-            catch (Exception ex)
-            {
-                return CommonResponse.CreateError<Guid>(ex.ToString());
-            }
+            Guid powerOfAttorneyId = powersOfAttorneyDemoService.CreatePowerOfAttorney(context, powerOfAttorneyUserCardId, formatId);
 
             return CommonResponse.CreateSuccess(powerOfAttorneyId);
         }
@@ -155,15 +130,7 @@ namespace PowersOfAttorneyServerExtension.Controllers
         {
             var context = currentObjectContextProvider.GetOrCreateCurrentSessionContext().ObjectContext;
 
-            Guid powerOfAttorneyId;
-            try
-            {
-                powerOfAttorneyId = powersOfAttorneyDemoService.CreateRetrustPowerOfAttorney(context, powerOfAttorneyUserCardId, formatId);
-            }
-            catch (Exception ex)
-            {
-                return CommonResponse.CreateError<Guid>(ex.ToString());
-            }
+            Guid powerOfAttorneyId = powersOfAttorneyDemoService.CreateRetrustPowerOfAttorney(context, powerOfAttorneyUserCardId, formatId);
 
             return CommonResponse.CreateSuccess(powerOfAttorneyId);
         }

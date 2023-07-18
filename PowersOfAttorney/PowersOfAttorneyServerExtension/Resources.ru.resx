@@ -181,7 +181,7 @@
     <value>Не указан Тип доверителя</value>
   </data>
   <data name="Error_IncorrectUserCardData" xml:space="preserve">
-    <value>Заполнены не все обязательные данные или данные некорректны. Измените данные и повторите сохранение</value>
+    <value>Заполнены не все обязательные данные или данные некорректны. Ошибка: {0}</value>
   </data>
   <data name="Error_JointExerIsEmpty" xml:space="preserve">
     <value>Не указан Признак совместного осуществления полномочий</value>
@@ -260,5 +260,23 @@
   </data>
   <data name="TheFollowingFieldsAreRequired" xml:space="preserve">
     <value>Необходимо заполнить следующие поля</value>
+  </data>
+  <data name="Error_LegalAddressNotSpecified" xml:space="preserve">
+    <value>В организации {0} не указан юридический адрес.</value>
+  </data>
+  <data name="Error_InnNotSpecified" xml:space="preserve">
+    <value>В организации {0} не указан ИНН.</value>
+  </data>
+  <data name="Error_KppNotSpecified" xml:space="preserve">
+    <value>В организации {0} не указан КПП.</value>
+  </data>
+  <data name="Error_OgrnNotSpecified" xml:space="preserve">
+    <value>В организации {0} не указан ОГРН.</value>
+  </data>
+  <data name="Error_OrgNameNotSpecified" xml:space="preserve">
+    <value>В организации {0} не указано название.</value>
+  </data>
+  <data name="Error_PositionNotSpecified" xml:space="preserve">
+    <value>Для сотрудника {0} не указана должность.</value>
   </data>
 </root>
