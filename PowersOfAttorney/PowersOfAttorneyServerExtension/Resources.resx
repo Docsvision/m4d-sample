@@ -181,7 +181,7 @@
     <value>Type of principal is not specified</value>
   </data>
   <data name="Error_IncorrectUserCardData" xml:space="preserve">
-    <value>Not all required data is filled in or the data is incorrect. Change the data and save again"</value>
+    <value>Not all required data is filled in or the data is incorrect. Error message: {0}"</value>
   </data>
   <data name="Error_JointExerIsEmpty" xml:space="preserve">
     <value>Attribute of joint exercise of authority is not specified</value>
@@ -260,5 +260,23 @@
   </data>
   <data name="TheFollowingFieldsAreRequired" xml:space="preserve">
     <value>The following fields are required</value>
+  </data>
+  <data name="Error_LegalAddressNotSpecified" xml:space="preserve">
+    <value>Legal address is not specified in organization {0}.</value>
+  </data>
+  <data name="Error_InnNotSpecified" xml:space="preserve">
+    <value>INN is not specified in organization {0}.</value>
+  </data>
+  <data name="Error_KppNotSpecified" xml:space="preserve">
+    <value>KPP is not specified in organization {0}.</value>
+  </data>
+  <data name="Error_OgrnNotSpecified" xml:space="preserve">
+    <value>OGRN is not specified in organization {0}.</value>
+  </data>
+  <data name="Error_OrgNameNotSpecified" xml:space="preserve">
+    <value>Name is not specified in organization {0}.</value>
+  </data>
+  <data name="Error_PositionNotSpecified" xml:space="preserve">
+    <value>Position is not specified in for employee {0}.</value>
   </data>
 </root>

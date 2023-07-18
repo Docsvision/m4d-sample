@@ -92,31 +92,38 @@ namespace PowersOfAttorneyServerExtension.Services
                 RevocationType = revocationType
             };
 
-            if (revocationType == PowerOfAttorneyRevocationType.Representative)
+            switch (revocationType)                
             {
-                revocationData.ApplicantInfo = new PowerOfAttorneyRevocationApplicantInfo
-                {
-                    ApplicantType = PowerOfAttorneyRevocationApplicantType.Individual,
-                    FirstName = userCardPowerOfAttorney.GenRepresentative.FirstName,
-                    LastName = userCardPowerOfAttorney.GenRepresentative.LastName,
-                    MiddleName = userCardPowerOfAttorney.GenRepresentative.MiddleName,
-                    Inn = userCardPowerOfAttorney.GenRepresentativeINN,
-                    Snils = userCardPowerOfAttorney.GenRepresentativeSNILS,
-                    Phone = userCardPowerOfAttorney.GenReprPhoneNum
-                };
-            }
-            else
-            {
-                revocationData.ApplicantInfo = new PowerOfAttorneyRevocationApplicantInfo
-                {
-                    ApplicantType = PowerOfAttorneyRevocationApplicantType.Individual,
-                    FirstName = userCardPowerOfAttorney.GenCeo.FirstName,
-                    LastName = userCardPowerOfAttorney.GenCeo.LastName,
-                    MiddleName = userCardPowerOfAttorney.GenCeo.MiddleName,
-                    Inn = userCardPowerOfAttorney.GenCeoIIN,
-                    Snils = userCardPowerOfAttorney.GenCeoSNILS,
-                    Phone = userCardPowerOfAttorney.GenCeoPhoneNum
-                };
+                case PowerOfAttorneyRevocationType.Representative:
+                    revocationData.ApplicantInfo = new PowerOfAttorneyRevocationApplicantInfo
+                    {
+                        ApplicantType = PowerOfAttorneyRevocationApplicantType.Individual,
+                        FirstName = userCardPowerOfAttorney.GenRepresentative.FirstName,
+                        LastName = userCardPowerOfAttorney.GenRepresentative.LastName,
+                        MiddleName = userCardPowerOfAttorney.GenRepresentative.MiddleName,
+                        Inn = userCardPowerOfAttorney.GenRepresentativeINN,
+                        Snils = userCardPowerOfAttorney.GenRepresentativeSNILS,
+                        Phone = userCardPowerOfAttorney.GenReprPhoneNum
+                    };
+                    break;
+                case PowerOfAttorneyRevocationType.Principal:
+                    revocationData.ApplicantInfo = new PowerOfAttorneyRevocationApplicantInfo
+                    {
+                        ApplicantType = PowerOfAttorneyRevocationApplicantType.Organization,
+                        FirstName = userCardPowerOfAttorney.GenCeo.FirstName,
+                        LastName = userCardPowerOfAttorney.GenCeo.LastName,
+                        MiddleName = userCardPowerOfAttorney.GenCeo.MiddleName,
+                        Inn = userCardPowerOfAttorney.GenCeoIIN,
+                        Snils = userCardPowerOfAttorney.GenCeoSNILS,
+                        Phone = userCardPowerOfAttorney.GenCeoPhoneNum,
+                        Kpp = userCardPowerOfAttorney.GenEntityPrincipal != null ? userCardPowerOfAttorney.GenEntityPrincipal.KPP : userCardPowerOfAttorney.GenEntityPrinKPP,
+                        Ogrn = userCardPowerOfAttorney.GenEntityPrincipal != null ? userCardPowerOfAttorney.GenEntityPrincipal.OGRN : userCardPowerOfAttorney.GenEntPrinOGRN,
+                        Name = userCardPowerOfAttorney.GenEntityPrincipal != null ? userCardPowerOfAttorney.GenEntityPrincipal.Name : userCardPowerOfAttorney.GenEntityPrinName
+                    };
+
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException($"Unsupported revocation type: {revocationType}");
             }
 
             var data = powerOfAttorneyProxyService.RequestRevocationPowerOfAttorney(userCardPowerOfAttorney.PowerOfAttorneyCardId.Value, revocationData, out string fileName);
