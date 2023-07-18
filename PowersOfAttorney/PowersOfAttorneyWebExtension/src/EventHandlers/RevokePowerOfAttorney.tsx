@@ -19,6 +19,7 @@ import { ModalDialog } from "@docsvision/webclient/Helpers/ModalDialog/ModalDial
 import { ModalDialogHeader } from "@docsvision/webclient/Helpers/ModalDialog/ModalDialogHeader";
 import { ModalDialogContent } from "@docsvision/webclient/Helpers/ModalDialog/ModalDialogContent";
 import { ModalBackdrop } from "@docsvision/webclient/Helpers/ModalBackdrop";
+import { ModalDialogCloseButton } from "@docsvision/webclient/Helpers/ModalDialog/ModalDialogCloseButton";
 
 
 export const revokePowerOfAttorney = async (sender: CustomButton) => {
@@ -64,16 +65,22 @@ export const revokePowerOfAttorney = async (sender: CustomButton) => {
             });
     }
 
-    const modalHost = new ModalHost("common-dialog", () => (
+    const modalHost = new ModalHost("application-for-revocation-dialog", () => (
         <ModalBackdrop visible={true} onClick={() => modalHost.unmount()}>
             <ModalDialog isOpen={true}>
                 <ModalDialogBox>
-                    <ModalDialogHeader>{resources.ApplicationForRevocationOfThePowerOfAttorney}</ModalDialogHeader>
+                    <ModalDialogHeader>
+                        <span>{resources.ApplicationForRevocationOfThePowerOfAttorney}</span>
+                        <ModalDialogCloseButton onClick={() => modalHost.unmount()} />
+                    </ModalDialogHeader>
                     <ModalDialogContent>
-                        <div>{`${resources.PowerOfAttorney} № ${powerOfAttorneyNumber}`}</div>
-                        <RadioGroup ref={el => typeElement = el} value={PowerOfAttorneyRevocationType.Principal.toString()} items={items} labelText={resources.SelectTheTypeOfApplicationForRevocation}></RadioGroup>
-                        <label>{resources.Reason}:</label>
-                        <textarea ref={el => reasonElement = el} maxLength={150} rows={4} style={{ height: "auto" }} placeholder={resources.SpecifyTheReasonForCancellationOrRefusal}></textarea>
+                        <div style={{padding: "0 30px"}}>
+                            <div>{`${resources.PowerOfAttorney} № ${powerOfAttorneyNumber}`}</div>
+                            <RadioGroup ref={el => typeElement = el} value={PowerOfAttorneyRevocationType.Principal.toString()} items={items} labelText={resources.SelectTheTypeOfApplicationForRevocation}></RadioGroup>
+                            <label>{resources.Reason}:</label>
+                            <textarea ref={el => reasonElement = el} maxLength={150} rows={4} style={{ height: "auto" }} placeholder={resources.SpecifyTheReasonForCancellationOrRefusal}></textarea>
+                        </div>
+                        
                     </ModalDialogContent>
                     <ModalDialogButtonPanel>
                         <Button onClick={onSave} primaryButton={true}>{resources.SignTheApplication}</Button>
