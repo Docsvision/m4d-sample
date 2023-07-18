@@ -16,7 +16,7 @@ export const createEMCHDPowerOfAttorney = async (sender: CustomButton) => {
     if (powerOfAttorneyId) {
         const cardInfo = await sender.layout.getService($PowerOfAttorneyApiController).getPowerOfAttorneyInfo(powerOfAttorneyId);
         const resources = sender.layout.getService($Resources);
-        if (cardInfo.status == resources.PowerOfAttorney_StatusPreparation) {
+        if (cardInfo.status === resources.PowerOfAttorney_StatusPreparation) {
             sender.layout.getService($LayoutCardController).delete({cardId: powerOfAttorneyId, isNew: false})
         }  
     }
