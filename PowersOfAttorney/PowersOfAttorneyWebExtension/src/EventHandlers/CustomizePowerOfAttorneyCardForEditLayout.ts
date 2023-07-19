@@ -186,6 +186,7 @@ const onDataChangedPossibilityOfSubst = (sender: Layout) => {
         lossOfPowersUponSubstBlock.params.visibility = true;
         lossOfPowersUponSubst.params.required = true;
     } else if (possibilityOfSubst.value === 'Without right of substitution') {
+        lossOfPowersUponSubst.params.value = null;
         lossOfPowersUponSubst.params.required = false;
         lossOfPowersUponSubstBlock.params.visibility = false;
     }

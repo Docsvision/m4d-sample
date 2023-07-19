@@ -135,6 +135,7 @@ const onDataChangedPossibilityOfSubstSPOA = (sender: Layout) => {
         lossOfPowersUponSubstSPOABlock.params.visibility = true;
         lossOfPowersUponSubstSPOA.params.required = true;
     } else if (possibilityOfSubstSPOA.value === 'Without right of substitution') {
+        lossOfPowersUponSubstSPOA.params.value = null;
         lossOfPowersUponSubstSPOA.params.required = false;
         lossOfPowersUponSubstSPOABlock.params.visibility = false;
     }
