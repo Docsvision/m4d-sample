@@ -361,13 +361,28 @@ internal static class UserCardPowerOfAttorneyFNSDOVBBExtensions
         private RussianEntityInfo GetRussianEntityInfo()
         {
             var princOrg = userCard.PrincipalOrganization;
-            var name = princOrg.Name.AsNullable() ?? throw new Exception(String.Format(Resources.Error_OrgNameNotSpecified, princOrg.Name));
-            var inn = princOrg.INN.AsNullable() ?? throw new Exception(String.Format(Resources.Error_InnNotSpecified, princOrg.Name));
-            var kpp = princOrg.KPP.AsNullable() ?? throw new Exception(String.Format(Resources.Error_KppNotSpecified, princOrg.Name));
-            var ogrn = princOrg.OGRN.AsNullable() ?? throw new Exception(String.Format(Resources.Error_OgrnNotSpecified, princOrg.Name));
-            var legalAddress = princOrg.Addresses.FirstOrDefault(t => t.AddressType == StaffAddresseAddressType.LegalAddress)?.Address ?? 
-                throw new Exception(String.Format(Resources.Error_LegalAddressNotSpecified, princOrg.Name));
+            string errors = String.Empty;
+            var name = princOrg.Name.AsNullable();
+            if (name == null)
+                errors += String.Format(Resources.Error_OrgNameNotSpecified, princOrg.GetObjectId()) + Environment.NewLine;
+            var inn = princOrg.INN.AsNullable();
+            if (inn == null)
+                errors += String.Format(Resources.Error_InnNotSpecified, princOrg.Name) + Environment.NewLine;
+            var kpp = princOrg.KPP.AsNullable();
+            if (kpp == null)
+                errors += String.Format(Resources.Error_KppNotSpecified, princOrg.Name) + Environment.NewLine;
+            var ogrn = princOrg.OGRN.AsNullable();
+            if (ogrn == null)
+                errors += String.Format(Resources.Error_OgrnNotSpecified, princOrg.Name) + Environment.NewLine;
+            var legalAddress = princOrg.Addresses.FirstOrDefault(t => t.AddressType == StaffAddresseAddressType.LegalAddress)?.Address;
+            if (legalAddress == null)
+                errors += String.Format(Resources.Error_LegalAddressNotSpecified, princOrg.Name) + Environment.NewLine;
             var actualAddress = princOrg.Addresses.FirstOrDefault(t => t.AddressType == StaffAddresseAddressType.ContactAddress)?.Address;
+
+            if (!String.IsNullOrEmpty(errors))
+            {
+                throw new Exception(errors);
+            }
 
             return new RussianEntityInfo(name, ogrn, inn, kpp, legalAddress, actualAddress);
         }
