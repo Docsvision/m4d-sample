@@ -297,6 +297,53 @@
   <Property Key="48c56a5c-1d7d-4406-ae44-7c1a395dc0ac" />
   <Property Key="120d9fb8-2c49-40f6-ab5d-cdeb1bd84609" />
   <Property Key="6eb88c72-a257-443c-a937-53d1e375ca0e" />
+  <Property Key="9ff4d1ee-84e6-4296-a5b1-0c82503c143f" />
+  <Property Key="de3f6b21-5584-4a27-8caa-4ff3a0ff1c6f" PropertyValue="Uzvārds" />
+  <Property Key="e1ad1d57-9c53-4fc3-95a2-e191e3fe104f" PropertyValue="Vārds" />
+  <Property Key="3fd0983a-3479-4caf-bb4a-b0f27ab3129c" PropertyValue="Otrs vārds" />
+  <Property Key="968a7211-fa8f-4eaa-8e1f-4b62bd01c0ce" PropertyValue="Dzimšanas datums" />
+  <Property Key="b6452177-80b8-438b-9e7e-64d78eb1193b" PropertyValue="GALVENĀ" />
+  <Property Key="59801d68-4377-4838-982e-221f9170bd8b" PropertyValue="Dzimums" />
+  <Property Key="9552eaa2-26bc-4b74-86b6-623edd5ba45a" PropertyValue="Mob. tālr." />
+  <Property Key="061ea744-4b8e-4768-83a6-09567b273359" PropertyValue="Darba tālr." />
+  <Property Key="d088dd5f-8fa5-4166-9cd0-02489d667422" PropertyValue="Amats" />
+  <Property Key="3eaf870e-50f3-4479-8230-1f0241db44b0" PropertyValue="Lietotājs" />
+  <Property Key="7014e10f-d6b0-487a-a1b0-f678c4f42dd7" PropertyValue="Telpa" />
+  <Property Key="4ccd564c-15b5-48c3-8365-e2c374a4eb1b" PropertyValue="Vadītājs:" />
+  <Property Key="17fbe1a2-8ace-49f4-a6bd-70678ae0267c" PropertyValue="Tiešais vadītājs" />
+  <Property Key="018dff60-b7fe-4bb0-8041-837c16cffbc5" PropertyValue="Struktūrvienības vadītājs" />
+  <Property Key="6f055ee2-6178-4582-80f1-8b8331afab1a" />
+  <Property Key="3eac2cc6-000b-4d10-a10d-8db9dcff7c18" PropertyValue="AKTIVITĀTE" />
+  <Property Key="fc6708cb-83ad-4f66-8e86-79d25222b187" PropertyValue="Pašreizējais statuss" />
+  <Property Key="bb1abc21-c05a-43b1-86cc-23796a7645ba" PropertyValue="Aktīvs" />
+  <Property Key="2ed6d7f1-945c-40d3-97b4-2f043ec69dbc" PropertyValue="Slimo" />
+  <Property Key="fa1ea42e-ec34-46ba-9b53-5c90cb95a7b3" PropertyValue="Atvaļinājumā" />
+  <Property Key="81d0fe06-e249-4ceb-943b-1f7f746f0008" PropertyValue="Komandējumā" />
+  <Property Key="9146c211-0f6c-4a9a-b41f-63c47faaac0d" PropertyValue="Prombūtnē" />
+  <Property Key="e6f9ff47-95c2-4841-801b-ab5b709aea00" PropertyValue="Atlaists" />
+  <Property Key="a6c5512c-4393-4052-8340-7887ea376607" PropertyValue="Pārvietots" />
+  <Property Key="1387161d-f000-4de9-9951-cd22826e7007" PropertyValue="Atlaists bez atjaunošanas" />
+  <Property Key="a84dd454-cf84-45d6-be25-77503de27561" PropertyValue="Nav pieejams kopš" />
+  <Property Key="95bef3ae-150a-4a92-b71a-4c562bb4e6f2" PropertyValue="līdz:" />
+  <Property Key="d5812dfc-8e77-499f-80d6-3c4af1345e40" PropertyValue="Iemesls" />
+  <Property Key="ed4896c8-f936-4a54-9cd9-2cd94f7dc2b1" PropertyValue="Aizvietotāji" />
+  <Property Key="09fa3c53-fee4-41f0-9ca9-6f390a6386e7" PropertyValue="Vārds" />
+  <Property Key="493b6123-c980-4c1c-93da-e97a9d679877" PropertyValue="Pastāvīgs aizvietotājs" />
+  <Property Key="9393515a-5e4f-4ccf-b321-73ec745af405" PropertyValue="Paraksts" />
+  <Property Key="2bc859b0-991e-4c60-b5b8-dac09948221a" PropertyValue="PAPILDU" />
+  <Property Key="47b8f4c7-2b42-487c-a2f9-8482f7ec32ac" PropertyValue="Lietotājs pievienots grupai" />
+  <Property Key="f6e05626-d93a-46f4-9399-39156f14ae7a" PropertyValue="Kopēt grupas" />
+  <Property Key="f1ab94ff-7b0c-46a3-8a13-47efd31578cd" PropertyValue="Kopēt grupas no" />
+  <Property Key="2b58e1b4-9fc3-4e3b-9ac9-a744962f5f5d" PropertyValue="ID kods" />
+  <Property Key="46956fcf-fb16-49ca-8acf-69bac5d85992" PropertyValue="Darbinieka numurs" />
+  <Property Key="ddd1ad7c-2078-4860-bb5f-80ecec59b68e" PropertyValue="Maršrutizācija" />
+  <Property Key="4e67e306-f92a-456f-8592-055c00a9761d" PropertyValue="Komentārs" />
+  <Property Key="6b01acae-5e49-4713-9b24-e477fa96b62a" />
+  <Property Key="3cb933de-4b12-4a41-8fc4-2d395061d0fa" />
+  <Property Key="74e0fc08-2665-4e77-a409-8fbe91387b6d" />
+  <Property Key="1d979d04-fcaa-4bd5-9b33-701a3105ed52" />
+  <Property Key="2014f082-5b18-459b-830c-985b92e68197" PropertyValue="DROŠĪBA" />
+  <Property Key="283e497b-bac5-468c-acf2-c74c8480252b" PropertyValue="Pievienot" />
   <Property Key="015c00fe-b400-4670-b4cc-7aeda18cfdad" PropertyValue="Jauns nosūtāmais dokuments" />
   <Property Key="908875f2-0d15-4e20-93e9-7c514b007e03" PropertyValue="Izveidot" />
   <Property Key="f0553208-b799-40d5-9b54-ba8804336590" PropertyValue="Atcelt" />
@@ -728,6 +775,53 @@
   <Property Key="48c56a5c-1d7d-4406-ae44-7c1a395dc0ac" />
   <Property Key="120d9fb8-2c49-40f6-ab5d-cdeb1bd84609" />
   <Property Key="6eb88c72-a257-443c-a937-53d1e375ca0e" />
+  <Property Key="9ff4d1ee-84e6-4296-a5b1-0c82503c143f" />
+  <Property Key="de3f6b21-5584-4a27-8caa-4ff3a0ff1c6f" PropertyValue="Тегі" />
+  <Property Key="e1ad1d57-9c53-4fc3-95a2-e191e3fe104f" PropertyValue="Аты-жөні" />
+  <Property Key="3fd0983a-3479-4caf-bb4a-b0f27ab3129c" PropertyValue="Орташа аты" />
+  <Property Key="968a7211-fa8f-4eaa-8e1f-4b62bd01c0ce" PropertyValue="туған күні" />
+  <Property Key="b6452177-80b8-438b-9e7e-64d78eb1193b" PropertyValue="НЕГІЗГІ" />
+  <Property Key="59801d68-4377-4838-982e-221f9170bd8b" PropertyValue="Жынысы" />
+  <Property Key="9552eaa2-26bc-4b74-86b6-623edd5ba45a" PropertyValue="Ұялы телефон" />
+  <Property Key="061ea744-4b8e-4768-83a6-09567b273359" PropertyValue="Жұмыс телефоны" />
+  <Property Key="d088dd5f-8fa5-4166-9cd0-02489d667422" PropertyValue="Позиция" />
+  <Property Key="3eaf870e-50f3-4479-8230-1f0241db44b0" PropertyValue="Пайдаланушы" />
+  <Property Key="7014e10f-d6b0-487a-a1b0-f678c4f42dd7" PropertyValue="Бөлме" />
+  <Property Key="4ccd564c-15b5-48c3-8365-e2c374a4eb1b" PropertyValue="Жетекшісі:" />
+  <Property Key="17fbe1a2-8ace-49f4-a6bd-70678ae0267c" PropertyValue="Тікелей басшы" />
+  <Property Key="018dff60-b7fe-4bb0-8041-837c16cffbc5" PropertyValue="Бөлімше басшысы" />
+  <Property Key="6f055ee2-6178-4582-80f1-8b8331afab1a" />
+  <Property Key="3eac2cc6-000b-4d10-a10d-8db9dcff7c18" PropertyValue="БЕЛСЕНДІЛІК" />
+  <Property Key="fc6708cb-83ad-4f66-8e86-79d25222b187" PropertyValue="Ағымдағы мәртебе" />
+  <Property Key="bb1abc21-c05a-43b1-86cc-23796a7645ba" PropertyValue="Белсенді" />
+  <Property Key="2ed6d7f1-945c-40d3-97b4-2f043ec69dbc" PropertyValue="Сырқат" />
+  <Property Key="fa1ea42e-ec34-46ba-9b53-5c90cb95a7b3" PropertyValue="Еңбек демалысында" />
+  <Property Key="81d0fe06-e249-4ceb-943b-1f7f746f0008" PropertyValue="Іссапарда" />
+  <Property Key="9146c211-0f6c-4a9a-b41f-63c47faaac0d" PropertyValue="Жоқ" />
+  <Property Key="e6f9ff47-95c2-4841-801b-ab5b709aea00" PropertyValue="Босатылды" />
+  <Property Key="a6c5512c-4393-4052-8340-7887ea376607" PropertyValue="Ауыстырылды" />
+  <Property Key="1387161d-f000-4de9-9951-cd22826e7007" PropertyValue="Біржолата босатылды" />
+  <Property Key="a84dd454-cf84-45d6-be25-77503de27561" PropertyValue="Бастап жоқ" />
+  <Property Key="95bef3ae-150a-4a92-b71a-4c562bb4e6f2" PropertyValue="бойынша:" />
+  <Property Key="d5812dfc-8e77-499f-80d6-3c4af1345e40" PropertyValue="Себеп" />
+  <Property Key="ed4896c8-f936-4a54-9cd9-2cd94f7dc2b1" PropertyValue="Орынбасар" />
+  <Property Key="09fa3c53-fee4-41f0-9ca9-6f390a6386e7" PropertyValue="ТАӘ" />
+  <Property Key="493b6123-c980-4c1c-93da-e97a9d679877" PropertyValue="Тұрақты орынбасар" />
+  <Property Key="9393515a-5e4f-4ccf-b321-73ec745af405" PropertyValue="Қолы" />
+  <Property Key="2bc859b0-991e-4c60-b5b8-dac09948221a" PropertyValue="ҚОСЫМША" />
+  <Property Key="47b8f4c7-2b42-487c-a2f9-8482f7ec32ac" PropertyValue="Қызметкер топқа қосулы" />
+  <Property Key="f6e05626-d93a-46f4-9399-39156f14ae7a" PropertyValue="Топтарды көшіру" />
+  <Property Key="f1ab94ff-7b0c-46a3-8a13-47efd31578cd" PropertyValue="Топтарды көшіру" />
+  <Property Key="2b58e1b4-9fc3-4e3b-9ac9-a744962f5f5d" PropertyValue="ID Код" />
+  <Property Key="46956fcf-fb16-49ca-8acf-69bac5d85992" PropertyValue="Табельдік нөмірі" />
+  <Property Key="ddd1ad7c-2078-4860-bb5f-80ecec59b68e" PropertyValue="Бағыттау" />
+  <Property Key="4e67e306-f92a-456f-8592-055c00a9761d" PropertyValue="Түсініктеме" />
+  <Property Key="6b01acae-5e49-4713-9b24-e477fa96b62a" />
+  <Property Key="3cb933de-4b12-4a41-8fc4-2d395061d0fa" />
+  <Property Key="74e0fc08-2665-4e77-a409-8fbe91387b6d" />
+  <Property Key="1d979d04-fcaa-4bd5-9b33-701a3105ed52" />
+  <Property Key="2014f082-5b18-459b-830c-985b92e68197" PropertyValue="ҚАУІПСІЗДІК" />
+  <Property Key="283e497b-bac5-468c-acf2-c74c8480252b" PropertyValue="Жасаңыз" />
   <Property Key="015c00fe-b400-4670-b4cc-7aeda18cfdad" PropertyValue="Жаңа шығыс құжат" />
   <Property Key="908875f2-0d15-4e20-93e9-7c514b007e03" PropertyValue="Жасаңыз" />
   <Property Key="f0553208-b799-40d5-9b54-ba8804336590" PropertyValue="Болдырмау" />
@@ -956,7 +1050,7 @@
   <Property Key="1b6787a4-4033-4c74-a9d2-9dda2b029cc3" PropertyValue="Сведения об уполномоченном представителе - физическом лице" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="5df51280-57f6-479d-8bc9-e1be12c47d4b" PropertyValue="Сведения о физическом лице, передавшем полномочия " SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="eb4751e8-778a-4c0d-a954-0d457896f5da" PropertyValue="Отозвать доверенность" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
-  <Property Key="bda98ebc-beca-47ed-be1b-12d5e982acd8" PropertyValue="Скачать доверенность" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="bda98ebc-beca-47ed-be1b-12d5e982acd8" PropertyValue="Export power of attorney" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="d4c1205e-848e-4246-b2ef-6a4e5587e550" PropertyValue="Скачать доверенность без подписи" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="2a92a66a-c2d0-4aea-a496-9f025bb97553" PropertyValue="Скачать доверенность с подписью" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="5b6e3538-fc4f-46ca-82a3-2a1f7147193b" PropertyValue="Скачать без подписи" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
@@ -1023,7 +1117,7 @@
   <Property Key="e7eff7c6-002b-41dd-a794-428b13d863ae" PropertyValue="Имя" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="2fbb2741-a077-4ff5-a521-8bc883978230" PropertyValue="Отчество" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="84e71660-09c3-4256-a487-c0fd1bc5ebb9" PropertyValue="Адрес места жительства руководителя организации" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
-  <Property Key="dece19be-ce95-4ca0-82f5-85465e494cde" PropertyValue="Субъект Российской Федерации" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="dece19be-ce95-4ca0-82f5-85465e494cde" PropertyValue="Субъект РФ" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="a5532270-80af-43fb-9114-8ba3be8f459c" PropertyValue="2 знака, принимает значение в соответствии со Справочником «Субъекты Российской Федерации»" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="3c724c42-8200-4961-95d2-57cb56fe0346" PropertyValue="Идентификатор адреса по ФИАС" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="3b4007c2-cda0-4c2f-8ee9-c7390639a9ac" PropertyValue="Документ, удостоверяющий личность руководителя организации" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
@@ -1159,6 +1253,53 @@
   <Property Key="48c56a5c-1d7d-4406-ae44-7c1a395dc0ac" PropertyValue="Документ, удостоверяющий лица, передавшего полномочия" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="120d9fb8-2c49-40f6-ab5d-cdeb1bd84609" PropertyValue="Идентификатор адреса по ФИАС (необязательно)" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="6eb88c72-a257-443c-a937-53d1e375ca0e" PropertyValue="Документ, удостоверяющий лицо, передавшего полномочия" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="9ff4d1ee-84e6-4296-a5b1-0c82503c143f" PropertyValue="Export application for revocation" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="de3f6b21-5584-4a27-8caa-4ff3a0ff1c6f" PropertyValue="Last name" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="e1ad1d57-9c53-4fc3-95a2-e191e3fe104f" PropertyValue="First name" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="3fd0983a-3479-4caf-bb4a-b0f27ab3129c" PropertyValue="Middle name" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="968a7211-fa8f-4eaa-8e1f-4b62bd01c0ce" PropertyValue="Birth date" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="b6452177-80b8-438b-9e7e-64d78eb1193b" PropertyValue="MAIN" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="59801d68-4377-4838-982e-221f9170bd8b" PropertyValue="Gender" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="9552eaa2-26bc-4b74-86b6-623edd5ba45a" PropertyValue="Mobile Phone" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="061ea744-4b8e-4768-83a6-09567b273359" PropertyValue="Work phone" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="d088dd5f-8fa5-4166-9cd0-02489d667422" PropertyValue="Position" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="3eaf870e-50f3-4479-8230-1f0241db44b0" PropertyValue="User" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="7014e10f-d6b0-487a-a1b0-f678c4f42dd7" PropertyValue="Room" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="4ccd564c-15b5-48c3-8365-e2c374a4eb1b" PropertyValue="Manager" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="17fbe1a2-8ace-49f4-a6bd-70678ae0267c" PropertyValue="Immediate supervisor" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="018dff60-b7fe-4bb0-8041-837c16cffbc5" PropertyValue="Department Manager" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="6f055ee2-6178-4582-80f1-8b8331afab1a" PropertyValue="Power of attorney is required when signing documents" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="3eac2cc6-000b-4d10-a10d-8db9dcff7c18" PropertyValue="ACTIVITY" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="fc6708cb-83ad-4f66-8e86-79d25222b187" PropertyValue="Current status" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="bb1abc21-c05a-43b1-86cc-23796a7645ba" PropertyValue="Active" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="2ed6d7f1-945c-40d3-97b4-2f043ec69dbc" PropertyValue="Sick" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="fa1ea42e-ec34-46ba-9b53-5c90cb95a7b3" PropertyValue="On vacation" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="81d0fe06-e249-4ceb-943b-1f7f746f0008" PropertyValue="On business trip" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="9146c211-0f6c-4a9a-b41f-63c47faaac0d" PropertyValue="Absent" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="e6f9ff47-95c2-4841-801b-ab5b709aea00" PropertyValue="Discharged" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="a6c5512c-4393-4052-8340-7887ea376607" PropertyValue="Transfered" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="1387161d-f000-4de9-9951-cd22826e7007" PropertyValue="Discharged without restoration" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="a84dd454-cf84-45d6-be25-77503de27561" PropertyValue="Not available since" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="95bef3ae-150a-4a92-b71a-4c562bb4e6f2" PropertyValue="to:" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="d5812dfc-8e77-499f-80d6-3c4af1345e40" PropertyValue="Сause" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="ed4896c8-f936-4a54-9cd9-2cd94f7dc2b1" PropertyValue="Deputies" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="09fa3c53-fee4-41f0-9ca9-6f390a6386e7" PropertyValue="Full name" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="493b6123-c980-4c1c-93da-e97a9d679877" PropertyValue="Permanent deputy" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="9393515a-5e4f-4ccf-b321-73ec745af405" PropertyValue="Signature" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="2bc859b0-991e-4c60-b5b8-dac09948221a" PropertyValue="ADDITIONALLY" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="47b8f4c7-2b42-487c-a2f9-8482f7ec32ac" PropertyValue="The employee is included in the group" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="f6e05626-d93a-46f4-9399-39156f14ae7a" PropertyValue="Copy groups to" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="f1ab94ff-7b0c-46a3-8a13-47efd31578cd" PropertyValue="Copy groups from" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="2b58e1b4-9fc3-4e3b-9ac9-a744962f5f5d" PropertyValue="ID Code" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="46956fcf-fb16-49ca-8acf-69bac5d85992" PropertyValue="Personnel Number" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="ddd1ad7c-2078-4860-bb5f-80ecec59b68e" PropertyValue="Routing" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="4e67e306-f92a-456f-8592-055c00a9761d" PropertyValue="Comment" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="6b01acae-5e49-4713-9b24-e477fa96b62a" PropertyValue="SIGNATURE" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="3cb933de-4b12-4a41-8fc4-2d395061d0fa" PropertyValue="Certificate" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="74e0fc08-2665-4e77-a409-8fbe91387b6d" PropertyValue="Add certificate" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="1d979d04-fcaa-4bd5-9b33-701a3105ed52" PropertyValue="Use cloud certificate" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="2014f082-5b18-459b-830c-985b92e68197" PropertyValue="SECURITY" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="283e497b-bac5-468c-acf2-c74c8480252b" PropertyValue="Create" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="015c00fe-b400-4670-b4cc-7aeda18cfdad" PropertyValue="New document (Outgoing)" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="908875f2-0d15-4e20-93e9-7c514b007e03" PropertyValue="Create" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="f0553208-b799-40d5-9b54-ba8804336590" PropertyValue="Cancel" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
@@ -1454,7 +1595,7 @@
   <Property Key="e7eff7c6-002b-41dd-a794-428b13d863ae" PropertyValue="Имя" />
   <Property Key="2fbb2741-a077-4ff5-a521-8bc883978230" PropertyValue="Отчество" />
   <Property Key="84e71660-09c3-4256-a487-c0fd1bc5ebb9" PropertyValue="Адрес места жительства руководителя организации" />
-  <Property Key="dece19be-ce95-4ca0-82f5-85465e494cde" PropertyValue="Субъект Российской Федерации" />
+  <Property Key="dece19be-ce95-4ca0-82f5-85465e494cde" PropertyValue="Субъект РФ" />
   <Property Key="a5532270-80af-43fb-9114-8ba3be8f459c" PropertyValue="2 знака, принимает значение в соответствии со Справочником «Субъекты Российской Федерации»" />
   <Property Key="3c724c42-8200-4961-95d2-57cb56fe0346" PropertyValue="Идентификатор адреса по ФИАС" />
   <Property Key="3b4007c2-cda0-4c2f-8ee9-c7390639a9ac" PropertyValue="Документ, удостоверяющий личность руководителя организации" />
@@ -1590,6 +1731,53 @@
   <Property Key="48c56a5c-1d7d-4406-ae44-7c1a395dc0ac" PropertyValue="Документ, удостоверяющий лица, передавшего полномочия" />
   <Property Key="120d9fb8-2c49-40f6-ab5d-cdeb1bd84609" PropertyValue="Идентификатор адреса по ФИАС (необязательно)" />
   <Property Key="6eb88c72-a257-443c-a937-53d1e375ca0e" PropertyValue="Документ, удостоверяющий лицо, передавшего полномочия" />
+  <Property Key="9ff4d1ee-84e6-4296-a5b1-0c82503c143f" PropertyValue="Скачать заявление на отзыв" />
+  <Property Key="de3f6b21-5584-4a27-8caa-4ff3a0ff1c6f" PropertyValue="Фамилия " />
+  <Property Key="e1ad1d57-9c53-4fc3-95a2-e191e3fe104f" PropertyValue="Имя" />
+  <Property Key="3fd0983a-3479-4caf-bb4a-b0f27ab3129c" PropertyValue="Отчество" />
+  <Property Key="968a7211-fa8f-4eaa-8e1f-4b62bd01c0ce" PropertyValue="Дата рождения" />
+  <Property Key="b6452177-80b8-438b-9e7e-64d78eb1193b" PropertyValue="ОСНОВНАЯ" />
+  <Property Key="59801d68-4377-4838-982e-221f9170bd8b" PropertyValue="Пол" />
+  <Property Key="9552eaa2-26bc-4b74-86b6-623edd5ba45a" PropertyValue="Мобильный телефон" />
+  <Property Key="061ea744-4b8e-4768-83a6-09567b273359" PropertyValue="Рабочий телефон" />
+  <Property Key="d088dd5f-8fa5-4166-9cd0-02489d667422" PropertyValue="Должность" />
+  <Property Key="3eaf870e-50f3-4479-8230-1f0241db44b0" PropertyValue="Пользователь" />
+  <Property Key="7014e10f-d6b0-487a-a1b0-f678c4f42dd7" PropertyValue="Комната" />
+  <Property Key="4ccd564c-15b5-48c3-8365-e2c374a4eb1b" PropertyValue="Руководитель" />
+  <Property Key="17fbe1a2-8ace-49f4-a6bd-70678ae0267c" PropertyValue="Непосредственный руководитель" />
+  <Property Key="018dff60-b7fe-4bb0-8041-837c16cffbc5" PropertyValue="Руководитель подразделения" />
+  <Property Key="6f055ee2-6178-4582-80f1-8b8331afab1a" PropertyValue="Требуется доверенность при подписании документов" />
+  <Property Key="3eac2cc6-000b-4d10-a10d-8db9dcff7c18" PropertyValue="АКТИВНОСТЬ" />
+  <Property Key="fc6708cb-83ad-4f66-8e86-79d25222b187" PropertyValue="Текущий статус" />
+  <Property Key="bb1abc21-c05a-43b1-86cc-23796a7645ba" PropertyValue="Активен" />
+  <Property Key="2ed6d7f1-945c-40d3-97b4-2f043ec69dbc" PropertyValue="Болен" />
+  <Property Key="fa1ea42e-ec34-46ba-9b53-5c90cb95a7b3" PropertyValue="В отпуске" />
+  <Property Key="81d0fe06-e249-4ceb-943b-1f7f746f0008" PropertyValue="В командировке" />
+  <Property Key="9146c211-0f6c-4a9a-b41f-63c47faaac0d" PropertyValue="Отсутствует" />
+  <Property Key="e6f9ff47-95c2-4841-801b-ab5b709aea00" PropertyValue="Уволен" />
+  <Property Key="a6c5512c-4393-4052-8340-7887ea376607" PropertyValue="Переведен" />
+  <Property Key="1387161d-f000-4de9-9951-cd22826e7007" PropertyValue="Уволен без возможности восстановления" />
+  <Property Key="a84dd454-cf84-45d6-be25-77503de27561" PropertyValue="Отсутствует с" />
+  <Property Key="95bef3ae-150a-4a92-b71a-4c562bb4e6f2" PropertyValue="по:" />
+  <Property Key="d5812dfc-8e77-499f-80d6-3c4af1345e40" PropertyValue="Причина" />
+  <Property Key="ed4896c8-f936-4a54-9cd9-2cd94f7dc2b1" PropertyValue="Заместители" />
+  <Property Key="09fa3c53-fee4-41f0-9ca9-6f390a6386e7" PropertyValue="ФИО" />
+  <Property Key="493b6123-c980-4c1c-93da-e97a9d679877" PropertyValue="Постоянный заместитель" />
+  <Property Key="9393515a-5e4f-4ccf-b321-73ec745af405" PropertyValue="Подпись" />
+  <Property Key="2bc859b0-991e-4c60-b5b8-dac09948221a" PropertyValue="ДОПОЛНИТЕЛЬНО" />
+  <Property Key="47b8f4c7-2b42-487c-a2f9-8482f7ec32ac" PropertyValue="Сотрудник включен в группу" />
+  <Property Key="f6e05626-d93a-46f4-9399-39156f14ae7a" PropertyValue="Копировать группы в" />
+  <Property Key="f1ab94ff-7b0c-46a3-8a13-47efd31578cd" PropertyValue="Копировать группы из" />
+  <Property Key="2b58e1b4-9fc3-4e3b-9ac9-a744962f5f5d" PropertyValue="ID Код" />
+  <Property Key="46956fcf-fb16-49ca-8acf-69bac5d85992" PropertyValue="Табельный номер" />
+  <Property Key="ddd1ad7c-2078-4860-bb5f-80ecec59b68e" PropertyValue="Маршрутизация" />
+  <Property Key="4e67e306-f92a-456f-8592-055c00a9761d" PropertyValue="Комментарий" />
+  <Property Key="6b01acae-5e49-4713-9b24-e477fa96b62a" PropertyValue="СЕРТИФИКАТ ЭП" />
+  <Property Key="3cb933de-4b12-4a41-8fc4-2d395061d0fa" PropertyValue="Сертификат:" />
+  <Property Key="74e0fc08-2665-4e77-a409-8fbe91387b6d" PropertyValue="Добавить сертификат" />
+  <Property Key="1d979d04-fcaa-4bd5-9b33-701a3105ed52" PropertyValue="Для работы с сертификатом использовать облачное хранилище" />
+  <Property Key="2014f082-5b18-459b-830c-985b92e68197" PropertyValue="БЕЗОПАСНОСТЬ" />
+  <Property Key="283e497b-bac5-468c-acf2-c74c8480252b" PropertyValue="Создать" />
   <Property Key="015c00fe-b400-4670-b4cc-7aeda18cfdad" PropertyValue="Новый исходящий документ" />
   <Property Key="908875f2-0d15-4e20-93e9-7c514b007e03" PropertyValue="Создать" />
   <Property Key="f0553208-b799-40d5-9b54-ba8804336590" PropertyValue="Отменить" />

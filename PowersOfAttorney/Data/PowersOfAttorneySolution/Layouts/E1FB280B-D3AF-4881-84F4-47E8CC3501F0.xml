@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Layout LayoutID="E1FB280B-D3AF-4881-84F4-47E8CC3501F0" Name="Передоверие версии 002 (создание)" LayoutFileID="F6105D8A-503A-45B8-92E7-2A3F6EAFB506" LocationID="9df7c9ab-a7b2-4061-ab3a-0c35814cdad8" LayoutType="1" InstanceID="3200c1f1-6caa-4c73-a169-78f3a12d155c" RowID="4BE7A67C-35C3-42C0-B406-BE1135D3EC4D" OwnServerID="00000000-0000-0000-0000-000000000000" ChangeServerID="00000000-0000-0000-0000-000000000000">
-  <File FileID="F6105D8A-503A-45B8-92E7-2A3F6EAFB506" OwnerCardID="3200C1F1-6CAA-4C73-A169-78F3A12D155C" Name="Передоверие версии 002 (создание)_Copy" StandardAttribs="0" ExtendedAttribs="0">
+  <File FileID="F6105D8A-503A-45B8-92E7-2A3F6EAFB506" OwnerCardID="3200C1F1-6CAA-4C73-A169-78F3A12D155C" Name="Передоверие версии 002 (создание)" StandardAttribs="0" ExtendedAttribs="0">
     <Element Id="a53a08cb-a0a1-43b4-9576-e1e3cc0eaf72" Type="Layout">
   <Properties>
     <Property Name="Name" Value="documentRoot" Type="System.String, mscorlib" IsAvailable="true" />
@@ -1237,9 +1237,9 @@
                     <Property Name="Name" Value="lossOfPowersUponSubstSPOABlock" Type="System.String, mscorlib" IsAvailable="true" />
                     <Property Name="Visibility" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
                       <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-                        <Desktop>false</Desktop>
-                        <Tablet>false</Tablet>
-                        <Smartphone>false</Smartphone>
+                        <Desktop>true</Desktop>
+                        <Tablet>true</Tablet>
+                        <Smartphone>true</Smartphone>
                         <CanChange>true</CanChange>
                       </DeviceDependentPropertyOfBoolean>
                     </Property>
@@ -1319,7 +1319,7 @@
                         <Property Name="DataSource" Value="29c1b4ef-48e4-47f0-ac67-c42cf68de986" Type="System.Guid, mscorlib" IsAvailable="true" />
                         <Property Name="DataField" Value="lossPowersTransfer" Type="System.String, mscorlib" IsAvailable="true" />
                         <Property Name="Binding" Value="a575d96d-b531-44d4-8363-08cc00efadc9" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
-                        <Property Name="DefaultElement" Value="Not lost" Type="System.String, mscorlib" IsAvailable="true" RepresentsDefaultBindingValue="true" />
+                        <Property Name="DefaultElement" Value="" Type="System.String, mscorlib" IsAvailable="true" RepresentsDefaultBindingValue="true" />
                         <Property Name="Elements" Value="dfebf136-3836-48af-a09f-84108080b722" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
                         <Property Name="LabelPlacement" Value="0" Type="System.Int32, mscorlib" IsAvailable="true" />
                         <Property Name="IsInheritedEditOperation" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
