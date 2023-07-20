@@ -802,7 +802,7 @@
                     <Property Name="Text" Value="eb4751e8-778a-4c0d-a954-0d457896f5da" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="true" />
                     <Property Name="Primary" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
                     <Property Name="StretchWidth" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
-                    <Property Name="Click" Value="revokePowerOfAttorney" Type="System.String, mscorlib" IsAvailable="true" />
+                    <Property Name="Click" Value="revokePowerOfAttorneyWithoutApplication" Type="System.String, mscorlib" IsAvailable="true" />
                     <Property Name="MouseOver" Value="" Type="System.String, mscorlib" IsAvailable="true" />
                     <Property Name="MouseOut" Value="" Type="System.String, mscorlib" IsAvailable="true" />
                     <Property Name="Focus" Value="" Type="System.String, mscorlib" IsAvailable="true" />

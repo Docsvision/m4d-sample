@@ -344,6 +344,7 @@
   <Property Key="1d979d04-fcaa-4bd5-9b33-701a3105ed52" />
   <Property Key="2014f082-5b18-459b-830c-985b92e68197" PropertyValue="DROŠĪBA" />
   <Property Key="283e497b-bac5-468c-acf2-c74c8480252b" PropertyValue="Pievienot" />
+  <Property Key="3942f830-d33f-4651-811a-04331b9f0f9e" />
   <Property Key="015c00fe-b400-4670-b4cc-7aeda18cfdad" PropertyValue="Jauns nosūtāmais dokuments" />
   <Property Key="908875f2-0d15-4e20-93e9-7c514b007e03" PropertyValue="Izveidot" />
   <Property Key="f0553208-b799-40d5-9b54-ba8804336590" PropertyValue="Atcelt" />
@@ -822,6 +823,7 @@
   <Property Key="1d979d04-fcaa-4bd5-9b33-701a3105ed52" />
   <Property Key="2014f082-5b18-459b-830c-985b92e68197" PropertyValue="ҚАУІПСІЗДІК" />
   <Property Key="283e497b-bac5-468c-acf2-c74c8480252b" PropertyValue="Жасаңыз" />
+  <Property Key="3942f830-d33f-4651-811a-04331b9f0f9e" />
   <Property Key="015c00fe-b400-4670-b4cc-7aeda18cfdad" PropertyValue="Жаңа шығыс құжат" />
   <Property Key="908875f2-0d15-4e20-93e9-7c514b007e03" PropertyValue="Жасаңыз" />
   <Property Key="f0553208-b799-40d5-9b54-ba8804336590" PropertyValue="Болдырмау" />
@@ -1300,6 +1302,7 @@
   <Property Key="1d979d04-fcaa-4bd5-9b33-701a3105ed52" PropertyValue="Use cloud certificate" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="2014f082-5b18-459b-830c-985b92e68197" PropertyValue="SECURITY" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="283e497b-bac5-468c-acf2-c74c8480252b" PropertyValue="Create" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="3942f830-d33f-4651-811a-04331b9f0f9e" PropertyValue="Физическое лицо, действующее от имени доверителя без доверенности" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="015c00fe-b400-4670-b4cc-7aeda18cfdad" PropertyValue="New document (Outgoing)" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="908875f2-0d15-4e20-93e9-7c514b007e03" PropertyValue="Create" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="f0553208-b799-40d5-9b54-ba8804336590" PropertyValue="Cancel" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
@@ -1778,6 +1781,7 @@
   <Property Key="1d979d04-fcaa-4bd5-9b33-701a3105ed52" PropertyValue="Для работы с сертификатом использовать облачное хранилище" />
   <Property Key="2014f082-5b18-459b-830c-985b92e68197" PropertyValue="БЕЗОПАСНОСТЬ" />
   <Property Key="283e497b-bac5-468c-acf2-c74c8480252b" PropertyValue="Создать" />
+  <Property Key="3942f830-d33f-4651-811a-04331b9f0f9e" PropertyValue="Физическое лицо, действующее от имени доверителя без доверенности" />
   <Property Key="015c00fe-b400-4670-b4cc-7aeda18cfdad" PropertyValue="Новый исходящий документ" />
   <Property Key="908875f2-0d15-4e20-93e9-7c514b007e03" PropertyValue="Создать" />
   <Property Key="f0553208-b799-40d5-9b54-ba8804336590" PropertyValue="Отменить" />
