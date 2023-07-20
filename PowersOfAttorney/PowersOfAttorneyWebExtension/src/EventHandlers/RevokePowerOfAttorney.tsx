@@ -93,3 +93,13 @@ export const revokePowerOfAttorney = async (sender: CustomButton) => {
 
     modalHost.mount();
 }
+
+export const revokePowerOfAttorneyWithoutApplication = async (sender: CustomButton) => {
+    const powerOfAttorneyUserCardId = sender.layout.getService($CardId);
+    const powerOfAttorneyId = await sender.layout.getService($PowersOfAttorneyDemoController).getPowerOfAttorneyCardId(powerOfAttorneyUserCardId);
+    await sender.layout.getService($PowerOfAttorneyApiController).markAsRevokedPowerOfAttorney({ powerOfAttorneyId: powerOfAttorneyId, withChildrenPowerOfAttorney: true });
+    const operationId = sender.layout.layoutInfo.operations.find(operation => operation.alias === "To revoke").id;
+    await sender.layout.changeState(operationId);
+    sender.layout.getService($Router).refresh();
+    sender.layout.getService($MessageWindow).showInfo(resources.PowerOfAttorneyRevoked);
+}
