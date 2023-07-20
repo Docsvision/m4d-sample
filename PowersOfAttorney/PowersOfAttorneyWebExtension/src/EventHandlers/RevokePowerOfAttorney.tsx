@@ -50,7 +50,7 @@ export const revokePowerOfAttorney = async (sender: CustomButton) => {
                     if (signature) {
                         try {
                             await sender.layout.getService($PowerOfAttorneyApiController).attachSignatureToRevocationPowerOfAttorney({ powerOfAttorneyId, signature });
-                            await sender.layout.getService($PowerOfAttorneyApiController).revokePowerOfAttorney({ powerOfAttorneyId: powerOfAttorneyId, withChildrenPowerOfAttorney: true });
+                            await sender.layout.getService($PowerOfAttorneyApiController).revokePowerOfAttorney({ powerOfAttorneyId, withChildrenPowerOfAttorney: true });
                             const operationId = sender.layout.layoutInfo.operations.find(operation => operation.alias === "To revoke").id;
                             await sender.layout.changeState(operationId);
                             sender.layout.getService($Router).refresh();
@@ -97,7 +97,7 @@ export const revokePowerOfAttorney = async (sender: CustomButton) => {
 export const revokePowerOfAttorneyWithoutApplication = async (sender: CustomButton) => {
     const powerOfAttorneyUserCardId = sender.layout.getService($CardId);
     const powerOfAttorneyId = await sender.layout.getService($PowersOfAttorneyDemoController).getPowerOfAttorneyCardId(powerOfAttorneyUserCardId);
-    await sender.layout.getService($PowerOfAttorneyApiController).markAsRevokedPowerOfAttorney({ powerOfAttorneyId: powerOfAttorneyId, withChildrenPowerOfAttorney: true });
+    await sender.layout.getService($PowerOfAttorneyApiController).markAsRevokedPowerOfAttorney({ powerOfAttorneyId, withChildrenPowerOfAttorney: true });
     const operationId = sender.layout.layoutInfo.operations.find(operation => operation.alias === "To revoke").id;
     await sender.layout.changeState(operationId);
     sender.layout.getService($Router).refresh();
