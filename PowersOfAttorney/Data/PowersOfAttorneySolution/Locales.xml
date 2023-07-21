@@ -476,6 +476,12 @@
   <Property Key="60aec81d-a669-41d9-8f96-bf0dc90197ed" />
   <Property Key="7f765351-6f3b-43d4-a249-9d5819a8985d" />
   <Property Key="1bae2d3b-dfe2-46bf-af8c-355841b95db8" />
+  <Property Key="471679e2-7587-4bfa-a563-13df827a6183" />
+  <Property Key="285852ec-fd1a-4282-ad40-1560cb3c4a71" />
+  <Property Key="485d6de1-6797-4e98-9def-4721821efe95" />
+  <Property Key="329423a6-4740-4c22-9c59-88e1418f6fcb" />
+  <Property Key="935aca57-1529-40ee-bdae-54619b93faaa" />
+  <Property Key="373f5797-25be-4e9e-93cb-90e1c6b97073" />
 </LayoutLocalization>
     </File>
   </Locale>
@@ -955,6 +961,12 @@
   <Property Key="60aec81d-a669-41d9-8f96-bf0dc90197ed" />
   <Property Key="7f765351-6f3b-43d4-a249-9d5819a8985d" />
   <Property Key="1bae2d3b-dfe2-46bf-af8c-355841b95db8" />
+  <Property Key="471679e2-7587-4bfa-a563-13df827a6183" />
+  <Property Key="285852ec-fd1a-4282-ad40-1560cb3c4a71" />
+  <Property Key="485d6de1-6797-4e98-9def-4721821efe95" />
+  <Property Key="329423a6-4740-4c22-9c59-88e1418f6fcb" />
+  <Property Key="935aca57-1529-40ee-bdae-54619b93faaa" />
+  <Property Key="373f5797-25be-4e9e-93cb-90e1c6b97073" />
 </LayoutLocalization>
     </File>
   </Locale>
@@ -1378,7 +1390,7 @@
   <Property Key="eb261128-1cb2-4428-82ec-6a5279ac683e" PropertyValue="Сведения по физическому лицу" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="d269f4ff-9463-494b-b539-8fd4cc1781fc" PropertyValue="ИНН физического лица" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="f23f5151-481f-4a59-85eb-00eefd700aac" PropertyValue="СНИЛС" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
-  <Property Key="f61e84cf-2691-48b2-b677-d9692a89e116" PropertyValue="Наименование документа, подтверждающего полномочия" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="f61e84cf-2691-48b2-b677-d9692a89e116" PropertyValue="Наименование документа, подтверждающего полномочия лица, действующего без доверенности" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="b5f01490-07cf-434e-b1a7-a22177392507" PropertyValue="Реквизиты документа, подтверждающего полномочия" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="64545e66-c23b-4be2-a7b5-2c0d1e4869e2" PropertyValue="Дата выдачи" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="09754eee-4176-44c3-90e6-77a442d6b065" PropertyValue="Кем выдан" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
@@ -1434,6 +1446,12 @@
   <Property Key="60aec81d-a669-41d9-8f96-bf0dc90197ed" PropertyValue="Фамилия, имя, отчество (при наличии) физического лица" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="7f765351-6f3b-43d4-a249-9d5819a8985d" PropertyValue="Сведения о полномочиях представителя (представителей)" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="1bae2d3b-dfe2-46bf-af8c-355841b95db8" PropertyValue="Текстовое описание полномочий уполномоченного представителя" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="471679e2-7587-4bfa-a563-13df827a6183" PropertyValue="Сведения о полномочиях представителя" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="285852ec-fd1a-4282-ad40-1560cb3c4a71" PropertyValue="Документ, подтверж" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="485d6de1-6797-4e98-9def-4721821efe95" PropertyValue="Наименование документа, подтверждающего полномочия" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="329423a6-4740-4c22-9c59-88e1418f6fcb" PropertyValue="Физическое лицо, действующее от имени организации без доверенности" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="935aca57-1529-40ee-bdae-54619b93faaa" PropertyValue="Сведения о юридическом лице - доверителе" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="373f5797-25be-4e9e-93cb-90e1c6b97073" PropertyValue="3 цифры, принимает значение в соответствии с Общероссийским классификатором стран мира. По умолчанию установлен код России - 643." SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
 </LayoutLocalization>
     </File>
   </Locale>
@@ -1857,7 +1875,7 @@
   <Property Key="eb261128-1cb2-4428-82ec-6a5279ac683e" PropertyValue="Сведения по физическому лицу" />
   <Property Key="d269f4ff-9463-494b-b539-8fd4cc1781fc" PropertyValue="ИНН физического лица" />
   <Property Key="f23f5151-481f-4a59-85eb-00eefd700aac" PropertyValue="СНИЛС" />
-  <Property Key="f61e84cf-2691-48b2-b677-d9692a89e116" PropertyValue="Наименование документа, подтверждающего полномочия" />
+  <Property Key="f61e84cf-2691-48b2-b677-d9692a89e116" PropertyValue="Наименование документа, подтверждающего полномочия лица, действующего без доверенности" />
   <Property Key="b5f01490-07cf-434e-b1a7-a22177392507" PropertyValue="Реквизиты документа, подтверждающего полномочия" />
   <Property Key="64545e66-c23b-4be2-a7b5-2c0d1e4869e2" PropertyValue="Дата выдачи" />
   <Property Key="09754eee-4176-44c3-90e6-77a442d6b065" PropertyValue="Кем выдан" />
@@ -1913,6 +1931,12 @@
   <Property Key="60aec81d-a669-41d9-8f96-bf0dc90197ed" PropertyValue="Фамилия, имя, отчество (при наличии) физического лица" />
   <Property Key="7f765351-6f3b-43d4-a249-9d5819a8985d" PropertyValue="Сведения о полномочиях представителя (представителей)" />
   <Property Key="1bae2d3b-dfe2-46bf-af8c-355841b95db8" PropertyValue="Текстовое описание полномочий уполномоченного представителя" />
+  <Property Key="471679e2-7587-4bfa-a563-13df827a6183" PropertyValue="Сведения о полномочиях представителя" />
+  <Property Key="285852ec-fd1a-4282-ad40-1560cb3c4a71" PropertyValue="Документ, подтверж" />
+  <Property Key="485d6de1-6797-4e98-9def-4721821efe95" PropertyValue="Наименование документа, подтверждающего полномочия" />
+  <Property Key="329423a6-4740-4c22-9c59-88e1418f6fcb" PropertyValue="Физическое лицо, действующее от имени организации без доверенности" />
+  <Property Key="935aca57-1529-40ee-bdae-54619b93faaa" PropertyValue="Сведения о юридическом лице - доверителе" />
+  <Property Key="373f5797-25be-4e9e-93cb-90e1c6b97073" PropertyValue="3 цифры, принимает значение в соответствии с Общероссийским классификатором стран мира. По умолчанию установлен код России - 643." />
 </LayoutLocalization>
     </File>
   </Locale>
