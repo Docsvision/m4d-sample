@@ -1200,7 +1200,7 @@
   <Property Key="dc2358e6-8af1-4090-b8c1-4524e5faaefd" PropertyValue="Код гражданство" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="34945290-a163-49a8-8b26-c6bf29264202" PropertyValue="В формате XXX-XXX-XXX XX или XXX-XXX-XXX-XX" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="e6551514-5bd6-4a4c-95c5-2460562160a9" PropertyValue="Гражданство (код страны)" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
-  <Property Key="9beb8ff5-10d3-4b5e-b17b-f64a84ce1407" PropertyValue="Дата истечения срока действия документа (необязательно)" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="9beb8ff5-10d3-4b5e-b17b-f64a84ce1407" PropertyValue="Дата истечения срока действия документа (при наличии)" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="3ca8d136-317d-4798-9a12-50fa8cfdf729" PropertyValue="Код и название" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="a50bbf49-12a2-495e-a53b-5823010459d0" PropertyValue="Код и наименование" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="0f8c841b-75d8-44b6-8407-2225a1dd318c" PropertyValue="Полномочие" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
@@ -1685,7 +1685,7 @@
   <Property Key="dc2358e6-8af1-4090-b8c1-4524e5faaefd" PropertyValue="Код гражданство" />
   <Property Key="34945290-a163-49a8-8b26-c6bf29264202" PropertyValue="В формате XXX-XXX-XXX XX или XXX-XXX-XXX-XX" />
   <Property Key="e6551514-5bd6-4a4c-95c5-2460562160a9" PropertyValue="Гражданство (код страны)" />
-  <Property Key="9beb8ff5-10d3-4b5e-b17b-f64a84ce1407" PropertyValue="Дата истечения срока действия документа (необязательно)" />
+  <Property Key="9beb8ff5-10d3-4b5e-b17b-f64a84ce1407" PropertyValue="Дата истечения срока действия документа (при наличии)" />
   <Property Key="3ca8d136-317d-4798-9a12-50fa8cfdf729" PropertyValue="Код и название" />
   <Property Key="a50bbf49-12a2-495e-a53b-5823010459d0" PropertyValue="Код и наименование" />
   <Property Key="0f8c841b-75d8-44b6-8407-2225a1dd318c" PropertyValue="Полномочие" />
