@@ -3,21 +3,15 @@ import IMask from "imask";
 
 export const customizeSubstitutionPowerOfAttorneyCardForEditLayout = (sender: Layout) => {
     const controls = sender.layout.controls;
-    const kindDocProvingIdenInd = controls.kindDocProvingIdenInd;
-    const kindDocProvIdenReprSPOA = controls.kindDocProvIdenReprSPOA;
     const reprSignCitshipSPOA = controls.reprSignCitshipSPOA;
     const indsignCitizenship = controls.indsignCitizenship;
 
     customizeInputFields()
     onDataChangedPossibilityOfSubstSPOA(sender);
-    onDataChangedKindDocProvingIdenInd(sender);
-    onDataChangedKindDocProvIdenReprSPOA(sender);
     onDataChangedReprSignCitshipSPOA(sender);
     onDataChangedIndsignCitizenship(sender);
 
     controls.possibilityOfSubstSPOA.params.dataChanged.subscribe(onDataChangedPossibilityOfSubstSPOA);
-    kindDocProvingIdenInd.params.dataChanged.subscribe(onDataChangedKindDocProvingIdenInd);
-    kindDocProvIdenReprSPOA && kindDocProvIdenReprSPOA.params.dataChanged.subscribe(onDataChangedKindDocProvIdenReprSPOA);
     reprSignCitshipSPOA && reprSignCitshipSPOA.params.dataChanged.subscribe(onDataChangedReprSignCitshipSPOA);
     indsignCitizenship && indsignCitizenship.params.dataChanged.subscribe(onDataChangedIndsignCitizenship);
 }
@@ -34,41 +28,6 @@ const customizeInputFields = () => {
     IMask(SNILSIndividualInputElement, maskOptions);
     const reprSNILSSPOAInputElement = document.querySelector('[data-control-name="reprSNILSSPOA"]')?.getElementsByTagName('input')[0];
     IMask(reprSNILSSPOAInputElement, maskOptions);    
-}
-
-const onDataChangedKindDocProvIdenReprSPOA = (sender: Layout) => {
-    const controls = sender.layout.controls;
-    const kindDocProvIdenReprSPOA = controls.kindDocProvIdenReprSPOA;
-    const authIssDocConfIdenReprSPOA = controls.authIssDocConfIdenReprSPOA;
-    const divAuthIssDocConfIDOfReprSPOA = controls.divAuthIssDocConfIDOfReprSPOA;
-
-    if (kindDocProvIdenReprSPOA.params.value === '21') {
-        authIssDocConfIdenReprSPOA.params.required = true;
-        divAuthIssDocConfIDOfReprSPOA.params.required = true;
-    } else {
-        authIssDocConfIdenReprSPOA.params.required = false;
-        divAuthIssDocConfIDOfReprSPOA.params.required = false;
-    }
-    authIssDocConfIdenReprSPOA.forceUpdate();
-    divAuthIssDocConfIDOfReprSPOA.forceUpdate();
-}
-
-
-const onDataChangedKindDocProvingIdenInd = (sender: Layout) => {
-    const controls = sender.layout.controls;
-    const kindDocProvingIdenInd = controls.kindDocProvingIdenInd;
-    const authIssDocProvIdenInd = controls.authIssDocProvIdenInd;
-    const divCodeAuthIssDocInd = controls.divCodeAuthIssDocInd;
-
-    if (kindDocProvingIdenInd.params.value === '21') {
-        authIssDocProvIdenInd.params.required = true;
-        divCodeAuthIssDocInd.params.required = true;
-    } else {
-        authIssDocProvIdenInd.params.required = false;
-        divCodeAuthIssDocInd.params.required = false;
-    }
-    authIssDocProvIdenInd.forceUpdate();
-    divCodeAuthIssDocInd.forceUpdate();
 }
 
 const onDataChangedPossibilityOfSubstSPOA = (sender: Layout) => {
