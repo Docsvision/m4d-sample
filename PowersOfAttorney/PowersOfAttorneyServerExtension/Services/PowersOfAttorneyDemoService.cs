@@ -92,7 +92,7 @@ namespace PowersOfAttorneyServerExtension.Services
                 RevocationType = revocationType
             };
 
-            switch (revocationType)                
+            switch (revocationType)
             {
                 case PowerOfAttorneyRevocationType.Representative:
                     revocationData.ApplicantInfo = new PowerOfAttorneyRevocationApplicantInfo
@@ -116,12 +116,16 @@ namespace PowersOfAttorneyServerExtension.Services
                         Inn = userCardPowerOfAttorney.GenCeoIIN,
                         Snils = userCardPowerOfAttorney.GenCeoSNILS,
                         Phone = userCardPowerOfAttorney.GenCeoPhoneNum,
-                        Kpp = userCardPowerOfAttorney.GenEntityPrincipal != null ? userCardPowerOfAttorney.GenEntityPrincipal.KPP : userCardPowerOfAttorney.GenEntityPrinKPP,
-                        Ogrn = userCardPowerOfAttorney.GenEntityPrincipal != null ? userCardPowerOfAttorney.GenEntityPrincipal.OGRN : userCardPowerOfAttorney.GenEntPrinOGRN,
-                        Name = userCardPowerOfAttorney.GenEntityPrincipal != null ? userCardPowerOfAttorney.GenEntityPrincipal.Name : userCardPowerOfAttorney.GenEntityPrinName
                     };
 
+                    // Для передоверия данные организации требуется брать из родительской доверености
+                    var cardWithPrincipalData = userCardPowerOfAttorney.IsRetrusted() ? GetUserCardPowerOfAttorney(context, userCardPowerOfAttorney.ParentalPowerOfAttorneyUserCard.GetObjectId()) : userCardPowerOfAttorney;
+
+                    revocationData.ApplicantInfo.Kpp = cardWithPrincipalData.GenEntityPrincipal != null ? cardWithPrincipalData.GenEntityPrincipal.KPP : cardWithPrincipalData.GenEntityPrinKPP;
+                    revocationData.ApplicantInfo.Ogrn = cardWithPrincipalData.GenEntityPrincipal != null ? cardWithPrincipalData.GenEntityPrincipal.OGRN : cardWithPrincipalData.GenEntPrinOGRN;
+                    revocationData.ApplicantInfo.Name = cardWithPrincipalData.GenEntityPrincipal != null ? cardWithPrincipalData.GenEntityPrincipal.Name : cardWithPrincipalData.GenEntityPrinName;
                     break;
+
                 default:
                     throw new ArgumentOutOfRangeException($"Unsupported revocation type: {revocationType}");
             }
