@@ -279,4 +279,7 @@
   <data name="Error_PositionNotSpecified" xml:space="preserve">
     <value>Для сотрудника {0} не указана должность.</value>
   </data>
+  <data name="Error_GenCeoCitizenshipSignIsEmpty" xml:space="preserve">
+    <value>Не указан признак наличия гражданства</value>
+  </data>
 </root>

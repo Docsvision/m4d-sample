@@ -211,40 +211,28 @@ internal static class UserCardPowerOfAttorneyFNSDOVBBExtensions
                 throw new NotSupportedException();
             }
 
-            return new DelegatedAuthorityPrincipalInfo(GetLegalEntityInfo(), GetFio(userCard.Signer));
+            return new DelegatedAuthorityPrincipalInfo(GetIndividualDelegatedAuthorityInfo(), GetFio(userCard.Signer));
         }
 
-        private LegalEntityInfo GetLegalEntityInfo()
+        private IndividualDelegatedAuthorityInfo GetIndividualDelegatedAuthorityInfo()
         {
-            var princOrg = userCard.PrincipalOrganization;
-            var name = princOrg.Name.AsNullable();
-            var inn = princOrg.INN.AsNullable();
-            var kpp = princOrg.KPP.AsNullable();
-            var ogrn = princOrg.OGRN.AsNullable();
-            var constituentDocument = userCard.PrincipalOrganizationConstituentDocument;
-            var phone = princOrg.Phone.AsNullable();
-            var registrationAddress = GetLegalAddress(princOrg);
-            var actualAddress = GetAddress(princOrg);
 
-            return new LegalEntityInfo(name, inn, kpp, ogrn, constituentDocument, phone, registrationAddress: registrationAddress, actualAddress: actualAddress);
+            return new IndividualDelegatedAuthorityInfo(userCard.GenCeoIIN, userCard.GenCeoSNILS, GetIndividualDelegatedAuthorityIndividualInfo(),
+            new FIO(userCard.GenCeo.LastName, userCard.GenCeo.FirstName, userCard.GenCeo.MiddleName.AsNullable()));
+                
         }
 
-        private AddressInfo GetLegalAddress(StaffUnit staffUnit)
+        private IndividualInfo GetIndividualDelegatedAuthorityIndividualInfo()
         {
-            var address = staffUnit.Addresses.FirstOrDefault(t => t.AddressType == StaffAddresseAddressType.LegalAddress);
-            if (address == null)
-                return null;
-
-            return GetAddressInfo(userCard.RepresentativeOrganizationLegalAddressSubjectRfCode, address.Address.AsNullable());
+            return new IndividualInfo(userCard.GenCeo.BirthDate, Convert(userCard.GenCeoCitizenshipSign), citizenship: userCard.GenCeoCitizenship);
         }
 
-        private AddressInfo GetAddress(StaffUnit staffUnit)
+        private CitizenshipType Convert(PowerOfAttorneyEMCHDData.CitizenshipType? genCeoCitizenshipSign)
         {
-            var address = staffUnit.Addresses.FirstOrDefault(t => t.AddressType == StaffAddresseAddressType.ContactAddress);
-            if (address == null)
-                return null;
+            if (genCeoCitizenshipSign == null)
+                throw new ArgumentNullException(Resources.Error_GenCeoCitizenshipSignIsEmpty);
 
-            return GetAddressInfo(userCard.RepresentativeOrganizationAddressSubjectRfCode, address.Address.AsNullable());
+            return (CitizenshipType)(int)genCeoCitizenshipSign.Value;
         }
 
         private RetrustPowerOfAttorneyInfo GetRetrustPowerOfAttorneyInfo()

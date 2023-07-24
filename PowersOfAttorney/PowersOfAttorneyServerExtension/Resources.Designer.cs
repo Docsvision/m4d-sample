@@ -241,6 +241,15 @@ namespace PowersOfAttorneyServerExtension {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sign of citizenship is not specified.
+        /// </summary>
+        internal static string Error_GenCeoCitizenshipSignIsEmpty {
+            get {
+                return ResourceManager.GetString("Error_GenCeoCitizenshipSignIsEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Type of principal is not specified.
         /// </summary>
         internal static string Error_GenRepresentativeIsEmpty {

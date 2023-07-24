@@ -279,4 +279,7 @@
   <data name="Error_PositionNotSpecified" xml:space="preserve">
     <value>Position is not specified in for employee {0}.</value>
   </data>
+  <data name="Error_GenCeoCitizenshipSignIsEmpty" xml:space="preserve">
+    <value>Sign of citizenship is not specified</value>
+  </data>
 </root>
