@@ -2219,7 +2219,7 @@
                     <Property Name="Tag" Value="" Type="System.String, mscorlib" IsAvailable="true" />
                     <Property Name="Name" Value="codeTaxAuthValid" Type="System.String, mscorlib" IsAvailable="true" />
                     <Property Name="PlaceHolder" Value="257db464-477e-41b5-880e-0a63c63eddb0" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="true" />
-                    <Property Name="Tip" Value="a168e8d1-e2b1-4834-a4a7-ad9b992bc8a7" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="true" />
+                    <Property Name="Tip" Value="b6ee7ee5-48c3-4e7a-ac68-de58662e6bbb" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="true" />
                     <Property Name="LabelText" Value="257db464-477e-41b5-880e-0a63c63eddb0" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="true" />
                     <Property Name="ShowEmptyLabel" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
                     <Property Name="Visibility" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
@@ -2233,7 +2233,7 @@
                     <Property Name="VisibilityEditOperation" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
                     <Property Name="StandardCssClass" Value="system-textbox" Type="System.String, mscorlib" IsAvailable="true" />
                     <Property Name="TabStop" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
-                    <Property Name="Required" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                    <Property Name="Required" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
                     <Property Name="EditMode" Value="2" Type="System.Int32, mscorlib" IsAvailable="true" />
                     <Property Name="ExtendedDataSource" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
                     <Property Name="DataSource" Value="29c1b4ef-48e4-47f0-ac67-c42cf68de986" Type="System.Guid, mscorlib" IsAvailable="true" />
@@ -3429,9 +3429,9 @@
                         <Property Name="IsInheritedEditOperation" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
                         <Property Name="Disabled" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
                           <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-                            <Desktop>false</Desktop>
-                            <Tablet>false</Tablet>
-                            <Smartphone>false</Smartphone>
+                            <Desktop>true</Desktop>
+                            <Tablet>true</Tablet>
+                            <Smartphone>true</Smartphone>
                             <CanChange>true</CanChange>
                           </DeviceDependentPropertyOfBoolean>
                         </Property>
@@ -3546,9 +3546,9 @@
                         <Property Name="IsInheritedEditOperation" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
                         <Property Name="Disabled" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
                           <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-                            <Desktop>false</Desktop>
-                            <Tablet>false</Tablet>
-                            <Smartphone>false</Smartphone>
+                            <Desktop>true</Desktop>
+                            <Tablet>true</Tablet>
+                            <Smartphone>true</Smartphone>
                             <CanChange>true</CanChange>
                           </DeviceDependentPropertyOfBoolean>
                         </Property>
@@ -3663,9 +3663,9 @@
                         <Property Name="IsInheritedEditOperation" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
                         <Property Name="Disabled" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
                           <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-                            <Desktop>false</Desktop>
-                            <Tablet>false</Tablet>
-                            <Smartphone>false</Smartphone>
+                            <Desktop>true</Desktop>
+                            <Tablet>true</Tablet>
+                            <Smartphone>true</Smartphone>
                             <CanChange>true</CanChange>
                           </DeviceDependentPropertyOfBoolean>
                         </Property>
@@ -4243,7 +4243,7 @@
                           </DeviceDependentPropertyOfBoolean>
                         </Property>
                         <Property Name="VisibilityEditOperation" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
-                        <Property Name="Required" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                        <Property Name="Required" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
                         <Property Name="TabStop" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
                         <Property Name="SearchDelay" Value="500" Type="System.Int32, mscorlib" IsAvailable="true" />
                         <Property Name="EditMode" Value="2" Type="System.Int32, mscorlib" IsAvailable="true" />
@@ -4875,7 +4875,7 @@
                         <Property Name="VisibilityEditOperation" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
                         <Property Name="StandardCssClass" Value="system-textbox" Type="System.String, mscorlib" IsAvailable="true" />
                         <Property Name="TabStop" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
-                        <Property Name="Required" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                        <Property Name="Required" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
                         <Property Name="EditMode" Value="2" Type="System.Int32, mscorlib" IsAvailable="true" />
                         <Property Name="ExtendedDataSource" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
                         <Property Name="DataSource" Value="29c1b4ef-48e4-47f0-ac67-c42cf68de986" Type="System.Guid, mscorlib" IsAvailable="true" />
@@ -5145,7 +5145,7 @@
                         <Property Name="VisibilityEditOperation" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
                         <Property Name="StandardCssClass" Value="system-dropdown" Type="System.String, mscorlib" IsAvailable="true" />
                         <Property Name="TabStop" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
-                        <Property Name="Required" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                        <Property Name="Required" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
                         <Property Name="EditMode" Value="2" Type="System.Int32, mscorlib" IsAvailable="true" />
                         <Property Name="Click" Value="" Type="System.String, mscorlib" IsAvailable="true" />
                         <Property Name="MouseOver" Value="" Type="System.String, mscorlib" IsAvailable="true" />
@@ -5389,7 +5389,7 @@
                         <Property Name="HighlightOverdue" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
                         <Property Name="TabStop" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
                         <Property Name="Type" Value="1" Type="System.Int32, mscorlib" IsAvailable="true" />
-                        <Property Name="Required" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                        <Property Name="Required" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
                         <Property Name="ExtendedDataSource" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
                         <Property Name="DataSource" Value="29c1b4ef-48e4-47f0-ac67-c42cf68de986" Type="System.Guid, mscorlib" IsAvailable="true" />
                         <Property Name="DataField" Value="ceoDateOfBirth" Type="System.String, mscorlib" IsAvailable="true" />
@@ -6187,7 +6187,7 @@
                             <Property Name="DataSource" Value="29c1b4ef-48e4-47f0-ac67-c42cf68de986" Type="System.Guid, mscorlib" IsAvailable="true" />
                             <Property Name="DataField" Value="typeCodeCEOIDDoc" Type="System.String, mscorlib" IsAvailable="true" />
                             <Property Name="Binding" Value="1f266a5b-f896-4179-9522-2e2dcc93e9c2" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
-                            <Property Name="DefaultElement" Value="" Type="System.String, mscorlib" IsAvailable="true" RepresentsDefaultBindingValue="true" />
+                            <Property Name="DefaultElement" Value="passRusCitizen" Type="System.String, mscorlib" IsAvailable="true" RepresentsDefaultBindingValue="true" />
                             <Property Name="Elements" Value="958f684a-120e-498a-9cd2-a703bfde2770" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
                             <Property Name="IsInheritedEditOperation" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
                             <Property Name="Disabled" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
@@ -6451,7 +6451,7 @@
                             <Property Name="HighlightOverdue" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
                             <Property Name="TabStop" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
                             <Property Name="Type" Value="1" Type="System.Int32, mscorlib" IsAvailable="true" />
-                            <Property Name="Required" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                            <Property Name="Required" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
                             <Property Name="ExtendedDataSource" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
                             <Property Name="DataSource" Value="29c1b4ef-48e4-47f0-ac67-c42cf68de986" Type="System.Guid, mscorlib" IsAvailable="true" />
                             <Property Name="DataField" Value="dateIssCEOIDDoc" Type="System.String, mscorlib" IsAvailable="true" />
@@ -7368,7 +7368,7 @@
                         <Property Name="VisibilityEditOperation" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
                         <Property Name="StandardCssClass" Value="system-textbox" Type="System.String, mscorlib" IsAvailable="true" />
                         <Property Name="TabStop" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
-                        <Property Name="Required" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                        <Property Name="Required" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
                         <Property Name="EditMode" Value="2" Type="System.Int32, mscorlib" IsAvailable="true" />
                         <Property Name="ExtendedDataSource" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
                         <Property Name="DataSource" Value="29c1b4ef-48e4-47f0-ac67-c42cf68de986" Type="System.Guid, mscorlib" IsAvailable="true" />
@@ -7493,7 +7493,7 @@
                         <Property Name="VisibilityEditOperation" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
                         <Property Name="StandardCssClass" Value="system-textbox" Type="System.String, mscorlib" IsAvailable="true" />
                         <Property Name="TabStop" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
-                        <Property Name="Required" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                        <Property Name="Required" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
                         <Property Name="EditMode" Value="2" Type="System.Int32, mscorlib" IsAvailable="true" />
                         <Property Name="ExtendedDataSource" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
                         <Property Name="DataSource" Value="29c1b4ef-48e4-47f0-ac67-c42cf68de986" Type="System.Guid, mscorlib" IsAvailable="true" />
@@ -7763,7 +7763,7 @@
                         <Property Name="VisibilityEditOperation" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
                         <Property Name="StandardCssClass" Value="system-dropdown" Type="System.String, mscorlib" IsAvailable="true" />
                         <Property Name="TabStop" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
-                        <Property Name="Required" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                        <Property Name="Required" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
                         <Property Name="EditMode" Value="2" Type="System.Int32, mscorlib" IsAvailable="true" />
                         <Property Name="Click" Value="" Type="System.String, mscorlib" IsAvailable="true" />
                         <Property Name="MouseOver" Value="" Type="System.String, mscorlib" IsAvailable="true" />
@@ -7880,7 +7880,7 @@
                         <Property Name="HighlightOverdue" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
                         <Property Name="TabStop" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
                         <Property Name="Type" Value="1" Type="System.Int32, mscorlib" IsAvailable="true" />
-                        <Property Name="Required" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                        <Property Name="Required" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
                         <Property Name="ExtendedDataSource" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
                         <Property Name="DataSource" Value="29c1b4ef-48e4-47f0-ac67-c42cf68de986" Type="System.Guid, mscorlib" IsAvailable="true" />
                         <Property Name="DataField" Value="reprDateOfBirth" Type="System.String, mscorlib" IsAvailable="true" />
@@ -8646,9 +8646,9 @@
                     <Property Name="Header" Value="bf6e696f-634c-4490-aca2-60191f19dfbc" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="true" />
                     <Property Name="Visibility" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
                       <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-                        <Desktop>false</Desktop>
-                        <Tablet>false</Tablet>
-                        <Smartphone>false</Smartphone>
+                        <Desktop>true</Desktop>
+                        <Tablet>true</Tablet>
+                        <Smartphone>true</Smartphone>
                         <CanChange>true</CanChange>
                       </DeviceDependentPropertyOfBoolean>
                     </Property>
@@ -8805,7 +8805,7 @@
                             <Property Name="DataSource" Value="29c1b4ef-48e4-47f0-ac67-c42cf68de986" Type="System.Guid, mscorlib" IsAvailable="true" />
                             <Property Name="DataField" Value="typeCodeReprIDDoc" Type="System.String, mscorlib" IsAvailable="true" />
                             <Property Name="Binding" Value="1fe38ee1-b973-4d7b-8a4d-83ac543c6cb3" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
-                            <Property Name="DefaultElement" Value="" Type="System.String, mscorlib" IsAvailable="true" RepresentsDefaultBindingValue="true" />
+                            <Property Name="DefaultElement" Value="passRusCitizen" Type="System.String, mscorlib" IsAvailable="true" RepresentsDefaultBindingValue="true" />
                             <Property Name="Elements" Value="675749f5-d565-4f65-958e-2ada2031827f" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
                             <Property Name="IsInheritedEditOperation" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
                             <Property Name="Disabled" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
@@ -9069,7 +9069,7 @@
                             <Property Name="HighlightOverdue" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
                             <Property Name="TabStop" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
                             <Property Name="Type" Value="1" Type="System.Int32, mscorlib" IsAvailable="true" />
-                            <Property Name="Required" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                            <Property Name="Required" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
                             <Property Name="ExtendedDataSource" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
                             <Property Name="DataSource" Value="29c1b4ef-48e4-47f0-ac67-c42cf68de986" Type="System.Guid, mscorlib" IsAvailable="true" />
                             <Property Name="DataField" Value="dateIssReprIDDoc" Type="System.String, mscorlib" IsAvailable="true" />

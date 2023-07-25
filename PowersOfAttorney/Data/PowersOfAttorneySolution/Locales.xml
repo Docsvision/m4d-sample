@@ -482,6 +482,7 @@
   <Property Key="329423a6-4740-4c22-9c59-88e1418f6fcb" />
   <Property Key="935aca57-1529-40ee-bdae-54619b93faaa" />
   <Property Key="373f5797-25be-4e9e-93cb-90e1c6b97073" />
+  <Property Key="b6ee7ee5-48c3-4e7a-ac68-de58662e6bbb" />
 </LayoutLocalization>
     </File>
   </Locale>
@@ -967,6 +968,7 @@
   <Property Key="329423a6-4740-4c22-9c59-88e1418f6fcb" />
   <Property Key="935aca57-1529-40ee-bdae-54619b93faaa" />
   <Property Key="373f5797-25be-4e9e-93cb-90e1c6b97073" />
+  <Property Key="b6ee7ee5-48c3-4e7a-ac68-de58662e6bbb" />
 </LayoutLocalization>
     </File>
   </Locale>
@@ -1060,8 +1062,8 @@
   <Property Key="c7a71856-1403-44f3-aa36-f0bbcdc258d6" PropertyValue="Подписать" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="a1489bca-8b31-4a77-9fe5-fae7e6e2c2ee" PropertyValue="Скачать подпись" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="5e6ff6b3-6eaa-4e80-a8c3-c7958ea9a6d3" PropertyValue="Сведения о доверителе-российском юридическом лице" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
-  <Property Key="bc293235-3b07-4ab8-ae1f-2df0c2507e96" PropertyValue="Сведения об уполномоченном представителе-физическом лице" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
-  <Property Key="1b6787a4-4033-4c74-a9d2-9dda2b029cc3" PropertyValue="Сведения об уполномоченном представителе - физическом лице" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="bc293235-3b07-4ab8-ae1f-2df0c2507e96" PropertyValue="Сведения об уполномоченном представителе ‒ физическом лице" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="1b6787a4-4033-4c74-a9d2-9dda2b029cc3" PropertyValue="Сведения об уполномоченном представителе ‒ физическом лице" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="5df51280-57f6-479d-8bc9-e1be12c47d4b" PropertyValue="Сведения о физическом лице, передавшем полномочия " SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="eb4751e8-778a-4c0d-a954-0d457896f5da" PropertyValue="Отозвать доверенность" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="bda98ebc-beca-47ed-be1b-12d5e982acd8" PropertyValue="Export power of attorney" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
@@ -1452,6 +1454,7 @@
   <Property Key="329423a6-4740-4c22-9c59-88e1418f6fcb" PropertyValue="Физическое лицо, действующее от имени организации без доверенности" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="935aca57-1529-40ee-bdae-54619b93faaa" PropertyValue="Сведения о юридическом лице - доверителе" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="373f5797-25be-4e9e-93cb-90e1c6b97073" PropertyValue="3 цифры, принимает значение в соответствии с Общероссийским классификатором стран мира. По умолчанию установлен код России - 643." SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="b6ee7ee5-48c3-4e7a-ac68-de58662e6bbb" PropertyValue="4 знака, не указывается при оформлении доверенности в отношении всех налоговых органов Российской Федерации" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
 </LayoutLocalization>
     </File>
   </Locale>
@@ -1545,8 +1548,8 @@
   <Property Key="c7a71856-1403-44f3-aa36-f0bbcdc258d6" PropertyValue="Подписать" />
   <Property Key="a1489bca-8b31-4a77-9fe5-fae7e6e2c2ee" PropertyValue="Скачать подпись" />
   <Property Key="5e6ff6b3-6eaa-4e80-a8c3-c7958ea9a6d3" PropertyValue="Сведения о доверителе-российском юридическом лице" />
-  <Property Key="bc293235-3b07-4ab8-ae1f-2df0c2507e96" PropertyValue="Сведения об уполномоченном представителе-физическом лице" />
-  <Property Key="1b6787a4-4033-4c74-a9d2-9dda2b029cc3" PropertyValue="Сведения об уполномоченном представителе - физическом лице" />
+  <Property Key="bc293235-3b07-4ab8-ae1f-2df0c2507e96" PropertyValue="Сведения об уполномоченном представителе ‒ физическом лице" />
+  <Property Key="1b6787a4-4033-4c74-a9d2-9dda2b029cc3" PropertyValue="Сведения об уполномоченном представителе ‒ физическом лице" />
   <Property Key="5df51280-57f6-479d-8bc9-e1be12c47d4b" PropertyValue="Сведения о физическом лице, передавшем полномочия " />
   <Property Key="eb4751e8-778a-4c0d-a954-0d457896f5da" PropertyValue="Отозвать доверенность" />
   <Property Key="bda98ebc-beca-47ed-be1b-12d5e982acd8" PropertyValue="Скачать доверенность" />
@@ -1937,6 +1940,7 @@
   <Property Key="329423a6-4740-4c22-9c59-88e1418f6fcb" PropertyValue="Физическое лицо, действующее от имени организации без доверенности" />
   <Property Key="935aca57-1529-40ee-bdae-54619b93faaa" PropertyValue="Сведения о юридическом лице - доверителе" />
   <Property Key="373f5797-25be-4e9e-93cb-90e1c6b97073" PropertyValue="3 цифры, принимает значение в соответствии с Общероссийским классификатором стран мира. По умолчанию установлен код России - 643." />
+  <Property Key="b6ee7ee5-48c3-4e7a-ac68-de58662e6bbb" PropertyValue="4 знака, не указывается при оформлении доверенности в отношении всех налоговых органов Российской Федерации" />
 </LayoutLocalization>
     </File>
   </Locale>

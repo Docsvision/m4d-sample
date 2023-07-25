@@ -2911,7 +2911,7 @@
                         <Property Name="Tag" Value="" Type="System.String, mscorlib" IsAvailable="true" />
                         <Property Name="Name" Value="codeTaxAuthValid" Type="System.String, mscorlib" IsAvailable="true" />
                         <Property Name="PlaceHolder" Value="257db464-477e-41b5-880e-0a63c63eddb0" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="false" />
-                        <Property Name="Tip" Value="a168e8d1-e2b1-4834-a4a7-ad9b992bc8a7" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="true" />
+                        <Property Name="Tip" Value="b6ee7ee5-48c3-4e7a-ac68-de58662e6bbb" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="true" />
                         <Property Name="LabelText" Value="257db464-477e-41b5-880e-0a63c63eddb0" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="true" />
                         <Property Name="ShowEmptyLabel" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
                         <Property Name="Visibility" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
@@ -2925,7 +2925,7 @@
                         <Property Name="VisibilityEditOperation" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
                         <Property Name="StandardCssClass" Value="system-textbox" Type="System.String, mscorlib" IsAvailable="true" />
                         <Property Name="TabStop" Value="true" Type="System.Boolean, mscorlib" IsAvailable="false" />
-                        <Property Name="Required" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                        <Property Name="Required" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
                         <Property Name="EditMode" Value="1" Type="System.Int32, mscorlib" IsAvailable="true" />
                         <Property Name="ExtendedDataSource" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
                         <Property Name="DataSource" Value="29c1b4ef-48e4-47f0-ac67-c42cf68de986" Type="System.Guid, mscorlib" IsAvailable="true" />

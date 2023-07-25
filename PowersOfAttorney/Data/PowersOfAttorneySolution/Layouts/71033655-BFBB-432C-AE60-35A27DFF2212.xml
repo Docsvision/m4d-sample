@@ -3085,7 +3085,7 @@
                     <Property Name="VisibilityEditOperation" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
                     <Property Name="StandardCssClass" Value="system-textbox" Type="System.String, mscorlib" IsAvailable="true" />
                     <Property Name="TabStop" Value="true" Type="System.Boolean, mscorlib" IsAvailable="false" />
-                    <Property Name="Required" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                    <Property Name="Required" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
                     <Property Name="EditMode" Value="1" Type="System.Int32, mscorlib" IsAvailable="true" />
                     <Property Name="ExtendedDataSource" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
                     <Property Name="DataSource" Value="29c1b4ef-48e4-47f0-ac67-c42cf68de986" Type="System.Guid, mscorlib" IsAvailable="true" />
@@ -5232,7 +5232,7 @@
                           </DeviceDependentPropertyOfBoolean>
                         </Property>
                         <Property Name="VisibilityEditOperation" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
-                        <Property Name="Required" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                        <Property Name="Required" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
                         <Property Name="TabStop" Value="true" Type="System.Boolean, mscorlib" IsAvailable="false" />
                         <Property Name="SearchDelay" Value="500" Type="System.Int32, mscorlib" IsAvailable="false" />
                         <Property Name="EditMode" Value="1" Type="System.Int32, mscorlib" IsAvailable="true" />
@@ -6274,7 +6274,7 @@
                         <Property Name="VisibilityEditOperation" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
                         <Property Name="StandardCssClass" Value="system-textbox" Type="System.String, mscorlib" IsAvailable="true" />
                         <Property Name="TabStop" Value="true" Type="System.Boolean, mscorlib" IsAvailable="false" />
-                        <Property Name="Required" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                        <Property Name="Required" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
                         <Property Name="EditMode" Value="1" Type="System.Int32, mscorlib" IsAvailable="true" />
                         <Property Name="ExtendedDataSource" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
                         <Property Name="DataSource" Value="29c1b4ef-48e4-47f0-ac67-c42cf68de986" Type="System.Guid, mscorlib" IsAvailable="true" />
@@ -6544,7 +6544,7 @@
                         <Property Name="VisibilityEditOperation" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
                         <Property Name="StandardCssClass" Value="system-dropdown" Type="System.String, mscorlib" IsAvailable="true" />
                         <Property Name="TabStop" Value="true" Type="System.Boolean, mscorlib" IsAvailable="false" />
-                        <Property Name="Required" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                        <Property Name="Required" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
                         <Property Name="EditMode" Value="1" Type="System.Int32, mscorlib" IsAvailable="true" />
                         <Property Name="Click" Value="" Type="System.String, mscorlib" IsAvailable="true" />
                         <Property Name="MouseOver" Value="" Type="System.String, mscorlib" IsAvailable="true" />
@@ -6788,7 +6788,7 @@
                         <Property Name="HighlightOverdue" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
                         <Property Name="TabStop" Value="true" Type="System.Boolean, mscorlib" IsAvailable="false" />
                         <Property Name="Type" Value="1" Type="System.Int32, mscorlib" IsAvailable="true" />
-                        <Property Name="Required" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                        <Property Name="Required" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
                         <Property Name="ExtendedDataSource" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
                         <Property Name="DataSource" Value="29c1b4ef-48e4-47f0-ac67-c42cf68de986" Type="System.Guid, mscorlib" IsAvailable="true" />
                         <Property Name="DataField" Value="ceoDateOfBirth" Type="System.String, mscorlib" IsAvailable="true" />
@@ -8112,7 +8112,7 @@
                             <Property Name="HighlightOverdue" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
                             <Property Name="TabStop" Value="true" Type="System.Boolean, mscorlib" IsAvailable="false" />
                             <Property Name="Type" Value="1" Type="System.Int32, mscorlib" IsAvailable="true" />
-                            <Property Name="Required" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                            <Property Name="Required" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
                             <Property Name="ExtendedDataSource" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
                             <Property Name="DataSource" Value="29c1b4ef-48e4-47f0-ac67-c42cf68de986" Type="System.Guid, mscorlib" IsAvailable="true" />
                             <Property Name="DataField" Value="dateIssCEOIDDoc" Type="System.String, mscorlib" IsAvailable="true" />
@@ -9029,7 +9029,7 @@
                         <Property Name="VisibilityEditOperation" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
                         <Property Name="StandardCssClass" Value="system-textbox" Type="System.String, mscorlib" IsAvailable="true" />
                         <Property Name="TabStop" Value="true" Type="System.Boolean, mscorlib" IsAvailable="false" />
-                        <Property Name="Required" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                        <Property Name="Required" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
                         <Property Name="EditMode" Value="1" Type="System.Int32, mscorlib" IsAvailable="true" />
                         <Property Name="ExtendedDataSource" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
                         <Property Name="DataSource" Value="29c1b4ef-48e4-47f0-ac67-c42cf68de986" Type="System.Guid, mscorlib" IsAvailable="true" />
@@ -9154,7 +9154,7 @@
                         <Property Name="VisibilityEditOperation" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
                         <Property Name="StandardCssClass" Value="system-textbox" Type="System.String, mscorlib" IsAvailable="true" />
                         <Property Name="TabStop" Value="true" Type="System.Boolean, mscorlib" IsAvailable="false" />
-                        <Property Name="Required" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                        <Property Name="Required" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
                         <Property Name="EditMode" Value="1" Type="System.Int32, mscorlib" IsAvailable="true" />
                         <Property Name="ExtendedDataSource" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
                         <Property Name="DataSource" Value="29c1b4ef-48e4-47f0-ac67-c42cf68de986" Type="System.Guid, mscorlib" IsAvailable="true" />
@@ -9424,7 +9424,7 @@
                         <Property Name="VisibilityEditOperation" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
                         <Property Name="StandardCssClass" Value="system-dropdown" Type="System.String, mscorlib" IsAvailable="true" />
                         <Property Name="TabStop" Value="true" Type="System.Boolean, mscorlib" IsAvailable="false" />
-                        <Property Name="Required" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                        <Property Name="Required" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
                         <Property Name="EditMode" Value="1" Type="System.Int32, mscorlib" IsAvailable="true" />
                         <Property Name="Click" Value="" Type="System.String, mscorlib" IsAvailable="true" />
                         <Property Name="MouseOver" Value="" Type="System.String, mscorlib" IsAvailable="true" />
@@ -9800,7 +9800,7 @@
                         <Property Name="VisibilityEditOperation" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
                         <Property Name="StandardCssClass" Value="system-textarea" Type="System.String, mscorlib" IsAvailable="true" />
                         <Property Name="TabStop" Value="true" Type="System.Boolean, mscorlib" IsAvailable="false" />
-                        <Property Name="Required" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                        <Property Name="Required" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
                         <Property Name="EditMode" Value="1" Type="System.Int32, mscorlib" IsAvailable="true" />
                         <Property Name="UseHtml" Value="false" Type="System.Boolean, mscorlib" IsAvailable="false" />
                         <Property Name="HtmlEditorHeight" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="false">
@@ -10992,7 +10992,7 @@
                             <Property Name="HighlightOverdue" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
                             <Property Name="TabStop" Value="true" Type="System.Boolean, mscorlib" IsAvailable="false" />
                             <Property Name="Type" Value="1" Type="System.Int32, mscorlib" IsAvailable="true" />
-                            <Property Name="Required" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                            <Property Name="Required" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
                             <Property Name="ExtendedDataSource" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
                             <Property Name="DataSource" Value="29c1b4ef-48e4-47f0-ac67-c42cf68de986" Type="System.Guid, mscorlib" IsAvailable="true" />
                             <Property Name="DataField" Value="dateIssReprIDDoc" Type="System.String, mscorlib" IsAvailable="true" />
