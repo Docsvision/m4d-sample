@@ -67,11 +67,14 @@ namespace PowersOfAttorneyServerExtension.Helpers
             return null;
         }
 
-        public static TResult GetReferenceFieldValue<TResult>(this BaseCardSectionRow row, ObjectContext context, string fieldAlias) where TResult : ObjectBase
+        public static NullableReference<TResult> GetReferenceFieldValue<TResult>(this BaseCardSectionRow row, ObjectContext context, string fieldAlias) where TResult : ObjectBase
         {
             var id = row.GetGuidValue(fieldAlias);
 
-            return id != null ? context.GetObject<TResult>(id) : null;
+
+
+            var value = id != null ? context.GetObject<TResult>(id) : null;
+            return new NullableReference<TResult>(value);
         }
 
         public static DateTime? GetDateValue(this BaseCardSectionRow row, string field)
@@ -82,6 +85,33 @@ namespace PowersOfAttorneyServerExtension.Helpers
             }
 
             return null;
+        }
+    }
+
+    public class NullableReference<TValue>
+    {
+        public TValue Value { get; }
+        public bool HasValue => Value != null;
+
+        public NullableReference(TValue value)
+        {
+            Value = value;
+        }
+
+        internal TValue GetValueOrThrow(string message)
+        {
+            if (!HasValue)
+                throw new ArgumentException(message);
+
+            return Value;
+        }
+
+        internal TValue GetValueOrThrow(string format, object arg)
+        {
+            if (!HasValue)
+                throw new ArgumentException(string.Format(format, arg));
+            
+            return Value;
         }
     }
 }

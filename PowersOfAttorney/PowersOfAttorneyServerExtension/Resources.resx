@@ -282,4 +282,25 @@
   <data name="Error_GenCeoCitizenshipSignIsEmpty" xml:space="preserve">
     <value>Sign of citizenship is not specified</value>
   </data>
+  <data name="Error_EmptyCeo" xml:space="preserve">
+    <value>Could not get the data of the head of the organization</value>
+  </data>
+  <data name="Error_EmptyPrincipalOrganization" xml:space="preserve">
+    <value>Failed to get the data of the principal</value>
+  </data>
+  <data name="Error_EmptyPrincipalWithoutPowerOfAttorneyIndividual" xml:space="preserve">
+    <value>It was not possible to obtain the data of an individual acting without a power of attorney</value>
+  </data>
+  <data name="Error_EmptyRepresentativeIndividual" xml:space="preserve">
+    <value>Could not get the representative's details</value>
+  </data>
+  <data name="Error_EmptySigner" xml:space="preserve">
+    <value>Could not get the data of the signatory</value>
+  </data>
+  <data name="Error_ParentalCardNotFound" xml:space="preserve">
+    <value>The parental power of attorney card is missing</value>
+  </data>
+  <data name="Error_UnableToGetPowersCodeFromRow" xml:space="preserve">
+    <value>Failed to get authorization code from string {0}</value>
+  </data>
 </root>

@@ -102,6 +102,8 @@ namespace PowersOfAttorneyServerExtension.Helpers
 
             private PowerOfAttorneyEMCHDData.RepresentativeInfo CreateRepresentativePart(GenRepresentativeTypes representativeType)
             {
+                var representative = userCard.GenRepresentative.GetValueOrThrow(Resources.Error_EmptyRepresentativeIndividual);
+
                 // Представитель-физлицо
                 if (representativeType == GenRepresentativeTypes.individual)
                     return new PowerOfAttorneyEMCHDData.RepresentativeInfo
@@ -110,7 +112,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
                         {
                             Inn = userCard.GenRepresentativeINN,
                             IndividualInfo = CreateRepresentativeIndividualInfoPart(),
-                            Position = userCard.GenRepresentativePosition ?? userCard.GenRepresentative.PositionName.AsNullable(),
+                            Position = userCard.GenRepresentativePosition ?? representative.PositionName.AsNullable(),
                             Snils = userCard.GenRepresentativeSNILS
                         }
                     };
@@ -120,6 +122,8 @@ namespace PowersOfAttorneyServerExtension.Helpers
 
             private PowerOfAttorneyEMCHDData.IndividualInfo CreateRepresentativeIndividualInfoPart()
             {
+                var representative = userCard.GenRepresentative.GetValueOrThrow(Resources.Error_EmptyRepresentativeIndividual);
+
                 return new PowerOfAttorneyEMCHDData.IndividualInfo
                 {
                     BirthDate = userCard.GenReprDateOfBirth,
@@ -130,9 +134,9 @@ namespace PowersOfAttorneyServerExtension.Helpers
                     EMail = userCard.GenReprEmail,
                     Fio = new PowerOfAttorneyEMCHDData.FIO
                     {
-                        FirstName = userCard.GenRepresentative.FirstName.AsNullable(),
-                        LastName = userCard.GenRepresentative.LastName.AsNullable(),
-                        MiddleName = userCard.GenRepresentative.MiddleName.AsNullable()
+                        FirstName = representative.FirstName.AsNullable(),
+                        LastName = representative.LastName.AsNullable(),
+                        MiddleName = representative.MiddleName.AsNullable()
                     },
                     Gender = userCard.GenGenderOfRepresentative,
                     IdentityCard = new PowerOfAttorneyEMCHDData.IdentityCardOfIndividual
@@ -185,6 +189,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
 
             private PowerOfAttorneyEMCHDData.SoleExecutiveIndividualInfo CreateSeoIndividualInfoPart()
             {
+                var ceo = userCard.GenCeo.GetValueOrThrow(Resources.Error_EmptyCeo);
                 return new PowerOfAttorneyEMCHDData.SoleExecutiveIndividualInfo
                 {
                     ConfirmationDocument = new PowerOfAttorneyEMCHDData.ConfirmationOfAuthorityDocument
@@ -204,9 +209,9 @@ namespace PowersOfAttorneyServerExtension.Helpers
                         EMail = userCard.GenCeoPhoneNum,
                         Fio = new PowerOfAttorneyEMCHDData.FIO
                         {
-                            FirstName = userCard.GenCeo.FirstName.AsNullable(),
-                            LastName = userCard.GenCeo.LastName.AsNullable(),
-                            MiddleName = userCard.GenCeo.MiddleName.AsNullable()
+                            FirstName = ceo.FirstName.AsNullable(),
+                            LastName = ceo.LastName.AsNullable(),
+                            MiddleName = ceo.MiddleName.AsNullable()
                         },
                         Gender = userCard.GenCeoGender,
                         IdentityCard = new PowerOfAttorneyEMCHDData.IdentityCardOfIndividual
@@ -235,6 +240,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
 
             private PowerOfAttorneyEMCHDData.LegalEntityInfo CreatePrincipalEntityInfoPart()
             {
+                var entityPrincipal = userCard.GenEntityPrincipal.GetValueOrThrow(Resources.Error_EmptyPrincipalOrganization);
                 return new PowerOfAttorneyEMCHDData.LegalEntityInfo
                 {
                     ConfirmationOfAuthorityDocument = new PowerOfAttorneyEMCHDData.ConfirmationOfAuthorityDocument
@@ -246,8 +252,8 @@ namespace PowersOfAttorneyServerExtension.Helpers
                     },
                     ConstituentDocument = userCard.GenConstDocumentEntPrin,
                     EMail = userCard.GenEmailEntPrin,
-                    Inn = userCard.GenEntityPrinINN ?? userCard.GenEntityPrincipal.INN.AsNullable(),
-                    Kpp = userCard.GenEntityPrinKPP ?? userCard.GenEntityPrincipal.KPP.AsNullable(),
+                    Inn = userCard.GenEntityPrinINN ?? entityPrincipal.INN.AsNullable(),
+                    Kpp = userCard.GenEntityPrinKPP ?? entityPrincipal.KPP.AsNullable(),
                     LegalAddress = new PowerOfAttorneyEMCHDData.AddressInfo
                     {
                         FiasAddress = userCard.GenFiasEntAddrRussia,
@@ -255,10 +261,10 @@ namespace PowersOfAttorneyServerExtension.Helpers
                         Address = userCard.GenEntAddrRussia,
                         SubjectOfRussia = userCard.GenEntAddrSubRussia,
                     },
-                    Name = userCard.GenEntityPrincipal.Name.AsNullable(),
-                    Ogrn = userCard.GenEntPrinOGRN ?? userCard.GenEntityPrincipal.OGRN.AsNullable(),
+                    Name = entityPrincipal.Name.AsNullable(),
+                    Ogrn = userCard.GenEntPrinOGRN ?? entityPrincipal.OGRN.AsNullable(),
                     ParticipantStatus = userCard.GenNotarStatusOfEntPrin,
-                    Phone = userCard.GenEntityPrincipal.Phone.AsNullable(),
+                    Phone = entityPrincipal.Phone.AsNullable(),
                     RegistrationNumber = null
                 };
             }

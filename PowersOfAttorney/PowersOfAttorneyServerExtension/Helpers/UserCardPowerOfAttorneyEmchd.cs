@@ -495,17 +495,17 @@ namespace PowersOfAttorneyServerExtension.Helpers
         /// <summary>
         /// Юрлицо-доверитель
         /// </summary>
-        public StaffUnit GenEntityPrincipal => genMchdSection.GetReferenceFieldValue<StaffUnit>(context, "entityPrincipal");
+        public NullableReference<StaffUnit> GenEntityPrincipal => genMchdSection.GetReferenceFieldValue<StaffUnit>(context, "entityPrincipal");
 
         /// <summary>
         /// Руководитель организации
         /// </summary>
-        public StaffEmployee GenCeo => genMchdSection.GetReferenceFieldValue<StaffEmployee>(context, "ceo");
+        public NullableReference<StaffEmployee> GenCeo => genMchdSection.GetReferenceFieldValue<StaffEmployee>(context, "ceo");
 
         /// <summary>
         /// Представитель
         /// </summary>
-        public StaffEmployee GenRepresentative => genMchdSection.GetReferenceFieldValue<StaffEmployee>(context, "representative");
+        public NullableReference<StaffEmployee> GenRepresentative => genMchdSection.GetReferenceFieldValue<StaffEmployee>(context, "representative");
 
         /// <summary>
         /// ИНН представителя
@@ -618,7 +618,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
 
         public IEnumerable<PowersCode> GetPowersCodes()
         {
-            return powersWithCodesSection?.Select(t => t.GetReferenceFieldValue<PowersCode>(context, Fields.PowersCode)) ?? Enumerable.Empty<PowersCode>();
+            return powersWithCodesSection?.Select(t => GetPowersCode(t)) ?? Enumerable.Empty<PowersCode>();
         }
 
         public List<string> GetPowersText()
@@ -626,7 +626,6 @@ namespace PowersOfAttorneyServerExtension.Helpers
             var powers = powersWithTextSection?.Select(t => t.GetStringValue(Fields.PowersTextDescription)) ?? Enumerable.Empty<string>();
             return powers.ToList();
         }
-
 
 
         /// <summary>

@@ -115,6 +115,15 @@ namespace PowersOfAttorneyServerExtension {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Could not get the data of the head of the organization.
+        /// </summary>
+        internal static string Error_EmptyCeo {
+            get {
+                return ResourceManager.GetString("Error_EmptyCeo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The country code of the foreign representative&apos;s citizenship is not specified.
         /// </summary>
         internal static string Error_EmptyCodeOfCitizenshipForForeignRepresentative {
@@ -169,11 +178,29 @@ namespace PowersOfAttorneyServerExtension {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed to get the data of the principal.
+        /// </summary>
+        internal static string Error_EmptyPrincipalOrganization {
+            get {
+                return ResourceManager.GetString("Error_EmptyPrincipalOrganization", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The type of principal is not specified.
         /// </summary>
         internal static string Error_EmptyPrincipalType {
             get {
                 return ResourceManager.GetString("Error_EmptyPrincipalType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to It was not possible to obtain the data of an individual acting without a power of attorney.
+        /// </summary>
+        internal static string Error_EmptyPrincipalWithoutPowerOfAttorneyIndividual {
+            get {
+                return ResourceManager.GetString("Error_EmptyPrincipalWithoutPowerOfAttorneyIndividual", resourceCulture);
             }
         }
         
@@ -201,6 +228,15 @@ namespace PowersOfAttorneyServerExtension {
         internal static string Error_EmptyRepresentativeCitizenshipType {
             get {
                 return ResourceManager.GetString("Error_EmptyRepresentativeCitizenshipType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not get the representative&apos;s details.
+        /// </summary>
+        internal static string Error_EmptyRepresentativeIndividual {
+            get {
+                return ResourceManager.GetString("Error_EmptyRepresentativeIndividual", resourceCulture);
             }
         }
         
@@ -237,6 +273,15 @@ namespace PowersOfAttorneyServerExtension {
         internal static string Error_EmptyRevocationPossibleType {
             get {
                 return ResourceManager.GetString("Error_EmptyRevocationPossibleType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not get the data of the signatory.
+        /// </summary>
+        internal static string Error_EmptySigner {
+            get {
+                return ResourceManager.GetString("Error_EmptySigner", resourceCulture);
             }
         }
         
@@ -318,6 +363,15 @@ namespace PowersOfAttorneyServerExtension {
         internal static string Error_OrgNameNotSpecified {
             get {
                 return ResourceManager.GetString("Error_OrgNameNotSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The parental power of attorney card is missing.
+        /// </summary>
+        internal static string Error_ParentalCardNotFound {
+            get {
+                return ResourceManager.GetString("Error_ParentalCardNotFound", resourceCulture);
             }
         }
         
@@ -444,6 +498,15 @@ namespace PowersOfAttorneyServerExtension {
         internal static string Error_SinglePOAregnumberIsEmpty {
             get {
                 return ResourceManager.GetString("Error_SinglePOAregnumberIsEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to get authorization code from string {0}.
+        /// </summary>
+        internal static string Error_UnableToGetPowersCodeFromRow {
+            get {
+                return ResourceManager.GetString("Error_UnableToGetPowersCodeFromRow", resourceCulture);
             }
         }
         

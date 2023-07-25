@@ -95,35 +95,38 @@ namespace PowersOfAttorneyServerExtension.Services
             switch (revocationType)
             {
                 case PowerOfAttorneyRevocationType.Representative:
+                    var representative = userCardPowerOfAttorney.GenRepresentative.GetValueOrThrow(Resources.Error_EmptyRepresentativeIndividual);
                     revocationData.ApplicantInfo = new PowerOfAttorneyRevocationApplicantInfo
                     {
                         ApplicantType = PowerOfAttorneyRevocationApplicantType.Individual,
-                        FirstName = userCardPowerOfAttorney.GenRepresentative.FirstName,
-                        LastName = userCardPowerOfAttorney.GenRepresentative.LastName,
-                        MiddleName = userCardPowerOfAttorney.GenRepresentative.MiddleName,
+                        FirstName = representative.FirstName,
+                        LastName = representative.LastName,
+                        MiddleName = representative.MiddleName,
                         Inn = userCardPowerOfAttorney.GenRepresentativeINN,
                         Snils = userCardPowerOfAttorney.GenRepresentativeSNILS,
                         Phone = userCardPowerOfAttorney.GenReprPhoneNum
                     };
                     break;
                 case PowerOfAttorneyRevocationType.Principal:
+                    var ceo = userCardPowerOfAttorney.GenRepresentative.GetValueOrThrow(Resources.Error_EmptyCeo);
+
                     revocationData.ApplicantInfo = new PowerOfAttorneyRevocationApplicantInfo
                     {
                         ApplicantType = PowerOfAttorneyRevocationApplicantType.Organization,
-                        FirstName = userCardPowerOfAttorney.GenCeo.FirstName,
-                        LastName = userCardPowerOfAttorney.GenCeo.LastName,
-                        MiddleName = userCardPowerOfAttorney.GenCeo.MiddleName,
+                        FirstName = ceo.FirstName,
+                        LastName = ceo.LastName,
+                        MiddleName = ceo.MiddleName,
                         Inn = userCardPowerOfAttorney.GenCeoIIN,
                         Snils = userCardPowerOfAttorney.GenCeoSNILS,
                         Phone = userCardPowerOfAttorney.GenCeoPhoneNum,
                     };
 
                     // Для передоверия данные организации требуется брать из родительской доверености
-                    var cardWithPrincipalData = userCardPowerOfAttorney.IsRetrusted() ? GetUserCardPowerOfAttorney(context, userCardPowerOfAttorney.ParentalPowerOfAttorneyUserCard.GetObjectId()) : userCardPowerOfAttorney;
-
-                    revocationData.ApplicantInfo.Kpp = cardWithPrincipalData.GenEntityPrincipal != null ? cardWithPrincipalData.GenEntityPrincipal.KPP : cardWithPrincipalData.GenEntityPrinKPP;
-                    revocationData.ApplicantInfo.Ogrn = cardWithPrincipalData.GenEntityPrincipal != null ? cardWithPrincipalData.GenEntityPrincipal.OGRN : cardWithPrincipalData.GenEntPrinOGRN;
-                    revocationData.ApplicantInfo.Name = cardWithPrincipalData.GenEntityPrincipal != null ? cardWithPrincipalData.GenEntityPrincipal.Name : cardWithPrincipalData.GenEntityPrinName;
+                    var cardWithPrincipalData = userCardPowerOfAttorney.IsRetrusted() ? GetUserCardPowerOfAttorney(context, userCardPowerOfAttorney.ParentalPowerOfAttorneyUserCard.GetValueOrThrow(Resources.Error_ParentalCardNotFound).GetObjectId()) : userCardPowerOfAttorney;
+      
+                    revocationData.ApplicantInfo.Kpp = cardWithPrincipalData.GenEntityPrincipal.HasValue ? cardWithPrincipalData.GenEntityPrincipal.Value.KPP : cardWithPrincipalData.GenEntityPrinKPP;
+                    revocationData.ApplicantInfo.Ogrn = cardWithPrincipalData.GenEntityPrincipal.HasValue ? cardWithPrincipalData.GenEntityPrincipal.Value.OGRN : cardWithPrincipalData.GenEntPrinOGRN;
+                    revocationData.ApplicantInfo.Name = cardWithPrincipalData.GenEntityPrincipal.HasValue ? cardWithPrincipalData.GenEntityPrincipal.Value.Name : cardWithPrincipalData.GenEntityPrinName;
                     break;
 
                 default:
@@ -180,10 +183,10 @@ namespace PowersOfAttorneyServerExtension.Services
         private Guid GetRepresentative(UserCardPowerOfAttorney userCardPowerOfAttorney, Guid formatId)
         {
             if (formatId == PowerOfAttorneyFNSDOVBBData.FormatId)
-                return userCardPowerOfAttorney.RepresentativeIndividual.GetObjectId();
+                return userCardPowerOfAttorney.RepresentativeIndividual.GetValueOrThrow(Resources.Error_EmptyRepresentativeIndividual).GetObjectId();
 
             if (formatId == PowerOfAttorneyEMCHDData.FormatId)
-                return userCardPowerOfAttorney.GenRepresentative.GetObjectId();
+                return userCardPowerOfAttorney.GenRepresentative.GetValueOrThrow(Resources.Error_EmptyRepresentativeIndividual).GetObjectId();
 
 
             throw new ArgumentOutOfRangeException(string.Format(Resources.InvalidPowerOfAttorneyFormat, formatId));
@@ -192,10 +195,10 @@ namespace PowersOfAttorneyServerExtension.Services
         private string GetPrincipalInn(UserCardPowerOfAttorney userCardPowerOfAttorney, Guid formatId)
         {
             if (formatId == PowerOfAttorneyFNSDOVBBData.FormatId)
-                return userCardPowerOfAttorney.PrincipalOrganization?.INN;
+                return userCardPowerOfAttorney.PrincipalOrganization.Value?.INN;
 
             if (formatId == PowerOfAttorneyEMCHDData.FormatId)
-                return userCardPowerOfAttorney.GenEntityPrinINN ?? userCardPowerOfAttorney.GenEntityPrincipal?.INN.AsNullable();
+                return userCardPowerOfAttorney.GenEntityPrinINN ?? userCardPowerOfAttorney.GenEntityPrincipal.Value?.INN.AsNullable();
 
             throw new ArgumentOutOfRangeException(string.Format(Resources.InvalidPowerOfAttorneyFormat, formatId));
         }
@@ -215,10 +218,10 @@ namespace PowersOfAttorneyServerExtension.Services
         private Guid GetSigner(UserCardPowerOfAttorney userCardPowerOfAttorney, Guid formatId)
         {
             if (formatId == PowerOfAttorneyFNSDOVBBData.FormatId)
-                return userCardPowerOfAttorney.Signer.GetObjectId();
+                return userCardPowerOfAttorney.Signer.GetValueOrThrow(Resources.Error_EmptySigner).GetObjectId();
 
             if (formatId == PowerOfAttorneyEMCHDData.FormatId)
-                return userCardPowerOfAttorney.GenCeo.GetObjectId();
+                return userCardPowerOfAttorney.GenCeo.GetValueOrThrow(Resources.Error_EmptyCeo).GetObjectId();
 
             throw new ArgumentOutOfRangeException(string.Format(Resources.InvalidPowerOfAttorneyFormat, formatId));
         }

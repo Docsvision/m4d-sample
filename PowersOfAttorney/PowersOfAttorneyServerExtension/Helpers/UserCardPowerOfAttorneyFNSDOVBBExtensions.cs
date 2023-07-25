@@ -85,7 +85,7 @@ internal static class UserCardPowerOfAttorneyFNSDOVBBExtensions
             var retrustType = Convert(userCard.RetrustType);
             var irrevocablePowerOfAttorneyInfo = GetIrrevocablePowerOfAttorneyInfo();
             // Для заполнения МЧД требуется название организации-владельца информационной системы - возьмём данные подписанта
-            var organizationName = userCard.Signer.Unit.Name;
+            var organizationName = userCard.Signer.GetValueOrThrow(Resources.Error_EmptySigner).Unit.Name;
             PowerOfAttorneyLossOfAuthorityType? lossOfAuthorityType = GetPowerOfAttorneyLossOfAuthorityType(userCard.LossOfAuthorityType);
 
             return new PowerOfAttorneyInfo(powerOfAttorneyId, startDate, endDate, retrustType, userCard.JointRepresentation, irrevocablePowerOfAttorneyInfo, organizationName, lossOfAuthorityType: lossOfAuthorityType);
@@ -134,7 +134,7 @@ internal static class UserCardPowerOfAttorneyFNSDOVBBExtensions
 
         private IndividualInfo2 GetIndividualPrincipalInfo()
         {
-            var employee = userCard.RepresentativeIndividual;
+            var employee = userCard.RepresentativeIndividual.GetValueOrThrow(Resources.Error_EmptyRepresentativeIndividual);
             var inn = userCard.RepresentativeIndividualInn;
             var snils = userCard.RepresentativeIndividualSnils;
             var individualInfo = GetRepresentativeIndividualInfo(employee);
@@ -211,20 +211,21 @@ internal static class UserCardPowerOfAttorneyFNSDOVBBExtensions
                 throw new NotSupportedException();
             }
 
-            return new DelegatedAuthorityPrincipalInfo(GetIndividualDelegatedAuthorityInfo(), GetFio(userCard.Signer));
+            return new DelegatedAuthorityPrincipalInfo(GetIndividualDelegatedAuthorityInfo(), GetFio(userCard.Signer.GetValueOrThrow(Resources.Error_EmptySigner)));
         }
 
         private IndividualDelegatedAuthorityInfo GetIndividualDelegatedAuthorityInfo()
         {
-
+            var ceo = userCard.GenCeo.GetValueOrThrow(Resources.Error_EmptyCeo);
             return new IndividualDelegatedAuthorityInfo(userCard.GenCeoIIN, userCard.GenCeoSNILS, GetIndividualDelegatedAuthorityIndividualInfo(),
-            new FIO(userCard.GenCeo.LastName, userCard.GenCeo.FirstName, userCard.GenCeo.MiddleName.AsNullable()));
+            new FIO(ceo.LastName, ceo.FirstName, ceo.MiddleName.AsNullable()));
                 
         }
 
         private IndividualInfo GetIndividualDelegatedAuthorityIndividualInfo()
         {
-            return new IndividualInfo(userCard.GenCeo.BirthDate, Convert(userCard.GenCeoCitizenshipSign), citizenship: userCard.GenCeoCitizenship);
+            var ceo = userCard.GenCeo.GetValueOrThrow(Resources.Error_EmptyCeo);
+            return new IndividualInfo(ceo.BirthDate, Convert(userCard.GenCeoCitizenshipSign), citizenship: userCard.GenCeoCitizenship);
         }
 
         private CitizenshipType Convert(PowerOfAttorneyEMCHDData.CitizenshipType? genCeoCitizenshipSign)
@@ -261,7 +262,7 @@ internal static class UserCardPowerOfAttorneyFNSDOVBBExtensions
                 throw new NotSupportedException();
             }
 
-            return new PrincipalInfo(GetRussianLegalEntityPrincipalInfo(), GetFio(userCard.Signer));
+            return new PrincipalInfo(GetRussianLegalEntityPrincipalInfo(), GetFio(userCard.Signer.GetValueOrThrow(Resources.Error_EmptySigner)));
         }
 
         private RussianLegalEntityPrincipalInfo GetRussianLegalEntityPrincipalInfo()
@@ -276,10 +277,10 @@ internal static class UserCardPowerOfAttorneyFNSDOVBBExtensions
 
         private IndividualInfo0 GetPrincipalWithoutPowerOfAttorneyIndividualInfo()
         {
-            var emlpoyee = userCard.PrincipalWithoutPowerOfAttorneyIndividual;
+            var employee = userCard.PrincipalWithoutPowerOfAttorneyIndividual.GetValueOrThrow(Resources.Error_EmptyPrincipalWithoutPowerOfAttorneyIndividual);
             var snils = userCard.PrincipalWithoutPowerOfAttorneyIndividualSnils;
-            var individualInfo = GetPrincipalWithoutPowerOfAttorneyIndividual1Info(emlpoyee);
-            var position = emlpoyee.PositionName.AsNullable() ?? throw new Exception(String.Format(Resources.Error_PositionNotSpecified, emlpoyee.DisplayName));
+            var individualInfo = GetPrincipalWithoutPowerOfAttorneyIndividual1Info(employee);
+            var position = employee.PositionName.AsNullable() ?? throw new Exception(String.Format(Resources.Error_PositionNotSpecified, employee.DisplayName));
             var authorityConfirmingDocumentName = userCard.PrincipalWithoutPowerOfAttorneyIndividualDocument;
             var inn = userCard.PrincipalWithoutPowerOfAttorneyIndividualInn;
             var authorityConfirmingDocument = GetConfirmationOfAuthorityDocument();
@@ -298,8 +299,7 @@ internal static class UserCardPowerOfAttorneyFNSDOVBBExtensions
 
         private LegalEntityInfo GetPrincipalWithoutPowerOfAttorneyLegalEntityInfo()
         {
-            var princOrg = userCard.PrincipalWithoutPowerOfAttorneyOrganization;
-
+            var princOrg = userCard.PrincipalWithoutPowerOfAttorneyOrganization.Value;
             if (princOrg == null)
                 return null;
 
@@ -319,6 +319,9 @@ internal static class UserCardPowerOfAttorneyFNSDOVBBExtensions
 
         private IndividualInfo GetPrincipalWithoutPowerOfAttorneyIndividual1Info(StaffEmployee emlpoyee)
         {
+            if (emlpoyee is null)
+                throw new ArgumentNullException(nameof(emlpoyee));
+
             var birthDate = emlpoyee.BirthDate;
             var citizenshipType = userCard.PrincipalWithoutPowerOfAttorneyIndividualCitizenship;
             var birthPlace = userCard.PrincipalWithoutPowerOfAttorneyIndividualBirthPlace;
@@ -348,7 +351,8 @@ internal static class UserCardPowerOfAttorneyFNSDOVBBExtensions
 
         private RussianEntityInfo GetRussianEntityInfo()
         {
-            var princOrg = userCard.PrincipalOrganization;
+            var princOrg = userCard.PrincipalOrganization.GetValueOrThrow(Resources.Error_EmptyPrincipalOrganization);
+            
             string errors = String.Empty;
             var name = princOrg.Name.AsNullable();
             if (name == null)

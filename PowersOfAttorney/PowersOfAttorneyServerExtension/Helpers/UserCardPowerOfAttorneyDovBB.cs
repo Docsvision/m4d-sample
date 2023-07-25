@@ -26,7 +26,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
         /// <summary>
         /// Юридическое лицо, действующее без доверенности
         /// </summary>
-        public StaffUnit PrincipalWithoutPowerOfAttorneyOrganization => genMchdSection.GetReferenceFieldValue<StaffUnit>(context, Fields.EntityActingWithoutPowerOfAttorney);
+        public NullableReference<StaffUnit> PrincipalWithoutPowerOfAttorneyOrganization => genMchdSection.GetReferenceFieldValue<StaffUnit>(context, Fields.EntityActingWithoutPowerOfAttorney);
 
         /// <summary>
         /// СНИЛС физического лица, действующего без доверенности
@@ -66,7 +66,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
         /// <summary>
         /// Физическое лицо-представитель
         /// </summary>
-        public StaffEmployee RepresentativeIndividual => genMchdSection.GetReferenceFieldValue<StaffEmployee>(context, Fields.IndividualRepresentative);
+        public NullableReference<StaffEmployee> RepresentativeIndividual => genMchdSection.GetReferenceFieldValue<StaffEmployee>(context, Fields.IndividualRepresentative);
 
         /// <summary>
         /// Адрес места жительства в РФ физлица-представителя
@@ -151,22 +151,25 @@ namespace PowersOfAttorneyServerExtension.Helpers
         /// <summary>
         /// Доверенность, на основании которой осуществляется передоверие
         /// </summary>
-        public Document ParentalPowerOfAttorneyUserCard => genMchdSection.GetReferenceFieldValue<Document>(context, Fields.ParentalPowerOfAttorney);
+        public NullableReference<Document> ParentalPowerOfAttorneyUserCard => genMchdSection.GetReferenceFieldValue<Document>(context, Fields.ParentalPowerOfAttorney);
 
         public PowerOfAttorney ParentalPowerOfAttorney
         {
             get
             {
-                var machineReadablePowerOfAttorneySectionRow = ParentalPowerOfAttorneyUserCard.GetSection(generalMachineReadablePowerOfAttorneySectionId)[0] as BaseCardSectionRow;
-                var powerOfAttorney = machineReadablePowerOfAttorneySectionRow.GetReferenceFieldValue<PowerOfAttorney>(context, Fields.PowerOfAttorneyCardId);
-                return powerOfAttorney ?? throw new ArgumentNullException(Resources.Error_ParentalPowerOfAttorneyNotFound);
+                if (!ParentalPowerOfAttorneyUserCard.HasValue)
+                    throw new ArgumentNullException(Resources.Error_ParentalPowerOfAttorneyNotFound);
+
+                var machineReadablePowerOfAttorneySectionRow = ParentalPowerOfAttorneyUserCard.Value.GetSection(generalMachineReadablePowerOfAttorneySectionId)[0] as BaseCardSectionRow;
+                var powerOfAttorney = machineReadablePowerOfAttorneySectionRow?.GetReferenceFieldValue<PowerOfAttorney>(context, Fields.PowerOfAttorneyCardId);
+                return powerOfAttorney.Value ?? throw new ArgumentNullException(Resources.Error_ParentalPowerOfAttorneyNotFound);
             }
         }
 
         /// <summary>
         /// Доверитель организация
         /// </summary>
-        public StaffUnit PrincipalOrganization => genMchdSection.GetReferenceFieldValue<StaffUnit>(context, Fields.OrgPrincipal);
+        public NullableReference<StaffUnit> PrincipalOrganization => genMchdSection.GetReferenceFieldValue<StaffUnit>(context, Fields.OrgPrincipal);
 
         /// <summary>
         /// Кем выдан документ, подтвержающий полномочия физлица, действующего без доверенности
@@ -282,7 +285,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
         /// <summary>
         /// Физическое лицо, действующее без доверенности
         /// </summary>
-        public StaffEmployee PrincipalWithoutPowerOfAttorneyIndividual => genMchdSection.GetReferenceFieldValue<StaffEmployee>(context, Fields.IndividualActingWithoutPowerOfAttorney);
+        public NullableReference<StaffEmployee> PrincipalWithoutPowerOfAttorneyIndividual => genMchdSection.GetReferenceFieldValue<StaffEmployee>(context, Fields.IndividualActingWithoutPowerOfAttorney);
 
 
         /// <summary>
@@ -291,10 +294,11 @@ namespace PowersOfAttorneyServerExtension.Helpers
         public bool IsRetrusted() => genMchdSection[Fields.ParentalPowerOfAttorney] != null;
 
 
-        public IEnumerable<PowersCode> RepresentativePowersCodes =>  powersWithCodesSection?.Select(t => t.GetReferenceFieldValue<PowersCode>(context, Fields.PowersCode)) ?? Enumerable.Empty<PowersCode>();  
+        public IEnumerable<PowersCode> RepresentativePowersCodes =>  powersWithCodesSection?.Select(t => GetPowersCode(t)) ?? Enumerable.Empty<PowersCode>();
+
         public IEnumerable<string> RepresentativePowersText => powersWithTextSection?.Select(t => t.GetStringValue(Fields.PowersTextDescription)) ?? Enumerable.Empty<string>();
 
-        public StaffEmployee Signer => genMchdSection.GetReferenceFieldValue<StaffEmployee>(context, "ceo");
+        public NullableReference<StaffEmployee> Signer => genMchdSection.GetReferenceFieldValue<StaffEmployee>(context, "ceo");
 
         public Guid? PowerOfAttorneyCardId
         {
@@ -340,6 +344,14 @@ namespace PowersOfAttorneyServerExtension.Helpers
             /// С правом последующего передоверия
             /// </summary>
             subsequentSubstitution = 3
+        }
+
+        private PowersCode GetPowersCode(BaseCardSectionRow powerRow)
+        {
+            if (powerRow is null)
+                throw new ArgumentNullException(nameof(powerRow));
+
+            return powerRow.GetReferenceFieldValue<PowersCode>(context, Fields.PowersCode).GetValueOrThrow(Resources.Error_UnableToGetPowersCodeFromRow, powerRow.GetObjectId());
         }
     }
 

@@ -282,4 +282,25 @@
   <data name="Error_GenCeoCitizenshipSignIsEmpty" xml:space="preserve">
     <value>Не указан признак наличия гражданства</value>
   </data>
+  <data name="Error_EmptyCeo" xml:space="preserve">
+    <value>Не удалось получить данные руководителя организации</value>
+  </data>
+  <data name="Error_EmptyPrincipalOrganization" xml:space="preserve">
+    <value>Не удалось получить данные доверителя</value>
+  </data>
+  <data name="Error_EmptyPrincipalWithoutPowerOfAttorneyIndividual" xml:space="preserve">
+    <value>Не удалось получить данные Физического лица, действующего без доверенности</value>
+  </data>
+  <data name="Error_EmptyRepresentativeIndividual" xml:space="preserve">
+    <value>Не удалось получить данные представителя</value>
+  </data>
+  <data name="Error_EmptySigner" xml:space="preserve">
+    <value>Не удалось получить данные подписанта</value>
+  </data>
+  <data name="Error_ParentalCardNotFound" xml:space="preserve">
+    <value>Отсутствует карточка родительской доверенности</value>
+  </data>
+  <data name="Error_UnableToGetPowersCodeFromRow" xml:space="preserve">
+    <value>Не удалось получить код полномочия из строки {0}</value>
+  </data>
 </root>
