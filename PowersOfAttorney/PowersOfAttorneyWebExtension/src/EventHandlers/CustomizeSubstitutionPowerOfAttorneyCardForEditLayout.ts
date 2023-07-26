@@ -5,13 +5,14 @@ export const customizeSubstitutionPowerOfAttorneyCardForEditLayout = (sender: La
     const controls = sender.layout.controls;
     const reprSignCitshipSPOA = controls.reprSignCitshipSPOA;
     const indsignCitizenship = controls.indsignCitizenship;
+    const possibilityOfSubstSPOA = controls.possibilityOfSubstSPOA;
 
     customizeInputFields()
     onDataChangedPossibilityOfSubstSPOA(sender);
     onDataChangedReprSignCitshipSPOA(sender);
     onDataChangedIndsignCitizenship(sender);
 
-    controls.possibilityOfSubstSPOA.params.dataChanged.subscribe(onDataChangedPossibilityOfSubstSPOA);
+    possibilityOfSubstSPOA && possibilityOfSubstSPOA.params.dataChanged.subscribe(onDataChangedPossibilityOfSubstSPOA);
     reprSignCitshipSPOA && reprSignCitshipSPOA.params.dataChanged.subscribe(onDataChangedReprSignCitshipSPOA);
     indsignCitizenship && indsignCitizenship.params.dataChanged.subscribe(onDataChangedIndsignCitizenship);
 }
@@ -51,7 +52,7 @@ const onDataChangedReprSignCitshipSPOA = (sender: Layout) => {
     const controls = sender.layout.controls;
     const reprSignCitshipSPOA = controls.reprSignCitshipSPOA;
     const foreignReprCitshipSPOA = controls.foreignReprCitshipSPOA;
-    if (reprSignCitshipSPOA.params.value == "Foreign citizen") {
+    if (reprSignCitshipSPOA.params.value === 'foreignCitizen') {
         foreignReprCitshipSPOA.params.visibility = true;
         foreignReprCitshipSPOA.params.required = true;
     } else {
@@ -64,7 +65,7 @@ const onDataChangedIndsignCitizenship = (sender: Layout) => {
     const controls = sender.layout.controls;
     const indsignCitizenship = controls.indsignCitizenship;
     const indCodeCitizenship = controls.indCodeCitizenship;
-    if (indsignCitizenship.params.value == "Foreign citizen") {
+    if (indsignCitizenship.params.value === 'foreignCitizen') {
         indCodeCitizenship.params.visibility = true;
         indCodeCitizenship.params.required = true;
     } else {

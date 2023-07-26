@@ -10,15 +10,21 @@ export const customizeSingleFormatSPOACardForEditLayout = (sender: LayoutControl
     const ceo = controls.ceo;
     const representative = controls.representative;
     const powersType = controls.powersType;
+    const ceoCitizenshipSign = controls.ceoCitizenshipSign;
+    const reprCitizenshipSign = controls.reprCitizenshipSign;
 
     onSubstPOABasisDataChanged(sender);
     onPowersTypeDataChanged(sender);
     customizeInputFields();
+    onPowersTypeDataChanged(sender);
+    onDataChangedСeoCitizenshipSign(sender);
 
-    substPOABasis.params.dataChanged.subscribe(onSubstPOABasisDataChanged);
-    ceo.params.dataChanged.subscribe(onCeoDataChanged);
-    representative.params.dataChanged.subscribe(onRepresentativeDataChanged);
-    powersType.params.dataChanged.subscribe(onPowersTypeDataChanged);
+    substPOABasis && substPOABasis.params.dataChanged.subscribe(onSubstPOABasisDataChanged);
+    ceo && ceo.params.dataChanged.subscribe(onCeoDataChanged);
+    representative && representative.params.dataChanged.subscribe(onRepresentativeDataChanged);
+    powersType && powersType.params.dataChanged.subscribe(onPowersTypeDataChanged);
+    ceoCitizenshipSign && ceoCitizenshipSign.params.dataChanged.subscribe(onDataChangedСeoCitizenshipSign);
+    reprCitizenshipSign && reprCitizenshipSign.params.dataChanged.subscribe(onDataChangedReprCitizenshipSign);
 }
 
 const onSubstPOABasisDataChanged = (sender: LayoutControl) => {
@@ -126,4 +132,30 @@ const customizeInputFields = () => {
     IMask(ceoSNILSInputElement, maskOptions)
     const reprSNILSInputElement = document.querySelector('[data-control-name="reprSNILS"]')?.getElementsByTagName('input')[0];
     IMask(reprSNILSInputElement, maskOptions)
+}
+
+const onDataChangedСeoCitizenshipSign = (sender: LayoutControl) => {
+    const controls = sender.layout.controls;
+    const ceoCitizenshipSign = controls.ceoCitizenshipSign;
+    const ceoCitizenship = controls.ceoCitizenship;
+    if (ceoCitizenshipSign.params.value === 'foreignCitizen') {
+        ceoCitizenship.params.visibility = true;
+        ceoCitizenship.params.required = true;
+    } else {
+        ceoCitizenship.params.visibility = false;
+        ceoCitizenship.params.required = true;
+    }
+}
+
+const onDataChangedReprCitizenshipSign = (sender: LayoutControl) => {
+    const controls = sender.layout.controls;
+    const reprCitizenshipSign = controls.reprCitizenshipSign;
+    const reprCitizenship = controls.reprCitizenship;
+    if (reprCitizenshipSign.params.value === 'foreignCitizen') {
+        reprCitizenship.params.visibility = true;
+        reprCitizenship.params.required = true;
+    } else {
+        reprCitizenship.params.visibility = false;
+        reprCitizenship.params.required = true;
+    }
 }

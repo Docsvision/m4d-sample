@@ -6,11 +6,19 @@ export const customizePowerOfAttorneyCardForViewCard = (sender: Layout) => {
     const codeForeignCitizenshipIAWPOA = controls.codeForeignCitizenshipIAWPOA;;
     const possibilityOfSubst = controls.possibilityOfSubst;
     const lossOfPowersUponSubstBlock = controls.lossOfPowersUponSubstBlock;
+    const reprSignCitizenship = controls.reprSignCitizenship;
+    const foreignReprCitizenship = controls.foreignReprCitizenship;
 
-    if (signCitizenshipfIAWPOA.value === 'foreign citizen') {
+    if (signCitizenshipfIAWPOA.value === 'foreignCitizen') {
         codeForeignCitizenshipIAWPOA.params.visibility = true;
     } else {
         codeForeignCitizenshipIAWPOA.params.visibility = false;
+    }
+
+    if (reprSignCitizenship.params.value === 'foreignCitizen') {
+        foreignReprCitizenship.params.visibility = true;
+    } else {
+        foreignReprCitizenship.params.visibility = false;
     }
 
     if (possibilityOfSubst.value === 'One-time substitution' || possibilityOfSubst.value === 'Substitution is possible with subsequent substitution') {

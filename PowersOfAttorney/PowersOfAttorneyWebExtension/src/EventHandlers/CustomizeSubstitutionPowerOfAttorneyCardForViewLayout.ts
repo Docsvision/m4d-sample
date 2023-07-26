@@ -15,13 +15,13 @@ export const customizeSubstitutionPowerOfAttorneyCardForViewLayout = (sender: La
         lossOfPowersUponSubstSPOABlock.params.visibility = false;
     }
 
-    if (reprSignCitshipSPOA.params.value == "Foreign citizen") {
+    if (reprSignCitshipSPOA.params.value === 'foreignCitizen') {
         foreignReprCitshipSPOA.params.visibility = true;
     } else {
         foreignReprCitshipSPOA.params.visibility = false;
     }
 
-    if (indsignCitizenship.params.value == "Foreign citizen") {
+    if (indsignCitizenship.params.value === 'foreignCitizen') {
         indCodeCitizenship.params.visibility = true;
     } else {
         indCodeCitizenship.params.visibility = false;
