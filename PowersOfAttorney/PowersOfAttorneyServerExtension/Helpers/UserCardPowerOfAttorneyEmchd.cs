@@ -614,19 +614,12 @@ namespace PowersOfAttorneyServerExtension.Helpers
         /// <summary>
         /// Текстовое содержание полномочия
         /// </summary>
-        public string GenPowerTextContent => genMchdSection.GetStringValue("powerTextContent");
+        public string GenPowerTextContent => genMchdSection.GetStringValue("PowersTextDescription");
 
         public IEnumerable<PowersCode> GetPowersCodes()
         {
             return powersWithCodesSection?.Select(t => GetPowersCode(t)) ?? Enumerable.Empty<PowersCode>();
         }
-
-        public List<string> GetPowersText()
-        {
-            var powers = powersWithTextSection?.Select(t => t.GetStringValue(Fields.PowersTextDescription)) ?? Enumerable.Empty<string>();
-            return powers.ToList();
-        }
-
 
         /// <summary>
         /// Вид доверенности
