@@ -109,7 +109,7 @@ const onDataChangedReprSignCitizenship = (sender: Layout) => {
         foreignReprCitizenship.params.required = true;
     } else {
         foreignReprCitizenship.params.visibility = false;
-        foreignReprCitizenship.params.required = true;
+        foreignReprCitizenship.params.required = false;
     }
 }
 

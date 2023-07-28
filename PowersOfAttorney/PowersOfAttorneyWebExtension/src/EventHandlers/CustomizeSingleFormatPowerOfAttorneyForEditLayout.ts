@@ -168,7 +168,7 @@ const onDataChangedСeoCitizenshipSign = (sender: LayoutControl) => {
         ceoCitizenship.params.required = true;
     } else {
         ceoCitizenship.params.visibility = false;
-        ceoCitizenship.params.required = true;
+        ceoCitizenship.params.required = false;
     }
 }
 
@@ -181,7 +181,7 @@ const onDataChangedReprCitizenshipSign = (sender: LayoutControl) => {
         reprCitizenship.params.required = true;
     } else {
         reprCitizenship.params.visibility = false;
-        reprCitizenship.params.required = true;
+        reprCitizenship.params.required = false;
     }
 }
 
