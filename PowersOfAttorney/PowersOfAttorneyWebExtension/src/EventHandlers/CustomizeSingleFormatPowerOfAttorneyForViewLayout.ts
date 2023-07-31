@@ -5,22 +5,6 @@ export const customizeSingleFormatPowerOfAttorneyForViewLayout = async (sender: 
     const powersType = controls.powersType;
     const refPowersTable = controls.refPowersTable;
     const textPowersDescr = controls.textPowersDescr;
-    const ceoCitizenshipSign = controls.ceoCitizenshipSign;
-    const ceoCitizenship = controls.ceoCitizenship;
-    const reprCitizenshipSign = controls.reprCitizenshipSign;
-    const reprCitizenship = controls.reprCitizenship;
-
-    if (reprCitizenshipSign.params.value === 'foreignCitizen') {
-        reprCitizenship.params.visibility = true;
-    } else {
-        reprCitizenship.params.visibility = false;
-    }
-
-    if (ceoCitizenshipSign.params.value === 'foreignCitizen') {
-        ceoCitizenship.params.visibility = true;
-    } else {
-        ceoCitizenship.params.visibility = false;
-    }
 
     if (powersType.params.value === "humReadPower") {
         refPowersTable.params.visibility = false;
