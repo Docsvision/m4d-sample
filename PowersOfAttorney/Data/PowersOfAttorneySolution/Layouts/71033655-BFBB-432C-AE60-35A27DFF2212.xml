@@ -67,6 +67,15 @@
     <Binding PropertyName="7dce8b80-0748-4aab-b4a9-691e649bc51c" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/29c1b4ef-48e4-47f0-ac67-c42cf68de986/PowersTextDescription" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
     <Binding PropertyName="aaa3f199-24d8-4074-8a15-5db189a9d343" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/0838cd2a-27c4-4ee1-b599-2df6586ad2a7/" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
     <Binding PropertyName="1f851f81-4923-4c2e-91f8-09eabc70dbca" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/0838cd2a-27c4-4ee1-b599-2df6586ad2a7/PowersCode" ResolverType="PowersValueResolver" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
+    <Binding PropertyName="804ea674-d83e-4662-9890-8c14a389793c" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/00000000-0000-0000-0000-000000000000/" ResolverType="StaffDirectoryItemsValueResolver" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
+    <Binding PropertyName="6cb54254-0dac-4779-a03c-f3a59f685668" BindingMode="1" Path="v1|@00000000-0000-0000-0000-000000000000/00000000-0000-0000-0000-000000000000/" ConverterType="StaffDirectoryItemsPredefinedConverter" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
+    <Binding PropertyName="3695837f-59bd-40cd-85e2-5f47a497f050" BindingMode="0" ConverterType="DefaultEmployee" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false">
+      <Items>
+        <Item>
+          <Value>"Id":"00000000-0000-0000-0000-000000000000","IsCurrent":true,"DisplayName":"Current user"</Value>
+        </Item>
+      </Items>
+    </Binding>
     <Binding PropertyName="1dd54771-05e1-4cf8-bfac-3a23fe221213" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/29c1b4ef-48e4-47f0-ac67-c42cf68de986/POASysCardId" ConverterType="CardLinkConverter" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
     <Binding PropertyName="3e66b73a-16fc-4ae2-a69c-7cdd4abd1e7e" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/29c1b4ef-48e4-47f0-ac67-c42cf68de986/OID" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
     <Binding PropertyName="619bcc6d-b2ef-40aa-b14c-71b01473424f" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/29c1b4ef-48e4-47f0-ac67-c42cf68de986/TaxDocFormCode" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
@@ -1597,6 +1606,99 @@
             <Property Name="Expanding" Value="" Type="System.String, mscorlib" IsAvailable="true" />
           </Properties>
           <Elements>
+            <Element Id="9d7e6f34-c76d-496e-8a43-f0f706a5f32f" Type="StaffDirectoryItems">
+              <Properties>
+                <Property Name="Tag" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="Name" Value="authorofPOA" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="ShowEmptyLabel" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                <Property Name="LabelText" Value="79b78cc2-4c80-4fcd-a187-dd06a46435e7" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="true" />
+                <Property Name="EmployeeViewMode" Value="0" Type="System.Int32, mscorlib" IsAvailable="true" />
+                <Property Name="EmployeeTipMode" Value="0" Type="System.Int32, mscorlib" IsAvailable="true" />
+                <Property Name="StaffDataSource" Type="System.String, mscorlib" IsAvailable="true">
+                  <Value>
+                    <dataSourceCardSection>"30eb9b87-822b-4753-9a50-a1825dca1b74",
+</dataSourceCardSection>
+                    <employeeAlias>"Author",
+</employeeAlias>
+                    <groupAlias>"",
+</groupAlias>
+                    <roleAlias>"",
+</roleAlias>
+                    <unitAlias>"",
+</unitAlias>
+                    <searchWordAlias>"",
+</searchWordAlias>
+                    <positionAlias>"",
+</positionAlias>
+                    <selectFromOrganization>"00000000-0000-0000-0000-000000000000",
+</selectFromOrganization>
+                    <selectFromGroup>"00000000-0000-0000-0000-000000000000",
+</selectFromGroup>
+                    <groupAreaEnabled>false,
+</groupAreaEnabled>
+                    <roleAreaEnabled>false,
+</roleAreaEnabled>
+                    <unitAreaEnabled>false,
+</unitAreaEnabled>
+                    <searchWordAreaEnabled>false,
+</searchWordAreaEnabled>
+                    <positionAreaEnabled>false
+</positionAreaEnabled>
+                  </Value>
+                </Property>
+                <Property Name="Binding" Value="804ea674-d83e-4662-9890-8c14a389793c" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                <Property Name="IsInheritedEditOperation" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                <Property Name="Disabled" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
+                  <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                    <Desktop>false</Desktop>
+                    <Tablet>false</Tablet>
+                    <Smartphone>false</Smartphone>
+                    <CanChange>true</CanChange>
+                  </DeviceDependentPropertyOfBoolean>
+                </Property>
+                <Property Name="PredefinedFilterBinding" Value="6cb54254-0dac-4779-a03c-f3a59f685668" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                <Property Name="Visibility" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
+                  <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                    <Desktop>false</Desktop>
+                    <Tablet>false</Tablet>
+                    <Smartphone>false</Smartphone>
+                    <CanChange>true</CanChange>
+                  </DeviceDependentPropertyOfBoolean>
+                </Property>
+                <Property Name="VisibilityEditOperation" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
+                <Property Name="Required" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                <Property Name="TabStop" Value="true" Type="System.Boolean, mscorlib" IsAvailable="false" />
+                <Property Name="SearchDelay" Value="500" Type="System.Int32, mscorlib" IsAvailable="false" />
+                <Property Name="EditMode" Value="1" Type="System.Int32, mscorlib" IsAvailable="true" />
+                <Property Name="StandardCssClass" Value="system-staff-directory-items" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="MultipleSelection" Value="false" Type="System.Boolean, mscorlib" IsAvailable="false" />
+                <Property Name="EnableFavorites" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                <Property Name="DefaultEmployeeBinding" Value="3695837f-59bd-40cd-85e2-5f47a497f050" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="false" RepresentsDefaultBindingValue="true" />
+                <Property Name="DisplayIcon" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                <Property Name="MouseOver" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="MouseOut" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="Focus" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="Blur" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="DataChanged" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="Click" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="InPlaceEditOpeninig" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="InPlaceEditOpened" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="InPlaceEditClosinig" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="InPlaceEditClosed" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="DirectoryWindowOpening" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="DirectoryWindowOpened" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="DirectoryWindowClosing" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="DirectoryWindowClosed" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="SearchResultsLoading" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="SearchResultsLoaded" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="CurrentFilterChanging" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="CurrentFilterChanged" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="ItemAdding" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="ItemAdded" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="ItemRemoving" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="ItemRemoved" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+              </Properties>
+            </Element>
             <Element Id="2fb62850-174d-4384-9ad8-8a243ce6c803" Type="CardLink">
               <Properties>
                 <Property Name="Name" Value="powerOfAttorneySysCard" Type="System.String, mscorlib" IsAvailable="true" />
