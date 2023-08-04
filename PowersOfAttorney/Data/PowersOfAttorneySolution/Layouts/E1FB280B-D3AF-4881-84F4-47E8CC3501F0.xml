@@ -2779,7 +2779,7 @@
                             </Property>
                             <Property Name="DisplayIcon" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
                             <Property Name="EditMode" Value="2" Type="System.Int32, mscorlib" IsAvailable="true" />
-                            <Property Name="Required" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                            <Property Name="Required" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
                             <Property Name="SearchDelay" Value="500" Type="System.Int32, mscorlib" IsAvailable="true" />
                             <Property Name="StandardCssClass" Value="system-powers" Type="System.String, mscorlib" IsAvailable="true" />
                             <Property Name="MultipleSelection" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />

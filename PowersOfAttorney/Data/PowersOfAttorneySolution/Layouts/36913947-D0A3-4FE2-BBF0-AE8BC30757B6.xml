@@ -23,8 +23,8 @@
     <Property Name="BackgroundStyle" Value="0" Type="System.Int32, mscorlib" IsAvailable="false" />
   </Properties>
   <Bindings>
-    <Binding PropertyName="0f58ba0d-ed35-4bf6-8a3a-fce43441766b" BindingMode="1" Path="v1|@00000000-0000-0000-0000-000000000000/00000000-0000-0000-0000-000000000000/" ConverterType="AdminPanelMessageCardsIdsConverter" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
-    <Binding PropertyName="052e9ba1-15ec-4290-8630-6024e0984e7f" BindingMode="0" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
+    <Binding PropertyName="0f58ba0d-ed35-4bf6-8a3a-fce43441766b" BindingMode="1" Path="v1|@00000000-0000-0000-0000-000000000000/00000000-0000-0000-0000-000000000000/" ConverterType="AdminPanelMessageCardsIdsConverter" EditOperation="407ed193-ddd4-4a96-8fa6-4c5993581aec" IsInheritedEditOperation="false" IsAsync="false" />
+    <Binding PropertyName="052e9ba1-15ec-4290-8630-6024e0984e7f" BindingMode="0" EditOperation="407ed193-ddd4-4a96-8fa6-4c5993581aec" IsInheritedEditOperation="false" IsAsync="false" />
     <Binding PropertyName="6789a321-2c5e-44ee-951e-a3a099e22796" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/00000000-0000-0000-0000-000000000000/" ConverterType="State" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
     <Binding PropertyName="948ba362-56da-444e-b543-158cd615cf63" BindingMode="0" EditOperation="79b7f5fe-a6eb-4e91-89d8-1aaa4bf2e2f4" IsInheritedEditOperation="false" IsAsync="false" />
     <Binding PropertyName="37403dc2-42e6-4747-8158-a2ffeaffe3d8" BindingMode="0" EditOperation="98b1de1b-1901-4632-b2ab-1f47cd574fa7" IsInheritedEditOperation="false" IsAsync="false" />
@@ -496,7 +496,7 @@
                       </DeviceDependentPropertyOfBoolean>
                     </Property>
                     <Property Name="VisibilityEditOperation" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
-                    <Property Name="IsInheritedEditOperation" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                    <Property Name="IsInheritedEditOperation" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
                     <Property Name="Disabled" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
                       <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
                         <Desktop>false</Desktop>
@@ -2362,7 +2362,7 @@
                     <Property Name="Name" Value="individual" Type="System.String, mscorlib" IsAvailable="true" />
                     <Property Name="PlaceHolder" Value="c7e6eee4-4e88-47c1-b80c-795e0d7114ac" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="false" />
                     <Property Name="ShowEmptyLabel" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
-                    <Property Name="LabelText" Value="329423a6-4740-4c22-9c59-88e1418f6fcb" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="true" />
+                    <Property Name="LabelText" Value="c7e6eee4-4e88-47c1-b80c-795e0d7114ac" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="true" />
                     <Property Name="EmployeeViewMode" Value="0" Type="System.Int32, mscorlib" IsAvailable="true" />
                     <Property Name="EmployeeTipMode" Value="0" Type="System.Int32, mscorlib" IsAvailable="true" />
                     <Property Name="StaffDataSource" Type="System.String, mscorlib" IsAvailable="true">
@@ -3369,7 +3369,7 @@
                             </Property>
                             <Property Name="DisplayIcon" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
                             <Property Name="EditMode" Value="1" Type="System.Int32, mscorlib" IsAvailable="true" />
-                            <Property Name="Required" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                            <Property Name="Required" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
                             <Property Name="SearchDelay" Value="500" Type="System.Int32, mscorlib" IsAvailable="true" />
                             <Property Name="StandardCssClass" Value="system-powers" Type="System.String, mscorlib" IsAvailable="true" />
                             <Property Name="MultipleSelection" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />

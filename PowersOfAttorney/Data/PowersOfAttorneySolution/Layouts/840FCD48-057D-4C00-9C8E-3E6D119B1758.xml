@@ -3856,7 +3856,7 @@
                             <Property Name="VisibilityEditOperation" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
                             <Property Name="StandardCssClass" Value="system-textbox" Type="System.String, mscorlib" IsAvailable="true" />
                             <Property Name="TabStop" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
-                            <Property Name="Required" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                            <Property Name="Required" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
                             <Property Name="EditMode" Value="2" Type="System.Int32, mscorlib" IsAvailable="true" />
                             <Property Name="ExtendedDataSource" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
                             <Property Name="DataSource" Value="29c1b4ef-48e4-47f0-ac67-c42cf68de986" Type="System.Guid, mscorlib" IsAvailable="true" />
@@ -3981,7 +3981,7 @@
                             <Property Name="VisibilityEditOperation" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
                             <Property Name="StandardCssClass" Value="system-textarea" Type="System.String, mscorlib" IsAvailable="true" />
                             <Property Name="TabStop" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
-                            <Property Name="Required" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                            <Property Name="Required" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
                             <Property Name="EditMode" Value="2" Type="System.Int32, mscorlib" IsAvailable="true" />
                             <Property Name="UseHtml" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
                             <Property Name="HtmlEditorHeight" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="false">
@@ -4536,9 +4536,9 @@
                     <Property Name="Name" Value="docCEOAuthBlock" Type="System.String, mscorlib" IsAvailable="true" />
                     <Property Name="Visibility" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
                       <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-                        <Desktop>false</Desktop>
-                        <Tablet>false</Tablet>
-                        <Smartphone>false</Smartphone>
+                        <Desktop>true</Desktop>
+                        <Tablet>true</Tablet>
+                        <Smartphone>true</Smartphone>
                         <CanChange>true</CanChange>
                       </DeviceDependentPropertyOfBoolean>
                     </Property>
@@ -9702,7 +9702,7 @@
                     <Property Name="DataSource" Value="29c1b4ef-48e4-47f0-ac67-c42cf68de986" Type="System.Guid, mscorlib" IsAvailable="true" />
                     <Property Name="DataField" Value="lossPowersTransfer" Type="System.String, mscorlib" IsAvailable="true" />
                     <Property Name="Binding" Value="5c754f14-365d-49da-8672-b2f9741f854b" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
-                    <Property Name="DefaultElement" Value="" Type="System.String, mscorlib" IsAvailable="true" RepresentsDefaultBindingValue="true" />
+                    <Property Name="DefaultElement" Value="Not lost" Type="System.String, mscorlib" IsAvailable="true" RepresentsDefaultBindingValue="true" />
                     <Property Name="Elements" Value="ebf3f11c-7438-4789-b02e-19aa4a6c3462" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
                     <Property Name="IsInheritedEditOperation" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
                     <Property Name="Disabled" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
@@ -9937,7 +9937,7 @@
                             </Property>
                             <Property Name="DisplayIcon" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
                             <Property Name="EditMode" Value="2" Type="System.Int32, mscorlib" IsAvailable="true" />
-                            <Property Name="Required" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                            <Property Name="Required" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
                             <Property Name="SearchDelay" Value="500" Type="System.Int32, mscorlib" IsAvailable="true" />
                             <Property Name="StandardCssClass" Value="system-powers" Type="System.String, mscorlib" IsAvailable="true" />
                             <Property Name="MultipleSelection" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />

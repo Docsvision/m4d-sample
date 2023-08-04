@@ -23,8 +23,8 @@
     <Property Name="BackgroundStyle" Value="0" Type="System.Int32, mscorlib" IsAvailable="false" />
   </Properties>
   <Bindings>
-    <Binding PropertyName="0142250a-4b7b-4dc4-b6c6-1aa6974e131f" BindingMode="1" Path="v1|@00000000-0000-0000-0000-000000000000/00000000-0000-0000-0000-000000000000/" ConverterType="AdminPanelMessageCardsIdsConverter" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
-    <Binding PropertyName="e02e2a90-8704-4514-9eb3-ce28f8d97dd2" BindingMode="0" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
+    <Binding PropertyName="0142250a-4b7b-4dc4-b6c6-1aa6974e131f" BindingMode="1" Path="v1|@00000000-0000-0000-0000-000000000000/00000000-0000-0000-0000-000000000000/" ConverterType="AdminPanelMessageCardsIdsConverter" EditOperation="407ed193-ddd4-4a96-8fa6-4c5993581aec" IsInheritedEditOperation="false" IsAsync="false" />
+    <Binding PropertyName="e02e2a90-8704-4514-9eb3-ce28f8d97dd2" BindingMode="0" EditOperation="407ed193-ddd4-4a96-8fa6-4c5993581aec" IsInheritedEditOperation="false" IsAsync="false" />
     <Binding PropertyName="17ba0d08-27e5-482c-be9b-28aa9651e2de" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/00000000-0000-0000-0000-000000000000/" ConverterType="State" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
     <Binding PropertyName="377a003e-5370-4148-aacd-38aa40ccc80d" BindingMode="0" ConverterType="Operations" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false">
       <Items>
@@ -568,7 +568,7 @@
                       </DeviceDependentPropertyOfBoolean>
                     </Property>
                     <Property Name="VisibilityEditOperation" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
-                    <Property Name="IsInheritedEditOperation" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                    <Property Name="IsInheritedEditOperation" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
                     <Property Name="Disabled" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
                       <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
                         <Desktop>false</Desktop>
@@ -4365,7 +4365,7 @@
                             </Property>
                             <Property Name="DisplayIcon" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
                             <Property Name="EditMode" Value="1" Type="System.Int32, mscorlib" IsAvailable="true" />
-                            <Property Name="Required" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                            <Property Name="Required" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
                             <Property Name="SearchDelay" Value="500" Type="System.Int32, mscorlib" IsAvailable="true" />
                             <Property Name="StandardCssClass" Value="system-powers" Type="System.String, mscorlib" IsAvailable="true" />
                             <Property Name="MultipleSelection" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
