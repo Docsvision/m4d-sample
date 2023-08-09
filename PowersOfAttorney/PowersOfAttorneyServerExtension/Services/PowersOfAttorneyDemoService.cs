@@ -53,12 +53,6 @@ namespace PowersOfAttorneyServerExtension.Services
 
         public Guid CreateRetrustPowerOfAttorney(ObjectContext context, Guid powerOfAttorneyUserCardId, Guid formatId)
         {
-            if (formatId == PowerOfAttorneyEMCHDData.FormatId)
-            {
-                // В данном примере передоверие Единого формата не реализовано
-                throw new NotImplementedException(Resources.EmchdRetrustNotImplemented);
-            }
-
             var userCardPowerOfAttorney = GetUserCardPowerOfAttorney(context, powerOfAttorneyUserCardId);
             var powerOfAttorneyData = GetPowerOfAttorneyData(userCardPowerOfAttorney, formatId);
 
@@ -209,7 +203,7 @@ namespace PowersOfAttorneyServerExtension.Services
                 return userCard.ConvertToPowerOfAttorneyFNSDOVBBData(PowerOfAttorneyService);
 
             if (formatId == PowerOfAttorneyEMCHDData.FormatId)
-                return userCard.ConvertToPowerOfAttorneyEMCHDData();
+                return userCard.ConvertToPowerOfAttorneyEMCHDData(currentObjectContextProvider.GetOrCreateCurrentSessionContext());
 
 
             throw new ArgumentOutOfRangeException(string.Format(Resources.InvalidPowerOfAttorneyFormat, formatId));

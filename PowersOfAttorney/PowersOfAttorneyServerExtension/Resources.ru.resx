@@ -303,4 +303,16 @@
   <data name="Error_UnableToGetPowersCodeFromRow" xml:space="preserve">
     <value>Не удалось получить код полномочия из строки {0}</value>
   </data>
+  <data name="Error_OriginalPowerOfAttorneyNotFound" xml:space="preserve">
+    <value>Не найдена первоначальная доверенность</value>
+  </data>
+  <data name="Error_UnableToGetOriginalPowerOfAttorneyUserCard" xml:space="preserve">
+    <value>Не удалось получить первоначальную доверенность</value>
+  </data>
+  <data name="Error_EmptyDelegatorType" xml:space="preserve">
+    <value>Не указан тип лица передавшего полномочия</value>
+  </data>
+  <data name="Error_UnableToGetParentalPowerOfAttorneyUserCard" xml:space="preserve">
+    <value>Не удалось получить родительскую доверенность</value>
+  </data>
 </root>

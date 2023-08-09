@@ -291,7 +291,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
         /// <summary>
         /// Признак доверенности в рамках передоверия
         /// </summary>
-        public bool IsRetrusted() => genMchdSection[Fields.ParentalPowerOfAttorney] != null;
+        public bool IsRetrusted() => genMchdSection[Fields.OriginalPowerOfAttorney] != null || genMchdSection[Fields.ParentalPowerOfAttorney] != null;
 
 
         public IEnumerable<PowersCode> RepresentativePowersCodes =>  powersWithCodesSection?.Select(t => GetPowersCode(t)) ?? Enumerable.Empty<PowersCode>();

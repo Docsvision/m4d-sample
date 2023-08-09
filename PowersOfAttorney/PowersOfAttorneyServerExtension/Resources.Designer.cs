@@ -133,6 +133,15 @@ namespace PowersOfAttorneyServerExtension {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The type of person who delegated authority is not specified.
+        /// </summary>
+        internal static string Error_EmptyDelegatorType {
+            get {
+                return ResourceManager.GetString("Error_EmptyDelegatorType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The date of issue of the document certifying an individual acting without a power of attorney is not specified.
         /// </summary>
         internal static string Error_EmptyIssueDateOfDocumentProvingIdentity {
@@ -367,6 +376,15 @@ namespace PowersOfAttorneyServerExtension {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The original power of attorney was not found.
+        /// </summary>
+        internal static string Error_OriginalPowerOfAttorneyNotFound {
+            get {
+                return ResourceManager.GetString("Error_OriginalPowerOfAttorneyNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The parental power of attorney card is missing.
         /// </summary>
         internal static string Error_ParentalCardNotFound {
@@ -498,6 +516,24 @@ namespace PowersOfAttorneyServerExtension {
         internal static string Error_SinglePOAregnumberIsEmpty {
             get {
                 return ResourceManager.GetString("Error_SinglePOAregnumberIsEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to get the original power of attorney.
+        /// </summary>
+        internal static string Error_UnableToGetOriginalPowerOfAttorneyUserCard {
+            get {
+                return ResourceManager.GetString("Error_UnableToGetOriginalPowerOfAttorneyUserCard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to get the parental power of attorney.
+        /// </summary>
+        internal static string Error_UnableToGetParentalPowerOfAttorneyUserCard {
+            get {
+                return ResourceManager.GetString("Error_UnableToGetParentalPowerOfAttorneyUserCard", resourceCulture);
             }
         }
         

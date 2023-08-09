@@ -17,6 +17,42 @@ namespace PowersOfAttorneyServerExtension.Helpers
         /// </summary>
         public string GenKnd => "0711001"; // Взят пример КНД
 
+        public PowerOfAttorney GenOriginaPowerOfAttorney
+        {
+            get
+            {
+                if (!GenOriginalPowerOfAttorneyUserCard.HasValue)
+                    throw new ArgumentNullException(Resources.Error_OriginalPowerOfAttorneyNotFound);
+
+                var machineReadablePowerOfAttorneySectionRow = GenOriginalPowerOfAttorneyUserCard.Value.GetSection(generalMachineReadablePowerOfAttorneySectionId)[0] as BaseCardSectionRow;
+                var powerOfAttorney = machineReadablePowerOfAttorneySectionRow?.GetReferenceFieldValue<PowerOfAttorney>(context, Fields.PowerOfAttorneyCardId);
+                return powerOfAttorney.Value ?? throw new ArgumentNullException(Resources.Error_OriginalPowerOfAttorneyNotFound);
+            }
+        }
+
+        public PowerOfAttorney GenParentalPowerOfAttorney
+        {
+            get
+            {
+                if (!GenParentalPowerOfAttorneyUserCard.HasValue)
+                    throw new ArgumentNullException(Resources.Error_ParentalPowerOfAttorneyNotFound);
+
+                var machineReadablePowerOfAttorneySectionRow = GenParentalPowerOfAttorneyUserCard.Value.GetSection(generalMachineReadablePowerOfAttorneySectionId)[0] as BaseCardSectionRow;
+                var powerOfAttorney = machineReadablePowerOfAttorneySectionRow?.GetReferenceFieldValue<PowerOfAttorney>(context, Fields.PowerOfAttorneyCardId);
+                return powerOfAttorney.Value ?? throw new ArgumentNullException(Resources.Error_ParentalPowerOfAttorneyNotFound);
+            }
+        }
+
+        /// <summary>
+        /// Первоначальная доверенность
+        /// </summary>
+        public NullableReference<Document> GenOriginalPowerOfAttorneyUserCard => genMchdSection.GetReferenceFieldValue<Document>(context, Fields.OriginalPowerOfAttorney);
+
+        /// <summary>
+        /// Доверенность, на основании которой осуществляется передоверие
+        /// </summary>
+        public NullableReference<Document> GenParentalPowerOfAttorneyUserCard => genMchdSection.GetReferenceFieldValue<Document>(context, Fields.ParentalPowerOfAttorney);
+
         /// <summary>
         /// Тип доверителя
         /// </summary>
@@ -416,6 +452,11 @@ namespace PowersOfAttorneyServerExtension.Helpers
         /// Фамилия руководителя организации
         /// </summary>
         public string GenCeoLastName => genMchdSection.GetStringValue("ceoLastName");
+        
+        /// <summary>
+        /// Тип лица передавшего полномочие
+        /// </summary>
+        public int? GenDelegatorType => genMchdSection.GetIntValue("DelegatorType");
 
         /// <summary>
         /// Имя руководителя организации

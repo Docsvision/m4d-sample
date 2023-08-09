@@ -138,6 +138,8 @@ namespace PowersOfAttorneyServerExtension.Helpers
             public const string PrincipalType = "principalType";
             //Указать юридическое лицо
             public const string IndicateEntity = "mngtCompanySEB";
+            //Первоначальная доверенность
+            public const string OriginalPowerOfAttorney = "OriginalPOACardLink";
             //Доверенность, на основании которой осуществляется передоверие
             public const string ParentalPowerOfAttorney = "ParentalPOACardLink";
             // Сведения об информационной системе, предоставляющей информацию о доверенности

@@ -1,10 +1,13 @@
 ﻿using DocsVision.BackOffice.ObjectModel;
 using DocsVision.BackOffice.ObjectModel.Services.Entities;
+using DocsVision.BackOffice.WebClient.PowersOfAttorney;
+using DocsVision.Platform.ObjectModel;
 using DocsVision.Platform.WebClient.Diagnostics;
 
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 
 using static PowersOfAttorneyServerExtension.Helpers.UserCardPowerOfAttorney;
 
@@ -12,44 +15,226 @@ namespace PowersOfAttorneyServerExtension.Helpers
 {
     internal static class UserCardPowerOfAttorneyEMCHDExtensions
     {
-        public static PowerOfAttorneyData ConvertToPowerOfAttorneyEMCHDData(this UserCardPowerOfAttorney userCard)
+        public static PowerOfAttorneyData ConvertToPowerOfAttorneyEMCHDData(this UserCardPowerOfAttorney userCard, DocsVision.Platform.WebClient.SessionContext sessionContext)
         {
-            return Converter.Convert(userCard);
+            return Converter.Convert(userCard, sessionContext.ObjectContext);
         }
 
         class Converter
         {
             private readonly UserCardPowerOfAttorney userCard;
+            private readonly ObjectContext objectContext;
 
-            private Converter(UserCardPowerOfAttorney userCard)
+            private Converter(UserCardPowerOfAttorney userCard, ObjectContext objectContext)
             {
                 this.userCard = userCard ?? throw new ArgumentNullException(nameof(userCard));
+                this.objectContext = objectContext;
             }
 
-            public static PowerOfAttorneyEMCHDData Convert(UserCardPowerOfAttorney userCard)
+            public static PowerOfAttorneyEMCHDData Convert(UserCardPowerOfAttorney userCard, ObjectContext objectContext)
             {
-                return new Converter(userCard).Convert();
+                return new Converter(userCard, objectContext).Convert();
             }
 
             private PowerOfAttorneyEMCHDData Convert()
             {
-                return new PowerOfAttorneyEMCHDData(withEsia: false, withNotary: false, withTax: true)
+                var data = new PowerOfAttorneyEMCHDData(withEsia: false, withNotary: false, withTax: true)
                 {
                     Document = CreateDocumentPart(),
-                    SenderID = $"{userCard.GenEntityPrinINN}{userCard.GenEntityPrinKPP}",
                     RecipientID = userCard.GenTaxAuthPOASubmit,
                     FinalRecipientID = userCard.GenFinalRecipientTaxID,
                 };
+
+                if (userCard.IsRetrusted())
+                {
+                    var originalPowerOfAttorneyUserCard = GetOriginalPowerOfAttorneyUserCard();
+                    data.SenderID = $"{originalPowerOfAttorneyUserCard.GenEntityPrinINN}{originalPowerOfAttorneyUserCard.GenEntityPrinKPP}";
+                }
+                else
+                    data.SenderID = $"{userCard.GenEntityPrinINN}{userCard.GenEntityPrinKPP}";
+
+                return data;
             }
 
             private PowerOfAttorneyEMCHDData.PowerOfAttorneyDocument CreateDocumentPart()
             {
-                return new PowerOfAttorneyEMCHDData.PowerOfAttorneyDocument
+                var document = new PowerOfAttorneyEMCHDData.PowerOfAttorneyDocument
                 {
-                    KND = userCard.GenKnd,
-                    PowerOfAttorneyData = CreatePowerOfAttorneyDataPart()
+                    KND = userCard.GenKnd
+                };
+
+                if (userCard.IsRetrusted())
+                    document.RetrustPowerOfAttorneyData = CreatePowerOfAttorneyDataRetrustPart();
+                else
+                    document.PowerOfAttorneyData = CreatePowerOfAttorneyDataPart();
+
+                return document;
+            }
+
+            private PowerOfAttorneyEMCHDData.RetrustPowerOfAttorneyDocumentData CreatePowerOfAttorneyDataRetrustPart()
+            {
+                var ceo = userCard.GenCeo.GetValueOrThrow(Resources.Error_EmptyCeo);
+                var part = new PowerOfAttorneyEMCHDData.RetrustPowerOfAttorneyDocumentData
+                {
+                    DelegatedAuthority = new PowerOfAttorneyEMCHDData.DelegatedAuthorityPrincipalsInfo
+                    {
+                        PrincipalType = PowerOfAttorneyEMCHDData.EntityType.Individual,
+                        PrincipalInfo = new PowerOfAttorneyEMCHDData.DelegatedPowerOfAttorneyPrincipal
+                        {
+                            Individual = new PowerOfAttorneyEMCHDData.IndividualPrincipalInfo1
+                            {
+                                Inn = userCard.GenCeoIIN,
+                                Snils = userCard.GenCeoSNILS,
+                                IndividualInfo = new PowerOfAttorneyEMCHDData.IndividualInfo
+                                {
+                                    BirthDate = userCard.GenCeoDateOfBirth,
+                                    BirthPlace = userCard.GenCeoPlaceOfBirth,
+                                    Citizenship = userCard.GenCeoCitizenship,
+                                    CitizenshipType = userCard.GenCeoCitizenshipSign,
+                                    ContactPhone = userCard.GenCeoPhoneNum,
+                                    EMail = userCard.GenCeoPhoneNum,
+                                    Fio = new PowerOfAttorneyEMCHDData.FIO
+                                    {
+                                        FirstName = ceo.FirstName.AsNullable(),
+                                        LastName = ceo.LastName.AsNullable(),
+                                        MiddleName = ceo.MiddleName.AsNullable()
+                                    },
+                                    Gender = userCard.GenCeoGender,
+                                    IdentityCard = new PowerOfAttorneyEMCHDData.IdentityCardOfIndividual
+                                    {
+                                        DocumentKindCode = userCard.GenTypeCodeCEOIDDoc?.ToString(),
+                                        DocumentSerialNumber = userCard.GenSerNumCEOIDDoc,
+                                        ExpDate = userCard.GenDateExpCEOIDDoc,
+                                        IssueDate = userCard.GenDateIssCEOIDDoc ?? throw new ApplicationException(Resources.Error_DateIssCEOIDDocIsEmpty),
+                                        Issuer = userCard.GenAuthIssCEOIDDoc,
+                                        IssuerCode = userCard.GenCodeAuthDivIssCEOIDDoc
+                                    },
+                                    ResidenceAddress = new PowerOfAttorneyEMCHDData.AddressInfo
+                                    {
+                                        Address = userCard.GenCeoAddrRussia,
+                                        SubjectOfRussia = userCard.GenCeoAddrSubRussia,
+                                        FiasAddress = userCard.GenFiasCEOAddrRussia,
+                                        FiasCode = userCard.GenCeoFIASAddrID
+                                    }
+                                },
+                            }
+                        }
+                    },
+                    PrimaryPowerOfAttorney = CreatePrimaryPowerOfAttorneyInfoPart(GetOriginalPowerOfAttorneyUserCard()),
+                    PowerOfAttorney = CreatePowerOfAttorneyRetrustPart(),
+                    Representative = CreateRepresentativesRetrustPart(),
+                    RepresentativePowers = CreateRepresentativePowersRetrustPart()
+                };
+
+                // Если доверенность в рамках передоверия второго уровня
+                if (userCard.GenParentalPowerOfAttorneyUserCard.HasValue)
+                    part.ParentPowerOfAttorney = CreateParentPowerOfAttorneyInfoPart(GetParentalPowerOfAttorneyUserCard());
+
+                return part;
+            }
+
+            private PowerOfAttorneyEMCHDData.EntityType Convert(int genDelegatorType)
+            {
+                return (PowerOfAttorneyEMCHDData.EntityType)(genDelegatorType + 1);
+            }
+
+            private UserCardPowerOfAttorney GetOriginalPowerOfAttorneyUserCard()
+            {
+                return GetUserCardPowerOfAttorney(userCard.GenOriginalPowerOfAttorneyUserCard.GetValueOrThrow(Resources.Error_UnableToGetOriginalPowerOfAttorneyUserCard));
+            }
+
+            private UserCardPowerOfAttorney GetParentalPowerOfAttorneyUserCard()
+            {
+                return GetUserCardPowerOfAttorney(userCard.GenParentalPowerOfAttorneyUserCard.GetValueOrThrow(Resources.Error_UnableToGetParentalPowerOfAttorneyUserCard));
+            }
+
+            private PowerOfAttorneyEMCHDData.RepresentativesInfo CreateRepresentativesRetrustPart()
+            {
+                return CreateRepresentativesPart();
+            }
+
+            private PowerOfAttorneyEMCHDData.PowerOfAttorneyInfo CreatePowerOfAttorneyRetrustPart()
+            {
+                return CreatePowerOfAttorneyPart();
+            }
+
+            private PowerOfAttorneyEMCHDData.RepresentativePowersInfo CreateRepresentativePowersRetrustPart()
+            {
+                return CreateRepresentativePowersPart();
+            }
+
+            private PowerOfAttorneyEMCHDData.PrimaryPowerOfAttorneyInfo CreateParentPowerOfAttorneyInfoPart(UserCardPowerOfAttorney parentUserCardPowerOfAttorney)
+            {
+                // Это родительская доверенность, а значит у неё есть OriginalPowerOfAttorney
+                // Далее заполняем как родительскую, выданную в рамках передоверия
+                return new PowerOfAttorneyEMCHDData.PrimaryPowerOfAttorneyInfo
+                {
+                    PowerOfAttorneyOption = PowerOfAttorneyEMCHDData.PowerOfAttorneyOption.Parent,
+                    PowerOfAttorneyForm = PowerOfAttorneyEMCHDData.PowerOfAttorneyForm.Electronic,
+                    PowerOfAttorneyStartDate = parentUserCardPowerOfAttorney.GenPoaDateOfIssue ?? throw new ApplicationException(Resources.Error_PoaDateOfIssueIsEmpty),
+                    PowerOfAttorneyEndDate = parentUserCardPowerOfAttorney.GenPoaExpirationDate ?? throw new ApplicationException(Resources.Error_EmptyPowerOfAttorneyEndDate),
+                    ParentPowerOfAttorneyInternalNumber = parentUserCardPowerOfAttorney.GenInternalPOANumber,
+                    ParentPowerOfAttorneyNumber = parentUserCardPowerOfAttorney.GenSinglePOAregnumber
                 };
             }
+
+            private PowerOfAttorneyEMCHDData.PrimaryPowerOfAttorneyInfo CreatePrimaryPowerOfAttorneyInfoPart(UserCardPowerOfAttorney originaUserCardPowerOfAttorney)
+            {
+                // Это первоначальная доверенность, т.к. пришла из OriginalPowerOfAttorney
+                // Далее заполняем как первоначальную
+                var data = new PowerOfAttorneyEMCHDData.PrimaryPowerOfAttorneyInfo
+                {
+                    PowerOfAttorneyOption = PowerOfAttorneyEMCHDData.PowerOfAttorneyOption.Primary,
+                    PowerOfAttorneyForm = PowerOfAttorneyEMCHDData.PowerOfAttorneyForm.Electronic,
+                    PowerOfAttorneyStartDate = originaUserCardPowerOfAttorney.GenPoaDateOfIssue ?? throw new ApplicationException(Resources.Error_PoaDateOfIssueIsEmpty),
+                    PowerOfAttorneyEndDate = originaUserCardPowerOfAttorney.GenPoaExpirationDate ?? throw new ApplicationException(Resources.Error_EmptyPowerOfAttorneyEndDate),
+                    PrimaryPowerOfAttorneyInternalNumber = originaUserCardPowerOfAttorney.GenInternalPOANumber,
+                    PrimaryPowerOfAttorneyNumber = originaUserCardPowerOfAttorney.GenSinglePOAregnumber,
+                    PrimaryPowerOfAttorneyPrincipals = new List<PowerOfAttorneyEMCHDData.PrimaryPowerOfAttorneyPrincipalInfo> { GetPrimaryPowerOfAttorneyPrincipals(originaUserCardPowerOfAttorney) }
+                };
+
+                return data;
+            }
+
+            private PowerOfAttorneyEMCHDData.PrimaryPowerOfAttorneyPrincipalInfo GetPrimaryPowerOfAttorneyPrincipals(UserCardPowerOfAttorney originaUserCardPowerOfAttorney)
+            {
+                var entityPrincipal = originaUserCardPowerOfAttorney.GenEntityPrincipal.GetValueOrThrow(Resources.Error_EmptyPrincipalOrganization);
+
+                return new PowerOfAttorneyEMCHDData.PrimaryPowerOfAttorneyPrincipalInfo
+                {
+                    // В данном примере первоначальная доверенность может быть выдана только для юрлица
+                    PrincipalType = Convert(originaUserCardPowerOfAttorney.GenPrincipalType ?? throw new ApplicationException(Resources.Error_PrincipalTypeIsEmpty)),
+                    PrimaryPrincipalInfo = new PowerOfAttorneyEMCHDData.PrimaryPowerOfAttorneyPrincipal
+                    {
+                        RussianEntity = new PowerOfAttorneyEMCHDData.LegalEntityInfo
+                        {
+                            ConfirmationOfAuthorityDocument = new PowerOfAttorneyEMCHDData.ConfirmationOfAuthorityDocument
+                            {
+                                DocumentName = originaUserCardPowerOfAttorney.GenDocConfAuthCEO,
+                                IdentityOfDocument = originaUserCardPowerOfAttorney.GenSerNumCEOIDDoc,
+                                IssueDate = originaUserCardPowerOfAttorney.GenDateIssCEOIDDoc,
+                                Issuer = originaUserCardPowerOfAttorney.GenAuthIssCEOIDDoc
+                            },
+                            ConstituentDocument = originaUserCardPowerOfAttorney.GenConstDocumentEntPrin,
+                            EMail = originaUserCardPowerOfAttorney.GenEmailEntPrin,
+                            Inn = originaUserCardPowerOfAttorney.GenEntityPrinINN ?? entityPrincipal.INN.AsNullable(),
+                            Kpp = originaUserCardPowerOfAttorney.GenEntityPrinKPP ?? entityPrincipal.KPP.AsNullable(),
+                            LegalAddress = new PowerOfAttorneyEMCHDData.AddressInfo
+                            {
+                                FiasAddress = originaUserCardPowerOfAttorney.GenFiasEntAddrRussia,
+                                FiasCode = originaUserCardPowerOfAttorney.GenEntFIASAddrID,
+                                Address = originaUserCardPowerOfAttorney.GenEntAddrRussia,
+                                SubjectOfRussia = originaUserCardPowerOfAttorney.GenEntAddrSubRussia,
+                            },
+                            Name = entityPrincipal.Name.AsNullable(),
+                            Ogrn = originaUserCardPowerOfAttorney.GenEntPrinOGRN ?? entityPrincipal.OGRN.AsNullable(),
+                            ParticipantStatus = originaUserCardPowerOfAttorney.GenNotarStatusOfEntPrin,
+                            Phone = entityPrincipal.Phone.AsNullable()
+                        }
+                    }
+                };
+            }
+
 
             private PowerOfAttorneyEMCHDData.PowerOfAttorneyDocumentData CreatePowerOfAttorneyDataPart()
             {
@@ -96,31 +281,31 @@ namespace PowersOfAttorneyServerExtension.Helpers
                 return new PowerOfAttorneyEMCHDData.RepresentativesInfo
                 {
                     RepresentativeType = Convert(userCard.GenRepresentativeType ?? throw new ApplicationException(Resources.Error_GenRepresentativeIsEmpty)),
-                    Representative = CreateRepresentativePart(userCard.GenRepresentativeType.Value)
+                    Representative = CreateRepresentativePart()
                 };
             }
 
-            private PowerOfAttorneyEMCHDData.RepresentativeInfo CreateRepresentativePart(GenRepresentativeTypes representativeType)
+            private PowerOfAttorneyEMCHDData.RepresentativeInfo CreateRepresentativePart()
             {
                 var representative = userCard.GenRepresentative.GetValueOrThrow(Resources.Error_EmptyRepresentativeIndividual);
 
                 // Представитель-физлицо
-                if (representativeType == GenRepresentativeTypes.individual)
+                if (userCard.GenRepresentativeType.Value == GenRepresentativeTypes.individual)
                     return new PowerOfAttorneyEMCHDData.RepresentativeInfo
                     {
                         Individual = new PowerOfAttorneyEMCHDData.SoleExecutiveIndividualInfo
                         {
                             Inn = userCard.GenRepresentativeINN,
-                            IndividualInfo = CreateRepresentativeIndividualInfoPart(),
+                            IndividualInfo = CreateRepresentativeIndividualInfoPart(userCard),
                             Position = userCard.GenRepresentativePosition ?? representative.PositionName.AsNullable(),
                             Snils = userCard.GenRepresentativeSNILS
                         }
                     };
 
-                throw new ArgumentOutOfRangeException(nameof(representativeType));
+                throw new ArgumentOutOfRangeException(nameof(userCard.GenRepresentativeType));
             }
 
-            private PowerOfAttorneyEMCHDData.IndividualInfo CreateRepresentativeIndividualInfoPart()
+            private PowerOfAttorneyEMCHDData.IndividualInfo CreateRepresentativeIndividualInfoPart(UserCardPowerOfAttorney userCard)
             {
                 var representative = userCard.GenRepresentative.GetValueOrThrow(Resources.Error_EmptyRepresentativeIndividual);
 
@@ -156,13 +341,13 @@ namespace PowersOfAttorneyServerExtension.Helpers
                 return new PowerOfAttorneyEMCHDData.PrincipalsInfo
                 {
                     PrincipalType = Convert(userCard.GenPrincipalType ?? throw new ApplicationException(Resources.Error_PrincipalTypeIsEmpty)),
-                    PrincipalInfo = CreatePrincipalPart(userCard.GenPrincipalType.Value)
+                    PrincipalInfo = CreatePrincipalPart()
                 };
             }
 
-            private PowerOfAttorneyEMCHDData.PrincipalInfo CreatePrincipalPart(GenPrincipalTypes principalType)
+            private PowerOfAttorneyEMCHDData.PrincipalInfo CreatePrincipalPart()
             {
-                if (principalType == GenPrincipalTypes.entity)
+                if (userCard.GenPrincipalType.Value == GenPrincipalTypes.entity)
                     return new PowerOfAttorneyEMCHDData.PrincipalInfo
                     {
                         RussianEntity = new PowerOfAttorneyEMCHDData.RussianLegalEntityPrincipalInfo
@@ -175,7 +360,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
                         }
                     };
 
-                throw new ArgumentOutOfRangeException(nameof(principalType));
+                throw new ArgumentOutOfRangeException(nameof(userCard.GenPrincipalType));
             }
 
             private PowerOfAttorneyEMCHDData.PrincipalWithoutPowerOfAttorneyInfo CreatePrincipalsWithoutPowerOfAttorneyInfoPart()
@@ -469,6 +654,13 @@ namespace PowersOfAttorneyServerExtension.Helpers
                         return PowerOfAttorneyEMCHDData.PowerOfAttorneyKind.Irrevocable;
                 }
                 throw new ArgumentOutOfRangeException(nameof(poaKind));
+            }
+
+            private UserCardPowerOfAttorney GetUserCardPowerOfAttorney(Document document)
+            {
+                if (document is null)
+                    throw new ArgumentNullException(nameof(document));
+                return new UserCardPowerOfAttorney(document, objectContext);
             }
         }
     }

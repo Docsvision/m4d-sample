@@ -303,4 +303,16 @@
   <data name="Error_UnableToGetPowersCodeFromRow" xml:space="preserve">
     <value>Failed to get authorization code from string {0}</value>
   </data>
+  <data name="Error_OriginalPowerOfAttorneyNotFound" xml:space="preserve">
+    <value>The original power of attorney was not found</value>
+  </data>
+  <data name="Error_UnableToGetOriginalPowerOfAttorneyUserCard" xml:space="preserve">
+    <value>Failed to get the original power of attorney</value>
+  </data>
+  <data name="Error_EmptyDelegatorType" xml:space="preserve">
+    <value>The type of person who delegated authority is not specified</value>
+  </data>
+  <data name="Error_UnableToGetParentalPowerOfAttorneyUserCard" xml:space="preserve">
+    <value>Failed to get the parental power of attorney</value>
+  </data>
 </root>
