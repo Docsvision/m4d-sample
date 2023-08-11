@@ -1,5 +1,12 @@
+import { TextBox } from "@docsvision/webclient/Platform/TextBox";
+import { ICancelableEventArgs } from "@docsvision/webclient/System/ICancelableEventArgs";
+import { IDataChangedEventArgs } from "@docsvision/webclient/System/IDataChangedEventArgs";
+import { ILayoutBeforeSavingEventArgs } from "@docsvision/webclient/System/ILayoutParams";
 import { Layout } from "@docsvision/webclient/System/Layout";
+import { resources } from "@docsvision/webclient/System/Resources";
 import IMask from "imask";
+import { checkValueLength } from "../../Utils/CheckValueLength";
+
 
 export const customizePowerOfAttorneyCardForEditLayout = (sender: Layout) => {
     const controls = sender.layout.controls;
@@ -9,13 +16,14 @@ export const customizePowerOfAttorneyCardForEditLayout = (sender: Layout) => {
     const kindDocProvIdenRepr = controls.kindDocProvIdenRepr;
     const reprSignCitizenship = controls.reprSignCitizenship;
     
-    customizeInputFields();
+    customizeInputFields(sender);
     onDataChangedPossibilityOfSubst(sender);
     onDataChangedSignCitizenshipfIAWPOA(sender);
     onDataChangedReprSignCitizenship(sender);
     onDataChangedKindCodeOfDocProvIdenIAWPOA(sender);
     onDataChangedKindDocProvIdenRepr(sender);
 
+    sender.params.beforeCardSaving.subscribe(checkPowersBeforeSaving);
     possibilityOfSubst && possibilityOfSubst.params.dataChanged.subscribe(onDataChangedPossibilityOfSubst);
     signCitizenshipfIAWPOA && signCitizenshipfIAWPOA.params.dataChanged.subscribe(onDataChangedSignCitizenshipfIAWPOA);
     kindCodeOfDocProvIdenIAWPOA && kindCodeOfDocProvIdenIAWPOA.params.dataChanged.subscribe(onDataChangedKindCodeOfDocProvIdenIAWPOA);
@@ -23,18 +31,66 @@ export const customizePowerOfAttorneyCardForEditLayout = (sender: Layout) => {
     reprSignCitizenship && reprSignCitizenship.params.dataChanged.subscribe(onDataChangedReprSignCitizenship);
 }
 
-const customizeInputFields = () => {
-    const IINIAWPOA = document.querySelector('[data-control-name="IINIAWPOA"]');
-    IINIAWPOA?.getElementsByTagName('input')[0].setAttribute("maxLength", "12");
-    const reprINN = document.querySelector('[data-control-name="reprINN"]');
-    reprINN?.getElementsByTagName('input')[0].setAttribute("maxLength", "12");
-    const maskOptions = {
-        mask: '000-000-000 00'
+const checkPowersBeforeSaving = (sender: Layout, args: ICancelableEventArgs<ILayoutBeforeSavingEventArgs>) => {
+    const refPowersTable = sender.controls.refPowersTable;
+    const textPowersTable = sender.controls.textPowersTable;
+    if (refPowersTable.params.rows.length === 0 && textPowersTable.params.rows.length === 0) {
+        sender.params.services.messageWindow.showError(resources.Error_PowersEmpty);
+        args.cancel();
     }
-    const SNILSIAWPOAInputElement = document.querySelector('[data-control-name="SNILSIAWPOA"]')?.getElementsByTagName('input')[0];
-    IMask(SNILSIAWPOAInputElement, maskOptions);
-    const reprSNILSInputElement = document.querySelector('[data-control-name="reprSNILS"]')?.getElementsByTagName('input')[0];
-    IMask(reprSNILSInputElement, maskOptions);
+}
+
+const limitations = [
+    { name: "IINIAWPOA", length: 12 },
+    { name: "codeForeignCitizenshipIAWPOA", length: 3 },
+    { name: "reprINN", length: 12 },
+    { name: "foreignReprCitizenship", length: 12 }
+]
+
+const customizeInputFields = (sender: Layout) => {
+    limitations.forEach(limitation => {
+        const element = document.querySelector(`[data-control-name="${limitation.name}"] input`);
+        element.setAttribute("maxLength", `${limitation.length}`);
+        sender.controls.get<TextBox>(limitation.name).params.blur.subscribe((sender: TextBox) => {   
+            checkValueLength(element, sender.params.value.length, sender.layout.params.services, limitation.length);
+        })
+    })
+
+    document.querySelector('[data-control-name="numberDocProvIdenIAWPOA"]  input').setAttribute("maxLength", "25");
+    document.querySelector('[data-control-name="numberDocProvIdenRepr"] input').setAttribute("maxLength", "25");
+    document.querySelector('[data-control-name="authIssDocConfIdenRepr"] textarea').setAttribute("maxLength", "255");
+    
+    const maskOptions = {
+        SNILS: {
+            mask: '000-000-000 00'
+        },
+        code: {
+            mask: '000-000'
+        }
+    }
+    const SNILSIAWPOA = document.querySelector('[data-control-name="SNILSIAWPOA"] input') as HTMLElement;
+    IMask(SNILSIAWPOA, maskOptions.SNILS);
+    sender.controls.SNILSIAWPOA.params.blur.subscribe((sender: TextBox) => {
+        checkValueLength(SNILSIAWPOA, sender.params.value.replaceAll("-", "").replace(" ", "").length, sender.layout.params.services, 11);
+    })
+
+    const reprSNILS = document.querySelector('[data-control-name="reprSNILS"] input') as HTMLElement;
+    IMask(reprSNILS, maskOptions.SNILS);
+    sender.controls.reprSNILS.params.blur.subscribe((sender: TextBox) => {
+        checkValueLength(reprSNILS, sender.params.value.replaceAll("-", "").replaceAll(" ", "").length, sender.layout.params.services, 11);
+    })
+
+    const divCodeAuthIssDocProvIdenIAWPOA = document.querySelector('[data-control-name="divCodeAuthIssDocProvIdenIAWPOA"] input') as HTMLElement;
+    IMask(divCodeAuthIssDocProvIdenIAWPOA, maskOptions.code);
+    sender.controls.divCodeAuthIssDocProvIdenIAWPOA.params.blur.subscribe((sender: TextBox, args: IDataChangedEventArgs) => {
+        checkValueLength(divCodeAuthIssDocProvIdenIAWPOA, args.newValue.replaceAll("-", "").replaceAll(" ", "").length, sender.layout.params.services, 6);
+    })
+
+    const divAuthIssDocConfIDOfRepr = document.querySelector('[data-control-name="divAuthIssDocConfIDOfRepr"] input') as HTMLElement;
+    IMask(divAuthIssDocConfIDOfRepr, maskOptions.code);
+    sender.controls.divAuthIssDocConfIDOfRepr.params.blur.subscribe((sender: TextBox, args: IDataChangedEventArgs) => {
+        checkValueLength(divAuthIssDocConfIDOfRepr, args.newValue.replaceAll("-", "").replaceAll(" ", "").length, sender.layout.params.services, 6);
+    })
 }
 
 const onDataChangedKindDocProvIdenRepr = (sender: Layout) => {

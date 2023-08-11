@@ -5,13 +5,13 @@ import { CustomButton } from "@docsvision/webclient/Platform/CustomButton";
 import { $Router } from "@docsvision/webclient/System/$Router";
 import { $CardId } from "@docsvision/webclient/System/LayoutServices";
 import { resources } from "@docsvision/webclient/System/Resources";
-import { $PowersOfAttorneyDemoController } from "../ServerRequests/PowersOfAttorneyDemoController";
+import { $PowersOfAttorneyDemoController } from "../../ServerRequests/PowersOfAttorneyDemoController";
 
 
-export const createPowerOfAttorney = async (sender: CustomButton) => {
+export const createRetrustPowerOfAttorney = async (sender: CustomButton) => {
     const powerOfAttorneyUserCardId = sender.layout.getService($CardId);
     const powerOfAttorneyId = sender.layout.controls.powerOfAttorneySysCard.params.value?.cardId;    
-    await sender.layout.getService($PowersOfAttorneyDemoController).createPowerOfAttorney(powerOfAttorneyUserCardId);
+    await sender.layout.getService($PowersOfAttorneyDemoController).createRetrustPowerOfAttorney(powerOfAttorneyUserCardId);
     if (powerOfAttorneyId) {
         const cardInfo = await sender.layout.getService($PowerOfAttorneyApiController).getPowerOfAttorneyInfo(powerOfAttorneyId);
         const resources = sender.layout.getService($Resources);

@@ -315,4 +315,13 @@
   <data name="Error_UnableToGetParentalPowerOfAttorneyUserCard" xml:space="preserve">
     <value>Failed to get the parental power of attorney</value>
   </data>
+  <data name="Error_PowerCodeLength" xml:space="preserve">
+    <value>The selected entry cannot be added due to the requirements of this POA form (a power code must contain from 6 to 255 characters)</value>
+  </data>
+  <data name="Error_PowersEmpty" xml:space="preserve">
+    <value>Powers are not specified</value>
+  </data>
+  <data name="Error_ValueLength" xml:space="preserve">
+    <value>Value cannot be less than {0} characters</value>
+  </data>
 </root>

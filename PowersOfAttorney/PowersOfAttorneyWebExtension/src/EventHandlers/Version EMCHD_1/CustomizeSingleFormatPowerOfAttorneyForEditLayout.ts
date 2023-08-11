@@ -1,24 +1,59 @@
+import { Powers } from "@docsvision/webclient/BackOffice/Powers";
 import { EMPLOYEE_SECTION_ID, STAFF_DIRECTORY_ID, UNIT_STAFF_SECTION_ID } from "@docsvision/webclient/BackOffice/StaffDirectoryConstants";
 import { StaffDirectoryItems } from "@docsvision/webclient/BackOffice/StaffDirectoryItems";
+import { IRowEventArgs } from "@docsvision/webclient/Platform/IRowEventArgs";
+import { Table } from "@docsvision/webclient/Platform/Table";
+import { TextBox } from "@docsvision/webclient/Platform/TextBox";
 import { LayoutControl } from "@docsvision/webclient/System/BaseControl";
+import { ICancelableEventArgs } from "@docsvision/webclient/System/ICancelableEventArgs";
 import { IDataChangedEventArgs } from "@docsvision/webclient/System/IDataChangedEventArgs";
+import { ILayoutBeforeSavingEventArgs } from "@docsvision/webclient/System/ILayoutParams";
+import { Layout } from "@docsvision/webclient/System/Layout";
+import { resources } from "@docsvision/webclient/System/Resources";
 import IMask from 'imask';
+import { checkValueLength } from "../../Utils/CheckValueLength";
 
-export const customizeSingleFormatPowerOfAttorneyForEditLayout = async (sender: LayoutControl) => {
+export const customizeSingleFormatPowerOfAttorneyForEditLayout = async (sender: Layout) => {
     const controls = sender.layout.controls;
     const entityPrincipal = controls.entityPrincipal;
     const ceo = controls.ceo;
     const representative = controls.representative;
     const powersType = controls.powersType;
+    const refPowersTable = controls.refPowersTable;
 
-    customizeInputFields();
+    customizeInputFields(sender);
     onPowersTypeDataChanged(sender);
 
+    sender.params.beforeCardSaving.subscribe(checkPowersBeforeSaving);
     entityPrincipal && entityPrincipal.params.dataChanged.subscribe(onPrincipalDataChanged);
     ceo && ceo.params.dataChanged.subscribe(onCeoDataChanged);
     representative && representative.params.dataChanged.subscribe(onRepresentativeDataChanged);
     powersType && powersType.params.dataChanged.subscribe(onPowersTypeDataChanged);
+    refPowersTable && refPowersTable.params.rowAdded.subscribe(onRefPowersTableRowAdded);
 
+}
+
+const onRefPowersTableRowAdded = (sender: Table, args: IRowEventArgs) => {
+    const refPowersCode = sender.layout.controls.refPowersCode;
+    const index = sender.getRowIndex(args.rowId);
+    refPowersCode[index].params.dataChanged.subscribe(onRefPowersCodeDataChanged);
+}
+
+const onRefPowersCodeDataChanged = (sender: Powers, args: IDataChangedEventArgs) => {
+    if (args.newValue.code.length < 6) {
+        sender.layout.params.services.messageWindow.showError(resources.Error_PowerCodeLength)
+        sender.params.value = args.oldValue;
+    }
+    
+}
+
+const checkPowersBeforeSaving = (sender: Layout, args: ICancelableEventArgs<ILayoutBeforeSavingEventArgs>) => {
+    const refPowersTable = sender.controls.refPowersTable;
+    const powersType = sender.controls.powersType;
+    if (powersType.params.value === "machReadPower" && refPowersTable.params.rows.length === 0) {
+        sender.params.services.messageWindow.showError(resources.Error_PowersEmpty);
+        args.cancel();
+    }
 }
 
 const onPrincipalDataChanged = async (sender: StaffDirectoryItems, args: IDataChangedEventArgs) => {
@@ -111,31 +146,67 @@ const onRepresentativeDataChanged = async (sender: StaffDirectoryItems, args: ID
     }
 }
 
+const limitations = [
+    { name: "codeTaxAuthSubmit", length: 4 },
+    { name: "codeTaxAuthValid", length: 4 },
+    { name: "ceoINN", length: 12 },
+    { name: "ceoCitizenship", length: 3 },
+    { name: "ceoAddrSubRus", length: 2 },
+    { name: "reprINN", length: 12 },
+    { name: "reprCitizenship", length: 3 },
+    { name: "princINN", length: 10 },
+    { name: "princKPP", length: 9 },
+    { name: "princOGRN", length: 13 },
+    { name: "princAddrSubRus", length: 2 }
+   
+]
 
-const customizeInputFields = () => {
-    const codeTaxAuthSubmit = document.querySelector('[data-control-name="codeTaxAuthSubmit"]');
-    codeTaxAuthSubmit?.getElementsByTagName('input')[0].setAttribute("maxLength", "4");
-    const codeTaxAuthValid = document.querySelector('[data-control-name="codeTaxAuthValid"]');
-    codeTaxAuthValid?.getElementsByTagName('input')[0].setAttribute("maxLength", "4");
-    const ceoINN = document.querySelector('[data-control-name="ceoINN"]');
-    ceoINN?.getElementsByTagName('input')[0].setAttribute("maxLength", "12");
-    const ceoCitizenship = document.querySelector('[data-control-name="ceoCitizenship"]');
-    ceoCitizenship?.getElementsByTagName('input')[0].setAttribute("maxLength", "3");
-    const ceoAddrSubRus = document.querySelector('[data-control-name="ceoAddrSubRus"]');
-    ceoAddrSubRus?.getElementsByTagName('input')[0].setAttribute("maxLength", "3");
-    const reprINN = document.querySelector('[data-control-name="reprINN"]');
-    reprINN?.getElementsByTagName('input')[0].setAttribute("maxLength", "12");
-    const reprCitizenship = document.querySelector('[data-control-name="reprCitizenship"]');
-    reprCitizenship?.getElementsByTagName('input')[0].setAttribute("maxLength", "3");
-    const reprAddrSubRus = document.querySelector('[data-control-name="reprAddrSubRus"]');
-    reprAddrSubRus?.getElementsByTagName('input')[0].setAttribute("maxLength", "2");
+const customizeInputFields = (sender: Layout) => {
+    limitations.forEach(limitation => {
+        const element = document.querySelector(`[data-control-name="${limitation.name}"] input`);
+        element.setAttribute("maxLength", `${limitation.length}`);
+        sender.controls.get<TextBox>(limitation.name).params.blur.subscribe((sender: TextBox) => {   
+            checkValueLength(element, sender.params.value.length, sender.layout.params.services, limitation.length);
+        })
+    })
+
+    const numReprID = document.querySelector('[data-control-name="numReprID"]');
+    numReprID?.getElementsByTagName('input')[0].setAttribute("maxLength", "25");
+    const numCEOID = document.querySelector('[data-control-name="numCEOID"]');
+    numCEOID?.getElementsByTagName('input')[0].setAttribute("maxLength", "25");
+
     const maskOptions = {
-        mask: '000-000-000 00'
+        SNILS: {
+            mask: '000-000-000 00'
+        },
+        code: {
+            mask: '000-000'
+        }
     }
-    const ceoSNILSInputElement = document.querySelector('[data-control-name="ceoSNILS"]')?.getElementsByTagName('input')[0];
-    IMask(ceoSNILSInputElement, maskOptions)
-    const reprSNILSInputElement = document.querySelector('[data-control-name="reprSNILS"]')?.getElementsByTagName('input')[0];
-    IMask(reprSNILSInputElement, maskOptions)
+
+    const ceoSNILS = document.querySelector('[data-control-name="ceoSNILS"] input') as HTMLElement;
+    IMask(ceoSNILS, maskOptions.SNILS);
+    sender.controls.ceoSNILS.params.blur.subscribe((sender: TextBox) => {
+        checkValueLength(ceoSNILS, sender.params.value.replaceAll("-", "").replace(" ", "").length, sender.layout.params.services, 11);
+    })
+
+    const reprSNILS = document.querySelector('[data-control-name="reprSNILS"] input') as HTMLElement;
+    IMask(reprSNILS, maskOptions.SNILS);
+    sender.controls.reprSNILS.params.blur.subscribe((sender: TextBox) => {
+        checkValueLength(reprSNILS, sender.params.value.replaceAll("-", "").replace(" ", "").length, sender.layout.params.services, 11);
+    })
+
+    const codeAuthIssCEOID = document.querySelector('[data-control-name="codeAuthIssCEOID"] input') as HTMLElement;
+    IMask(codeAuthIssCEOID, maskOptions.code);
+    sender.controls.codeAuthIssCEOID.params.blur.subscribe((sender: TextBox, args: IDataChangedEventArgs) => {
+        checkValueLength(codeAuthIssCEOID, args.newValue.replaceAll("-", "").replaceAll(" ", "").length, sender.layout.params.services, 6);
+    })
+
+    const codeAuthIssReprID = document.querySelector('[data-control-name="codeAuthIssReprID"] input') as HTMLElement;
+    IMask(codeAuthIssReprID, maskOptions.code);
+    sender.controls.codeAuthIssReprID.params.blur.subscribe((sender: TextBox, args: IDataChangedEventArgs) => {
+        checkValueLength(codeAuthIssReprID, args.newValue.replaceAll("-", "").replaceAll(" ", "").length, sender.layout.params.services, 6);
+    })
 }
 
 const onPowersTypeDataChanged = (sender: LayoutControl) => {

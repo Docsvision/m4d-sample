@@ -1,5 +1,10 @@
+import { TextBox } from "@docsvision/webclient/Platform/TextBox";
+import { ICancelableEventArgs } from "@docsvision/webclient/System/ICancelableEventArgs";
+import { ILayoutBeforeSavingEventArgs } from "@docsvision/webclient/System/ILayoutParams";
 import { Layout } from "@docsvision/webclient/System/Layout";
+import { resources } from "@docsvision/webclient/System/Resources";
 import IMask from "imask";
+import { checkValueLength } from "../../Utils/CheckValueLength";
 
 export const customizeSubstitutionPowerOfAttorneyCardForEditLayout = (sender: Layout) => {
     const controls = sender.layout.controls;
@@ -7,28 +12,58 @@ export const customizeSubstitutionPowerOfAttorneyCardForEditLayout = (sender: La
     const indsignCitizenship = controls.indsignCitizenship;
     const possibilityOfSubstSPOA = controls.possibilityOfSubstSPOA;
 
-    customizeInputFields()
+    customizeInputFields(sender);
     onDataChangedPossibilityOfSubstSPOA(sender);
     onDataChangedReprSignCitshipSPOA(sender);
     onDataChangedIndsignCitizenship(sender);
 
+    sender.params.beforeCardSaving.subscribe(checkPowersBeforeSaving);
     possibilityOfSubstSPOA && possibilityOfSubstSPOA.params.dataChanged.subscribe(onDataChangedPossibilityOfSubstSPOA);
     reprSignCitshipSPOA && reprSignCitshipSPOA.params.dataChanged.subscribe(onDataChangedReprSignCitshipSPOA);
     indsignCitizenship && indsignCitizenship.params.dataChanged.subscribe(onDataChangedIndsignCitizenship);
 }
 
-const customizeInputFields = () => {
-    const INNIndividual = document.querySelector('[data-control-name="INNIndividual"]');
-    INNIndividual?.getElementsByTagName('input')[0].setAttribute("maxLength", "12");
-    const reprINNSPOA = document.querySelector('[data-control-name="reprINNSPOA"]');
-    reprINNSPOA?.getElementsByTagName('input')[0].setAttribute("maxLength", "12");
+const checkPowersBeforeSaving = (sender: Layout, args: ICancelableEventArgs<ILayoutBeforeSavingEventArgs>) => {
+    const refPowersTable = sender.controls.refPowersTable;
+    const powersSPOA = sender.controls. powersSPOA;
+    if (refPowersTable.params.rows.length === 0 && powersSPOA.params.rows.length === 0) {
+        sender.params.services.messageWindow.showError(resources.Error_PowersEmpty);
+        args.cancel();
+    }
+}
+
+const limitations = [
+    { name: "INNIndividual", length: 12 },
+    { name: "indCodeCitizenship", length: 3 },
+    { name: "reprINNSPOA", length: 12 },
+    { name: "foreignReprCitshipSPOA", length: 3 }
+]
+
+const customizeInputFields = (sender: Layout) => {
     const maskOptions = {
         mask: '000-000-000 00'
     }
-    const SNILSIndividualInputElement = document.querySelector('[data-control-name="SNILSIndividual"]')?.getElementsByTagName('input')[0];
-    IMask(SNILSIndividualInputElement, maskOptions);
-    const reprSNILSSPOAInputElement = document.querySelector('[data-control-name="reprSNILSSPOA"]')?.getElementsByTagName('input')[0];
-    IMask(reprSNILSSPOAInputElement, maskOptions);    
+
+    limitations.forEach(limitation => {
+        const element = document.querySelector(`[data-control-name="${limitation.name}"] input`);
+        element.setAttribute("maxLength", `${limitation.length}`);
+        sender.controls.get<TextBox>(limitation.name).params.blur.subscribe((sender: TextBox) => {   
+            checkValueLength(element, sender.params.value.length, sender.layout.params.services, limitation.length);
+        })
+    })
+    
+    const SNILSIndividual = document.querySelector('[data-control-name="SNILSIndividual"] input') as HTMLElement;
+    IMask(SNILSIndividual, maskOptions);
+    sender.controls.SNILSIndividual.params.blur.subscribe((sender: TextBox) => {
+        checkValueLength(SNILSIndividual, sender.params.value.replaceAll("-", "").replace(" ", "").length, sender.layout.params.services, 11);
+    })
+
+    const reprSNILSSPOA = document.querySelector('[data-control-name="reprSNILSSPOA"]')?.getElementsByTagName('input')[0];
+    IMask(reprSNILSSPOA, maskOptions);    
+    sender.controls.reprSNILSSPOA.params.blur.subscribe((sender: TextBox) => {
+        checkValueLength(reprSNILSSPOA, sender.params.value.replaceAll("-", "").replace(" ", "").length, sender.layout.params.services, 11);
+    })
+
 }
 
 const onDataChangedPossibilityOfSubstSPOA = (sender: Layout) => {

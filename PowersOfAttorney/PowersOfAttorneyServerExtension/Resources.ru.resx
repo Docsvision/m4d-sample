@@ -315,4 +315,13 @@
   <data name="Error_UnableToGetParentalPowerOfAttorneyUserCard" xml:space="preserve">
     <value>Не удалось получить родительскую доверенность</value>
   </data>
+  <data name="Error_PowerCodeLength" xml:space="preserve">
+    <value>Выбранную запись невозможно добавить из-за требований данной формы МЧД (код полномочия должен содержать от 6 до 255 знаков)</value>
+  </data>
+  <data name="Error_PowersEmpty" xml:space="preserve">
+    <value>Не указазаны полномочия</value>
+  </data>
+  <data name="Error_ValueLength" xml:space="preserve">
+    <value>Значение не может быть меньше {0} символов</value>
+  </data>
 </root>

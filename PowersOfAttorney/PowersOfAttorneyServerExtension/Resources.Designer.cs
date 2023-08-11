@@ -19,7 +19,7 @@ namespace PowersOfAttorneyServerExtension {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -457,11 +457,29 @@ namespace PowersOfAttorneyServerExtension {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The selected entry cannot be added due to the requirements of this POA form (a power code must contain from 6 to 255 characters).
+        /// </summary>
+        internal static string Error_PowerCodeLength {
+            get {
+                return ResourceManager.GetString("Error_PowerCodeLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error_PowerOfAttorneyNumberNotFound.
         /// </summary>
         internal static string Error_PowerOfAttorneyNumberNotFound {
             get {
                 return ResourceManager.GetString("Error_PowerOfAttorneyNumberNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Powers are not specified.
+        /// </summary>
+        internal static string Error_PowersEmpty {
+            get {
+                return ResourceManager.GetString("Error_PowersEmpty", resourceCulture);
             }
         }
         
@@ -552,6 +570,15 @@ namespace PowersOfAttorneyServerExtension {
         internal static string Error_UserCardNotFound {
             get {
                 return ResourceManager.GetString("Error_UserCardNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Value cannot be less than {0} characters.
+        /// </summary>
+        internal static string Error_ValueLength {
+            get {
+                return ResourceManager.GetString("Error_ValueLength", resourceCulture);
             }
         }
         
