@@ -15,7 +15,7 @@ export async function sendPowerOfAttorneyToRegistrationAsNumber(sender: LayoutCo
     const powerOfAttorneyIdControl = sender.layout.getService($ControlStore).get<CardLink>("powerOfAttorneySysCard");
     edi_sendPowerOfAttorneyToRegistrationAsNumber(sender, powerOfAttorneyIdControl.value?.cardId)
 }
-export async function revokePowerOfAttorney(sender: LayoutControl) {
+export async function sendPowerOfAttorneyRevokation(sender: LayoutControl) {
     const powerOfAttorneyIdControl = sender.layout.getService($ControlStore).get<CardLink>("powerOfAttorneySysCard");
     edi_revokePowerOfAttorney(sender, powerOfAttorneyIdControl.value?.cardId)
 }
