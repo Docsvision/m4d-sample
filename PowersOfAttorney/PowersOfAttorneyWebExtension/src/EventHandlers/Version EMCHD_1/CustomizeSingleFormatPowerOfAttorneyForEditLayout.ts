@@ -157,7 +157,8 @@ const limitations = [
     { name: "princINN", length: 10 },
     { name: "princKPP", length: 9 },
     { name: "princOGRN", length: 13 },
-    { name: "princAddrSubRus", length: 2 }
+    { name: "princAddrSubRus", length: 2 },
+    { name: "reprAddrSubRus", length: 2}
    
 ]
 

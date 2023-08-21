@@ -146,7 +146,8 @@ const limitations = [
     { name: "ceoCitizenship", length: 3 },
     { name: "ceoAddrSubRus", length: 2 },
     { name: "reprINN", length: 12 },
-    { name: "reprCitizenship", length: 3 }
+    { name: "reprCitizenship", length: 3 },
+    { name: "reprAddrSubRus", length: 2}
    
 ]
 
