@@ -15,7 +15,7 @@ using static DocsVision.BackOffice.ObjectModel.Services.Entities.PowerOfAttorney
 using static DocsVision.BackOffice.ObjectModel.Services.Entities.PowerOfAttorneyFNSDOVBBData;
 using static PowersOfAttorneyServerExtension.Helpers.UserCardPowerOfAttorney;
 
-internal static class UserCardPowerOfAttorneyFNSDOVBBExtensions
+public static class UserCardPowerOfAttorneyFNSDOVBBExtensions
 {
     public static PowerOfAttorneyData ConvertToPowerOfAttorneyFNSDOVBBData(this UserCardPowerOfAttorney userCard, IPowerOfAttorneyService powerOfAttorneyService)
     {

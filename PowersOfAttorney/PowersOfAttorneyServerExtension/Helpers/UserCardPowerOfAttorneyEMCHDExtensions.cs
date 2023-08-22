@@ -11,7 +11,7 @@ using static PowersOfAttorneyServerExtension.Helpers.UserCardPowerOfAttorney;
 
 namespace PowersOfAttorneyServerExtension.Helpers
 {
-    internal static class UserCardPowerOfAttorneyEMCHDExtensions
+    public static class UserCardPowerOfAttorneyEMCHDExtensions
     {
         public static PowerOfAttorneyData ConvertToPowerOfAttorneyEMCHDData(this UserCardPowerOfAttorney userCard, ObjectContext context)
         {

@@ -203,7 +203,7 @@ namespace PowersOfAttorneyServerExtension.Services
                 return userCard.ConvertToPowerOfAttorneyFNSDOVBBData(PowerOfAttorneyService);
 
             if (formatId == PowerOfAttorneyEMCHDData.FormatId)
-                return userCard.ConvertToPowerOfAttorneyEMCHDData(currentObjectContextProvider.GetOrCreateCurrentSessionContext());
+                return userCard.ConvertToPowerOfAttorneyEMCHDData(currentObjectContextProvider.GetOrCreateCurrentSessionContext().ObjectContext);
 
 
             throw new ArgumentOutOfRangeException(string.Format(Resources.InvalidPowerOfAttorneyFormat, formatId));

@@ -98,7 +98,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
             Value = value;
         }
 
-        internal TValue GetValueOrThrow(string message)
+        public TValue GetValueOrThrow(string message)
         {
             if (!HasValue)
                 throw new ArgumentException(message);
@@ -106,7 +106,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
             return Value;
         }
 
-        internal TValue GetValueOrThrow(string format, object arg)
+        public TValue GetValueOrThrow(string format, object arg)
         {
             if (!HasValue)
                 throw new ArgumentException(string.Format(format, arg));
