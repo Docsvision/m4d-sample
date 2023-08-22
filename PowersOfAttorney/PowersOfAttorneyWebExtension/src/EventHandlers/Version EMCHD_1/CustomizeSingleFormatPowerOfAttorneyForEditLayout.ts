@@ -188,25 +188,25 @@ const customizeInputFields = (sender: Layout) => {
     const ceoSNILS = document.querySelector('[data-control-name="ceoSNILS"] input') as HTMLElement;
     IMask(ceoSNILS, maskOptions.SNILS);
     sender.controls.ceoSNILS.params.blur.subscribe((sender: TextBox) => {
-        checkValueLength(ceoSNILS, sender.params.value.replaceAll("-", "").replace(" ", "").length, sender.layout.params.services, 11);
+        checkValueLength(ceoSNILS, sender.params.value?.replaceAll("-", "").replace(" ", "").length, sender.layout.params.services, 11);
     })
 
     const reprSNILS = document.querySelector('[data-control-name="reprSNILS"] input') as HTMLElement;
     IMask(reprSNILS, maskOptions.SNILS);
     sender.controls.reprSNILS.params.blur.subscribe((sender: TextBox) => {
-        checkValueLength(reprSNILS, sender.params.value.replaceAll("-", "").replace(" ", "").length, sender.layout.params.services, 11);
+        checkValueLength(reprSNILS, sender.params.value?.replaceAll("-", "").replace(" ", "").length, sender.layout.params.services, 11);
     })
 
     const codeAuthIssCEOID = document.querySelector('[data-control-name="codeAuthIssCEOID"] input') as HTMLElement;
     IMask(codeAuthIssCEOID, maskOptions.code);
     sender.controls.codeAuthIssCEOID.params.blur.subscribe((sender: TextBox, args: IDataChangedEventArgs) => {
-        checkValueLength(codeAuthIssCEOID, args.newValue.replaceAll("-", "").replaceAll(" ", "").length, sender.layout.params.services, 6);
+        checkValueLength(codeAuthIssCEOID, args.newValue?.replaceAll("-", "").replaceAll(" ", "").length, sender.layout.params.services, 6);
     })
 
     const codeAuthIssReprID = document.querySelector('[data-control-name="codeAuthIssReprID"] input') as HTMLElement;
     IMask(codeAuthIssReprID, maskOptions.code);
     sender.controls.codeAuthIssReprID.params.blur.subscribe((sender: TextBox, args: IDataChangedEventArgs) => {
-        checkValueLength(codeAuthIssReprID, args.newValue.replaceAll("-", "").replaceAll(" ", "").length, sender.layout.params.services, 6);
+        checkValueLength(codeAuthIssReprID, args.newValue?.replaceAll("-", "").replaceAll(" ", "").length, sender.layout.params.services, 6);
     })
 }
 
