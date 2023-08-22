@@ -4,7 +4,7 @@ using System;
 
 namespace PowersOfAttorney.Scripts
 {
-    public interface IUserCardPOA
+    internal interface IUserCardPOA
     {
         Guid Id { get; }
 

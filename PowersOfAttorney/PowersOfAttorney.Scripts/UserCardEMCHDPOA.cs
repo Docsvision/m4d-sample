@@ -1,5 +1,4 @@
 ﻿using DocsVision.BackOffice.ObjectModel;
-using DocsVision.BackOffice.ObjectModel.Services;
 using DocsVision.BackOffice.ObjectModel.Services.Entities;
 using DocsVision.Platform.ObjectModel;
 using PowersOfAttorneyServerExtension.Helpers;
@@ -20,8 +19,6 @@ namespace PowersOfAttorney.Scripts
         }
 
         private ObjectContext Context { get; }
-
-        private IPowerOfAttorneyService PowerOfAttorneyService => this.Context.GetService<IPowerOfAttorneyService>();
 
         public Guid Id => document.GetObjectId();
 
