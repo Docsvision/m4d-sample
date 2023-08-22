@@ -5,6 +5,10 @@ VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowersOfAttorneyServerExtension", "PowersOfAttorneyServerExtension\PowersOfAttorneyServerExtension.csproj", "{92B6FB47-02BE-4449-BCDF-9A85A803D3E1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowersOfAttorney.Scripts", "PowersOfAttorney.Scripts\PowersOfAttorney.Scripts.csproj", "{FDF07623-C4D6-4547-A934-85D3E1FF6768}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowersOfAttorney.UserCard.Common", "PowersOfAttorney.UserCard.Common\PowersOfAttorney.UserCard.Common.csproj", "{519E9DF2-0B3A-4582-BD54-260D52BECA12}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{92B6FB47-02BE-4449-BCDF-9A85A803D3E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{92B6FB47-02BE-4449-BCDF-9A85A803D3E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{92B6FB47-02BE-4449-BCDF-9A85A803D3E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDF07623-C4D6-4547-A934-85D3E1FF6768}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDF07623-C4D6-4547-A934-85D3E1FF6768}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDF07623-C4D6-4547-A934-85D3E1FF6768}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDF07623-C4D6-4547-A934-85D3E1FF6768}.Release|Any CPU.Build.0 = Release|Any CPU
+		{519E9DF2-0B3A-4582-BD54-260D52BECA12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{519E9DF2-0B3A-4582-BD54-260D52BECA12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{519E9DF2-0B3A-4582-BD54-260D52BECA12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{519E9DF2-0B3A-4582-BD54-260D52BECA12}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

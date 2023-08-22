@@ -135,13 +135,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\PowersOfAttorneyDemoController.cs" />
-    <Compile Include="Helpers\BaseCardSectionRowExtensions.cs" />
-    <Compile Include="Helpers\StringExtensions.cs" />
-    <Compile Include="Helpers\UserCardPowerOfAttorney.cs" />
-    <Compile Include="Helpers\UserCardPowerOfAttorneyDovBB.cs" />
-    <Compile Include="Helpers\UserCardPowerOfAttorneyEmchd.cs" />
-    <Compile Include="Helpers\UserCardPowerOfAttorneyEMCHDExtensions.cs" />
-    <Compile Include="Helpers\UserCardPowerOfAttorneyFNSDOVBBExtensions.cs" />
     <Compile Include="Models\RequestRevocationRequest.cs" />
     <Compile Include="Models\RequestRevocationResponse.cs" />
     <Compile Include="PowersOfAttorneyWebClientExtension.cs" />
@@ -164,6 +157,15 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PowersOfAttorney.UserCard.Common\PowersOfAttorney.UserCard.Common.csproj">
+      <Project>{519e9df2-0b3a-4582-bd54-260d52beca12}</Project>
+      <Name>PowersOfAttorney.UserCard.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Helpers\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

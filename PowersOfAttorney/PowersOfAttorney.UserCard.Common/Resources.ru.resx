@@ -1,0 +1,327 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ApplicationForRevocationOfThePowerOfAttorney" xml:space="preserve">
+    <value>Заявление на отзыв доверенности</value>
+  </data>
+  <data name="CancellationOfThePowerOfAttorneyByThePrincipal" xml:space="preserve">
+    <value>Отмена доверенности доверителем</value>
+  </data>
+  <data name="EmchdRetrustNotImplemented" xml:space="preserve">
+    <value>Передоверие единого формата доверенностей не реализовано</value>
+  </data>
+  <data name="Error_DateIssCEOIDDocIsEmpty" xml:space="preserve">
+    <value>Не указан Дата выдачи документа, удостоверяющего личность руководителя организации</value>
+  </data>
+  <data name="Error_DateIssReprIDDocIsEmpty" xml:space="preserve">
+    <value>Не указан Дата выдачи документа, удостоверяющего личность представителя</value>
+  </data>
+  <data name="Error_DateTimeOfSignatureIsEmpty" xml:space="preserve">
+    <value>Не указана Дата и время подписи</value>
+  </data>
+  <data name="Error_EmptyCodeOfCitizenshipForForeignRepresentative" xml:space="preserve">
+    <value>Не указан код страны гражданства иностранного представителя</value>
+  </data>
+  <data name="Error_EmptyIssueDateOfDocumentProvingIdentity" xml:space="preserve">
+    <value>Не указана дата выдачи документа, удостоверяющего физлицо, действующее без доверенности</value>
+  </data>
+  <data name="Error_EmptyJointRepresentation" xml:space="preserve">
+    <value>Не указан признак совместных полномочий</value>
+  </data>
+  <data name="Error_EmptyMachineReadablePowerOfAttorney" xml:space="preserve">
+    <value>Не заполнены данные доверенности</value>
+  </data>
+  <data name="Error_EmptyPowerOfAttorneyEndDate" xml:space="preserve">
+    <value>Не указана дата окончания действия доверенности</value>
+  </data>
+  <data name="Error_EmptyPowerOfAttorneyStartDate" xml:space="preserve">
+    <value>Не указана дата совершения доверенности</value>
+  </data>
+  <data name="Error_EmptyPrincipalType" xml:space="preserve">
+    <value>Не указан тип доверителя</value>
+  </data>
+  <data name="Error_EmptyPrincipalWithoutPowerOfAttorneyIndividualCitizenship" xml:space="preserve">
+    <value>Не указан признак наличия гражданства лица, действующего без доверенности</value>
+  </data>
+  <data name="Error_EmptyPrincipalWithoutPowerOfAttorneyIndividualCountryCode" xml:space="preserve">
+    <value>Не указан код страны гражданства для иностранного физ лица, действующего без доверенности</value>
+  </data>
+  <data name="Error_EmptyRepresentativeCitizenshipType" xml:space="preserve">
+    <value>Не указан признак гражданства представителя</value>
+  </data>
+  <data name="Error_EmptyRepresentativeIndividualDocumentIssueDate" xml:space="preserve">
+    <value>Не указана дата выдачи документа, удостоверяющего физлицо-представителя</value>
+  </data>
+  <data name="Error_EmptyRepresentativeType" xml:space="preserve">
+    <value>Не указан тип уполномоченного представителя</value>
+  </data>
+  <data name="Error_EmptyRetrustType" xml:space="preserve">
+    <value>Не выбрана возможность оформления передоверия</value>
+  </data>
+  <data name="Error_EmptyRevocationPossibleType" xml:space="preserve">
+    <value>Не указан признак безотзывной доверенности</value>
+  </data>
+  <data name="Error_GenRepresentativeIsEmpty" xml:space="preserve">
+    <value>Не указан Тип доверителя</value>
+  </data>
+  <data name="Error_IncorrectUserCardData" xml:space="preserve">
+    <value>Заполнены не все обязательные данные или данные некорректны. Ошибка: {0}</value>
+  </data>
+  <data name="Error_JointExerIsEmpty" xml:space="preserve">
+    <value>Не указан Признак совместного осуществления полномочий</value>
+  </data>
+  <data name="Error_ParentalPowerOfAttorneyNotFound" xml:space="preserve">
+    <value>Не найдена доверенность, на основании которой осуществляется передоверие</value>
+  </data>
+  <data name="Error_PayNotarActionIsEmpty" xml:space="preserve">
+    <value>Не указаны Сведения об уплате за совершение нотариального действия</value>
+  </data>
+  <data name="Error_PoaDateOfIssueIsEmpty" xml:space="preserve">
+    <value>Не указан Дата совершения (выдачи) доверенности</value>
+  </data>
+  <data name="Error_PoaIDNotFoundInUserCard" xml:space="preserve">
+    <value>В пользовательской карточке доверенностей отсутствует идентификатор системной карточки доверенностей</value>
+  </data>
+  <data name="Error_PoaKindIsEmpty" xml:space="preserve">
+    <value>Не указан Вид доверенности</value>
+  </data>
+  <data name="Error_PossibilityOfSubstitutionIsEmpty" xml:space="preserve">
+    <value>Не указан Признак возможности оформления передоверия</value>
+  </data>
+  <data name="Error_PowerOfAttorneyNumberNotFound" xml:space="preserve">
+    <value>Отсутствует номер доверенности</value>
+  </data>
+  <data name="Error_PowersTypeIsEmpty" xml:space="preserve">
+    <value>Не указан Тип полномочия</value>
+  </data>
+  <data name="Error_PowersTypeOfSEBIsEmpty" xml:space="preserve">
+    <value>Не указан Вид полномочий единоличного исполнительного органа</value>
+  </data>
+  <data name="Error_PrincipalTypeIsEmpty" xml:space="preserve">
+    <value>Не указан Тип доверителя</value>
+  </data>
+  <data name="Error_RevocIrrevPOAIsEmpty" xml:space="preserve">
+    <value>Не указано Условие отзыва безотзывной доверенности</value>
+  </data>
+  <data name="Error_SignTransferIrrevPOAIsEmpty" xml:space="preserve">
+    <value>Не указана Дата и время подписи</value>
+  </data>
+  <data name="Error_SinglePOAregnumberIsEmpty" xml:space="preserve">
+    <value>Не указан Единый регистрационный номер доверенности</value>
+  </data>
+  <data name="Error_UserCardNotFound" xml:space="preserve">
+    <value>Пользовательская карточка доверенностей  {0} не найдена</value>
+  </data>
+  <data name="InvalidPowerOfAttorneyFormat" xml:space="preserve">
+    <value>Недопустимый формат доверенности: {0}</value>
+  </data>
+  <data name="PowerOfAttorney" xml:space="preserve">
+    <value>Доверенность</value>
+  </data>
+  <data name="PowerOfAttorneyGenerated" xml:space="preserve">
+    <value>Доверенность сформирована</value>
+  </data>
+  <data name="PowerOfAttorneyRevoked" xml:space="preserve">
+    <value>Доверенность отозвана</value>
+  </data>
+  <data name="PowerOfAttorneySigned" xml:space="preserve">
+    <value>Доверенность подписана</value>
+  </data>
+  <data name="Reason" xml:space="preserve">
+    <value>Причина</value>
+  </data>
+  <data name="RefusalOfTheRepresentativeFromThePowers" xml:space="preserve">
+    <value>Отказ представителя от полномочий</value>
+  </data>
+  <data name="SelectTheTypeOfApplicationForRevocation" xml:space="preserve">
+    <value>Выберите тип заявления на отзыв</value>
+  </data>
+  <data name="SignTheApplication" xml:space="preserve">
+    <value>Подписать заявление</value>
+  </data>
+  <data name="SpecifyTheReasonForCancellationOrRefusal" xml:space="preserve">
+    <value>Укажите причину отмены или отказа</value>
+  </data>
+  <data name="TheFollowingFieldsAreRequired" xml:space="preserve">
+    <value>Необходимо заполнить следующие поля</value>
+  </data>
+  <data name="Error_LegalAddressNotSpecified" xml:space="preserve">
+    <value>В организации {0} не указан юридический адрес.</value>
+  </data>
+  <data name="Error_InnNotSpecified" xml:space="preserve">
+    <value>В организации {0} не указан ИНН.</value>
+  </data>
+  <data name="Error_KppNotSpecified" xml:space="preserve">
+    <value>В организации {0} не указан КПП.</value>
+  </data>
+  <data name="Error_OgrnNotSpecified" xml:space="preserve">
+    <value>В организации {0} не указан ОГРН.</value>
+  </data>
+  <data name="Error_OrgNameNotSpecified" xml:space="preserve">
+    <value>В организации {0} не указано название.</value>
+  </data>
+  <data name="Error_PositionNotSpecified" xml:space="preserve">
+    <value>Для сотрудника {0} не указана должность.</value>
+  </data>
+  <data name="Error_GenCeoCitizenshipSignIsEmpty" xml:space="preserve">
+    <value>Не указан признак наличия гражданства</value>
+  </data>
+  <data name="Error_EmptyCeo" xml:space="preserve">
+    <value>Не удалось получить данные руководителя организации</value>
+  </data>
+  <data name="Error_EmptyPrincipalOrganization" xml:space="preserve">
+    <value>Не удалось получить данные доверителя</value>
+  </data>
+  <data name="Error_EmptyPrincipalWithoutPowerOfAttorneyIndividual" xml:space="preserve">
+    <value>Не удалось получить данные Физического лица, действующего без доверенности</value>
+  </data>
+  <data name="Error_EmptyRepresentativeIndividual" xml:space="preserve">
+    <value>Не удалось получить данные представителя</value>
+  </data>
+  <data name="Error_EmptySigner" xml:space="preserve">
+    <value>Не удалось получить данные подписанта</value>
+  </data>
+  <data name="Error_ParentalCardNotFound" xml:space="preserve">
+    <value>Отсутствует карточка родительской доверенности</value>
+  </data>
+  <data name="Error_UnableToGetPowersCodeFromRow" xml:space="preserve">
+    <value>Не удалось получить код полномочия из строки {0}</value>
+  </data>
+  <data name="Error_OriginalPowerOfAttorneyNotFound" xml:space="preserve">
+    <value>Не найдена первоначальная доверенность</value>
+  </data>
+  <data name="Error_UnableToGetOriginalPowerOfAttorneyUserCard" xml:space="preserve">
+    <value>Не удалось получить первоначальную доверенность</value>
+  </data>
+  <data name="Error_EmptyDelegatorType" xml:space="preserve">
+    <value>Не указан тип лица передавшего полномочия</value>
+  </data>
+  <data name="Error_UnableToGetParentalPowerOfAttorneyUserCard" xml:space="preserve">
+    <value>Не удалось получить родительскую доверенность</value>
+  </data>
+  <data name="Error_PowerCodeLength" xml:space="preserve">
+    <value>Выбранную запись невозможно добавить из-за требований данной формы МЧД (код полномочия должен содержать от 6 до 255 знаков)</value>
+  </data>
+  <data name="Error_PowersEmpty" xml:space="preserve">
+    <value>Не указаны полномочия</value>
+  </data>
+  <data name="Error_ValueLength" xml:space="preserve">
+    <value>Значение не может быть меньше {0} символов</value>
+  </data>
+</root>
