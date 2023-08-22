@@ -1,7 +1,7 @@
 ﻿using DocsVision.BackOffice.ObjectModel;
 using DocsVision.BackOffice.ObjectModel.Services.Entities;
 using DocsVision.Platform.ObjectModel;
-using PowersOfAttorneyServerExtension.Helpers;
+using PowersOfAttorney.UserCard.Common.Helpers;
 using System;
 
 namespace PowersOfAttorney.Scripts

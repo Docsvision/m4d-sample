@@ -1,19 +1,15 @@
 using DocsVision.BackOffice.ObjectModel;
 using DocsVision.BackOffice.ObjectModel.Services;
 using DocsVision.BackOffice.ObjectModel.Services.Entities;
-
-using PowersOfAttorneyServerExtension;
-using PowersOfAttorneyServerExtension.Helpers;
-
+using PowersOfAttorney.UserCard.Common;
+using PowersOfAttorney.UserCard.Common.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-
 using static DocsVision.BackOffice.ObjectModel.Services.Entities.PowerOfAttorneyFNSData;
-
 using static DocsVision.BackOffice.ObjectModel.Services.Entities.PowerOfAttorneyFNSDOVBBData;
-using static PowersOfAttorneyServerExtension.Helpers.UserCardPowerOfAttorney;
+using static PowersOfAttorney.UserCard.Common.Helpers.UserCardPowerOfAttorney;
 
 public static class UserCardPowerOfAttorneyFNSDOVBBExtensions
 {

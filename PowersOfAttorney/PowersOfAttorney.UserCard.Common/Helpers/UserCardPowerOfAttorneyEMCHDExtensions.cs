@@ -7,9 +7,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.ConstrainedExecution;
 
-using static PowersOfAttorneyServerExtension.Helpers.UserCardPowerOfAttorney;
+using static PowersOfAttorney.UserCard.Common.Helpers.UserCardPowerOfAttorney;
 
-namespace PowersOfAttorneyServerExtension.Helpers
+namespace PowersOfAttorney.UserCard.Common.Helpers
 {
     public static class UserCardPowerOfAttorneyEMCHDExtensions
     {

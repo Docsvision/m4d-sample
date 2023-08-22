@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace PowersOfAttorneyServerExtension.Helpers
+namespace PowersOfAttorney.UserCard.Common.Helpers
 {
     public partial class UserCardPowerOfAttorney
     {

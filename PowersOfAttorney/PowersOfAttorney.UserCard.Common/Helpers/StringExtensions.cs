@@ -1,4 +1,4 @@
-﻿namespace PowersOfAttorneyServerExtension.Helpers
+﻿namespace PowersOfAttorney.UserCard.Common.Helpers
 {
     public static class StringExtensions
     {

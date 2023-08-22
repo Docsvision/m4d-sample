@@ -5,7 +5,7 @@ using System;
 using System.Runtime.Remoting.Contexts;
 
 
-namespace PowersOfAttorneyServerExtension.Helpers
+namespace PowersOfAttorney.UserCard.Common.Helpers
 {
     internal static class BaseCardSectionRowExtensions
     {

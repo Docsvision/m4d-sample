@@ -6,7 +6,7 @@ using System.Linq;
 
 using static DocsVision.BackOffice.ObjectModel.Services.Entities.PowerOfAttorneyFNSData;
 
-namespace PowersOfAttorneyServerExtension.Helpers
+namespace PowersOfAttorney.UserCard.Common.Helpers
 {
     public partial class UserCardPowerOfAttorney
     {

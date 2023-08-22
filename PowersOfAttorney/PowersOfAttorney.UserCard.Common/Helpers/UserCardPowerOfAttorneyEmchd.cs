@@ -8,7 +8,7 @@ using System.Linq;
 
 using static DocsVision.BackOffice.ObjectModel.Services.Entities.PowerOfAttorneyEMCHDData;
 
-namespace PowersOfAttorneyServerExtension.Helpers
+namespace PowersOfAttorney.UserCard.Common.Helpers
 {
     public partial class UserCardPowerOfAttorney
     {

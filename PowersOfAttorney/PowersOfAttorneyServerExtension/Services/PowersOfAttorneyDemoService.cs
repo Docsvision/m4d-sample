@@ -7,7 +7,7 @@ using DocsVision.Platform.WebClient;
 
 using Microsoft.SqlServer.Server;
 
-using PowersOfAttorneyServerExtension.Helpers;
+using PowersOfAttorney.UserCard.Common.Helpers;
 using PowersOfAttorneyServerExtension.Models;
 
 using System;
