@@ -5,6 +5,7 @@ import { formatString } from "@docsvision/webclient/System/StringUtils";
 export const checkValueLength = async (element: Element, valueLength: number, services: $MessageWindow, length: number) => {
     if (valueLength > 0 && valueLength < length) {
         await services.messageWindow.showError(formatString(resources.Error_ValueLength, length));
+        // необходимо для избежания зацикливания показа окна с ошибкой
         setTimeout(() => (element as HTMLElement).focus(), 0);
     }
 }
