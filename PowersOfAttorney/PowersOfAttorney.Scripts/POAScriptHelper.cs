@@ -9,7 +9,7 @@ using DocsVision.BackOffice.WinForms.Controls;
 
 namespace PowersOfAttorney.Scripts
 {
-    internal class POAScriptHelper
+    public class POAScriptHelper
     {
         private readonly Guid powerOfAttorneyUserCardId;
         public POAScriptHelper(ObjectContext context, Guid powerOfAttorneyUserCardId)
