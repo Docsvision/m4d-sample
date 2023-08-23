@@ -1,7 +1,5 @@
-﻿using DocsVision.BackOffice.WinForms;
-
-using DevExpress.XtraBars;
-using ItemClickEventArgs = System.Object;//comment
+﻿using DevExpress.XtraBars;
+using DocsVision.BackOffice.WinForms;
 
 namespace PowersOfAttorney.Scripts
 {
