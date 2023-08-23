@@ -24,7 +24,7 @@ namespace PowersOfAttorney.Scripts
 
         public Guid CreateEMCHDPowerOfAttorney()
         {
-            IUserCardPOA userCardPOA = GetUserCardPOA();
+            var userCardPOA = GetUserCard();
 
             var powerOfAttorneyFormat = this.Context.GetObject<PowersPowerOfAttorneyFormat>(PowerOfAttorneyEMCHDData.FormatId);
 
@@ -47,7 +47,7 @@ namespace PowersOfAttorney.Scripts
 
         public Guid CreateEMCHDRetrustPowerOfAttorney()
         {
-            IUserCardPOA userCardPOA = GetUserCardPOA();
+            var userCardPOA = GetUserCard();
 
             var powerOfAttorney = this.PowerOfAttorneyService.RetrustPowerOfAttorney(userCardPOA.PowerOfAttorneyData,
                                                                                     userCardPOA.Representative,
@@ -94,34 +94,14 @@ namespace PowersOfAttorney.Scripts
             this.Context.AcceptChanges();
         }
 
-        private IUserCardPOA GetUserCardPOA()
+        private UserCardEMCHDPowerOfAttorney GetUserCard()
         {
-            var document = this.Context.GetObject<Document>(powerOfAttorneyUserCardId);
-
-            if (document == null)
-            {
-                throw new Exception("User card not found " + powerOfAttorneyUserCardId);
-            }
-
-            return new UserCardEMCHDPOA(this.Context, document);
-        } 
+            return UserCardEMCHDPowerOfAttorney.GetUserCard(this.Context, powerOfAttorneyUserCardId);
+        }
 
         private PowerOfAttorney GetPowerOfAttorneyCard()
         {
-            var powerOfAttorneyId = GetPowerOfAttorneyCardId();
-            return this.Context.GetObject<PowerOfAttorney>(powerOfAttorneyId);
-        }
-
-        private Guid GetPowerOfAttorneyCardId()
-        {
-            var userCardPowerOfAttorney = GetUserCardPOA();
-
-            if (userCardPowerOfAttorney.PowerOfAttorneyCardId.GetValueOrDefault() == Guid.Empty)
-            {
-                throw new Exception("Poa ID not found in user card");
-            }
-
-            return userCardPowerOfAttorney.PowerOfAttorneyCardId.Value;
+            return UserCardEMCHDPowerOfAttorney.GetPowerOfAttorneyCard(this.Context, powerOfAttorneyUserCardId);
         }
 
         private void WithFolder(Action<string> action)

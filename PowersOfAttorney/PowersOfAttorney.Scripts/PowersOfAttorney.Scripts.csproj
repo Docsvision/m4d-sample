@@ -69,10 +69,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DocumentScript.cs" />
-    <Compile Include="IUserCardPOA.cs" />
     <Compile Include="POAScriptHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserCardEMCHDPOA.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PowersOfAttorney.UserCard.Common\PowersOfAttorney.UserCard.Common.csproj">

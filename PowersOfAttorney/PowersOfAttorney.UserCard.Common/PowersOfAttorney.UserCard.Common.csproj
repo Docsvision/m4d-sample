@@ -64,6 +64,7 @@
   <ItemGroup>
     <Compile Include="Helpers\BaseCardSectionRowExtensions.cs" />
     <Compile Include="Helpers\StringExtensions.cs" />
+    <Compile Include="Helpers\UserCardEMCHDPowerOfAttorney.cs" />
     <Compile Include="Helpers\UserCardPowerOfAttorney.cs" />
     <Compile Include="Helpers\UserCardPowerOfAttorneyDovBB.cs" />
     <Compile Include="Helpers\UserCardPowerOfAttorneyEmchd.cs" />
