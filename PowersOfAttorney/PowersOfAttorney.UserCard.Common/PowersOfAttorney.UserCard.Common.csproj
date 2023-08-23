@@ -87,5 +87,20 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
+	<PropertyGroup>
+		<SignAssembly>true</SignAssembly>
+	</PropertyGroup>
+	<PropertyGroup>
+		<AssemblyOriginatorKeyFile>..\..\StrongNameKey.snk</AssemblyOriginatorKeyFile>
+	</PropertyGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+	<PropertyGroup>
+		<SamplesOutput Condition=" '$(SamplesOutput)' == '' ">$(SolutionDir)SamplesOutput</SamplesOutput>
+		<PostBuildEvent>
+			xcopy "$(TargetDir)$(TargetName).dll" "$(SamplesOutput)\Site\Extensions\$(TargetName)\" /Y /I
+			xcopy "$(TargetDir)$(TargetName)*.resources.dll" "$(SamplesOutput)\Site\Extensions\" /Y /I /E
+			xcopy "$(TargetDir)$(TargetName).dll" "$(SamplesOutput)\Scripts\$(TargetName)\" /Y /I
+			xcopy "$(TargetDir)$(TargetName)*.resources.dll" "$(SamplesOutput)\Scripts\" /Y /I /E
+		</PostBuildEvent>
+	</PropertyGroup>
 </Project>

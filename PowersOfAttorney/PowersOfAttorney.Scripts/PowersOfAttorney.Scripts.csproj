@@ -79,5 +79,17 @@
       <Name>PowersOfAttorney.UserCard.Common</Name>
     </ProjectReference>
   </ItemGroup>
+	<PropertyGroup>
+		<SignAssembly>true</SignAssembly>
+	</PropertyGroup>
+	<PropertyGroup>
+		<AssemblyOriginatorKeyFile>..\..\StrongNameKey.snk</AssemblyOriginatorKeyFile>
+	</PropertyGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+	<PropertyGroup>
+		<SamplesOutput Condition=" '$(SamplesOutput)' == '' ">$(SolutionDir)SamplesOutput</SamplesOutput>
+		<PostBuildEvent>
+			xcopy "$(TargetDir)$(TargetName).dll" "$(SamplesOutput)\Scripts\$(TargetName)\" /Y /I
+		</PostBuildEvent>
+	</PropertyGroup>
 </Project>
