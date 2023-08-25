@@ -454,7 +454,7 @@
                   <Properties>
                     <Property Name="Tag" Value="" Type="System.String, mscorlib" IsAvailable="true" />
                     <Property Name="Name" Value="headerLabel" Type="System.String, mscorlib" IsAvailable="true" />
-                    <Property Name="Text" Value="e45745ef-2c55-4a14-9123-2baabc5fa858" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="true" />
+                    <Property Name="Text" Value="dfccf749-efc2-48f7-bc2d-48dfeb6e39f9" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="true" />
                     <Property Name="StandardCssClass" Value="system-label" Type="System.String, mscorlib" IsAvailable="true" />
                     <Property Name="CustomCssClasses" Value="document-name-small document-view" Type="System.String, mscorlib" IsAvailable="true" />
                     <Property Name="Visibility" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
@@ -1060,7 +1060,7 @@
           <Properties>
             <Property Name="Tag" Value="" Type="System.String, mscorlib" IsAvailable="true" />
             <Property Name="Name" Value="powerOfAttorneyBlock" Type="System.String, mscorlib" IsAvailable="true" />
-            <Property Name="Header" Value="a10f4e38-175b-46ea-a82e-57b4e52f9d9e" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="true" />
+            <Property Name="Header" Value="f4ea675e-c947-4270-9c37-ef7d282b8c21" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="true" />
             <Property Name="Visibility" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
               <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
                 <Desktop>true</Desktop>
