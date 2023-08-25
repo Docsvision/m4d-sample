@@ -1,10 +1,15 @@
-﻿using DevExpress.XtraBars;
+﻿using System;
+using System.Windows.Forms;
+using DocsVision.Platform.ObjectManager;
+using DocsVision.Platform.ObjectModel;
 using DocsVision.BackOffice.WinForms;
+using DocsVision.BackOffice.ObjectModel;
+using PowersOfAttorney.Scripts;
+using DevExpress.XtraBars;
 
-namespace PowersOfAttorney.Scripts
+namespace BackOffice
 {
-    [CardKindScriptClass]
-    internal class DocumentScript : ScriptClassBase
+    public class CardDocumentДоверенность__версия_EMHCD_1_Script : ScriptClassBase //CardDocumentМЧДScript
     {
         protected POAScriptHelper scriptHelper;
         protected virtual POAScriptHelper POAScriptHelper
@@ -87,8 +92,8 @@ namespace PowersOfAttorney.Scripts
         public virtual void ExportWithoutSignaturePowerOfAttorney_ItemClick()
         {
             POAScriptHelper.Export(withSignature: false);
-        } 
-        
+        }
+
         /// <summary>
         /// Mark as revoked
         /// </summary>
