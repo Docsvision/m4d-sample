@@ -6,6 +6,7 @@ using DocsVision.BackOffice.ObjectModel.Services.Entities;
 using System.Security.Cryptography.X509Certificates;
 using System.Windows.Forms;
 using DocsVision.BackOffice.WinForms.Controls;
+using System.Diagnostics;
 
 namespace PowersOfAttorney.Scripts
 {
@@ -22,76 +23,87 @@ namespace PowersOfAttorney.Scripts
 
         private IPowerOfAttorneyService PowerOfAttorneyService => this.Context.GetService<IPowerOfAttorneyService>();
 
-        public Guid CreateEMCHDPowerOfAttorney()
+        public void CreateEMCHDPowerOfAttorney()
         {
-            var userCardPOA = GetUserCard();
+            Try(() =>
+            {
+                var userCardPOA = GetUserCard();
 
-            var powerOfAttorneyFormat = this.Context.GetObject<PowersPowerOfAttorneyFormat>(PowerOfAttorneyEMCHDData.FormatId);
+                var powerOfAttorneyFormat = this.Context.GetObject<PowersPowerOfAttorneyFormat>(PowerOfAttorneyEMCHDData.FormatId);
 
-            var powerOfAttorney = this.PowerOfAttorneyService.CreatePowerOfAttorney(userCardPOA.PowerOfAttorneyData,
-                                                                                    userCardPOA.Representative,
-                                                                                    userCardPOA.Signer,
-                                                                                    powerOfAttorneyFormat);
-            powerOfAttorney.MainInfo.UserCard = userCardPOA.Id;
-            powerOfAttorney.MainInfo.PrincipalINN = userCardPOA.PrincipalInn;
-            this.Context.SaveObject(powerOfAttorney);
+                var powerOfAttorney = this.PowerOfAttorneyService.CreatePowerOfAttorney(userCardPOA.PowerOfAttorneyData,
+                                                                                        userCardPOA.Representative,
+                                                                                        userCardPOA.Signer,
+                                                                                        powerOfAttorneyFormat);
+                powerOfAttorney.MainInfo.UserCard = userCardPOA.Id;
+                powerOfAttorney.MainInfo.PrincipalINN = userCardPOA.PrincipalInn;
+                this.Context.SaveObject(powerOfAttorney);
 
-            var powerOfAttorneyId = powerOfAttorney.GetObjectId();
+                var powerOfAttorneyId = powerOfAttorney.GetObjectId();
 
-            // Сохраним ИД созданной СКД в ПКД
-            userCardPOA.PowerOfAttorneyCardId = powerOfAttorneyId;
-            this.Context.AcceptChanges();
-
-            return powerOfAttorneyId;
+                // Сохраним ИД созданной СКД в ПКД
+                userCardPOA.PowerOfAttorneyCardId = powerOfAttorneyId;
+                this.Context.AcceptChanges();
+            });
         }
 
-        public Guid CreateEMCHDRetrustPowerOfAttorney()
+        public void CreateEMCHDRetrustPowerOfAttorney()
         {
-            var userCardPOA = GetUserCard();
+            Try(() =>
+            {
+                var userCardPOA = GetUserCard();
 
-            var powerOfAttorney = this.PowerOfAttorneyService.RetrustPowerOfAttorney(userCardPOA.PowerOfAttorneyData,
-                                                                                    userCardPOA.Representative,
-                                                                                    userCardPOA.Signer,
-                                                                                    userCardPOA.ParentalPowerOfAttorney);
-            powerOfAttorney.MainInfo.UserCard = userCardPOA.Id;
-            powerOfAttorney.MainInfo.PrincipalINN = userCardPOA.PrincipalInn;
-            this.Context.SaveObject(powerOfAttorney);
+                var powerOfAttorney = this.PowerOfAttorneyService.RetrustPowerOfAttorney(userCardPOA.PowerOfAttorneyData,
+                                                                                        userCardPOA.Representative,
+                                                                                        userCardPOA.Signer,
+                                                                                        userCardPOA.ParentalPowerOfAttorney);
+                powerOfAttorney.MainInfo.UserCard = userCardPOA.Id;
+                powerOfAttorney.MainInfo.PrincipalINN = userCardPOA.PrincipalInn;
+                this.Context.SaveObject(powerOfAttorney);
 
-            var powerOfAttorneyId = powerOfAttorney.GetObjectId();
+                var powerOfAttorneyId = powerOfAttorney.GetObjectId();
 
-            // Сохраним ИД созданной СКД в ПКД
-            userCardPOA.PowerOfAttorneyCardId = powerOfAttorneyId;
-            this.Context.AcceptChanges();
-
-            return powerOfAttorneyId;
+                // Сохраним ИД созданной СКД в ПКД
+                userCardPOA.PowerOfAttorneyCardId = powerOfAttorneyId;
+                this.Context.AcceptChanges();
+            });
         }
 
         public void SignPowerOfAttorney()
         {
-            WithCertificate(cert =>
+            Try(() =>
             {
-                PowerOfAttorney powerOfAttorney = GetPowerOfAttorneyCard();
+                WithCertificate(cert =>
+                {
+                   PowerOfAttorney powerOfAttorney = GetPowerOfAttorneyCard();
 
-                this.PowerOfAttorneyService.SignPowerOfAttorney(powerOfAttorney, cert, PowerOfAttorneySignatureFormat.CADES);
-                this.Context.AcceptChanges();
+                   this.PowerOfAttorneyService.SignPowerOfAttorney(powerOfAttorney, cert, PowerOfAttorneySignatureFormat.CADES);
+                   this.Context.AcceptChanges();
+                });
             });
         }
 
         public void Export(bool withSignature)
         {
-            WithFolder(folder =>
+            Try(() =>
             {
-                var powerOfAttorney = GetPowerOfAttorneyCard();
-                this.PowerOfAttorneyService.ExportMachineReadablePowerOfAttorney(powerOfAttorney, folder, withSignature);
+                WithFolder(folder =>
+                {
+                   var powerOfAttorney = GetPowerOfAttorneyCard();
+                   this.PowerOfAttorneyService.ExportMachineReadablePowerOfAttorney(powerOfAttorney, folder, withSignature);
+                });
             });
         }
 
         public void MarkAsRevokedPowerOfAttorney(bool withChildrenPowerOfAttorney)
         {
-            PowerOfAttorney powerOfAttorney = GetPowerOfAttorneyCard();
+            Try(() =>
+            {
+                PowerOfAttorney powerOfAttorney = GetPowerOfAttorneyCard();
 
-            this.PowerOfAttorneyService.MarkAsRevoked(powerOfAttorney, withChildrenPowerOfAttorney);
-            this.Context.AcceptChanges();
+                this.PowerOfAttorneyService.MarkAsRevoked(powerOfAttorney, withChildrenPowerOfAttorney);
+                this.Context.AcceptChanges();
+            });
         }
 
         private UserCardEMCHDPowerOfAttorney GetUserCard()
@@ -107,7 +119,7 @@ namespace PowersOfAttorney.Scripts
         private void WithFolder(Action<string> action)
         {
             using (FolderBrowserDialog dlg = new FolderBrowserDialog())
-            {              
+            {
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
                     action(dlg.SelectedPath);
@@ -118,7 +130,7 @@ namespace PowersOfAttorney.Scripts
         private void WithCertificate(Action<X509Certificate2> action)
         {
             bool cancel = false;
-            X509Certificate2 certificate = 
+            X509Certificate2 certificate =
                 SelectCertificateForm.SelectCertificate(ref cancel, this.Context, true, out IKeyContainer keyContainer);
 
             try
@@ -132,6 +144,24 @@ namespace PowersOfAttorney.Scripts
             {
                 keyContainer?.Dispose();
             }
+        }
+
+        private void Try(Action handler)
+        {
+            try
+            {
+                handler.Invoke();
+            }
+            catch (Exception ex)
+            {
+                ProcessException(ex);
+            }
+        }
+
+        private void ProcessException(Exception ex)
+        {
+            Trace.WriteLine(ex.ToString());
+            MessageBox.Show(ex.ToString());
         }
     }
 }
