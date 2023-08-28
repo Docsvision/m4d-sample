@@ -92,14 +92,3 @@ export const onRepresentativeDataChanged = async (sender: StaffDirectoryItems, a
         authIssReprID.params.value = "";
     }
 }
-
-export const onSignPossIssSubstDataChanged = (sender: RadioGroup, args: IDataChangedEventArgs) => {
-    const controls = sender.layout.controls;
-    if (args.newValue === "withoutSubstitution") {
-        controls.textPowersTable.params.columns[3].visibility = false;
-        controls.refPowersTable.params.columns[3].visibility = false;  
-    } else {
-        controls.refPowersTable.params.columns[3].visibility = true;
-        controls.textPowersTable.params.columns[3].visibility = true;
-    }  
-}

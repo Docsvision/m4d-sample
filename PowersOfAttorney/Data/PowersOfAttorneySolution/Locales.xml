@@ -483,6 +483,12 @@
   <Property Key="935aca57-1529-40ee-bdae-54619b93faaa" />
   <Property Key="373f5797-25be-4e9e-93cb-90e1c6b97073" />
   <Property Key="b6ee7ee5-48c3-4e7a-ac68-de58662e6bbb" />
+  <Property Key="62aba58a-0482-49c6-878c-f7c775838a04" />
+  <Property Key="1033939b-b993-4f24-88ee-b76db5356c38" />
+  <Property Key="dfccf749-efc2-48f7-bc2d-48dfeb6e39f9" />
+  <Property Key="6c11ae26-d480-4783-b26a-ab3e4e30a465" />
+  <Property Key="41f94382-c476-4aff-b25e-96da907fe703" />
+  <Property Key="5e4814be-13b0-4bb4-b780-97206080caa6" />
 </LayoutLocalization>
     </File>
   </Locale>
@@ -969,6 +975,12 @@
   <Property Key="935aca57-1529-40ee-bdae-54619b93faaa" />
   <Property Key="373f5797-25be-4e9e-93cb-90e1c6b97073" />
   <Property Key="b6ee7ee5-48c3-4e7a-ac68-de58662e6bbb" />
+  <Property Key="62aba58a-0482-49c6-878c-f7c775838a04" />
+  <Property Key="1033939b-b993-4f24-88ee-b76db5356c38" />
+  <Property Key="dfccf749-efc2-48f7-bc2d-48dfeb6e39f9" />
+  <Property Key="6c11ae26-d480-4783-b26a-ab3e4e30a465" />
+  <Property Key="41f94382-c476-4aff-b25e-96da907fe703" />
+  <Property Key="5e4814be-13b0-4bb4-b780-97206080caa6" />
 </LayoutLocalization>
     </File>
   </Locale>
@@ -1455,6 +1467,12 @@
   <Property Key="935aca57-1529-40ee-bdae-54619b93faaa" PropertyValue="Сведения о юридическом лице - доверителе" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="373f5797-25be-4e9e-93cb-90e1c6b97073" PropertyValue="3 цифры, принимает значение в соответствии с Общероссийским классификатором стран мира. По умолчанию установлен код России - 643." SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="b6ee7ee5-48c3-4e7a-ac68-de58662e6bbb" PropertyValue="4 знака, не указывается при оформлении доверенности в отношении всех налоговых органов Российской Федерации" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="62aba58a-0482-49c6-878c-f7c775838a04" PropertyValue="Send to registration" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="1033939b-b993-4f24-88ee-b76db5356c38" PropertyValue="Доверенность (формат 002)" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="dfccf749-efc2-48f7-bc2d-48dfeb6e39f9" PropertyValue="Доверенность (формат EMCHD_1)" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="6c11ae26-d480-4783-b26a-ab3e4e30a465" PropertyValue="Передоверие (формат 002)" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="41f94382-c476-4aff-b25e-96da907fe703" PropertyValue="Передоверие (формат EMCHD_1)" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="5e4814be-13b0-4bb4-b780-97206080caa6" PropertyValue="Должна быть не больше даты, указанной в доверенности, на основании которой выдаётся данная доверенность" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
 </LayoutLocalization>
     </File>
   </Locale>
@@ -1941,6 +1959,12 @@
   <Property Key="935aca57-1529-40ee-bdae-54619b93faaa" PropertyValue="Сведения о юридическом лице - доверителе" />
   <Property Key="373f5797-25be-4e9e-93cb-90e1c6b97073" PropertyValue="3 цифры, принимает значение в соответствии с Общероссийским классификатором стран мира. По умолчанию установлен код России - 643." />
   <Property Key="b6ee7ee5-48c3-4e7a-ac68-de58662e6bbb" PropertyValue="4 знака, не указывается при оформлении доверенности в отношении всех налоговых органов Российской Федерации" />
+  <Property Key="62aba58a-0482-49c6-878c-f7c775838a04" PropertyValue="Отправить на регистрацию" />
+  <Property Key="1033939b-b993-4f24-88ee-b76db5356c38" PropertyValue="Доверенность (формат 002)" />
+  <Property Key="dfccf749-efc2-48f7-bc2d-48dfeb6e39f9" PropertyValue="Доверенность (формат EMCHD_1)" />
+  <Property Key="6c11ae26-d480-4783-b26a-ab3e4e30a465" PropertyValue="Передоверие (формат 002)" />
+  <Property Key="41f94382-c476-4aff-b25e-96da907fe703" PropertyValue="Передоверие (формат EMCHD_1)" />
+  <Property Key="5e4814be-13b0-4bb4-b780-97206080caa6" PropertyValue="Должна быть не больше даты, указанной в доверенности, на основании которой выдаётся данная доверенность" />
 </LayoutLocalization>
     </File>
   </Locale>

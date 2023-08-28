@@ -348,7 +348,7 @@
                   <Properties>
                     <Property Name="Tag" Value="" Type="System.String, mscorlib" IsAvailable="true" />
                     <Property Name="Name" Value="headerLabel" Type="System.String, mscorlib" IsAvailable="true" />
-                    <Property Name="Text" Value="58e66e2c-734b-4491-b6c3-36e6a975b611" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="true" />
+                    <Property Name="Text" Value="6c11ae26-d480-4783-b26a-ab3e4e30a465" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="true" />
                     <Property Name="StandardCssClass" Value="system-label" Type="System.String, mscorlib" IsAvailable="true" />
                     <Property Name="CustomCssClasses" Value="document-name-small document-view" Type="System.String, mscorlib" IsAvailable="true" />
                     <Property Name="Visibility" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
@@ -1005,6 +1005,7 @@
                       <Properties>
                         <Property Name="Tag" Value="" Type="System.String, mscorlib" IsAvailable="true" />
                         <Property Name="Name" Value="sPOAEndDate" Type="System.String, mscorlib" IsAvailable="true" />
+                        <Property Name="Tip" Value="5e4814be-13b0-4bb4-b780-97206080caa6" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="true" />
                         <Property Name="LabelText" Value="b63ab5e4-0487-4432-8b0d-a4a52e942f12" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="true" />
                         <Property Name="ShowEmptyLabel" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
                         <Property Name="Visibility" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
@@ -1020,7 +1021,7 @@
                         <Property Name="HighlightOverdue" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
                         <Property Name="TabStop" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
                         <Property Name="Type" Value="1" Type="System.Int32, mscorlib" IsAvailable="true" />
-                        <Property Name="Required" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                        <Property Name="Required" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
                         <Property Name="ExtendedDataSource" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
                         <Property Name="DataSource" Value="29c1b4ef-48e4-47f0-ac67-c42cf68de986" Type="System.Guid, mscorlib" IsAvailable="true" />
                         <Property Name="DataField" Value="poaExpirationDate" Type="System.String, mscorlib" IsAvailable="true" />

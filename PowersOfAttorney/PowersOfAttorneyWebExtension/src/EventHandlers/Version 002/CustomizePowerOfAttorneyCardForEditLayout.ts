@@ -71,25 +71,25 @@ const customizeInputFields = (sender: Layout) => {
     const SNILSIAWPOA = document.querySelector('[data-control-name="SNILSIAWPOA"] input') as HTMLElement;
     IMask(SNILSIAWPOA, maskOptions.SNILS);
     sender.controls.SNILSIAWPOA.params.blur.subscribe((sender: TextBox) => {
-        checkValueLength(SNILSIAWPOA, sender.params.value.replaceAll("-", "").replace(" ", "").length, sender.layout.params.services, 11);
+        checkValueLength(SNILSIAWPOA, sender.params.value?.replaceAll("-", "").replace(" ", "").length, sender.layout.params.services, 11);
     })
 
     const reprSNILS = document.querySelector('[data-control-name="reprSNILS"] input') as HTMLElement;
     IMask(reprSNILS, maskOptions.SNILS);
     sender.controls.reprSNILS.params.blur.subscribe((sender: TextBox) => {
-        checkValueLength(reprSNILS, sender.params.value.replaceAll("-", "").replaceAll(" ", "").length, sender.layout.params.services, 11);
+        checkValueLength(reprSNILS, sender.params.value?.replaceAll("-", "").replaceAll(" ", "").length, sender.layout.params.services, 11);
     })
 
     const divCodeAuthIssDocProvIdenIAWPOA = document.querySelector('[data-control-name="divCodeAuthIssDocProvIdenIAWPOA"] input') as HTMLElement;
     IMask(divCodeAuthIssDocProvIdenIAWPOA, maskOptions.code);
     sender.controls.divCodeAuthIssDocProvIdenIAWPOA.params.blur.subscribe((sender: TextBox, args: IDataChangedEventArgs) => {
-        checkValueLength(divCodeAuthIssDocProvIdenIAWPOA, args.newValue.replaceAll("-", "").replaceAll(" ", "").length, sender.layout.params.services, 6);
+        checkValueLength(divCodeAuthIssDocProvIdenIAWPOA, args.newValue?.replaceAll("-", "").replaceAll(" ", "").length, sender.layout.params.services, 6);
     })
 
     const divAuthIssDocConfIDOfRepr = document.querySelector('[data-control-name="divAuthIssDocConfIDOfRepr"] input') as HTMLElement;
     IMask(divAuthIssDocConfIDOfRepr, maskOptions.code);
     sender.controls.divAuthIssDocConfIDOfRepr.params.blur.subscribe((sender: TextBox, args: IDataChangedEventArgs) => {
-        checkValueLength(divAuthIssDocConfIDOfRepr, args.newValue.replaceAll("-", "").replaceAll(" ", "").length, sender.layout.params.services, 6);
+        checkValueLength(divAuthIssDocConfIDOfRepr, args.newValue?.replaceAll("-", "").replaceAll(" ", "").length, sender.layout.params.services, 6);
     })
 }
 

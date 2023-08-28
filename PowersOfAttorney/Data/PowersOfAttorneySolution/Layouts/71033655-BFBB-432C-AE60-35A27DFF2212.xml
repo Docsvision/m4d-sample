@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Layout LayoutID="71033655-BFBB-432C-AE60-35A27DFF2212" Name="Доверенность версии EMCHD_1 (для согласования)" LayoutFileID="253AC933-3FD1-41A8-BC32-7EEB8FA2A31A" LocationID="6ac009bc-fd9c-4b7a-ba69-eaed27675264" LayoutType="0" InstanceID="3200c1f1-6caa-4c73-a169-78f3a12d155c" RowID="7DF553E5-70A3-4B39-A521-2436B117F1F5" OwnServerID="00000000-0000-0000-0000-000000000000" ChangeServerID="00000000-0000-0000-0000-000000000000">
-  <File FileID="253AC933-3FD1-41A8-BC32-7EEB8FA2A31A" OwnerCardID="3200C1F1-6CAA-4C73-A169-78F3A12D155C" Name="Доверенность версии EMCHD_1 (для согласования)" StandardAttribs="0" ExtendedAttribs="0">
+<Layout LayoutID="71033655-BFBB-432C-AE60-35A27DFF2212" Name="Доверенность версии EMCHD_1 (локация)" LayoutFileID="253AC933-3FD1-41A8-BC32-7EEB8FA2A31A" LocationID="6ac009bc-fd9c-4b7a-ba69-eaed27675264" LayoutType="0" InstanceID="3200c1f1-6caa-4c73-a169-78f3a12d155c" RowID="7DF553E5-70A3-4B39-A521-2436B117F1F5" OwnServerID="00000000-0000-0000-0000-000000000000" ChangeServerID="00000000-0000-0000-0000-000000000000">
+  <File FileID="253AC933-3FD1-41A8-BC32-7EEB8FA2A31A" OwnerCardID="3200C1F1-6CAA-4C73-A169-78F3A12D155C" Name="Доверенность версии EMCHD_1 (локация)" StandardAttribs="0" ExtendedAttribs="0">
     <Element Id="955b1ca0-ceb4-4fe6-8b11-478cbe513c0e" Type="Layout">
   <Properties>
     <Property Name="Name" Value="documentRoot" Type="System.String, mscorlib" IsAvailable="true" />
@@ -472,7 +472,7 @@
                   <Properties>
                     <Property Name="Tag" Value="" Type="System.String, mscorlib" IsAvailable="true" />
                     <Property Name="Name" Value="headerLabel" Type="System.String, mscorlib" IsAvailable="true" />
-                    <Property Name="Text" Value="e45745ef-2c55-4a14-9123-2baabc5fa858" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="true" />
+                    <Property Name="Text" Value="dfccf749-efc2-48f7-bc2d-48dfeb6e39f9" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="true" />
                     <Property Name="StandardCssClass" Value="system-label" Type="System.String, mscorlib" IsAvailable="true" />
                     <Property Name="CustomCssClasses" Value="document-name-small document-view" Type="System.String, mscorlib" IsAvailable="true" />
                     <Property Name="Visibility" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
@@ -2171,7 +2171,7 @@
                     <Property Name="MouseOut" Value="" Type="System.String, mscorlib" IsAvailable="true" />
                     <Property Name="Focus" Value="" Type="System.String, mscorlib" IsAvailable="true" />
                     <Property Name="Blur" Value="" Type="System.String, mscorlib" IsAvailable="true" />
-                    <Property Name="DataChanged" Value="onSignPossIssSubstDataChanged" Type="System.String, mscorlib" IsAvailable="true" />
+                    <Property Name="DataChanged" Value="" Type="System.String, mscorlib" IsAvailable="true" />
                     <Property Name="InPlaceEditOpeninig" Value="" Type="System.String, mscorlib" IsAvailable="true" />
                     <Property Name="InPlaceEditOpened" Value="" Type="System.String, mscorlib" IsAvailable="true" />
                     <Property Name="InPlaceEditClosinig" Value="" Type="System.String, mscorlib" IsAvailable="true" />

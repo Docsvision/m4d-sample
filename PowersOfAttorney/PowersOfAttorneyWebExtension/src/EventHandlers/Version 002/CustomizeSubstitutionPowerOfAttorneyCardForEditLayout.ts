@@ -55,13 +55,13 @@ const customizeInputFields = (sender: Layout) => {
     const SNILSIndividual = document.querySelector('[data-control-name="SNILSIndividual"] input') as HTMLElement;
     IMask(SNILSIndividual, maskOptions);
     sender.controls.SNILSIndividual.params.blur.subscribe((sender: TextBox) => {
-        checkValueLength(SNILSIndividual, sender.params.value.replaceAll("-", "").replace(" ", "").length, sender.layout.params.services, 11);
+        checkValueLength(SNILSIndividual, sender.params.value?.replaceAll("-", "").replace(" ", "").length, sender.layout.params.services, 11);
     })
 
     const reprSNILSSPOA = document.querySelector('[data-control-name="reprSNILSSPOA"]')?.getElementsByTagName('input')[0];
     IMask(reprSNILSSPOA, maskOptions);    
     sender.controls.reprSNILSSPOA.params.blur.subscribe((sender: TextBox) => {
-        checkValueLength(reprSNILSSPOA, sender.params.value.replaceAll("-", "").replace(" ", "").length, sender.layout.params.services, 11);
+        checkValueLength(reprSNILSSPOA, sender.params.value?.replaceAll("-", "").replace(" ", "").length, sender.layout.params.services, 11);
     })
 
 }
