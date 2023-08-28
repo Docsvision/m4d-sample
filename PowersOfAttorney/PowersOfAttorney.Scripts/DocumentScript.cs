@@ -26,10 +26,10 @@ namespace BackOffice
         {
             private readonly POAScriptHelper scriptHelper;
             private readonly BaseCardControl cardControl;
-      
-            public ScriptHelper(BaseCardControl cardControl, POAScriptHelper scriptHelper) 
+
+            public ScriptHelper(BaseCardControl cardControl, POAScriptHelper scriptHelper)
             {
-                this.cardControl = cardControl; 
+                this.cardControl = cardControl;
                 this.scriptHelper = scriptHelper;
             }
 
@@ -97,8 +97,9 @@ namespace BackOffice
             private void WithCertificate(Action<X509Certificate2> action)
             {
                 bool cancel = false;
+                IKeyContainer keyContainer;
                 X509Certificate2 certificate =
-                    SelectCertificateForm.SelectCertificate(ref cancel, cardControl.ObjectContext, true, out IKeyContainer keyContainer);
+                    SelectCertificateForm.SelectCertificate(ref cancel, cardControl.ObjectContext, true, out keyContainer);
 
                 try
                 {
@@ -109,7 +110,8 @@ namespace BackOffice
                 }
                 finally
                 {
-                    keyContainer?.Dispose();
+                    if (keyContainer != null)
+                        keyContainer.Dispose();
                 }
             }
 
@@ -135,12 +137,13 @@ namespace BackOffice
             {
                 var state = cardControl.BaseObject.SystemInfo.State;
                 StatesStateMachineBranch stateBranch = cardControl.AvailableBranches.FirstOrDefault(item =>
-                        string.Equals(item.Operation?.DefaultName, operationAlias, StringComparison.OrdinalIgnoreCase) &&
+                        string.Equals(item.Operation.DefaultName, operationAlias, StringComparison.OrdinalIgnoreCase) &&
                         (item.BranchType == StatesStateMachineBranchBranchType.Line) &&
-                        (item.StartState?.GetObjectId() == state.GetObjectId()));
+                        (item.StartState.GetObjectId() == state.GetObjectId()));
                 if (stateBranch == null)
                 {
-                    cardControl.ObjectContext.GetService<IUIService>().ShowMessage($"Could not find branch for {operationAlias} operation");
+                    cardControl.ObjectContext.GetService<IUIService>().ShowMessage("Could not find branch for " + operationAlias + " operation");
+                  
                     return;
                 }
 
@@ -237,6 +240,6 @@ namespace BackOffice
         public virtual void MarkAsRevokedPowerOfAttorney_ItemClick()
         {
             POAScriptHelper.MarkAsRevokedPowerOfAttorney(withChildrenPowerOfAttorney: true);
-        } 
+        }
     }
 }
