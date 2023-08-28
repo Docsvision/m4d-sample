@@ -6,19 +6,117 @@ using DocsVision.BackOffice.WinForms;
 using DocsVision.BackOffice.ObjectModel;
 using PowersOfAttorney.Scripts;
 using DevExpress.XtraBars;
+using DocsVision.Platform.WinForms;
+using System.Linq;
+using System.Windows.Forms.Design;
+
+
+//using CardDocumentМЧДScript = DocsVision.BackOffice.WinForms.ScriptClassBase;
+using System.Diagnostics;
 
 namespace BackOffice
 {
-    public class CardDocumentДоверенность__версия_EMHCD_1_Script : ScriptClassBase //CardDocumentМЧДScript
+    public class CardDocumentДоверенность__версия_EMHCD_1_Script : CardDocumentМЧДScript
     {
-        protected POAScriptHelper scriptHelper;
-        protected virtual POAScriptHelper POAScriptHelper
+        #region Nested Classes
+        private class ScriptHelper
+        {
+            private readonly POAScriptHelper scriptHelper;
+            private readonly BaseCardControl cardControl;
+      
+            public ScriptHelper(BaseCardControl cardControl, POAScriptHelper scriptHelper) 
+            {
+                this.cardControl = cardControl; 
+                this.scriptHelper = scriptHelper;
+            }
+
+            public void CreateEMCHDPowerOfAttorney()
+            {
+                Try(() =>
+                {
+                    scriptHelper.CreateEMCHDPowerOfAttorney();
+                    ChangeState("Create");
+                });
+            }
+
+            public void CreateEMCHDRetrustPowerOfAttorney()
+            {
+                Try(() =>
+                {
+                    scriptHelper.CreateEMCHDRetrustPowerOfAttorney();
+                    ChangeState("Create");
+                });
+            }
+
+            public void MarkAsRevokedPowerOfAttorney(bool withChildrenPowerOfAttorney)
+            {
+                Try(() =>
+                {
+                    scriptHelper.MarkAsRevokedPowerOfAttorney(withChildrenPowerOfAttorney);
+                    ChangeState("To revoke");
+                });
+            }
+
+            public void SignPowerOfAttorney()
+            {
+                Try(() =>
+                {
+                    scriptHelper.SignPowerOfAttorney();
+                    ChangeState("Sign");
+                });
+            }
+
+            public void Export(bool withSignature)
+            {
+                Try(() =>
+                {
+                    scriptHelper.Export(withSignature);
+                });
+            }
+
+            private void Try(Action handler)
+            {
+                try
+                {
+                    handler.Invoke();
+                }
+                catch (Exception ex)
+                {
+                    ProcessException(ex);
+                }
+            }
+
+            private void ProcessException(Exception ex)
+            {
+                Trace.WriteLine(ex.ToString());
+                cardControl.ObjectContext.GetService<IUIService>().ShowMessage(ex.ToString());
+            }
+
+            private void ChangeState(string operationAlias)
+            {
+                var state = cardControl.BaseObject.SystemInfo.State;
+                StatesStateMachineBranch stateBranch = cardControl.AvailableBranches.FirstOrDefault(item =>
+                        string.Equals(item.Operation?.DefaultName, operationAlias, StringComparison.OrdinalIgnoreCase) &&
+                        (item.BranchType == StatesStateMachineBranchBranchType.Line) &&
+                        (item.StartState?.GetObjectId() == state.GetObjectId()));
+                if (stateBranch == null)
+                {
+                    cardControl.ObjectContext.GetService<IUIService>().ShowMessage($"Could not find branch for {operationAlias} operation");
+                    return;
+                }
+
+                cardControl.ChangeState(stateBranch);
+            }
+        }
+        #endregion
+        private ScriptHelper scriptHelper;
+        private ScriptHelper POAScriptHelper
         {
             get
             {
                 if (scriptHelper == null)
                 {
-                    scriptHelper = new POAScriptHelper(this.CardControl.ObjectContext, this.CardData.Id);
+                    scriptHelper = new ScriptHelper(this.CardControl, new POAScriptHelper(this.CardControl.ObjectContext, this.CardData.Id));
                 }
                 return scriptHelper;
             }
@@ -100,6 +198,6 @@ namespace BackOffice
         public virtual void MarkAsRevokedPowerOfAttorney_ItemClick()
         {
             POAScriptHelper.MarkAsRevokedPowerOfAttorney(withChildrenPowerOfAttorney: true);
-        }
+        } 
     }
 }
