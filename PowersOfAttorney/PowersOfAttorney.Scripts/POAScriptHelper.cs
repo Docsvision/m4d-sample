@@ -1,11 +1,9 @@
 ﻿using DocsVision.BackOffice.ObjectModel;
 using DocsVision.BackOffice.ObjectModel.Services;
 using DocsVision.BackOffice.ObjectModel.Services.Entities;
-using DocsVision.BackOffice.WinForms.Controls;
 using DocsVision.Platform.ObjectModel;
 using System;
 using System.Security.Cryptography.X509Certificates;
-using System.Windows.Forms;
 
 namespace PowersOfAttorney.Scripts
 {
@@ -62,24 +60,18 @@ namespace PowersOfAttorney.Scripts
             this.Context.AcceptChanges();
         }
 
-        public void SignPowerOfAttorney()
+        public void SignPowerOfAttorney(X509Certificate2 cert)
         {
-            WithCertificate(cert =>
-            {
-                PowerOfAttorney powerOfAttorney = GetPowerOfAttorneyCard();
+            PowerOfAttorney powerOfAttorney = GetPowerOfAttorneyCard();
 
-                this.PowerOfAttorneyService.SignPowerOfAttorney(powerOfAttorney, cert, PowerOfAttorneySignatureFormat.CADES);
-                this.Context.AcceptChanges();
-            });
+            this.PowerOfAttorneyService.SignPowerOfAttorney(powerOfAttorney, cert, PowerOfAttorneySignatureFormat.CADES);
+            this.Context.AcceptChanges();
         }
 
-        public void Export(bool withSignature)
+        public void Export(string folder, bool withSignature)
         {
-            WithFolder(folder =>
-            {
-                var powerOfAttorney = GetPowerOfAttorneyCard();
-                this.PowerOfAttorneyService.ExportMachineReadablePowerOfAttorney(powerOfAttorney, folder, withSignature);
-            });
+            var powerOfAttorney = GetPowerOfAttorneyCard();
+            this.PowerOfAttorneyService.ExportMachineReadablePowerOfAttorney(powerOfAttorney, folder, withSignature);
         }
 
         public void MarkAsRevokedPowerOfAttorney(bool withChildrenPowerOfAttorney)
@@ -98,36 +90,6 @@ namespace PowersOfAttorney.Scripts
         private PowerOfAttorney GetPowerOfAttorneyCard()
         {
             return UserCardEMCHDPowerOfAttorney.GetPowerOfAttorneyCard(this.Context, powerOfAttorneyUserCardId);
-        }
-
-        private void WithFolder(Action<string> action)
-        {
-            using (FolderBrowserDialog dlg = new FolderBrowserDialog())
-            {
-                if (dlg.ShowDialog() == DialogResult.OK)
-                {
-                    action(dlg.SelectedPath);
-                }
-            }
-        }
-
-        private void WithCertificate(Action<X509Certificate2> action)
-        {
-            bool cancel = false;
-            X509Certificate2 certificate =
-                SelectCertificateForm.SelectCertificate(ref cancel, this.Context, true, out IKeyContainer keyContainer);
-
-            try
-            {
-                if (!cancel)
-                {
-                    action(certificate);
-                }
-            }
-            finally
-            {
-                keyContainer?.Dispose();
-            }
         }
     }
 }

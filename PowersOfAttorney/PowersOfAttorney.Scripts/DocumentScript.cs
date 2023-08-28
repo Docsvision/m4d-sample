@@ -13,6 +13,9 @@ using System.Windows.Forms.Design;
 
 //using CardDocumentМЧДScript = DocsVision.BackOffice.WinForms.ScriptClassBase;
 using System.Diagnostics;
+using DocsVision.BackOffice.ObjectModel.Services;
+using DocsVision.BackOffice.WinForms.Controls;
+using System.Security.Cryptography.X509Certificates;
 
 namespace BackOffice
 {
@@ -61,8 +64,11 @@ namespace BackOffice
             {
                 Try(() =>
                 {
-                    scriptHelper.SignPowerOfAttorney();
-                    ChangeState("Sign");
+                    WithCertificate(cert =>
+                    {
+                        scriptHelper.SignPowerOfAttorney(cert);
+                        ChangeState("Sign");
+                    });
                 });
             }
 
@@ -70,8 +76,41 @@ namespace BackOffice
             {
                 Try(() =>
                 {
-                    scriptHelper.Export(withSignature);
+                    WithFolder(folder =>
+                    {
+                        scriptHelper.Export(folder, withSignature);
+                    });
                 });
+            }
+
+            private void WithFolder(Action<string> action)
+            {
+                using (FolderBrowserDialog dlg = new FolderBrowserDialog())
+                {
+                    if (dlg.ShowDialog() == DialogResult.OK)
+                    {
+                        action(dlg.SelectedPath);
+                    }
+                }
+            }
+
+            private void WithCertificate(Action<X509Certificate2> action)
+            {
+                bool cancel = false;
+                X509Certificate2 certificate =
+                    SelectCertificateForm.SelectCertificate(ref cancel, cardControl.ObjectContext, true, out IKeyContainer keyContainer);
+
+                try
+                {
+                    if (!cancel)
+                    {
+                        action(certificate);
+                    }
+                }
+                finally
+                {
+                    keyContainer?.Dispose();
+                }
             }
 
             private void Try(Action handler)
