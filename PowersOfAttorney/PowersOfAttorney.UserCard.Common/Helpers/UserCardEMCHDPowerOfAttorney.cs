@@ -23,24 +23,33 @@ namespace PowersOfAttorney.Scripts
 
         public Guid Id => document.GetObjectId();
 
-        public Guid? PowerOfAttorneyCardId 
-        { 
-          get => userCardPowerOfAttorney.PowerOfAttorneyCardId; 
-          set => userCardPowerOfAttorney.PowerOfAttorneyCardId = value; 
+        public Guid? PowerOfAttorneyCardId
+        {
+            get => userCardPowerOfAttorney.PowerOfAttorneyCardId;
+            set => userCardPowerOfAttorney.PowerOfAttorneyCardId = value;
         }
 
         public UserCardPowerOfAttorney UserCardPowerOfAttorney => userCardPowerOfAttorney;
 
         public PowerOfAttorneyData PowerOfAttorneyData => userCardPowerOfAttorney.ConvertToPowerOfAttorneyEMCHDData(this.Context);
 
-        public string PrincipalInn => 
+        public string PrincipalInn =>
             userCardPowerOfAttorney.GenEntityPrinINN ?? userCardPowerOfAttorney.GenEntityPrincipal.Value?.INN.AsNullable();
 
         public StaffEmployee Signer => userCardPowerOfAttorney.GenCeo.GetValueOrThrow(nameof(userCardPowerOfAttorney.GenCeo));
 
         public StaffEmployee Representative => userCardPowerOfAttorney.GenRepresentative.GetValueOrThrow(nameof(userCardPowerOfAttorney.GenRepresentative));
 
-        public PowerOfAttorney ParentalPowerOfAttorney => userCardPowerOfAttorney.ParentalPowerOfAttorney;
+        public PowerOfAttorney ParentalPowerOfAttorney
+        {
+            get
+            {
+                if (userCardPowerOfAttorney.GenParentalPowerOfAttorneyUserCard.HasValue)
+                    return userCardPowerOfAttorney.GenParentalPowerOfAttorney;
+
+                return userCardPowerOfAttorney.GenOriginaPowerOfAttorney;
+            }
+        }
 
         public static UserCardEMCHDPowerOfAttorney GetUserCard(ObjectContext context, Guid powerOfAttorneyUserCardId)
         {
@@ -60,7 +69,7 @@ namespace PowersOfAttorney.Scripts
 
             if (userCardPowerOfAttorney.PowerOfAttorneyCardId.GetValueOrDefault() == Guid.Empty)
             {
-                throw new Exception(Resources.Error_PoaIDNotFoundInUserCard); 
+                throw new Exception(Resources.Error_PoaIDNotFoundInUserCard);
             }
 
             var powerOfAttorneyId = userCardPowerOfAttorney.PowerOfAttorneyCardId.Value;
