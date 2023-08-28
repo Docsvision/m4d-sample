@@ -148,12 +148,6 @@ namespace PowersOfAttorneyServerExtension.Services
             return userCardPowerOfAttorney.PowerOfAttorneyCardId.Value;
         }
 
-        private PowerOfAttorney GetPowerOfAttorneyCard(ObjectContext context, Guid powerOfAttorneyUserCardId)
-        {
-            var powerOfAttorneyId = GetPowerOfAttorneyCardId(context, powerOfAttorneyUserCardId);
-            return context.GetObject<PowerOfAttorney>(powerOfAttorneyId);
-        }
-
         private UserCardPowerOfAttorney GetUserCardPowerOfAttorney(ObjectContext context, Guid documentId)
         {
             var card = context.GetObject<Document>(documentId);
@@ -168,8 +162,16 @@ namespace PowersOfAttorneyServerExtension.Services
 
         private Guid GetParentalPowerOfAttorney(UserCardPowerOfAttorney userCardPowerOfAttorney, Guid formatId)
         {
-            if (formatId == PowerOfAttorneyFNSDOVBBData.FormatId)
-                return userCardPowerOfAttorney.ParentalPowerOfAttorney.GetObjectId();
+            if(formatId == PowerOfAttorneyFNSDOVBBData.FormatId)
+                 return userCardPowerOfAttorney.ParentalPowerOfAttorney.GetObjectId();
+
+            if (formatId == PowerOfAttorneyEMCHDData.FormatId)
+            {
+                if (userCardPowerOfAttorney.GenParentalPowerOfAttorneyUserCard.HasValue)
+                    return userCardPowerOfAttorney.GenParentalPowerOfAttorney.GetObjectId();
+                
+                return userCardPowerOfAttorney.GenOriginaPowerOfAttorney.GetObjectId();
+            }
 
             throw new ArgumentOutOfRangeException(string.Format(Resources.InvalidPowerOfAttorneyFormat, formatId));
         }
