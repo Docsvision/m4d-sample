@@ -187,12 +187,14 @@ const customizeInputFields = (sender: Layout) => {
 
     const ceoSNILS = document.querySelector('[data-control-name="ceoSNILS"] input') as HTMLElement;
     IMask(ceoSNILS, maskOptions.SNILS);
+    ceoSNILS.addEventListener("change", (event) => sender.controls.ceoSNILS.params.value = (event.target as HTMLInputElement).value);
     sender.controls.ceoSNILS.params.blur.subscribe((sender: TextBox) => {
         checkValueLength(ceoSNILS, sender.params.value?.replaceAll("-", "").replace(" ", "").length, sender.layout.params.services, 11);
     })
 
     const reprSNILS = document.querySelector('[data-control-name="reprSNILS"] input') as HTMLElement;
     IMask(reprSNILS, maskOptions.SNILS);
+    reprSNILS.addEventListener("change", (event) => sender.controls.reprSNILS.params.value = (event.target as HTMLInputElement).value);
     sender.controls.reprSNILS.params.blur.subscribe((sender: TextBox) => {
         checkValueLength(reprSNILS, sender.params.value?.replaceAll("-", "").replace(" ", "").length, sender.layout.params.services, 11);
     })

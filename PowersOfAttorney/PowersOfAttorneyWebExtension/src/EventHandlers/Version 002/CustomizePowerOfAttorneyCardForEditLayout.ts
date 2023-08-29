@@ -70,12 +70,14 @@ const customizeInputFields = (sender: Layout) => {
     }
     const SNILSIAWPOA = document.querySelector('[data-control-name="SNILSIAWPOA"] input') as HTMLElement;
     IMask(SNILSIAWPOA, maskOptions.SNILS);
+    SNILSIAWPOA.addEventListener("change", (event) => sender.controls.SNILSIAWPOA.params.value = (event.target as HTMLInputElement).value);
     sender.controls.SNILSIAWPOA.params.blur.subscribe((sender: TextBox) => {
         checkValueLength(SNILSIAWPOA, sender.params.value?.replaceAll("-", "").replace(" ", "").length, sender.layout.params.services, 11);
     })
 
     const reprSNILS = document.querySelector('[data-control-name="reprSNILS"] input') as HTMLElement;
     IMask(reprSNILS, maskOptions.SNILS);
+    reprSNILS.addEventListener("change", (event) => sender.controls.reprSNILS.params.value = (event.target as HTMLInputElement).value);
     sender.controls.reprSNILS.params.blur.subscribe((sender: TextBox) => {
         checkValueLength(reprSNILS, sender.params.value?.replaceAll("-", "").replaceAll(" ", "").length, sender.layout.params.services, 11);
     })
