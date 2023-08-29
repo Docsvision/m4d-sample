@@ -11,7 +11,7 @@ import { resources } from "@docsvision/webclient/System/Resources";
 
 
 
-export const signPowerOfAttorney = async (sender: CustomButton) => {
+export const signPowerOfAttorney = async (sender: CustomButton, refreshLayout = true) => {
     const powerOfAttorneyUserCardId = sender.layout.getService($CardId);
     const powerOfAttorneyId = await sender.layout.getService($PowersOfAttorneyDemoController).getPowerOfAttorneyCardId(powerOfAttorneyUserCardId);
     await sender.layout.params.services.digitalSignature.showDocumentSignDialog(powerOfAttorneyUserCardId,
@@ -29,17 +29,20 @@ export const signPowerOfAttorney = async (sender: CustomButton) => {
                     try {
                         await sender.layout.getService($PowerOfAttorneyApiController).attachSignatureToPowerOfAttorney({ powerOfAttorneyId, signature });
                         const operationId = sender.layout.layoutInfo.operations.find(operation => operation.alias === "Sign").id;
-                        await sender.layout.changeState(operationId);
-                        sender.layout.getService($Router).refresh();
-                        sender.layout.getService($MessageWindow).showInfo(resources.PowerOfAttorneySigned);
+                        if (refreshLayout) {
+                            await sender.layout.changeState(operationId);
+                            sender.layout.getService($Router).refresh();
+                        }
                     } catch (err) {
                         console.error(err);
+                        return Promise.reject();
                     }
                 }
                 return {} as IEncryptedInfo;
             },
             onAttachSignatureToCard: async () => { }
         });
+        await sender.layout.getService($MessageWindow).showInfo(resources.PowerOfAttorneySigned);
 }
 
 

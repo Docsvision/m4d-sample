@@ -11,7 +11,12 @@ declare function edi_getPowerOfAttorneyRegistrationStatus(sender: LayoutControl,
 
 export async function sendPowerOfAttorneyToRegistrationAsFile(sender: LayoutControl) {
     const powerOfAttorneyIdControl = sender.layout.getService($ControlStore).get<CardLink>("powerOfAttorneySysCard");
-    edi_sendPowerOfAttorneyToRegistrationAsFile(sender, powerOfAttorneyIdControl.value?.cardId)
+    try {
+        await edi_sendPowerOfAttorneyToRegistrationAsFile(sender, powerOfAttorneyIdControl.value?.cardId)
+    }
+    catch (err) {
+        console.error(err);
+    }
 }
 export async function sendPowerOfAttorneyToRegistrationAsNumber(sender: LayoutControl) {
     const powerOfAttorneyIdControl = sender.layout.getService($ControlStore).get<CardLink>("powerOfAttorneySysCard");
