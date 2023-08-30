@@ -132,12 +132,12 @@ namespace BackOffice
             {
                 Try(() =>
                 {
-                    if (TryGetBranch(Operations.CreateOperation, out var branch))
+                    WithBranch(Operations.CreateOperation, branch =>
                     {
                         scriptHelper.CreateEMCHDPowerOfAttorney();
                         ChangeState(branch);
                         ShowMessage("Доверенность сформирована");
-                    }
+                    });
                 });
             }
 
@@ -145,12 +145,12 @@ namespace BackOffice
             {
                 Try(() =>
                 {
-                    if (TryGetBranch(Operations.CreateOperation, out var branch))
+                    WithBranch(Operations.CreateOperation, branch =>
                     {
                         scriptHelper.CreateEMCHDRetrustPowerOfAttorney();
                         ChangeState(branch);
                         ShowMessage("Доверенность сформирована");
-                    }
+                    });
                 });
             }
 
@@ -158,12 +158,12 @@ namespace BackOffice
             {
                 Try(() =>
                 {
-                    if (TryGetBranch(Operations.RevokeOperation, out var branch))
-                    {
-                        scriptHelper.MarkAsRevokedPowerOfAttorney(withChildrenPowerOfAttorney);
-                        ChangeState(branch);
-                        ShowMessage("Доверенность отозвана");
-                    }
+                     WithBranch(Operations.RevokeOperation, branch =>
+                     {
+                         scriptHelper.MarkAsRevokedPowerOfAttorney(withChildrenPowerOfAttorney);
+                         ChangeState(branch);
+                         ShowMessage("Доверенность отозвана");
+                     });
                 });
             }
 
@@ -171,7 +171,7 @@ namespace BackOffice
             {
                 Try(() =>
                 {
-                    if (TryGetBranch(Operations.SignOperation, out var branch))
+                    WithBranch(Operations.SignOperation, branch =>
                     {
                         WithCertificate(cert =>
                         {
@@ -179,7 +179,7 @@ namespace BackOffice
                             ChangeState(branch);
                             ShowMessage("Доверенность подписана");
                         });
-                    }
+                    });
                 });
             }
 
@@ -250,10 +250,10 @@ namespace BackOffice
                 ShowMessage(ex.ToString());
             }
 
-            private bool TryGetBranch(string operationAlias, out StatesStateMachineBranch stateBranch)
+            private void WithBranch(string operationAlias, Action<StatesStateMachineBranch> action)
             {
                 var state = cardControl.BaseObject.SystemInfo.State;
-                stateBranch = cardControl.AvailableBranches.FirstOrDefault(item =>
+                var stateBranch = cardControl.AvailableBranches.FirstOrDefault(item =>
                         string.Equals(item.Operation.DefaultName, operationAlias, StringComparison.OrdinalIgnoreCase) &&
                         (item.BranchType == StatesStateMachineBranchBranchType.Line) &&
                         (item.StartState.GetObjectId() == state.GetObjectId()));
@@ -261,7 +261,10 @@ namespace BackOffice
                 {
                     ShowMessage("Не найден переход для операции " + operationAlias + ", состояние " + state.DefaultName);               
                 }
-                return stateBranch != null;
+                else
+                {
+                    action(stateBranch);
+                }
             }
 
             private void ChangeState(StatesStateMachineBranch stateBranch)
