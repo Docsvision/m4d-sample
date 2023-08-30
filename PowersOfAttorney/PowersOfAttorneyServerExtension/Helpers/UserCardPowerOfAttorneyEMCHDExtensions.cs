@@ -456,7 +456,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
 
             private PowerOfAttorneyEMCHDData.PowerOfAttorneyInfo CreatePowerOfAttorneyPart()
             {
-                return new PowerOfAttorneyEMCHDData.PowerOfAttorneyInfo
+                var part = new PowerOfAttorneyEMCHDData.PowerOfAttorneyInfo
                 {
                     InformationSystemName = userCard.GenInfsysGenPOA,
                     IrrevocablePowerOfAttorneyInfo = userCard.GenPoaKind == GenPoaKindTypes.irrecovablePOA ? CreateIrrevocablePowerOfAttorneyInfoPart() : null,
@@ -469,9 +469,13 @@ namespace PowersOfAttorneyServerExtension.Helpers
                     PowerOfAttorneyNumber = userCard.GenSinglePOAregnumber ?? throw new ApplicationException(Resources.Error_SinglePOAregnumberIsEmpty),
                     PowerOfAttorneyStartDate = userCard.GenPoaDateOfIssue ?? throw new ApplicationException(Resources.Error_PoaDateOfIssueIsEmpty),
                     RetrustType = Convert(userCard.GenPossibilityOfSubstitution ?? throw new ApplicationException(Resources.Error_PossibilityOfSubstitutionIsEmpty)),
-                    SubmittedPowerOfAttorneyTaxCode = userCard.GenTaxAuthPOASubmit,
-                    TaxCode = new List<string> { userCard.GenTaxAuthPOAValid }
+                    SubmittedPowerOfAttorneyTaxCode = userCard.GenTaxAuthPOASubmit
                 };
+
+                if (!string.IsNullOrEmpty(userCard.GenTaxAuthPOAValid))
+                    part.TaxCode = new List<string> { userCard.GenTaxAuthPOAValid };
+
+                return part;
             }
 
             private PowerOfAttorneyEMCHDData.IrrevocablePowerOfAttorneyInfo CreateIrrevocablePowerOfAttorneyInfoPart()
