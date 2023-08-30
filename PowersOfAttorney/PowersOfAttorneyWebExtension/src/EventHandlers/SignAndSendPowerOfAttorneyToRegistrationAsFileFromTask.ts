@@ -3,11 +3,11 @@ import { $LayoutCardController } from "@docsvision/webclient/Generated/DocsVisio
 import { LayoutControl } from "@docsvision/webclient/System/BaseControl";
 import { ICancelableEventArgs } from "@docsvision/webclient/System/ICancelableEventArgs";
 import { sendPowerOfAttorneyToRegistrationAsFile } from "./PowerOfAttorneyRegistration";
-import { signPowerOfAttorneyFromTask } from "./SignPowerOfAttorneyFromTask";
+import { signPowerOfAttorneyFromTask, SIGN_OPERATION_ID } from "./SignPowerOfAttorneyFromTask";
 
 
 export const signAndSendPowerOfAttorneyToRegistrationAsFileFromTask = async (sender: LayoutControl, e: ICancelableEventArgs<OperationExecutingEventArgs>) => {
-    if (e.data.operationData.additionalInfo.decisionName === "Подписать") {
+    if (e.data.operationData.builtInOperationId === SIGN_OPERATION_ID) {
         await signPowerOfAttorneyFromTask(sender, e, false);
         await sendPowerOfAttorneyToRegistrationAsFile(sender);
         const signOperationIdPOA = sender.layout.controls.locationContainer.params.layoutModel.layoutModel.layoutInfo.operations.find(operation => operation.alias === "Sign").id;

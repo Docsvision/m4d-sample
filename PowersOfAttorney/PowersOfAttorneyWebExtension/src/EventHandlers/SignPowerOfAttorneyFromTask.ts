@@ -7,10 +7,12 @@ import { LayoutControl } from "@docsvision/webclient/System/BaseControl";
 import { OperationExecutingEventArgs } from "@docsvision/webclient/BackOffice/OperationExecutingEventArgs";
 import { ICancelableEventArgs } from "@docsvision/webclient/System/ICancelableEventArgs";
 
+export const SIGN_OPERATION_ID = "67678953-6474-46cd-9f83-ecb95a030432";
+
 
 export const signPowerOfAttorneyFromTask = async (sender: LayoutControl, e: ICancelableEventArgs<OperationExecutingEventArgs>, refreshLayout = true) => {
     e.wait();
-    if (e.data.operationData.additionalInfo.decisionName === "Подписать") {
+    if (e.data.operationData.builtInOperationId === SIGN_OPERATION_ID) {
         const powerOfAttorneyUserCardId = sender.layout.controls.locationContainer.params.layoutModel.cardInfo.id;
         const powerOfAttorneyUserKindId = sender.layout.controls.locationContainer.params.layoutModel.cardInfo.kindId;
         if (powerOfAttorneyUserKindId === 'e1925a07-6f57-406d-9073-294381ea5aed') {
