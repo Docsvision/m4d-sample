@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Windows.Forms;
 using DocsVision.Platform.ObjectManager;
 using DocsVision.Platform.ObjectModel;
@@ -10,21 +11,24 @@ using DocsVision.Platform.WinForms;
 using System.Linq;
 using System.Windows.Forms.Design;
 using DocsVision.BackOffice.ObjectModel.Services.Entities;
-using CardDocumentМЧДScript = DocsVision.BackOffice.WinForms.ScriptClassBase;
+using CardDocumentМЧДScript = DocsVision.BackOffice.WinForms.ScriptClassBase; // эту строчку надо закомментировать
 using System.Diagnostics;
 using DocsVision.BackOffice.ObjectModel.Services;
 using DocsVision.BackOffice.WinForms.Controls;
 using System.Security.Cryptography.X509Certificates;
+using System.CodeDom;
 
 namespace BackOffice
 {
-    public class CardDocumentДоверенность__версия_EMHCD_1_Script : CardDocumentМЧДScript
+    
+    public class CardDocumentДоверенность__версия_EMHCD_1_Script : CardDocumentМЧДScript // эту строчку надо закомментировать для вида передоверия
+  //public class CardDocumentПередоверие__версия_EMHCD_1_Script : CardDocumentМЧДScript  // эту строчку надо раскомментировать для вида передоверия
     {
         #region Nested Classes
-        public class POAScriptHelper2
+        public class POAScriptHelper
         {
             private readonly Guid powerOfAttorneyUserCardId;
-            public POAScriptHelper2(ObjectContext context, Guid powerOfAttorneyUserCardId)
+            public POAScriptHelper(ObjectContext context, Guid powerOfAttorneyUserCardId)
             {
                 this.Context = context;
                 this.powerOfAttorneyUserCardId = powerOfAttorneyUserCardId;
@@ -108,10 +112,17 @@ namespace BackOffice
         }
         private class ScriptHelper
         {
-            private readonly POAScriptHelper2 scriptHelper;
+            private readonly POAScriptHelper scriptHelper;
             private readonly BaseCardControl cardControl;
 
-            public ScriptHelper(BaseCardControl cardControl, POAScriptHelper2 scriptHelper)
+            private static class Operations
+            {
+                public const string CreateOperation = "Create";
+                public const string RevokeOperation = "To revoke";
+                public const string SignOperation = "Sign";
+            }
+
+            public ScriptHelper(BaseCardControl cardControl, POAScriptHelper scriptHelper)
             {
                 this.cardControl = cardControl;
                 this.scriptHelper = scriptHelper;
@@ -121,8 +132,12 @@ namespace BackOffice
             {
                 Try(() =>
                 {
-                    scriptHelper.CreateEMCHDPowerOfAttorney();
-                    ChangeState("Create");
+                    if (TryGetBranch(Operations.CreateOperation, out var branch))
+                    {
+                        scriptHelper.CreateEMCHDPowerOfAttorney();
+                        ChangeState(branch);
+                        ShowMessage("Доверенность сформирована");
+                    }
                 });
             }
 
@@ -130,8 +145,12 @@ namespace BackOffice
             {
                 Try(() =>
                 {
-                    scriptHelper.CreateEMCHDRetrustPowerOfAttorney();
-                    ChangeState("Create");
+                    if (TryGetBranch(Operations.CreateOperation, out var branch))
+                    {
+                        scriptHelper.CreateEMCHDRetrustPowerOfAttorney();
+                        ChangeState(branch);
+                        ShowMessage("Доверенность сформирована");
+                    }
                 });
             }
 
@@ -139,8 +158,12 @@ namespace BackOffice
             {
                 Try(() =>
                 {
-                    scriptHelper.MarkAsRevokedPowerOfAttorney(withChildrenPowerOfAttorney);
-                    ChangeState("To revoke");
+                    if (TryGetBranch(Operations.RevokeOperation, out var branch))
+                    {
+                        scriptHelper.MarkAsRevokedPowerOfAttorney(withChildrenPowerOfAttorney);
+                        ChangeState(branch);
+                        ShowMessage("Доверенность отозвана");
+                    }
                 });
             }
 
@@ -148,11 +171,15 @@ namespace BackOffice
             {
                 Try(() =>
                 {
-                    WithCertificate(cert =>
+                    if (TryGetBranch(Operations.SignOperation, out var branch))
                     {
-                        scriptHelper.SignPowerOfAttorney(cert);
-                        ChangeState("Sign");
-                    });
+                        WithCertificate(cert =>
+                        {
+                            scriptHelper.SignPowerOfAttorney(cert);
+                            ChangeState(branch);
+                            ShowMessage("Доверенность подписана");
+                        });
+                    }
                 });
             }
 
@@ -163,6 +190,7 @@ namespace BackOffice
                     WithFolder(folder =>
                     {
                         scriptHelper.Export(folder, withSignature);
+                        ShowMessage("Доверенность экспортирована");
                     });
                 });
             }
@@ -211,43 +239,45 @@ namespace BackOffice
                 }
             }
 
+            private void ShowMessage(string message)
+            {
+                cardControl.ObjectContext.GetService<IUIService>().ShowMessage(message);
+            }
+
             private void ProcessException(Exception ex)
             {
                 Trace.WriteLine(ex.ToString());
-                cardControl.ObjectContext.GetService<IUIService>().ShowMessage(ex.ToString());
+                ShowMessage(ex.ToString());
             }
 
-            private void ChangeState(string operationAlias)
+            private bool TryGetBranch(string operationAlias, out StatesStateMachineBranch stateBranch)
             {
                 var state = cardControl.BaseObject.SystemInfo.State;
-                StatesStateMachineBranch stateBranch = cardControl.AvailableBranches.FirstOrDefault(item =>
+                stateBranch = cardControl.AvailableBranches.FirstOrDefault(item =>
                         string.Equals(item.Operation.DefaultName, operationAlias, StringComparison.OrdinalIgnoreCase) &&
                         (item.BranchType == StatesStateMachineBranchBranchType.Line) &&
                         (item.StartState.GetObjectId() == state.GetObjectId()));
                 if (stateBranch == null)
                 {
-                    cardControl.ObjectContext.GetService<IUIService>().ShowMessage("Could not find branch for " + operationAlias + " operation state " + state.GetObjectId());
-                    var sb = new System.Text.StringBuilder();
-                    foreach (var branch in cardControl.AvailableBranches)
-                    {
-                        sb.AppendLine(branch.Operation.DefaultName + " " + branch.BranchType + " " + branch.StartState.GetObjectId());
-                    }
-                    cardControl.ObjectContext.GetService<IUIService>().ShowMessage(sb.ToString());
-                    return;
+                    ShowMessage("Не найден переход для операции " + operationAlias + ", состояние " + state.DefaultName);               
                 }
+                return stateBranch != null;
+            }
 
+            private void ChangeState(StatesStateMachineBranch stateBranch)
+            {
                 cardControl.ChangeState(stateBranch);
             }
         }
         #endregion
         private ScriptHelper scriptHelper;
-        private ScriptHelper POAScriptHelper
+        private ScriptHelper Script
         {
             get
             {
                 if (scriptHelper == null)
                 {
-                    scriptHelper = new ScriptHelper(this.CardControl, new POAScriptHelper2(this.CardControl.ObjectContext, this.CardData.Id));
+                    scriptHelper = new ScriptHelper(this.CardControl, new POAScriptHelper(this.CardControl.ObjectContext, this.CardData.Id));
                 }
                 return scriptHelper;
             }
@@ -288,7 +318,7 @@ namespace BackOffice
         /// </summary>
         public virtual void CreateEMCHDPowerOfAttorney_ItemClick()
         {
-            POAScriptHelper.CreateEMCHDPowerOfAttorney();
+            Script.CreateEMCHDPowerOfAttorney();
         }
 
         /// <summary>
@@ -296,7 +326,7 @@ namespace BackOffice
         /// </summary>
         public virtual void CreateEMCHDRetrustPowerOfAttorney_ItemClick()
         {
-            POAScriptHelper.CreateEMCHDRetrustPowerOfAttorney();
+            Script.CreateEMCHDRetrustPowerOfAttorney();
         }
 
         /// <summary>
@@ -304,7 +334,7 @@ namespace BackOffice
         /// </summary>
         public virtual void SignPowerOfAttorney_ItemClick()
         {
-            POAScriptHelper.SignPowerOfAttorney();
+            Script.SignPowerOfAttorney();
         }
 
         /// <summary>
@@ -312,7 +342,7 @@ namespace BackOffice
         /// </summary>
         public virtual void ExportWithSignaturePowerOfAttorney_ItemClick()
         {
-            POAScriptHelper.Export(withSignature: true);
+            Script.Export(withSignature: true);
         }
 
         /// <summary>
@@ -320,7 +350,7 @@ namespace BackOffice
         /// </summary>
         public virtual void ExportWithoutSignaturePowerOfAttorney_ItemClick()
         {
-            POAScriptHelper.Export(withSignature: false);
+            Script.Export(withSignature: false);
         }
 
         /// <summary>
@@ -328,7 +358,7 @@ namespace BackOffice
         /// </summary>
         public virtual void MarkAsRevokedPowerOfAttorney_ItemClick()
         {
-            POAScriptHelper.MarkAsRevokedPowerOfAttorney(withChildrenPowerOfAttorney: true);
+            Script.MarkAsRevokedPowerOfAttorney(withChildrenPowerOfAttorney: true);
         }
     }
 }
