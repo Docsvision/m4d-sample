@@ -9,9 +9,8 @@ using DevExpress.XtraBars;
 using DocsVision.Platform.WinForms;
 using System.Linq;
 using System.Windows.Forms.Design;
-
-
-//using CardDocumentМЧДScript = DocsVision.BackOffice.WinForms.ScriptClassBase;
+using DocsVision.BackOffice.ObjectModel.Services.Entities;
+using CardDocumentМЧДScript = DocsVision.BackOffice.WinForms.ScriptClassBase;
 using System.Diagnostics;
 using DocsVision.BackOffice.ObjectModel.Services;
 using DocsVision.BackOffice.WinForms.Controls;
@@ -22,12 +21,97 @@ namespace BackOffice
     public class CardDocumentДоверенность__версия_EMHCD_1_Script : CardDocumentМЧДScript
     {
         #region Nested Classes
+        public class POAScriptHelper2
+        {
+            private readonly Guid powerOfAttorneyUserCardId;
+            public POAScriptHelper2(ObjectContext context, Guid powerOfAttorneyUserCardId)
+            {
+                this.Context = context;
+                this.powerOfAttorneyUserCardId = powerOfAttorneyUserCardId;
+            }
+
+            private ObjectContext Context { get; set; }
+
+            private IPowerOfAttorneyService PowerOfAttorneyService { get { return this.Context.GetService<IPowerOfAttorneyService>(); } }
+
+            public void CreateEMCHDPowerOfAttorney()
+            {
+                var userCardPOA = GetUserCard();
+
+                var powerOfAttorneyFormat = this.Context.GetObject<PowersPowerOfAttorneyFormat>(PowerOfAttorneyEMCHDData.FormatId);
+
+                var powerOfAttorney = this.PowerOfAttorneyService.CreatePowerOfAttorney(userCardPOA.PowerOfAttorneyData,
+                                                                                        userCardPOA.Representative,
+                                                                                        userCardPOA.Signer,
+                                                                                        powerOfAttorneyFormat);
+                powerOfAttorney.MainInfo.UserCard = userCardPOA.Id;
+                powerOfAttorney.MainInfo.PrincipalINN = userCardPOA.PrincipalInn;
+                this.Context.SaveObject(powerOfAttorney);
+
+                var powerOfAttorneyId = powerOfAttorney.GetObjectId();
+
+                // Сохраним ИД созданной СКД в ПКД
+                userCardPOA.PowerOfAttorneyCardId = powerOfAttorneyId;
+                this.Context.AcceptChanges();
+            }
+
+            public void CreateEMCHDRetrustPowerOfAttorney()
+            {
+                var userCardPOA = GetUserCard();
+
+                var powerOfAttorney = this.PowerOfAttorneyService.RetrustPowerOfAttorney(userCardPOA.PowerOfAttorneyData,
+                                                                                        userCardPOA.Representative,
+                                                                                        userCardPOA.Signer,
+                                                                                        userCardPOA.ParentalPowerOfAttorney);
+                powerOfAttorney.MainInfo.UserCard = userCardPOA.Id;
+                powerOfAttorney.MainInfo.PrincipalINN = userCardPOA.PrincipalInn;
+                this.Context.SaveObject(powerOfAttorney);
+
+                var powerOfAttorneyId = powerOfAttorney.GetObjectId();
+
+                // Сохраним ИД созданной СКД в ПКД
+                userCardPOA.PowerOfAttorneyCardId = powerOfAttorneyId;
+                this.Context.AcceptChanges();
+            }
+
+            public void SignPowerOfAttorney(X509Certificate2 cert)
+            {
+                PowerOfAttorney powerOfAttorney = GetPowerOfAttorneyCard();
+
+                this.PowerOfAttorneyService.SignPowerOfAttorney(powerOfAttorney, cert, PowerOfAttorneySignatureFormat.CADES);
+                this.Context.AcceptChanges();
+            }
+
+            public void Export(string folder, bool withSignature)
+            {
+                var powerOfAttorney = GetPowerOfAttorneyCard();
+                this.PowerOfAttorneyService.ExportMachineReadablePowerOfAttorney(powerOfAttorney, folder, withSignature);
+            }
+
+            public void MarkAsRevokedPowerOfAttorney(bool withChildrenPowerOfAttorney)
+            {
+                PowerOfAttorney powerOfAttorney = GetPowerOfAttorneyCard();
+
+                this.PowerOfAttorneyService.MarkAsRevoked(powerOfAttorney, withChildrenPowerOfAttorney);
+                this.Context.AcceptChanges();
+            }
+
+            private UserCardEMCHDPowerOfAttorney GetUserCard()
+            {
+                return UserCardEMCHDPowerOfAttorney.GetUserCard(this.Context, powerOfAttorneyUserCardId);
+            }
+
+            private PowerOfAttorney GetPowerOfAttorneyCard()
+            {
+                return UserCardEMCHDPowerOfAttorney.GetPowerOfAttorneyCard(this.Context, powerOfAttorneyUserCardId);
+            }
+        }
         private class ScriptHelper
         {
-            private readonly POAScriptHelper scriptHelper;
+            private readonly POAScriptHelper2 scriptHelper;
             private readonly BaseCardControl cardControl;
 
-            public ScriptHelper(BaseCardControl cardControl, POAScriptHelper scriptHelper)
+            public ScriptHelper(BaseCardControl cardControl, POAScriptHelper2 scriptHelper)
             {
                 this.cardControl = cardControl;
                 this.scriptHelper = scriptHelper;
@@ -142,8 +226,13 @@ namespace BackOffice
                         (item.StartState.GetObjectId() == state.GetObjectId()));
                 if (stateBranch == null)
                 {
-                    cardControl.ObjectContext.GetService<IUIService>().ShowMessage("Could not find branch for " + operationAlias + " operation");
-                  
+                    cardControl.ObjectContext.GetService<IUIService>().ShowMessage("Could not find branch for " + operationAlias + " operation state " + state.GetObjectId());
+                    var sb = new System.Text.StringBuilder();
+                    foreach (var branch in cardControl.AvailableBranches)
+                    {
+                        sb.AppendLine(branch.Operation.DefaultName + " " + branch.BranchType + " " + branch.StartState.GetObjectId());
+                    }
+                    cardControl.ObjectContext.GetService<IUIService>().ShowMessage(sb.ToString());
                     return;
                 }
 
@@ -158,7 +247,7 @@ namespace BackOffice
             {
                 if (scriptHelper == null)
                 {
-                    scriptHelper = new ScriptHelper(this.CardControl, new POAScriptHelper(this.CardControl.ObjectContext, this.CardData.Id));
+                    scriptHelper = new ScriptHelper(this.CardControl, new POAScriptHelper2(this.CardControl.ObjectContext, this.CardData.Id));
                 }
                 return scriptHelper;
             }

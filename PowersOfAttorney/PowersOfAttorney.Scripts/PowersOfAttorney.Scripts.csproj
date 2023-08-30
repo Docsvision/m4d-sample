@@ -40,6 +40,8 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="DevExpress.Utils.v17.2, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraBars.v17.2, Version=17.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="DocsVision.BackOffice.ObjectModel">
@@ -61,10 +63,17 @@
       <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
     </Reference>
+    <Reference Include="DocsVision.BackOffice.WinForms">
+      <HintPath>..\..\Assemblies\Docsvision\DocsVision.BackOffice.WinForms.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DocsVision.Platform.WinForms">
+      <HintPath>..\..\Assemblies\Docsvision\DocsVision.Platform.WinForms.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DocumentScript.cs" />
-    <Compile Include="POAScriptHelper.cs" />
+    <Compile Include="CardDocumentДоверенность__версия_EMHCD_1_Script.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
