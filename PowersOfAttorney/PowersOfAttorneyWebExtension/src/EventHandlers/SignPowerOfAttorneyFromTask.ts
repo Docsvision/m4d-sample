@@ -8,7 +8,7 @@ import { OperationExecutingEventArgs } from "@docsvision/webclient/BackOffice/Op
 import { ICancelableEventArgs } from "@docsvision/webclient/System/ICancelableEventArgs";
 
 
-export const signPowerOfAttorneyFromTask = async (sender: LayoutControl, e: ICancelableEventArgs<OperationExecutingEventArgs>) => {
+export const signPowerOfAttorneyFromTask = async (sender: LayoutControl, e: ICancelableEventArgs<OperationExecutingEventArgs>, refreshLayout = true) => {
     e.wait();
     if (e.data.operationData.additionalInfo.decisionName === "Подписать") {
         const powerOfAttorneyUserCardId = sender.layout.controls.locationContainer.params.layoutModel.cardInfo.id;
@@ -35,12 +35,16 @@ export const signPowerOfAttorneyFromTask = async (sender: LayoutControl, e: ICan
                     if (signature) {
                         try {
                             await sender.layout.getService($PowerOfAttorneyApiController).attachSignatureToPowerOfAttorney({ powerOfAttorneyId, signature })
-                            const signOperationIdPOA = sender.layout.controls.locationContainer.params.layoutModel.layoutModel.layoutInfo.operations.find(operation => operation.alias === "Sign").id;
-                            await sender.layout.getService($LayoutCardController).changeState({ cardId: powerOfAttorneyUserCardId, operationId: signOperationIdPOA, timestamp: sender.layout.controls.locationContainer.params.layoutModel.cardInfo.timestamp, comment: "", layoutParams: sender.layout.controls.locationContainer.params.layoutModel.layoutModel.layoutInfo.layoutParams });
-                            e.accept();
+                            if (refreshLayout) {                               
+                                const signOperationIdPOA = sender.layout.controls.locationContainer.params.layoutModel.layoutModel.layoutInfo.operations.find(operation => operation.alias === "Sign").id;
+                                await sender.layout.getService($LayoutCardController).changeState({ cardId: powerOfAttorneyUserCardId, operationId: signOperationIdPOA, timestamp: sender.layout.controls.locationContainer.params.layoutModel.cardInfo.timestamp, comment: "", layoutParams: sender.layout.controls.locationContainer.params.layoutModel.layoutModel.layoutInfo.layoutParams });
+                                e.accept();
+                            }
+                            
                         } catch (err) {
                             console.error(err);
                             e.cancel()
+                            return Promise.reject();
                         }
                     } else {
                         e.cancel()
