@@ -489,6 +489,9 @@
   <Property Key="6c11ae26-d480-4783-b26a-ab3e4e30a465" />
   <Property Key="41f94382-c476-4aff-b25e-96da907fe703" />
   <Property Key="5e4814be-13b0-4bb4-b780-97206080caa6" />
+  <Property Key="e0ddd752-bed9-41af-8595-6e1125f30d67" />
+  <Property Key="91b628ee-051d-4e55-9f61-4d77aeb9dbdc" />
+  <Property Key="d0b04335-05dd-4e62-933b-55b0a5d62759" />
 </LayoutLocalization>
     </File>
   </Locale>
@@ -981,6 +984,9 @@
   <Property Key="6c11ae26-d480-4783-b26a-ab3e4e30a465" />
   <Property Key="41f94382-c476-4aff-b25e-96da907fe703" />
   <Property Key="5e4814be-13b0-4bb4-b780-97206080caa6" />
+  <Property Key="e0ddd752-bed9-41af-8595-6e1125f30d67" />
+  <Property Key="91b628ee-051d-4e55-9f61-4d77aeb9dbdc" />
+  <Property Key="d0b04335-05dd-4e62-933b-55b0a5d62759" />
 </LayoutLocalization>
     </File>
   </Locale>
@@ -1071,7 +1077,7 @@
   <Property Key="27be614f-753e-4f01-ac95-2e91ab29c842" PropertyValue="Substitution is possible with subsequent substitution" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="fe6f8cca-8f50-4a6c-bfd2-05e7a7f6e164" PropertyValue="Without right of substitution" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="bf04a922-bfeb-45ea-949b-62ed11dc40e2" PropertyValue="Системная карточка доверенности" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
-  <Property Key="c7a71856-1403-44f3-aa36-f0bbcdc258d6" PropertyValue="Подписать" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="c7a71856-1403-44f3-aa36-f0bbcdc258d6" PropertyValue="Sign and send" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="a1489bca-8b31-4a77-9fe5-fae7e6e2c2ee" PropertyValue="Скачать подпись" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="5e6ff6b3-6eaa-4e80-a8c3-c7958ea9a6d3" PropertyValue="Сведения о доверителе-российском юридическом лице" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="bc293235-3b07-4ab8-ae1f-2df0c2507e96" PropertyValue="Сведения об уполномоченном представителе ‒ физическом лице" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
@@ -1473,6 +1479,9 @@
   <Property Key="6c11ae26-d480-4783-b26a-ab3e4e30a465" PropertyValue="Передоверие (формат 002)" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="41f94382-c476-4aff-b25e-96da907fe703" PropertyValue="Передоверие (формат EMCHD_1)" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="5e4814be-13b0-4bb4-b780-97206080caa6" PropertyValue="Должна быть не больше даты, указанной в доверенности, на основании которой выдаётся данная доверенность" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="e0ddd752-bed9-41af-8595-6e1125f30d67" PropertyValue="POAMesseges" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="91b628ee-051d-4e55-9f61-4d77aeb9dbdc" PropertyValue="Статус" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="d0b04335-05dd-4e62-933b-55b0a5d62759" PropertyValue="Power of attorney registration status" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
 </LayoutLocalization>
     </File>
   </Locale>
@@ -1563,7 +1572,7 @@
   <Property Key="27be614f-753e-4f01-ac95-2e91ab29c842" PropertyValue="Substitution is possible with subsequent substitution" />
   <Property Key="fe6f8cca-8f50-4a6c-bfd2-05e7a7f6e164" PropertyValue="Without right of substitution" />
   <Property Key="bf04a922-bfeb-45ea-949b-62ed11dc40e2" PropertyValue="Системная карточка доверенности" />
-  <Property Key="c7a71856-1403-44f3-aa36-f0bbcdc258d6" PropertyValue="Подписать" />
+  <Property Key="c7a71856-1403-44f3-aa36-f0bbcdc258d6" PropertyValue="Подписать и отправить" />
   <Property Key="a1489bca-8b31-4a77-9fe5-fae7e6e2c2ee" PropertyValue="Скачать подпись" />
   <Property Key="5e6ff6b3-6eaa-4e80-a8c3-c7958ea9a6d3" PropertyValue="Сведения о доверителе-российском юридическом лице" />
   <Property Key="bc293235-3b07-4ab8-ae1f-2df0c2507e96" PropertyValue="Сведения об уполномоченном представителе ‒ физическом лице" />
@@ -1965,6 +1974,9 @@
   <Property Key="6c11ae26-d480-4783-b26a-ab3e4e30a465" PropertyValue="Передоверие (формат 002)" />
   <Property Key="41f94382-c476-4aff-b25e-96da907fe703" PropertyValue="Передоверие (формат EMCHD_1)" />
   <Property Key="5e4814be-13b0-4bb4-b780-97206080caa6" PropertyValue="Должна быть не больше даты, указанной в доверенности, на основании которой выдаётся данная доверенность" />
+  <Property Key="e0ddd752-bed9-41af-8595-6e1125f30d67" PropertyValue="Журнал обмена МЧД" />
+  <Property Key="91b628ee-051d-4e55-9f61-4d77aeb9dbdc" PropertyValue="Статус" />
+  <Property Key="d0b04335-05dd-4e62-933b-55b0a5d62759" PropertyValue="Статус регистрации МЧД" />
 </LayoutLocalization>
     </File>
   </Locale>
