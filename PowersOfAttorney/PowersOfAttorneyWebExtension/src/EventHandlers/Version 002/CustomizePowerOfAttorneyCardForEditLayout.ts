@@ -44,7 +44,7 @@ const limitations = [
     { name: "IINIAWPOA", length: 12 },
     { name: "codeForeignCitizenshipIAWPOA", length: 3 },
     { name: "reprINN", length: 12 },
-    { name: "foreignReprCitizenship", length: 12 }
+    { name: "foreignReprCitizenship", length: 3 }
 ]
 
 const customizeInputFields = (sender: Layout) => {
