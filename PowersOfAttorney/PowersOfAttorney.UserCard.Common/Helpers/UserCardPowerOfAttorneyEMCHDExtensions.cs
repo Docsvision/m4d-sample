@@ -43,6 +43,10 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
                     FinalRecipientID = userCard.GenFinalRecipientTaxID,
                 };
 
+                // Если конечный получатель не назначен - берём получаетеля
+                if (string.IsNullOrEmpty(data.FinalRecipientID))
+                    data.FinalRecipientID = data.RecipientID;
+
                 if (userCard.IsRetrusted())
                 {
                     var originalPowerOfAttorneyUserCard = GetOriginalPowerOfAttorneyUserCard();
