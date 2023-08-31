@@ -6,7 +6,7 @@ import { $ControlStore } from "@docsvision/webclient/System/LayoutServices";
 // Functions from WebClient EDI extension
 declare function edi_sendPowerOfAttorneyToRegistrationAsFile(sender: LayoutControl, powerOfAttroneyCardId: string);
 declare function edi_sendPowerOfAttorneyToRegistrationAsNumber(sender: LayoutControl, powerOfAttroneyCardId: string);
-declare function edi_revokePowerOfAttorney(sender: LayoutControl, powerOfAttroneyCardId: string);
+declare function edi_deleteEmployeePowerOfAttorney(sender: LayoutControl, powerOfAttroneyCardId: string);
 declare function edi_getPowerOfAttorneyRegistrationStatus(sender: LayoutControl, powerOfAttroneyCardId: string): Promise<string>;
 
 export async function sendPowerOfAttorneyToRegistrationAsFile(sender: LayoutControl) {
@@ -22,9 +22,9 @@ export async function sendPowerOfAttorneyToRegistrationAsNumber(sender: LayoutCo
     const powerOfAttorneyIdControl = sender.layout.getService($ControlStore).get<CardLink>("powerOfAttorneySysCard");
     edi_sendPowerOfAttorneyToRegistrationAsNumber(sender, powerOfAttorneyIdControl.value?.cardId)
 }
-export async function sendPowerOfAttorneyRevokation(sender: LayoutControl) {
+export async function deleteEmployeePowerOfAttorney(sender: LayoutControl) {
     const powerOfAttorneyIdControl = sender.layout.getService($ControlStore).get<CardLink>("powerOfAttorneySysCard");
-    edi_revokePowerOfAttorney(sender, powerOfAttorneyIdControl.value?.cardId)
+    edi_deleteEmployeePowerOfAttorney(sender, powerOfAttorneyIdControl.value?.cardId)
 }
 export async function getPowerOfAttorneyRegistrationStatus(sender: LayoutControl) {
     const powerOfAttorneyIdControl = sender.layout.getService($ControlStore).get<CardLink>("powerOfAttorneySysCard");
