@@ -5,9 +5,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace PowersOfAttorneyServerExtension.Helpers
+namespace PowersOfAttorney.UserCard.Common.Helpers
 {
-    internal partial class UserCardPowerOfAttorney
+    public partial class UserCardPowerOfAttorney
     {
         private static Guid generalMachineReadablePowerOfAttorneySectionId = new Guid("29c1b4ef-48e4-47f0-ac67-c42cf68de986");
         private static Guid powersWithCodesSectionId = new Guid("0838CD2A-27C4-4EE1-B599-2DF6586AD2A7");

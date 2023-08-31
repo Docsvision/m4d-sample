@@ -6,9 +6,9 @@ using System.Linq;
 
 using static DocsVision.BackOffice.ObjectModel.Services.Entities.PowerOfAttorneyFNSData;
 
-namespace PowersOfAttorneyServerExtension.Helpers
+namespace PowersOfAttorney.UserCard.Common.Helpers
 {
-    internal partial class UserCardPowerOfAttorney
+    public partial class UserCardPowerOfAttorney
     {
         /// <summary>
         /// Описание условия отзыва
@@ -330,7 +330,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
         /// <summary>
         /// Признак возможности оформления передоверия
         /// </summary>
-        internal enum GenPossibilityOfSubstitutionTypes002
+        public enum GenPossibilityOfSubstitutionTypes002
         {
             /// <summary>
             /// Без права передоверия

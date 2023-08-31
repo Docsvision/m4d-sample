@@ -1,21 +1,17 @@
 using DocsVision.BackOffice.ObjectModel;
 using DocsVision.BackOffice.ObjectModel.Services;
 using DocsVision.BackOffice.ObjectModel.Services.Entities;
-using DocsVision.Platform.WebClient.Diagnostics;
-
-using PowersOfAttorneyServerExtension;
-using PowersOfAttorneyServerExtension.Helpers;
-
+using PowersOfAttorney.UserCard.Common;
+using PowersOfAttorney.UserCard.Common.Helpers;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
-
 using static DocsVision.BackOffice.ObjectModel.Services.Entities.PowerOfAttorneyFNSData;
-
 using static DocsVision.BackOffice.ObjectModel.Services.Entities.PowerOfAttorneyFNSDOVBBData;
-using static PowersOfAttorneyServerExtension.Helpers.UserCardPowerOfAttorney;
+using static PowersOfAttorney.UserCard.Common.Helpers.UserCardPowerOfAttorney;
 
-internal static class UserCardPowerOfAttorneyFNSDOVBBExtensions
+public static class UserCardPowerOfAttorneyFNSDOVBBExtensions
 {
     public static PowerOfAttorneyData ConvertToPowerOfAttorneyFNSDOVBBData(this UserCardPowerOfAttorney userCard, IPowerOfAttorneyService powerOfAttorneyService)
     {
@@ -25,7 +21,7 @@ internal static class UserCardPowerOfAttorneyFNSDOVBBExtensions
         }
         catch (Exception ex)
         {
-            Trace.TraceError(ex);
+            Trace.TraceError(ex.ToString());
             throw new Exception(String.Format(Resources.Error_IncorrectUserCardData, ex.Message));
         }
     }

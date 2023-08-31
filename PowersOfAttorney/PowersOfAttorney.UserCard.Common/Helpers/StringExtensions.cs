@@ -1,6 +1,6 @@
-﻿namespace PowersOfAttorneyServerExtension.Helpers
+﻿namespace PowersOfAttorney.UserCard.Common.Helpers
 {
-    internal static class StringExtensions
+    public static class StringExtensions
     {
         public static string AsNullable(this string content)
         {

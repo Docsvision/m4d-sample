@@ -8,9 +8,9 @@ using System.Linq;
 
 using static DocsVision.BackOffice.ObjectModel.Services.Entities.PowerOfAttorneyEMCHDData;
 
-namespace PowersOfAttorneyServerExtension.Helpers
+namespace PowersOfAttorney.UserCard.Common.Helpers
 {
-    internal partial class UserCardPowerOfAttorney
+    public partial class UserCardPowerOfAttorney
     {
         /// <summary>
         /// Код формы по КНД
@@ -665,7 +665,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
         /// <summary>
         /// Вид доверенности
         /// </summary>
-        internal enum GenPoaKindTypes
+        public enum GenPoaKindTypes
         {
             /// <summary>
             /// С возможностью отзыва
@@ -682,7 +682,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
         /// <summary>
         /// Признак возможности оформления передоверия
         /// </summary>
-        internal enum GenPossibilityOfSubstitutionTypes
+        public enum GenPossibilityOfSubstitutionTypes
         {
             /// <summary>
             /// Без права передоверия
@@ -702,7 +702,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
         /// <summary>
         /// 
         /// </summary>
-        internal enum GenPrincipalTypes
+        public enum GenPrincipalTypes
         {
             /// <summary>
             /// Юридическое лицо
@@ -725,7 +725,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
         /// <summary>
         /// Вид полномочий единоличного исполнительного органа
         /// </summary>
-        internal enum GenPowersTypeOfSEBTypes
+        public enum GenPowersTypeOfSEBTypes
         {
             /// <summary>
             /// Индивидуальные
@@ -740,7 +740,7 @@ namespace PowersOfAttorneyServerExtension.Helpers
         /// <summary>
         /// Тип представителя
         /// </summary>
-        internal enum GenRepresentativeTypes
+        public enum GenRepresentativeTypes
         {
             /// <summary>
             /// Юридическое лицо

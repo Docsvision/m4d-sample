@@ -1,23 +1,21 @@
 ﻿using DocsVision.BackOffice.ObjectModel;
 using DocsVision.BackOffice.ObjectModel.Services.Entities;
-using DocsVision.BackOffice.WebClient.PowersOfAttorney;
 using DocsVision.Platform.ObjectModel;
-using DocsVision.Platform.WebClient.Diagnostics;
 
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.ConstrainedExecution;
 
-using static PowersOfAttorneyServerExtension.Helpers.UserCardPowerOfAttorney;
+using static PowersOfAttorney.UserCard.Common.Helpers.UserCardPowerOfAttorney;
 
-namespace PowersOfAttorneyServerExtension.Helpers
+namespace PowersOfAttorney.UserCard.Common.Helpers
 {
-    internal static class UserCardPowerOfAttorneyEMCHDExtensions
+    public static class UserCardPowerOfAttorneyEMCHDExtensions
     {
-        public static PowerOfAttorneyData ConvertToPowerOfAttorneyEMCHDData(this UserCardPowerOfAttorney userCard, DocsVision.Platform.WebClient.SessionContext sessionContext)
+        public static PowerOfAttorneyData ConvertToPowerOfAttorneyEMCHDData(this UserCardPowerOfAttorney userCard, ObjectContext context)
         {
-            return Converter.Convert(userCard, sessionContext.ObjectContext);
+            return Converter.Convert(userCard, context);
         }
 
         class Converter
