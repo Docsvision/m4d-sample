@@ -324,4 +324,7 @@
   <data name="Error_ValueLength" xml:space="preserve">
     <value>Значение не может быть меньше {0} символов</value>
   </data>
+  <data name="PoaDidNotSendToRegistrationStatus" xml:space="preserve">
+    <value>Не передавалась</value>
+  </data>
 </root>
