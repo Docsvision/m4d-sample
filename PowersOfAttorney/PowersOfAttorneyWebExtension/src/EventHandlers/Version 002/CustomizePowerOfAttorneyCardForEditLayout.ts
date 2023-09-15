@@ -153,6 +153,7 @@ const onDataChangedSignCitizenshipfIAWPOA = (sender: Layout) => {
         codeForeignCitizenshipIAWPOA.params.visibility = true;
         codeForeignCitizenshipIAWPOA.params.required = true;
     } else {
+        codeForeignCitizenshipIAWPOA.params.value = "";
         codeForeignCitizenshipIAWPOA.params.visibility = false;
         codeForeignCitizenshipIAWPOA.params.required = false;
     }
@@ -166,6 +167,7 @@ const onDataChangedReprSignCitizenship = (sender: Layout) => {
         foreignReprCitizenship.params.visibility = true;
         foreignReprCitizenship.params.required = true;
     } else {
+        foreignReprCitizenship.params.value = "";
         foreignReprCitizenship.params.visibility = false;
         foreignReprCitizenship.params.required = false;
     }

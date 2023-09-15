@@ -91,6 +91,7 @@ const onDataChangedReprSignCitshipSPOA = (sender: Layout) => {
         foreignReprCitshipSPOA.params.visibility = true;
         foreignReprCitshipSPOA.params.required = true;
     } else {
+        foreignReprCitshipSPOA.params.value = "";
         foreignReprCitshipSPOA.params.visibility = false;
         foreignReprCitshipSPOA.params.required = false;
     }
@@ -104,6 +105,7 @@ const onDataChangedIndsignCitizenship = (sender: Layout) => {
         indCodeCitizenship.params.visibility = true;
         indCodeCitizenship.params.required = true;
     } else {
+        indCodeCitizenship.params.value = "";
         indCodeCitizenship.params.visibility = false;
         indCodeCitizenship.params.required = false;
     }
