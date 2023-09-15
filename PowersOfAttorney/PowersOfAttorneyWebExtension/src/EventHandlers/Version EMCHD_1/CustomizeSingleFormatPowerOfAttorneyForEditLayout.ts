@@ -202,13 +202,13 @@ const customizeInputFields = (sender: Layout) => {
     const codeAuthIssCEOID = document.querySelector('[data-control-name="codeAuthIssCEOID"] input') as HTMLElement;
     IMask(codeAuthIssCEOID, maskOptions.code);
     sender.controls.codeAuthIssCEOID.params.blur.subscribe((sender: TextBox, args: IDataChangedEventArgs) => {
-        checkValueLength(codeAuthIssCEOID, args.newValue?.replaceAll("-", "").replaceAll(" ", "").length, sender.layout.params.services, 6);
+        checkValueLength(codeAuthIssCEOID, sender.params.value?.replaceAll("-", "").replaceAll(" ", "").length, sender.layout.params.services, 6);
     })
 
     const codeAuthIssReprID = document.querySelector('[data-control-name="codeAuthIssReprID"] input') as HTMLElement;
     IMask(codeAuthIssReprID, maskOptions.code);
     sender.controls.codeAuthIssReprID.params.blur.subscribe((sender: TextBox, args: IDataChangedEventArgs) => {
-        checkValueLength(codeAuthIssReprID, args.newValue?.replaceAll("-", "").replaceAll(" ", "").length, sender.layout.params.services, 6);
+        checkValueLength(codeAuthIssReprID, sender.params.value?.replaceAll("-", "").replaceAll(" ", "").length, sender.layout.params.services, 6);
     })
 }
 
