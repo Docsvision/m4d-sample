@@ -20,9 +20,13 @@ export const customizeSingleFormatPowerOfAttorneyForEditLayout = async (sender: 
     const representative = controls.representative;
     const powersType = controls.powersType;
     const refPowersTable = controls.refPowersTable;
+    const ceoCitizenshipSign = controls.ceoCitizenshipSign;
+    const reprCitizenshipSign = controls.reprCitizenshipSign;
 
     customizeInputFields(sender);
     onPowersTypeDataChanged(sender);
+    onDataChangedCeoCitizenshipSign(sender);
+    onDataChangedReprCitizenshipSign(sender);
 
     sender.params.beforeCardSaving.subscribe(checkPowersBeforeSaving);
     entityPrincipal && entityPrincipal.params.dataChanged.subscribe(onPrincipalDataChanged);
@@ -30,7 +34,47 @@ export const customizeSingleFormatPowerOfAttorneyForEditLayout = async (sender: 
     representative && representative.params.dataChanged.subscribe(onRepresentativeDataChanged);
     powersType && powersType.params.dataChanged.subscribe(onPowersTypeDataChanged);
     refPowersTable && refPowersTable.params.rowAdded.subscribe(onRefPowersTableRowAdded);
+    ceoCitizenshipSign && ceoCitizenshipSign.params.dataChanged.subscribe(onDataChangedCeoCitizenshipSign);
+    reprCitizenshipSign && reprCitizenshipSign.params.dataChanged.subscribe(onDataChangedReprCitizenshipSign);
 
+}
+
+const onDataChangedCeoCitizenshipSign = (sender: Layout) => {
+    const controls = sender.layout.controls;
+    const ceoCitizenshipSign = controls.ceoCitizenshipSign;
+    const ceoCitizenship = controls.ceoCitizenship;
+    if (ceoCitizenshipSign.params.value === 'statelessPerson') {
+        ceoCitizenship.params.value = "";
+        ceoCitizenship.params.visibility = false;
+        ceoCitizenship.params.required = false;
+    } else  if (ceoCitizenshipSign.params.value === 'rusCitizen') {
+        ceoCitizenship.params.value = "643";
+        ceoCitizenship.params.visibility = true;
+        ceoCitizenship.params.required = true;
+    } else {
+        ceoCitizenship.params.value = "";
+        ceoCitizenship.params.visibility = true;
+        ceoCitizenship.params.required = true;
+    }
+}
+
+const onDataChangedReprCitizenshipSign = (sender: Layout) => {
+    const controls = sender.layout.controls;
+    const reprCitizenshipSign = controls.reprCitizenshipSign;
+    const reprCitizenship = controls.reprCitizenship;
+    if (reprCitizenshipSign.params.value === 'statelessPerson') {
+        reprCitizenship.params.value = "";
+        reprCitizenship.params.visibility = false;
+        reprCitizenship.params.required = false;
+    } else if (reprCitizenshipSign.params.value === 'rusCitizen') {
+        reprCitizenship.params.value = "643";
+        reprCitizenship.params.visibility = true;
+        reprCitizenship.params.required = true;
+    } else {
+        reprCitizenship.params.value = "";
+        reprCitizenship.params.visibility = true;
+        reprCitizenship.params.required = true;
+    }
 }
 
 const onRefPowersTableRowAdded = (sender: Table, args: IRowEventArgs) => {
