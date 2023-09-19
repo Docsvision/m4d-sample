@@ -25,6 +25,7 @@ import * as PowerOfAttorneyRegistration from "./EventHandlers/PowerOfAttorneyReg
 import * as SignAndSendPowerOfAttorneyToRegistrationAsFile from "./EventHandlers/SignAndsEndPowerOfAttorneyToRegistrationAsFile";
 import * as SignAndSendPowerOfAttorneyToRegistrationAsFileFromTask from "./EventHandlers/SignAndsEndPowerOfAttorneyToRegistrationAsFileFromTask";
 import * as SendForRegistrationToRegistry  from "./EventHandlers/SendForRegistrationToRegistry";
+import { $PowersOfAttorneyButtonController, PowersOfAttorneyButtonController } from "./ServerRequests/PowersOfAttorneyButtonController";
 
 // Главная входная точка всего расширения
 // Данный файл должен импортировать прямо или косвенно все остальные файлы, 
@@ -41,6 +42,7 @@ extensionManager.registerExtension({
         CustomizeSingleFormatSPOACardForViewLayout, CreateEMCHDRetrustPowerOfAttorney, ExportApplicationForRevocation,
         PowerOfAttorneyRegistration, SignAndSendPowerOfAttorneyToRegistrationAsFile, SignAndSendPowerOfAttorneyToRegistrationAsFileFromTask, SendForRegistrationToRegistry ],
     layoutServices: [ 
-        Service.fromFactory($PowersOfAttorneyDemoController, (services: $RequestManager) => new PowersOfAttorneyDemoController(services))
+        Service.fromFactory($PowersOfAttorneyDemoController, (services: $RequestManager) => new PowersOfAttorneyDemoController(services)),
+        Service.fromFactory($PowersOfAttorneyButtonController, (services: $RequestManager) => new PowersOfAttorneyButtonController(services)),
     ]
 })
