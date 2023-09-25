@@ -5,8 +5,8 @@ export class PowersOfAttorneyButtonController {
     constructor(private services: $RequestManager) {
     }
 
-    sendForRegistrationToRegistry(powerOfAttorneyId: string, INN: string): void {
-        const url = `M4dRegistryIntegration/Register?PowerOfAttorneyId=${powerOfAttorneyId}&INN=${INN}`;
+    sendForRegistrationToRegistry(powerOfAttorneyId: string): void {
+        const url = `M4dRegistryIntegration/Register?PowerOfAttorneyId=${powerOfAttorneyId}`;
         this.services.requestManager.post(url, "");
     }
 }

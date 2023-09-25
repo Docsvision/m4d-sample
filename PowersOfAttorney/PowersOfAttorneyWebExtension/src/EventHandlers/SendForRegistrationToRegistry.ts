@@ -4,10 +4,7 @@ import { $PowersOfAttorneyButtonController } from "../ServerRequests/PowersOfAtt
 
 export const sendForRegistrationToRegistry = async (sender: CustomButton) => {
     const powerOfAttorneyId = sender.layout.controls.powerOfAttorneySysCard.params.value?.cardId;
-    const reprINN = sender.layout.controls.get<TextBox>("reprINN")?.value;
     const powersOfAttorneyButtonController = sender.layout.getService($PowersOfAttorneyButtonController);
 
-    if (reprINN) {
-        powersOfAttorneyButtonController?.sendForRegistrationToRegistry(powerOfAttorneyId, reprINN);
-    }
+    powersOfAttorneyButtonController?.sendForRegistrationToRegistry(powerOfAttorneyId);
 };
