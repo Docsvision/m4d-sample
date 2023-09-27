@@ -1,5 +1,3 @@
-import { Dropdown } from "@docsvision/webclient/Platform/Dropdown";
-import { TextArea } from "@docsvision/webclient/Platform/TextArea";
 import { LayoutControl } from "@docsvision/webclient/System/BaseControl";
 
 export const customizeSingleFormatPowerOfAttorneyForViewLayout = async (sender: LayoutControl) => {
@@ -11,8 +9,6 @@ export const customizeSingleFormatPowerOfAttorneyForViewLayout = async (sender: 
     const reprCitizenship = controls.reprCitizenship;
     const ceoCitizenshipSign = controls.ceoCitizenshipSign;
     const ceoCitizenship = controls.ceoCitizenship;
-    const powersType1: Dropdown = controls.powersType1;
-    const textPowersDescr1: TextArea = controls.textPowersDescr1;
 
     if (ceoCitizenshipSign.value === 'foreignCitizen') {
         ceoCitizenship.params.visibility = true;
@@ -32,13 +28,5 @@ export const customizeSingleFormatPowerOfAttorneyForViewLayout = async (sender: 
     } else {
         refPowersTable.params.visibility = true;
         textPowersDescr.params.visibility = false;
-    }
-
-    if (powersType1.params.value === "humReadPower") {
-        refPowersTable.params.visibility = false;
-        textPowersDescr1.params.visibility = true;
-    } else {
-        refPowersTable.params.visibility = true;
-        textPowersDescr1.params.visibility = false;
     }
 }

@@ -1,5 +1,3 @@
-import { Dropdown } from "@docsvision/webclient/Platform/Dropdown";
-import { TextArea } from "@docsvision/webclient/Platform/TextArea";
 import { LayoutControl } from "@docsvision/webclient/System/BaseControl";
 
 export const customizeSingleFormatSPOACardForViewLayout = (sender: LayoutControl) => {
@@ -9,8 +7,6 @@ export const customizeSingleFormatSPOACardForViewLayout = (sender: LayoutControl
     const textPowersDescr = controls.textPowersDescr;
     const substPOABasis = controls.substPOABasis;
     const parentalPOABlock = controls.parentalPOABlock;
-    const powersType1: Dropdown = controls.powersType1;
-    const textPowersDescr1: TextArea = controls.textPowersDescr1;
 
     if (powersType.params.value === "humReadPower") {
         refPowersTable.params.visibility = false;
@@ -18,14 +14,6 @@ export const customizeSingleFormatSPOACardForViewLayout = (sender: LayoutControl
     } else {
         refPowersTable.params.visibility = true;
         textPowersDescr.params.visibility = false;
-    }
-
-    if (powersType1.params.value === "humReadPower") {
-        refPowersTable.params.visibility = false;
-        textPowersDescr1.params.visibility = true;
-    } else {
-        refPowersTable.params.visibility = true;
-        textPowersDescr1.params.visibility = false;
     }
 
     if (substPOABasis.params.value) {
