@@ -9,6 +9,11 @@ export class PowersOfAttorneyButtonController {
         const url = `M4dRegistryIntegration/Register?PowerOfAttorneyId=${powerOfAttorneyId}`;
         this.services.requestManager.post(url, "");
     }
+
+    recallPowerOfAttorney(powerOfAttorneyId:string):void{
+        const url = `M4dRegistryIntegration/Recall?PowerOfAttorneyId=${powerOfAttorneyId}`;
+        this.services.requestManager.post(url, "");
+    }
 }
 
 export type $PowersOfAttorneyButtonController = { powersOfAttorneyButtonController: PowersOfAttorneyButtonController };
