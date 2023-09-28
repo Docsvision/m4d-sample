@@ -493,6 +493,7 @@
   <Property Key="91b628ee-051d-4e55-9f61-4d77aeb9dbdc" />
   <Property Key="d0b04335-05dd-4e62-933b-55b0a5d62759" />
   <Property Key="29cfa209-d453-4fc2-8423-0e69dcadd8e6" />
+  <Property Key="461cff10-6df0-417a-924e-31e29e7b2932" />
 </LayoutLocalization>
     </File>
   </Locale>
@@ -989,6 +990,7 @@
   <Property Key="91b628ee-051d-4e55-9f61-4d77aeb9dbdc" />
   <Property Key="d0b04335-05dd-4e62-933b-55b0a5d62759" />
   <Property Key="29cfa209-d453-4fc2-8423-0e69dcadd8e6" />
+  <Property Key="461cff10-6df0-417a-924e-31e29e7b2932" />
 </LayoutLocalization>
     </File>
   </Locale>
@@ -1485,6 +1487,7 @@
   <Property Key="91b628ee-051d-4e55-9f61-4d77aeb9dbdc" PropertyValue="Статус" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="d0b04335-05dd-4e62-933b-55b0a5d62759" PropertyValue="Power of attorney registration status" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="29cfa209-d453-4fc2-8423-0e69dcadd8e6" PropertyValue="Sign and send to registration" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="461cff10-6df0-417a-924e-31e29e7b2932" PropertyValue="Scope" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
 </LayoutLocalization>
     </File>
   </Locale>
@@ -1981,6 +1984,7 @@
   <Property Key="91b628ee-051d-4e55-9f61-4d77aeb9dbdc" PropertyValue="Статус" />
   <Property Key="d0b04335-05dd-4e62-933b-55b0a5d62759" PropertyValue="Статус регистрации МЧД" />
   <Property Key="29cfa209-d453-4fc2-8423-0e69dcadd8e6" PropertyValue="Подписать и отправить на регистрацию" />
+  <Property Key="461cff10-6df0-417a-924e-31e29e7b2932" PropertyValue="Область применения" />
 </LayoutLocalization>
     </File>
   </Locale>
