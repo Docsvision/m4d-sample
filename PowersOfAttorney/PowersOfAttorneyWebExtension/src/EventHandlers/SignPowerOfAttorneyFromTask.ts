@@ -9,18 +9,24 @@ import { ICancelableEventArgs } from "@docsvision/webclient/System/ICancelableEv
 
 export const SIGN_OPERATION_ID = "67678953-6474-46cd-9f83-ecb95a030432";
 
+export const POWER_OF_ATTORNEY_KIND_ID = "e1925a07-6f57-406d-9073-294381ea5aed";
+export const RETRUST_POWER_OF_ATTORNEY_KIND_ID = "9df7c9ab-a7b2-4061-ab3a-0c35814cdad8";
+export const EMCHD_POWER_OF_ATTORNEY_KIND_ID = "6ac009bc-fd9c-4b7a-ba69-eaed27675264";
+export const EMCHD_RETRUST_POWER_OF_ATTORNEY_KIND_ID = "c19e2e52-1dce-4036-8aef-a6d600531a2a";
 
 export const signPowerOfAttorneyFromTask = async (sender: LayoutControl, e: ICancelableEventArgs<OperationExecutingEventArgs>, refreshLayout = true) => {
     e.wait();
     if (e.data.operationData.builtInOperationId === SIGN_OPERATION_ID) {
         const powerOfAttorneyUserCardId = sender.layout.controls.locationContainer.params.layoutModel.cardInfo.id;
         const powerOfAttorneyUserKindId = sender.layout.controls.locationContainer.params.layoutModel.cardInfo.kindId;
-        if (powerOfAttorneyUserKindId === 'e1925a07-6f57-406d-9073-294381ea5aed') {
+        if (powerOfAttorneyUserKindId === POWER_OF_ATTORNEY_KIND_ID) {
             await sender.layout.getService($PowersOfAttorneyDemoController).createPowerOfAttorney(powerOfAttorneyUserCardId);
-        } else if (powerOfAttorneyUserKindId === '9df7c9ab-a7b2-4061-ab3a-0c35814cdad8') {
+        } else if (powerOfAttorneyUserKindId === RETRUST_POWER_OF_ATTORNEY_KIND_ID) {
             await sender.layout.getService($PowersOfAttorneyDemoController).createRetrustPowerOfAttorney(powerOfAttorneyUserCardId);
-        } else if (powerOfAttorneyUserKindId === '6ac009bc-fd9c-4b7a-ba69-eaed27675264') {
+        } else if (powerOfAttorneyUserKindId === EMCHD_POWER_OF_ATTORNEY_KIND_ID) {
             await sender.layout.getService($PowersOfAttorneyDemoController).createEMCHDPowerOfAttorney(powerOfAttorneyUserCardId);
+        } else if (powerOfAttorneyUserKindId === EMCHD_RETRUST_POWER_OF_ATTORNEY_KIND_ID) {
+            await sender.layout.getService($PowersOfAttorneyDemoController).createEMCHDRetrustPowerOfAttorney(powerOfAttorneyUserCardId);
         }
         const powerOfAttorneyId = await sender.layout.getService($PowersOfAttorneyDemoController).getPowerOfAttorneyCardId(powerOfAttorneyUserCardId);
         await sender.layout.params.services.digitalSignature.showDocumentSignDialog(powerOfAttorneyUserCardId,
