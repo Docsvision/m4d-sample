@@ -26,6 +26,7 @@ import * as PowerOfAttorneyRegistration from "./EventHandlers/PowerOfAttorneyReg
 import * as SignAndSendPowerOfAttorneyToRegistrationAsFile from "./EventHandlers/SignAndsEndPowerOfAttorneyToRegistrationAsFile";
 import * as SignAndSendPowerOfAttorneyToRegistrationAsFileFromTask from "./EventHandlers/SignAndsEndPowerOfAttorneyToRegistrationAsFileFromTask";
 import * as SendForRegistrationToRegistry  from "./EventHandlers/SendForRegistrationToRegistry";
+import * as RecallPOwerOfAttorney from "./EventHandlers/RecallPowerOfAttorney";
 import { $PowersOfAttorneyButtonController, PowersOfAttorneyButtonController } from "./ServerRequests/PowersOfAttorneyButtonController";
 
 // Главная входная точка всего расширения
@@ -41,7 +42,7 @@ extensionManager.registerExtension({
         CustomizePowerOfAttorneyCardForEditLayout, toggleElementVisibilityForLocationLayout, CustomizePowerOfAttorneyCardForViewCard, CustomizeSubstitutionPowerOfAttorneyCardForEditLayout, CustomizeSubstitutionPowerOfAttorneyCardForViewLayout,
         CustomizeSingleFormatPowerOfAttorneyForEditLayout, CustomizeSingleFormatPowerOfAttorneyForViewLayout, CreateEMCHDPowerOfAttorney, SignPowerOfAttorneyFromTask, ShowRequiredFields, CustomizeSingleFormatSPOACardForEditLayout, 
         CustomizeSingleFormatSPOACardForViewLayout, CreateEMCHDRetrustPowerOfAttorney, ExportApplicationForRevocation,
-        PowerOfAttorneyRegistration, SignAndSendPowerOfAttorneyToRegistrationAsFile, SignAndSendPowerOfAttorneyToRegistrationAsFileFromTask, SendForRegistrationToRegistry ],
+        PowerOfAttorneyRegistration, SignAndSendPowerOfAttorneyToRegistrationAsFile, SignAndSendPowerOfAttorneyToRegistrationAsFileFromTask, SendForRegistrationToRegistry, RecallPOwerOfAttorney ],
     layoutServices: [ 
         Service.fromFactory($PowersOfAttorneyDemoController, (services: $RequestManager) => new PowersOfAttorneyDemoController(services)),
         Service.fromFactory($PowersOfAttorneyButtonController, (services: $RequestManager) => new PowersOfAttorneyButtonController(services)),
