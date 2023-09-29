@@ -6,8 +6,8 @@ import { ICancelableEventArgs } from "@docsvision/webclient/System/ICancelableEv
 import { layoutManager } from "@docsvision/webclient/System/LayoutManager";
 import { $ControlStore } from "@docsvision/webclient/System/LayoutServices";
 import { sendPowerOfAttorneyToRegistrationAsFile } from "./PowerOfAttorneyRegistration";
-import { signPowerOfAttorneyFromTask, SIGN_OPERATION_ID } from "./SignPowerOfAttorneyFromTask";
-
+import { signPowerOfAttorneyFromTask } from "./SignPowerOfAttorneyFromTask";
+import { SIGN_OPERATION_ID } from "../PowerOfAttorneyConstants";
 
 export const signAndSendPowerOfAttorneyToRegistrationAsFileFromTask = async (sender: LayoutControl, e: ICancelableEventArgs<OperationExecutingEventArgs>) => {
     if (e.data.operationData.builtInOperationId === SIGN_OPERATION_ID) {

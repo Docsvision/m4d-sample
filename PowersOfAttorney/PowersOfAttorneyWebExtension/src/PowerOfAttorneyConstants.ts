@@ -1,3 +1,5 @@
+export const SIGN_OPERATION_ID = "67678953-6474-46cd-9f83-ecb95a030432";
+
 export const POWER_OF_ATTORNEY_KIND_ID = "e1925a07-6f57-406d-9073-294381ea5aed";
 export const RETRUST_POWER_OF_ATTORNEY_KIND_ID = "9df7c9ab-a7b2-4061-ab3a-0c35814cdad8";
 export const EMCHD_POWER_OF_ATTORNEY_KIND_ID = "6ac009bc-fd9c-4b7a-ba69-eaed27675264";

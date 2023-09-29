@@ -6,9 +6,7 @@ import { IEncryptedInfo } from "@docsvision/webclient/BackOffice/$DigitalSignatu
 import { LayoutControl } from "@docsvision/webclient/System/BaseControl";
 import { OperationExecutingEventArgs } from "@docsvision/webclient/BackOffice/OperationExecutingEventArgs";
 import { ICancelableEventArgs } from "@docsvision/webclient/System/ICancelableEventArgs";
-import { EMCHD_POWER_OF_ATTORNEY_KIND_ID, EMCHD_RETRUST_POWER_OF_ATTORNEY_KIND_ID, POWER_OF_ATTORNEY_KIND_ID, RETRUST_POWER_OF_ATTORNEY_KIND_ID } from '../PowerOfAttorneyConstants';
-
-export const SIGN_OPERATION_ID = "67678953-6474-46cd-9f83-ecb95a030432";
+import { EMCHD_POWER_OF_ATTORNEY_KIND_ID, EMCHD_RETRUST_POWER_OF_ATTORNEY_KIND_ID, POWER_OF_ATTORNEY_KIND_ID, RETRUST_POWER_OF_ATTORNEY_KIND_ID, SIGN_OPERATION_ID } from '../PowerOfAttorneyConstants';
 
 export const signPowerOfAttorneyFromTask = async (sender: LayoutControl, e: ICancelableEventArgs<OperationExecutingEventArgs>, refreshLayout = true) => {
     e.wait();
