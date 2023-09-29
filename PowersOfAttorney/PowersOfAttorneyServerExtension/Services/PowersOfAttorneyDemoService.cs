@@ -102,7 +102,7 @@ namespace PowersOfAttorneyServerExtension.Services
                     };
                     break;
                 case PowerOfAttorneyRevocationType.Principal:
-                    var ceo = userCardPowerOfAttorney.GenRepresentative.GetValueOrThrow(Resources.Error_EmptyCeo);
+                    var ceo = userCardPowerOfAttorney.GenCeo.GetValueOrThrow(Resources.Error_EmptyCeo);
 
                     revocationData.ApplicantInfo = new PowerOfAttorneyRevocationApplicantInfo
                     {
@@ -119,6 +119,7 @@ namespace PowersOfAttorneyServerExtension.Services
                     var cardWithPrincipalData = userCardPowerOfAttorney.IsRetrusted() ? GetUserCardPowerOfAttorney(context, userCardPowerOfAttorney.ParentalPowerOfAttorneyUserCard.GetValueOrThrow(Resources.Error_ParentalCardNotFound).GetObjectId()) : userCardPowerOfAttorney;
       
                     revocationData.ApplicantInfo.Kpp = cardWithPrincipalData.GenEntityPrincipal.HasValue ? cardWithPrincipalData.GenEntityPrincipal.Value.KPP : cardWithPrincipalData.GenEntityPrinKPP;
+                    revocationData.ApplicantInfo.Inn = cardWithPrincipalData.GenEntityPrincipal.HasValue ? cardWithPrincipalData.GenEntityPrincipal.Value.INN : cardWithPrincipalData.GenEntityPrinINN;
                     revocationData.ApplicantInfo.Ogrn = cardWithPrincipalData.GenEntityPrincipal.HasValue ? cardWithPrincipalData.GenEntityPrincipal.Value.OGRN : cardWithPrincipalData.GenEntPrinOGRN;
                     revocationData.ApplicantInfo.Name = cardWithPrincipalData.GenEntityPrincipal.HasValue ? cardWithPrincipalData.GenEntityPrincipal.Value.Name : cardWithPrincipalData.GenEntityPrinName;
                     break;
