@@ -13,6 +13,11 @@ export class PowersOfAttorneyButtonController {
         const url = `M4dRegistryIntegration/Recall?PowerOfAttorneyId=${powerOfAttorneyId}&EmployeeId=${employeeId}`;
         this.services.requestManager.post(url, "");
     }
+
+    checkPowerOfAttorney(powerOfAttorneyId: string, employeeId: string): void {
+        const url = `M4dRegistryIntegration/Check?PowerOfAttorneyId=${powerOfAttorneyId}&EmployeeId=${employeeId}`;
+        this.services.requestManager.post(url, "");
+    }
 }
 
 export type $PowersOfAttorneyButtonController = { powersOfAttorneyButtonController: PowersOfAttorneyButtonController };
