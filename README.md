@@ -92,7 +92,7 @@
       - добавить скрипт customizeSingleFormatPowerOfAttorneyForViewLayout в качестве обработчика события "On all controls loaded" root для разметок просмотра, описания и справки карточки доверенности в конструкторе разметок;
       - добавить скрипт customizeSingleFormatSPOACardForEditLayout в качестве обработчика события "On all controls loaded" root для разметок создания и редактирования карточки передоверия в конструкторе разметок;
       - добавить скрипт customizeSingleFormatSPOACardForViewLayout в качестве обработчика события "On all controls loaded" root для разметок просмотра, описания и справки карточки передоверия в конструкторе разметок;
-      - добавить скрипт toggleElementVisibilityForLocationLayout в качестве обработчика события "On all controls loaded" root для разметок просмотра, описания и справки карточки передоверия в конструкторе разметок;
+      - добавить скрипт toggleElementVisibilityForLocationLayout в качестве обработчика события "On all controls loaded" root для разметки локация карточки доверенности и передоверия в конструкторе разметок;
 
 7. Нажмите кнопку создания МЧД. В результате будет создана МЧД, связанная с текущей карточкой документа.
    Для создания своей разметки нужно:
