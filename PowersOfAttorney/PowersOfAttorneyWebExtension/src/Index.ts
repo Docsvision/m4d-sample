@@ -14,7 +14,7 @@ import * as CustomizeSubstitutionPowerOfAttorneyCardForViewLayout from "./EventH
 import { $PowersOfAttorneyDemoController, PowersOfAttorneyDemoController } from "./ServerRequests/PowersOfAttorneyDemoController";
 import * as CustomizeSingleFormatPowerOfAttorneyForEditLayout from "./EventHandlers/Version EMCHD_1/CustomizeSingleFormatPowerOfAttorneyForEditLayout";
 import * as CustomizeSingleFormatPowerOfAttorneyForViewLayout from "./EventHandlers/Version EMCHD_1/CustomizeSingleFormatPowerOfAttorneyForViewLayout";
-import * as toggleElementVisibilityForLocationLayout from "./EventHandlers/Version EMCHD_1/toggleElementVisibilityForLocationLayout";
+import * as toggleElementVisibilityForLocationLayout from "./EventHandlers/Version EMCHD_1/ToggleElementVisibilityForLocationLayout";
 import * as CreateEMCHDPowerOfAttorney from "./EventHandlers/Version EMCHD_1/CreateEMCHDPowerOfAttorney";
 import * as SignPowerOfAttorneyFromTask from "./EventHandlers/SignPowerOfAttorneyFromTask";
 import * as ShowRequiredFields from "./EventHandlers/ShowRequiredFields";

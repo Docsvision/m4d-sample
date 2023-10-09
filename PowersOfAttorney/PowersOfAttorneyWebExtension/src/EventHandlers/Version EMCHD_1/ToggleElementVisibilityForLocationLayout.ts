@@ -7,15 +7,13 @@ export const toggleElementVisibilityForLocationLayout = (sender: LayoutControl) 
     const controls = sender.layout.controls;
     const powersType1: Dropdown = controls.powersType1;
     const textPowersDescr1: TextArea = controls.textPowersDescr1;
-    const refPowersTable: Table = controls.refPowersTable;
     const refPowersTable2: Table = controls.refPowersTable2;
     
     if (powersType1.params.value === "humReadPower") {
-        refPowersTable.params.visibility = false;
         refPowersTable2.params.visibility = false;
         textPowersDescr1.params.visibility = true;
     } else {
-        refPowersTable.params.visibility = true;
+        refPowersTable2.params.visibility = true;
         textPowersDescr1.params.visibility = false;
     }
 }
