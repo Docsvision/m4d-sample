@@ -663,6 +663,16 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
         }
 
         /// <summary>
+        /// Область применения доверенности
+        /// </summary>
+        public PoaScopeType? PoaScope => genMchdSection.GetEnumValue<PoaScopeType>("poaScope");
+
+        /// <summary>
+        /// Область применения доверенности - только хозяйственные сделки
+        /// </summary>
+        public bool IsB2BScopeOnly() => PoaScope.HasValue && PoaScope.Value == PoaScopeType.B2B;
+
+        /// <summary>
         /// Вид доверенности
         /// </summary>
         public enum GenPoaKindTypes
@@ -762,6 +772,21 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
             /// Филиал (аккредитованное представительство) иностранного юридического лица
             /// </summary>
             foreignEntBranch = 5
+        }
+
+        /// <summary>
+        /// Область применения доверенности
+        /// </summary>
+        public enum PoaScopeType
+        {
+            /// <summary>
+            /// Хозяйственные сделки
+            /// </summary>
+            B2B = 0,
+            /// <summary>
+            /// Взаимодействие с ФНС и хозяйственные сделки
+            /// </summary>
+            B2BandFNS = 1
         }
     }
 }

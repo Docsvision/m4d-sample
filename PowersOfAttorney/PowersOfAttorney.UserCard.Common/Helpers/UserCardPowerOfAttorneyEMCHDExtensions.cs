@@ -92,7 +92,7 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
                                     BirthDate = userCard.GenCeoDateOfBirth,
                                     BirthPlace = userCard.GenCeoPlaceOfBirth,
                                     Citizenship = userCard.GenCeoCitizenship,
-                                    CitizenshipType = userCard.GenCeoCitizenshipSign,
+                                    CitizenshipType = userCard.IsB2BScopeOnly() ? null : userCard.GenCeoCitizenshipSign,
                                     ContactPhone = userCard.GenCeoPhoneNum,
                                     EMail = userCard.GenCeoPhoneNum,
                                     Fio = new PowerOfAttorneyEMCHDData.FIO
@@ -111,7 +111,7 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
                                         Issuer = userCard.GenAuthIssCEOIDDoc,
                                         IssuerCode = userCard.GenCodeAuthDivIssCEOIDDoc
                                     },
-                                    ResidenceAddress = new PowerOfAttorneyEMCHDData.AddressInfo
+                                    ResidenceAddress = userCard.IsB2BScopeOnly() ? null : new PowerOfAttorneyEMCHDData.AddressInfo
                                     {
                                         Address = userCard.GenCeoAddrRussia,
                                         SubjectOfRussia = userCard.GenCeoAddrSubRussia,
@@ -225,7 +225,7 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
                             {
                                 FiasAddress = originaUserCardPowerOfAttorney.GenFiasEntAddrRussia,
                                 FiasCode = originaUserCardPowerOfAttorney.GenEntFIASAddrID,
-                                Address = originaUserCardPowerOfAttorney.GenEntAddrRussia,
+                                Address = originaUserCardPowerOfAttorney.IsB2BScopeOnly() ? null : originaUserCardPowerOfAttorney.GenEntAddrRussia,
                                 SubjectOfRussia = originaUserCardPowerOfAttorney.GenEntAddrSubRussia,
                             },
                             Name = entityPrincipal.Name.AsNullable(),
@@ -316,7 +316,7 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
                     BirthDate = userCard.GenReprDateOfBirth,
                     BirthPlace = userCard.GenReprPlaceOfBirth,
                     Citizenship = userCard.GenReprCitizenship,
-                    CitizenshipType = userCard.GenReprCitizenshipSign,
+                    CitizenshipType = userCard.IsB2BScopeOnly() ? null : userCard.GenReprCitizenshipSign,
                     ContactPhone = userCard.GenReprPhoneNum,
                     EMail = userCard.GenReprEmail,
                     Fio = new PowerOfAttorneyEMCHDData.FIO
@@ -391,7 +391,7 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
                         BirthDate = userCard.GenCeoDateOfBirth,
                         BirthPlace = userCard.GenCeoPlaceOfBirth,
                         Citizenship = userCard.GenCeoCitizenship,
-                        CitizenshipType = userCard.GenCeoCitizenshipSign,
+                        CitizenshipType = userCard.IsB2BScopeOnly() ? null : userCard.GenCeoCitizenshipSign,
                         ContactPhone = userCard.GenCeoPhoneNum,
                         EMail = userCard.GenCeoPhoneNum,
                         Fio = new PowerOfAttorneyEMCHDData.FIO
@@ -410,7 +410,7 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
                             Issuer = userCard.GenAuthIssCEOIDDoc,
                             IssuerCode = userCard.GenCodeAuthDivIssCEOIDDoc
                         },
-                        ResidenceAddress = new PowerOfAttorneyEMCHDData.AddressInfo
+                        ResidenceAddress = userCard.IsB2BScopeOnly() ? null : new PowerOfAttorneyEMCHDData.AddressInfo
                         {
                             Address = userCard.GenCeoAddrRussia,
                             SubjectOfRussia = userCard.GenCeoAddrSubRussia,
@@ -445,7 +445,7 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
                     {
                         FiasAddress = userCard.GenFiasEntAddrRussia,
                         FiasCode = userCard.GenEntFIASAddrID,
-                        Address = userCard.GenEntAddrRussia,
+                        Address = userCard.IsB2BScopeOnly() ? null : userCard.GenEntAddrRussia,
                         SubjectOfRussia = userCard.GenEntAddrSubRussia,
                     },
                     Name = entityPrincipal.Name.AsNullable(),
@@ -465,17 +465,19 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
                     PowerOfAttorneyAdditionalNumber = userCard.GenAddPOAID,
                     PowerOfAttorneyEndDate = userCard.GenPoaExpirationDate ?? throw new ApplicationException(Resources.Error_EmptyPowerOfAttorneyEndDate),
                     PowerOfAttorneyInternalNumber = userCard.GenInternalPOANumber,
-                    PowerOfAttorneyInternalRegistrationDate = userCard.GenPoaInternRegDate,
+                    PowerOfAttorneyInternalRegistrationDate = userCard.IsB2BScopeOnly() ? null : userCard.GenPoaInternRegDate,
                     PowerOfAttorneyKind = Convert(userCard.GenPoaKind ?? throw new ApplicationException(Resources.Error_PoaKindIsEmpty)),
                     PowerOfAttorneyNotaryNumber = userCard.GenPoaRegNumNotarRegistry,
                     PowerOfAttorneyNumber = userCard.GenSinglePOAregnumber ?? throw new ApplicationException(Resources.Error_SinglePOAregnumberIsEmpty),
                     PowerOfAttorneyStartDate = userCard.GenPoaDateOfIssue ?? throw new ApplicationException(Resources.Error_PoaDateOfIssueIsEmpty),
-                    RetrustType = Convert(userCard.GenPossibilityOfSubstitution ?? throw new ApplicationException(Resources.Error_PossibilityOfSubstitutionIsEmpty)),
-                    SubmittedPowerOfAttorneyTaxCode = userCard.GenTaxAuthPOASubmit
+                    RetrustType = Convert(userCard.GenPossibilityOfSubstitution ?? throw new ApplicationException(Resources.Error_PossibilityOfSubstitutionIsEmpty))                    
                 };
 
-                if (!string.IsNullOrEmpty(userCard.GenTaxAuthPOAValid))
-                    part.TaxCode = new List<string> { userCard.GenTaxAuthPOAValid };
+                if (!userCard.IsB2BScopeOnly()) {
+                    part.SubmittedPowerOfAttorneyTaxCode = userCard.GenTaxAuthPOASubmit;
+                    if (!string.IsNullOrEmpty(userCard.GenTaxAuthPOAValid))
+                        part.TaxCode = new List<string> { userCard.GenTaxAuthPOAValid };
+                }
 
                 return part;
             }
