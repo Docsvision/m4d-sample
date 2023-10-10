@@ -1,14 +1,28 @@
+import { Block } from "@docsvision/webclient/Platform/Block";
+import { Dropdown } from "@docsvision/webclient/Platform/Dropdown";
+import { RadioGroup } from "@docsvision/webclient/Platform/RadioGroup";
+import { Table } from "@docsvision/webclient/Platform/Table";
+import { TextArea } from "@docsvision/webclient/Platform/TextArea";
+import { TextBox } from "@docsvision/webclient/Platform/TextBox";
 import { LayoutControl } from "@docsvision/webclient/System/BaseControl";
 
 export const customizeSingleFormatPowerOfAttorneyForViewLayout = async (sender: LayoutControl) => {
     const controls = sender.layout.controls;
-    const powersType = controls.powersType;
-    const refPowersTable = controls.refPowersTable;
-    const textPowersDescr = controls.textPowersDescr;
-    const reprCitizenshipSign = controls.reprCitizenshipSign;
-    const reprCitizenship = controls.reprCitizenship;
-    const ceoCitizenshipSign = controls.ceoCitizenshipSign;
-    const ceoCitizenship = controls.ceoCitizenship;
+    const powersType = controls.get<Dropdown>("powersType");
+    const refPowersTable = controls.get<Table>("refPowersTable");
+    const textPowersDescr = controls.get<TextArea>("textPowersDescr");
+    const reprCitizenshipSign = controls.get<Dropdown>("reprCitizenshipSign");
+    const reprCitizenship = controls.get<TextBox>("reprCitizenship");
+    const ceoCitizenshipSign = controls.get<Dropdown>("ceoCitizenshipSign");
+    const ceoCitizenship = controls.get<TextBox>("ceoCitizenship");
+    const poaScope = controls.get<RadioGroup>("poaScope");
+    const codeTaxAuthSubmitBlock = controls.get<Block>("codeTaxAuthSubmitBlock");
+    const codeTaxAuthValidBlock = controls.get<Block>("codeTaxAuthValidBlock");
+    const ceoCitizenshipSignBlock = controls.get<Block>("ceoCitizenshipSignBlock");
+    const ceoAddressBlock = controls.get<Block>("ceoAddressBlock");
+    const reprCitizenshipSignBlock = controls.get<Block>("reprCitizenshipSignBlock");
+    const reprAddressBlock = controls.get<Block>("reprAddressBlock");
+
 
     if (ceoCitizenshipSign.value === 'foreignCitizen') {
         ceoCitizenship.params.visibility = true;
@@ -28,5 +42,21 @@ export const customizeSingleFormatPowerOfAttorneyForViewLayout = async (sender: 
     } else {
         refPowersTable.params.visibility = true;
         textPowersDescr.params.visibility = false;
+    }
+
+    if (poaScope.params.value === "B2B") {
+        codeTaxAuthSubmitBlock.params.visibility = false;
+        codeTaxAuthValidBlock.params.visibility = false;
+        ceoCitizenshipSignBlock.params.visibility = false;
+        ceoAddressBlock.params.visibility = false;
+        reprCitizenshipSignBlock.params.visibility = false;
+        reprAddressBlock.params.visibility = false;
+    } else {
+        codeTaxAuthSubmitBlock.params.visibility = true;
+        codeTaxAuthValidBlock.params.visibility = true;
+        ceoAddressBlock.params.visibility = true;
+        ceoCitizenshipSignBlock.params.visibility = true;
+        controls.reprCitizenshipSignBlock.params.visibility = true;
+        controls.reprAddressBlock.params.visibility = true;
     }
 }

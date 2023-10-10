@@ -1,8 +1,13 @@
 import { Powers } from "@docsvision/webclient/BackOffice/Powers";
 import { EMPLOYEE_SECTION_ID, STAFF_DIRECTORY_ID, UNIT_STAFF_SECTION_ID } from "@docsvision/webclient/BackOffice/StaffDirectoryConstants";
 import { StaffDirectoryItems } from "@docsvision/webclient/BackOffice/StaffDirectoryItems";
+import { Block } from "@docsvision/webclient/Platform/Block";
+import { DateTimePicker } from "@docsvision/webclient/Platform/DateTimePicker";
+import { Dropdown } from "@docsvision/webclient/Platform/Dropdown";
 import { IRowEventArgs } from "@docsvision/webclient/Platform/IRowEventArgs";
+import { RadioGroup } from "@docsvision/webclient/Platform/RadioGroup";
 import { Table } from "@docsvision/webclient/Platform/Table";
+import { TextArea } from "@docsvision/webclient/Platform/TextArea";
 import { TextBox } from "@docsvision/webclient/Platform/TextBox";
 import { LayoutControl } from "@docsvision/webclient/System/BaseControl";
 import { ICancelableEventArgs } from "@docsvision/webclient/System/ICancelableEventArgs";
@@ -15,18 +20,20 @@ import { checkValueLength } from "../../Utils/CheckValueLength";
 
 export const customizeSingleFormatPowerOfAttorneyForEditLayout = async (sender: Layout) => {
     const controls = sender.layout.controls;
-    const entityPrincipal = controls.entityPrincipal;
-    const ceo = controls.ceo;
-    const representative = controls.representative;
-    const powersType = controls.powersType;
-    const refPowersTable = controls.refPowersTable;
-    const ceoCitizenshipSign = controls.ceoCitizenshipSign;
-    const reprCitizenshipSign = controls.reprCitizenshipSign;
+    const entityPrincipal = controls.get<StaffDirectoryItems>("entityPrincipal");
+    const ceo = controls.get<StaffDirectoryItems>("ceo");
+    const representative = controls.get<StaffDirectoryItems>("representative");
+    const powersType = controls.get<Dropdown>("powersType");
+    const refPowersTable = controls.get<Table>("refPowersTable");
+    const ceoCitizenshipSign = controls.get<Dropdown>("ceoCitizenshipSign");
+    const reprCitizenshipSign = controls.get<Dropdown>("reprCitizenshipSign");
+    const poaScope = controls.get<RadioGroup>("poaScope");
 
     customizeInputFields(sender);
     onPowersTypeDataChanged(sender);
     onDataChangedCeoCitizenshipSign(sender);
     onDataChangedReprCitizenshipSign(sender);
+    onDataChangedPoaScope(sender);
 
     sender.params.beforeCardSaving.subscribe(checkPowersBeforeSaving);
     entityPrincipal && entityPrincipal.params.dataChanged.subscribe(onPrincipalDataChanged);
@@ -36,13 +43,67 @@ export const customizeSingleFormatPowerOfAttorneyForEditLayout = async (sender: 
     refPowersTable && refPowersTable.params.rowAdded.subscribe(onRefPowersTableRowAdded);
     ceoCitizenshipSign && ceoCitizenshipSign.params.dataChanged.subscribe(onDataChangedCeoCitizenshipSign);
     reprCitizenshipSign && reprCitizenshipSign.params.dataChanged.subscribe(onDataChangedReprCitizenshipSign);
+    poaScope && poaScope.params.dataChanged.subscribe(onDataChangedPoaScope);
+}
 
+const onDataChangedPoaScope = (sender: Layout) => {
+    const controls = sender.layout.controls;
+    const poaScope = controls.get<RadioGroup>("poaScope");
+    const codeTaxAuthSubmitBlock = controls.get<Block>("codeTaxAuthSubmitBlock");
+    const codeTaxAuthValidBlock = controls.get<Block>("codeTaxAuthValidBlock");
+    const ceoCitizenshipSignBlock = controls.get<Block>("ceoCitizenshipSignBlock");
+    const ceoAddressBlock = controls.get<Block>("ceoAddressBlock");
+    const reprCitizenshipSignBlock = controls.get<Block>("reprCitizenshipSignBlock");
+    const reprAddressBlock = controls.get<Block>("reprAddressBlock");
+    const codeTaxAuthSubmit = controls.get<TextBox>("codeTaxAuthSubmit");
+    const codeTaxAuthValid = controls.get<TextBox>("codeTaxAuthValid");
+    const ceoCitizenshipSign = controls.get<Dropdown>("ceoCitizenshipSign");
+    const reprCitizenshipSign = controls.get<Dropdown>("reprCitizenshipSign");
+    const princAddrRus = controls.get<TextArea>("princAddrRus");
+    const ceoAddrSubRus = controls.get<TextBox>("ceoAddrSubRus");
+    const ceoAddrRus = controls.get<TextArea>("ceoAddrRus");
+    const reprAddrSubRus = controls.get<TextBox>("reprAddrSubRus");
+    const reprAddrRus = controls.get<TextArea>("reprAddrRus");
+
+    if (poaScope.params.value === "B2B") {
+        codeTaxAuthSubmitBlock.params.visibility = false;
+        codeTaxAuthValidBlock.params.visibility = false;
+        ceoAddressBlock.params.visibility = false;
+        ceoCitizenshipSignBlock.params.visibility = false;
+        reprCitizenshipSignBlock.params.visibility = false;
+        reprAddressBlock.params.visibility = false;
+        codeTaxAuthSubmit.params.required = false;
+        codeTaxAuthValid.params.required = false;
+        ceoCitizenshipSign.params.required = false;
+        reprCitizenshipSign.params.required = false;
+        princAddrRus.params.required = false;
+        ceoAddrSubRus.params.required = false;
+        ceoAddrRus.params.required = false;
+        reprAddrSubRus.params.required = false;
+        reprAddrRus.params.required = false;
+    } else {
+        codeTaxAuthSubmitBlock.params.visibility = true;
+        codeTaxAuthValidBlock.params.visibility = true;
+        ceoCitizenshipSignBlock.params.visibility = true;
+        ceoAddressBlock.params.visibility = true;
+        reprCitizenshipSignBlock.params.visibility = true;
+        reprAddressBlock.params.visibility = true;
+        codeTaxAuthSubmit.params.required = true;
+        codeTaxAuthValid.params.required = true;
+        ceoCitizenshipSign.params.required = true;
+        reprCitizenshipSign.params.required = true;
+        princAddrRus.params.required = true;
+        ceoAddrSubRus.params.required = true;
+        ceoAddrRus.params.required = true;
+        reprAddrSubRus.params.required = true;
+        reprAddrRus.params.required = true;
+    }
 }
 
 const onDataChangedCeoCitizenshipSign = (sender: Layout) => {
     const controls = sender.layout.controls;
-    const ceoCitizenshipSign = controls.ceoCitizenshipSign;
-    const ceoCitizenship = controls.ceoCitizenship;
+    const ceoCitizenshipSign = controls.get<Dropdown>("ceoCitizenshipSign");
+    const ceoCitizenship = controls.get<TextBox>("ceoCitizenship");
     if (ceoCitizenshipSign.params.value === 'statelessPerson') {
         ceoCitizenship.params.value = "";
         ceoCitizenship.params.visibility = false;
@@ -60,8 +121,8 @@ const onDataChangedCeoCitizenshipSign = (sender: Layout) => {
 
 const onDataChangedReprCitizenshipSign = (sender: Layout) => {
     const controls = sender.layout.controls;
-    const reprCitizenshipSign = controls.reprCitizenshipSign;
-    const reprCitizenship = controls.reprCitizenship;
+    const reprCitizenshipSign = controls.get<Dropdown>("reprCitizenshipSign");
+    const reprCitizenship = controls.get<TextBox>("reprCitizenship");
     if (reprCitizenshipSign.params.value === 'statelessPerson') {
         reprCitizenship.params.value = "";
         reprCitizenship.params.visibility = false;
@@ -92,8 +153,8 @@ const onRefPowersCodeDataChanged = (sender: Powers, args: IDataChangedEventArgs)
 }
 
 const checkPowersBeforeSaving = (sender: Layout, args: ICancelableEventArgs<ILayoutBeforeSavingEventArgs>) => {
-    const refPowersTable = sender.controls.refPowersTable;
-    const powersType = sender.controls.powersType;
+    const refPowersTable = sender.controls.get<Table>("refPowersTable");
+    const powersType = sender.controls.get<Dropdown>("powersType");
     if (powersType.params.value === "machReadPower" && refPowersTable.params.rows.length === 0) {
         sender.params.services.messageWindow.showError(resources.Error_PowersEmpty);
         args.cancel();
@@ -102,12 +163,12 @@ const checkPowersBeforeSaving = (sender: Layout, args: ICancelableEventArgs<ILay
 
 const onPrincipalDataChanged = async (sender: StaffDirectoryItems, args: IDataChangedEventArgs) => {
     const controls = sender.layout.controls;
-    const princINN = controls.princINN;
-    const princKPP = controls.princKPP;
-    const princOGRN = controls.princOGRN;
-    const princPhone = controls.princPhone;
-    const princEmail = controls.princEmail;
-    const princAddrRus = controls.princAddrRus;
+    const princINN = controls.get<TextArea>("princINN");
+    const princKPP = controls.get<TextArea>("princKPP");
+    const princOGRN = controls.get<TextArea>("princOGRN");
+    const princPhone = controls.get<TextArea>("princPhone");
+    const princEmail = controls.get<TextArea>("princEmail");
+    const princAddrRus = controls.get<TextArea>("princAddrRus");
 
     if (args.newValue) {
         const data = await sender.layout.params.services.requestManager.get(`api/v1/cards/${STAFF_DIRECTORY_ID}/${UNIT_STAFF_SECTION_ID}/${args.newValue.id}`) as any;
@@ -135,13 +196,13 @@ const onPrincipalDataChanged = async (sender: StaffDirectoryItems, args: IDataCh
 
 const onCeoDataChanged = async (sender: StaffDirectoryItems, args: IDataChangedEventArgs) => {
     const controls = sender.layout.controls;
-    const ceoPosition = controls.ceoPosition;
-    const ceoBirthDate = controls.ceoBirthDate;
-    const ceoGender = controls.ceoGender;
-    const ceoPhone = controls.ceoPhone;
-    const ceoEmail = controls.ceoEmail;
-    const numCEOID = controls.numCEOID;
-    const authIssCEOID = controls.authIssCEOID;
+    const ceoPosition = controls.get<TextBox>("ceoPosition");
+    const ceoBirthDate = controls.get<DateTimePicker>("ceoBirthDate");
+    const ceoGender = controls.get<Dropdown>("ceoGender");
+    const ceoPhone = controls.get<TextBox>("ceoPhone");
+    const ceoEmail = controls.get<TextBox>("ceoEmail");
+    const numCEOID = controls.get<TextBox>("numCEOID");
+    const authIssCEOID = controls.get<TextArea>("authIssCEOID");
 
     if (args.newValue) {
         const data = await sender.layout.params.services.requestManager.get(`api/v1/cards/${STAFF_DIRECTORY_ID}/${EMPLOYEE_SECTION_ID}/${args.newValue.id}`) as any;
@@ -154,7 +215,7 @@ const onCeoDataChanged = async (sender: StaffDirectoryItems, args: IDataChangedE
         authIssCEOID.params.value = data.fields.find(field => field.alias === "IDIssuedBy").value;
     } else {
         ceoPosition.params.value = "";
-        ceoBirthDate.params.value = "";
+        ceoBirthDate.params.value = null;
         ceoGender.params.value = "";
         ceoPhone.params.value = "";
         ceoEmail.params.value = "";
@@ -165,12 +226,12 @@ const onCeoDataChanged = async (sender: StaffDirectoryItems, args: IDataChangedE
 
 const onRepresentativeDataChanged = async (sender: StaffDirectoryItems, args: IDataChangedEventArgs) => {
     const controls = sender.layout.controls;
-    const reprBirthDate = controls.reprBirthDate;
-    const reprGender = controls.reprGender;
-    const reprPhone = controls.reprPhone;
-    const reprEmail = controls.reprEmail;
-    const numReprID = controls.numReprID;
-    const authIssReprID = controls.authIssReprID;
+    const reprBirthDate = controls.get<DateTimePicker>("reprBirthDate");
+    const reprGender = controls.get<Dropdown>("reprGender");
+    const reprPhone = controls.get<TextBox>("reprPhone");
+    const reprEmail = controls.get<TextBox>("reprEmail");
+    const numReprID = controls.get<TextBox>("numReprID");
+    const authIssReprID = controls.get<TextArea>("authIssReprID");
 
     if (args.newValue) {
         const data = await sender.layout.params.services.requestManager.get(`api/v1/cards/${STAFF_DIRECTORY_ID}/${EMPLOYEE_SECTION_ID}/${args.newValue.id}`) as any;
@@ -181,7 +242,7 @@ const onRepresentativeDataChanged = async (sender: StaffDirectoryItems, args: ID
         numReprID.params.value = data.fields.find(field => field.alias === "IDNumber").value;
         authIssReprID.params.value = data.fields.find(field => field.alias === "IDIssuedBy").value;
     } else {
-        reprBirthDate.params.value = "";
+        reprBirthDate.params.value = null;
         reprGender.params.value = "";
         reprPhone.params.value = "";
         reprEmail.params.value = "";
@@ -258,9 +319,9 @@ const customizeInputFields = (sender: Layout) => {
 
 const onPowersTypeDataChanged = (sender: LayoutControl) => {
     const controls = sender.layout.controls;
-    const powersType = controls.powersType;
-    const refPowersTable = controls.refPowersTable;
-    const textPowersDescr = controls.textPowersDescr;
+    const powersType = controls.get<Dropdown>("powersType");
+    const refPowersTable = controls.get<Table>("refPowersTable");
+    const textPowersDescr = controls.get<TextArea>("textPowersDescr");
     if (powersType.params.value === "humReadPower") {
         textPowersDescr.params.visibility = true;
         textPowersDescr.params.required = true;
