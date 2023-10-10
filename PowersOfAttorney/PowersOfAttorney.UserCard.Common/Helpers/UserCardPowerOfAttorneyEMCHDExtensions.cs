@@ -36,12 +36,14 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
 
             private PowerOfAttorneyEMCHDData Convert()
             {
-                var data = new PowerOfAttorneyEMCHDData(withEsia: false, withNotary: false, withTax: true)
-                {
-                    Document = CreateDocumentPart(),
-                    RecipientID = userCard.GenTaxAuthPOASubmit,
-                    FinalRecipientID = userCard.GenFinalRecipientTaxID,
-                };
+                var data = userCard.IsB2BScopeOnly() ? new PowerOfAttorneyEMCHDData(withEsia: false, withNotary: false)
+                    : new PowerOfAttorneyEMCHDData(withEsia: false, withNotary: false, withTax: true)
+                    {
+                        RecipientID = userCard.GenTaxAuthPOASubmit,
+                        FinalRecipientID = userCard.GenFinalRecipientTaxID,
+                    };
+
+                data.Document = CreateDocumentPart();
 
                 // Если конечный получатель не назначен - берём получаетеля
                 if (string.IsNullOrEmpty(data.FinalRecipientID))
