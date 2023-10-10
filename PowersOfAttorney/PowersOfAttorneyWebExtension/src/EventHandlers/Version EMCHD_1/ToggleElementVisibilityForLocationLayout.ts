@@ -5,9 +5,9 @@ import { LayoutControl } from "@docsvision/webclient/System/BaseControl";
 
 export const toggleElementVisibilityForLocationLayout = (sender: LayoutControl) =>  {
     const controls = sender.layout.controls;
-    const powersType1: Dropdown = controls.powersType1;
-    const textPowersDescr1: TextArea = controls.textPowersDescr1;
-    const refPowersTable2: Table = controls.refPowersTable2;
+    const powersType1 = controls.get<Dropdown>("powersType1");
+    const textPowersDescr1 = controls.get<TextArea>("textPowersDescr1");
+    const refPowersTable2 = controls.get<Table>("refPowersTable2");
     
     if (powersType1.params.value === "humReadPower") {
         refPowersTable2.params.visibility = false;
