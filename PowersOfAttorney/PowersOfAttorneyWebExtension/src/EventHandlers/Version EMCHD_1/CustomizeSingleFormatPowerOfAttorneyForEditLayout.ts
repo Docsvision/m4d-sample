@@ -65,39 +65,22 @@ const onDataChangedPoaScope = (sender: Layout) => {
     const reprAddrSubRus = controls.get<TextBox>("reprAddrSubRus");
     const reprAddrRus = controls.get<TextArea>("reprAddrRus");
 
-    if (poaScope.params.value === "B2B") {
-        codeTaxAuthSubmitBlock.params.visibility = false;
-        codeTaxAuthValidBlock.params.visibility = false;
-        ceoAddressBlock.params.visibility = false;
-        ceoCitizenshipSignBlock.params.visibility = false;
-        reprCitizenshipSignBlock.params.visibility = false;
-        reprAddressBlock.params.visibility = false;
-        codeTaxAuthSubmit.params.required = false;
-        codeTaxAuthValid.params.required = false;
-        ceoCitizenshipSign.params.required = false;
-        reprCitizenshipSign.params.required = false;
-        princAddrRus.params.required = false;
-        ceoAddrSubRus.params.required = false;
-        ceoAddrRus.params.required = false;
-        reprAddrSubRus.params.required = false;
-        reprAddrRus.params.required = false;
-    } else {
-        codeTaxAuthSubmitBlock.params.visibility = true;
-        codeTaxAuthValidBlock.params.visibility = true;
-        ceoCitizenshipSignBlock.params.visibility = true;
-        ceoAddressBlock.params.visibility = true;
-        reprCitizenshipSignBlock.params.visibility = true;
-        reprAddressBlock.params.visibility = true;
-        codeTaxAuthSubmit.params.required = true;
-        codeTaxAuthValid.params.required = true;
-        ceoCitizenshipSign.params.required = true;
-        reprCitizenshipSign.params.required = true;
-        princAddrRus.params.required = true;
-        ceoAddrSubRus.params.required = true;
-        ceoAddrRus.params.required = true;
-        reprAddrSubRus.params.required = true;
-        reprAddrRus.params.required = true;
-    }
+    const isNotB2BValue = poaScope.params.value !== "B2B";
+    codeTaxAuthSubmitBlock.params.visibility = isNotB2BValue;
+    codeTaxAuthValidBlock.params.visibility = isNotB2BValue;
+    ceoAddressBlock.params.visibility = isNotB2BValue;
+    ceoCitizenshipSignBlock.params.visibility = isNotB2BValue;
+    reprCitizenshipSignBlock.params.visibility = isNotB2BValue;
+    reprAddressBlock.params.visibility = isNotB2BValue;
+    codeTaxAuthSubmit.params.required = isNotB2BValue;
+    codeTaxAuthValid.params.required = isNotB2BValue;
+    ceoCitizenshipSign.params.required = isNotB2BValue;
+    reprCitizenshipSign.params.required = isNotB2BValue;
+    princAddrRus.params.required = isNotB2BValue;
+    ceoAddrSubRus.params.required = isNotB2BValue;
+    ceoAddrRus.params.required = isNotB2BValue;
+    reprAddrSubRus.params.required = isNotB2BValue;
+    reprAddrRus.params.required = isNotB2BValue;
 }
 
 const onDataChangedCeoCitizenshipSign = (sender: Layout) => {

@@ -52,19 +52,12 @@ export const customizeSingleFormatSPOACardForViewLayout = (sender: LayoutControl
         reprCitizenship.params.visibility = false;
     }
     
-    if (poaScope.params.value === "B2B") {
-        codeTaxAuthSubmitBlock.params.visibility = false;
-        codeTaxAuthValidBlock.params.visibility = false;
-        ceoAddressBlock.params.visibility = false;
-        delegatorCitizenshipSignBlock.params.visibility = false;
-        reprCitizenshipSignBlock.params.visibility = false;
-        reprAddressBlock.params.visibility = false;
-    } else {
-        codeTaxAuthSubmitBlock.params.visibility = true;
-        codeTaxAuthValidBlock.params.visibility = true;
-        delegatorCitizenshipSignBlock.params.visibility = true;
-        ceoAddressBlock.params.visibility = true;
-        reprCitizenshipSignBlock.params.visibility = true;
-        reprAddressBlock.params.visibility = true;
-    }
+    const isNotB2BValue = poaScope.params.value !== "B2B";
+    codeTaxAuthSubmitBlock.params.visibility = isNotB2BValue;
+    codeTaxAuthValidBlock.params.visibility = isNotB2BValue;
+    ceoAddressBlock.params.visibility = isNotB2BValue;
+    delegatorCitizenshipSignBlock.params.visibility = isNotB2BValue;
+    reprCitizenshipSignBlock.params.visibility = isNotB2BValue;
+    reprAddressBlock.params.visibility = isNotB2BValue;
+  
 }

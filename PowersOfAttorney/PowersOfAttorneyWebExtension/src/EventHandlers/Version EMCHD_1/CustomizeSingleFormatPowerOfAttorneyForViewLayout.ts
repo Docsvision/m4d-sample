@@ -44,19 +44,12 @@ export const customizeSingleFormatPowerOfAttorneyForViewLayout = async (sender: 
         textPowersDescr.params.visibility = false;
     }
 
-    if (poaScope.params.value === "B2B") {
-        codeTaxAuthSubmitBlock.params.visibility = false;
-        codeTaxAuthValidBlock.params.visibility = false;
-        ceoCitizenshipSignBlock.params.visibility = false;
-        ceoAddressBlock.params.visibility = false;
-        reprCitizenshipSignBlock.params.visibility = false;
-        reprAddressBlock.params.visibility = false;
-    } else {
-        codeTaxAuthSubmitBlock.params.visibility = true;
-        codeTaxAuthValidBlock.params.visibility = true;
-        ceoAddressBlock.params.visibility = true;
-        ceoCitizenshipSignBlock.params.visibility = true;
-        controls.reprCitizenshipSignBlock.params.visibility = true;
-        controls.reprAddressBlock.params.visibility = true;
-    }
+    const isNotB2BValue = poaScope.params.value !== "B2B";
+    codeTaxAuthSubmitBlock.params.visibility = isNotB2BValue;
+    codeTaxAuthValidBlock.params.visibility = isNotB2BValue;
+    ceoCitizenshipSignBlock.params.visibility = isNotB2BValue;
+    ceoAddressBlock.params.visibility = isNotB2BValue;
+    reprCitizenshipSignBlock.params.visibility = isNotB2BValue;
+    reprAddressBlock.params.visibility = isNotB2BValue;
+   
 }
