@@ -15,7 +15,7 @@
     <Property Name="CardLayoutSwitching" Value="" Type="System.String, mscorlib" IsAvailable="true" />
     <Property Name="CardDeleting" Value="" Type="System.String, mscorlib" IsAvailable="true" />
     <Property Name="CardDeleted" Value="" Type="System.String, mscorlib" IsAvailable="true" />
-    <Property Name="AllControlsLoaded" Value="customizeSingleFormatPowerOfAttorneyForViewLayout" Type="System.String, mscorlib" IsAvailable="true" />
+    <Property Name="AllControlsLoaded" Value="customizeSingleFormatPowerOfAttorneyForViewLayout, toggleElementVisibilityForLocationLayout" Type="System.String, mscorlib" IsAvailable="true" />
     <Property Name="Click" Value="" Type="System.String, mscorlib" IsAvailable="true" />
     <Property Name="MouseOver" Value="" Type="System.String, mscorlib" IsAvailable="true" />
     <Property Name="MouseOut" Value="" Type="System.String, mscorlib" IsAvailable="true" />

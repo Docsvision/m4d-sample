@@ -15,7 +15,7 @@
     <Property Name="CardLayoutSwitching" Value="" Type="System.String, mscorlib" IsAvailable="true" />
     <Property Name="CardDeleting" Value="" Type="System.String, mscorlib" IsAvailable="true" />
     <Property Name="CardDeleted" Value="" Type="System.String, mscorlib" IsAvailable="true" />
-    <Property Name="AllControlsLoaded" Value="customizeSingleFormatSPOACardForViewLayout" Type="System.String, mscorlib" IsAvailable="true" />
+    <Property Name="AllControlsLoaded" Value="customizeSingleFormatSPOACardForViewLayout, toggleElementVisibilityForLocationLayout" Type="System.String, mscorlib" IsAvailable="true" />
     <Property Name="Click" Value="" Type="System.String, mscorlib" IsAvailable="true" />
     <Property Name="MouseOver" Value="" Type="System.String, mscorlib" IsAvailable="true" />
     <Property Name="MouseOut" Value="" Type="System.String, mscorlib" IsAvailable="true" />
@@ -45,19 +45,19 @@
     <Binding PropertyName="ac88e304-b56f-4b95-99d9-decff2fbca29" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/29c1b4ef-48e4-47f0-ac67-c42cf68de986/poaExpirationDate" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
     <Binding PropertyName="712ce12c-92ea-41dc-98ca-dd2f4b0fbefd" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/29c1b4ef-48e4-47f0-ac67-c42cf68de986/poaExpirationDate" ConverterType="DateTimeDefaultValueConverter" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
     <Binding PropertyName="c59d26bf-563a-43a7-ab16-b56d41f86b1f" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/29c1b4ef-48e4-47f0-ac67-c42cf68de986/poaExpirationDate" ConverterType="DateTimeDefaultWorkTimeConverter" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
-    <Binding PropertyName="347d037a-e2b8-41a0-ae26-f28d6fe7d65d" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/0838cd2a-27c4-4ee1-b599-2df6586ad2a7/powerType" ResolverType="ElementBinding" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
+    <Binding PropertyName="347d037a-e2b8-41a0-ae26-f28d6fe7d65d" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/29c1b4ef-48e4-47f0-ac67-c42cf68de986/powerType" ResolverType="ElementBinding" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
     <Binding PropertyName="ae05d0dd-f5ac-48c6-8a60-0ea59b7b60e1" BindingMode="0" ConverterType="Elements" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false">
       <Items />
     </Binding>
-    <Binding PropertyName="69e6ca01-bbfd-4459-8cc4-cc1f2f2551e5" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/0838cd2a-27c4-4ee1-b599-2df6586ad2a7/jointExerPowers" ResolverType="ElementBinding" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
+    <Binding PropertyName="69e6ca01-bbfd-4459-8cc4-cc1f2f2551e5" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/29c1b4ef-48e4-47f0-ac67-c42cf68de986/jointExerPowers" ResolverType="ElementBinding" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
     <Binding PropertyName="7339ab01-06a8-4ed4-8b15-a288b8b1e349" BindingMode="0" ConverterType="Elements" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false">
       <Items />
     </Binding>
-    <Binding PropertyName="2c9de4e4-0e5d-41ad-b015-877771cddb59" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/0838cd2a-27c4-4ee1-b599-2df6586ad2a7/lossPowersTransfer" ResolverType="ElementBinding" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
+    <Binding PropertyName="2c9de4e4-0e5d-41ad-b015-877771cddb59" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/29c1b4ef-48e4-47f0-ac67-c42cf68de986/lossPowersTransfer" ResolverType="ElementBinding" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
     <Binding PropertyName="9110496d-d87e-4f8c-8667-98193eafe94d" BindingMode="0" ConverterType="Elements" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false">
       <Items />
     </Binding>
-    <Binding PropertyName="8ace22e1-81a1-4062-b845-468f194af063" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/0838cd2a-27c4-4ee1-b599-2df6586ad2a7/PowersTextDescription" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
+    <Binding PropertyName="8ace22e1-81a1-4062-b845-468f194af063" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/29c1b4ef-48e4-47f0-ac67-c42cf68de986/PowersTextDescription" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
     <Binding PropertyName="9572e4be-26c6-491a-be90-3cd48948d40b" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/0838cd2a-27c4-4ee1-b599-2df6586ad2a7/" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
     <Binding PropertyName="0f587089-9792-4c27-84a2-c4e831572e56" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/0838cd2a-27c4-4ee1-b599-2df6586ad2a7/PowersCode" ResolverType="PowersValueResolver" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
     <Binding PropertyName="a242f819-2bdd-4e10-95f3-f60236e1c6cd" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/3b9a9466-7569-4142-af68-de60263a9640/PowerOfAttorneyCardId" ConverterType="CardLinkConverter" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
@@ -1012,7 +1012,7 @@
                     <Property Name="ShowEmptyLabel" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
                     <Property Name="LabelText" Value="c4f6a43f-6006-4024-8a58-62e16fae1c26" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="true" />
                     <Property Name="ExtendedDataSource" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
-                    <Property Name="DataSource" Value="0838cd2a-27c4-4ee1-b599-2df6586ad2a7" Type="System.Guid, mscorlib" IsAvailable="true" />
+                    <Property Name="DataSource" Value="29c1b4ef-48e4-47f0-ac67-c42cf68de986" Type="System.Guid, mscorlib" IsAvailable="true" />
                     <Property Name="DataField" Value="powerType" Type="System.String, mscorlib" IsAvailable="true" />
                     <Property Name="Binding" Value="347d037a-e2b8-41a0-ae26-f28d6fe7d65d" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
                     <Property Name="DefaultElement" Value="machReadPower" Type="System.String, mscorlib" IsAvailable="true" RepresentsDefaultBindingValue="true" />
@@ -1063,7 +1063,7 @@
                     <Property Name="ShowEmptyLabel" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
                     <Property Name="LabelText" Value="5db6e808-1246-4686-b210-f73b3c719dd2" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="true" />
                     <Property Name="ExtendedDataSource" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
-                    <Property Name="DataSource" Value="0838cd2a-27c4-4ee1-b599-2df6586ad2a7" Type="System.Guid, mscorlib" IsAvailable="true" />
+                    <Property Name="DataSource" Value="29c1b4ef-48e4-47f0-ac67-c42cf68de986" Type="System.Guid, mscorlib" IsAvailable="true" />
                     <Property Name="DataField" Value="jointExerPowers" Type="System.String, mscorlib" IsAvailable="true" />
                     <Property Name="Binding" Value="69e6ca01-bbfd-4459-8cc4-cc1f2f2551e5" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
                     <Property Name="DefaultElement" Value="individual" Type="System.String, mscorlib" IsAvailable="true" RepresentsDefaultBindingValue="true" />
@@ -1114,7 +1114,7 @@
                     <Property Name="ShowEmptyLabel" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
                     <Property Name="LabelText" Value="005383f2-080d-4dda-ac5b-911427178483" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="true" />
                     <Property Name="ExtendedDataSource" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
-                    <Property Name="DataSource" Value="0838cd2a-27c4-4ee1-b599-2df6586ad2a7" Type="System.Guid, mscorlib" IsAvailable="true" />
+                    <Property Name="DataSource" Value="29c1b4ef-48e4-47f0-ac67-c42cf68de986" Type="System.Guid, mscorlib" IsAvailable="true" />
                     <Property Name="DataField" Value="lossPowersTransfer" Type="System.String, mscorlib" IsAvailable="true" />
                     <Property Name="Binding" Value="2c9de4e4-0e5d-41ad-b015-877771cddb59" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
                     <Property Name="DefaultElement" Value="notLost" Type="System.String, mscorlib" IsAvailable="true" RepresentsDefaultBindingValue="true" />
@@ -1188,7 +1188,7 @@
                     </Property>
                     <Property Name="HtmlEditorWidth" Value="80%" Type="System.String, mscorlib" IsAvailable="false" />
                     <Property Name="ExtendedDataSource" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
-                    <Property Name="DataSource" Value="0838cd2a-27c4-4ee1-b599-2df6586ad2a7" Type="System.Guid, mscorlib" IsAvailable="true" />
+                    <Property Name="DataSource" Value="29c1b4ef-48e4-47f0-ac67-c42cf68de986" Type="System.Guid, mscorlib" IsAvailable="true" />
                     <Property Name="DataField" Value="PowersTextDescription" Type="System.String, mscorlib" IsAvailable="true" />
                     <Property Name="Binding" Value="8ace22e1-81a1-4062-b845-468f194af063" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
                     <Property Name="IsInheritedEditOperation" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
