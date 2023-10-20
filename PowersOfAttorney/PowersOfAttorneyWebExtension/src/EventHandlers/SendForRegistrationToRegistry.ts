@@ -1,11 +1,14 @@
 import { CustomButton } from "@docsvision/webclient/Platform/CustomButton";
 import { $ApplicationSettings } from "@docsvision/webclient/StandardServices";
 import { $PowersOfAttorneyButtonController } from "../ServerRequests/PowersOfAttorneyButtonController";
+import { MessageBox } from "@docsvision/webclient/Helpers/MessageBox/MessageBox";
 
 export const sendForRegistrationToRegistry = async (sender: CustomButton) => {
     const powerOfAttorneyId = sender.layout.controls.powerOfAttorneySysCard.params.value?.cardId;
     const powersOfAttorneyButtonController = sender.layout.getService($PowersOfAttorneyButtonController);
     const employeeId = sender.layout.getService($ApplicationSettings).employee.id;
 
-    powersOfAttorneyButtonController?.sendForRegistrationToRegistry(powerOfAttorneyId, employeeId);
+    powersOfAttorneyButtonController?.sendForRegistrationToRegistry(powerOfAttorneyId, employeeId).then(msg => {
+        MessageBox.ShowInfo(msg);
+    });
 };
