@@ -217,11 +217,13 @@ const onPowersTypeDataChanged = (sender: LayoutControl) => {
     if (powersType.params.value === "humReadPower") {
         textPowersDescr.params.visibility = true;
         textPowersDescr.params.required = true;
+        refPowersTable.params.rows = [];
         refPowersTable.params.visibility = false;
     } else {
+        refPowersTable.params.visibility = true;
+        textPowersDescr.params.value = "";
         textPowersDescr.params.visibility = false;
         textPowersDescr.params.required = false;
-        refPowersTable.params.visibility = true;
     }
 }
 
