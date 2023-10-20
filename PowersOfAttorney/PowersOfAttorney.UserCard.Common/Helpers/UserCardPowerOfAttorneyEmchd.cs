@@ -5,7 +5,7 @@ using DocsVision.BackOffice.ObjectModel.Services.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using System.Web;
 using static DocsVision.BackOffice.ObjectModel.Services.Entities.PowerOfAttorneyEMCHDData;
 
 namespace PowersOfAttorney.UserCard.Common.Helpers
@@ -537,7 +537,7 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
                 var regNumberId = mainInfoSection.GetGuidValue(CardDocument.MainInfo.RegNumber);
                 var numerationRulesService = context.GetService<INumerationRulesService>();
                 var number = (regNumberId.HasValue && regNumberId != Guid.Empty) ? numerationRulesService.GetNumber(document, regNumberId.Value) : null;
-                return number?.Number;
+                return number?.Number ?? string.Empty;
             }
         }
 
