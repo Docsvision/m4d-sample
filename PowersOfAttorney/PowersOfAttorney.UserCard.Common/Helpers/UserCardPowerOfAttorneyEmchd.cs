@@ -1,7 +1,7 @@
 ﻿using DocsVision.BackOffice.CardLib.CardDefs;
 using DocsVision.BackOffice.ObjectModel;
+using DocsVision.BackOffice.ObjectModel.Services;
 using DocsVision.BackOffice.ObjectModel.Services.Entities;
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -452,7 +452,7 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
         /// Фамилия руководителя организации
         /// </summary>
         public string GenCeoLastName => genMchdSection.GetStringValue("ceoLastName");
-        
+
         /// <summary>
         /// Тип лица передавшего полномочие
         /// </summary>
@@ -527,6 +527,19 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
         /// Внутренний номер доверенности
         /// </summary>
         public string GenInternalPOANumber => genMchdSection.GetStringValue("internalPOANumber");
+
+        /// <summary>
+        /// Регистрационный номер документа (он же - Внутренний номер доверенности - см.ERR-5856)
+        /// </summary>
+        public string GenDocumentRegNumber {
+            get
+            {
+                var regNumberId = mainInfoSection.GetGuidValue(CardDocument.MainInfo.RegNumber);
+                var numerationRulesService = context.GetService<INumerationRulesService>();
+                var number = (regNumberId.HasValue && regNumberId != Guid.Empty) ? numerationRulesService.GetNumber(document, regNumberId.Value) : null;
+                return number?.Number;
+            }
+        }
 
         /// <summary>
         /// Единый регистрационный номер доверенности

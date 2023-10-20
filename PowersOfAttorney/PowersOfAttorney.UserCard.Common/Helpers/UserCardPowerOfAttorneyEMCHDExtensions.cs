@@ -1,7 +1,6 @@
 ﻿using DocsVision.BackOffice.ObjectModel;
 using DocsVision.BackOffice.ObjectModel.Services.Entities;
 using DocsVision.Platform.ObjectModel;
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -140,7 +139,7 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
             private PowerOfAttorneyEMCHDData.EntityType Convert(int genDelegatorType)
             {
                 return (PowerOfAttorneyEMCHDData.EntityType)(genDelegatorType + 1);
-            }
+            }            
 
             private UserCardPowerOfAttorney GetOriginalPowerOfAttorneyUserCard()
             {
@@ -177,7 +176,7 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
                     PowerOfAttorneyForm = PowerOfAttorneyEMCHDData.PowerOfAttorneyForm.Electronic,
                     PowerOfAttorneyStartDate = parentUserCardPowerOfAttorney.GenPoaDateOfIssue ?? throw new ApplicationException(Resources.Error_PoaDateOfIssueIsEmpty),
                     PowerOfAttorneyEndDate = parentUserCardPowerOfAttorney.GenPoaExpirationDate ?? throw new ApplicationException(Resources.Error_EmptyPowerOfAttorneyEndDate),
-                    ParentPowerOfAttorneyInternalNumber = parentUserCardPowerOfAttorney.GenInternalPOANumber,
+                    ParentPowerOfAttorneyInternalNumber = parentUserCardPowerOfAttorney.GenDocumentRegNumber,
                     ParentPowerOfAttorneyNumber = parentUserCardPowerOfAttorney.GenSinglePOAregnumber
                 };
             }
@@ -192,7 +191,7 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
                     PowerOfAttorneyForm = PowerOfAttorneyEMCHDData.PowerOfAttorneyForm.Electronic,
                     PowerOfAttorneyStartDate = originaUserCardPowerOfAttorney.GenPoaDateOfIssue ?? throw new ApplicationException(Resources.Error_PoaDateOfIssueIsEmpty),
                     PowerOfAttorneyEndDate = originaUserCardPowerOfAttorney.GenPoaExpirationDate ?? throw new ApplicationException(Resources.Error_EmptyPowerOfAttorneyEndDate),
-                    PrimaryPowerOfAttorneyInternalNumber = originaUserCardPowerOfAttorney.GenInternalPOANumber,
+                    PrimaryPowerOfAttorneyInternalNumber = originaUserCardPowerOfAttorney.GenDocumentRegNumber,
                     PrimaryPowerOfAttorneyNumber = originaUserCardPowerOfAttorney.GenSinglePOAregnumber,
                     PrimaryPowerOfAttorneyPrincipals = new List<PowerOfAttorneyEMCHDData.PrimaryPowerOfAttorneyPrincipalInfo> { GetPrimaryPowerOfAttorneyPrincipals(originaUserCardPowerOfAttorney) }
                 };
@@ -466,7 +465,7 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
                     IrrevocablePowerOfAttorneyInfo = userCard.GenPoaKind == GenPoaKindTypes.irrecovablePOA ? CreateIrrevocablePowerOfAttorneyInfoPart() : null,
                     PowerOfAttorneyAdditionalNumber = userCard.GenAddPOAID,
                     PowerOfAttorneyEndDate = userCard.GenPoaExpirationDate ?? throw new ApplicationException(Resources.Error_EmptyPowerOfAttorneyEndDate),
-                    PowerOfAttorneyInternalNumber = userCard.GenInternalPOANumber,
+                    PowerOfAttorneyInternalNumber = userCard.GenDocumentRegNumber,
                     PowerOfAttorneyInternalRegistrationDate = userCard.IsB2BScopeOnly() ? null : userCard.GenPoaInternRegDate,
                     PowerOfAttorneyKind = Convert(userCard.GenPoaKind ?? throw new ApplicationException(Resources.Error_PoaKindIsEmpty)),
                     PowerOfAttorneyNotaryNumber = userCard.GenPoaRegNumNotarRegistry,
