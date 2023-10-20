@@ -314,7 +314,7 @@ const onPowersTypeDataChanged = (sender: LayoutControl) => {
         refPowersTable.params.visibility = true;
         textPowersDescr.params.value = "";
         textPowersDescr.params.visibility = false;
-        textPowersDescr.params.required = false; 
+        textPowersDescr.params.required = false;
     }
 }
 
