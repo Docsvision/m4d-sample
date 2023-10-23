@@ -15,7 +15,7 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
         /// <summary>
         /// Код формы по КНД
         /// </summary>
-        public string GenKnd => "0711001"; // Взят пример КНД
+        public string GenKnd => "0251222"; // Взят пример КНД
 
         public PowerOfAttorney GenOriginaPowerOfAttorney
         {

@@ -61,10 +61,12 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
 
             private PowerOfAttorneyEMCHDData.PowerOfAttorneyDocument CreateDocumentPart()
             {
-                var document = new PowerOfAttorneyEMCHDData.PowerOfAttorneyDocument
+                var document = new PowerOfAttorneyEMCHDData.PowerOfAttorneyDocument();
+
+                if (userCard.PoaScope == PoaScopeType.B2BandFNS)
                 {
-                    KND = userCard.GenKnd
-                };
+                    document.KND = userCard.GenKnd;
+                }               
 
                 if (userCard.IsRetrusted())
                     document.RetrustPowerOfAttorneyData = CreatePowerOfAttorneyDataRetrustPart();
@@ -355,7 +357,7 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
                     {
                         RussianEntity = new PowerOfAttorneyEMCHDData.RussianLegalEntityPrincipalInfo
                         {
-                            EntityInfo = CreatePrincipalEntityInfoPart(),
+                            EntityInfo = CreatePrincipalEntityInfoPart(isRussianLegalEntity: true),
                             PrincipalsWithoutPowerOfAttorneyInfo = new List<PowerOfAttorneyEMCHDData.PrincipalWithoutPowerOfAttorneyInfo> { CreatePrincipalsWithoutPowerOfAttorneyInfoPart() },
                             SoleExecutiveIsIndividual = userCard.GenIndSEB == true,
                             SoleExecutiveIsManagementCompany = userCard.GenMngtCompanySEB == true,
@@ -388,8 +390,7 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
                         Issuer = userCard.GenAuthIssCEOIDDoc
                     },
                     IndividualInfo = new PowerOfAttorneyEMCHDData.IndividualInfo
-                    {
-                        BirthDate = userCard.GenCeoDateOfBirth,
+                    {                        
                         BirthPlace = userCard.GenCeoPlaceOfBirth,
                         Citizenship = userCard.GenCeoCitizenship,
                         CitizenshipType = userCard.IsB2BScopeOnly() ? null : userCard.GenCeoCitizenshipSign,
@@ -401,16 +402,7 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
                             LastName = ceo.LastName.AsNullable(),
                             MiddleName = ceo.MiddleName.AsNullable()
                         },
-                        Gender = userCard.GenCeoGender,
-                        IdentityCard = new PowerOfAttorneyEMCHDData.IdentityCardOfIndividual
-                        {
-                            DocumentKindCode = userCard.GenTypeCodeCEOIDDoc?.ToString(),
-                            DocumentSerialNumber = userCard.GenSerNumCEOIDDoc,
-                            ExpDate = userCard.GenDateExpCEOIDDoc,
-                            IssueDate = userCard.GenDateIssCEOIDDoc ?? throw new ApplicationException(Resources.Error_DateIssCEOIDDocIsEmpty),
-                            Issuer = userCard.GenAuthIssCEOIDDoc,
-                            IssuerCode = userCard.GenCodeAuthDivIssCEOIDDoc
-                        },
+                        Gender = userCard.GenCeoGender,                        
                         ResidenceAddress = userCard.IsB2BScopeOnly() ? null : new PowerOfAttorneyEMCHDData.AddressInfo
                         {
                             Address = userCard.GenCeoAddrRussia,
@@ -418,20 +410,19 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
                             FiasAddress = userCard.GenFiasCEOAddrRussia,
                             FiasCode = userCard.GenCeoFIASAddrID
                         }
-                    },
-                    Inn = userCard.GenCeoIIN,
+                    },                    
                     ParticipantStatus = userCard.GenNotarStatOfSoleExBody,
                     Position = userCard.GenCeoPosition,
                     Snils = userCard.GenCeoSNILS
                 };
             }
 
-            private PowerOfAttorneyEMCHDData.LegalEntityInfo CreatePrincipalEntityInfoPart()
+            private PowerOfAttorneyEMCHDData.LegalEntityInfo CreatePrincipalEntityInfoPart(bool isRussianLegalEntity = false)
             {
                 var entityPrincipal = userCard.GenEntityPrincipal.GetValueOrThrow(Resources.Error_EmptyPrincipalOrganization);
                 return new PowerOfAttorneyEMCHDData.LegalEntityInfo
                 {
-                    ConfirmationOfAuthorityDocument = new PowerOfAttorneyEMCHDData.ConfirmationOfAuthorityDocument
+                    ConfirmationOfAuthorityDocument = isRussianLegalEntity ? null : new PowerOfAttorneyEMCHDData.ConfirmationOfAuthorityDocument
                     {
                         DocumentName = userCard.GenDocConfAuthCEO,
                         IdentityOfDocument = userCard.GenSerNumCEOIDDoc,
