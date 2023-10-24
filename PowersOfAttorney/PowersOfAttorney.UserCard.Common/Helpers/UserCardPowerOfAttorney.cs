@@ -33,7 +33,7 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
             
             genMchdSection = genMchdSectionRows[0];
 
-            mainInfoSection = ((IList<BaseCardSectionRow>)document.GetSection(CardDocument.MainInfo.ID))[0];
+            mainInfoSection = (BaseCardSectionRow)document.GetSection(CardDocument.MainInfo.ID)[0];
 
             powersWithCodesSection = (IList<BaseCardSectionRow>)document.GetSection(powersWithCodesSectionId);
             powersWithTextSection = (IList<BaseCardSectionRow>)document.GetSection(powersWithTextSectionId);
