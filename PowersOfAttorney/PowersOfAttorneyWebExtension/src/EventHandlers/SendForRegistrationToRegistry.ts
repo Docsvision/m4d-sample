@@ -9,6 +9,6 @@ export const sendForRegistrationToRegistry = async (sender: CustomButton) => {
     const employeeId = sender.layout.getService($ApplicationSettings).employee.id;
 
     powersOfAttorneyButtonController?.sendForRegistrationToRegistry(powerOfAttorneyId, employeeId).then(msg => {
-        MessageBox.ShowInfo(msg);
+        MessageBox.ShowInfo(msg.Data);
     });
 };
