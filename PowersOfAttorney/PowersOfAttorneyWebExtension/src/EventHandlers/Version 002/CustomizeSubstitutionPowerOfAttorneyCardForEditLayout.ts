@@ -25,7 +25,7 @@ export const customizeSubstitutionPowerOfAttorneyCardForEditLayout = (sender: La
 
 const checkPowersBeforeSaving = (sender: Layout, args: ICancelableEventArgs<ILayoutBeforeSavingEventArgs>) => {
     const refPowersTable = sender.controls.refPowersTable;
-    const powersSPOA = sender.controls. powersSPOA;
+    const powersSPOA = sender.controls.powersSPOA;
     if (refPowersTable.params.rows.length === 0 && powersSPOA.params.rows.length === 0) {
         sender.params.services.messageWindow.showError(resources.Error_PowersEmpty);
         args.cancel();

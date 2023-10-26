@@ -1,4 +1,5 @@
-﻿using DocsVision.BackOffice.ObjectModel;
+﻿using DocsVision.BackOffice.CardLib.CardDefs;
+using DocsVision.BackOffice.ObjectModel;
 using DocsVision.Platform.ObjectModel;
 
 using System;
@@ -16,6 +17,7 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
         private readonly Document document;
         private readonly ObjectContext context;
 
+        private readonly BaseCardSectionRow mainInfoSection;
         private readonly BaseCardSectionRow genMchdSection;
 
         private readonly IList<BaseCardSectionRow> powersWithCodesSection;
@@ -30,6 +32,8 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
                 throw new ApplicationException(Resources.Error_EmptyMachineReadablePowerOfAttorney);
             
             genMchdSection = genMchdSectionRows[0];
+
+            mainInfoSection = (BaseCardSectionRow)document.GetSection(CardDocument.MainInfo.ID)[0];
 
             powersWithCodesSection = (IList<BaseCardSectionRow>)document.GetSection(powersWithCodesSectionId);
             powersWithTextSection = (IList<BaseCardSectionRow>)document.GetSection(powersWithTextSectionId);
