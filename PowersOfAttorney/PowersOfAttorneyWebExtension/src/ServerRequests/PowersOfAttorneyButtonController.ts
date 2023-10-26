@@ -14,9 +14,9 @@ export class PowersOfAttorneyButtonController {
         return this.services.requestManager.post(url, "");
     }
 
-    checkPowerOfAttorney(powerOfAttorneyId: string, employeeId: string): void {
+    checkPowerOfAttorney(powerOfAttorneyId: string, employeeId: string): Promise<any> {
         const url = `M4dRegistryIntegration/Check?PowerOfAttorneyId=${powerOfAttorneyId}&EmployeeId=${employeeId}`;
-        this.services.requestManager.post(url, "");
+        return this.services.requestManager.post(url, "");
     }
 }
 
