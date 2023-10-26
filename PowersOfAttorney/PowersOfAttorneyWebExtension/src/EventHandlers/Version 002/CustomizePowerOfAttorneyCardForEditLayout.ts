@@ -1,3 +1,7 @@
+import { Dropdown } from "@docsvision/webclient/Platform/Dropdown";
+import { RadioGroup } from "@docsvision/webclient/Platform/RadioGroup";
+import { Table } from "@docsvision/webclient/Platform/Table";
+import { TextArea } from "@docsvision/webclient/Platform/TextArea";
 import { TextBox } from "@docsvision/webclient/Platform/TextBox";
 import { ICancelableEventArgs } from "@docsvision/webclient/System/ICancelableEventArgs";
 import { IDataChangedEventArgs } from "@docsvision/webclient/System/IDataChangedEventArgs";
@@ -10,11 +14,11 @@ import { checkValueLength } from "../../Utils/CheckValueLength";
 
 export const customizePowerOfAttorneyCardForEditLayout = (sender: Layout) => {
     const controls = sender.layout.controls;
-    const signCitizenshipfIAWPOA = controls.signCitizenshipfIAWPOA;
-    const kindCodeOfDocProvIdenIAWPOA = controls.kindCodeOfDocProvIdenIAWPOA; 
-    const possibilityOfSubst = controls.possibilityOfSubst;
-    const kindDocProvIdenRepr = controls.kindDocProvIdenRepr;
-    const reprSignCitizenship = controls.reprSignCitizenship;
+    const signCitizenshipfIAWPOA = controls.get<Dropdown>("signCitizenshipfIAWPOA");
+    const kindCodeOfDocProvIdenIAWPOA = controls.get<Dropdown>("kindCodeOfDocProvIdenIAWPOA"); 
+    const possibilityOfSubst = controls.get<RadioGroup>("possibilityOfSubst");
+    const kindDocProvIdenRepr = controls.get<Dropdown>("kindDocProvIdenRepr");
+    const reprSignCitizenship = controls.get<Dropdown>("reprSignCitizenship");
     
     customizeInputFields(sender);
     onDataChangedPossibilityOfSubst(sender);
@@ -32,8 +36,8 @@ export const customizePowerOfAttorneyCardForEditLayout = (sender: Layout) => {
 }
 
 const checkPowersBeforeSaving = (sender: Layout, args: ICancelableEventArgs<ILayoutBeforeSavingEventArgs>) => {
-    const refPowersTable = sender.controls.refPowersTable;
-    const textPowersTable = sender.controls.textPowersTable;
+    const refPowersTable = sender.controls.get<Table>("refPowersTable");
+    const textPowersTable = sender.controls.get<Table>("textPowersTable");
     if (refPowersTable.params.rows.length === 0 && textPowersTable.params.rows.length === 0) {
         sender.params.services.messageWindow.showError(resources.Error_PowersEmpty);
         args.cancel();
@@ -71,35 +75,35 @@ const customizeInputFields = (sender: Layout) => {
     const SNILSIAWPOA = document.querySelector('[data-control-name="SNILSIAWPOA"] input') as HTMLElement;
     IMask(SNILSIAWPOA, maskOptions.SNILS);
     SNILSIAWPOA.addEventListener("change", (event) => sender.controls.SNILSIAWPOA.params.value = (event.target as HTMLInputElement).value);
-    sender.controls.SNILSIAWPOA.params.blur.subscribe((sender: TextBox) => {
+    sender.controls.get<TextBox>("SNILSIAWPOA").params.blur.subscribe((sender: TextBox) => {
         checkValueLength(SNILSIAWPOA, sender.params.value?.replaceAll("-", "").replace(" ", "").length, sender.layout.params.services, 11);
     })
 
     const reprSNILS = document.querySelector('[data-control-name="reprSNILS"] input') as HTMLElement;
     IMask(reprSNILS, maskOptions.SNILS);
     reprSNILS.addEventListener("change", (event) => sender.controls.reprSNILS.params.value = (event.target as HTMLInputElement).value);
-    sender.controls.reprSNILS.params.blur.subscribe((sender: TextBox) => {
+    sender.controls.get<TextBox>("reprSNILS").params.blur.subscribe((sender: TextBox) => {
         checkValueLength(reprSNILS, sender.params.value?.replaceAll("-", "").replaceAll(" ", "").length, sender.layout.params.services, 11);
     })
 
     const divCodeAuthIssDocProvIdenIAWPOA = document.querySelector('[data-control-name="divCodeAuthIssDocProvIdenIAWPOA"] input') as HTMLElement;
     IMask(divCodeAuthIssDocProvIdenIAWPOA, maskOptions.code);
-    sender.controls.divCodeAuthIssDocProvIdenIAWPOA.params.blur.subscribe((sender: TextBox, args: IDataChangedEventArgs) => {
-        checkValueLength(divCodeAuthIssDocProvIdenIAWPOA, args.newValue?.replaceAll("-", "").replaceAll(" ", "").length, sender.layout.params.services, 6);
+    sender.controls.get<TextBox>("divCodeAuthIssDocProvIdenIAWPOA").params.blur.subscribe((sender: TextBox) => {
+        checkValueLength(divCodeAuthIssDocProvIdenIAWPOA, sender.params.value?.replaceAll("-", "").replaceAll(" ", "").length, sender.layout.params.services, 6);
     })
 
     const divAuthIssDocConfIDOfRepr = document.querySelector('[data-control-name="divAuthIssDocConfIDOfRepr"] input') as HTMLElement;
     IMask(divAuthIssDocConfIDOfRepr, maskOptions.code);
-    sender.controls.divAuthIssDocConfIDOfRepr.params.blur.subscribe((sender: TextBox, args: IDataChangedEventArgs) => {
-        checkValueLength(divAuthIssDocConfIDOfRepr, args.newValue?.replaceAll("-", "").replaceAll(" ", "").length, sender.layout.params.services, 6);
+    sender.controls.get<TextBox>("divAuthIssDocConfIDOfRepr").params.blur.subscribe((sender: TextBox) => {
+        checkValueLength(divAuthIssDocConfIDOfRepr, sender.params.value?.replaceAll("-", "").replaceAll(" ", "").length, sender.layout.params.services, 6);
     })
 }
 
 const onDataChangedKindDocProvIdenRepr = (sender: Layout) => {
     const controls = sender.layout.controls;
-    const kindDocProvIdenRepr = controls.kindDocProvIdenRepr;
-    const authIssDocConfIdenRepr = controls.authIssDocConfIdenRepr;
-    const divAuthIssDocConfIDOfRepr = controls.divAuthIssDocConfIDOfRepr;
+    const kindDocProvIdenRepr = controls.get<Dropdown>("kindDocProvIdenRepr");
+    const authIssDocConfIdenRepr = controls.get<TextArea>("authIssDocConfIdenRepr");
+    const divAuthIssDocConfIDOfRepr = controls.get<TextBox>("divAuthIssDocConfIDOfRepr");
 
     if (kindDocProvIdenRepr.params.value === '21') {
         authIssDocConfIdenRepr.params.required = true;
@@ -114,8 +118,8 @@ const onDataChangedKindDocProvIdenRepr = (sender: Layout) => {
 
 const onDataChangedKindCodeOfDocProvIdenIAWPOA = (sender: Layout) => {
     const controls = sender.layout.controls;
-    const kindCodeOfDocProvIdenIAWPOA = controls.kindCodeOfDocProvIdenIAWPOA;
-    const authIssDocProvIdenIAWPOA = controls.authIssDocProvIdenIAWPOA;
+    const kindCodeOfDocProvIdenIAWPOA = controls.get<Dropdown>("kindCodeOfDocProvIdenIAWPOA");
+    const authIssDocProvIdenIAWPOA = controls.get<TextArea>("authIssDocProvIdenIAWPOA");
     const divCodeAuthIssDocProvIdenIAWPOA = controls.divCodeAuthIssDocProvIdenIAWPOA;
 
     if (kindCodeOfDocProvIdenIAWPOA.params.value === '21') {
