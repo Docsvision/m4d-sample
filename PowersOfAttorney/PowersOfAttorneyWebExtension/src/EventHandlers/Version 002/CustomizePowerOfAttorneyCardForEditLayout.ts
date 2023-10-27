@@ -137,7 +137,7 @@ const onDataChangedPossibilityOfSubst = (sender: Layout) => {
     const controls = sender.layout.controls;
     const possibilityOfSubst = controls.get<RadioGroup>("possibilityOfSubst");
     const lossOfPowersUponSubstBlock = controls.get<Block>("lossOfPowersUponSubstBlock");
-    const lossOfPowersUponSubst = controls.lossOfPowersUponSubst;
+    const lossOfPowersUponSubst = controls.get<RadioGroup>("lossOfPowersUponSubst");
 
     if (possibilityOfSubst.params.value === 'One-time substitution' || possibilityOfSubst.params.value === 'Substitution is possible with subsequent substitution') {
         lossOfPowersUponSubstBlock.params.visibility = true;

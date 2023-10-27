@@ -74,7 +74,7 @@ const onDataChangedPossibilityOfSubstSPOA = (sender: Layout) => {
     const controls = sender.layout.controls;
     const possibilityOfSubstSPOA = controls.get<RadioGroup>("possibilityOfSubstSPOA");
     const lossOfPowersUponSubstSPOABlock = controls.get<Block>("lossOfPowersUponSubstSPOABlock");
-    const lossOfPowersUponSubstSPOA = controls.lossOfPowersUponSubstSPOA;
+    const lossOfPowersUponSubstSPOA = controls.get<RadioGroup>("lossOfPowersUponSubstSPOA");
 
     if (possibilityOfSubstSPOA.params.value === 'One-time substitution' || possibilityOfSubstSPOA.value === 'Substitution is possible with subsequent substitution') {
         lossOfPowersUponSubstSPOABlock.params.visibility = true;
