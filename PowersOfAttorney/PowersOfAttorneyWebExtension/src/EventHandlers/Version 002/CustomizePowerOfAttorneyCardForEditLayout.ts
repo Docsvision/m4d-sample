@@ -4,12 +4,12 @@ import { Table } from "@docsvision/webclient/Platform/Table";
 import { TextArea } from "@docsvision/webclient/Platform/TextArea";
 import { TextBox } from "@docsvision/webclient/Platform/TextBox";
 import { ICancelableEventArgs } from "@docsvision/webclient/System/ICancelableEventArgs";
-import { IDataChangedEventArgs } from "@docsvision/webclient/System/IDataChangedEventArgs";
 import { ILayoutBeforeSavingEventArgs } from "@docsvision/webclient/System/ILayoutParams";
 import { Layout } from "@docsvision/webclient/System/Layout";
 import { resources } from "@docsvision/webclient/System/Resources";
 import IMask from "imask";
 import { checkValueLength } from "../../Utils/CheckValueLength";
+import { Block } from "@docsvision/webclient/Platform/Block";
 
 
 export const customizePowerOfAttorneyCardForEditLayout = (sender: Layout) => {
@@ -120,7 +120,7 @@ const onDataChangedKindCodeOfDocProvIdenIAWPOA = (sender: Layout) => {
     const controls = sender.layout.controls;
     const kindCodeOfDocProvIdenIAWPOA = controls.get<Dropdown>("kindCodeOfDocProvIdenIAWPOA");
     const authIssDocProvIdenIAWPOA = controls.get<TextArea>("authIssDocProvIdenIAWPOA");
-    const divCodeAuthIssDocProvIdenIAWPOA = controls.divCodeAuthIssDocProvIdenIAWPOA;
+    const divCodeAuthIssDocProvIdenIAWPOA = controls.get<TextBox>("divCodeAuthIssDocProvIdenIAWPOA");
 
     if (kindCodeOfDocProvIdenIAWPOA.params.value === '21') {
         authIssDocProvIdenIAWPOA.params.required = true;
@@ -135,8 +135,8 @@ const onDataChangedKindCodeOfDocProvIdenIAWPOA = (sender: Layout) => {
 
 const onDataChangedPossibilityOfSubst = (sender: Layout) => {
     const controls = sender.layout.controls;
-    const possibilityOfSubst = controls.possibilityOfSubst;
-    const lossOfPowersUponSubstBlock = controls.lossOfPowersUponSubstBlock;
+    const possibilityOfSubst = controls.get<RadioGroup>("possibilityOfSubst");
+    const lossOfPowersUponSubstBlock = controls.get<Block>("lossOfPowersUponSubstBlock");
     const lossOfPowersUponSubst = controls.lossOfPowersUponSubst;
 
     if (possibilityOfSubst.params.value === 'One-time substitution' || possibilityOfSubst.params.value === 'Substitution is possible with subsequent substitution') {
@@ -151,8 +151,8 @@ const onDataChangedPossibilityOfSubst = (sender: Layout) => {
 
 const onDataChangedSignCitizenshipfIAWPOA = (sender: Layout) => {
     const controls = sender.layout.controls;
-    const signCitizenshipfIAWPOA = controls.signCitizenshipfIAWPOA;
-    const codeForeignCitizenshipIAWPOA = controls.codeForeignCitizenshipIAWPOA;
+    const signCitizenshipfIAWPOA = controls.get<Dropdown>("signCitizenshipfIAWPOA");
+    const codeForeignCitizenshipIAWPOA = controls.get<TextBox>("codeForeignCitizenshipIAWPOA");
     if (signCitizenshipfIAWPOA.params.value === 'foreignCitizen') {
         codeForeignCitizenshipIAWPOA.params.visibility = true;
         codeForeignCitizenshipIAWPOA.params.required = true;
@@ -165,8 +165,8 @@ const onDataChangedSignCitizenshipfIAWPOA = (sender: Layout) => {
 
 const onDataChangedReprSignCitizenship = (sender: Layout) => {
     const controls = sender.layout.controls;
-    const reprSignCitizenship = controls.reprSignCitizenship;
-    const foreignReprCitizenship = controls.foreignReprCitizenship;
+    const reprSignCitizenship = controls.get<Dropdown>("reprSignCitizenship");
+    const foreignReprCitizenship = controls.get<TextBox>("foreignReprCitizenship");
     if (reprSignCitizenship.params.value === 'foreignCitizen') {
         foreignReprCitizenship.params.visibility = true;
         foreignReprCitizenship.params.required = true;

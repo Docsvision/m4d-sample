@@ -5,12 +5,16 @@ import { Layout } from "@docsvision/webclient/System/Layout";
 import { resources } from "@docsvision/webclient/System/Resources";
 import IMask from "imask";
 import { checkValueLength } from "../../Utils/CheckValueLength";
+import { Dropdown } from "@docsvision/webclient/Platform/Dropdown";
+import { RadioGroup } from "@docsvision/webclient/Platform/RadioGroup";
+import { Block } from "@docsvision/webclient/Platform/Block";
+import { Table } from "@docsvision/webclient/Platform/Table";
 
 export const customizeSubstitutionPowerOfAttorneyCardForEditLayout = (sender: Layout) => {
     const controls = sender.layout.controls;
-    const reprSignCitshipSPOA = controls.reprSignCitshipSPOA;
-    const indsignCitizenship = controls.indsignCitizenship;
-    const possibilityOfSubstSPOA = controls.possibilityOfSubstSPOA;
+    const reprSignCitshipSPOA = controls.get<Dropdown>("reprSignCitshipSPOA");
+    const indsignCitizenship = controls.get<Dropdown>("indsignCitizenship");
+    const possibilityOfSubstSPOA = controls.get<RadioGroup>("possibilityOfSubstSPOA");
 
     customizeInputFields(sender);
     onDataChangedPossibilityOfSubstSPOA(sender);
@@ -24,8 +28,8 @@ export const customizeSubstitutionPowerOfAttorneyCardForEditLayout = (sender: La
 }
 
 const checkPowersBeforeSaving = (sender: Layout, args: ICancelableEventArgs<ILayoutBeforeSavingEventArgs>) => {
-    const refPowersTable = sender.controls.refPowersTable;
-    const powersSPOA = sender.controls.powersSPOA;
+    const refPowersTable = sender.controls.get<Table>("refPowersTable");
+    const powersSPOA = sender.controls.get<Table>("powersSPOA");
     if (refPowersTable.params.rows.length === 0 && powersSPOA.params.rows.length === 0) {
         sender.params.services.messageWindow.showError(resources.Error_PowersEmpty);
         args.cancel();
@@ -54,13 +58,13 @@ const customizeInputFields = (sender: Layout) => {
     
     const SNILSIndividual = document.querySelector('[data-control-name="SNILSIndividual"] input') as HTMLElement;
     IMask(SNILSIndividual, maskOptions);
-    sender.controls.SNILSIndividual.params.blur.subscribe((sender: TextBox) => {
+    sender.controls.get<TextBox>("SNILSIndividual").params.blur.subscribe((sender: TextBox) => {
         checkValueLength(SNILSIndividual, sender.params.value?.replaceAll("-", "").replace(" ", "").length, sender.layout.params.services, 11);
     })
 
     const reprSNILSSPOA = document.querySelector('[data-control-name="reprSNILSSPOA"]')?.getElementsByTagName('input')[0];
     IMask(reprSNILSSPOA, maskOptions);    
-    sender.controls.reprSNILSSPOA.params.blur.subscribe((sender: TextBox) => {
+    sender.controls.get<TextBox>("reprSNILSSPOA").params.blur.subscribe((sender: TextBox) => {
         checkValueLength(reprSNILSSPOA, sender.params.value?.replaceAll("-", "").replace(" ", "").length, sender.layout.params.services, 11);
     })
 
@@ -68,8 +72,8 @@ const customizeInputFields = (sender: Layout) => {
 
 const onDataChangedPossibilityOfSubstSPOA = (sender: Layout) => {
     const controls = sender.layout.controls;
-    const possibilityOfSubstSPOA = controls.possibilityOfSubstSPOA;
-    const lossOfPowersUponSubstSPOABlock = controls.lossOfPowersUponSubstSPOABlock;
+    const possibilityOfSubstSPOA = controls.get<RadioGroup>("possibilityOfSubstSPOA");
+    const lossOfPowersUponSubstSPOABlock = controls.get<Block>("lossOfPowersUponSubstSPOABlock");
     const lossOfPowersUponSubstSPOA = controls.lossOfPowersUponSubstSPOA;
 
     if (possibilityOfSubstSPOA.params.value === 'One-time substitution' || possibilityOfSubstSPOA.value === 'Substitution is possible with subsequent substitution') {
@@ -85,8 +89,8 @@ const onDataChangedPossibilityOfSubstSPOA = (sender: Layout) => {
 
 const onDataChangedReprSignCitshipSPOA = (sender: Layout) => {
     const controls = sender.layout.controls;
-    const reprSignCitshipSPOA = controls.reprSignCitshipSPOA;
-    const foreignReprCitshipSPOA = controls.foreignReprCitshipSPOA;
+    const reprSignCitshipSPOA = controls.get<Dropdown>("reprSignCitshipSPOA");
+    const foreignReprCitshipSPOA = controls.get<TextBox>("foreignReprCitshipSPOA");
     if (reprSignCitshipSPOA.params.value === 'foreignCitizen') {
         foreignReprCitshipSPOA.params.visibility = true;
         foreignReprCitshipSPOA.params.required = true;
@@ -99,8 +103,8 @@ const onDataChangedReprSignCitshipSPOA = (sender: Layout) => {
 
 const onDataChangedIndsignCitizenship = (sender: Layout) => {
     const controls = sender.layout.controls;
-    const indsignCitizenship = controls.indsignCitizenship;
-    const indCodeCitizenship = controls.indCodeCitizenship;
+    const indsignCitizenship = controls.get<Dropdown>("indsignCitizenship");
+    const indCodeCitizenship = controls.get<TextBox>("indCodeCitizenship");
     if (indsignCitizenship.params.value === 'foreignCitizen') {
         indCodeCitizenship.params.visibility = true;
         indCodeCitizenship.params.required = true;
