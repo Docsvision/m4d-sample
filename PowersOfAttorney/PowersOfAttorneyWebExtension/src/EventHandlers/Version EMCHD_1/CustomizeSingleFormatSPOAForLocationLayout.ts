@@ -4,7 +4,7 @@ import { Table } from "@docsvision/webclient/Platform/Table";
 import { TextArea } from "@docsvision/webclient/Platform/TextArea";
 import { customizeSingleFormatSPOACardForViewLayout } from "./CustomizeSingleFormatSPOACardForViewLayout";
 
-export const customizeSingleFormatPowerOfAttorneyForLocationLayout = (sender: LayoutControl) => {
+export const customizeSingleFormatSPOAForLocationLayout = (sender: LayoutControl) => {
     const controls = sender.layout.controls;
     const powersType1 = controls.get<Dropdown>("powersType1");
     const textPowersDescr1 = controls.get<TextArea>("textPowersDescr1");
