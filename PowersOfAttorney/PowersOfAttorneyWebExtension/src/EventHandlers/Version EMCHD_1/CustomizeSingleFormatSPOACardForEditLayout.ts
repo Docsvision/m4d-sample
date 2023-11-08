@@ -36,6 +36,7 @@ export const customizeSingleFormatSPOACardForEditLayout = (sender: Layout) => {
     onPowersTypeDataChanged(sender);
     customizeInputFields(sender);
     onPowersTypeDataChanged(sender);
+    onDataChangedPoaScope(sender);
 
     sender.params.beforeCardSaving.subscribe(checkPowersBeforeSaving);
     substPOABasis && substPOABasis.params.dataChanged.subscribe(onSubstPOABasisDataChanged);
