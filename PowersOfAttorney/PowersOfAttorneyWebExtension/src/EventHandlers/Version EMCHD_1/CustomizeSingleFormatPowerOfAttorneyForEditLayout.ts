@@ -17,6 +17,7 @@ import { Layout } from "@docsvision/webclient/System/Layout";
 import { resources } from "@docsvision/webclient/System/Resources";
 import IMask from 'imask';
 import { checkValueLength } from "../../Utils/CheckValueLength";
+import { clearTable } from "../../Utils/ClearTeable";
 
 export const customizeSingleFormatPowerOfAttorneyForEditLayout = async (sender: Layout) => {
     const controls = sender.layout.controls;
@@ -300,7 +301,7 @@ const customizeInputFields = (sender: Layout) => {
     })
 }
 
-const onPowersTypeDataChanged = (sender: LayoutControl) => {
+const onPowersTypeDataChanged = async (sender: LayoutControl) => {
     const controls = sender.layout.controls;
     const powersType = controls.get<Dropdown>("powersType");
     const refPowersTable = controls.get<Table>("refPowersTable");
@@ -308,8 +309,8 @@ const onPowersTypeDataChanged = (sender: LayoutControl) => {
     if (powersType.params.value === "humReadPower") {
         textPowersDescr.params.visibility = true;
         textPowersDescr.params.required = true;
-        refPowersTable.params.rows = [];
         refPowersTable.params.visibility = false;
+        await clearTable(refPowersTable);
     } else {
         refPowersTable.params.visibility = true;
         textPowersDescr.params.value = "";
