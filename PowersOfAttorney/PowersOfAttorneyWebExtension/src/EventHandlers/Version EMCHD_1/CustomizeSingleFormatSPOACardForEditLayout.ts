@@ -19,6 +19,7 @@ import { Layout } from "@docsvision/webclient/System/Layout";
 import { resources } from "@docsvision/webclient/System/Resources";
 import IMask from "imask";
 import { checkValueLength } from "../../Utils/CheckValueLength";
+import { clearTable } from "../../Utils/ClearTeable";
 
 export const customizeSingleFormatSPOACardForEditLayout = (sender: Layout) => {
     const controls = sender.layout.controls;
@@ -35,6 +36,7 @@ export const customizeSingleFormatSPOACardForEditLayout = (sender: Layout) => {
     onPowersTypeDataChanged(sender);
     customizeInputFields(sender);
     onPowersTypeDataChanged(sender);
+    onDataChangedPoaScope(sender);
 
     sender.params.beforeCardSaving.subscribe(checkPowersBeforeSaving);
     substPOABasis && substPOABasis.params.dataChanged.subscribe(onSubstPOABasisDataChanged);
@@ -209,7 +211,7 @@ const onRepresentativeDataChanged = async (sender: StaffDirectoryItems, args: ID
     }
 }
 
-const onPowersTypeDataChanged = (sender: LayoutControl) => {
+const onPowersTypeDataChanged = async (sender: LayoutControl) => {
     const controls = sender.layout.controls;
     const powersType = controls.get<Dropdown>("powersType");
     const refPowersTable = controls.get<Table>("refPowersTable");
@@ -218,10 +220,12 @@ const onPowersTypeDataChanged = (sender: LayoutControl) => {
         textPowersDescr.params.visibility = true;
         textPowersDescr.params.required = true;
         refPowersTable.params.visibility = false;
+        await clearTable(refPowersTable);
     } else {
+        refPowersTable.params.visibility = true;
+        textPowersDescr.params.value = "";
         textPowersDescr.params.visibility = false;
         textPowersDescr.params.required = false;
-        refPowersTable.params.visibility = true;
     }
 }
 

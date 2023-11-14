@@ -17,6 +17,7 @@ import { Layout } from "@docsvision/webclient/System/Layout";
 import { resources } from "@docsvision/webclient/System/Resources";
 import IMask from 'imask';
 import { checkValueLength } from "../../Utils/CheckValueLength";
+import { clearTable } from "../../Utils/ClearTeable";
 
 export const customizeSingleFormatPowerOfAttorneyForEditLayout = async (sender: Layout) => {
     const controls = sender.layout.controls;
@@ -289,18 +290,18 @@ const customizeInputFields = (sender: Layout) => {
 
     const codeAuthIssCEOID = document.querySelector('[data-control-name="codeAuthIssCEOID"] input') as HTMLElement;
     IMask(codeAuthIssCEOID, maskOptions.code);
-    sender.controls.codeAuthIssCEOID.params.blur.subscribe((sender: TextBox, args: IDataChangedEventArgs) => {
+    sender.controls.codeAuthIssCEOID.params.blur.subscribe((sender: TextBox) => {
         checkValueLength(codeAuthIssCEOID, sender.params.value?.replaceAll("-", "").replaceAll(" ", "").length, sender.layout.params.services, 6);
     })
 
     const codeAuthIssReprID = document.querySelector('[data-control-name="codeAuthIssReprID"] input') as HTMLElement;
     IMask(codeAuthIssReprID, maskOptions.code);
-    sender.controls.codeAuthIssReprID.params.blur.subscribe((sender: TextBox, args: IDataChangedEventArgs) => {
+    sender.controls.codeAuthIssReprID.params.blur.subscribe((sender: TextBox) => {
         checkValueLength(codeAuthIssReprID, sender.params.value?.replaceAll("-", "").replaceAll(" ", "").length, sender.layout.params.services, 6);
     })
 }
 
-const onPowersTypeDataChanged = (sender: LayoutControl) => {
+const onPowersTypeDataChanged = async (sender: LayoutControl) => {
     const controls = sender.layout.controls;
     const powersType = controls.get<Dropdown>("powersType");
     const refPowersTable = controls.get<Table>("refPowersTable");
@@ -309,10 +310,12 @@ const onPowersTypeDataChanged = (sender: LayoutControl) => {
         textPowersDescr.params.visibility = true;
         textPowersDescr.params.required = true;
         refPowersTable.params.visibility = false;
+        await clearTable(refPowersTable);
     } else {
+        refPowersTable.params.visibility = true;
+        textPowersDescr.params.value = "";
         textPowersDescr.params.visibility = false;
         textPowersDescr.params.required = false;
-        refPowersTable.params.visibility = true;
     }
 }
 
