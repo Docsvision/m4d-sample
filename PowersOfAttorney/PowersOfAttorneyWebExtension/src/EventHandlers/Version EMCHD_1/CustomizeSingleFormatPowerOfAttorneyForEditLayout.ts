@@ -32,9 +32,9 @@ export const customizeSingleFormatPowerOfAttorneyForEditLayout = async (sender: 
 
     customizeInputFields(sender);
     onPowersTypeDataChanged(sender);
-    onDataChangedCeoCitizenshipSign(sender);
-    onDataChangedReprCitizenshipSign(sender);
-    onDataChangedPoaScope(sender);
+    onCeoCitizenshipSignDataChanged(sender);
+    onReprCitizenshipSignDataChanged(sender);
+    onPoaScopeDataChanged(sender);
 
     sender.params.beforeCardSaving.subscribe(checkPowersBeforeSaving);
     entityPrincipal && entityPrincipal.params.dataChanged.subscribe(onPrincipalDataChanged);
@@ -42,12 +42,12 @@ export const customizeSingleFormatPowerOfAttorneyForEditLayout = async (sender: 
     representative && representative.params.dataChanged.subscribe(onRepresentativeDataChanged);
     powersType && powersType.params.dataChanged.subscribe(onPowersTypeDataChanged);
     refPowersTable && refPowersTable.params.rowAdded.subscribe(onRefPowersTableRowAdded);
-    ceoCitizenshipSign && ceoCitizenshipSign.params.dataChanged.subscribe(onDataChangedCeoCitizenshipSign);
-    reprCitizenshipSign && reprCitizenshipSign.params.dataChanged.subscribe(onDataChangedReprCitizenshipSign);
-    poaScope && poaScope.params.dataChanged.subscribe(onDataChangedPoaScope);
+    ceoCitizenshipSign && ceoCitizenshipSign.params.dataChanged.subscribe(onCeoCitizenshipSignDataChanged);
+    reprCitizenshipSign && reprCitizenshipSign.params.dataChanged.subscribe(onReprCitizenshipSignDataChanged);
+    poaScope && poaScope.params.dataChanged.subscribe(onPoaScopeDataChanged);
 }
 
-const onDataChangedPoaScope = (sender: Layout) => {
+const onPoaScopeDataChanged = (sender: Layout) => {
     const controls = sender.layout.controls;
     const poaScope = controls.get<RadioGroup>("poaScope");
     const codeTaxAuthSubmitBlock = controls.get<Block>("codeTaxAuthSubmitBlock");
@@ -84,7 +84,7 @@ const onDataChangedPoaScope = (sender: Layout) => {
     reprAddrRus.params.required = isNotB2BValue;
 }
 
-const onDataChangedCeoCitizenshipSign = (sender: Layout) => {
+const onCeoCitizenshipSignDataChanged = (sender: Layout) => {
     const controls = sender.layout.controls;
     const ceoCitizenshipSign = controls.get<Dropdown>("ceoCitizenshipSign");
     const ceoCitizenship = controls.get<TextBox>("ceoCitizenship");
@@ -103,7 +103,7 @@ const onDataChangedCeoCitizenshipSign = (sender: Layout) => {
     }
 }
 
-const onDataChangedReprCitizenshipSign = (sender: Layout) => {
+const onReprCitizenshipSignDataChanged = (sender: Layout) => {
     const controls = sender.layout.controls;
     const reprCitizenshipSign = controls.get<Dropdown>("reprCitizenshipSign");
     const reprCitizenship = controls.get<TextBox>("reprCitizenship");

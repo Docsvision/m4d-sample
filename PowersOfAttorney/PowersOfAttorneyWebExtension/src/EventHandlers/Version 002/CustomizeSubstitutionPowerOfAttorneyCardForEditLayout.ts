@@ -17,14 +17,14 @@ export const customizeSubstitutionPowerOfAttorneyCardForEditLayout = (sender: La
     const possibilityOfSubstSPOA = controls.get<RadioGroup>("possibilityOfSubstSPOA");
 
     customizeInputFields(sender);
-    onDataChangedPossibilityOfSubstSPOA(sender);
-    onDataChangedReprSignCitshipSPOA(sender);
-    onDataChangedIndsignCitizenship(sender);
+    onPossibilityOfSubstSPOADataChanged(sender);
+    onReprSignCitshipSPOADataChanged(sender);
+    onIndsignCitizenshipDataChanged(sender);
 
     sender.params.beforeCardSaving.subscribe(checkPowersBeforeSaving);
-    possibilityOfSubstSPOA && possibilityOfSubstSPOA.params.dataChanged.subscribe(onDataChangedPossibilityOfSubstSPOA);
-    reprSignCitshipSPOA && reprSignCitshipSPOA.params.dataChanged.subscribe(onDataChangedReprSignCitshipSPOA);
-    indsignCitizenship && indsignCitizenship.params.dataChanged.subscribe(onDataChangedIndsignCitizenship);
+    possibilityOfSubstSPOA && possibilityOfSubstSPOA.params.dataChanged.subscribe(onPossibilityOfSubstSPOADataChanged);
+    reprSignCitshipSPOA && reprSignCitshipSPOA.params.dataChanged.subscribe(onReprSignCitshipSPOADataChanged);
+    indsignCitizenship && indsignCitizenship.params.dataChanged.subscribe(onIndsignCitizenshipDataChanged);
 }
 
 const checkPowersBeforeSaving = (sender: Layout, args: ICancelableEventArgs<ILayoutBeforeSavingEventArgs>) => {
@@ -70,7 +70,7 @@ const customizeInputFields = (sender: Layout) => {
 
 }
 
-const onDataChangedPossibilityOfSubstSPOA = (sender: Layout) => {
+const onPossibilityOfSubstSPOADataChanged = (sender: Layout) => {
     const controls = sender.layout.controls;
     const possibilityOfSubstSPOA = controls.get<RadioGroup>("possibilityOfSubstSPOA");
     const lossOfPowersUponSubstSPOABlock = controls.get<Block>("lossOfPowersUponSubstSPOABlock");
@@ -87,7 +87,7 @@ const onDataChangedPossibilityOfSubstSPOA = (sender: Layout) => {
 
 }
 
-const onDataChangedReprSignCitshipSPOA = (sender: Layout) => {
+const onReprSignCitshipSPOADataChanged = (sender: Layout) => {
     const controls = sender.layout.controls;
     const reprSignCitshipSPOA = controls.get<Dropdown>("reprSignCitshipSPOA");
     const foreignReprCitshipSPOA = controls.get<TextBox>("foreignReprCitshipSPOA");
@@ -101,7 +101,7 @@ const onDataChangedReprSignCitshipSPOA = (sender: Layout) => {
     }
 }
 
-const onDataChangedIndsignCitizenship = (sender: Layout) => {
+const onIndsignCitizenshipDataChanged = (sender: Layout) => {
     const controls = sender.layout.controls;
     const indsignCitizenship = controls.get<Dropdown>("indsignCitizenship");
     const indCodeCitizenship = controls.get<TextBox>("indCodeCitizenship");
