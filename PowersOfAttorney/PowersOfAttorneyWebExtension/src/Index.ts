@@ -14,7 +14,6 @@ import * as CustomizeSubstitutionPowerOfAttorneyCardForViewLayout from "./EventH
 import { $PowersOfAttorneyDemoController, PowersOfAttorneyDemoController } from "./ServerRequests/PowersOfAttorneyDemoController";
 import * as CustomizeSingleFormatPowerOfAttorneyForEditLayout from "./EventHandlers/Version EMCHD_1/CustomizeSingleFormatPowerOfAttorneyForEditLayout";
 import * as CustomizeSingleFormatPowerOfAttorneyForViewLayout from "./EventHandlers/Version EMCHD_1/CustomizeSingleFormatPowerOfAttorneyForViewLayout";
-import * as toggleElementVisibilityForLocationLayout from "./EventHandlers/Version EMCHD_1/ToggleElementVisibilityForLocationLayout";
 import * as CreateEMCHDPowerOfAttorney from "./EventHandlers/Version EMCHD_1/CreateEMCHDPowerOfAttorney";
 import * as SignPowerOfAttorneyFromTask from "./EventHandlers/SignPowerOfAttorneyFromTask";
 import * as ShowRequiredFields from "./EventHandlers/ShowRequiredFields";
@@ -29,6 +28,8 @@ import * as SendForRegistrationToRegistry  from "./EventHandlers/SendForRegistra
 import * as RecallPOwerOfAttorney from "./EventHandlers/RecallPowerOfAttorney";
 import * as CheckPowerOfAttorney from './EventHandlers/CheckPowerOfAttorney'
 import { $PowersOfAttorneyButtonController, PowersOfAttorneyButtonController } from "./ServerRequests/PowersOfAttorneyButtonController";
+import * as CustomizeSingleFormatPowerOfAttorneyForLocationLayout from "./EventHandlers/Version EMCHD_1/CustomizeSingleFormatPowerOfAttorneyForLocationLayout";
+import * as CustomizeSingleFormatSPOAForLocationLayout from "./EventHandlers/Version EMCHD_1/CustomizeSingleFormatSPOAForLocationLayout";
 
 // Главная входная точка всего расширения
 // Данный файл должен импортировать прямо или косвенно все остальные файлы, 
@@ -40,8 +41,8 @@ extensionManager.registerExtension({
     name: "Powers Of Attorney web extension",
     version: "5.5.17",
     globalEventHandlers: [ CreatePowerOfAttorney, CreateRetrustPowerOfAttorney, ExportPowerOfAttorney, SignPowerOfAttorney, RevokePowerOfAttorney, DeletePowerOfAttorney,
-        CustomizePowerOfAttorneyCardForEditLayout, toggleElementVisibilityForLocationLayout, CustomizePowerOfAttorneyCardForViewCard, CustomizeSubstitutionPowerOfAttorneyCardForEditLayout, CustomizeSubstitutionPowerOfAttorneyCardForViewLayout,
-        CustomizeSingleFormatPowerOfAttorneyForEditLayout, CustomizeSingleFormatPowerOfAttorneyForViewLayout, CreateEMCHDPowerOfAttorney, SignPowerOfAttorneyFromTask, ShowRequiredFields, CustomizeSingleFormatSPOACardForEditLayout, 
+        CustomizePowerOfAttorneyCardForEditLayout, CustomizePowerOfAttorneyCardForViewCard, CustomizeSubstitutionPowerOfAttorneyCardForEditLayout, CustomizeSubstitutionPowerOfAttorneyCardForViewLayout,
+        CustomizeSingleFormatPowerOfAttorneyForEditLayout, CustomizeSingleFormatPowerOfAttorneyForViewLayout, CustomizeSingleFormatPowerOfAttorneyForLocationLayout, CustomizeSingleFormatSPOAForLocationLayout, CreateEMCHDPowerOfAttorney, SignPowerOfAttorneyFromTask, ShowRequiredFields, CustomizeSingleFormatSPOACardForEditLayout, 
         CustomizeSingleFormatSPOACardForViewLayout, CreateEMCHDRetrustPowerOfAttorney, ExportApplicationForRevocation,
         PowerOfAttorneyRegistration, SignAndSendPowerOfAttorneyToRegistrationAsFile, SignAndSendPowerOfAttorneyToRegistrationAsFileFromTask, SendForRegistrationToRegistry, RecallPOwerOfAttorney, CheckPowerOfAttorney ],
     layoutServices: [ 

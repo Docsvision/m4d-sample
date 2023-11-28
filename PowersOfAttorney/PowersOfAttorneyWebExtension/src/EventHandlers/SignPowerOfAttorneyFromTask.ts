@@ -29,6 +29,7 @@ export const signPowerOfAttorneyFromTask = async (sender: LayoutControl, e: ICan
                 dialogProps: {
                     hideSimpleSign: true
                 },
+                sourceCardInfo: sender.layout.cardInfo,
                 onCreateSignature: async (options) => {
                     const signatureData = await sender.layout.getService($PowerOfAttorneyApiController).getMachineReadablePowerOfAttorneyData(powerOfAttorneyId);
                     const info = new EncryptedInfo(options.method.certificateInfo.thumberprint);
