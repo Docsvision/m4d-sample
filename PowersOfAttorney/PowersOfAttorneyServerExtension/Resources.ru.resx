@@ -327,4 +327,7 @@
   <data name="PoaDidNotSendToRegistrationStatus" xml:space="preserve">
     <value>Не передавалась</value>
   </data>
+  <data name="Error_EmptyRevokeReason" xml:space="preserve">
+    <value>Не указана причина отзыва доверенности</value>
+  </data>
 </root>

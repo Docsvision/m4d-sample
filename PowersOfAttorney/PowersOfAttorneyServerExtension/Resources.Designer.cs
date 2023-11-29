@@ -286,6 +286,15 @@ namespace PowersOfAttorneyServerExtension {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на The reason for revocation of the power of attorney is not specified.
+        /// </summary>
+        internal static string Error_EmptyRevokeReason {
+            get {
+                return ResourceManager.GetString("Error_EmptyRevokeReason", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Could not get the data of the signatory.
         /// </summary>
         internal static string Error_EmptySigner {

@@ -20,6 +20,7 @@ import { ModalDialogHeader } from "@docsvision/webclient/Helpers/ModalDialog/Mod
 import { ModalDialogContent } from "@docsvision/webclient/Helpers/ModalDialog/ModalDialogContent";
 import { ModalBackdrop } from "@docsvision/webclient/Helpers/ModalBackdrop";
 import { ModalDialogCloseButton } from "@docsvision/webclient/Helpers/ModalDialog/ModalDialogCloseButton";
+import { MessageBox } from "@docsvision/webclient/Helpers/MessageBox/MessageBox";
 
 
 export const revokePowerOfAttorney = async (sender: CustomButton) => {
@@ -30,8 +31,12 @@ export const revokePowerOfAttorney = async (sender: CustomButton) => {
     let typeElement = null;
     let reasonElement = null;
     const onSave = () => {
-        createAndSignApplication();
-        modalHost.unmount();
+        if (reasonElement.value == "") {
+            MessageBox.ShowError(resources.Error_EmptyRevokeReason);
+        } else {
+            createAndSignApplication();
+            modalHost.unmount();
+        }
     };
 
     const createAndSignApplication = async () => {
@@ -78,7 +83,7 @@ export const revokePowerOfAttorney = async (sender: CustomButton) => {
                             <div>{`${resources.PowerOfAttorney} № ${powerOfAttorneyNumber}`}</div>
                             <RadioGroup ref={el => typeElement = el} value={PowerOfAttorneyRevocationType.Principal.toString()} items={items} labelText={resources.SelectTheTypeOfApplicationForRevocation}></RadioGroup>
                             <label>{resources.Reason}:</label>
-                            <textarea ref={el => reasonElement = el} maxLength={150} rows={4} style={{ height: "auto" }} placeholder={resources.SpecifyTheReasonForCancellationOrRefusal}></textarea>
+                            <textarea ref={el => reasonElement = el} required={true} maxLength={150} rows={4} style={{ height: "auto" }} placeholder={resources.SpecifyTheReasonForCancellationOrRefusal}></textarea>
                         </div>
                         
                     </ModalDialogContent>

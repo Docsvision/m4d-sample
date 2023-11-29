@@ -327,4 +327,7 @@
   <data name="PoaDidNotSendToRegistrationStatus" xml:space="preserve">
     <value>Not submitted</value>
   </data>
+  <data name="Error_EmptyRevokeReason" xml:space="preserve">
+    <value>The reason for revocation of the power of attorney is not specified</value>
+  </data>
 </root>
