@@ -327,4 +327,7 @@
   <data name="PoaDidNotSendToRegistrationStatus" xml:space="preserve">
     <value>Not submitted</value>
   </data>
+  <data name="PowerOfAttorneyCloudSignatureWarning" xml:space="preserve">
+    <value>Signing a machine-readable power of attorney with a cloud certificate is not currently supported</value>
+  </data>
 </root>

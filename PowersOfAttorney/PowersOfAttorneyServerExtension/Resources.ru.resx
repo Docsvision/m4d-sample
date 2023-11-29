@@ -327,4 +327,7 @@
   <data name="PoaDidNotSendToRegistrationStatus" xml:space="preserve">
     <value>Не передавалась</value>
   </data>
+  <data name="PowerOfAttorneyCloudSignatureWarning" xml:space="preserve">
+    <value>На данный момент подписание машиночитаемой доверенности облачным сертификатом не поддерживается</value>
+  </data>
 </root>
