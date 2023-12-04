@@ -601,6 +601,16 @@ namespace PowersOfAttorneyServerExtension {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на A signed application to revoke the power of attorney was sent to the operator.
+        ///The result of the operation can be tracked in the exchange log..
+        /// </summary>
+        internal static string M4DRegistry_Recall_Success {
+            get {
+                return ResourceManager.GetString("M4DRegistry_Recall_Success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на The power of attorney was signed and sent.
         ///The result of the operation can be tracked in the exchange log..
         /// </summary>
