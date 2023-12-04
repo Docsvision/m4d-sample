@@ -601,6 +601,16 @@ namespace PowersOfAttorneyServerExtension {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на The power of attorney was signed and sent.
+        ///The result of the operation can be tracked in the exchange log..
+        /// </summary>
+        internal static string M4DRegistry_Register_Success {
+            get {
+                return ResourceManager.GetString("M4DRegistry_Register_Success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Not submitted.
         /// </summary>
         internal static string PoaDidNotSendToRegistrationStatus {

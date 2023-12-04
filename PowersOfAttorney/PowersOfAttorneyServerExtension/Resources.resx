@@ -330,4 +330,8 @@
   <data name="Error_EmptyRevokeReason" xml:space="preserve">
     <value>The reason for revocation of the power of attorney is not specified</value>
   </data>
+	<data name="M4DRegistry_Register_Success" xml:space="preserve">
+    <value>The power of attorney was signed and sent.
+The result of the operation can be tracked in the exchange log.</value>
+  </data>
 </root>
