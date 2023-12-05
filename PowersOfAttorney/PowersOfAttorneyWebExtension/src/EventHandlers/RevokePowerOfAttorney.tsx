@@ -97,6 +97,7 @@ export const revokePowerOfAttorney = async (sender: CustomButton) => {
     ));
 
     modalHost.mount();
+    return modalHost;
 }
 
 export const revokePowerOfAttorneyWithoutApplication = async (sender: CustomButton) => {

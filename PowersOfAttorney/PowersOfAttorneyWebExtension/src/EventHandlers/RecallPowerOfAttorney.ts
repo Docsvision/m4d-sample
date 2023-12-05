@@ -22,16 +22,17 @@ export const recallPowerOfAttorney = async (sender: CustomButton) => {
 };
 
 export const revokeAndRecallPowerOfAttorney = async (sender: CustomButton) => {
-    revokePowerOfAttorney(sender);
+    const modalHost = await revokePowerOfAttorney(sender);
+    modalHost.unmounting.subscribe(async (sender, args) => {
+        const powerOfAttorneyId = sender.layout.controls.powerOfAttorneySysCard.params.value?.cardId;
 
-    const powerOfAttorneyId = sender.layout.controls.powerOfAttorneySysCard.params.value?.cardId;
-
-    const powersOfAttorneyButtonController = sender.layout.getService($PowersOfAttorneyButtonController);
-    const employeeId = sender.layout.getService($ApplicationSettings).employee.id
-    const msg = await powersOfAttorneyButtonController?.recallPowerOfAttorney(powerOfAttorneyId, employeeId)
-    if (msg.Success) {
-        MessageBox.ShowInfo(resources.M4DRegistry_Recall_Success);
-    } else {
-        MessageBox.ShowError(msg.Message);
-    }
+        const powersOfAttorneyButtonController = sender.layout.getService($PowersOfAttorneyButtonController);
+        const employeeId = sender.layout.getService($ApplicationSettings).employee.id
+        const msg = await powersOfAttorneyButtonController?.recallPowerOfAttorney(powerOfAttorneyId, employeeId)
+        if (msg.Success) {
+            MessageBox.ShowInfo(resources.M4DRegistry_Recall_Success);
+        } else {
+            MessageBox.ShowError(msg.Message);
+        }
+    })
 };
