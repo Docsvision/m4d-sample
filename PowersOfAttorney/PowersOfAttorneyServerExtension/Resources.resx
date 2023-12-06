@@ -338,4 +338,7 @@ The result of the operation can be tracked in the exchange log.</value>
     <value>A signed application to revoke the power of attorney was sent to the operator.
 The result of the operation can be tracked in the exchange log.</value>
   </data>
+	<data name="PowerOfAttorneyCloudSignatureWarning" xml:space="preserve">
+    <value>Signing a machine-readable power of attorney with a cloud certificate is not currently supported</value>
+  </data>
 </root>

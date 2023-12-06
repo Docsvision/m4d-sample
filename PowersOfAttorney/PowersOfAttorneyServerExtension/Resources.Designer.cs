@@ -639,6 +639,15 @@ namespace PowersOfAttorneyServerExtension {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Signing a machine-readable power of attorney with a cloud certificate is not currently supported.
+        /// </summary>
+        internal static string PowerOfAttorneyCloudSignatureWarning {
+            get {
+                return ResourceManager.GetString("PowerOfAttorneyCloudSignatureWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Power of attorney generated.
         /// </summary>
         internal static string PowerOfAttorneyGenerated {
