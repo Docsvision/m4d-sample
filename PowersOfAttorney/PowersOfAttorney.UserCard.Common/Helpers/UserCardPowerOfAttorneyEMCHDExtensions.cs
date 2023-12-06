@@ -63,7 +63,7 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
             {
                 var document = new PowerOfAttorneyEMCHDData.PowerOfAttorneyDocument();
 
-                if (userCard.PoaScope == PoaScopeType.B2BandFNS)
+                if (userCard.PoaScope != PoaScopeType.B2B)
                 {
                     document.KND = userCard.GenKnd;
                 }               
