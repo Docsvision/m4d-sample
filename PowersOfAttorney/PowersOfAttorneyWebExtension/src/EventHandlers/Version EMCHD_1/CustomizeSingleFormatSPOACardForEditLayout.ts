@@ -161,8 +161,6 @@ const onCeoDataChanged = async (sender: StaffDirectoryItems, args: IDataChangedE
     const ceoGender = controls.get<Dropdown>("ceoGender");
     const ceoPhone = controls.get<TextBox>("ceoPhone");
     const ceoEmail = controls.get<TextBox>("ceoEmail");
-    const numCEOID = controls.get<TextBox>("numCEOID");
-    const authIssCEOID = controls.get<TextArea>("authIssCEOID");
 
 
     if (args.newValue) {
@@ -171,15 +169,11 @@ const onCeoDataChanged = async (sender: StaffDirectoryItems, args: IDataChangedE
         ceoGender.params.value = data.fields.find(field => field.alias === "Gender").value.toString();
         ceoPhone.params.value = data.fields.find(field => field.alias === "Phone").value;
         ceoEmail.params.value = data.fields.find(field => field.alias === "Email").value;
-        numCEOID.params.value = data.fields.find(field => field.alias === "IDNumber").value;
-        authIssCEOID.params.value = data.fields.find(field => field.alias === "IDIssuedBy").value;
     } else {
         ceoBirthDate.params.value = null;
         ceoGender.params.value = "";
         ceoPhone.params.value = "";
         ceoEmail.params.value = "";
-        numCEOID.params.value = "";
-        authIssCEOID.params.value = "";
     }  
 }
 
@@ -251,8 +245,6 @@ const customizeInputFields = (sender: Layout) => {
 
     const numReprID = document.querySelector('[data-control-name="numReprID"]');
     numReprID?.getElementsByTagName('input')[0].setAttribute("maxLength", "25");
-    const numCEOID = document.querySelector('[data-control-name="numCEOID"]');
-    numCEOID?.getElementsByTagName('input')[0].setAttribute("maxLength", "25");
 
     const maskOptions = {
         SNILS: {
@@ -275,12 +267,6 @@ const customizeInputFields = (sender: Layout) => {
     reprSNILS.addEventListener("change", (event) => sender.controls.reprSNILS.params.value = (event.target as HTMLInputElement).value);
     sender.controls.reprSNILS.params.blur.subscribe((sender: TextBox) => {
         checkValueLength(reprSNILS, sender.params.value?.replaceAll("-", "").replace(" ", "").length, sender.layout.params.services, 11);
-    })
-
-    const codeAuthIssCEOID = document.querySelector('[data-control-name="codeAuthIssCEOID"] input') as HTMLElement;
-    IMask(codeAuthIssCEOID, maskOptions.code);
-    sender.controls.codeAuthIssCEOID.params.blur.subscribe((sender: TextBox, args: IDataChangedEventArgs) => {
-        checkValueLength(codeAuthIssCEOID, sender.params.value?.replaceAll("-", "").replaceAll(" ", "").length, sender.layout.params.services, 6);
     })
 
     const codeAuthIssReprID = document.querySelector('[data-control-name="codeAuthIssReprID"] input') as HTMLElement;

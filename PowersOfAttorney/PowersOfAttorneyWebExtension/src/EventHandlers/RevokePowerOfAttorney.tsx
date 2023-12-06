@@ -23,7 +23,7 @@ import { ModalDialogCloseButton } from "@docsvision/webclient/Helpers/ModalDialo
 import { MessageBox } from "@docsvision/webclient/Helpers/MessageBox/MessageBox";
 
 
-export const revokePowerOfAttorney = async (sender: CustomButton) => {
+export const revokePowerOfAttorney = async (sender: CustomButton, onAttachSignatureToCardCallback: Function = null, showMessage: boolean = true) => {
     const items = [{ key: PowerOfAttorneyRevocationType.Principal.toString(), value: resources.CancellationOfThePowerOfAttorneyByThePrincipal }, { key: PowerOfAttorneyRevocationType.Representative.toString(), value: resources.RefusalOfTheRepresentativeFromThePowers }]
     const powerOfAttorneyUserCardId = sender.layout.getService($CardId);
     const powerOfAttorneyNumber = await sender.layout.getService($PowersOfAttorneyDemoController).getPowerOfAttorneyNumber(powerOfAttorneyUserCardId);
@@ -59,14 +59,20 @@ export const revokePowerOfAttorney = async (sender: CustomButton) => {
                             const operationId = sender.layout.layoutInfo.operations.find(operation => operation.alias === "To revoke").id;
                             await sender.layout.changeState(operationId);
                             sender.layout.getService($Router).refresh();
-                            sender.layout.getService($MessageWindow).showInfo(resources.PowerOfAttorneyRevoked);
+                            if (showMessage) {
+                                sender.layout.getService($MessageWindow).showInfo(resources.PowerOfAttorneyRevoked);
+                            }
                         } catch (err) {
                             console.error(err);
                         }
                     }
                     return {} as IEncryptedInfo;
                 },
-                onAttachSignatureToCard: async () => { }
+                onAttachSignatureToCard: async () => {
+                    if (onAttachSignatureToCardCallback !== null) {
+                        await onAttachSignatureToCardCallback(sender);
+                    }
+                 }
             });
     }
 

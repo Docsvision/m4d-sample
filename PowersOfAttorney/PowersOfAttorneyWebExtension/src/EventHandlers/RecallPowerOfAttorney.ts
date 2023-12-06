@@ -22,8 +22,7 @@ export const recallPowerOfAttorney = async (sender: CustomButton) => {
 };
 
 export const revokeAndRecallPowerOfAttorney = async (sender: CustomButton) => {
-    const modalHost = await revokePowerOfAttorney(sender);
-    modalHost.unmounting.subscribe(async (sender, args) => {
+    const onAttachSignatureToCard = async (sender) => {
         const powerOfAttorneyId = sender.layout.controls.powerOfAttorneySysCard.params.value?.cardId;
 
         const powersOfAttorneyButtonController = sender.layout.getService($PowersOfAttorneyButtonController);
@@ -34,5 +33,7 @@ export const revokeAndRecallPowerOfAttorney = async (sender: CustomButton) => {
         } else {
             MessageBox.ShowError(msg.Message);
         }
-    })
+    };
+    await revokePowerOfAttorney(sender, onAttachSignatureToCard, false);
+    
 };

@@ -42,7 +42,9 @@ export const signPowerOfAttorney = async (sender: CustomButton, refreshLayout = 
                             return Promise.reject();
                         }
                     }
-                    await sender.layout.getService($MessageWindow).showInfo(resources.PowerOfAttorneySigned);
+                    if (showMessage) {
+                        await sender.layout.getService($MessageWindow).showInfo(resources.PowerOfAttorneySigned);
+                    }
                 }
                 return {} as IEncryptedInfo;
             },
