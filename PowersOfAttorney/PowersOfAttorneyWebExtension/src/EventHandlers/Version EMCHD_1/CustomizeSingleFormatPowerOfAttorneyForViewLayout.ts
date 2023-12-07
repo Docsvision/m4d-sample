@@ -22,7 +22,8 @@ export const customizeSingleFormatPowerOfAttorneyForViewLayout = async (sender: 
     const ceoAddressBlock = controls.get<Block>("ceoAddressBlock");
     const reprCitizenshipSignBlock = controls.get<Block>("reprCitizenshipSignBlock");
     const reprAddressBlock = controls.get<Block>("reprAddressBlock");
-
+    const signPossIssSubst = controls.get<RadioGroup>("signPossIssSubst");
+    const powersSubstLoss = controls.get<Dropdown>("powersSubstLoss");
 
     if (ceoCitizenshipSign.value === 'foreignCitizen') {
         ceoCitizenship.params.visibility = true;
@@ -51,5 +52,8 @@ export const customizeSingleFormatPowerOfAttorneyForViewLayout = async (sender: 
     ceoAddressBlock.params.visibility = isNotB2BValue;
     reprCitizenshipSignBlock.params.visibility = isNotB2BValue;
     reprAddressBlock.params.visibility = isNotB2BValue;
+
+    const signPossIssSubstValue = signPossIssSubst.params.value !== "Without right of substitution";
+    powersSubstLoss.params.visibility = signPossIssSubstValue;
    
 }
