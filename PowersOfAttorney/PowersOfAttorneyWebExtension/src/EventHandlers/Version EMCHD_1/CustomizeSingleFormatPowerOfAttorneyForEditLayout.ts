@@ -29,12 +29,13 @@ export const customizeSingleFormatPowerOfAttorneyForEditLayout = async (sender: 
     const ceoCitizenshipSign = controls.get<Dropdown>("ceoCitizenshipSign");
     const reprCitizenshipSign = controls.get<Dropdown>("reprCitizenshipSign");
     const poaScope = controls.get<RadioGroup>("poaScope");
+    const signPossIssSubst = controls.get<RadioGroup>("signPossIssSubst");
 
     customizeInputFields(sender);
     onPowersTypeDataChanged(sender);
     onCeoCitizenshipSignDataChanged(sender);
     onReprCitizenshipSignDataChanged(sender);
-    onPoaScopeDataChanged(sender);
+    poaScope && onPoaScopeDataChanged(sender);
 
     sender.params.beforeCardSaving.subscribe(checkPowersBeforeSaving);
     entityPrincipal && entityPrincipal.params.dataChanged.subscribe(onPrincipalDataChanged);
@@ -45,6 +46,7 @@ export const customizeSingleFormatPowerOfAttorneyForEditLayout = async (sender: 
     ceoCitizenshipSign && ceoCitizenshipSign.params.dataChanged.subscribe(onCeoCitizenshipSignDataChanged);
     reprCitizenshipSign && reprCitizenshipSign.params.dataChanged.subscribe(onReprCitizenshipSignDataChanged);
     poaScope && poaScope.params.dataChanged.subscribe(onPoaScopeDataChanged);
+    signPossIssSubst && signPossIssSubst.params.dataChanged.subscribe(onSignPossIssSubstDataChanged);
 }
 
 const onPoaScopeDataChanged = (sender: Layout) => {
@@ -227,6 +229,15 @@ const onRepresentativeDataChanged = async (sender: StaffDirectoryItems, args: ID
         numReprID.params.value = "";
         authIssReprID.params.value = "";
     }
+}
+
+const onSignPossIssSubstDataChanged = (sender: Layout) => {
+    const controls = sender.layout.controls;
+    const signPossIssSubst = controls.get<RadioGroup>("signPossIssSubst");
+    const powersSubstLoss = controls.get<Dropdown>("powersSubstLoss");
+
+    const signPossIssSubstValue = signPossIssSubst.params.value !== "Without right of substitution";
+    powersSubstLoss.params.visibility = signPossIssSubstValue;
 }
 
 const limitations = [
