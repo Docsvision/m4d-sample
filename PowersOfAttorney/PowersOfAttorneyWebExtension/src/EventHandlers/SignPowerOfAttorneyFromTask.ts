@@ -6,21 +6,21 @@ import { IEncryptedInfo } from "@docsvision/webclient/BackOffice/$DigitalSignatu
 import { LayoutControl } from "@docsvision/webclient/System/BaseControl";
 import { OperationExecutingEventArgs } from "@docsvision/webclient/BackOffice/OperationExecutingEventArgs";
 import { ICancelableEventArgs } from "@docsvision/webclient/System/ICancelableEventArgs";
-
-export const SIGN_OPERATION_ID = "67678953-6474-46cd-9f83-ecb95a030432";
-
+import { EMCHD_POWER_OF_ATTORNEY_KIND_ID, EMCHD_RETRUST_POWER_OF_ATTORNEY_KIND_ID, POWER_OF_ATTORNEY_KIND_ID, RETRUST_POWER_OF_ATTORNEY_KIND_ID, SIGN_OPERATION_ID } from '../PowerOfAttorneyConstants';
 
 export const signPowerOfAttorneyFromTask = async (sender: LayoutControl, e: ICancelableEventArgs<OperationExecutingEventArgs>, refreshLayout = true) => {
     e.wait();
     if (e.data.operationData.builtInOperationId === SIGN_OPERATION_ID) {
         const powerOfAttorneyUserCardId = sender.layout.controls.locationContainer.params.layoutModel.cardInfo.id;
         const powerOfAttorneyUserKindId = sender.layout.controls.locationContainer.params.layoutModel.cardInfo.kindId;
-        if (powerOfAttorneyUserKindId === 'e1925a07-6f57-406d-9073-294381ea5aed') {
+        if (powerOfAttorneyUserKindId === POWER_OF_ATTORNEY_KIND_ID) {
             await sender.layout.getService($PowersOfAttorneyDemoController).createPowerOfAttorney(powerOfAttorneyUserCardId);
-        } else if (powerOfAttorneyUserKindId === '9df7c9ab-a7b2-4061-ab3a-0c35814cdad8') {
+        } else if (powerOfAttorneyUserKindId === RETRUST_POWER_OF_ATTORNEY_KIND_ID) {
             await sender.layout.getService($PowersOfAttorneyDemoController).createRetrustPowerOfAttorney(powerOfAttorneyUserCardId);
-        } else if (powerOfAttorneyUserKindId === '6ac009bc-fd9c-4b7a-ba69-eaed27675264') {
+        } else if (powerOfAttorneyUserKindId === EMCHD_POWER_OF_ATTORNEY_KIND_ID) {
             await sender.layout.getService($PowersOfAttorneyDemoController).createEMCHDPowerOfAttorney(powerOfAttorneyUserCardId);
+        } else if (powerOfAttorneyUserKindId === EMCHD_RETRUST_POWER_OF_ATTORNEY_KIND_ID) {
+            await sender.layout.getService($PowersOfAttorneyDemoController).createEMCHDRetrustPowerOfAttorney(powerOfAttorneyUserCardId);
         }
         const powerOfAttorneyId = await sender.layout.getService($PowersOfAttorneyDemoController).getPowerOfAttorneyCardId(powerOfAttorneyUserCardId);
         await sender.layout.params.services.digitalSignature.showDocumentSignDialog(powerOfAttorneyUserCardId,
@@ -29,6 +29,7 @@ export const signPowerOfAttorneyFromTask = async (sender: LayoutControl, e: ICan
                 dialogProps: {
                     hideSimpleSign: true
                 },
+                sourceCardInfo: sender.layout.cardInfo,
                 onCreateSignature: async (options) => {
                     const signatureData = await sender.layout.getService($PowerOfAttorneyApiController).getMachineReadablePowerOfAttorneyData(powerOfAttorneyId);
                     const info = new EncryptedInfo(options.method.certificateInfo.thumberprint);

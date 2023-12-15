@@ -1,13 +1,17 @@
 import { Layout } from "@docsvision/webclient/System/Layout";
+import { Dropdown } from "@docsvision/webclient/Platform/Dropdown";
+import { TextBox } from "@docsvision/webclient/Platform/TextBox";
+import { RadioGroup } from "@docsvision/webclient/Platform/RadioGroup";
+import { Block } from "@docsvision/webclient/Platform/Block";
 
 export const customizePowerOfAttorneyCardForViewCard = (sender: Layout) => {
     const controls = sender.layout.controls;
-    const signCitizenshipfIAWPOA = controls.signCitizenshipfIAWPOA;
-    const codeForeignCitizenshipIAWPOA = controls.codeForeignCitizenshipIAWPOA;;
-    const possibilityOfSubst = controls.possibilityOfSubst;
-    const lossOfPowersUponSubstBlock = controls.lossOfPowersUponSubstBlock;
-    const reprSignCitizenship = controls.reprSignCitizenship;
-    const foreignReprCitizenship = controls.foreignReprCitizenship;
+    const signCitizenshipfIAWPOA = controls.get<Dropdown>("signCitizenshipfIAWPOA");
+    const codeForeignCitizenshipIAWPOA = controls.get<TextBox>("codeForeignCitizenshipIAWPOA");
+    const possibilityOfSubst = controls.get<RadioGroup>("possibilityOfSubst");
+    const lossOfPowersUponSubstBlock = controls.get<Block>("lossOfPowersUponSubstBlock");
+    const reprSignCitizenship = controls.get<Dropdown>("reprSignCitizenship");
+    const foreignReprCitizenship = controls.get<TextBox>("foreignReprCitizenship");
 
     if (signCitizenshipfIAWPOA.value === 'foreignCitizen') {
         codeForeignCitizenshipIAWPOA.params.visibility = true;

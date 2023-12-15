@@ -1,39 +1,43 @@
+import { Dropdown } from "@docsvision/webclient/Platform/Dropdown";
+import { RadioGroup } from "@docsvision/webclient/Platform/RadioGroup";
+import { Table } from "@docsvision/webclient/Platform/Table";
+import { TextArea } from "@docsvision/webclient/Platform/TextArea";
 import { TextBox } from "@docsvision/webclient/Platform/TextBox";
 import { ICancelableEventArgs } from "@docsvision/webclient/System/ICancelableEventArgs";
-import { IDataChangedEventArgs } from "@docsvision/webclient/System/IDataChangedEventArgs";
 import { ILayoutBeforeSavingEventArgs } from "@docsvision/webclient/System/ILayoutParams";
 import { Layout } from "@docsvision/webclient/System/Layout";
 import { resources } from "@docsvision/webclient/System/Resources";
 import IMask from "imask";
 import { checkValueLength } from "../../Utils/CheckValueLength";
+import { Block } from "@docsvision/webclient/Platform/Block";
 
 
 export const customizePowerOfAttorneyCardForEditLayout = (sender: Layout) => {
     const controls = sender.layout.controls;
-    const signCitizenshipfIAWPOA = controls.signCitizenshipfIAWPOA;
-    const kindCodeOfDocProvIdenIAWPOA = controls.kindCodeOfDocProvIdenIAWPOA; 
-    const possibilityOfSubst = controls.possibilityOfSubst;
-    const kindDocProvIdenRepr = controls.kindDocProvIdenRepr;
-    const reprSignCitizenship = controls.reprSignCitizenship;
+    const signCitizenshipfIAWPOA = controls.get<Dropdown>("signCitizenshipfIAWPOA");
+    const kindCodeOfDocProvIdenIAWPOA = controls.get<Dropdown>("kindCodeOfDocProvIdenIAWPOA"); 
+    const possibilityOfSubst = controls.get<RadioGroup>("possibilityOfSubst");
+    const kindDocProvIdenRepr = controls.get<Dropdown>("kindDocProvIdenRepr");
+    const reprSignCitizenship = controls.get<Dropdown>("reprSignCitizenship");
     
     customizeInputFields(sender);
-    onDataChangedPossibilityOfSubst(sender);
-    onDataChangedSignCitizenshipfIAWPOA(sender);
-    onDataChangedReprSignCitizenship(sender);
-    onDataChangedKindCodeOfDocProvIdenIAWPOA(sender);
-    onDataChangedKindDocProvIdenRepr(sender);
+    onPossibilityOfSubstDataChanged(sender);
+    onSignCitizenshipfIAWPOADataChanged(sender);
+    onReprSignCitizenshipDataChanged(sender);
+    onKindCodeOfDocProvIdenIAWPOADataChanged(sender);
+    onKindDocProvIdenReprDataChanged(sender);
 
     sender.params.beforeCardSaving.subscribe(checkPowersBeforeSaving);
-    possibilityOfSubst && possibilityOfSubst.params.dataChanged.subscribe(onDataChangedPossibilityOfSubst);
-    signCitizenshipfIAWPOA && signCitizenshipfIAWPOA.params.dataChanged.subscribe(onDataChangedSignCitizenshipfIAWPOA);
-    kindCodeOfDocProvIdenIAWPOA && kindCodeOfDocProvIdenIAWPOA.params.dataChanged.subscribe(onDataChangedKindCodeOfDocProvIdenIAWPOA);
-    kindDocProvIdenRepr && kindDocProvIdenRepr.params.dataChanged.subscribe(onDataChangedKindDocProvIdenRepr);
-    reprSignCitizenship && reprSignCitizenship.params.dataChanged.subscribe(onDataChangedReprSignCitizenship);
+    possibilityOfSubst && possibilityOfSubst.params.dataChanged.subscribe(onPossibilityOfSubstDataChanged);
+    signCitizenshipfIAWPOA && signCitizenshipfIAWPOA.params.dataChanged.subscribe(onSignCitizenshipfIAWPOADataChanged);
+    kindCodeOfDocProvIdenIAWPOA && kindCodeOfDocProvIdenIAWPOA.params.dataChanged.subscribe(onKindCodeOfDocProvIdenIAWPOADataChanged);
+    kindDocProvIdenRepr && kindDocProvIdenRepr.params.dataChanged.subscribe(onKindDocProvIdenReprDataChanged);
+    reprSignCitizenship && reprSignCitizenship.params.dataChanged.subscribe(onReprSignCitizenshipDataChanged);
 }
 
 const checkPowersBeforeSaving = (sender: Layout, args: ICancelableEventArgs<ILayoutBeforeSavingEventArgs>) => {
-    const refPowersTable = sender.controls.refPowersTable;
-    const textPowersTable = sender.controls.textPowersTable;
+    const refPowersTable = sender.controls.get<Table>("refPowersTable");
+    const textPowersTable = sender.controls.get<Table>("textPowersTable");
     if (refPowersTable.params.rows.length === 0 && textPowersTable.params.rows.length === 0) {
         sender.params.services.messageWindow.showError(resources.Error_PowersEmpty);
         args.cancel();
@@ -44,7 +48,7 @@ const limitations = [
     { name: "IINIAWPOA", length: 12 },
     { name: "codeForeignCitizenshipIAWPOA", length: 3 },
     { name: "reprINN", length: 12 },
-    { name: "foreignReprCitizenship", length: 12 }
+    { name: "foreignReprCitizenship", length: 3 }
 ]
 
 const customizeInputFields = (sender: Layout) => {
@@ -71,35 +75,35 @@ const customizeInputFields = (sender: Layout) => {
     const SNILSIAWPOA = document.querySelector('[data-control-name="SNILSIAWPOA"] input') as HTMLElement;
     IMask(SNILSIAWPOA, maskOptions.SNILS);
     SNILSIAWPOA.addEventListener("change", (event) => sender.controls.SNILSIAWPOA.params.value = (event.target as HTMLInputElement).value);
-    sender.controls.SNILSIAWPOA.params.blur.subscribe((sender: TextBox) => {
+    sender.controls.get<TextBox>("SNILSIAWPOA").params.blur.subscribe((sender: TextBox) => {
         checkValueLength(SNILSIAWPOA, sender.params.value?.replaceAll("-", "").replace(" ", "").length, sender.layout.params.services, 11);
     })
 
     const reprSNILS = document.querySelector('[data-control-name="reprSNILS"] input') as HTMLElement;
     IMask(reprSNILS, maskOptions.SNILS);
     reprSNILS.addEventListener("change", (event) => sender.controls.reprSNILS.params.value = (event.target as HTMLInputElement).value);
-    sender.controls.reprSNILS.params.blur.subscribe((sender: TextBox) => {
+    sender.controls.get<TextBox>("reprSNILS").params.blur.subscribe((sender: TextBox) => {
         checkValueLength(reprSNILS, sender.params.value?.replaceAll("-", "").replaceAll(" ", "").length, sender.layout.params.services, 11);
     })
 
     const divCodeAuthIssDocProvIdenIAWPOA = document.querySelector('[data-control-name="divCodeAuthIssDocProvIdenIAWPOA"] input') as HTMLElement;
     IMask(divCodeAuthIssDocProvIdenIAWPOA, maskOptions.code);
-    sender.controls.divCodeAuthIssDocProvIdenIAWPOA.params.blur.subscribe((sender: TextBox, args: IDataChangedEventArgs) => {
-        checkValueLength(divCodeAuthIssDocProvIdenIAWPOA, args.newValue?.replaceAll("-", "").replaceAll(" ", "").length, sender.layout.params.services, 6);
+    sender.controls.get<TextBox>("divCodeAuthIssDocProvIdenIAWPOA").params.blur.subscribe((sender: TextBox) => {
+        checkValueLength(divCodeAuthIssDocProvIdenIAWPOA, sender.params.value?.replaceAll("-", "").replaceAll(" ", "").length, sender.layout.params.services, 6);
     })
 
     const divAuthIssDocConfIDOfRepr = document.querySelector('[data-control-name="divAuthIssDocConfIDOfRepr"] input') as HTMLElement;
     IMask(divAuthIssDocConfIDOfRepr, maskOptions.code);
-    sender.controls.divAuthIssDocConfIDOfRepr.params.blur.subscribe((sender: TextBox, args: IDataChangedEventArgs) => {
-        checkValueLength(divAuthIssDocConfIDOfRepr, args.newValue?.replaceAll("-", "").replaceAll(" ", "").length, sender.layout.params.services, 6);
+    sender.controls.get<TextBox>("divAuthIssDocConfIDOfRepr").params.blur.subscribe((sender: TextBox) => {
+        checkValueLength(divAuthIssDocConfIDOfRepr, sender.params.value?.replaceAll("-", "").replaceAll(" ", "").length, sender.layout.params.services, 6);
     })
 }
 
-const onDataChangedKindDocProvIdenRepr = (sender: Layout) => {
+const onKindDocProvIdenReprDataChanged = (sender: Layout) => {
     const controls = sender.layout.controls;
-    const kindDocProvIdenRepr = controls.kindDocProvIdenRepr;
-    const authIssDocConfIdenRepr = controls.authIssDocConfIdenRepr;
-    const divAuthIssDocConfIDOfRepr = controls.divAuthIssDocConfIDOfRepr;
+    const kindDocProvIdenRepr = controls.get<Dropdown>("kindDocProvIdenRepr");
+    const authIssDocConfIdenRepr = controls.get<TextArea>("authIssDocConfIdenRepr");
+    const divAuthIssDocConfIDOfRepr = controls.get<TextBox>("divAuthIssDocConfIDOfRepr");
 
     if (kindDocProvIdenRepr.params.value === '21') {
         authIssDocConfIdenRepr.params.required = true;
@@ -112,11 +116,11 @@ const onDataChangedKindDocProvIdenRepr = (sender: Layout) => {
     divAuthIssDocConfIDOfRepr.forceUpdate();
 }
 
-const onDataChangedKindCodeOfDocProvIdenIAWPOA = (sender: Layout) => {
+const onKindCodeOfDocProvIdenIAWPOADataChanged = (sender: Layout) => {
     const controls = sender.layout.controls;
-    const kindCodeOfDocProvIdenIAWPOA = controls.kindCodeOfDocProvIdenIAWPOA;
-    const authIssDocProvIdenIAWPOA = controls.authIssDocProvIdenIAWPOA;
-    const divCodeAuthIssDocProvIdenIAWPOA = controls.divCodeAuthIssDocProvIdenIAWPOA;
+    const kindCodeOfDocProvIdenIAWPOA = controls.get<Dropdown>("kindCodeOfDocProvIdenIAWPOA");
+    const authIssDocProvIdenIAWPOA = controls.get<TextArea>("authIssDocProvIdenIAWPOA");
+    const divCodeAuthIssDocProvIdenIAWPOA = controls.get<TextBox>("divCodeAuthIssDocProvIdenIAWPOA");
 
     if (kindCodeOfDocProvIdenIAWPOA.params.value === '21') {
         authIssDocProvIdenIAWPOA.params.required = true;
@@ -129,11 +133,11 @@ const onDataChangedKindCodeOfDocProvIdenIAWPOA = (sender: Layout) => {
     divCodeAuthIssDocProvIdenIAWPOA.forceUpdate();
 }
 
-const onDataChangedPossibilityOfSubst = (sender: Layout) => {
+const onPossibilityOfSubstDataChanged = (sender: Layout) => {
     const controls = sender.layout.controls;
-    const possibilityOfSubst = controls.possibilityOfSubst;
-    const lossOfPowersUponSubstBlock = controls.lossOfPowersUponSubstBlock;
-    const lossOfPowersUponSubst = controls.lossOfPowersUponSubst;
+    const possibilityOfSubst = controls.get<RadioGroup>("possibilityOfSubst");
+    const lossOfPowersUponSubstBlock = controls.get<Block>("lossOfPowersUponSubstBlock");
+    const lossOfPowersUponSubst = controls.get<RadioGroup>("lossOfPowersUponSubst");
 
     if (possibilityOfSubst.params.value === 'One-time substitution' || possibilityOfSubst.params.value === 'Substitution is possible with subsequent substitution') {
         lossOfPowersUponSubstBlock.params.visibility = true;
@@ -145,27 +149,29 @@ const onDataChangedPossibilityOfSubst = (sender: Layout) => {
     }
 }
 
-const onDataChangedSignCitizenshipfIAWPOA = (sender: Layout) => {
+const onSignCitizenshipfIAWPOADataChanged = (sender: Layout) => {
     const controls = sender.layout.controls;
-    const signCitizenshipfIAWPOA = controls.signCitizenshipfIAWPOA;
-    const codeForeignCitizenshipIAWPOA = controls.codeForeignCitizenshipIAWPOA;
+    const signCitizenshipfIAWPOA = controls.get<Dropdown>("signCitizenshipfIAWPOA");
+    const codeForeignCitizenshipIAWPOA = controls.get<TextBox>("codeForeignCitizenshipIAWPOA");
     if (signCitizenshipfIAWPOA.params.value === 'foreignCitizen') {
         codeForeignCitizenshipIAWPOA.params.visibility = true;
         codeForeignCitizenshipIAWPOA.params.required = true;
     } else {
+        codeForeignCitizenshipIAWPOA.params.value = "";
         codeForeignCitizenshipIAWPOA.params.visibility = false;
         codeForeignCitizenshipIAWPOA.params.required = false;
     }
 }
 
-const onDataChangedReprSignCitizenship = (sender: Layout) => {
+const onReprSignCitizenshipDataChanged = (sender: Layout) => {
     const controls = sender.layout.controls;
-    const reprSignCitizenship = controls.reprSignCitizenship;
-    const foreignReprCitizenship = controls.foreignReprCitizenship;
+    const reprSignCitizenship = controls.get<Dropdown>("reprSignCitizenship");
+    const foreignReprCitizenship = controls.get<TextBox>("foreignReprCitizenship");
     if (reprSignCitizenship.params.value === 'foreignCitizen') {
         foreignReprCitizenship.params.visibility = true;
         foreignReprCitizenship.params.required = true;
     } else {
+        foreignReprCitizenship.params.value = "";
         foreignReprCitizenship.params.visibility = false;
         foreignReprCitizenship.params.required = false;
     }
