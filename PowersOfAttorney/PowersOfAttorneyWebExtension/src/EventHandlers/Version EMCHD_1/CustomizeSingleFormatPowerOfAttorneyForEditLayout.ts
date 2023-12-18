@@ -84,6 +84,17 @@ const onPoaScopeDataChanged = (sender: Layout) => {
     ceoAddrRus.params.required = isNotB2BValue;
     reprAddrSubRus.params.required = isNotB2BValue;
     reprAddrRus.params.required = isNotB2BValue;
+    
+    if (!isNotB2BValue) {
+        codeTaxAuthSubmit.params.value = "";
+        codeTaxAuthValid.params.value = "";
+        ceoAddrSubRus.params.value = "";
+        ceoAddrRus.params.value = "";
+        reprAddrSubRus.params.value = "";
+        reprAddrRus.params.value = "";
+        ceoCitizenshipSign.params.value = "";
+        reprCitizenshipSign.params.value = "";
+    }
 }
 
 const onCeoCitizenshipSignDataChanged = (sender: Layout) => {
