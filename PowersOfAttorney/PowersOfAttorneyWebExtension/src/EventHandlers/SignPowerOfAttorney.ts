@@ -50,9 +50,6 @@ export const signPowerOfAttorney = async (sender: CustomButton, refreshLayout = 
             },
             onAttachSignatureToCard: async () => { }
         });
-        if (showMessage) {
-            await sender.layout.getService($MessageWindow).showInfo(resources.PowerOfAttorneySigned);
-        }
 }
 
 
