@@ -341,4 +341,7 @@ The result of the operation can be tracked in the exchange log.</value>
 	<data name="PowerOfAttorneyCloudSignatureWarning" xml:space="preserve">
     <value>Signing a machine-readable power of attorney with a cloud certificate is not currently supported</value>
   </data>
+	<data name="PowerOfAttorneyErrorSigning" xml:space="preserve">
+    <value>Error when signing the power of attorney.</value>
+  </data>
 </root>

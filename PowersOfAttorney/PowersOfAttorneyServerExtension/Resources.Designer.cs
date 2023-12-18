@@ -648,6 +648,15 @@ namespace PowersOfAttorneyServerExtension {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Error when signing the power of attorney..
+        /// </summary>
+        internal static string PowerOfAttorneyErrorSigning {
+            get {
+                return ResourceManager.GetString("PowerOfAttorneyErrorSigning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Power of attorney generated.
         /// </summary>
         internal static string PowerOfAttorneyGenerated {

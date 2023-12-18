@@ -341,4 +341,7 @@
 	<data name="PowerOfAttorneyCloudSignatureWarning" xml:space="preserve">
     <value>На данный момент подписание машиночитаемой доверенности облачным сертификатом не поддерживается</value>
   </data>
+	<data name="PowerOfAttorneyErrorSigning" xml:space="preserve">
+    <value>При подписании произошла ошибка.</value>
+  </data>
 </root>
