@@ -1,18 +1,15 @@
 import { OperationExecutingEventArgs } from "@docsvision/webclient/BackOffice/OperationExecutingEventArgs";
 import { $LayoutCardController } from "@docsvision/webclient/Generated/DocsVision.WebClient.Controllers";
 import { CardLink } from "@docsvision/webclient/Platform/CardLink";
-import { LayoutControl } from "@docsvision/webclient/System/BaseControl";
 import { ICancelableEventArgs } from "@docsvision/webclient/System/ICancelableEventArgs";
-import { layoutManager } from "@docsvision/webclient/System/LayoutManager";
 import { $ControlStore } from "@docsvision/webclient/System/LayoutServices";
-import { sendPowerOfAttorneyToRegistrationAsFile } from "./PowerOfAttorneyRegistration";
 import { signPowerOfAttorneyFromTask } from "./SignPowerOfAttorneyFromTask";
-import { SIGN_OPERATION_ID } from "../PowerOfAttorneyConstants";
+import { SING_OPERATION_COMPLETION_OPTION_ID } from "../PowerOfAttorneyConstants";
 import { CustomButton } from "@docsvision/webclient/Platform/CustomButton";
-import { sendForRegistrationToRegistry, signAndSendForRegistrationToRegistry } from "./SendForRegistrationToRegistry";
+import { sendForRegistrationToRegistry } from "./SendForRegistrationToRegistry";
 
 export const signAndSendPowerOfAttorneyToKonturForRegistrationAsFileFromTask = async (sender: CustomButton, e: ICancelableEventArgs<OperationExecutingEventArgs>) => {
-    if (e.data.operationData.builtInOperationId === SIGN_OPERATION_ID) {
+    if (e.data.operationData.completionOptionId === SING_OPERATION_COMPLETION_OPTION_ID) {
         await signPowerOfAttorneyFromTask(sender, e, false);
         const powerOfAttorneyIdControl = sender.layout.getService($ControlStore).get<CardLink>("powerOfAttorneySysCard");
         await powerOfAttorneyIdControl.reloadFromServer();
