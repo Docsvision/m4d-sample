@@ -58,7 +58,6 @@ export const revokePowerOfAttorney = async (sender: CustomButton, onAttachSignat
                             await sender.layout.getService($PowerOfAttorneyApiController).revokePowerOfAttorney({ powerOfAttorneyId, withChildrenPowerOfAttorney: true });
                             const operationId = sender.layout.layoutInfo.operations.find(operation => operation.alias === "To revoke").id;
                             await sender.layout.changeState(operationId);
-                            sender.layout.getService($Router).refresh();
                             if (showMessage) {
                                 sender.layout.getService($MessageWindow).showInfo(resources.PowerOfAttorneyRevoked);
                             }
@@ -72,6 +71,7 @@ export const revokePowerOfAttorney = async (sender: CustomButton, onAttachSignat
                     if (onAttachSignatureToCardCallback !== null) {
                         await onAttachSignatureToCardCallback(sender);
                     }
+                    sender.layout.getService($Router).refresh();
                  }
             });
     }
