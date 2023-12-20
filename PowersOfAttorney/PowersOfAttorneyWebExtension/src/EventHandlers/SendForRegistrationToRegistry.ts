@@ -12,7 +12,7 @@ export const sendForRegistrationToRegistry = async (sender: CustomButton) => {
 
     powersOfAttorneyButtonController?.sendForRegistrationToRegistry(powerOfAttorneyId, employeeId).then(msg => {
         if (msg.Success) {
-            msg.Data && MessageBox.ShowInfo(msg.Data);
+            msg.Data && MessageBox.ShowInfo(resources.M4DRegistry_Register_Success);
         } else {
             MessageBox.ShowError(msg.Message);
         }
