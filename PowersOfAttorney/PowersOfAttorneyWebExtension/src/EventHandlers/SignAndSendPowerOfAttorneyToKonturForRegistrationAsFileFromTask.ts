@@ -10,7 +10,7 @@ import { sendForRegistrationToRegistry } from "./SendForRegistrationToRegistry";
 import { GenModels } from "@docsvision/webclient/Generated/DocsVision.WebClient.Models";
 
 export const signAndSendPowerOfAttorneyToKonturForRegistrationAsFileFromTask = async (sender: CustomButton, e: ICancelableEventArgs<OperationExecutingEventArgs>) => {
-    if (e.data.operationData.completionOptionId === SIGN_OPERATION_ID 
+    if (e.data.operationData.builtInOperationId === SIGN_OPERATION_ID 
         && e.data.operationData.additionalInfo.decisionSemantics === GenModels.DecisionSemantics.Positive) {
             await signPowerOfAttorneyFromTask(sender, e, false);
             const powerOfAttorneyIdControl = sender.layout.getService($ControlStore).get<CardLink>("powerOfAttorneySysCard");
