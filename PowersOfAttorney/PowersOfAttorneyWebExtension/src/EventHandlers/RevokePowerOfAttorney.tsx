@@ -41,6 +41,7 @@ export const revokePowerOfAttorney = async (sender: CustomButton, onAttachSignat
 
     const createAndSignApplication = async () => {
 
+        let isFail = false;
         const signatureData = await sender.layout.getService($PowersOfAttorneyDemoController).requestRevocationPowerOfAttorney(powerOfAttorneyUserCardId, +typeElement.params.value, reasonElement.value);
         await sender.layout.params.services.digitalSignature.showDocumentSignDialog(powerOfAttorneyUserCardId,
             {
@@ -62,16 +63,19 @@ export const revokePowerOfAttorney = async (sender: CustomButton, onAttachSignat
                                 sender.layout.getService($MessageWindow).showInfo(resources.PowerOfAttorneyRevoked);
                             }
                         } catch (err) {
+                            isFail = true;
                             console.error(err);
                         }
                     }
                     return {} as IEncryptedInfo;
                 },
                 onAttachSignatureToCard: async () => {
-                    if (onAttachSignatureToCardCallback !== null) {
-                        await onAttachSignatureToCardCallback(sender);
+                    if (!isFail) {
+                        if (onAttachSignatureToCardCallback !== null) {
+                            await onAttachSignatureToCardCallback(sender);
+                        }
+                        sender.layout.getService($Router).refresh();
                     }
-                    sender.layout.getService($Router).refresh();
                  }
             });
     }
