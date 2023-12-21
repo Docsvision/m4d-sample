@@ -25,10 +25,13 @@ export const revokeAndRecallPowerOfAttorney = async (sender: CustomButton) => {
     const powersOfAttorneyButtonController = sender.layout.getService($PowersOfAttorneyButtonController);
     const employeeId = sender.layout.getService($ApplicationSettings).employee.id;
     const powerOfAttorneyId = sender.layout.controls.powerOfAttorneySysCard.params.value?.cardId;
+    const operationId = sender.layout.layoutInfo.operations.find(operation => operation.alias === "To revoke").id;
+    
     const onAttachSignatureToCard = async (sender) => {
         const msg = await powersOfAttorneyButtonController?.recallPowerOfAttorney(powerOfAttorneyId, employeeId)
         if (msg.Success) {
             MessageBox.ShowInfo(resources.M4DRegistry_Recall_Success);
+            await sender.layout.changeState(operationId);
         } else {
             MessageBox.ShowError(msg.Message);
         }
