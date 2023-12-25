@@ -331,7 +331,7 @@
     <value>Не указана причина отзыва доверенности</value>
   </data>
 	<data name="M4DRegistry_Register_Success" xml:space="preserve">
-    <value>Доверенность была подписана и отправлена в ЦПРР ФНСа.
+    <value>Доверенность была подписана и отправлена в ЦПРР ФНС.
 Результат выполнения операции можно отследить в журнале обмена.</value>
   </data>
 	<data name="M4DRegistry_Recall_Success" xml:space="preserve">
