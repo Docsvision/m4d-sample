@@ -601,7 +601,7 @@ namespace PowersOfAttorneyServerExtension {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на A signed application to revoke the power of attorney was sent to the operator.
+        ///   Ищет локализованную строку, похожую на A signed application to revoke the power of attorney was sent to the blockchain of the Federal Tax Service of Russia.
         ///The result of the operation can be tracked in the exchange log..
         /// </summary>
         internal static string M4DRegistry_Recall_Success {

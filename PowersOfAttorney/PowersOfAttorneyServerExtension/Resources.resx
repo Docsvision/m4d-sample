@@ -335,7 +335,7 @@
 The result of the operation can be tracked in the exchange log.</value>
   </data>
 	<data name="M4DRegistry_Recall_Success" xml:space="preserve">
-    <value>A signed application to revoke the power of attorney was sent to the operator.
+    <value>A signed application to revoke the power of attorney was sent to the blockchain of the Federal Tax Service of Russia.
 The result of the operation can be tracked in the exchange log.</value>
   </data>
 	<data name="PowerOfAttorneyCloudSignatureWarning" xml:space="preserve">
