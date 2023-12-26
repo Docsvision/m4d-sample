@@ -140,6 +140,7 @@ namespace PowersOfAttorneyServerExtension.Controllers
             var kindId = this.cardKindService.GetCardKindId(sessionContext, powerOfAttorneyUserCardId);
             var state = stateService.GetCardState(sessionContext, powerOfAttorneyUserCardId);
             var operations = sessionContext.AdvancedCardManager.GetOperations(powerOfAttorneyUserCardId);
+            var timestamp = sessionContext.AdvancedCardManager.GetCardTimestamp(powerOfAttorneyUserCardId);
 
             var result = new PowerOfAttorneySignatureDataResponse()
             {
@@ -149,7 +150,8 @@ namespace PowersOfAttorneyServerExtension.Controllers
                 PowerOfAttorneyContent = machineReadablePowerOfAttorney,
                 PowerOfAttorneyFileName = fileName,
                 PowerOfAttorneyId = powerOfAttorneyId,
-                State = state
+                State = state,
+                Timestamp = timestamp
             };
             return CommonResponse.CreateSuccess(result);
         }

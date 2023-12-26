@@ -53,5 +53,10 @@ namespace PowersOfAttorneyServerExtension.Models
         /// Power of attrorney file name
         /// </summary>
         public string PowerOfAttorneyFileName { get; set; }
+
+        /// <summary>
+        /// Card timestamp
+        /// </summary>
+        public long Timestamp { get; set; }
     }
 }
