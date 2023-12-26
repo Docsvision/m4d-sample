@@ -37,7 +37,7 @@ export const revokeAndRecallPowerOfAttorney = async (sender: CustomButton) => {
         }
     };
 
-    powersOfAttorneyButtonController?.checkPowerOfAttorney(powerOfAttorneyId, employeeId).then(async msg => {
+    powersOfAttorneyButtonController?.checkCardTransferLogStatus(powerOfAttorneyId, employeeId).then(async msg => {
         if (msg.Success) {
             await revokePowerOfAttorney(sender, onAttachSignatureToCard, false);
         } else {
