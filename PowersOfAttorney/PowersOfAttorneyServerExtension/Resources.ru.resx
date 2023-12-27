@@ -335,7 +335,7 @@
 Результат выполнения операции можно отследить в журнале обмена.</value>
   </data>
 	<data name="M4DRegistry_Recall_Success" xml:space="preserve">
-    <value>Подписанное заявление на отзыв доверенности было отправлено оператору.
+    <value>Подписанное заявление на отзыв доверенности было отправлено в ЦПРР ФНС.
 Результат выполнения операции можно отследить в журнале обмена.</value>
   </data>
 	<data name="PowerOfAttorneyCloudSignatureWarning" xml:space="preserve">
