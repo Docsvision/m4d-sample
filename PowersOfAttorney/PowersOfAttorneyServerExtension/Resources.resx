@@ -330,4 +330,28 @@
   <data name="PowerOfAttorneyCloudSignatureWarning" xml:space="preserve">
     <value>Signing a machine-readable power of attorney with a cloud certificate is not currently supported</value>
   </data>
+  <data name="POABatchSign_AccessError" xml:space="preserve">
+    <value>The power of attorney card is not available for signing.</value>
+  </data>
+  <data name="POABatchSign_AccessSignDialogError" xml:space="preserve">
+    <value>Some cards are not available for signing or the operation was interrupted by the user</value>
+  </data>
+  <data name="POABatchSign_Card" xml:space="preserve">
+    <value>Power of attorney card</value>
+  </data>
+  <data name="POABatchSign_SignConfirmationHeader" xml:space="preserve">
+    <value>Review the documents and confirm the signing:</value>
+  </data>
+  <data name="POABatchSign_Signed" xml:space="preserve">
+    <value>Power of attorney cards are signed.</value>
+  </data>
+  <data name="POABatchSign_SignOperationDescription" xml:space="preserve">
+    <value>Wait, please. Operation "{0}" is in progress. This may take some time depending on the number of documents.</value>
+  </data>
+  <data name="POABatchSign_SignOperationName" xml:space="preserve">
+    <value>Power of attorney sign</value>
+  </data>
+  <data name="POABatchSign_СertificateError" xml:space="preserve">
+    <value>No signing certificate was selected.</value>
+  </data>
 </root>
