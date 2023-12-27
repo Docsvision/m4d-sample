@@ -16,7 +16,7 @@ import { urlStore } from "@docsvision/webclient/System/UrlStore";
 import { Crypto, getBstrBase64 } from "@docsvision/webclient/Libs/CryptoPro/Crypto";
 
 import React from "react";
-import { POWER_OF_ATTORNEY_KIND_ID } from "../../../../../PowerOfAttorneyConstants";
+import { POWER_OF_ATTORNEY_KIND_ID, EMCHD_POWER_OF_ATTORNEY_KIND_ID } from "../../../../../PowerOfAttorneyConstants";
 import { signPOABatchOperationParams } from "./DocumentSignBatchOperation";
 
 export interface signPOABatchOperationState extends signPOABatchOperationParams, BaseControlState {
@@ -196,7 +196,8 @@ export class signPOABatchOperationImpl extends BaseControlImpl<signPOABatchOpera
         return this.state.services.tableRowSelection?.selection?.selectedRows?.length != 0
             && this.state.services.tableRowSelection?.selection?.selectedRows.every(selection => {
                 const kindId = selection.getGuid(this.columnNameWithKindId);          
-                return selection.cardTypeId === DOCUMENT_CARD_TYPE_ID && kindId === POWER_OF_ATTORNEY_KIND_ID
+                return selection.cardTypeId === DOCUMENT_CARD_TYPE_ID 
+                && (kindId === POWER_OF_ATTORNEY_KIND_ID || kindId === EMCHD_POWER_OF_ATTORNEY_KIND_ID)
             });
     }
 
