@@ -1,8 +1,8 @@
-const ROOT = process.env.SamplesOutput || "./../SamplesOutput"
-const SITE_ROOT = `${ROOT}/Site`;
+const ROOT = process.env.SamplesOutput || "D:/repos/WC17new/WebClient/WebClient/"
+const SITE_ROOT = `${ROOT}/`;
 const EXTENSION_NAME = "PowersOfAttorneyWebExtension";
 const MODULES_DIR = SITE_ROOT + "/Content/Modules";
-const PLUGINS = [`src/DocumentSignBatchOperation/DocumentSignBatchOperationDesignerExtension/DocumentSignBatchOperationControl.xml`];
+const PLUGINS = [`src/DocumentSignBatchOperation/DocumentSignBatchOperationDesignerExtension/signPOABatchOperationControl.xml`];
 const PLUGINS_DIR = `${ROOT}/Plugins`;
 
 
