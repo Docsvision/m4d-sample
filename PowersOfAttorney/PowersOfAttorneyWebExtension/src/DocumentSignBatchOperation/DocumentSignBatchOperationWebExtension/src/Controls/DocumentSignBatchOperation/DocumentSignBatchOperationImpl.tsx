@@ -128,9 +128,9 @@ export class signPOABatchOperationImpl extends BaseControlImpl<signPOABatchOpera
                     info.Attributes.push(new EncryptedAttribute(Crypto.DocumentNameOIDAttribute, getBstrBase64(POASignatureData.powerOfAttorneyContent)));
                     const signature = await Crypto.SignData(info, POASignatureData.powerOfAttorneyContent);
                     if (signature) {
-                        await this.state.services.powerOfAttorneyApiController.attachSignatureToPowerOfAttorney({ powerOfAttorneyId: POASignatureData.powerOfAttorneyId, signature })                            
+                        await this.state.services.powerOfAttorneyApiController.attachSignatureToPowerOfAttorney({ powerOfAttorneyId: POASignatureData.powerOfAttorneyId, signature }, { disableDialogsOnErrors: true})                            
                         const signOperationPOA = POASignatureData.operations.find(operation => operation.alias === "Sign");
-                        await this.state.services.layoutCardController.changeState({ cardId: POASignatureData.cardId, operationId: signOperationPOA.id, timestamp: POASignatureData.timestamp, comment: "", layoutParams: null });
+                        await this.state.services.layoutCardController.changeState({ cardId: POASignatureData.cardId, operationId: signOperationPOA.id, timestamp: POASignatureData.timestamp, comment: "", layoutParams: null }, { disableDialogsOnErrors: true});
                     }
                     
                 } catch (responseObject) {
