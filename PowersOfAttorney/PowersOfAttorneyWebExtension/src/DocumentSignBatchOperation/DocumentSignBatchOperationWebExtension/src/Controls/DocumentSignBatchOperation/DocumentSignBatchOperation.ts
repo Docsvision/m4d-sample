@@ -12,10 +12,10 @@ import { BaseControl, BaseControlParams } from "@docsvision/webclient/System/Bas
 import { r } from "@docsvision/webclient/System/Readonly";
 import { rw } from "@docsvision/webclient/System/Readwrite";
 import { resources } from "@docsvision/webclient/System/Resources";
-import { signPOABatchOperationState, signPOABatchOperationImpl } from "./DocumentSignBatchOperationImpl";
+import { ISignPOABatchOperationState, SignPOABatchOperationImpl } from "./DocumentSignBatchOperationImpl";
 
 
-export class signPOABatchOperationParams extends BaseControlParams {       
+export class SignPOABatchOperationParams extends BaseControlParams {       
     /** Стандартный CSS класс со стилями элемента управления */
     @r standardCssClass?: string = "system-documents-sign-batch-operation";
     /** Строка формата "<Имя1>,<Имя2>..." с перечнем имен столбцов представления для отображения
@@ -30,14 +30,14 @@ export class signPOABatchOperationParams extends BaseControlParams {
         $DigitalSignature & $FolderGrid;
 }
 
-export class signPOABatchOperation extends BaseControl<signPOABatchOperationParams, signPOABatchOperationState> {
+export class SignPOABatchOperation extends BaseControl<SignPOABatchOperationParams, ISignPOABatchOperationState> {
 
     /** @notest @internal */
     protected createParams() {
-        return new signPOABatchOperationParams();
+        return new SignPOABatchOperationParams();
     }
 
     protected createImpl() {
-        return new signPOABatchOperationImpl(this.props, this.state);
+        return new SignPOABatchOperationImpl(this.props, this.state);
     }
 }

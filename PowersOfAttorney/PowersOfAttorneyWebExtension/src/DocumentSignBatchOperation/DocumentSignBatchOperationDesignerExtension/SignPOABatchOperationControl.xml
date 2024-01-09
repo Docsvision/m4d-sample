@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Controls>
-    <Control Name="signPOABatchOperation" DisplayName="Групповые операции &#47; Подпись доверенности" ControlGroupResourceKey="ControlGroup_BatchOperations">
+    <Control Name="SignPOABatchOperation" DisplayName="Групповые операции &#47; Подпись доверенности" ControlGroupResourceKey="ControlGroup_BatchOperations">
         <Properties>
             <Property Type="Name" />
             <Property Type="StandardCssClass" DefaultValue="system-power-of-attorney-batch-sign-operation" />

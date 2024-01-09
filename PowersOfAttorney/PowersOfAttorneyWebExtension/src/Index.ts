@@ -29,7 +29,7 @@ import * as RecallPOwerOfAttorney from "./EventHandlers/RecallPowerOfAttorney";
 import { $PowersOfAttorneyButtonController, PowersOfAttorneyButtonController } from "./ServerRequests/PowersOfAttorneyButtonController";
 import * as CustomizeSingleFormatPowerOfAttorneyForLocationLayout from "./EventHandlers/Version EMCHD_1/CustomizeSingleFormatPowerOfAttorneyForLocationLayout";
 import * as CustomizeSingleFormatSPOAForLocationLayout from "./EventHandlers/Version EMCHD_1/CustomizeSingleFormatSPOAForLocationLayout";
-import { signPOABatchOperation } from "./DocumentSignBatchOperation/DocumentSignBatchOperationWebExtension/src/Controls/DocumentSignBatchOperation/DocumentSignBatchOperation";
+import { SignPOABatchOperation } from "./DocumentSignBatchOperation/DocumentSignBatchOperationWebExtension/src/Controls/DocumentSignBatchOperation/DocumentSignBatchOperation";
 
 // Главная входная точка всего расширения
 // Данный файл должен импортировать прямо или косвенно все остальные файлы, 
@@ -50,6 +50,6 @@ extensionManager.registerExtension({
         Service.fromFactory($PowersOfAttorneyButtonController, (services: $RequestManager) => new PowersOfAttorneyButtonController(services)),
     ],
     controls: [
-        { controlTypeName: "signPOABatchOperation", constructor: signPOABatchOperation },
+        { controlTypeName: "signPOABatchOperation", constructor: SignPOABatchOperation },
     ]
 })

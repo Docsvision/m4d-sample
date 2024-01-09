@@ -17,13 +17,14 @@ import { Crypto, getBstrBase64 } from "@docsvision/webclient/Libs/CryptoPro/Cryp
 
 import React from "react";
 import { POWER_OF_ATTORNEY_KIND_ID, EMCHD_POWER_OF_ATTORNEY_KIND_ID } from "../../../../../PowerOfAttorneyConstants";
-import { signPOABatchOperationParams } from "./DocumentSignBatchOperation";
+import { SignPOABatchOperationParams } from "./DocumentSignBatchOperation";
+import { IRow } from "@docsvision/web/components/table/interfaces/IRow";
 
-export interface signPOABatchOperationState extends signPOABatchOperationParams, BaseControlState {
+export interface ISignPOABatchOperationState extends SignPOABatchOperationParams, BaseControlState {
     selectedRowsInfo: GenModels.LayoutCardViewModel[]
 }
 
-export class signPOABatchOperationImpl extends BaseControlImpl<signPOABatchOperationParams, signPOABatchOperationState> {
+export class SignPOABatchOperationImpl extends BaseControlImpl<SignPOABatchOperationParams, ISignPOABatchOperationState> {
     columnNameWithState: string;
     columnNameWithKindId: string;
     constructor(state, props) {
@@ -63,7 +64,7 @@ export class signPOABatchOperationImpl extends BaseControlImpl<signPOABatchOpera
     }
 
     protected onSignClick = async () => {
-        this.previewDocumentAndCorfimSign(this.state.services.tableRowSelection.selection.selectedRows as any);
+        this.previewDocumentAndConfirmSign(this.state.services.tableRowSelection.selection.selectedRows as any);
     }
 
     private async signDocuments() {
@@ -151,11 +152,8 @@ export class signPOABatchOperationImpl extends BaseControlImpl<signPOABatchOpera
             resources.POABatchSign_SignOperationDescription
         );
 
-        if (this.state.services.folderGrid.newGridAvailable) {
-            await this.state.services.folderDataLoading.loadData({ refresh: true, refreshSource: true, refreshGrouping: true });
-        } else {
-            await this.state.services.tableManagement.reload();
-        }
+        await this.state.services.folderDataLoading.loadData({ refresh: true, refreshSource: true, refreshGrouping: true });
+
         if (errors.length == 0) {
             this.state.services.tableMode.rowsSelectionMode = false;
             this.state.services.tableRowSelection.clearSelection();
@@ -170,7 +168,7 @@ export class signPOABatchOperationImpl extends BaseControlImpl<signPOABatchOpera
         }
     }
 
-    private async previewDocumentAndCorfimSign(selectedRows: (ITableRowModel & { row: IRow })[]) {
+    private async previewDocumentAndConfirmSign(selectedRows: (ITableRowModel & { row: IRow })[]) {
         const filelist = selectedRows.map(selected => 
             <a key={selected.instanceId} className="document-sign-batch-operation-filelist" href={`#/CardView/${selected.instanceId}`} 
                 target="_blank" style={{ display: "block", fontWeight: "bold"}} onClick={ev => (ev.target as HTMLElement).style.fontWeight = "normal"}>
@@ -220,13 +218,6 @@ export class signPOABatchOperationImpl extends BaseControlImpl<signPOABatchOpera
             </Button>
         );
     }
-}
-
-interface IRow  {
-    id: string;
-    uniqueId?: string;
-    entityId: string;
-    cells: { value: string, columnId }[];
 }
 
 interface IPOASignatureData {
