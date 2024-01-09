@@ -2,8 +2,7 @@
   "extends": "./node_modules/@docsvision/webclient-extension-build/tsconfig.json",  
   "compilerOptions": { 
     "experimentalDecorators": true,
-    "lib": [ "dom", "esnext" ],
-    "target": "ES2017"
+    "lib": [ "dom", "esnext" ]
   },
   "include": [    
     "src/**/*.ts*",
