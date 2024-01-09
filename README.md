@@ -131,7 +131,7 @@
     Для создания своей разметки нужно добавить скрипт signAndSendPowerOfAttorneyToRegistrationAsFileFromTask в качестве обработчика события "Before executing operation" на ЭУ StateButtons для подписания и последующей регистрации доверенности по файлу.
 	Для подписания без регистрации используйте скрипт signPowerOfAttorneyFromTask.
 
-## Проверка примпера котрола массвого подписания ПКД:
+## Проверка примера контрола массового подписания ПКД:
 1. Выпонить описанные выше шаги по сборке и добавлению общей функциональности семпла. 
 2. Скопировать файл PowersOfAttorney\SamplesOutput\Plugins\signPOABatchOperationControl.xml в каталог "Путь к установленному Web-клиент\Plugins"
 3. Перезапустить IIS.
