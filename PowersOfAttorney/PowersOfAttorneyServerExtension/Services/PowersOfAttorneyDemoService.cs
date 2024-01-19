@@ -37,7 +37,7 @@ namespace PowersOfAttorneyServerExtension.Services
                 representative, signer, format, PowerOfAttorneyHandlingFlags.SupportDistributedRegistryFederalTaxService);
 
             powerOfAttorney.MainInfo.UserCard = powerOfAttorneyUserCardId;
-            if (powerOfAttorney.MainInfo.PrincipalINN is null)
+            if(string.IsNullOrEmpty(powerOfAttorney.MainInfo.PrincipalINN))
                 powerOfAttorney.MainInfo.PrincipalINN = GetPrincipalInn(userCardPowerOfAttorney, formatId);
 
             context.SaveObject(powerOfAttorney);
@@ -68,7 +68,7 @@ namespace PowersOfAttorneyServerExtension.Services
             var powerOfAttorney = PowerOfAttorneyService.RetrustPowerOfAttorney(powerOfAttorneyData, representative, signer, parent, PowerOfAttorneyHandlingFlags.SupportDistributedRegistryFederalTaxService);
 
             powerOfAttorney.MainInfo.UserCard = powerOfAttorneyUserCardId;
-            if(powerOfAttorney.MainInfo.PrincipalINN is null)
+            if(string.IsNullOrEmpty(powerOfAttorney.MainInfo.PrincipalINN))
                 powerOfAttorney.MainInfo.PrincipalINN = GetPrincipalInn(userCardPowerOfAttorney, formatId);
 
             context.SaveObject(powerOfAttorney);
