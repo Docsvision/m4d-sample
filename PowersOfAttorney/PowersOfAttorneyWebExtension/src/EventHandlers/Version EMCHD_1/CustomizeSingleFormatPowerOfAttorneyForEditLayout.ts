@@ -32,8 +32,6 @@ export const customizeSingleFormatPowerOfAttorneyForEditLayout = async (sender: 
 
     customizeInputFields(sender);
     onPowersTypeDataChanged(sender);
-    onCeoCitizenshipSignDataChanged(sender);
-    onReprCitizenshipSignDataChanged(sender);
     onPoaScopeDataChanged(sender);
 
     sender.params.beforeCardSaving.subscribe(checkPowersBeforeSaving);
