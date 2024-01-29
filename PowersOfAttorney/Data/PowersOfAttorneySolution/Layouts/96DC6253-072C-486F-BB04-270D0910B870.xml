@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Layout LayoutID="8252C1F7-733C-488B-A4FE-FA00AFBE408A" Name="Подписание МЧД (просмотр)_Контур.Доверенность" LayoutFileID="A0DA4A33-C1AD-4482-BD71-1E87874158BA" LocationID="77448616-4851-482a-8d2f-4b5fa6cf3682" LayoutType="0" InstanceID="3200c1f1-6caa-4c73-a169-78f3a12d155c" RowID="9717DAF3-E084-4D8A-A3D3-674D4582E7FE" OwnServerID="00000000-0000-0000-0000-000000000000" ChangeServerID="00000000-0000-0000-0000-000000000000">
-  <File FileID="A0DA4A33-C1AD-4482-BD71-1E87874158BA" OwnerCardID="3200C1F1-6CAA-4C73-A169-78F3A12D155C" Name="Подписание МЧД (просмотр)_Контур.Доверенность" StandardAttribs="0" ExtendedAttribs="0">
+<Layout LayoutID="96DC6253-072C-486F-BB04-270D0910B870" Name="Подписание МЧД (просмотр)_Контур.Диадок" LayoutFileID="CC906A34-7FF6-4F70-AE21-AF26989B33EE" LocationID="77448616-4851-482a-8d2f-4b5fa6cf3682" LayoutType="0" InstanceID="3200c1f1-6caa-4c73-a169-78f3a12d155c" RowID="011FC069-39FD-44B6-84B3-43B0CED96C31" OwnServerID="00000000-0000-0000-0000-000000000000" ChangeServerID="00000000-0000-0000-0000-000000000000">
+  <File FileID="CC906A34-7FF6-4F70-AE21-AF26989B33EE" OwnerCardID="3200C1F1-6CAA-4C73-A169-78F3A12D155C" Name="Подписание МЧД (просмотр)_Copy" StandardAttribs="0" ExtendedAttribs="0">
     <Element Id="474de651-5034-455e-8750-1567ab5a4285" Type="Layout">
   <Properties>
     <Property Name="Name" Value="documentRoot" Type="System.String, mscorlib" IsAvailable="true" />
@@ -24,13 +24,13 @@
     <Property Name="BackgroundStyle" Value="0" Type="System.Int32, mscorlib" IsAvailable="false" />
   </Properties>
   <Bindings>
-    <Binding PropertyName="e0284037-3a5d-4ddb-a855-cd3f7b738465" BindingMode="0" Path="v1|@5b12c812-84ec-46a5-9436-37999c7b4bbd/00000000-0000-0000-0000-000000000002/InstanceID" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
-    <Binding PropertyName="3885543b-2f2a-464e-852d-7287d12b6d77" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/00000000-0000-0000-0000-000000000000/" ConverterType="State" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
-    <Binding PropertyName="984312e6-d50b-4106-89e6-f380f314fd2d" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/20d21193-9f7f-4b62-8d69-272e78e1d6a8/Name" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
-    <Binding PropertyName="db326635-b24b-4261-a165-8c3b1d40054e" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/00000000-0000-0000-0000-000000000000/" ConverterType="FavoriteControlBindingConverter" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
-    <Binding PropertyName="50491c50-93c4-48c2-85f1-66589bdc4655" BindingMode="1" Path="v1|@00000000-0000-0000-0000-000000000000/00000000-0000-0000-0000-000000000000/" ConverterType="AdminPanelMessageCardsIdsConverter" EditOperation="78dc2fad-fd94-4632-9d24-50177c278133" IsInheritedEditOperation="false" IsAsync="false" />
-    <Binding PropertyName="b381b48c-2755-497b-81ab-9ebaf8b6255e" BindingMode="0" EditOperation="78dc2fad-fd94-4632-9d24-50177c278133" IsInheritedEditOperation="false" IsAsync="false" />
-    <Binding PropertyName="0ffd19b0-51e7-4537-bc06-48481c0eabcc" BindingMode="0" ConverterType="Operations" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false">
+    <Binding PropertyName="3e4b81e9-1a14-4907-b7f4-8298727541bc" BindingMode="0" Path="v1|@5b12c812-84ec-46a5-9436-37999c7b4bbd/00000000-0000-0000-0000-000000000002/InstanceID" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
+    <Binding PropertyName="646ca7c7-477f-4eda-8de8-e1425e16aee4" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/00000000-0000-0000-0000-000000000000/" ConverterType="State" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
+    <Binding PropertyName="62806d58-6979-4f4f-b93c-903529551880" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/20d21193-9f7f-4b62-8d69-272e78e1d6a8/Name" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
+    <Binding PropertyName="337a5c42-8f3f-4ffb-8b5e-7dcb581fb505" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/00000000-0000-0000-0000-000000000000/" ConverterType="FavoriteControlBindingConverter" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
+    <Binding PropertyName="8a36834e-cd4b-4683-ae74-10a4aa4ab51b" BindingMode="1" Path="v1|@00000000-0000-0000-0000-000000000000/00000000-0000-0000-0000-000000000000/" ConverterType="AdminPanelMessageCardsIdsConverter" EditOperation="78dc2fad-fd94-4632-9d24-50177c278133" IsInheritedEditOperation="false" IsAsync="false" />
+    <Binding PropertyName="3d8dbe72-d783-490f-ba26-b93b58d33c2b" BindingMode="0" EditOperation="78dc2fad-fd94-4632-9d24-50177c278133" IsInheritedEditOperation="false" IsAsync="false" />
+    <Binding PropertyName="45daca72-e35c-420d-bc74-1db2fc1d20a9" BindingMode="0" ConverterType="Operations" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false">
       <Items>
         <Item>
           <Operations AllStateOperations="False">
@@ -54,50 +54,50 @@
         </Item>
       </Items>
     </Binding>
-    <Binding PropertyName="ce506ce8-cd29-44db-b0e0-ae7a415c990e" BindingMode="0" ConverterType="AvailableTemplates" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false">
+    <Binding PropertyName="685c1a58-7602-46fd-9361-0373dfcc41b1" BindingMode="0" ConverterType="AvailableTemplates" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false">
       <Items>
         <Item Value="{&#xD;&#xA;  &quot;allTransformations&quot;: false,&#xD;&#xA;  &quot;transformations&quot;: [&#xD;&#xA;    {&#xD;&#xA;      &quot;id&quot;: &quot;1c617721-067e-477e-9e98-57963221f1a4&quot;,&#xD;&#xA;      &quot;name&quot;: &quot;PrintTemplateEn&quot;,&#xD;&#xA;      &quot;displayNameLocalizationKey&quot;: null,&#xD;&#xA;      &quot;isChecked&quot;: false,&#xD;&#xA;      &quot;default&quot;: false&#xD;&#xA;    },&#xD;&#xA;    {&#xD;&#xA;      &quot;id&quot;: &quot;a901ee98-c89d-4115-84b2-8a46b9a6cbb4&quot;,&#xD;&#xA;      &quot;name&quot;: &quot;PrintTemplateRu&quot;,&#xD;&#xA;      &quot;displayNameLocalizationKey&quot;: null,&#xD;&#xA;      &quot;isChecked&quot;: true,&#xD;&#xA;      &quot;default&quot;: true&#xD;&#xA;    }&#xD;&#xA;  ]&#xD;&#xA;}" />
       </Items>
     </Binding>
-    <Binding PropertyName="0235d4a2-77c2-451a-aa82-c8d3c3ec0436" BindingMode="1" Path="v1|@00000000-0000-0000-0000-000000000000/00000000-0000-0000-0000-000000000000/" ConverterType="HistoryConverter" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="false" IsAsync="false" />
-    <Binding PropertyName="746c6943-ae9e-4bba-97b0-c090dc10a9a9" BindingMode="0" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
-    <Binding PropertyName="4274ed0c-705c-44b6-b380-80f3172e37a4" BindingMode="1" Path="v1|@00000000-0000-0000-0000-000000000000/00000000-0000-0000-0000-000000000000/" ConverterType="AgreementHistoryRows" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
-    <Binding PropertyName="da3cf074-569e-4cf1-b321-e6767e00eeaf" BindingMode="0" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
-    <Binding PropertyName="9737b47d-4f21-42fd-b49b-52fccf5accf5" BindingMode="1" Path="v1|@00000000-0000-0000-0000-000000000000/00000000-0000-0000-0000-000000000000/" ConverterType="AgreementHistoryData" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
-    <Binding PropertyName="d7f49423-b970-4be8-a56b-cb3102f5810c" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/00000000-0000-0000-0000-000000000000/" ConverterType="TaskDelegationInfoConverter" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
-    <Binding PropertyName="6c361b97-0b87-4fe9-8fb1-94cf8857bc7b" BindingMode="1" Path="v1|@00000000-0000-0000-0000-000000000000/00000000-0000-0000-0000-000000000000/" ConverterType="TaskCardCompletionOptionConverter" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
-    <Binding PropertyName="4b4b4368-a357-4058-853a-3dae97126a37" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/20d21193-9f7f-4b62-8d69-272e78e1d6a8/StartDateActual" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
-    <Binding PropertyName="7162e429-cf01-4817-9b18-10e922902bee" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/20d21193-9f7f-4b62-8d69-272e78e1d6a8/StartDateActual" ConverterType="DateTimeDefaultValueConverter" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
-    <Binding PropertyName="dfb5d2a4-7623-4575-8e6c-a266a10e9c77" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/20d21193-9f7f-4b62-8d69-272e78e1d6a8/StartDateActual" ConverterType="DateTimeDefaultWorkTimeConverter" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
-    <Binding PropertyName="cf896262-4b04-48fd-8697-cb19fc59cadd" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/20d21193-9f7f-4b62-8d69-272e78e1d6a8/EndDateActual" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
-    <Binding PropertyName="d301d151-1177-43d1-bd44-8c1b9354ad58" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/20d21193-9f7f-4b62-8d69-272e78e1d6a8/EndDateActual" ConverterType="DateTimeDefaultValueConverter" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
-    <Binding PropertyName="9289a1fd-39bb-4312-a17c-652e76f502cd" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/20d21193-9f7f-4b62-8d69-272e78e1d6a8/EndDateActual" ConverterType="DateTimeDefaultWorkTimeConverter" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
-    <Binding PropertyName="1d5b8774-9425-4d80-bd93-e5d8adb3d164" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/20d21193-9f7f-4b62-8d69-272e78e1d6a8/DurationActual" ResolverType="NumberBindingResolver" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
-    <Binding PropertyName="7bbd36b9-352a-403a-8b79-5af1be4f2dd5" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/00000000-0000-0000-0000-000000000000/" ConverterType="RazorContentConverter" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
-    <Binding PropertyName="f74546f3-a5aa-492c-acd1-f15da4d57267" BindingMode="1" Path="v1|@00000000-0000-0000-0000-000000000000/00000000-0000-0000-0000-000000000000/" ConverterType="DisplayPerformersConverter" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
-    <Binding PropertyName="69addd4d-02dc-45df-a87e-d583537e0439" BindingMode="1" Path="v1|@00000000-0000-0000-0000-000000000000/00000000-0000-0000-0000-000000000000/" ConverterType="DisplayInitiator" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
-    <Binding PropertyName="4de070aa-88ae-4f9a-8742-b4c8efc44d27" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/20d21193-9f7f-4b62-8d69-272e78e1d6a8/EndDate" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
-    <Binding PropertyName="751e2743-c80a-4469-88ed-21d887ea8d66" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/20d21193-9f7f-4b62-8d69-272e78e1d6a8/EndDate" ConverterType="DateTimeDefaultValueConverter" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
-    <Binding PropertyName="68377f2b-a6db-40c5-ab1a-59274e8a3429" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/20d21193-9f7f-4b62-8d69-272e78e1d6a8/EndDate" ConverterType="DateTimeDefaultWorkTimeConverter" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
-    <Binding PropertyName="7b6264f5-b730-4c09-beb2-23b81031c143" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/20d21193-9f7f-4b62-8d69-272e78e1d6a8/Content" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
-    <Binding PropertyName="250b6cbd-bcd6-43dd-ac5a-1591b3011b92" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/03c27047-fd44-4d3d-b4cb-abbf21a76e4c/Comment" EditOperation="e9261c58-e62d-4003-aa18-0f6466ca6cc0" IsInheritedEditOperation="false" IsAsync="false" />
-    <Binding PropertyName="a47aa151-59dc-4a71-b9ab-551f0c63df69" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/03c27047-fd44-4d3d-b4cb-abbf21a76e4c/CommentFile" ResolverType="CommentFileBindingResolver" ConverterType="CommentFileConverter" EditOperation="70b33437-6830-4e71-bdcd-d3e1d0a7eb73" IsInheritedEditOperation="false" IsAsync="false" />
-    <Binding PropertyName="7af17a7d-7dff-4ed5-a108-eac8f23e6767" BindingMode="0" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
-    <Binding PropertyName="29309227-320e-45a9-b767-5992ff01772f" BindingMode="0" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
-    <Binding PropertyName="3a1cc325-acff-4265-9a55-b84434144c78" BindingMode="0" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
-    <Binding PropertyName="0617eff6-1881-48cb-9e19-dd53c5be615a" BindingMode="0" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
-    <Binding PropertyName="9d6fa0d3-10cd-4073-9979-b3749068bcde" BindingMode="0" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
-    <Binding PropertyName="3678c9e9-ce7d-4a1f-815e-e6d4cc6267f5" BindingMode="0" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
-    <Binding PropertyName="806dddad-36e4-4c3e-b5fd-1c7e0b871f05" BindingMode="1" Path="v1|@00000000-0000-0000-0000-000000000000/20d21193-9f7f-4b62-8d69-272e78e1d6a8/ReferenceList" ConverterType="LinksConverter" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
-    <Binding PropertyName="1c606afa-66ec-4ecd-a603-67f8234aabdc" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/20d21193-9f7f-4b62-8d69-272e78e1d6a8/ChildTaskList" ConverterType="Tasks" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
-    <Binding PropertyName="1fc7aa6a-8ac7-4e55-a5e5-f64a8737f658" BindingMode="0" ConverterType="CreateKinds" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false">
+    <Binding PropertyName="16734703-cda3-4c54-a0e3-453bc81fe2b9" BindingMode="1" Path="v1|@00000000-0000-0000-0000-000000000000/00000000-0000-0000-0000-000000000000/" ConverterType="HistoryConverter" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="false" IsAsync="false" />
+    <Binding PropertyName="a878bf55-adb1-4d28-bf08-e61c2ed36e04" BindingMode="0" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
+    <Binding PropertyName="a7b3484e-bbf8-41d1-9800-2b07bbc65a20" BindingMode="1" Path="v1|@00000000-0000-0000-0000-000000000000/00000000-0000-0000-0000-000000000000/" ConverterType="AgreementHistoryRows" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
+    <Binding PropertyName="4520d2fe-4215-4f9a-ba3e-8ef50ebcfe3d" BindingMode="0" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
+    <Binding PropertyName="5e11fbdd-ffcf-4769-83d4-96e35e16d511" BindingMode="1" Path="v1|@00000000-0000-0000-0000-000000000000/00000000-0000-0000-0000-000000000000/" ConverterType="AgreementHistoryData" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
+    <Binding PropertyName="c020344a-1c60-4004-9ec7-d86760a049b2" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/00000000-0000-0000-0000-000000000000/" ConverterType="TaskDelegationInfoConverter" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
+    <Binding PropertyName="612b84b7-3e20-4d06-b601-cf415a43df26" BindingMode="1" Path="v1|@00000000-0000-0000-0000-000000000000/00000000-0000-0000-0000-000000000000/" ConverterType="TaskCardCompletionOptionConverter" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
+    <Binding PropertyName="d2d42af6-5667-4260-ad15-097cddb55106" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/20d21193-9f7f-4b62-8d69-272e78e1d6a8/StartDateActual" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
+    <Binding PropertyName="0c1896a7-ffa1-4a9a-8640-c7c057f57a5f" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/20d21193-9f7f-4b62-8d69-272e78e1d6a8/StartDateActual" ConverterType="DateTimeDefaultValueConverter" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
+    <Binding PropertyName="944c3537-8ac8-41bb-adde-0dd1fb63602a" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/20d21193-9f7f-4b62-8d69-272e78e1d6a8/StartDateActual" ConverterType="DateTimeDefaultWorkTimeConverter" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
+    <Binding PropertyName="037b7fab-b129-4d40-98ea-b96e1c2693e9" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/20d21193-9f7f-4b62-8d69-272e78e1d6a8/EndDateActual" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
+    <Binding PropertyName="ccca921e-1961-4716-a5f8-a1e55433ae5d" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/20d21193-9f7f-4b62-8d69-272e78e1d6a8/EndDateActual" ConverterType="DateTimeDefaultValueConverter" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
+    <Binding PropertyName="da5a294a-564e-49cd-beb2-667cd9d7079e" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/20d21193-9f7f-4b62-8d69-272e78e1d6a8/EndDateActual" ConverterType="DateTimeDefaultWorkTimeConverter" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
+    <Binding PropertyName="93d3cd3d-23ea-48cf-83d6-8a5f2c24c00f" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/20d21193-9f7f-4b62-8d69-272e78e1d6a8/DurationActual" ResolverType="NumberBindingResolver" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
+    <Binding PropertyName="71f9beb5-8aa9-46bb-bc4e-65c9fac41695" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/00000000-0000-0000-0000-000000000000/" ConverterType="RazorContentConverter" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
+    <Binding PropertyName="cc8e4e79-f332-4796-a2dd-8614ead24df2" BindingMode="1" Path="v1|@00000000-0000-0000-0000-000000000000/00000000-0000-0000-0000-000000000000/" ConverterType="DisplayPerformersConverter" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
+    <Binding PropertyName="51aebd84-01ca-41ec-a5e8-24e7c0acc4a2" BindingMode="1" Path="v1|@00000000-0000-0000-0000-000000000000/00000000-0000-0000-0000-000000000000/" ConverterType="DisplayInitiator" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
+    <Binding PropertyName="ab1d8787-0bf5-4963-a514-00a33137c2ad" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/20d21193-9f7f-4b62-8d69-272e78e1d6a8/EndDate" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
+    <Binding PropertyName="3921e3be-0cb3-4d60-8901-7bdc2f245974" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/20d21193-9f7f-4b62-8d69-272e78e1d6a8/EndDate" ConverterType="DateTimeDefaultValueConverter" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
+    <Binding PropertyName="3e38f5f3-d299-4fbd-a7e0-fbc30c58d79c" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/20d21193-9f7f-4b62-8d69-272e78e1d6a8/EndDate" ConverterType="DateTimeDefaultWorkTimeConverter" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
+    <Binding PropertyName="d6a588a1-2626-43e8-909f-6efb8b02e133" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/20d21193-9f7f-4b62-8d69-272e78e1d6a8/Content" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
+    <Binding PropertyName="26c3d6b4-07ae-40f2-aa68-861149cd2dc5" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/03c27047-fd44-4d3d-b4cb-abbf21a76e4c/Comment" EditOperation="e9261c58-e62d-4003-aa18-0f6466ca6cc0" IsInheritedEditOperation="false" IsAsync="false" />
+    <Binding PropertyName="d650b4a0-4347-4422-a5f1-1cde8d72894a" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/03c27047-fd44-4d3d-b4cb-abbf21a76e4c/CommentFile" ResolverType="CommentFileBindingResolver" ConverterType="CommentFileConverter" EditOperation="70b33437-6830-4e71-bdcd-d3e1d0a7eb73" IsInheritedEditOperation="false" IsAsync="false" />
+    <Binding PropertyName="eb8a2d9b-ad64-4234-bf2e-65df65e950c0" BindingMode="0" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
+    <Binding PropertyName="3fa27775-8565-4bf5-91d8-37b1328dfd4b" BindingMode="0" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
+    <Binding PropertyName="b9853e41-94cd-4f3c-b094-ecc0c21a3c8f" BindingMode="0" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
+    <Binding PropertyName="ca29e791-931f-4b50-b830-e8409417af06" BindingMode="0" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
+    <Binding PropertyName="59ec06c9-d43d-4e36-8330-54b5dee0ac91" BindingMode="0" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
+    <Binding PropertyName="aaf69e5e-ceab-4d4d-93ea-33c392761a29" BindingMode="0" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
+    <Binding PropertyName="4cdae0fe-8747-4bd0-b227-f0d042f53f74" BindingMode="1" Path="v1|@00000000-0000-0000-0000-000000000000/20d21193-9f7f-4b62-8d69-272e78e1d6a8/ReferenceList" ConverterType="LinksConverter" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
+    <Binding PropertyName="8f5e8b6a-3dcc-4ce8-9059-a04e1dd144d9" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/20d21193-9f7f-4b62-8d69-272e78e1d6a8/ChildTaskList" ConverterType="Tasks" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
+    <Binding PropertyName="ca9526b3-4b26-42e6-9563-8933e096d762" BindingMode="0" ConverterType="CreateKinds" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false">
       <Items>
         <Item>
           <Value>"AllowedKinds":<Array><Value>"KindId":"ab801854-70af-4b6c-ab48-1b59b5d11aa9","DisplayNameLocalizationKey":null,"IsApprovingChildTasksNode":false</Value>,<Value>"KindId":"e3f68b8d-24b8-468d-9fd0-ab4d387948f8","DisplayNameLocalizationKey":null,"IsApprovingChildTasksNode":false</Value>,<Value>"KindId":"6d76d0a7-5434-40f2-912e-6370d33c3151","DisplayNameLocalizationKey":null,"IsApprovingChildTasksNode":false</Value>,<Value>"KindId":"00000000-0000-0000-0000-000000000000","DisplayNameLocalizationKey":null,"IsApprovingChildTasksNode":true</Value>,<Value>"KindId":"a93c2673-6417-4263-b53c-534bf2f9c5ae","DisplayNameLocalizationKey":null,"IsApprovingChildTasksNode":false</Value>,<Value>"KindId":"70940b27-c4f5-4f1d-b53b-83c7dc7fd560","DisplayNameLocalizationKey":null,"IsApprovingChildTasksNode":false</Value>,<Value>"KindId":"7532c7b8-7498-4c65-b230-f196dc75eb7e","DisplayNameLocalizationKey":null,"IsApprovingChildTasksNode":false</Value></Array>,"UseTaskSettings":false</Value>
         </Item>
       </Items>
     </Binding>
-    <Binding PropertyName="7c5c048a-5331-432b-b6ad-40aae8e44376" BindingMode="0" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false">
+    <Binding PropertyName="16ef05db-e7a9-4f64-9eb9-9f66f436a18a" BindingMode="0" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false">
       <Items>
         <Item Value="ab801854-70af-4b6c-ab48-1b59b5d11aa9" />
         <Item Value="e3f68b8d-24b8-468d-9fd0-ab4d387948f8" />
@@ -108,8 +108,8 @@
         <Item Value="7532c7b8-7498-4c65-b230-f196dc75eb7e" />
       </Items>
     </Binding>
-    <Binding PropertyName="806b39b0-5c32-4cd1-a080-5eb55245b39b" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/20d21193-9f7f-4b62-8d69-272e78e1d6a8/ChildTaskList" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
-    <Binding PropertyName="fd8af31d-f213-4f68-99c5-3db35ae8c032" BindingMode="0" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false">
+    <Binding PropertyName="35b1623c-e809-4408-8589-f47c368b6ce7" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/20d21193-9f7f-4b62-8d69-272e78e1d6a8/ChildTaskList" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
+    <Binding PropertyName="e3de0ff2-56c7-470c-bf6a-3fb5bc8fa6d6" BindingMode="0" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false">
       <Items>
         <Item Value="ab801854-70af-4b6c-ab48-1b59b5d11aa9" />
         <Item Value="e3f68b8d-24b8-468d-9fd0-ab4d387948f8" />
@@ -120,9 +120,9 @@
         <Item Value="6d76d0a7-5434-40f2-912e-6370d33c3151" />
       </Items>
     </Binding>
-    <Binding PropertyName="0a43325b-4f49-453c-8400-766bdd95ddb4" BindingMode="0" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
-    <Binding PropertyName="af8257b8-357c-465f-95e9-46590c6c0ac8" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/20d21193-9f7f-4b62-8d69-272e78e1d6a8/ChildTaskList" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
-    <Binding PropertyName="767a18b3-01e5-48c9-9bbe-b85d8a051b49" BindingMode="0" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false">
+    <Binding PropertyName="b5fa8f5b-1c5d-4eeb-ac4c-acc487f68f0a" BindingMode="0" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
+    <Binding PropertyName="4e35abfe-3593-4283-969f-77ab403b4467" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/20d21193-9f7f-4b62-8d69-272e78e1d6a8/ChildTaskList" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
+    <Binding PropertyName="66392c02-7b24-4ca9-8c25-0ebf7be5fa26" BindingMode="0" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false">
       <Items>
         <Item Value="ab801854-70af-4b6c-ab48-1b59b5d11aa9" />
         <Item Value="e3f68b8d-24b8-468d-9fd0-ab4d387948f8" />
@@ -130,9 +130,9 @@
         <Item Value="6d76d0a7-5434-40f2-912e-6370d33c3151" />
       </Items>
     </Binding>
-    <Binding PropertyName="2ac2221b-6c7b-4050-8389-d057fb805a3d" BindingMode="0" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
-    <Binding PropertyName="a72fe6f1-83c0-4a8c-ab45-2ea4ac63e16c" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/20d21193-9f7f-4b62-8d69-272e78e1d6a8/ChildTaskList" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
-    <Binding PropertyName="7e310ebf-c582-4087-9d19-3b71f9410803" BindingMode="0" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false">
+    <Binding PropertyName="7f423719-7a1e-4c7c-9723-08120953e326" BindingMode="0" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
+    <Binding PropertyName="f809c8a3-54b2-4bdf-b597-ce44bc3d3567" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/20d21193-9f7f-4b62-8d69-272e78e1d6a8/ChildTaskList" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
+    <Binding PropertyName="6d78bb5d-615a-4510-b745-43669d0980df" BindingMode="0" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false">
       <Items>
         <Item Value="ab801854-70af-4b6c-ab48-1b59b5d11aa9" />
         <Item Value="e3f68b8d-24b8-468d-9fd0-ab4d387948f8" />
@@ -140,14 +140,14 @@
         <Item Value="6d76d0a7-5434-40f2-912e-6370d33c3151" />
       </Items>
     </Binding>
-    <Binding PropertyName="d6d1909e-7e8e-4c4e-856d-8c589f7207ee" BindingMode="0" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
-    <Binding PropertyName="05cc2f65-58ce-4988-83c6-f6cf890387ef" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/00000000-0000-0000-0000-000000000000/" ConverterType="ChildTaskPerformingBindingConverter" EditOperation="e9261c58-e62d-4003-aa18-0f6466ca6cc0" IsAsync="false" />
-    <Binding PropertyName="63339b7e-7366-4400-a35e-f23ffb920bd3" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/00000000-0000-0000-0000-000000000000/" ConverterType="ChildTaskPerformingBindingConverter" EditOperation="e9261c58-e62d-4003-aa18-0f6466ca6cc0" IsAsync="false" />
-    <Binding PropertyName="9c54ec37-2ede-46c4-a604-df9409ac74f2" BindingMode="1" Path="v1|@00000000-0000-0000-0000-000000000000/00000000-0000-0000-0000-000000000000/" ConverterType="HasChildTasksConverter" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
-    <Binding PropertyName="8466c31b-71b0-4483-9459-4106fae98752" BindingMode="0" EditOperation="e9261c58-e62d-4003-aa18-0f6466ca6cc0" IsAsync="false" />
-    <Binding PropertyName="4267f2fd-a511-49d3-b2e9-5e9a18a382d4" BindingMode="0" EditOperation="7e037cc0-76c1-4faf-9c37-02766d7657b0" IsAsync="false" />
-    <Binding PropertyName="fd51c24d-8590-4c51-a1e4-7af5c0d37c44" BindingMode="0" EditOperation="9f813b22-b788-49e2-beca-156f78a4619d" IsAsync="false" />
-    <Binding PropertyName="a9074788-257a-4528-bb9d-c4afe2992872" BindingMode="0" ConverterType="CommentsDataSource" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false">
+    <Binding PropertyName="26070723-c870-4f02-8f6a-ed2e33a423c0" BindingMode="0" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
+    <Binding PropertyName="7b6e5766-973f-4294-94fb-d1414572fd60" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/00000000-0000-0000-0000-000000000000/" ConverterType="ChildTaskPerformingBindingConverter" EditOperation="e9261c58-e62d-4003-aa18-0f6466ca6cc0" IsAsync="false" />
+    <Binding PropertyName="cdd421bd-221e-41a6-9502-4fe74ece3e20" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/00000000-0000-0000-0000-000000000000/" ConverterType="ChildTaskPerformingBindingConverter" EditOperation="e9261c58-e62d-4003-aa18-0f6466ca6cc0" IsAsync="false" />
+    <Binding PropertyName="89ad40ef-1f5f-4ab2-b3b7-ad8fe04f5b09" BindingMode="1" Path="v1|@00000000-0000-0000-0000-000000000000/00000000-0000-0000-0000-000000000000/" ConverterType="HasChildTasksConverter" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
+    <Binding PropertyName="503837cb-dbc6-472d-8435-053f27b8bb4d" BindingMode="0" EditOperation="e9261c58-e62d-4003-aa18-0f6466ca6cc0" IsAsync="false" />
+    <Binding PropertyName="06ebc6ca-6883-456c-a4f0-0dc38391af4c" BindingMode="0" EditOperation="7e037cc0-76c1-4faf-9c37-02766d7657b0" IsAsync="false" />
+    <Binding PropertyName="78377ef1-b2ff-488e-bdf3-d8ae95a207c0" BindingMode="0" EditOperation="9f813b22-b788-49e2-beca-156f78a4619d" IsAsync="false" />
+    <Binding PropertyName="bfd1f8c8-c3e7-4d5a-a06e-253fa94e4743" BindingMode="0" ConverterType="CommentsDataSource" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false">
       <Items>
         <Item>
           <CommentsExtendedDataSourceModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
@@ -160,7 +160,7 @@
         </Item>
       </Items>
     </Binding>
-    <Binding PropertyName="7ce30029-dc22-4f29-af50-eff1f77b7566" BindingMode="0" Path="v1|@5b12c812-84ec-46a5-9436-37999c7b4bbd/29c1b4ef-48e4-47f0-ac67-c42cf68de986/POASysCardId" ConverterType="CardLinkConverter" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
+    <Binding PropertyName="e4230d76-143a-4e18-84c8-d8699d77292e" BindingMode="0" Path="v1|@5b12c812-84ec-46a5-9436-37999c7b4bbd/29c1b4ef-48e4-47f0-ac67-c42cf68de986/POASysCardId" ConverterType="CardLinkConverter" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
   </Bindings>
   <Elements>
     <Element Id="09d00cf2-8f53-4827-a261-cbb2c12ce56d" Type="Block">
@@ -261,7 +261,7 @@
             <Property Name="OwnerLayoutPart" Value="false" Type="System.Boolean, mscorlib" IsAvailable="false" />
             <Property Name="LayoutMode" Value="e0481dc1-264f-4387-9425-477dbc9ed550" Type="System.String, mscorlib" IsAvailable="true" />
             <Property Name="LocationSource" Value="1" Type="System.Int32, mscorlib" IsAvailable="true" />
-            <Property Name="Binding" Value="e0284037-3a5d-4ddb-a855-cd3f7b738465" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+            <Property Name="Binding" Value="3e4b81e9-1a14-4907-b7f4-8298727541bc" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
             <Property Name="MaxHeight" Value="0" Type="System.Int32, mscorlib" IsAvailable="true" />
             <Property Name="Click" Value="" Type="System.String, mscorlib" IsAvailable="true" />
             <Property Name="MouseOver" Value="" Type="System.String, mscorlib" IsAvailable="true" />
@@ -506,7 +506,7 @@
             <Element Id="4e25ecb3-42ab-41a3-9bc5-000f48154bde" Type="State">
               <Properties>
                 <Property Name="StandardCssClass" Value="system-state" Type="System.String, mscorlib" IsAvailable="true" />
-                <Property Name="Binding" Value="3885543b-2f2a-464e-852d-7287d12b6d77" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                <Property Name="Binding" Value="646ca7c7-477f-4eda-8de8-e1425e16aee4" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
                 <Property Name="Name" Value="state" Type="System.String, mscorlib" IsAvailable="true" />
                 <Property Name="Tag" Value="" Type="System.String, mscorlib" IsAvailable="true" />
                 <Property Name="Visibility" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
@@ -629,7 +629,7 @@
                 <Property Name="ExtendedDataSource" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
                 <Property Name="DataSource" Value="20d21193-9f7f-4b62-8d69-272e78e1d6a8" Type="System.Guid, mscorlib" IsAvailable="true" />
                 <Property Name="DataField" Value="Name" Type="System.String, mscorlib" IsAvailable="true" />
-                <Property Name="Binding" Value="984312e6-d50b-4106-89e6-f380f314fd2d" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                <Property Name="Binding" Value="62806d58-6979-4f4f-b93c-903529551880" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
                 <Property Name="IsInheritedEditOperation" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
                 <Property Name="Disabled" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
                   <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
@@ -667,7 +667,7 @@
                 <Property Name="VisibilityEditOperation" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
                 <Property Name="StandardCssClass" Value="system-favorite" Type="System.String, mscorlib" IsAvailable="true" />
                 <Property Name="CustomCssClasses" Value="document-view-card-management__favorite" Type="System.String, mscorlib" IsAvailable="true" />
-                <Property Name="Binding" Value="db326635-b24b-4261-a165-8c3b1d40054e" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                <Property Name="Binding" Value="337a5c42-8f3f-4ffb-8b5e-7dcb581fb505" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
                 <Property Name="Click" Value="" Type="System.String, mscorlib" IsAvailable="true" />
                 <Property Name="MouseOver" Value="" Type="System.String, mscorlib" IsAvailable="true" />
                 <Property Name="MouseOut" Value="" Type="System.String, mscorlib" IsAvailable="true" />
@@ -697,8 +697,8 @@
                     <CanChange>true</CanChange>
                   </DeviceDependentPropertyOfBoolean>
                 </Property>
-                <Property Name="Binding" Value="50491c50-93c4-48c2-85f1-66589bdc4655" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
-                <Property Name="BindingEditOperation" Value="b381b48c-2755-497b-81ab-9ebaf8b6255e" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                <Property Name="Binding" Value="8a36834e-cd4b-4683-ae74-10a4aa4ab51b" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                <Property Name="BindingEditOperation" Value="3d8dbe72-d783-490f-ba26-b93b58d33c2b" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
                 <Property Name="Click" Value="" Type="System.String, mscorlib" IsAvailable="true" />
                 <Property Name="MouseOver" Value="" Type="System.String, mscorlib" IsAvailable="true" />
                 <Property Name="MouseOut" Value="" Type="System.String, mscorlib" IsAvailable="true" />
@@ -853,7 +853,7 @@
                     <CanChange>true</CanChange>
                   </DeviceDependentPropertyOfBoolean>
                 </Property>
-                <Property Name="BindingStateButtons" Value="0ffd19b0-51e7-4537-bc06-48481c0eabcc" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                <Property Name="BindingStateButtons" Value="45daca72-e35c-420d-bc74-1db2fc1d20a9" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
                 <Property Name="VerticalOrientation" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
                   <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
                     <Desktop>false</Desktop>
@@ -876,7 +876,7 @@
                 <Property Name="MouseOut" Value="" Type="System.String, mscorlib" IsAvailable="true" />
                 <Property Name="CardStateChanging" Value="" Type="System.String, mscorlib" IsAvailable="true" />
                 <Property Name="CardStateChanged" Value="" Type="System.String, mscorlib" IsAvailable="true" />
-                <Property Name="OperationExecuting" Value="signAndSendPowerOfAttorneyToKonturForRegistrationAsFileFromTask" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="OperationExecuting" Value="signAndSendPowerOfAttorneyToRegistrationAsFileFromTask" Type="System.String, mscorlib" IsAvailable="true" />
                 <Property Name="ParametersPanelOpening" Value="" Type="System.String, mscorlib" IsAvailable="true" />
                 <Property Name="ParametersPanelOpened" Value="" Type="System.String, mscorlib" IsAvailable="true" />
                 <Property Name="ButtonClicking" Value="" Type="System.String, mscorlib" IsAvailable="true" />
@@ -888,7 +888,7 @@
                 <Property Name="Name" Value="printButton" Type="System.String, mscorlib" IsAvailable="true" />
                 <Property Name="ButtonText" Value="Печать" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="true" />
                 <Property Name="AvailableTemplates" Value="{&#xD;&#xA;  &quot;allTransformations&quot;: false,&#xD;&#xA;  &quot;transformations&quot;: [&#xD;&#xA;    {&#xD;&#xA;      &quot;id&quot;: &quot;1c617721-067e-477e-9e98-57963221f1a4&quot;,&#xD;&#xA;      &quot;name&quot;: &quot;PrintTemplateEn&quot;,&#xD;&#xA;      &quot;displayNameLocalizationKey&quot;: null,&#xD;&#xA;      &quot;isChecked&quot;: false,&#xD;&#xA;      &quot;default&quot;: false&#xD;&#xA;    },&#xD;&#xA;    {&#xD;&#xA;      &quot;id&quot;: &quot;a901ee98-c89d-4115-84b2-8a46b9a6cbb4&quot;,&#xD;&#xA;      &quot;name&quot;: &quot;PrintTemplateRu&quot;,&#xD;&#xA;      &quot;displayNameLocalizationKey&quot;: null,&#xD;&#xA;      &quot;isChecked&quot;: true,&#xD;&#xA;      &quot;default&quot;: true&#xD;&#xA;    }&#xD;&#xA;  ]&#xD;&#xA;}" Type="System.String, mscorlib" IsAvailable="true" />
-                <Property Name="AvailableTemplatesLoader" Value="ce506ce8-cd29-44db-b0e0-ae7a415c990e" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                <Property Name="AvailableTemplatesLoader" Value="685c1a58-7602-46fd-9361-0373dfcc41b1" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
                 <Property Name="StandardCssClass" Value="system-print-button" Type="System.String, mscorlib" IsAvailable="true" />
                 <Property Name="Visibility" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
                   <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
@@ -918,7 +918,7 @@
                   </DeviceDependentPropertyOfBoolean>
                 </Property>
                 <Property Name="RecordsOnPage" Value="15" Type="System.Int32, mscorlib" IsAvailable="true" />
-                <Property Name="Binding" Value="0235d4a2-77c2-451a-aa82-c8d3c3ec0436" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                <Property Name="Binding" Value="16734703-cda3-4c54-a0e3-453bc81fe2b9" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
                 <Property Name="IsInheritedEditOperation" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
                 <Property Name="Disabled" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
                   <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
@@ -928,7 +928,7 @@
                     <CanChange>true</CanChange>
                   </DeviceDependentPropertyOfBoolean>
                 </Property>
-                <Property Name="OperationsToHideBinding" Value="746c6943-ae9e-4bba-97b0-c090dc10a9a9" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                <Property Name="OperationsToHideBinding" Value="a878bf55-adb1-4d28-bf08-e61c2ed36e04" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
                 <Property Name="Visibility" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
                   <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
                     <Desktop>true</Desktop>
@@ -1035,9 +1035,9 @@
               <Properties>
                 <Property Name="StandardCssClass" Value="system-agreementhistory" Type="System.String, mscorlib" IsAvailable="true" />
                 <Property Name="AgreementHistoryMode" Value="0" Type="System.Int32, mscorlib" IsAvailable="true" />
-                <Property Name="AgreementHistoryRows" Value="4274ed0c-705c-44b6-b380-80f3172e37a4" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
-                <Property Name="Binding" Value="da3cf074-569e-4cf1-b321-e6767e00eeaf" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
-                <Property Name="AgreementHistoryData" Value="9737b47d-4f21-42fd-b49b-52fccf5accf5" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                <Property Name="AgreementHistoryRows" Value="a7b3484e-bbf8-41d1-9800-2b07bbc65a20" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                <Property Name="Binding" Value="4520d2fe-4215-4f9a-ba3e-8ef50ebcfe3d" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                <Property Name="AgreementHistoryData" Value="5e11fbdd-ffcf-4769-83d4-96e35e16d511" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
                 <Property Name="Name" Value="agreementHistoryButton" Type="System.String, mscorlib" IsAvailable="true" />
                 <Property Name="Tag" Value="" Type="System.String, mscorlib" IsAvailable="true" />
                 <Property Name="CustomCssClasses" Value="" Type="System.String, mscorlib" IsAvailable="true" />
@@ -1174,7 +1174,7 @@
                 </Property>
                 <Property Name="VisibilityEditOperation" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
                 <Property Name="StandardCssClass" Value="system-task-delegation-info" Type="System.String, mscorlib" IsAvailable="true" />
-                <Property Name="DelegationInfoBinding" Value="d7f49423-b970-4be8-a56b-cb3102f5810c" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                <Property Name="DelegationInfoBinding" Value="c020344a-1c60-4004-9ec7-d86760a049b2" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
                 <Property Name="Click" Value="" Type="System.String, mscorlib" IsAvailable="true" />
                 <Property Name="MouseOver" Value="" Type="System.String, mscorlib" IsAvailable="true" />
                 <Property Name="MouseOut" Value="" Type="System.String, mscorlib" IsAvailable="true" />
@@ -1195,7 +1195,7 @@
                 </Property>
                 <Property Name="VisibilityEditOperation" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
                 <Property Name="StandardCssClass" Value="system-task-card-completion-option" Type="System.String, mscorlib" IsAvailable="true" />
-                <Property Name="Binding" Value="6c361b97-0b87-4fe9-8fb1-94cf8857bc7b" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                <Property Name="Binding" Value="612b84b7-3e20-4d06-b601-cf415a43df26" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
               </Properties>
             </Element>
           </Elements>
@@ -1302,7 +1302,7 @@
                 <Property Name="ExtendedDataSource" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
                 <Property Name="DataSource" Value="20d21193-9f7f-4b62-8d69-272e78e1d6a8" Type="System.Guid, mscorlib" IsAvailable="true" />
                 <Property Name="DataField" Value="StartDateActual" Type="System.String, mscorlib" IsAvailable="true" />
-                <Property Name="Binding" Value="4b4b4368-a357-4058-853a-3dae97126a37" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                <Property Name="Binding" Value="d2d42af6-5667-4260-ad15-097cddb55106" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
                 <Property Name="EditMode" Value="1" Type="System.Int32, mscorlib" IsAvailable="true" />
                 <Property Name="DisplayIcon" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
                 <Property Name="IsInheritedEditOperation" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
@@ -1317,10 +1317,10 @@
                 <Property Name="DefaultCurrentDate" Value="true" Type="System.Boolean, mscorlib" IsAvailable="false" />
                 <Property Name="DisablePast" Value="false" Type="System.Boolean, mscorlib" IsAvailable="false" />
                 <Property Name="DisableFuture" Value="false" Type="System.Boolean, mscorlib" IsAvailable="false" />
-                <Property Name="DefaultDateTimeBinding" Value="7162e429-cf01-4817-9b18-10e922902bee" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="false" RepresentsDefaultBindingValue="true" />
+                <Property Name="DefaultDateTimeBinding" Value="0c1896a7-ffa1-4a9a-8640-c7c057f57a5f" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="false" RepresentsDefaultBindingValue="true" />
                 <Property Name="DefaultDateTimeShift" Value="0" Type="System.Int32, mscorlib" IsAvailable="false" />
                 <Property Name="DefaultTime" Value="0" Type="System.Int32, mscorlib" IsAvailable="false" />
-                <Property Name="DefaultWorkTimeBinding" Value="dfb5d2a4-7623-4575-8e6c-a266a10e9c77" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                <Property Name="DefaultWorkTimeBinding" Value="944c3537-8ac8-41bb-adde-0dd1fb63602a" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
                 <Property Name="ShowPickTimeDialog" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="false">
                   <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
                     <Desktop>true</Desktop>
@@ -1360,7 +1360,7 @@
                 <Property Name="ExtendedDataSource" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
                 <Property Name="DataSource" Value="20d21193-9f7f-4b62-8d69-272e78e1d6a8" Type="System.Guid, mscorlib" IsAvailable="true" />
                 <Property Name="DataField" Value="EndDateActual" Type="System.String, mscorlib" IsAvailable="true" />
-                <Property Name="Binding" Value="cf896262-4b04-48fd-8697-cb19fc59cadd" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                <Property Name="Binding" Value="037b7fab-b129-4d40-98ea-b96e1c2693e9" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
                 <Property Name="EditMode" Value="1" Type="System.Int32, mscorlib" IsAvailable="true" />
                 <Property Name="DisplayIcon" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
                 <Property Name="IsInheritedEditOperation" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
@@ -1375,10 +1375,10 @@
                 <Property Name="DefaultCurrentDate" Value="true" Type="System.Boolean, mscorlib" IsAvailable="false" />
                 <Property Name="DisablePast" Value="false" Type="System.Boolean, mscorlib" IsAvailable="false" />
                 <Property Name="DisableFuture" Value="false" Type="System.Boolean, mscorlib" IsAvailable="false" />
-                <Property Name="DefaultDateTimeBinding" Value="d301d151-1177-43d1-bd44-8c1b9354ad58" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="false" RepresentsDefaultBindingValue="true" />
+                <Property Name="DefaultDateTimeBinding" Value="ccca921e-1961-4716-a5f8-a1e55433ae5d" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="false" RepresentsDefaultBindingValue="true" />
                 <Property Name="DefaultDateTimeShift" Value="0" Type="System.Int32, mscorlib" IsAvailable="false" />
                 <Property Name="DefaultTime" Value="0" Type="System.Int32, mscorlib" IsAvailable="false" />
-                <Property Name="DefaultWorkTimeBinding" Value="9289a1fd-39bb-4312-a17c-652e76f502cd" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                <Property Name="DefaultWorkTimeBinding" Value="da5a294a-564e-49cd-beb2-667cd9d7079e" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
                 <Property Name="ShowPickTimeDialog" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="false">
                   <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
                     <Desktop>true</Desktop>
@@ -1416,7 +1416,7 @@
                 <Property Name="TabStop" Value="true" Type="System.Boolean, mscorlib" IsAvailable="false" />
                 <Property Name="DataSource" Value="20d21193-9f7f-4b62-8d69-272e78e1d6a8" Type="System.Guid, mscorlib" IsAvailable="true" />
                 <Property Name="DataField" Value="DurationActual" Type="System.String, mscorlib" IsAvailable="true" />
-                <Property Name="Binding" Value="1d5b8774-9425-4d80-bd93-e5d8adb3d164" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                <Property Name="Binding" Value="93d3cd3d-23ea-48cf-83d6-8a5f2c24c00f" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
                 <Property Name="IsInheritedEditOperation" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
                 <Property Name="Disabled" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
                   <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
@@ -1536,7 +1536,7 @@
                 <Property Name="VisibilityEditOperation" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
                 <Property Name="StandardCssClass" Value="system-approval-task-file-panel" Type="System.String, mscorlib" IsAvailable="true" />
                 <Property Name="CustomCssClasses" Value="block-with-border" Type="System.String, mscorlib" IsAvailable="true" />
-                <Property Name="RazorContent" Value="7bbd36b9-352a-403a-8b79-5af1be4f2dd5" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                <Property Name="RazorContent" Value="71f9beb5-8aa9-46bb-bc4e-65c9fac41695" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
                 <Property Name="RazorControlName" Value="ApprovalTaskFilePanel" Type="System.String, mscorlib" IsAvailable="true" />
                 <Property Name="LoadSyncCount" Value="10" Type="System.Int32, mscorlib" IsAvailable="true" />
                 <Property Name="FileSaveByWebDAV" Value="" Type="System.String, mscorlib" IsAvailable="true" />
@@ -1724,7 +1724,7 @@
                     <Property Name="StandardCssClass" Value="system-display-performers" Type="System.String, mscorlib" IsAvailable="true" />
                     <Property Name="CustomCssClasses" Value="" Type="System.String, mscorlib" IsAvailable="true" />
                     <Property Name="EditMode" Value="1" Type="System.Int32, mscorlib" IsAvailable="true" />
-                    <Property Name="Binding" Value="f74546f3-a5aa-492c-acd1-f15da4d57267" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                    <Property Name="Binding" Value="cc8e4e79-f332-4796-a2dd-8614ead24df2" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
                     <Property Name="ViewMode" Value="0" Type="System.Int32, mscorlib" IsAvailable="true" />
                     <Property Name="TipMode" Value="1" Type="System.Int32, mscorlib" IsAvailable="true" />
                     <Property Name="ExtendedTipMode" Value="1" Type="System.Int32, mscorlib" IsAvailable="true" />
@@ -1758,7 +1758,7 @@
                     <Property Name="StandardCssClass" Value="system-display-initiator" Type="System.String, mscorlib" IsAvailable="true" />
                     <Property Name="CustomCssClasses" Value="" Type="System.String, mscorlib" IsAvailable="true" />
                     <Property Name="EditMode" Value="1" Type="System.Int32, mscorlib" IsAvailable="true" />
-                    <Property Name="Binding" Value="69addd4d-02dc-45df-a87e-d583537e0439" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                    <Property Name="Binding" Value="51aebd84-01ca-41ec-a5e8-24e7c0acc4a2" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
                     <Property Name="TipMode" Value="1" Type="System.Int32, mscorlib" IsAvailable="true" />
                     <Property Name="Click" Value="" Type="System.String, mscorlib" IsAvailable="true" />
                     <Property Name="MouseOver" Value="" Type="System.String, mscorlib" IsAvailable="true" />
@@ -1790,7 +1790,7 @@
                     <Property Name="ExtendedDataSource" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
                     <Property Name="DataSource" Value="20d21193-9f7f-4b62-8d69-272e78e1d6a8" Type="System.Guid, mscorlib" IsAvailable="true" />
                     <Property Name="DataField" Value="EndDate" Type="System.String, mscorlib" IsAvailable="true" />
-                    <Property Name="Binding" Value="4de070aa-88ae-4f9a-8742-b4c8efc44d27" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                    <Property Name="Binding" Value="ab1d8787-0bf5-4963-a514-00a33137c2ad" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
                     <Property Name="EditMode" Value="1" Type="System.Int32, mscorlib" IsAvailable="true" />
                     <Property Name="DisplayIcon" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
                     <Property Name="IsInheritedEditOperation" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
@@ -1805,10 +1805,10 @@
                     <Property Name="DefaultCurrentDate" Value="true" Type="System.Boolean, mscorlib" IsAvailable="false" />
                     <Property Name="DisablePast" Value="false" Type="System.Boolean, mscorlib" IsAvailable="false" />
                     <Property Name="DisableFuture" Value="false" Type="System.Boolean, mscorlib" IsAvailable="false" />
-                    <Property Name="DefaultDateTimeBinding" Value="751e2743-c80a-4469-88ed-21d887ea8d66" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="false" RepresentsDefaultBindingValue="true" />
+                    <Property Name="DefaultDateTimeBinding" Value="3921e3be-0cb3-4d60-8901-7bdc2f245974" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="false" RepresentsDefaultBindingValue="true" />
                     <Property Name="DefaultDateTimeShift" Value="0" Type="System.Int32, mscorlib" IsAvailable="false" />
                     <Property Name="DefaultTime" Value="0" Type="System.Int32, mscorlib" IsAvailable="false" />
-                    <Property Name="DefaultWorkTimeBinding" Value="68377f2b-a6db-40c5-ab1a-59274e8a3429" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                    <Property Name="DefaultWorkTimeBinding" Value="3e38f5f3-d299-4fbd-a7e0-fbc30c58d79c" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
                     <Property Name="ShowPickTimeDialog" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="false">
                       <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
                         <Desktop>true</Desktop>
@@ -1936,7 +1936,7 @@
                     <Property Name="ExtendedDataSource" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
                     <Property Name="DataSource" Value="20d21193-9f7f-4b62-8d69-272e78e1d6a8" Type="System.Guid, mscorlib" IsAvailable="true" />
                     <Property Name="DataField" Value="Content" Type="System.String, mscorlib" IsAvailable="true" />
-                    <Property Name="Binding" Value="7b6264f5-b730-4c09-beb2-23b81031c143" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                    <Property Name="Binding" Value="d6a588a1-2626-43e8-909f-6efb8b02e133" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
                     <Property Name="IsInheritedEditOperation" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
                     <Property Name="Disabled" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
                       <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
@@ -2079,7 +2079,7 @@
                 <Property Name="ExtendedDataSource" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
                 <Property Name="DataSource" Value="03c27047-fd44-4d3d-b4cb-abbf21a76e4c" Type="System.Guid, mscorlib" IsAvailable="true" />
                 <Property Name="DataField" Value="Comment" Type="System.String, mscorlib" IsAvailable="true" />
-                <Property Name="Binding" Value="250b6cbd-bcd6-43dd-ac5a-1591b3011b92" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                <Property Name="Binding" Value="26c3d6b4-07ae-40f2-aa68-861149cd2dc5" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
                 <Property Name="IsInheritedEditOperation" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
                 <Property Name="Disabled" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
                   <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
@@ -2115,7 +2115,7 @@
                 <Property Name="ExtendedDataSource" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
                 <Property Name="DataSource" Value="03c27047-fd44-4d3d-b4cb-abbf21a76e4c" Type="System.Guid, mscorlib" IsAvailable="true" />
                 <Property Name="DataField" Value="CommentFile" Type="System.String, mscorlib" IsAvailable="true" />
-                <Property Name="Binding" Value="a47aa151-59dc-4a71-b9ab-551f0c63df69" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                <Property Name="Binding" Value="d650b4a0-4347-4422-a5f1-1cde8d72894a" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
                 <Property Name="IsInheritedEditOperation" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
                 <Property Name="Disabled" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
                   <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
@@ -2330,11 +2330,11 @@
                     <Property Name="SaveHardLink" Value="false" Type="System.Boolean, mscorlib" IsAvailable="false" />
                     <Property Name="LoadSyncCount" Value="0" Type="System.Int32, mscorlib" IsAvailable="true" />
                     <Property Name="ViewDisplayMode" Value="1" Type="System.Int32, mscorlib" IsAvailable="true" />
-                    <Property Name="CreateLinkOperationBinding" Value="7af17a7d-7dff-4ed5-a108-eac8f23e6767" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                    <Property Name="CreateLinkOperationBinding" Value="eb8a2d9b-ad64-4234-bf2e-65df65e950c0" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
                     <Property Name="CreateLinkEnabled" Value="false" Type="System.Boolean, mscorlib" IsAvailable="false" />
-                    <Property Name="AddLinkOperationBinding" Value="29309227-320e-45a9-b767-5992ff01772f" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
-                    <Property Name="AddFileOperationBinding" Value="3a1cc325-acff-4265-9a55-b84434144c78" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
-                    <Property Name="AddUrlOperationBinding" Value="0617eff6-1881-48cb-9e19-dd53c5be615a" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                    <Property Name="AddLinkOperationBinding" Value="3fa27775-8565-4bf5-91d8-37b1328dfd4b" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                    <Property Name="AddFileOperationBinding" Value="b9853e41-94cd-4f3c-b094-ecc0c21a3c8f" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                    <Property Name="AddUrlOperationBinding" Value="ca29e791-931f-4b50-b830-e8409417af06" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
                     <Property Name="AddLinkEnabled" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
                     <Property Name="AddFileEnabled" Value="false" Type="System.Boolean, mscorlib" IsAvailable="false" />
                     <Property Name="AddUrlEnabled" Value="false" Type="System.Boolean, mscorlib" IsAvailable="false" />
@@ -2353,10 +2353,10 @@
                     <Property Name="AddLinkTypes" Type="System.String, mscorlib" IsAvailable="true">
                       <Array></Array>
                     </Property>
-                    <Property Name="RemoveLinkOperationBinding" Value="9d6fa0d3-10cd-4073-9979-b3749068bcde" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
-                    <Property Name="EditLinkOperationBinding" Value="3678c9e9-ce7d-4a1f-815e-e6d4cc6267f5" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                    <Property Name="RemoveLinkOperationBinding" Value="59ec06c9-d43d-4e36-8330-54b5dee0ac91" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                    <Property Name="EditLinkOperationBinding" Value="aaf69e5e-ceab-4d4d-93ea-33c392761a29" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
                     <Property Name="DataField" Value="ReferenceList" Type="System.String, mscorlib" IsAvailable="true" />
-                    <Property Name="Binding" Value="806dddad-36e4-4c3e-b5fd-1c7e0b871f05" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                    <Property Name="Binding" Value="4cdae0fe-8747-4bd0-b227-f0d042f53f74" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
                     <Property Name="ShowFilesForLinksTypes" Value="[]" Type="System.String, mscorlib" IsAvailable="true" />
                     <Property Name="DefaultProtocol" Value="http" Type="System.String, mscorlib" IsAvailable="true" />
                     <Property Name="DescriptionColumnViewMode" Value="1" Type="System.Int32, mscorlib" IsAvailable="true" />
@@ -2511,11 +2511,11 @@
             <Element Id="50a34f4e-9401-400d-98bb-4086457b595b" Type="Tasks">
               <Properties>
                 <Property Name="StandardCssClass" Value="system-tasks" Type="System.String, mscorlib" IsAvailable="true" />
-                <Property Name="Binding" Value="1c606afa-66ec-4ecd-a603-67f8234aabdc" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                <Property Name="Binding" Value="8f5e8b6a-3dcc-4ce8-9059-a04e1dd144d9" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
                 <Property Name="Mode" Value="1" Type="System.Int32, mscorlib" IsAvailable="true" />
                 <Property Name="LoadSyncCount" Value="5" Type="System.Int32, mscorlib" IsAvailable="true" />
-                <Property Name="CreateKindsBinding" Value="1fc7aa6a-8ac7-4e55-a5e5-f64a8737f658" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
-                <Property Name="ViewKindsBinding" Value="7c5c048a-5331-432b-b6ad-40aae8e44376" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                <Property Name="CreateKindsBinding" Value="ca9526b3-4b26-42e6-9563-8933e096d762" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                <Property Name="ViewKindsBinding" Value="16ef05db-e7a9-4f64-9eb9-9f66f436a18a" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
                 <Property Name="Name" Value="taskCreation" Type="System.String, mscorlib" IsAvailable="true" />
                 <Property Name="Tag" Value="" Type="System.String, mscorlib" IsAvailable="true" />
                 <Property Name="CustomCssClasses" Value="" Type="System.String, mscorlib" IsAvailable="true" />
@@ -2605,11 +2605,11 @@
                 <Property Name="TaskLinkClicking" Value="" Type="System.String, mscorlib" IsAvailable="true" />
                 <Property Name="ToggleRowClicking" Value="" Type="System.String, mscorlib" IsAvailable="true" />
                 <Property Name="RowClick" Value="" Type="System.String, mscorlib" IsAvailable="true" />
-                <Property Name="Binding" Value="806b39b0-5c32-4cd1-a080-5eb55245b39b" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                <Property Name="Binding" Value="35b1623c-e809-4408-8589-f47c368b6ce7" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
                 <Property Name="DataField" Value="ChildTaskList" Type="System.String, mscorlib" IsAvailable="true" />
-                <Property Name="ViewKindsBinding" Value="fd8af31d-f213-4f68-99c5-3db35ae8c032" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                <Property Name="ViewKindsBinding" Value="e3de0ff2-56c7-470c-bf6a-3fb5bc8fa6d6" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
                 <Property Name="DisplayMode" Value="1" Type="System.Int32, mscorlib" IsAvailable="true" />
-                <Property Name="ShowFullTreeBinding" Value="0a43325b-4f49-453c-8400-766bdd95ddb4" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                <Property Name="ShowFullTreeBinding" Value="b5fa8f5b-1c5d-4eeb-ac4c-acc487f68f0a" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
                 <Property Name="TaskGroupWithOneTaskDisplayMode" Value="0" Type="System.Int32, mscorlib" IsAvailable="true" />
               </Properties>
             </Element>
@@ -2713,12 +2713,12 @@
                     <Property Name="MouseOver" Value="" Type="System.String, mscorlib" IsAvailable="true" />
                     <Property Name="MouseOut" Value="" Type="System.String, mscorlib" IsAvailable="true" />
                     <Property Name="VisibilityEditOperation" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
-                    <Property Name="Binding" Value="af8257b8-357c-465f-95e9-46590c6c0ac8" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                    <Property Name="Binding" Value="4e35abfe-3593-4283-969f-77ab403b4467" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
                     <Property Name="DataField" Value="ChildTaskList" Type="System.String, mscorlib" IsAvailable="true" />
-                    <Property Name="ViewKindsBinding" Value="767a18b3-01e5-48c9-9bbe-b85d8a051b49" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                    <Property Name="ViewKindsBinding" Value="66392c02-7b24-4ca9-8c25-0ebf7be5fa26" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
                     <Property Name="ButtonText" Value="b12c78be-c76d-42af-9e7c-969ce06473b2" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="true" />
                     <Property Name="DisplayMode" Value="0" Type="System.Int32, mscorlib" IsAvailable="true" />
-                    <Property Name="ShowFullTreeBinding" Value="2ac2221b-6c7b-4050-8389-d057fb805a3d" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                    <Property Name="ShowFullTreeBinding" Value="7f423719-7a1e-4c7c-9723-08120953e326" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
                     <Property Name="TaskGroupWithOneTaskDisplayMode" Value="2" Type="System.Int32, mscorlib" IsAvailable="true" />
                   </Properties>
                 </Element>
@@ -2761,12 +2761,12 @@
                     <Property Name="TaskLinkClicking" Value="" Type="System.String, mscorlib" IsAvailable="true" />
                     <Property Name="ToggleRowClicking" Value="" Type="System.String, mscorlib" IsAvailable="true" />
                     <Property Name="RowClick" Value="" Type="System.String, mscorlib" IsAvailable="true" />
-                    <Property Name="Binding" Value="a72fe6f1-83c0-4a8c-ab45-2ea4ac63e16c" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                    <Property Name="Binding" Value="f809c8a3-54b2-4bdf-b597-ce44bc3d3567" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
                     <Property Name="DataField" Value="ChildTaskList" Type="System.String, mscorlib" IsAvailable="true" />
-                    <Property Name="ViewKindsBinding" Value="7e310ebf-c582-4087-9d19-3b71f9410803" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                    <Property Name="ViewKindsBinding" Value="6d78bb5d-615a-4510-b745-43669d0980df" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
                     <Property Name="ButtonText" Value="832a4f0b-cd38-4a44-882d-61e8cf7e487f" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="true" />
                     <Property Name="DisplayMode" Value="0" Type="System.Int32, mscorlib" IsAvailable="true" />
-                    <Property Name="ShowFullTreeBinding" Value="d6d1909e-7e8e-4c4e-856d-8c589f7207ee" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                    <Property Name="ShowFullTreeBinding" Value="26070723-c870-4f02-8f6a-ed2e33a423c0" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
                     <Property Name="TaskGroupWithOneTaskDisplayMode" Value="0" Type="System.Int32, mscorlib" IsAvailable="true" />
                   </Properties>
                 </Element>
@@ -2778,7 +2778,7 @@
                     <Property Name="ButtonText" Value="1bea1eb4-c689-44b1-9bb6-9ebda76388ba" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="true" />
                     <Property Name="CommentDataSource" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
                     <Property Name="CommentDataField" Value="" Type="System.String, mscorlib" IsAvailable="true" />
-                    <Property Name="CommentBinding" Value="05cc2f65-58ce-4988-83c6-f6cf890387ef" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                    <Property Name="CommentBinding" Value="7b6e5766-973f-4294-94fb-d1414572fd60" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
                     <Property Name="Disabled" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
                       <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
                         <Desktop>false</Desktop>
@@ -2789,8 +2789,8 @@
                     </Property>
                     <Property Name="CommentFileDataSource" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
                     <Property Name="CommentFileDataField" Value="" Type="System.String, mscorlib" IsAvailable="true" />
-                    <Property Name="CommentFileBinding" Value="63339b7e-7366-4400-a35e-f23ffb920bd3" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
-                    <Property Name="HasChildTasksBinding" Value="9c54ec37-2ede-46c4-a604-df9409ac74f2" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                    <Property Name="CommentFileBinding" Value="cdd421bd-221e-41a6-9502-4fe74ece3e20" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                    <Property Name="HasChildTasksBinding" Value="89ad40ef-1f5f-4ab2-b3b7-ad8fe04f5b09" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
                     <Property Name="Visibility" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
                       <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
                         <Desktop>true</Desktop>
@@ -2911,11 +2911,11 @@
             <Element Id="c5795eff-564e-4780-bfb9-caa184aba722" Type="Comments">
               <Properties>
                 <Property Name="StandardCssClass" Value="system-comments" Type="System.String, mscorlib" IsAvailable="true" />
-                <Property Name="CanCommentBinding" Value="8466c31b-71b0-4483-9459-4106fae98752" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
-                <Property Name="CanEditAllBinding" Value="4267f2fd-a511-49d3-b2e9-5e9a18a382d4" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
-                <Property Name="CanEditSelfBinding" Value="fd51c24d-8590-4c51-a1e4-7af5c0d37c44" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                <Property Name="CanCommentBinding" Value="503837cb-dbc6-472d-8435-053f27b8bb4d" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                <Property Name="CanEditAllBinding" Value="06ebc6ca-6883-456c-a4f0-0dc38391af4c" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                <Property Name="CanEditSelfBinding" Value="78377ef1-b2ff-488e-bdf3-d8ae95a207c0" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
                 <Property Name="MaxVisibleComments" Value="0" Type="System.Int32, mscorlib" IsAvailable="true" />
-                <Property Name="CommentsDataSourceBinding" Value="a9074788-257a-4528-bb9d-c4afe2992872" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                <Property Name="CommentsDataSourceBinding" Value="bfd1f8c8-c3e7-4d5a-a06e-253fa94e4743" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
                 <Property Name="Name" Value="comments" Type="System.String, mscorlib" IsAvailable="true" />
                 <Property Name="Tag" Value="" Type="System.String, mscorlib" IsAvailable="true" />
                 <Property Name="PlaceHolder" Value="b3cc6d0b-f874-44b6-8753-b27990b5ea25" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="true" />
@@ -2962,7 +2962,7 @@
             <Property Name="LabelText" Value="bf04a922-bfeb-45ea-949b-62ed11dc40e2" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="true" />
             <Property Name="StandardCssClass" Value="system-card-link" Type="System.String, mscorlib" IsAvailable="true" />
             <Property Name="DataField" Value="POASysCardId" Type="System.String, mscorlib" IsAvailable="true" />
-            <Property Name="Binding" Value="7ce30029-dc22-4f29-af50-eff1f77b7566" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+            <Property Name="Binding" Value="e4230d76-143a-4e18-84c8-d8699d77292e" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
             <Property Name="EmptyText" Value="" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="true" />
             <Property Name="FolderList" Value="" Type="System.String, mscorlib" ResolverType="FolderListResolver" IsAvailable="true" />
             <Property Name="DisplayIcon" Value="true" Type="System.Boolean, mscorlib" IsAvailable="false" />
