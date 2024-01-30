@@ -27,7 +27,6 @@
     <Binding PropertyName="5a3dc7a2-5e46-47b2-a940-1e46652a7348" BindingMode="0" EditOperation="407ed193-ddd4-4a96-8fa6-4c5993581aec" IsInheritedEditOperation="false" IsAsync="false" />
     <Binding PropertyName="256be3c8-af98-4b8a-8313-20665a6a0453" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/00000000-0000-0000-0000-000000000000/" ConverterType="State" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
     <Binding PropertyName="e85f83e0-63c6-4866-b087-0b1095ffafcf" BindingMode="0" EditOperation="407ed193-ddd4-4a96-8fa6-4c5993581aec" IsInheritedEditOperation="false" IsAsync="false" />
-    <Binding PropertyName="82e4ccdd-f3bd-499c-8fed-8634b0513be2" BindingMode="0" EditOperation="a0d1bd50-8c48-4881-b5a0-77595405e2a9" IsInheritedEditOperation="false" IsAsync="false" />
     <Binding PropertyName="0cc154de-1ea1-4d4b-836b-8019a3b38348" BindingMode="0" EditOperation="98b1de1b-1901-4632-b2ab-1f47cd574fa7" IsInheritedEditOperation="false" IsAsync="false" />
     <Binding PropertyName="8106a0cd-0dc6-45c9-9981-c8e4e8087422" BindingMode="0" EditOperation="07e7c119-1ff2-4652-88f7-04d94fad8088" IsInheritedEditOperation="false" IsAsync="false" />
     <Binding PropertyName="d75c02ac-d751-493c-8221-19abeb0b7b22" BindingMode="0" ConverterType="Operations" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false">
@@ -120,19 +119,6 @@
     <Binding PropertyName="c2d1bfb4-40c2-4888-97ad-fa4dd3054303" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/29c1b4ef-48e4-47f0-ac67-c42cf68de986/ceoEmail" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
     <Binding PropertyName="0eb6d802-dec6-4ff4-a30b-300513e487d2" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/29c1b4ef-48e4-47f0-ac67-c42cf68de986/ceoAddrSubRussia" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
     <Binding PropertyName="ab878ac1-0c5a-42a0-b088-43f0de23ed11" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/29c1b4ef-48e4-47f0-ac67-c42cf68de986/ceoAddrRussia" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
-    <Binding PropertyName="70531ff6-144c-4d61-8372-af3995a336af" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/29c1b4ef-48e4-47f0-ac67-c42cf68de986/typeCodeCEOIDDoc" ResolverType="ElementBinding" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
-    <Binding PropertyName="9be85807-35bb-49bc-aa2c-e3d250497a4e" BindingMode="0" ConverterType="Elements" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false">
-      <Items />
-    </Binding>
-    <Binding PropertyName="89646d8c-094b-40b2-b63f-af9a60b7d499" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/29c1b4ef-48e4-47f0-ac67-c42cf68de986/serNumCEOIDDoc" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
-    <Binding PropertyName="fb35cbd9-3411-471c-8605-5bdd95e043a4" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/29c1b4ef-48e4-47f0-ac67-c42cf68de986/dateIssCEOIDDoc" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
-    <Binding PropertyName="b9d26556-7950-466b-8706-2d6197f9cf4f" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/29c1b4ef-48e4-47f0-ac67-c42cf68de986/dateIssCEOIDDoc" ConverterType="DateTimeDefaultValueConverter" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
-    <Binding PropertyName="5ac06c97-59aa-4ae3-bf86-5510bbaac4b3" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/29c1b4ef-48e4-47f0-ac67-c42cf68de986/dateIssCEOIDDoc" ConverterType="DateTimeDefaultWorkTimeConverter" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
-    <Binding PropertyName="b08a7fc1-99fb-429c-aa10-61aa8b5ae2fb" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/29c1b4ef-48e4-47f0-ac67-c42cf68de986/dateExpCEOIDDoc" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
-    <Binding PropertyName="2f217262-bf26-4c4d-b0a2-c5a93e0d64cc" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/29c1b4ef-48e4-47f0-ac67-c42cf68de986/dateExpCEOIDDoc" ConverterType="DateTimeDefaultValueConverter" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
-    <Binding PropertyName="98301f1b-fffa-49fd-9bc9-4ad8fc252f74" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/29c1b4ef-48e4-47f0-ac67-c42cf68de986/dateExpCEOIDDoc" ConverterType="DateTimeDefaultWorkTimeConverter" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
-    <Binding PropertyName="2987ab14-c81f-4cae-900a-3b5249ddb7bb" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/29c1b4ef-48e4-47f0-ac67-c42cf68de986/authIssCEOIDDoc" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
-    <Binding PropertyName="80ce70eb-7c72-4a2c-9ef5-a9f5fceebab9" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/29c1b4ef-48e4-47f0-ac67-c42cf68de986/codeAuthDivIssCEOIDDoc" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
     <Binding PropertyName="f8c491c8-574e-4984-953c-5e2f6855a67c" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/29c1b4ef-48e4-47f0-ac67-c42cf68de986/representativeType" ResolverType="ElementBinding" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
     <Binding PropertyName="2877082c-3711-4249-97fc-37ea04f7072b" BindingMode="0" ConverterType="Elements" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false">
       <Items />
@@ -683,42 +669,6 @@
                     <Property Name="Primary" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
                     <Property Name="StretchWidth" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
                     <Property Name="Click" Value="createEMCHDRetrustPowerOfAttorney" Type="System.String, mscorlib" IsAvailable="true" />
-                    <Property Name="MouseOver" Value="" Type="System.String, mscorlib" IsAvailable="true" />
-                    <Property Name="MouseOut" Value="" Type="System.String, mscorlib" IsAvailable="true" />
-                    <Property Name="Focus" Value="" Type="System.String, mscorlib" IsAvailable="true" />
-                    <Property Name="Blur" Value="" Type="System.String, mscorlib" IsAvailable="true" />
-                  </Properties>
-                </Element>
-                <Element Id="33e56262-df1b-418b-af1f-dde9d2441504" Type="CustomButton">
-                  <Properties>
-                    <Property Name="Tag" Value="" Type="System.String, mscorlib" IsAvailable="true" />
-                    <Property Name="Name" Value="registerAsFile" Type="System.String, mscorlib" IsAvailable="true" />
-                    <Property Name="Tip" Value="" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="true" />
-                    <Property Name="Visibility" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
-                      <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-                        <Desktop>false</Desktop>
-                        <Tablet>false</Tablet>
-                        <Smartphone>false</Smartphone>
-                        <CanChange>true</CanChange>
-                      </DeviceDependentPropertyOfBoolean>
-                    </Property>
-                    <Property Name="VisibilityEditOperation" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
-                    <Property Name="StandardCssClass" Value="system-button" Type="System.String, mscorlib" IsAvailable="true" />
-                    <Property Name="TabStop" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
-                    <Property Name="BindingEditOperation" Value="82e4ccdd-f3bd-499c-8fed-8634b0513be2" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
-                    <Property Name="IsInheritedEditOperation" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
-                    <Property Name="Disabled" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
-                      <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-                        <Desktop>false</Desktop>
-                        <Tablet>false</Tablet>
-                        <Smartphone>false</Smartphone>
-                        <CanChange>true</CanChange>
-                      </DeviceDependentPropertyOfBoolean>
-                    </Property>
-                    <Property Name="Text" Value="62aba58a-0482-49c6-878c-f7c775838a04" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="true" />
-                    <Property Name="Primary" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
-                    <Property Name="StretchWidth" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
-                    <Property Name="Click" Value="sendPowerOfAttorneyToRegistrationAsFile" Type="System.String, mscorlib" IsAvailable="true" />
                     <Property Name="MouseOver" Value="" Type="System.String, mscorlib" IsAvailable="true" />
                     <Property Name="MouseOut" Value="" Type="System.String, mscorlib" IsAvailable="true" />
                     <Property Name="Focus" Value="" Type="System.String, mscorlib" IsAvailable="true" />

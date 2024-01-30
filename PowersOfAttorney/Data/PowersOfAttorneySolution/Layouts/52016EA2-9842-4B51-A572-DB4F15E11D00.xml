@@ -755,7 +755,7 @@
                 <Element Id="afec349a-7b9a-4de7-821a-5ce674a218ee" Type="CustomButton">
                   <Properties>
                     <Property Name="Tag" Value="" Type="System.String, mscorlib" IsAvailable="true" />
-                    <Property Name="Name" Value="signPOAButton" Type="System.String, mscorlib" IsAvailable="true" />
+                    <Property Name="Name" Value="signAndSendPOAButton" Type="System.String, mscorlib" IsAvailable="true" />
                     <Property Name="Visibility" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
                       <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
                         <Desktop>true</Desktop>
