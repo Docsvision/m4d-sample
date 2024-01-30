@@ -264,7 +264,7 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
                 };
 
                 if (userCard.GenLossPowersTransfer != null)
-                    part.LossOfAuthorityType = userCard.GenLossPowersTransfer;
+                    part.LossOfAuthorityType = Convert(userCard.GenLossPowersTransfer);
 
                 if (powersType == PowerOfAttorneyEMCHDData.AuthorityType.Code)
                 {

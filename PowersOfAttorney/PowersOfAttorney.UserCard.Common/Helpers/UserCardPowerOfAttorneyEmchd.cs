@@ -663,7 +663,7 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
         /// <summary>
         /// Признак утраты полномочий при передоверии
         /// </summary>
-        public PowerOfAttorneyLossOfAuthorityType? GenLossPowersTransfer => genMchdSection.GetEnumValue<PowerOfAttorneyLossOfAuthorityType>("lossPowersTransfer");
+        public LossPowersSubstTypes? GenLossPowersTransfer => genMchdSection.GetEnumValue<LossPowersSubstTypes>("lossPowersTransfer");
         
         /// <summary>
         /// Текстовое содержание полномочия

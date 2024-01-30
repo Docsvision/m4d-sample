@@ -43,7 +43,7 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
         /// <summary>
         /// Признак утраты полномочий при передоверии
         /// </summary>
-        internal enum LossPowersSubstTypes
+        public enum LossPowersSubstTypes
         {
             /// <summary>
             /// Не утрачиваются
