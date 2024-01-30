@@ -97,7 +97,7 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
                                     Citizenship = userCard.GenCeoCitizenship,
                                     CitizenshipType = userCard.IsB2BScopeOnly() ? null : userCard.GenCeoCitizenshipSign,
                                     ContactPhone = userCard.GenCeoPhoneNum,
-                                    EMail = userCard.GenCeoPhoneNum,
+                                    EMail = userCard.GenCeoEmail,
                                     Fio = new PowerOfAttorneyEMCHDData.FIO
                                     {
                                         FirstName = ceo.FirstName.AsNullable(),
@@ -395,7 +395,7 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
                         Citizenship = userCard.GenCeoCitizenship,
                         CitizenshipType = userCard.IsB2BScopeOnly() ? null : userCard.GenCeoCitizenshipSign,
                         ContactPhone = userCard.GenCeoPhoneNum,
-                        EMail = userCard.GenCeoPhoneNum,
+                        EMail = userCard.GenCeoEmail,
                         Fio = new PowerOfAttorneyEMCHDData.FIO
                         {
                             FirstName = ceo.FirstName.AsNullable(),
