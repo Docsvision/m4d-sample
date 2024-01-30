@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Layout LayoutID="CE9235EC-D3A0-481D-A133-80A70A0CFFDC" Name="Доверенность версии 002 (просмотр)_Контур.Доверенность" LayoutFileID="7589FE39-2738-4201-BBA2-D4D963666E61" LocationID="e1925a07-6f57-406d-9073-294381ea5aed" LayoutType="0" InstanceID="3200c1f1-6caa-4c73-a169-78f3a12d155c" RowID="5951F441-D3CC-4BE0-AC3C-5980DE89479C" OwnServerID="00000000-0000-0000-0000-000000000000" ChangeServerID="00000000-0000-0000-0000-000000000000">
-  <File FileID="7589FE39-2738-4201-BBA2-D4D963666E61" OwnerCardID="3200C1F1-6CAA-4C73-A169-78F3A12D155C" Name="Доверенность версии 002 (просмотр)_Контур.Доверенность" StandardAttribs="0" ExtendedAttribs="0">
+<Layout LayoutID="CE9235EC-D3A0-481D-A133-80A70A0CFFDC" Name="Доверенность версии 002 (просмотр)" LayoutFileID="7589FE39-2738-4201-BBA2-D4D963666E61" LocationID="e1925a07-6f57-406d-9073-294381ea5aed" LayoutType="0" InstanceID="3200c1f1-6caa-4c73-a169-78f3a12d155c" RowID="5951F441-D3CC-4BE0-AC3C-5980DE89479C" OwnServerID="00000000-0000-0000-0000-000000000000" ChangeServerID="00000000-0000-0000-0000-000000000000">
+  <File FileID="7589FE39-2738-4201-BBA2-D4D963666E61" OwnerCardID="3200C1F1-6CAA-4C73-A169-78F3A12D155C" Name="Доверенность версии 002 (просмотр)" StandardAttribs="0" ExtendedAttribs="0">
     <Element Id="d4697622-1254-4be0-aeec-57f1bb4eb819" Type="Layout">
   <Properties>
     <Property Name="Name" Value="documentRoot" Type="System.String, mscorlib" IsAvailable="true" />
@@ -826,7 +826,7 @@
                         <CanChange>true</CanChange>
                       </DeviceDependentPropertyOfBoolean>
                     </Property>
-                    <Property Name="VisibilityEditOperation" Value="407ed193-ddd4-4a96-8fa6-4c5993581aec" Type="System.Guid, mscorlib" IsAvailable="true" />
+                    <Property Name="VisibilityEditOperation" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
                     <Property Name="StandardCssClass" Value="system-button" Type="System.String, mscorlib" IsAvailable="true" />
                     <Property Name="TabStop" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
                     <Property Name="BindingEditOperation" Value="9fe29167-53af-4259-b0dc-e0ce338b7d98" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
@@ -862,7 +862,7 @@
                         <CanChange>true</CanChange>
                       </DeviceDependentPropertyOfBoolean>
                     </Property>
-                    <Property Name="VisibilityEditOperation" Value="98b1de1b-1901-4632-b2ab-1f47cd574fa7" Type="System.Guid, mscorlib" IsAvailable="true" />
+                    <Property Name="VisibilityEditOperation" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
                     <Property Name="StandardCssClass" Value="system-button" Type="System.String, mscorlib" IsAvailable="true" />
                     <Property Name="TabStop" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
                     <Property Name="BindingEditOperation" Value="d0970672-a042-4d83-87b6-84a3906f848e" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
@@ -878,7 +878,7 @@
                     <Property Name="Text" Value="c7a71856-1403-44f3-aa36-f0bbcdc258d6" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="true" />
                     <Property Name="Primary" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
                     <Property Name="StretchWidth" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
-                    <Property Name="Click" Value="signAndSendForRegistrationToRegistry" Type="System.String, mscorlib" IsAvailable="true" />
+                    <Property Name="Click" Value="signAndSendPowerOfAttorneyToRegistrationAsFile" Type="System.String, mscorlib" IsAvailable="true" />
                     <Property Name="MouseOver" Value="" Type="System.String, mscorlib" IsAvailable="true" />
                     <Property Name="MouseOut" Value="" Type="System.String, mscorlib" IsAvailable="true" />
                     <Property Name="Focus" Value="" Type="System.String, mscorlib" IsAvailable="true" />
@@ -914,7 +914,7 @@
                     <Property Name="Text" Value="eb4751e8-778a-4c0d-a954-0d457896f5da" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="true" />
                     <Property Name="Primary" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
                     <Property Name="StretchWidth" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
-                    <Property Name="Click" Value="revokeAndRecallPowerOfAttorney" Type="System.String, mscorlib" IsAvailable="true" />
+                    <Property Name="Click" Value="revokePowerOfAttorney" Type="System.String, mscorlib" IsAvailable="true" />
                     <Property Name="MouseOver" Value="" Type="System.String, mscorlib" IsAvailable="true" />
                     <Property Name="MouseOut" Value="" Type="System.String, mscorlib" IsAvailable="true" />
                     <Property Name="Focus" Value="" Type="System.String, mscorlib" IsAvailable="true" />
@@ -4664,6 +4664,48 @@
             <Property Name="Expanding" Value="" Type="System.String, mscorlib" IsAvailable="true" />
           </Properties>
           <Elements>
+            <Element Id="2bc0e6a5-3e65-40de-88cd-95fb75d40f2c" Type="RowContainer" ResolverType="RowContainerResolver">
+              <Properties>
+                <Property Name="StandardCssClass" Value="system-row-container" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="LabelText" Value="d0b04335-05dd-4e62-933b-55b0a5d62759" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="true" />
+                <Property Name="Name" Value="powerOfAttorneyRegistrationStatusRowContainer" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="Tag" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="Visibility" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
+                  <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                    <Desktop>true</Desktop>
+                    <Tablet>true</Tablet>
+                    <Smartphone>true</Smartphone>
+                    <CanChange>true</CanChange>
+                  </DeviceDependentPropertyOfBoolean>
+                </Property>
+                <Property Name="CustomCssClasses" Value="padding-bottom-20 with-paddings" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="Delimiter" Value=", " Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="Click" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="MouseOver" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="MouseOut" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+              </Properties>
+              <Elements>
+                <Element Id="d033682c-2238-4117-8e84-91ee4a406c77" Type="Label">
+                  <Properties>
+                    <Property Name="Tag" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                    <Property Name="Name" Value="powerOfAttorneyRegistrationStatus" Type="System.String, mscorlib" IsAvailable="true" />
+                    <Property Name="StandardCssClass" Value="system-label" Type="System.String, mscorlib" IsAvailable="true" />
+                    <Property Name="CustomCssClasses" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                    <Property Name="Visibility" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
+                      <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                        <Desktop>true</Desktop>
+                        <Tablet>true</Tablet>
+                        <Smartphone>true</Smartphone>
+                        <CanChange>true</CanChange>
+                      </DeviceDependentPropertyOfBoolean>
+                    </Property>
+                    <Property Name="Click" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                    <Property Name="MouseOver" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                    <Property Name="MouseOut" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                  </Properties>
+                </Element>
+              </Elements>
+            </Element>
             <Element Id="e9bf552e-afa8-4fad-a1d4-eed6cb5b7cd2" Type="DataGridControl">
               <Properties>
                 <Property Name="Name" Value="PowerOfAttorneyLog" Type="System.String, mscorlib" IsAvailable="true" />
@@ -4677,7 +4719,7 @@
                   </DeviceDependentPropertyOfBoolean>
                 </Property>
                 <Property Name="TabStop" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
-                <Property Name="PluginName" Value="LogTransferPlugin" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="PluginName" Value="EdiPowerOfAttorneyLog" Type="System.String, mscorlib" IsAvailable="true" />
                 <Property Name="Click" Value="" Type="System.String, mscorlib" IsAvailable="true" />
                 <Property Name="MouseOver" Value="" Type="System.String, mscorlib" IsAvailable="true" />
                 <Property Name="MouseOut" Value="" Type="System.String, mscorlib" IsAvailable="true" />
