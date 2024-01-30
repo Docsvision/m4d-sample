@@ -21,9 +21,10 @@ import { ModalDialogContent } from "@docsvision/webclient/Helpers/ModalDialog/Mo
 import { ModalBackdrop } from "@docsvision/webclient/Helpers/ModalBackdrop";
 import { ModalDialogCloseButton } from "@docsvision/webclient/Helpers/ModalDialog/ModalDialogCloseButton";
 import { MessageBox } from "@docsvision/webclient/Helpers/MessageBox/MessageBox";
+import { IEventArgs } from "@docsvision/webclient/System/IEventArgs";
 
 
-export const revokePowerOfAttorney = async (sender: CustomButton, onAttachSignatureToCardCallback: Function = null, showMessage: boolean = true) => {
+export const revokePowerOfAttorney = async (sender: CustomButton, e: IEventArgs, onAttachSignatureToCardCallback: Function = null, showMessage: boolean = true) => {
     const items = [{ key: PowerOfAttorneyRevocationType.Principal.toString(), value: resources.CancellationOfThePowerOfAttorneyByThePrincipal }, { key: PowerOfAttorneyRevocationType.Representative.toString(), value: resources.RefusalOfTheRepresentativeFromThePowers }]
     const powerOfAttorneyUserCardId = sender.layout.getService($CardId);
     const powerOfAttorneyNumber = await sender.layout.getService($PowersOfAttorneyDemoController).getPowerOfAttorneyNumber(powerOfAttorneyUserCardId);

@@ -4,6 +4,7 @@ import { $PowersOfAttorneyButtonController } from "../ServerRequests/PowersOfAtt
 import { MessageBox } from "@docsvision/webclient/Helpers/MessageBox/MessageBox";
 import { revokePowerOfAttorney } from "./RevokePowerOfAttorney";
 import { resources } from "@docsvision/webclient/System/Resources";
+import { IEventArgs } from "@docsvision/webclient/System/IEventArgs";
 
 export const recallPowerOfAttorney = async (sender: CustomButton) => {
     const powerOfAttorneyId = sender.layout.controls.powerOfAttorneySysCard.params.value?.cardId;
@@ -21,7 +22,7 @@ export const recallPowerOfAttorney = async (sender: CustomButton) => {
     });
 };
 
-export const revokeAndRecallPowerOfAttorney = async (sender: CustomButton) => {
+export const revokeAndRecallPowerOfAttorney = async (sender: CustomButton, e: IEventArgs) => {
     const powersOfAttorneyButtonController = sender.layout.getService($PowersOfAttorneyButtonController);
     const employeeId = sender.layout.getService($ApplicationSettings).employee.id;
     const powerOfAttorneyId = sender.layout.controls.powerOfAttorneySysCard.params.value?.cardId;
@@ -39,7 +40,7 @@ export const revokeAndRecallPowerOfAttorney = async (sender: CustomButton) => {
 
     powersOfAttorneyButtonController?.checkCardTransferLogStatus(powerOfAttorneyId, employeeId).then(async msg => {
         if (msg.Success) {
-            await revokePowerOfAttorney(sender, onAttachSignatureToCard, false);
+            await revokePowerOfAttorney(sender, e, onAttachSignatureToCard, false);
         } else {
             MessageBox.ShowError(msg.Message);
         }
