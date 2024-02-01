@@ -382,13 +382,6 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
                 var ceo = userCard.GenCeo.GetValueOrThrow(Resources.Error_EmptyCeo);
                 return new PowerOfAttorneyEMCHDData.SoleExecutiveIndividualInfo
                 {
-                    ConfirmationDocument = new PowerOfAttorneyEMCHDData.ConfirmationOfAuthorityDocument
-                    {
-                        DocumentName = userCard.GenDocConfAuthCEO,
-                        IdentityOfDocument = userCard.GenSerNumCEOIDDoc,
-                        IssueDate = userCard.GenDateIssCEOIDDoc,
-                        Issuer = userCard.GenAuthIssCEOIDDoc
-                    },
                     IndividualInfo = new PowerOfAttorneyEMCHDData.IndividualInfo
                     {                        
                         BirthPlace = userCard.GenCeoPlaceOfBirth,
