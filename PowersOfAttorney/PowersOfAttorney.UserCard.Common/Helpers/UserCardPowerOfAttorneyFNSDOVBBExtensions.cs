@@ -122,11 +122,17 @@ public static class UserCardPowerOfAttorneyFNSDOVBBExtensions
 
         private List<RepresentativePowerInfo> GetRepresentativePowersInfo()
         {
-            var codes = userCard.RepresentativePowersCodes.Select(pow => new RepresentativePowerInfo(pow));
-            if (codes.Any())
-                return codes.ToList();
+            var powers = new List<RepresentativePowerInfo>();
 
-            return userCard.RepresentativePowersText.Select(pow => new RepresentativePowerInfo(pow)).ToList();
+            var pCodes = userCard.RepresentativePowersCodes?.ToList();
+            if (pCodes?.Any() == true)
+                powers.AddRange(pCodes.Select(pow => new RepresentativePowerInfo(pow)));
+           
+            var pTexts = userCard.RepresentativePowersText?.ToList();
+            if (pTexts?.Any() == true)
+                powers.AddRange(pTexts.Select(pow => new RepresentativePowerInfo(pow)));
+
+            return powers;
         }
 
         private RepresentativeInfo GetRepresentativeInfo()
