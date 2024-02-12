@@ -6,7 +6,7 @@
     <Property Name="Name" Value="documentRoot" Type="System.String, mscorlib" IsAvailable="true" />
     <Property Name="CustomCssClasses" Value="control-label-opacity-half expansion-panel-header system-layout-independent-scroll center-screen" Type="System.String, mscorlib" IsAvailable="true" />
     <Property Name="CardOpening" Value="addNewStyleForControls" Type="System.String, mscorlib" IsAvailable="true" />
-    <Property Name="CardOpened" Value="addStyleToCard, addNewStyleForControls, getPowerOfAttorneyRegistrationStatus" Type="System.String, mscorlib" IsAvailable="true" />
+    <Property Name="CardOpened" Value="addStyleToCard, addNewStyleForControls" Type="System.String, mscorlib" IsAvailable="true" />
     <Property Name="CardSaving" Value="" Type="System.String, mscorlib" IsAvailable="true" />
     <Property Name="PrepareCardSaving" Value="" Type="System.String, mscorlib" IsAvailable="true" />
     <Property Name="BeforeCardSaving" Value="" Type="System.String, mscorlib" IsAvailable="true" />

@@ -1,0 +1,13 @@
+div[data-control-name="PowerOfAttorneyLog"] {
+    max-height: 250px;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    .dv-sticky-table-header {
+        transform: none;
+    }
+
+    .scroll-bar__placement {
+         display: none;
+    }
+}

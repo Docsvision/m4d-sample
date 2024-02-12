@@ -11,7 +11,7 @@ import { resources } from "@docsvision/webclient/System/Resources";
 import { GenModels } from '@docsvision/webclient/Generated/DocsVision.WebClient.Models';
 
 
-export const signPowerOfAttorney = async (sender: CustomButton, refreshLayout = true) => {
+export const signPowerOfAttorney = async (sender: CustomButton, refreshLayout = true, showMessage = true) => {
     const powerOfAttorneyUserCardId = sender.layout.getService($CardId);
     const powerOfAttorneyId = await sender.layout.getService($PowersOfAttorneyDemoController).getPowerOfAttorneyCardId(powerOfAttorneyUserCardId);
     await sender.layout.params.services.digitalSignature.showDocumentSignDialog(powerOfAttorneyUserCardId,
@@ -42,13 +42,14 @@ export const signPowerOfAttorney = async (sender: CustomButton, refreshLayout = 
                             return Promise.reject();
                         }
                     }
-                    await sender.layout.getService($MessageWindow).showInfo(resources.PowerOfAttorneySigned);
+                    if (showMessage) {
+                        await sender.layout.getService($MessageWindow).showInfo(resources.PowerOfAttorneySigned);
+                    }
                 }
                 return {} as IEncryptedInfo;
             },
             onAttachSignatureToCard: async () => { }
         });
-        
 }
 
 

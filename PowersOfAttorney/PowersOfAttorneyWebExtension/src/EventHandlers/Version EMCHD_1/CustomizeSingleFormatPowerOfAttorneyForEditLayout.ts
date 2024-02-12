@@ -29,10 +29,13 @@ export const customizeSingleFormatPowerOfAttorneyForEditLayout = async (sender: 
     const ceoCitizenshipSign = controls.get<Dropdown>("ceoCitizenshipSign");
     const reprCitizenshipSign = controls.get<Dropdown>("reprCitizenshipSign");
     const poaScope = controls.get<RadioGroup>("poaScope");
+    const signPossIssSubst = controls.get<RadioGroup>("signPossIssSubst");
 
     customizeInputFields(sender);
     onPowersTypeDataChanged(sender);
-    onPoaScopeDataChanged(sender);
+    onCeoCitizenshipSignDataChanged(sender);
+    onReprCitizenshipSignDataChanged(sender);
+    poaScope && onPoaScopeDataChanged(sender);
 
     sender.params.beforeCardSaving.subscribe(checkPowersBeforeSaving);
     entityPrincipal && entityPrincipal.params.dataChanged.subscribe(onPrincipalDataChanged);
@@ -43,6 +46,7 @@ export const customizeSingleFormatPowerOfAttorneyForEditLayout = async (sender: 
     ceoCitizenshipSign && ceoCitizenshipSign.params.dataChanged.subscribe(onCeoCitizenshipSignDataChanged);
     reprCitizenshipSign && reprCitizenshipSign.params.dataChanged.subscribe(onReprCitizenshipSignDataChanged);
     poaScope && poaScope.params.dataChanged.subscribe(onPoaScopeDataChanged);
+    signPossIssSubst && signPossIssSubst.params.dataChanged.subscribe(onSignPossIssSubstDataChanged);
 }
 
 const onPoaScopeDataChanged = (sender: Layout) => {
@@ -194,8 +198,6 @@ const onCeoDataChanged = async (sender: StaffDirectoryItems, args: IDataChangedE
     const ceoGender = controls.get<Dropdown>("ceoGender");
     const ceoPhone = controls.get<TextBox>("ceoPhone");
     const ceoEmail = controls.get<TextBox>("ceoEmail");
-    const numCEOID = controls.get<TextBox>("numCEOID");
-    const authIssCEOID = controls.get<TextArea>("authIssCEOID");
 
     if (args.newValue) {
         const data = await sender.layout.params.services.requestManager.get(`api/v1/cards/${STAFF_DIRECTORY_ID}/${EMPLOYEE_SECTION_ID}/${args.newValue.id}`) as any;
@@ -204,16 +206,12 @@ const onCeoDataChanged = async (sender: StaffDirectoryItems, args: IDataChangedE
         ceoGender.params.value = data.fields.find(field => field.alias === "Gender").value.toString();
         ceoPhone.params.value = data.fields.find(field => field.alias === "Phone").value;
         ceoEmail.params.value = data.fields.find(field => field.alias === "Email").value;
-        numCEOID.params.value = data.fields.find(field => field.alias === "IDNumber").value;
-        authIssCEOID.params.value = data.fields.find(field => field.alias === "IDIssuedBy").value;
     } else {
         ceoPosition.params.value = "";
         ceoBirthDate.params.value = null;
         ceoGender.params.value = "";
         ceoPhone.params.value = "";
         ceoEmail.params.value = "";
-        numCEOID.params.value = "";
-        authIssCEOID.params.value = "";
     }  
 }
 
@@ -244,6 +242,15 @@ const onRepresentativeDataChanged = async (sender: StaffDirectoryItems, args: ID
     }
 }
 
+const onSignPossIssSubstDataChanged = (sender: Layout) => {
+    const controls = sender.layout.controls;
+    const signPossIssSubst = controls.get<RadioGroup>("signPossIssSubst");
+    const powersSubstLoss = controls.get<Dropdown>("powersSubstLoss");
+
+    const signPossIssSubstValue = signPossIssSubst.params.value !== "Without right of substitution";
+    powersSubstLoss.params.visibility = signPossIssSubstValue;
+}
+
 const limitations = [
     { name: "codeTaxAuthSubmit", length: 4 },
     { name: "codeTaxAuthValid", length: 4 },
@@ -271,8 +278,6 @@ const customizeInputFields = (sender: Layout) => {
 
     const numReprID = document.querySelector('[data-control-name="numReprID"]');
     numReprID?.getElementsByTagName('input')[0].setAttribute("maxLength", "25");
-    const numCEOID = document.querySelector('[data-control-name="numCEOID"]');
-    numCEOID?.getElementsByTagName('input')[0].setAttribute("maxLength", "25");
 
     const maskOptions = {
         SNILS: {
@@ -295,12 +300,6 @@ const customizeInputFields = (sender: Layout) => {
     reprSNILS.addEventListener("change", (event) => sender.controls.reprSNILS.params.value = (event.target as HTMLInputElement).value);
     sender.controls.reprSNILS.params.blur.subscribe((sender: TextBox) => {
         checkValueLength(reprSNILS, sender.params.value?.replaceAll("-", "").replace(" ", "").length, sender.layout.params.services, 11);
-    })
-
-    const codeAuthIssCEOID = document.querySelector('[data-control-name="codeAuthIssCEOID"] input') as HTMLElement;
-    IMask(codeAuthIssCEOID, maskOptions.code);
-    sender.controls.codeAuthIssCEOID.params.blur.subscribe((sender: TextBox) => {
-        checkValueLength(codeAuthIssCEOID, sender.params.value?.replaceAll("-", "").replaceAll(" ", "").length, sender.layout.params.services, 6);
     })
 
     const codeAuthIssReprID = document.querySelector('[data-control-name="codeAuthIssReprID"] input') as HTMLElement;
