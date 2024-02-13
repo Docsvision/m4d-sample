@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Layout LayoutID="96DC6253-072C-486F-BB04-270D0910B870" Name="Подписание МЧД (просмотр)_Контур.Диадок" LayoutFileID="CC906A34-7FF6-4F70-AE21-AF26989B33EE" LocationID="77448616-4851-482a-8d2f-4b5fa6cf3682" LayoutType="0" InstanceID="3200c1f1-6caa-4c73-a169-78f3a12d155c" RowID="011FC069-39FD-44B6-84B3-43B0CED96C31" OwnServerID="00000000-0000-0000-0000-000000000000" ChangeServerID="00000000-0000-0000-0000-000000000000">
-  <File FileID="CC906A34-7FF6-4F70-AE21-AF26989B33EE" OwnerCardID="3200C1F1-6CAA-4C73-A169-78F3A12D155C" Name="Подписание МЧД (просмотр)_Copy" StandardAttribs="0" ExtendedAttribs="0">
+  <File FileID="CC906A34-7FF6-4F70-AE21-AF26989B33EE" OwnerCardID="3200C1F1-6CAA-4C73-A169-78F3A12D155C" Name="Подписание МЧД (просмотр)_Контур.Диадок" StandardAttribs="0" ExtendedAttribs="0">
     <Element Id="474de651-5034-455e-8750-1567ab5a4285" Type="Layout">
   <Properties>
     <Property Name="Name" Value="documentRoot" Type="System.String, mscorlib" IsAvailable="true" />
