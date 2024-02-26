@@ -1,13 +1,17 @@
 import { Layout } from "@docsvision/webclient/System/Layout";
+import { RadioGroup } from "@docsvision/webclient/Platform/RadioGroup";
+import { Block } from "@docsvision/webclient/Platform/Block";
+import { Dropdown } from "@docsvision/webclient/Platform/Dropdown";
+import { TextBox } from "@docsvision/webclient/Platform/TextBox";
 
 export const customizeSubstitutionPowerOfAttorneyCardForViewLayout = (sender: Layout) => {
     const controls = sender.layout.controls;
-    const possibilityOfSubstSPOA = controls.possibilityOfSubstSPOA;
-    const lossOfPowersUponSubstSPOABlock = controls.lossOfPowersUponSubstSPOABlock;
-    const reprSignCitshipSPOA = controls.reprSignCitshipSPOA;
-    const foreignReprCitshipSPOA = controls.foreignReprCitshipSPOA;
-    const indsignCitizenship = controls.indsignCitizenship;
-    const indCodeCitizenship = controls.indCodeCitizenship;
+    const possibilityOfSubstSPOA = controls.get<RadioGroup>("possibilityOfSubstSPOA");
+    const lossOfPowersUponSubstSPOABlock = controls.get<Block>("lossOfPowersUponSubstSPOABlock");
+    const reprSignCitshipSPOA = controls.get<Dropdown>("reprSignCitshipSPOA");
+    const foreignReprCitshipSPOA = controls.get<TextBox>("foreignReprCitshipSPOA");
+    const indsignCitizenship = controls.get<Dropdown>("indsignCitizenship");
+    const indCodeCitizenship = controls.get<TextBox>("indCodeCitizenship");
 
     if (possibilityOfSubstSPOA.value === 'One-time substitution' || possibilityOfSubstSPOA.value === 'Substitution is possible with subsequent substitution') {
         lossOfPowersUponSubstSPOABlock.params.visibility = true;

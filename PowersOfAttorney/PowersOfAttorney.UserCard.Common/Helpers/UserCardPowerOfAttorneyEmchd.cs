@@ -1,11 +1,11 @@
 ﻿using DocsVision.BackOffice.CardLib.CardDefs;
 using DocsVision.BackOffice.ObjectModel;
+using DocsVision.BackOffice.ObjectModel.Services;
 using DocsVision.BackOffice.ObjectModel.Services.Entities;
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using System.Web;
 using static DocsVision.BackOffice.ObjectModel.Services.Entities.PowerOfAttorneyEMCHDData;
 
 namespace PowersOfAttorney.UserCard.Common.Helpers
@@ -15,7 +15,7 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
         /// <summary>
         /// Код формы по КНД
         /// </summary>
-        public string GenKnd => "0711001"; // Взят пример КНД
+        public string GenKnd => "0251222"; // Взят пример КНД
 
         public PowerOfAttorney GenOriginaPowerOfAttorney
         {
@@ -452,7 +452,7 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
         /// Фамилия руководителя организации
         /// </summary>
         public string GenCeoLastName => genMchdSection.GetStringValue("ceoLastName");
-        
+
         /// <summary>
         /// Тип лица передавшего полномочие
         /// </summary>
@@ -527,6 +527,19 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
         /// Внутренний номер доверенности
         /// </summary>
         public string GenInternalPOANumber => genMchdSection.GetStringValue("internalPOANumber");
+
+        /// <summary>
+        /// Регистрационный номер документа (он же - Внутренний номер доверенности - см.ERR-5856)
+        /// </summary>
+        public string GenDocumentRegNumber {
+            get
+            {
+                var regNumberId = mainInfoSection.GetGuidValue(CardDocument.MainInfo.RegNumber);
+                var numerationRulesService = context.GetService<INumerationRulesService>();
+                var number = (regNumberId.HasValue && regNumberId != Guid.Empty) ? numerationRulesService.GetNumber(document, regNumberId.Value) : null;
+                return number?.Number ?? string.Empty;
+            }
+        }
 
         /// <summary>
         /// Единый регистрационный номер доверенности
@@ -650,7 +663,7 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
         /// <summary>
         /// Признак утраты полномочий при передоверии
         /// </summary>
-        public PowerOfAttorneyLossOfAuthorityType? GenLossPowersTransfer => genMchdSection.GetEnumValue<PowerOfAttorneyLossOfAuthorityType>("lossPowersTransfer");
+        public LossPowersSubstTypes? GenLossPowersTransfer => genMchdSection.GetEnumValue<LossPowersSubstTypes>("lossPowersTransfer");
         
         /// <summary>
         /// Текстовое содержание полномочия
@@ -661,6 +674,16 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
         {
             return powersWithCodesSection?.Select(t => GetPowersCode(t)) ?? Enumerable.Empty<PowersCode>();
         }
+
+        /// <summary>
+        /// Область применения доверенности
+        /// </summary>
+        public PoaScopeType? PoaScope => genMchdSection.GetEnumValue<PoaScopeType>("poaScope");
+
+        /// <summary>
+        /// Область применения доверенности - только хозяйственные сделки
+        /// </summary>
+        public bool IsB2BScopeOnly() => PoaScope.HasValue && PoaScope.Value == PoaScopeType.B2B;
 
         /// <summary>
         /// Вид доверенности
@@ -762,6 +785,21 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
             /// Филиал (аккредитованное представительство) иностранного юридического лица
             /// </summary>
             foreignEntBranch = 5
+        }
+
+        /// <summary>
+        /// Область применения доверенности
+        /// </summary>
+        public enum PoaScopeType
+        {
+            /// <summary>
+            /// Хозяйственные сделки
+            /// </summary>
+            B2B = 0,
+            /// <summary>
+            /// Взаимодействие с ФНС и хозяйственные сделки
+            /// </summary>
+            B2BandFNS = 1
         }
     }
 }

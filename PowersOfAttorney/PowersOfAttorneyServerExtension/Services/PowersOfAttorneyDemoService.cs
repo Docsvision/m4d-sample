@@ -1,29 +1,23 @@
 ﻿using DocsVision.BackOffice.ObjectModel;
 using DocsVision.BackOffice.ObjectModel.Services;
 using DocsVision.BackOffice.ObjectModel.Services.Entities;
-using DocsVision.BackOffice.WebClient.PowersOfAttorney;
 using DocsVision.Platform.ObjectModel;
 using DocsVision.Platform.WebClient;
 
-using Microsoft.SqlServer.Server;
-
 using PowersOfAttorney.UserCard.Common.Helpers;
+
 using PowersOfAttorneyServerExtension.Models;
 
 using System;
-
-using static DocsVision.BackOffice.ObjectModel.Services.Entities.PowerOfAttorneyData;
 
 namespace PowersOfAttorneyServerExtension.Services
 {
     internal class PowersOfAttorneyDemoService : IPowersOfAttorneyDemoService
     {
-        private readonly IPowerOfAttorneyProxyService powerOfAttorneyProxyService;
         private readonly ICurrentObjectContextProvider currentObjectContextProvider;
 
-        public PowersOfAttorneyDemoService(IPowerOfAttorneyProxyService powerOfAttorneyProxyService, ICurrentObjectContextProvider currentObjectContextProvider)
+        public PowersOfAttorneyDemoService(ICurrentObjectContextProvider currentObjectContextProvider)
         {
-            this.powerOfAttorneyProxyService = powerOfAttorneyProxyService;
             this.currentObjectContextProvider = currentObjectContextProvider;
         }
 
@@ -34,14 +28,20 @@ namespace PowersOfAttorneyServerExtension.Services
 
             var representativeID = GetRepresentative(userCardPowerOfAttorney, formatId);
             var signerID = GetSigner(userCardPowerOfAttorney, formatId);
-            var principalInn = GetPrincipalInn(userCardPowerOfAttorney, formatId);
 
-            var powerOfAttorney = powerOfAttorneyProxyService.CreatePowerOfAttorney(powerOfAttorneyData,
-                                                                                    representativeID,
-                                                                                    signerID,
-                                                                                    formatId,
-                                                                                    powerOfAttorneyUserCardId,
-                                                                                    principalInn);
+            var representative = context.GetObject<StaffEmployee>(representativeID);
+            var signer = context.GetObject<StaffEmployee>(signerID);
+            var format = context.GetObject<PowersPowerOfAttorneyFormat>(formatId);
+
+            var powerOfAttorney = PowerOfAttorneyService.CreatePowerOfAttorney(powerOfAttorneyData,
+                representative, signer, format, PowerOfAttorneyHandlingFlags.SupportDistributedRegistryFederalTaxService);
+
+            powerOfAttorney.MainInfo.UserCard = powerOfAttorneyUserCardId;
+            if(string.IsNullOrEmpty(powerOfAttorney.MainInfo.PrincipalINN))
+                powerOfAttorney.MainInfo.PrincipalINN = GetPrincipalInn(userCardPowerOfAttorney, formatId);
+
+            context.SaveObject(powerOfAttorney);
+
             var powerOfAttorneyId = powerOfAttorney.GetObjectId();
 
             // Сохраним ИД созданной СКД в ПКД
@@ -59,14 +59,20 @@ namespace PowersOfAttorneyServerExtension.Services
             var representativeID = GetRepresentative(userCardPowerOfAttorney, formatId);
             var signerID = GetSigner(userCardPowerOfAttorney, formatId);
             var parentalPowerOfAttorney = GetParentalPowerOfAttorney(userCardPowerOfAttorney, formatId);
-            var principalInn = GetPrincipalInn(userCardPowerOfAttorney, formatId);
 
-            var powerOfAttorney = powerOfAttorneyProxyService.RetrustPowerOfAttorney(powerOfAttorneyData,
-                                                                                    representativeID,
-                                                                                    signerID,
-                                                                                    parentalPowerOfAttorney,
-                                                                                    powerOfAttorneyUserCardId,
-                                                                                    principalInn);
+            var representative = context.GetObject<StaffEmployee>(representativeID);
+            var signer = context.GetObject<StaffEmployee>(signerID);
+            var parent = context.GetObject<PowerOfAttorney>(parentalPowerOfAttorney);
+
+
+            var powerOfAttorney = PowerOfAttorneyService.RetrustPowerOfAttorney(powerOfAttorneyData, representative, signer, parent, PowerOfAttorneyHandlingFlags.SupportDistributedRegistryFederalTaxService);
+
+            powerOfAttorney.MainInfo.UserCard = powerOfAttorneyUserCardId;
+            if(string.IsNullOrEmpty(powerOfAttorney.MainInfo.PrincipalINN))
+                powerOfAttorney.MainInfo.PrincipalINN = GetPrincipalInn(userCardPowerOfAttorney, formatId);
+
+            context.SaveObject(powerOfAttorney);
+
             var powerOfAttorneyId = powerOfAttorney.GetObjectId();
 
             // Сохраним ИД созданной СКД в ПКД
@@ -102,7 +108,7 @@ namespace PowersOfAttorneyServerExtension.Services
                     };
                     break;
                 case PowerOfAttorneyRevocationType.Principal:
-                    var ceo = userCardPowerOfAttorney.GenRepresentative.GetValueOrThrow(Resources.Error_EmptyCeo);
+                    var ceo = userCardPowerOfAttorney.GenCeo.GetValueOrThrow(Resources.Error_EmptyCeo);
 
                     revocationData.ApplicantInfo = new PowerOfAttorneyRevocationApplicantInfo
                     {
@@ -117,8 +123,9 @@ namespace PowersOfAttorneyServerExtension.Services
 
                     // Для передоверия данные организации требуется брать из родительской доверености
                     var cardWithPrincipalData = userCardPowerOfAttorney.IsRetrusted() ? GetUserCardPowerOfAttorney(context, userCardPowerOfAttorney.ParentalPowerOfAttorneyUserCard.GetValueOrThrow(Resources.Error_ParentalCardNotFound).GetObjectId()) : userCardPowerOfAttorney;
-      
+
                     revocationData.ApplicantInfo.Kpp = cardWithPrincipalData.GenEntityPrincipal.HasValue ? cardWithPrincipalData.GenEntityPrincipal.Value.KPP : cardWithPrincipalData.GenEntityPrinKPP;
+                    revocationData.ApplicantInfo.Inn = cardWithPrincipalData.GenEntityPrincipal.HasValue ? cardWithPrincipalData.GenEntityPrincipal.Value.INN : cardWithPrincipalData.GenEntityPrinINN;
                     revocationData.ApplicantInfo.Ogrn = cardWithPrincipalData.GenEntityPrincipal.HasValue ? cardWithPrincipalData.GenEntityPrincipal.Value.OGRN : cardWithPrincipalData.GenEntPrinOGRN;
                     revocationData.ApplicantInfo.Name = cardWithPrincipalData.GenEntityPrincipal.HasValue ? cardWithPrincipalData.GenEntityPrincipal.Value.Name : cardWithPrincipalData.GenEntityPrinName;
                     break;
@@ -127,14 +134,19 @@ namespace PowersOfAttorneyServerExtension.Services
                     throw new ArgumentOutOfRangeException($"Unsupported revocation type: {revocationType}");
             }
 
-            var data = powerOfAttorneyProxyService.RequestRevocationPowerOfAttorney(userCardPowerOfAttorney.PowerOfAttorneyCardId.Value, revocationData, out string fileName);
+            var powerOfAttorney = context.GetObject<PowerOfAttorney>(userCardPowerOfAttorney.PowerOfAttorneyCardId.Value);
+
+            PowerOfAttorneyService.RequestRevocation(powerOfAttorney, revocationData);
+            context.SaveObject(powerOfAttorney);
+
+            var data = PowerOfAttorneyService.GetRevocationPowerOfAttorneyFileData(powerOfAttorney, out string fileName);
+
             return new RequestRevocationResponse
             {
                 Content = Convert.ToBase64String(data),
                 FileName = fileName
             };
         }
-
 
         public Guid GetPowerOfAttorneyCardId(ObjectContext context, Guid powerOfAttorneyUserCardId)
         {
@@ -162,14 +174,14 @@ namespace PowersOfAttorneyServerExtension.Services
 
         private Guid GetParentalPowerOfAttorney(UserCardPowerOfAttorney userCardPowerOfAttorney, Guid formatId)
         {
-            if(formatId == PowerOfAttorneyFNSDOVBBData.FormatId)
-                 return userCardPowerOfAttorney.ParentalPowerOfAttorney.GetObjectId();
+            if (formatId == PowerOfAttorneyFNSDOVBBData.FormatId)
+                return userCardPowerOfAttorney.ParentalPowerOfAttorney.GetObjectId();
 
             if (formatId == PowerOfAttorneyEMCHDData.FormatId)
             {
                 if (userCardPowerOfAttorney.GenParentalPowerOfAttorneyUserCard.HasValue)
                     return userCardPowerOfAttorney.GenParentalPowerOfAttorney.GetObjectId();
-                
+
                 return userCardPowerOfAttorney.GenOriginaPowerOfAttorney.GetObjectId();
             }
 

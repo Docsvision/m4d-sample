@@ -8,10 +8,10 @@ import { IEncryptedInfo } from "@docsvision/webclient/BackOffice/$DigitalSignatu
 import { $MessageWindow } from "@docsvision/web/components/modals/message-box";
 import { $Router } from "@docsvision/webclient/System/$Router";
 import { resources } from "@docsvision/webclient/System/Resources";
+import { GenModels } from '@docsvision/webclient/Generated/DocsVision.WebClient.Models';
 
 
-
-export const signPowerOfAttorney = async (sender: CustomButton, refreshLayout = true) => {
+export const signPowerOfAttorney = async (sender: CustomButton, refreshLayout = true, showMessage = true) => {
     const powerOfAttorneyUserCardId = sender.layout.getService($CardId);
     const powerOfAttorneyId = await sender.layout.getService($PowersOfAttorneyDemoController).getPowerOfAttorneyCardId(powerOfAttorneyUserCardId);
     await sender.layout.params.services.digitalSignature.showDocumentSignDialog(powerOfAttorneyUserCardId,
@@ -20,29 +20,36 @@ export const signPowerOfAttorney = async (sender: CustomButton, refreshLayout = 
             dialogProps: {
                 hideSimpleSign: true
             },
+            sourceCardInfo: sender.layout.cardInfo,
             onCreateSignature: async (options) => {
-                const signatureData = await sender.layout.getService($PowerOfAttorneyApiController).getMachineReadablePowerOfAttorneyData(powerOfAttorneyId);
-                const info = new EncryptedInfo(options.method.certificateInfo.thumberprint);
-                info.Attributes.push(new EncryptedAttribute(Crypto.DocumentNameOIDAttribute, getBstrBase64(signatureData.fileName)));
-                const signature = await Crypto.SignData(info, signatureData.content);
-                if (signature) {
-                    try {
-                        await sender.layout.getService($PowerOfAttorneyApiController).attachSignatureToPowerOfAttorney({ powerOfAttorneyId, signature });
-                        const operationId = sender.layout.layoutInfo.operations.find(operation => operation.alias === "Sign").id;
-                        if (refreshLayout) {
-                            await sender.layout.changeState(operationId);
-                            sender.layout.getService($Router).refresh();
+                if (options.method.certificateInfo.source === GenModels.SignatureMethodSources.Cloud) {
+                    await sender.layout.getService($MessageWindow).showWarning(resources.PowerOfAttorneyCloudSignatureWarning);
+                } else {
+                    const signatureData = await sender.layout.getService($PowerOfAttorneyApiController).getMachineReadablePowerOfAttorneyData(powerOfAttorneyId);
+                    const info = new EncryptedInfo(options.method.certificateInfo.thumberprint);
+                    info.Attributes.push(new EncryptedAttribute(Crypto.DocumentNameOIDAttribute, getBstrBase64(signatureData.fileName)));
+                    const signature = await Crypto.SignData(info, signatureData.content);
+                    if (signature) {
+                        try {
+                            await sender.layout.getService($PowerOfAttorneyApiController).attachSignatureToPowerOfAttorney({ powerOfAttorneyId, signature });
+                            const operationId = sender.layout.layoutInfo.operations.find(operation => operation.alias === "Sign").id;
+                            if (refreshLayout) {
+                                await sender.layout.changeState(operationId);
+                                sender.layout.getService($Router).refresh();
+                            }
+                        } catch (err) {
+                            console.error(err);
+                            return Promise.reject();
                         }
-                    } catch (err) {
-                        console.error(err);
-                        return Promise.reject();
+                    }
+                    if (showMessage) {
+                        await sender.layout.getService($MessageWindow).showInfo(resources.PowerOfAttorneySigned);
                     }
                 }
                 return {} as IEncryptedInfo;
             },
             onAttachSignatureToCard: async () => { }
         });
-        await sender.layout.getService($MessageWindow).showInfo(resources.PowerOfAttorneySigned);
 }
 
 
