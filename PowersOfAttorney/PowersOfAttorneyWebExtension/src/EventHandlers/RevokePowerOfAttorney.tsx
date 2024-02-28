@@ -25,6 +25,7 @@ import { IEventArgs } from "@docsvision/webclient/System/IEventArgs";
 
 
 export const revokePowerOfAttorney = async (sender: CustomButton, e: IEventArgs, onAttachSignatureToCardCallback: Function = null, showMessage: boolean = true) => {
+    sender.params.isLoading = true;
     const items = [{ key: PowerOfAttorneyRevocationType.Principal.toString(), value: resources.CancellationOfThePowerOfAttorneyByThePrincipal }, { key: PowerOfAttorneyRevocationType.Representative.toString(), value: resources.RefusalOfTheRepresentativeFromThePowers }]
     const powerOfAttorneyUserCardId = sender.layout.getService($CardId);
     const powerOfAttorneyNumber = await sender.layout.getService($PowersOfAttorneyDemoController).getPowerOfAttorneyNumber(powerOfAttorneyUserCardId);
@@ -109,10 +110,12 @@ export const revokePowerOfAttorney = async (sender: CustomButton, e: IEventArgs,
     ));
 
     modalHost.mount();
+    sender.params.isLoading = false;
     return modalHost;
 }
 
 export const revokePowerOfAttorneyWithoutApplication = async (sender: CustomButton) => {
+    sender.params.isLoading = true;
     const powerOfAttorneyUserCardId = sender.layout.getService($CardId);
     const powerOfAttorneyId = await sender.layout.getService($PowersOfAttorneyDemoController).getPowerOfAttorneyCardId(powerOfAttorneyUserCardId);
     await sender.layout.getService($PowerOfAttorneyApiController).markAsRevokedPowerOfAttorney({ powerOfAttorneyId, withChildrenPowerOfAttorney: true });
@@ -120,4 +123,5 @@ export const revokePowerOfAttorneyWithoutApplication = async (sender: CustomButt
     await sender.layout.changeState(operationId);
     sender.layout.getService($Router).refresh();
     sender.layout.getService($MessageWindow).showInfo(resources.PowerOfAttorneyRevoked);
+    sender.params.isLoading = false;
 }

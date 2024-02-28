@@ -6,11 +6,11 @@ import { revokePowerOfAttorney } from "./RevokePowerOfAttorney";
 import { resources } from "@docsvision/webclient/System/Resources";
 import { IEventArgs } from "@docsvision/webclient/System/IEventArgs";
 
-export const recallPowerOfAttorney = async (sender: CustomButton) => {
-    const powerOfAttorneyId = sender.layout.controls.powerOfAttorneySysCard.params.value?.cardId;
-
-    const powersOfAttorneyButtonController = sender.layout.getService($PowersOfAttorneyButtonController);
+export const recallPowerOfAttorney = async (sender: CustomButton) => {    
+    sender.params.isLoading = true;
     
+    const powerOfAttorneyId = sender.layout.controls.powerOfAttorneySysCard.params.value?.cardId;
+    const powersOfAttorneyButtonController = sender.layout.getService($PowersOfAttorneyButtonController);    
     const employeeId = sender.layout.getService($ApplicationSettings).employee.id
     
     powersOfAttorneyButtonController?.recallPowerOfAttorney(powerOfAttorneyId, employeeId).then(msg => {
@@ -19,10 +19,11 @@ export const recallPowerOfAttorney = async (sender: CustomButton) => {
         } else {
             MessageBox.ShowError(msg.Message);
         }
-    });
+    }).finally(() => { sender.params.isLoading = false; });
 };
 
 export const revokeAndRecallPowerOfAttorney = async (sender: CustomButton, e: IEventArgs) => {
+    sender.params.isLoading = true;
     const powersOfAttorneyButtonController = sender.layout.getService($PowersOfAttorneyButtonController);
     const employeeId = sender.layout.getService($ApplicationSettings).employee.id;
     const powerOfAttorneyId = sender.layout.controls.powerOfAttorneySysCard.params.value?.cardId;
@@ -44,5 +45,5 @@ export const revokeAndRecallPowerOfAttorney = async (sender: CustomButton, e: IE
         } else {
             MessageBox.ShowError(msg.Message);
         }
-    });
+    }).finally(() => { sender.params.isLoading = false; });
 };

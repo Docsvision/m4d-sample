@@ -9,6 +9,7 @@ import { $PowersOfAttorneyDemoController } from "../../ServerRequests/PowersOfAt
 
 
 export const createPowerOfAttorney = async (sender: CustomButton) => {
+    sender.params.isLoading = true;
     const powerOfAttorneyUserCardId = sender.layout.getService($CardId);
     const powerOfAttorneyId = sender.layout.controls.powerOfAttorneySysCard.params.value?.cardId;    
     await sender.layout.getService($PowersOfAttorneyDemoController).createPowerOfAttorney(powerOfAttorneyUserCardId);
@@ -21,6 +22,7 @@ export const createPowerOfAttorney = async (sender: CustomButton) => {
     }
     const operationId = sender.layout.layoutInfo.operations.find(operation => operation.alias === "Create").id;
     await sender.layout.getService($LayoutCardController).changeState({cardId:powerOfAttorneyUserCardId, operationId: operationId, timestamp: sender.layout.cardInfo.timestamp, comment: "", layoutParams: sender.layout.layoutInfo.layoutParams});
+    sender.params.isLoading = false;
     sender.layout.getService($Router).refresh();
-    sender.layout.getService($MessageWindow).showInfo(resources.PowerOfAttorneyGenerated);
+    sender.layout.getService($MessageWindow).showInfo(resources.PowerOfAttorneyGenerated);    
 }
