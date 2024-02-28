@@ -3,10 +3,10 @@ import { $CardId } from "@docsvision/webclient/System/LayoutServices";
 import { $PowersOfAttorneyDemoController } from "../ServerRequests/PowersOfAttorneyDemoController";
 
 export const exportPowerOfAttorneyWithSignature = async (sender: CustomButton) => {
-    sender.params.isLoading = true;
-    const powerOfAttorneyUserCardId = sender.layout.getService($CardId);
-    const powerOfAttorneyId = await sender.layout.getService($PowersOfAttorneyDemoController).getPowerOfAttorneyCardId(powerOfAttorneyUserCardId);
     try {
+        sender.params.isLoading = true;
+        const powerOfAttorneyUserCardId = sender.layout.getService($CardId);
+        const powerOfAttorneyId = await sender.layout.getService($PowersOfAttorneyDemoController).getPowerOfAttorneyCardId(powerOfAttorneyUserCardId);    
         const url  = sender.layout.params.services.urlResolver.resolveApiUrl("exportPowerOfAttorney", "powerOfAttorneyApi");
         const request = `${url}?powerOfAttorneyId=${powerOfAttorneyId}&withSignature=true`;
         sender.layout.params.services.fileDownload.download(request);
@@ -18,10 +18,10 @@ export const exportPowerOfAttorneyWithSignature = async (sender: CustomButton) =
 }
 
 export const exportPowerOfAttorneyWithoutSignature = async (sender: CustomButton) => {
-    sender.params.isLoading = true;
-    const powerOfAttorneyUserCardId = sender.layout.getService($CardId);
-    const powerOfAttorneyId = await sender.layout.getService($PowersOfAttorneyDemoController).getPowerOfAttorneyCardId(powerOfAttorneyUserCardId);
     try {
+        sender.params.isLoading = true;
+        const powerOfAttorneyUserCardId = sender.layout.getService($CardId);
+        const powerOfAttorneyId = await sender.layout.getService($PowersOfAttorneyDemoController).getPowerOfAttorneyCardId(powerOfAttorneyUserCardId);    
         const url  = sender.layout.params.services.urlResolver.resolveApiUrl("exportPowerOfAttorney", "powerOfAttorneyApi");
         const request = `${url}?powerOfAttorneyId=${powerOfAttorneyId}&withSignature=false`;
         sender.layout.params.services.fileDownload.download(request);
