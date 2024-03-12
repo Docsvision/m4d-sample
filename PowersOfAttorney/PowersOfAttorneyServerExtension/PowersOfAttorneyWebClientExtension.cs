@@ -1,13 +1,12 @@
-﻿using Autofac;
+﻿using DocsVision.WebClient.Extensibility;
 
-using DocsVision.WebClient.Extensibility;
+using Microsoft.Extensions.DependencyInjection;
 
 using PowersOfAttorneyServerExtension.Services;
 
 using System;
 using System.Diagnostics;
 using System.Reflection;
-using System.Resources;
 
 namespace PowersOfAttorneyServerExtension
 {
@@ -16,15 +15,6 @@ namespace PowersOfAttorneyServerExtension
     /// </summary>
     public class PowersOfAttorneyDemoWebClientExtension : WebClientExtension
     {
-        /// <summary>
-        /// Создаёт новый экземпляр <see cref="LayoutWebClientExtension" />
-        /// </summary>
-        /// <param name="serviceProvider">Сервис-провайдер</param>
-        public PowersOfAttorneyDemoWebClientExtension(IServiceProvider serviceProvider)
-            : base(serviceProvider)
-        {
-        }
-
         /// <summary>
         /// Получить название расширения
         /// </summary>
@@ -43,12 +33,12 @@ namespace PowersOfAttorneyServerExtension
 
         #region WebClientExtension Overrides
 
-        public override void InitializeContainer(global::Autofac.ContainerBuilder containerBuilder)
+        public override void InitializeServiceCollection(IServiceCollection services)
         {
-            containerBuilder.RegisterType<PowersOfAttorneyDemoService>().As<IPowersOfAttorneyDemoService>().SingleInstance();
-            containerBuilder.RegisterInstance(Resources.ResourceManager).As<ResourceManager>();
-        }
+            services.AddSingleton<IPowersOfAttorneyDemoService, PowersOfAttorneyDemoService>();
+            services.AddSingleton(Resources.ResourceManager);
 
+        }
         #endregion
     }
 }
