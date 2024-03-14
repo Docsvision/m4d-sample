@@ -89,9 +89,12 @@
 
 3. Публикация компонентов на сервере Web-клиент.
 
-   1. Скопируйте папку `PowersOfAttorney\SamplesOutput\Site\Content\Modules\PowersOfAttorneyWebExtension\` в  `<Каталог установки Web-клиента>\Site\Content\Modules`.
-   2. Скопируйте папку `PowersOfAttorney\SamplesOutput\Site\Extensions\PowersOfAttorneyServerExtension` в  `<Каталог установки Web-клиента>\Site\Extensions`.
-   3. Перезапустите IIS.
+   1. Скопируйте папку `PowersOfAttorney\SamplesOutput\Site\Content\Modules\PowersOfAttorneyWebExtension` в  `<Каталог установки Web-клиента>\Site\Content\Modules`.
+   2. Скопируйте файл `PowersOfAttorney\SamplesOutput\Site\Extensions\PowersOfAttorneyServerExtension\PowersOfAttorneyServerExtension.dll` в  `<Каталог установки Web-клиента>\Site\Extensions`.
+   3. Скопируйте файл `PowersOfAttorney\SamplesOutput\Site\Extensions\PowersOfAttorneyServerExtension\PowersOfAttorneyServerExtension.resources.dll` в  `<Каталог установки Web-клиента>\Site\Extensions\ru`.
+   4. Скопируйте файл `PowersOfAttorney\SamplesOutput\Site\Extensions\PowersOfAttorney.UserCard.Common\PowersOfAttorney.UserCard.Common.dll` в `<Каталог установки Web-клиента>\Site\Extensions`.
+   5. Скопируйте файл `PowersOfAttorney\SamplesOutput\Site\Extensions\PowersOfAttorney.UserCard.Common\PowersOfAttorney.UserCard.Common.resources.dll` в `<Каталог установки Web-клиента>\Site\Extensions\ru`.
+   6. Перезапустите IIS.
 
 ## Проверка примера
 
@@ -190,7 +193,7 @@
 4. Необходимо закомментировать в файле скрипта для обоих видов строчку "using CardDocumentМЧДScript = DocsVision.BackOffice.WinForms.ScriptClassBase;" 
 Она нужна только для компиляции файла скрипта в составе проекта PowersOfAttorney.Scripts.
 5. Скрипты для этих видов отличаются только названиями классов. Необходимо для каждого вида оставить только одно соответствующее ему название класса (см. комментарий в скрипте) 
-6. В скриптах необходимо добавить ссылку на сборку PowersOfAttorney.UserCard.Common.dll, которую также необходимо распрастранить на все клиентские рабочие места.
+6. В скриптах необходимо добавить ссылку на сборку PowersOfAttorney.UserCard.Common.dll, которую также необходимо распространить на все клиентские рабочие места.
 7. В конструкторе разметок необходимо добавить кнопки (например в риббон). Названия кнопок должны соответствовать обработчикам в скрипте.
 В скрипте обработчики выглядят как имяКнопки__ItemClick(); Если названия кнопки будут соответствовать обработчикам, то обработчики к кнопкам
 привяжутся автоматически, вручную их создавать не надо.
