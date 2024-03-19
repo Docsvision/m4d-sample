@@ -5,9 +5,6 @@
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 		<WarningsAsErrors>CA1416</WarningsAsErrors>
 	</PropertyGroup>
-	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-		<OutputPath>..\..\..\bin\WebClientBin\</OutputPath>
-	</PropertyGroup>
 	<ItemGroup>
 		<Reference Include="DocsVision.BackOffice.ObjectModel">
 			<HintPath>..\..\Assemblies\Docsvision\DocsVision.BackOffice.ObjectModel.dll</HintPath>
