@@ -89,11 +89,11 @@
 
 3. Публикация компонентов на сервере Web-клиент.
 
-   1. Скопируйте папку `PowersOfAttorney\SamplesOutput\Site\Content\Modules\PowersOfAttorneyWebExtension` в  `<Каталог установки Web-клиента>\Site\Content\Modules`.
-   2. Скопируйте файл `PowersOfAttorney\SamplesOutput\Site\Extensions\PowersOfAttorneyServerExtension\PowersOfAttorneyServerExtension.dll` в  `<Каталог установки Web-клиента>\Site\Extensions`.
-   3. Скопируйте файл `PowersOfAttorney\SamplesOutput\Site\Extensions\PowersOfAttorneyServerExtension\PowersOfAttorneyServerExtension.resources.dll` в  `<Каталог установки Web-клиента>\Site\Extensions\ru`.
-   4. Скопируйте файл `PowersOfAttorney\SamplesOutput\Site\Extensions\PowersOfAttorney.UserCard.Common\PowersOfAttorney.UserCard.Common.dll` в `<Каталог установки Web-клиента>\Site\Extensions`.
-   5. Скопируйте файл `PowersOfAttorney\SamplesOutput\Site\Extensions\PowersOfAttorney.UserCard.Common\PowersOfAttorney.UserCard.Common.resources.dll` в `<Каталог установки Web-клиента>\Site\Extensions\ru`.
+   1. Скопируйте папку `PowersOfAttorney\SamplesOutput\Site\Content\Modules\PowersOfAttorneyWebExtension` в  `<Каталог установки Web-клиента>\Content\Modules`.
+   2. Скопируйте файл `PowersOfAttorney\SamplesOutput\Site\Extensions\PowersOfAttorneyServerExtension\PowersOfAttorneyServerExtension.dll` в  `<Каталог установки Web-клиента>\Extensions`.
+   3. Скопируйте файл `PowersOfAttorney\SamplesOutput\Site\Extensions\PowersOfAttorneyServerExtension\PowersOfAttorneyServerExtension.resources.dll` в  `<Каталог установки Web-клиента>\Extensions\ru`.
+   4. Скопируйте файл `PowersOfAttorney\SamplesOutput\Site\Extensions\PowersOfAttorney.UserCard.Common\PowersOfAttorney.UserCard.Common.dll` в `<Каталог установки Web-клиента>\Extensions`.
+   5. Скопируйте файл `PowersOfAttorney\SamplesOutput\Site\Extensions\PowersOfAttorney.UserCard.Common\PowersOfAttorney.UserCard.Common.resources.dll` в `<Каталог установки Web-клиента>\Extensions\ru`.
    6. Перезапустите IIS.
 
 ## Проверка примера
