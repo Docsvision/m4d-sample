@@ -94,7 +94,7 @@
    3. Скопируйте файл `PowersOfAttorney\SamplesOutput\Site\Extensions\PowersOfAttorneyServerExtension\PowersOfAttorneyServerExtension.resources.dll` в  `<Каталог установки Web-клиента>\Extensions\ru`.
    4. Скопируйте файл `PowersOfAttorney\SamplesOutput\Site\Extensions\PowersOfAttorney.UserCard.Common\PowersOfAttorney.UserCard.Common.dll` в `<Каталог установки Web-клиента>\Extensions`.
    5. Скопируйте файл `PowersOfAttorney\SamplesOutput\Site\Extensions\PowersOfAttorney.UserCard.Common\PowersOfAttorney.UserCard.Common.resources.dll` в `<Каталог установки Web-клиента>\Extensions\ru`.
-   6. Перезапустите IIS.
+   6. Перезапустите dvwebclient.
 
 ## Проверка примера
 
