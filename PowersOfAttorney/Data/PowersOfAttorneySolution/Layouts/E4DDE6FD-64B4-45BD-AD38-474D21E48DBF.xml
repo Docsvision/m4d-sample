@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Layout LayoutID="E4DDE6FD-64B4-45BD-AD38-474D21E48DBF" Name="Доверенность (редактирование)" LayoutFileID="C7451A6D-121D-449A-9BEA-C4396E9ED418" LocationID="54e063eb-9c9f-494f-981d-5b8d7e51e8f6" LayoutType="1" InstanceID="3200c1f1-6caa-4c73-a169-78f3a12d155c" RowID="8D958550-8459-4DD6-8955-64FB2EBCBDCA" OwnServerID="00000000-0000-0000-0000-000000000000" ChangeServerID="00000000-0000-0000-0000-000000000000">
+<Layout RowID="8D958550-8459-4DD6-8955-64FB2EBCBDCA" OwnServerID="00000000-0000-0000-0000-000000000000" ChangeServerID="00000000-0000-0000-0000-000000000000" LayoutID="E4DDE6FD-64B4-45BD-AD38-474D21E48DBF" Name="Доверенность (редактирование)" LayoutFileID="C7451A6D-121D-449A-9BEA-C4396E9ED418" LocationID="54e063eb-9c9f-494f-981d-5b8d7e51e8f6" LayoutType="1">
   <File FileID="C7451A6D-121D-449A-9BEA-C4396E9ED418" OwnerCardID="3200C1F1-6CAA-4C73-A169-78F3A12D155C" Name="Доверенность (редактирование)" StandardAttribs="0" ExtendedAttribs="0">
     <Element Id="a53a08cb-a0a1-43b4-9576-e1e3cc0eaf72" Type="Layout">
   <Properties>

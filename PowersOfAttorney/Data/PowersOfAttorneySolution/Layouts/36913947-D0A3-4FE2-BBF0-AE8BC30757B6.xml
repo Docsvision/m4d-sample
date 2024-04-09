@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Layout LayoutID="36913947-D0A3-4FE2-BBF0-AE8BC30757B6" Name="Передоверие версии 002 (просмотр)" LayoutFileID="00640F10-B534-4C7D-893B-31ADD807EAE7" LocationID="9df7c9ab-a7b2-4061-ab3a-0c35814cdad8" LayoutType="0" InstanceID="3200c1f1-6caa-4c73-a169-78f3a12d155c" RowID="19A6CEDB-5454-499F-8019-F800222E5A1C" OwnServerID="00000000-0000-0000-0000-000000000000" ChangeServerID="00000000-0000-0000-0000-000000000000">
+<Layout RowID="19A6CEDB-5454-499F-8019-F800222E5A1C" OwnServerID="00000000-0000-0000-0000-000000000000" ChangeServerID="00000000-0000-0000-0000-000000000000" LayoutID="36913947-D0A3-4FE2-BBF0-AE8BC30757B6" Name="Передоверие версии 002 (просмотр)" LayoutFileID="00640F10-B534-4C7D-893B-31ADD807EAE7" LocationID="9df7c9ab-a7b2-4061-ab3a-0c35814cdad8" LayoutType="0">
   <File FileID="00640F10-B534-4C7D-893B-31ADD807EAE7" OwnerCardID="3200C1F1-6CAA-4C73-A169-78F3A12D155C" Name="Передоверие версии 002 (просмотр)" StandardAttribs="0" ExtendedAttribs="0">
     <Element Id="d4697622-1254-4be0-aeec-57f1bb4eb819" Type="Layout">
   <Properties>

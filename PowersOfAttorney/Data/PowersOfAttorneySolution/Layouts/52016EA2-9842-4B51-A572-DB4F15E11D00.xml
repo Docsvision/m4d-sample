@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Layout LayoutID="52016EA2-9842-4B51-A572-DB4F15E11D00" Name="Доверенность версии EMCHD_1 (просмотр)_Контур.Доверенность" LayoutFileID="B2898C05-2DE7-409D-BB03-D6D6617A6362" LocationID="6ac009bc-fd9c-4b7a-ba69-eaed27675264" LayoutType="0" InstanceID="3200c1f1-6caa-4c73-a169-78f3a12d155c" RowID="F33ABCA0-3FB0-4DFE-B584-6AD2DD498ECC" OwnServerID="00000000-0000-0000-0000-000000000000" ChangeServerID="00000000-0000-0000-0000-000000000000">
+<Layout RowID="F33ABCA0-3FB0-4DFE-B584-6AD2DD498ECC" OwnServerID="00000000-0000-0000-0000-000000000000" ChangeServerID="00000000-0000-0000-0000-000000000000" LayoutID="52016EA2-9842-4B51-A572-DB4F15E11D00" Name="Доверенность версии EMCHD_1 (просмотр)_Контур.Доверенность" LayoutFileID="B2898C05-2DE7-409D-BB03-D6D6617A6362" LocationID="6ac009bc-fd9c-4b7a-ba69-eaed27675264" LayoutType="0">
   <File FileID="B2898C05-2DE7-409D-BB03-D6D6617A6362" OwnerCardID="3200C1F1-6CAA-4C73-A169-78F3A12D155C" Name="Доверенность версии EMCHD_1 (просмотр)_Контур.Доверенность" StandardAttribs="0" ExtendedAttribs="0">
     <Element Id="955b1ca0-ceb4-4fe6-8b11-478cbe513c0e" Type="Layout">
   <Properties>

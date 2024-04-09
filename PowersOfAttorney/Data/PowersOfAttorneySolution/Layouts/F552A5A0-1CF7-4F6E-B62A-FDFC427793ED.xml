@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Layout LayoutID="F552A5A0-1CF7-4F6E-B62A-FDFC427793ED" Name="Передоверие версии EMCHD_1 (редактирование)" LayoutFileID="9B4E6A4C-60D0-4E0A-AF0C-64F015CB8808" LocationID="c19e2e52-1dce-4036-8aef-a6d600531a2a" LayoutType="1" InstanceID="3200c1f1-6caa-4c73-a169-78f3a12d155c" RowID="47E1921F-C17F-4230-B45A-AE1C2D369536" OwnServerID="00000000-0000-0000-0000-000000000000" ChangeServerID="00000000-0000-0000-0000-000000000000">
+<Layout RowID="47E1921F-C17F-4230-B45A-AE1C2D369536" OwnServerID="00000000-0000-0000-0000-000000000000" ChangeServerID="00000000-0000-0000-0000-000000000000" LayoutID="F552A5A0-1CF7-4F6E-B62A-FDFC427793ED" Name="Передоверие версии EMCHD_1 (редактирование)" LayoutFileID="9B4E6A4C-60D0-4E0A-AF0C-64F015CB8808" LocationID="c19e2e52-1dce-4036-8aef-a6d600531a2a" LayoutType="1">
   <File FileID="9B4E6A4C-60D0-4E0A-AF0C-64F015CB8808" OwnerCardID="3200C1F1-6CAA-4C73-A169-78F3A12D155C" Name="Передоверие версии EMCHD_1 (редактирование)" StandardAttribs="0" ExtendedAttribs="0">
     <Element Id="a53a08cb-a0a1-43b4-9576-e1e3cc0eaf72" Type="Layout">
   <Properties>
