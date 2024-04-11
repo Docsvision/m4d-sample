@@ -32,6 +32,7 @@
     <Binding PropertyName="c5357518-7cbf-4326-8533-04780533025c" BindingMode="0" EditOperation="98b1de1b-1901-4632-b2ab-1f47cd574fa7" IsInheritedEditOperation="false" IsAsync="false" />
     <Binding PropertyName="f2b137b0-b86c-4c71-9129-e80d9986214d" BindingMode="0" EditOperation="bcc56dab-c813-4902-8eca-87d7075a17af" IsInheritedEditOperation="false" IsAsync="false" />
     <Binding PropertyName="fc8954f0-38d9-46cd-8f7a-6dcfe27eaf42" BindingMode="0" EditOperation="07e7c119-1ff2-4652-88f7-04d94fad8088" IsInheritedEditOperation="false" IsAsync="false" />
+    <Binding PropertyName="bcf38b35-f375-47aa-b64a-ff1190aaa173" BindingMode="0" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
     <Binding PropertyName="2af61c57-bd41-49e8-8ce7-b7e5fe84a4f0" BindingMode="0" ConverterType="Operations" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false">
       <Items>
         <Item>
@@ -891,6 +892,42 @@
                     <Property Name="Primary" Value="false" Type="System.Boolean, System.Private.CoreLib" IsAvailable="true" />
                     <Property Name="StretchWidth" Value="true" Type="System.Boolean, System.Private.CoreLib" IsAvailable="true" />
                     <Property Name="Click" Value="revokePowerOfAttorney" Type="System.String, System.Private.CoreLib" IsAvailable="true" />
+                    <Property Name="MouseOver" Value="" Type="System.String, System.Private.CoreLib" IsAvailable="true" />
+                    <Property Name="MouseOut" Value="" Type="System.String, System.Private.CoreLib" IsAvailable="true" />
+                    <Property Name="Focus" Value="" Type="System.String, System.Private.CoreLib" IsAvailable="true" />
+                    <Property Name="Blur" Value="" Type="System.String, System.Private.CoreLib" IsAvailable="true" />
+                  </Properties>
+                </Element>
+                <Element Id="35f73ba0-dde4-4c9c-9b34-2b42d4fc743d" Type="CustomButton">
+                  <Properties>
+                    <Property Name="Tag" Value="" Type="System.String, System.Private.CoreLib" IsAvailable="true" />
+                    <Property Name="Name" Value="exportRevocAppButton" Type="System.String, System.Private.CoreLib" IsAvailable="true" />
+                    <Property Name="Tip" Value="9ff4d1ee-84e6-4296-a5b1-0c82503c143f" Type="System.String, System.Private.CoreLib" ResolverType="Localized" IsAvailable="true" />
+                    <Property Name="Visibility" Type="System.String, System.Private.CoreLib" ResolverType="DeviceDependent" IsAvailable="true">
+                      <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                        <Desktop>true</Desktop>
+                        <Tablet>true</Tablet>
+                        <Smartphone>true</Smartphone>
+                        <CanChange>true</CanChange>
+                      </DeviceDependentPropertyOfBoolean>
+                    </Property>
+                    <Property Name="VisibilityEditOperation" Value="8e8ac77a-a86a-44d3-80fd-f035a1466fb5" Type="System.Guid, System.Private.CoreLib" IsAvailable="true" />
+                    <Property Name="StandardCssClass" Value="system-button" Type="System.String, System.Private.CoreLib" IsAvailable="true" />
+                    <Property Name="TabStop" Value="true" Type="System.Boolean, System.Private.CoreLib" IsAvailable="true" />
+                    <Property Name="BindingEditOperation" Value="bcf38b35-f375-47aa-b64a-ff1190aaa173" Type="System.String, System.Private.CoreLib" ResolverType="Binding" IsAvailable="true" />
+                    <Property Name="IsInheritedEditOperation" Value="true" Type="System.Boolean, System.Private.CoreLib" IsAvailable="true" />
+                    <Property Name="Disabled" Type="System.String, System.Private.CoreLib" ResolverType="DeviceDependent" IsAvailable="true">
+                      <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                        <Desktop>false</Desktop>
+                        <Tablet>false</Tablet>
+                        <Smartphone>false</Smartphone>
+                        <CanChange>true</CanChange>
+                      </DeviceDependentPropertyOfBoolean>
+                    </Property>
+                    <Property Name="Text" Value="9ff4d1ee-84e6-4296-a5b1-0c82503c143f" Type="System.String, System.Private.CoreLib" ResolverType="Localized" IsAvailable="true" />
+                    <Property Name="Primary" Value="false" Type="System.Boolean, System.Private.CoreLib" IsAvailable="true" />
+                    <Property Name="StretchWidth" Value="true" Type="System.Boolean, System.Private.CoreLib" IsAvailable="true" />
+                    <Property Name="Click" Value="exportApplicationForRevocation" Type="System.String, System.Private.CoreLib" IsAvailable="true" />
                     <Property Name="MouseOver" Value="" Type="System.String, System.Private.CoreLib" IsAvailable="true" />
                     <Property Name="MouseOut" Value="" Type="System.String, System.Private.CoreLib" IsAvailable="true" />
                     <Property Name="Focus" Value="" Type="System.String, System.Private.CoreLib" IsAvailable="true" />
