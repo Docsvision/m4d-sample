@@ -263,7 +263,9 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
                     JointRepresentationType = userCard.GenJointExerPowers ?? throw new ApplicationException(Resources.Error_JointExerIsEmpty),
                 };
 
-                if (userCard.GenLossPowersTransfer != null)
+                if (userCard.GenPossibilityOfSubstitution != null &&
+                    userCard.GenPossibilityOfSubstitution != GenPossibilityOfSubstitutionTypes.withoutSubstitution
+                    && userCard.GenLossPowersTransfer != null)
                     part.LossOfAuthorityType = Convert(userCard.GenLossPowersTransfer);
 
                 if (powersType == PowerOfAttorneyEMCHDData.AuthorityType.Code)
