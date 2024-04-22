@@ -265,7 +265,7 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
         /// <summary>
         /// Признак утраты полномочий при передоверии
         /// </summary>
-        public int? LossOfAuthorityType => genMchdSection.GetIntValue(Fields.LossPowersSubst);
+        public int? LossOfAuthorityType => genMchdSection.GetIntValue(Fields.LossOfPowersUponSubstitution);
 
         /// <summary>
         /// Код вида документа, удостоверяющий физлицо, действующее без доверенности
