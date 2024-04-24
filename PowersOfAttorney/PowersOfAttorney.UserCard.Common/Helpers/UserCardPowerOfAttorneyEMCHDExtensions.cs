@@ -111,7 +111,7 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
                                             DocumentKindCode = userCard.GenTypeCodeCEOIDDoc?.ToString(),
                                             DocumentSerialNumber = userCard.GenSerNumCEOIDDoc,
                                             ExpDate = userCard.GenDateExpCEOIDDoc,
-                                            IssueDate = userCard.GenDateIssCEOIDDoc ?? DateTime.MinValue,
+                                            IssueDate = userCard.GenDateIssCEOIDDoc ?? throw new ApplicationException(Resources.Error_DateIssCEOIDDocIsEmpty),
                                             Issuer = userCard.GenAuthIssCEOIDDoc,
                                             IssuerCode = userCard.GenCodeAuthDivIssCEOIDDoc
                                         } 
