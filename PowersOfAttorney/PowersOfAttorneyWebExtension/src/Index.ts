@@ -22,8 +22,8 @@ import * as CustomizeSingleFormatSPOACardForViewLayout from "./EventHandlers/Ver
 import * as CreateEMCHDRetrustPowerOfAttorney from "./EventHandlers/Version EMCHD_1/CreateEMCHDRetrustPowerOfAttorney";
 import * as ExportApplicationForRevocation from "./EventHandlers/ExportApplicationForRevocation";
 import * as PowerOfAttorneyRegistration from "./EventHandlers/PowerOfAttorneyRegistration";
-import * as SignAndSendPowerOfAttorneyToRegistrationAsFile from "./EventHandlers/SignAndsEndPowerOfAttorneyToRegistrationAsFile";
-import * as SignAndSendPowerOfAttorneyToRegistrationAsFileFromTask from "./EventHandlers/SignAndsEndPowerOfAttorneyToRegistrationAsFileFromTask";
+import * as SignAndSendPowerOfAttorneyToRegistrationAsFile from "./EventHandlers/SignAndSendPowerOfAttorneyToRegistrationAsFile";
+import * as SignAndSendPowerOfAttorneyToRegistrationAsFileFromTask from "./EventHandlers/SignAndSendPowerOfAttorneyToRegistrationAsFileFromTask";
 import * as SendForRegistrationToRegistry  from "./EventHandlers/SendForRegistrationToRegistry";
 import * as RecallPOwerOfAttorney from "./EventHandlers/RecallPowerOfAttorney";
 import * as CheckPowerOfAttorney from './EventHandlers/CheckPowerOfAttorney'
