@@ -105,15 +105,18 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
                                         MiddleName = ceo.MiddleName.AsNullable()
                                     },
                                     Gender = userCard.GenCeoGender,
-                                    IdentityCard = new PowerOfAttorneyEMCHDData.IdentityCardOfIndividual
-                                    {
-                                        DocumentKindCode = userCard.GenTypeCodeCEOIDDoc?.ToString(),
-                                        DocumentSerialNumber = userCard.GenSerNumCEOIDDoc,
-                                        ExpDate = userCard.GenDateExpCEOIDDoc,
-                                        IssueDate = userCard.GenDateIssCEOIDDoc ?? throw new ApplicationException(Resources.Error_DateIssCEOIDDocIsEmpty),
-                                        Issuer = userCard.GenAuthIssCEOIDDoc,
-                                        IssuerCode = userCard.GenCodeAuthDivIssCEOIDDoc
-                                    },
+                                    IdentityCard = userCard.GenTypeCodeCEOIDDoc != null ? 
+                                        new PowerOfAttorneyEMCHDData.IdentityCardOfIndividual
+                                        {
+                                            DocumentKindCode = userCard.GenTypeCodeCEOIDDoc?.ToString(),
+                                            DocumentSerialNumber = userCard.GenSerNumCEOIDDoc,
+                                            ExpDate = userCard.GenDateExpCEOIDDoc,
+                                            IssueDate = userCard.GenDateIssCEOIDDoc ?? DateTime.MinValue,
+                                            Issuer = userCard.GenAuthIssCEOIDDoc,
+                                            IssuerCode = userCard.GenCodeAuthDivIssCEOIDDoc
+                                        } 
+                                        : 
+                                        null,
                                     ResidenceAddress = userCard.IsB2BScopeOnly() ? null : new PowerOfAttorneyEMCHDData.AddressInfo
                                     {
                                         Address = userCard.GenCeoAddrRussia,
