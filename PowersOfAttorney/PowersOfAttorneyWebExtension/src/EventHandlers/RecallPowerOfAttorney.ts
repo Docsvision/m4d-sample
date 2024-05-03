@@ -27,22 +27,10 @@ export const recallPowerOfAttorney = async (sender: CustomButton) => {
 
 export const revokeAndRecallPowerOfAttorney = async (sender: CustomButton, e: IEventArgs) => {
     try {
-        sender.params.isLoading = true;
+        sender.params.isLoading = true; 
         const powersOfAttorneyButtonController = sender.layout.getService($PowersOfAttorneyButtonController);
         const employeeId = sender.layout.getService($ApplicationSettings).employee.id;
-        const powerOfAttorneyId = sender.layout.controls.powerOfAttorneySysCard.params.value?.cardId;
-        const operationId = sender.layout.layoutInfo.operations.find(operation => operation.alias === "To revoke").id;
-
-        const onAttachSignatureToCard = async (sender) => {
-            const msg = await powersOfAttorneyButtonController?.recallPowerOfAttorney(powerOfAttorneyId, employeeId)
-            if (msg.Success) {
-                MessageBox.ShowInfo(resources.M4DRegistry_Recall_Success);
-                await sender.layout.changeState(operationId);
-            } else {
-                MessageBox.ShowError(msg.Message);
-            }
-        };
-
+        const powerOfAttorneyId = sender.layout.controls.powerOfAttorneySysCard.params.value?.cardId;                            
         powersOfAttorneyButtonController?.checkCardTransferLogStatus(powerOfAttorneyId, employeeId).then(async msg => {
             if (msg.Success) {
                 await revokePowerOfAttorney(sender, e, onAttachSignatureToCard, false);
@@ -52,5 +40,20 @@ export const revokeAndRecallPowerOfAttorney = async (sender: CustomButton, e: IE
         });
     } finally {
         sender.params.isLoading = false;
+    }
+};
+
+
+const onAttachSignatureToCard = async (sender: CustomButton) => {
+    const operationId = sender.layout.layoutInfo.operations.find(operation => operation.alias === "To revoke").id; 
+    const powersOfAttorneyButtonController = sender.layout.getService($PowersOfAttorneyButtonController);
+    const employeeId = sender.layout.getService($ApplicationSettings).employee.id;
+    const powerOfAttorneyId = sender.layout.controls.powerOfAttorneySysCard.params.value?.cardId; 
+    const msg = await powersOfAttorneyButtonController?.recallPowerOfAttorney(powerOfAttorneyId, employeeId)
+    if (msg.Success) {
+        MessageBox.ShowInfo(resources.M4DRegistry_Recall_Success);
+        await sender.layout.changeState(operationId);
+    } else {
+        MessageBox.ShowError(msg.Message);
     }
 };
