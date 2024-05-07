@@ -16,8 +16,6 @@ export const recallPowerOfAttorney = async (sender: CustomButton) => {
         
         const msg = await powersOfAttorneyButtonController?.recallPowerOfAttorney(powerOfAttorneyId, employeeId);
         sender.layout.getService($MessageWindow).showInfo(msg); 
-    } catch(err) {
-        sender.layout.getService($MessageWindow).showError(err?.message || err);
     } finally {
         sender.params.isLoading = false;
     }
@@ -32,8 +30,6 @@ export const revokeAndRecallPowerOfAttorney = async (sender: CustomButton, e: IE
       
         await powersOfAttorneyButtonController?.checkCardTransferLogStatus(powerOfAttorneyId, employeeId);
         await revokePowerOfAttorney(sender, e, onAttachSignatureToCard, false);
-    } catch(err) {
-        sender.layout.getService($MessageWindow).showError(err?.message || err);
     } finally {
         sender.params.isLoading = false;
     }
@@ -46,11 +42,7 @@ const onAttachSignatureToCard = async (sender: CustomButton) => {
     const employeeId = sender.layout.getService($ApplicationSettings).employee.id;
     const powerOfAttorneyId = sender.layout.controls.powerOfAttorneySysCard.params.value?.cardId; 
 
-    try {
-        await powersOfAttorneyButtonController?.recallPowerOfAttorney(powerOfAttorneyId, employeeId)
-        sender.layout.getService($MessageWindow).showInfo(resources.M4DRegistry_Recall_Success);
-        await sender.layout.changeState(operationId);
-    } catch(err) {
-        sender.layout.getService($MessageWindow).showError(err?.message || err);
-    }
+    await powersOfAttorneyButtonController?.recallPowerOfAttorney(powerOfAttorneyId, employeeId)
+    sender.layout.getService($MessageWindow).showInfo(resources.M4DRegistry_Recall_Success);
+    await sender.layout.changeState(operationId);
 };
