@@ -408,7 +408,8 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
                             FiasAddress = userCard.GenFiasCEOAddrRussia,
                             FiasCode = userCard.GenCeoFIASAddrID
                         }
-                    },                    
+                    },
+                    Inn = userCard.GenCeoIIN,
                     ParticipantStatus = userCard.GenNotarStatOfSoleExBody,
                     Position = userCard.GenCeoPosition,
                     Snils = userCard.GenCeoSNILS
