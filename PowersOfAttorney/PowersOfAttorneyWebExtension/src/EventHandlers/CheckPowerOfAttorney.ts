@@ -1,7 +1,7 @@
 import { CustomButton } from "@docsvision/webclient/Platform/CustomButton";
 import { $ApplicationSettings } from "@docsvision/webclient/StandardServices";
 import { $PowersOfAttorneyButtonController } from "../ServerRequests/PowersOfAttorneyButtonController";
-import { MessageBox } from "@docsvision/webclient/Helpers/MessageBox/MessageBox";
+import { $MessageWindow } from "@docsvision/web/components/modals/message-box";
 
 export const checkPowerOfAttorney = async (sender: CustomButton) => {
     const powerOfAttorneyId = sender.layout.controls.powerOfAttorneySysCard.params.value?.cardId;
@@ -10,11 +10,6 @@ export const checkPowerOfAttorney = async (sender: CustomButton) => {
 
     const employeeId = sender.layout.getService($ApplicationSettings).employee.id;
 
-    powersOfAttorneyButtonController?.checkPowerOfAttorney(powerOfAttorneyId, employeeId).then(msg => {
-        if (msg.Success) {
-            msg.Data && MessageBox.ShowInfo(msg.Data);
-        } else {
-            MessageBox.ShowError(msg.Message);
-        }
-    });
+    const msg = await powersOfAttorneyButtonController?.checkPowerOfAttorney(powerOfAttorneyId, employeeId)
+    sender.layout.getService($MessageWindow).showInfo(msg);
 };

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Layout LayoutID="8252C1F7-733C-488B-A4FE-FA00AFBE408A" Name="Подписание МЧД (просмотр)_Контур.Доверенность" LayoutFileID="A0DA4A33-C1AD-4482-BD71-1E87874158BA" LocationID="77448616-4851-482a-8d2f-4b5fa6cf3682" LayoutType="0" InstanceID="3200c1f1-6caa-4c73-a169-78f3a12d155c" RowID="9717DAF3-E084-4D8A-A3D3-674D4582E7FE" OwnServerID="00000000-0000-0000-0000-000000000000" ChangeServerID="00000000-0000-0000-0000-000000000000">
+<Layout RowID="9717DAF3-E084-4D8A-A3D3-674D4582E7FE" OwnServerID="00000000-0000-0000-0000-000000000000" ChangeServerID="00000000-0000-0000-0000-000000000000" LayoutID="8252C1F7-733C-488B-A4FE-FA00AFBE408A" Name="Подписание МЧД (просмотр)_Контур.Доверенность" LayoutFileID="A0DA4A33-C1AD-4482-BD71-1E87874158BA" LocationID="77448616-4851-482a-8d2f-4b5fa6cf3682" LayoutType="0">
   <File FileID="A0DA4A33-C1AD-4482-BD71-1E87874158BA" OwnerCardID="3200C1F1-6CAA-4C73-A169-78F3A12D155C" Name="Подписание МЧД (просмотр)_Контур.Доверенность" StandardAttribs="0" ExtendedAttribs="0">
     <Element Id="474de651-5034-455e-8750-1567ab5a4285" Type="Layout">
   <Properties>

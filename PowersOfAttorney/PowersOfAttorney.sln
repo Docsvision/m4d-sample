@@ -1,13 +1,12 @@
-﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowersOfAttorneyServerExtension", "PowersOfAttorneyServerExtension\PowersOfAttorneyServerExtension.csproj", "{92B6FB47-02BE-4449-BCDF-9A85A803D3E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowersOfAttorney.Scripts", "PowersOfAttorney.Scripts\PowersOfAttorney.Scripts.csproj", "{FDF07623-C4D6-4547-A934-85D3E1FF6768}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PowersOfAttorney.Scripts", "PowersOfAttorney.Scripts\PowersOfAttorney.Scripts.csproj", "{FDF07623-C4D6-4547-A934-85D3E1FF6768}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowersOfAttorney.UserCard.Common", "PowersOfAttorney.UserCard.Common\PowersOfAttorney.UserCard.Common.csproj", "{519E9DF2-0B3A-4582-BD54-260D52BECA12}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PowersOfAttorney.UserCard.Common", "PowersOfAttorney.UserCard.Common\PowersOfAttorney.UserCard.Common.csproj", "{519E9DF2-0B3A-4582-BD54-260D52BECA12}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

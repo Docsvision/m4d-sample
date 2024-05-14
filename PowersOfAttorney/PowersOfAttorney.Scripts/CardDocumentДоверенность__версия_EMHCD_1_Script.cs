@@ -47,7 +47,8 @@ namespace BackOffice
                 var powerOfAttorney = this.PowerOfAttorneyService.CreatePowerOfAttorney(userCardPOA.PowerOfAttorneyData,
                                                                                         userCardPOA.Representative,
                                                                                         userCardPOA.Signer,
-                                                                                        powerOfAttorneyFormat);
+                                                                                        powerOfAttorneyFormat, 
+                                                                                        PowerOfAttorneyHandlingFlags.SupportDistributedRegistryFederalTaxService);
                 powerOfAttorney.MainInfo.UserCard = userCardPOA.Id;
                 powerOfAttorney.MainInfo.PrincipalINN = userCardPOA.PrincipalInn;
                 this.Context.SaveObject(powerOfAttorney);
@@ -66,7 +67,8 @@ namespace BackOffice
                 var powerOfAttorney = this.PowerOfAttorneyService.RetrustPowerOfAttorney(userCardPOA.PowerOfAttorneyData,
                                                                                         userCardPOA.Representative,
                                                                                         userCardPOA.Signer,
-                                                                                        userCardPOA.ParentalPowerOfAttorney);
+                                                                                        userCardPOA.ParentalPowerOfAttorney, 
+                                                                                        PowerOfAttorneyHandlingFlags.SupportDistributedRegistryFederalTaxService);
                 powerOfAttorney.MainInfo.UserCard = userCardPOA.Id;
                 powerOfAttorney.MainInfo.PrincipalINN = userCardPOA.PrincipalInn;
                 this.Context.SaveObject(powerOfAttorney);
@@ -82,7 +84,7 @@ namespace BackOffice
             {
                 PowerOfAttorney powerOfAttorney = GetPowerOfAttorneyCard();
 
-                this.PowerOfAttorneyService.SignPowerOfAttorney(powerOfAttorney, cert, PowerOfAttorneySignatureFormat.CADES);
+                this.PowerOfAttorneyService.SignPowerOfAttorney(powerOfAttorney, cert, PowerOfAttorneySignatureFormat.CADES, PowerOfAttorneyHandlingFlags.SupportDistributedRegistryFederalTaxService);
                 this.Context.AcceptChanges();
             }
 

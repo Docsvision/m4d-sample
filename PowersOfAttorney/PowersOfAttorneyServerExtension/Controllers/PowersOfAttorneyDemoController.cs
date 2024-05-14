@@ -4,18 +4,19 @@ using DocsVision.Platform.WebClient;
 using DocsVision.Platform.WebClient.Models;
 using DocsVision.Platform.WebClient.Models.Generic;
 
+using Microsoft.AspNetCore.Mvc;
+
 using PowersOfAttorneyServerExtension.Models;
 using PowersOfAttorneyServerExtension.Services;
 
 using System;
-using System.Web.Http;
 
 namespace PowersOfAttorneyServerExtension.Controllers
 {
     /// <summary>
     /// Представляет собой контроллер для проверки лицензии
     /// </summary>
-    public class PowersOfAttorneyDemoController : ApiController
+    public class PowersOfAttorneyDemoController : ControllerBase
     {
         private readonly ICurrentObjectContextProvider currentObjectContextProvider;
         private readonly IPowersOfAttorneyDemoService powersOfAttorneyDemoService;

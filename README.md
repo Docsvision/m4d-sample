@@ -4,15 +4,8 @@
 
 ## Требования для работы с МЧД
 
-- Минимальные версии модулей:
-
-	- Модуль Базовые объекты: версии 5.5.5, сборка 8650 и выше.
-	- Модуль Web-клиент 17: сборка 6478.177 и выше.
-
-- Рекомендуемые версии модулей:
-
-	- Модуль Базовые объекты: версии 5.5.5, сборка 8706 и выше.
-	- Модуль Web-клиент 17: сборка 6478.206 и выше.
+- Модуль Базовые объекты: версии 6.1.176 и выше.
+- Модуль Web-клиент 18: сборка 6.1.650 и выше.
 
 ## Сокращения
 
@@ -101,12 +94,12 @@
 
 3. Публикация компонентов на сервере Web-клиент.
 
-   1. Скопируйте папку `PowersOfAttorney\SamplesOutput\Site\Content\Modules\PowersOfAttorneyWebExtension` в  `<Каталог установки Web-клиента>\Site\Content\Modules`.
-   2. Скопируйте файл `PowersOfAttorney\SamplesOutput\Site\Extensions\PowersOfAttorneyServerExtension\PowersOfAttorneyServerExtension.dll` в  `<Каталог установки Web-клиента>\Site\Extensions`.
-   3. Скопируйте файл `PowersOfAttorney\SamplesOutput\Site\Extensions\PowersOfAttorneyServerExtension\PowersOfAttorneyServerExtension.resources.dll` в  `<Каталог установки Web-клиента>\Site\Extensions\ru`.
-   4. Скопируйте файл `PowersOfAttorney\SamplesOutput\Site\Extensions\PowersOfAttorney.UserCard.Common\PowersOfAttorney.UserCard.Common.dll` в `<Каталог установки Web-клиента>\Site\Extensions`.
-   5. Скопируйте файл `PowersOfAttorney\SamplesOutput\Site\Extensions\PowersOfAttorney.UserCard.Common\PowersOfAttorney.UserCard.Common.resources.dll` в `<Каталог установки Web-клиента>\Site\Extensions\ru`.
-   6. Перезапустите IIS.
+   1. Скопируйте папку `PowersOfAttorney\SamplesOutput\Site\Content\Modules\PowersOfAttorneyWebExtension` в  `<Каталог установки Web-клиента>\Content\Modules`.
+   2. Скопируйте файл `PowersOfAttorney\SamplesOutput\Site\Extensions\PowersOfAttorneyServerExtension\PowersOfAttorneyServerExtension.dll` в  `<Каталог установки Web-клиента>\Extensions`.
+   3. Скопируйте файл `PowersOfAttorney\SamplesOutput\Site\Extensions\PowersOfAttorneyServerExtension\PowersOfAttorneyServerExtension.resources.dll` в  `<Каталог установки Web-клиента>\Extensions\ru`.
+   4. Скопируйте файл `PowersOfAttorney\SamplesOutput\Site\Extensions\PowersOfAttorney.UserCard.Common\PowersOfAttorney.UserCard.Common.dll` в `<Каталог установки Web-клиента>\Extensions`.
+   5. Скопируйте файл `PowersOfAttorney\SamplesOutput\Site\Extensions\PowersOfAttorney.UserCard.Common\PowersOfAttorney.UserCard.Common.resources.dll` в `<Каталог установки Web-клиента>\Extensions\ru`.
+   6. Перезапустите dvwebclient.
 
 ## Проверка примера
 
@@ -166,10 +159,11 @@
 	Для работы через Контур.Доверенность выполните настройки описанные в [документации модуля Интеграции с реестром МЧД](https://help.docsvision.com/m4d-registry/dev/admin/connection-settings/).
 	Для этого случая, в примере решения есть преднастроенные разметки: «Доверенность версии 002 (просмотр)_Контур.Доверенность» и «Доверенность версии EMCHD_1 (просмотр)_Контур.Доверенность». 
 
-10. Нажмите кнопку подписания МЧД. Будет предложено выбрать сертификат подписи - выполнено подписание МЧД.
-   - Для создания своей разметки нужно добавить скрипт signPowerOfAttorney в качестве обработчика события "On click" на кнопку для разметок просмотра карточки доверенности и передоверия в конструкторе разметок.
+10. Нажмите кнопку подписания и отправки МЧД. Будет предложено выбрать сертификат подписи - выполнено подписание и отправка на регистрацию в ЦПРР.
+   - Разметки настроены таким образом, что Подписание и отправка МЧД на регистрацию в ЦПРР происходит автоматически, по нажатию кнопки "Подписать и отправить". Если в вашем сценарии требуется только подписывать МЧД - можно воспользоваться кнопкой "Подписать". Кнопка "Подписать" находится в разметках и скрыта. Ее необходимо сделать видимой, а кнопку "Подписать и отправить" в свою очередь скрыть.
+   - Если требуется подписание без отправки на регистрацию, можно воспользоваться скриптом signPowerOfAttorney в качестве обработчика события "On click" на кнопку для разметок просмотра карточки доверенности и передоверия в конструкторе разметок.
    - При работе через Контур.Диадок, для подписания и последующей регистрации доверенности по файлу нужно добавить скрипт signAndSendPowerOfAttorneyToRegistrationAsFile в качестве обработчика события "On click" на кнопку для разметки просмотра карточки доверенности.
-   Если требуется разделить события подписания и отправки, можно воспользоваться скриптом sendPowerOfAttorneyToRegistrationAsFile (он выполняет только отправку уже подписанной доверенности в реестр через Контур.Диадок).
+   - Если требуется разделить события подписания и отправки, можно воспользоваться скриптом sendPowerOfAttorneyToRegistrationAsFile (он выполняет только отправку уже подписанной доверенности в реестр через Контур.Диадок).
    - При работе через Контур.Доверенность, для подписания и последующей регистрации доверенности по файлу нужно добавить скрипт signAndSendForRegistrationToRegistry в качестве обработчика события "On click" на кнопку для разметки просмотра карточки доверенности.
    - Если требуется разделить события подписания и отправки, можно воспользоваться скриптом sendForRegistrationToRegistry (он выполняет только отправку уже подписанной доверенности в реестр через Контур.Доверенность).
 

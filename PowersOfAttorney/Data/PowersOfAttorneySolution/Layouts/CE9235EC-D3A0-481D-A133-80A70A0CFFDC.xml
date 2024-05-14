@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Layout LayoutID="CE9235EC-D3A0-481D-A133-80A70A0CFFDC" Name="Доверенность версии 002 (просмотр)_Контур.Доверенность" LayoutFileID="7589FE39-2738-4201-BBA2-D4D963666E61" LocationID="e1925a07-6f57-406d-9073-294381ea5aed" LayoutType="0" InstanceID="3200c1f1-6caa-4c73-a169-78f3a12d155c" RowID="5951F441-D3CC-4BE0-AC3C-5980DE89479C" OwnServerID="00000000-0000-0000-0000-000000000000" ChangeServerID="00000000-0000-0000-0000-000000000000">
+<Layout RowID="5951F441-D3CC-4BE0-AC3C-5980DE89479C" OwnServerID="00000000-0000-0000-0000-000000000000" ChangeServerID="00000000-0000-0000-0000-000000000000" LayoutID="CE9235EC-D3A0-481D-A133-80A70A0CFFDC" Name="Доверенность версии 002 (просмотр)_Контур.Доверенность" LayoutFileID="7589FE39-2738-4201-BBA2-D4D963666E61" LocationID="e1925a07-6f57-406d-9073-294381ea5aed" LayoutType="0">
   <File FileID="7589FE39-2738-4201-BBA2-D4D963666E61" OwnerCardID="3200C1F1-6CAA-4C73-A169-78F3A12D155C" Name="Доверенность версии 002 (просмотр)_Контур.Доверенность" StandardAttribs="0" ExtendedAttribs="0">
     <Element Id="d4697622-1254-4be0-aeec-57f1bb4eb819" Type="Layout">
   <Properties>
