@@ -121,13 +121,17 @@ const createAndSignApplication = async (sender: CustomButton, typeElement: Radio
         },
         onAttachSignatureToCard: async () => {
             if (!isFail) {
-                if (onAttachSignatureToCardCallback !== null) {
-                    await onAttachSignatureToCardCallback(sender);
-                } else {
-                    const operationId = sender.layout.layoutInfo.operations.find(operation => operation.alias === "To revoke").id;
-                    await sender.layout.changeState(operationId);
+                try {
+                    if (onAttachSignatureToCardCallback !== null) {
+                        await onAttachSignatureToCardCallback(sender);
+                    } else {
+                        const operationId = sender.layout.layoutInfo.operations.find(operation => operation.alias === "To revoke").id;
+                        await sender.layout.changeState(operationId);
+                    }
+                    sender.layout.getService($Router).refresh();
+                } catch (err) {
+                    console.error(err);
                 }
-                sender.layout.getService($Router).refresh();
             }
         }
     });
