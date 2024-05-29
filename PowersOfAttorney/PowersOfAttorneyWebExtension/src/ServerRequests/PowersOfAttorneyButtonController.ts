@@ -4,22 +4,22 @@ import { serviceName } from "@docsvision/webclient/System/ServiceUtils";
 export class PowersOfAttorneyButtonController {
     constructor(private services: $RequestManager) {}
 
-    sendForRegistrationToRegistry(powerOfAttorneyId: string, employeeId: string): Promise<any> {
+    sendForRegistrationToRegistry(powerOfAttorneyId: string, employeeId: string): Promise<string> {
         const url = `M4dRegistryIntegration/Register?PowerOfAttorneyId=${powerOfAttorneyId}&EmployeeId=${employeeId}`;
         return this.services.requestManager.post(url, "");
     }
 
-    recallPowerOfAttorney(powerOfAttorneyId: string, employeeId: string): Promise<any> {
+    recallPowerOfAttorney(powerOfAttorneyId: string, employeeId: string): Promise<string> {
         const url = `M4dRegistryIntegration/Recall?PowerOfAttorneyId=${powerOfAttorneyId}&EmployeeId=${employeeId}`;
         return this.services.requestManager.post(url, "");
     }
 
-    checkPowerOfAttorney(powerOfAttorneyId: string, employeeId: string): Promise<any> {
+    checkPowerOfAttorney(powerOfAttorneyId: string, employeeId: string): Promise<string> {
         const url = `M4dRegistryIntegration/Check?PowerOfAttorneyId=${powerOfAttorneyId}&EmployeeId=${employeeId}`;
         return this.services.requestManager.post(url, "");
     }
 
-    checkCardTransferLogStatus(powerOfAttorneyId: string, employeeId: string): Promise<any> {
+    checkCardTransferLogStatus(powerOfAttorneyId: string, employeeId: string): Promise<string> {
         const url = `M4dRegistryIntegration/CheckCardTransferLogStatus?PowerOfAttorneyId=${powerOfAttorneyId}&EmployeeId=${employeeId}`;
         return this.services.requestManager.post(url, "");
     }

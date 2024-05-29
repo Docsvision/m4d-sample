@@ -30,7 +30,7 @@ public static class UserCardPowerOfAttorneyFNSDOVBBExtensions
     {
         private readonly UserCardPowerOfAttorney userCard;
         private readonly IPowerOfAttorneyService powerOfAttorneyService;
-        private const int LossOfPowersUponSubstitutionLost = 1;
+        private const int LossOfPowersUponSubstitutionLost = 2;
         private readonly bool forNotary = false;
 
         private Converter(UserCardPowerOfAttorney userCard, IPowerOfAttorneyService powerOfAttorneyService)

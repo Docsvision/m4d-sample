@@ -30,12 +30,14 @@ export const customizeSingleFormatPowerOfAttorneyForEditLayout = async (sender: 
     const reprCitizenshipSign = controls.get<Dropdown>("reprCitizenshipSign");
     const poaScope = controls.get<RadioGroup>("poaScope");
     const signPossIssSubst = controls.get<RadioGroup>("signPossIssSubst");
+    const reprID = controls.get<Dropdown>("reprID");
 
     customizeInputFields(sender);
     onPowersTypeDataChanged(sender);
     onCeoCitizenshipSignDataChanged(sender);
     onReprCitizenshipSignDataChanged(sender);
     poaScope && onPoaScopeDataChanged(sender);
+    onReprIdChanged(reprID);
 
     sender.params.beforeCardSaving.subscribe(checkPowersBeforeSaving);
     entityPrincipal && entityPrincipal.params.dataChanged.subscribe(onPrincipalDataChanged);
@@ -47,6 +49,7 @@ export const customizeSingleFormatPowerOfAttorneyForEditLayout = async (sender: 
     reprCitizenshipSign && reprCitizenshipSign.params.dataChanged.subscribe(onReprCitizenshipSignDataChanged);
     poaScope && poaScope.params.dataChanged.subscribe(onPoaScopeDataChanged);
     signPossIssSubst && signPossIssSubst.params.dataChanged.subscribe(onSignPossIssSubstDataChanged);
+    reprID && reprID.params.dataChanged.subscribe(onReprIdChanged);
 }
 
 const onPoaScopeDataChanged = (sender: Layout) => {
@@ -114,6 +117,11 @@ const onCeoCitizenshipSignDataChanged = (sender: Layout) => {
         ceoCitizenship.params.visibility = true;
         ceoCitizenship.params.required = true;
     }
+}
+
+const onReprIdChanged = (sender: Dropdown) => {
+    const codeAuthIssReprID = sender.layout.controls.get<TextBox>("codeAuthIssReprID");
+    codeAuthIssReprID.params.required = sender.params.value === "passRusCitizen";
 }
 
 const onReprCitizenshipSignDataChanged = (sender: Layout) => {

@@ -1,3 +1,4 @@
+import { $MessageWindow } from "@docsvision/web/components/modals/message-box";
 import { CardLink } from "@docsvision/webclient/Platform/CardLink";
 import { Label } from "@docsvision/webclient/Platform/Label";
 import { LayoutControl } from "@docsvision/webclient/System/BaseControl";
@@ -18,12 +19,20 @@ export async function sendPowerOfAttorneyToRegistrationAsFile(sender: LayoutCont
         }
     }
     catch (err) {
+        sender.layout.getService($MessageWindow).showWarning(err?.message || err);
         console.error(err);
     }
 }
 export async function sendPowerOfAttorneyToRegistrationAsNumber(sender: LayoutControl) {
     const powerOfAttorneyIdControl = sender.layout.getService($ControlStore).get<CardLink>("powerOfAttorneySysCard");
-    edi_sendPowerOfAttorneyToRegistrationAsNumber(sender, powerOfAttorneyIdControl.value?.cardId)
+    try {
+        if (typeof edi_sendPowerOfAttorneyToRegistrationAsNumber !== 'undefined') {
+            edi_sendPowerOfAttorneyToRegistrationAsNumber(sender, powerOfAttorneyIdControl.value?.cardId)
+        }
+    } catch (err) {
+        sender.layout.getService($MessageWindow).showWarning(err?.message || err);
+        console.error(err);
+    }
 }
 export async function deleteEmployeePowerOfAttorney(sender: LayoutControl) {
     const powerOfAttorneyIdControl = sender.layout.getService($ControlStore).get<CardLink>("powerOfAttorneySysCard");

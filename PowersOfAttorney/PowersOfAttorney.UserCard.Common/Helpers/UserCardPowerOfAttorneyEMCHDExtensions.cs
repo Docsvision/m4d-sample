@@ -105,15 +105,18 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
                                         MiddleName = ceo.MiddleName.AsNullable()
                                     },
                                     Gender = userCard.GenCeoGender,
-                                    IdentityCard = new PowerOfAttorneyEMCHDData.IdentityCardOfIndividual
-                                    {
-                                        DocumentKindCode = userCard.GenTypeCodeCEOIDDoc?.ToString(),
-                                        DocumentSerialNumber = userCard.GenSerNumCEOIDDoc,
-                                        ExpDate = userCard.GenDateExpCEOIDDoc,
-                                        IssueDate = userCard.GenDateIssCEOIDDoc ?? throw new ApplicationException(Resources.Error_DateIssCEOIDDocIsEmpty),
-                                        Issuer = userCard.GenAuthIssCEOIDDoc,
-                                        IssuerCode = userCard.GenCodeAuthDivIssCEOIDDoc
-                                    },
+                                    IdentityCard = userCard.GenTypeCodeCEOIDDoc != null ? 
+                                        new PowerOfAttorneyEMCHDData.IdentityCardOfIndividual
+                                        {
+                                            DocumentKindCode = userCard.GenTypeCodeCEOIDDoc?.ToString(),
+                                            DocumentSerialNumber = userCard.GenSerNumCEOIDDoc,
+                                            ExpDate = userCard.GenDateExpCEOIDDoc,
+                                            IssueDate = userCard.GenDateIssCEOIDDoc ?? throw new ApplicationException(Resources.Error_DateIssCEOIDDocIsEmpty),
+                                            Issuer = userCard.GenAuthIssCEOIDDoc,
+                                            IssuerCode = userCard.GenCodeAuthDivIssCEOIDDoc
+                                        } 
+                                        : 
+                                        null,
                                     ResidenceAddress = userCard.IsB2BScopeOnly() ? null : new PowerOfAttorneyEMCHDData.AddressInfo
                                     {
                                         Address = userCard.GenCeoAddrRussia,
@@ -263,7 +266,9 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
                     JointRepresentationType = userCard.GenJointExerPowers ?? throw new ApplicationException(Resources.Error_JointExerIsEmpty),
                 };
 
-                if (userCard.GenLossPowersTransfer != null)
+                if (userCard.GenPossibilityOfSubstitution != null &&
+                    userCard.GenPossibilityOfSubstitution != GenPossibilityOfSubstitutionTypes.withoutSubstitution
+                    && userCard.GenLossPowersTransfer != null)
                     part.LossOfAuthorityType = Convert(userCard.GenLossPowersTransfer);
 
                 if (powersType == PowerOfAttorneyEMCHDData.AuthorityType.Code)
@@ -403,7 +408,8 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
                             FiasAddress = userCard.GenFiasCEOAddrRussia,
                             FiasCode = userCard.GenCeoFIASAddrID
                         }
-                    },                    
+                    },
+                    Inn = userCard.GenCeoIIN,
                     ParticipantStatus = userCard.GenNotarStatOfSoleExBody,
                     Position = userCard.GenCeoPosition,
                     Snils = userCard.GenCeoSNILS

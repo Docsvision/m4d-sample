@@ -2,7 +2,6 @@
 using DocsVision.Platform.ObjectModel;
 
 using System;
-using System.Runtime.Remoting.Contexts;
 
 
 namespace PowersOfAttorney.UserCard.Common.Helpers
