@@ -93,6 +93,11 @@ const onExecutiveBodyTypeDataChanged = (sender: Layout) => {
     entityExecutiveBody.params.required = entityValue;
     entityExecutiveBodyINN.params.required = entityValue;
     entityExecutiveBodyKPP.params.required = entityValue; 
+    if (!entityValue) {
+        entityExecutiveBody.params.value = null;
+        entityExecutiveBodyINN.params.value = "";
+        entityExecutiveBodyKPP.params.value = "";
+    }
 }
 
 const onEntityExecutiveBodyDataChanged = async (sender: Layout, args: IDataChangedEventArgs) => {
@@ -135,6 +140,11 @@ const onReprTypeDataChanged = (sender: Layout) => {
     reprEntity.params.required = entityValue;
     reprEntityINN.params.required = entityValue;
     reprEntityKPP.params.required = entityValue; 
+    if (!entityValue) {
+        reprEntity.params.value = null;
+        reprEntityINN.params.value = "";
+        reprEntityKPP.params.value = "";
+    }
 }
 
 const onReprIDDataChanged = (sender: Layout) => {

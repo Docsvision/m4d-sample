@@ -17,6 +17,7 @@ import { Powers } from "@docsvision/webclient/BackOffice/Powers";
 import { getControlValueFromPOA } from "../../Utils/GetControlValueFromPOA";
 import { ILimitation, setLimitInControls } from "../../Utils/SetLimitInControls";
 import { setSnilsMask } from "../../Utils/SetSnilsMask";
+import { clearTable } from "../../Utils/ClearTeable";
 
 let entityExecutiveBodyChangedFromCardLink: boolean;
 
@@ -94,7 +95,7 @@ const onCardLinkDataChanged = async (sender: CardLink, args: IDataChangedEventAr
     const authIssReprID = controls.get<TextArea>("authIssReprID");
     const refPowersTable = controls.get<Table>("refPowersTable");
     
-    if (args.newValue.cardId) {
+    if (args.newValue && args.newValue.cardId) {
         entityExecutiveBodyChangedFromCardLink = true;     
     
         entityExecutiveBody.params.value = await getControlValueFromPOA(sender, args.newValue.cardId, "reprEntity", "StaffDirectoryItems");
@@ -107,7 +108,7 @@ const onCardLinkDataChanged = async (sender: CardLink, args: IDataChangedEventAr
         dateIssCEOID.params.value = await getControlValueFromPOA(sender, args.newValue.cardId, "dateIssReprID", "DateTimePicker");
         authIssReprID.params.value = await getControlValueFromPOA(sender, args.newValue.cardId, "authIssReprID", "TextArea");
 
-
+        await clearTable(refPowersTable);
         const tableModel = await sender.layout.params.services.layoutController.getPartWithParams({
             cardId: args.newValue.cardId, 
             layoutMode: PlatformModeConditionTypes.VIEW,
@@ -123,7 +124,7 @@ const onCardLinkDataChanged = async (sender: CardLink, args: IDataChangedEventAr
         for (const tableRow of tableRows) {
             const rowId = await refPowersTable.addRow() as string;
             const rowIndex = refPowersTable.getRowIndex(rowId);
-            const refPowersCode = controls.get<Powers>("refPowersCode[]")[rowIndex];
+            const refPowersCode = controls.get<Powers>("refPowersCode")[rowIndex];
             const powersElement = tableRow.children.find((x) => x.controlTypeName === "TableColumn").children.find((x) => x.controlTypeName === "Powers");
             refPowersCode.params.value = powersElement.properties.binding.value;
         }
@@ -135,7 +136,7 @@ const onCardLinkDataChanged = async (sender: CardLink, args: IDataChangedEventAr
         numCEOID.params.value = "";
         dateIssCEOID.params.value = null;
         authIssReprID.params.value = "";
-        refPowersTable.clear();
+        await clearTable(refPowersTable);
     }
 }
 
@@ -193,6 +194,11 @@ const onReprTypeDataChanged = (sender: Layout) => {
     reprEntity.params.required = entityValue;
     reprEntityINN.params.required = entityValue;
     reprEntityKPP.params.required = entityValue;
+    if (!entityValue) {
+        reprEntity.params.value = null;
+        reprEntityINN.params.value = "";
+        reprEntityKPP.params.value = "";
+    }
 }
 
 const onReprIDDataChanged = (sender: Layout) => {
