@@ -50,7 +50,7 @@ export const customize502SPOACardForEditLayout = (sender: Layout) => {
     onCeoIDDataChanged(sender);
 
     substPOABasis && substPOABasis.params.dataChanged.subscribe(onSubstPOABasisDataChanged);
-    parentalPOACardLink && parentalPOACardLink.params.dataChanged.subscribe(onCardLinkDataChanged);
+    parentalPOACardLink && parentalPOACardLink.params.dataChanged.subscribe(onParentalPOACardLinkDataChanged);
     originalPOACardLink && originalPOACardLink.params.dataChanged.subscribe(onOriginalPOACardLinkDataChanged);
     entityExecutiveBody && entityExecutiveBody.params.dataChanged.subscribe(onEntityExecutiveBodyDataChanged);
     ceo && ceo.params.dataChanged.subscribe(onCeoDataChanged);
@@ -82,7 +82,7 @@ const onSubstPOABasisDataChanged = (sender: Layout) => {
     }
 }
 
-const onCardLinkDataChanged = async (sender: CardLink, args: IDataChangedEventArgsEx<GenModels.CardLinkDataModel>) => {
+const onCardLinkDataChanged = async (sender: CardLink, newValue: GenModels.CardLinkDataModel) => {
     const controls = sender.layout.controls;
     const entityExecutiveBody = controls.get<TextBox>("entityExecutiveBody");
     const entityExecutiveBodyINN = controls.get<TextBox>("entityExecutiveBodyINN");
@@ -95,22 +95,22 @@ const onCardLinkDataChanged = async (sender: CardLink, args: IDataChangedEventAr
     const authIssReprID = controls.get<TextArea>("authIssReprID");
     const refPowersTable = controls.get<Table>("refPowersTable");
     
-    if (args.newValue && args.newValue.cardId) {
+    if (newValue && newValue.cardId) {
         entityExecutiveBodyChangedFromCardLink = true;     
     
-        entityExecutiveBody.params.value = await getControlValueFromPOA(sender, args.newValue.cardId, "reprEntity", "StaffDirectoryItems");
-        entityExecutiveBodyINN.params.value = await getControlValueFromPOA(sender, args.newValue.cardId, "reprEntityINN", "TextBox");
-        entityExecutiveBodyKPP.params.value = await getControlValueFromPOA(sender, args.newValue.cardId, "reprEntityKPP", "TextBox");
+        entityExecutiveBody.params.value = await getControlValueFromPOA(sender, newValue.cardId, "reprEntity", "StaffDirectoryItems");
+        entityExecutiveBodyINN.params.value = await getControlValueFromPOA(sender, newValue.cardId, "reprEntityINN", "TextBox");
+        entityExecutiveBodyKPP.params.value = await getControlValueFromPOA(sender, newValue.cardId, "reprEntityKPP", "TextBox");
 
-        ceoSNILS.params.value = await getControlValueFromPOA(sender, args.newValue.cardId, "reprSNILS", "TextBox");
-        ceoID.params.value = await getControlValueFromPOA(sender, args.newValue.cardId, "reprID", "Dropdown");
-        numCEOID.params.value = await getControlValueFromPOA(sender, args.newValue.cardId, "numReprID", "TextBox");
-        dateIssCEOID.params.value = await getControlValueFromPOA(sender, args.newValue.cardId, "dateIssReprID", "DateTimePicker");
-        authIssReprID.params.value = await getControlValueFromPOA(sender, args.newValue.cardId, "authIssReprID", "TextArea");
+        ceoSNILS.params.value = await getControlValueFromPOA(sender, newValue.cardId, "reprSNILS", "TextBox");
+        ceoID.params.value = await getControlValueFromPOA(sender, newValue.cardId, "reprID", "Dropdown");
+        numCEOID.params.value = await getControlValueFromPOA(sender, newValue.cardId, "numReprID", "TextBox");
+        dateIssCEOID.params.value = await getControlValueFromPOA(sender, newValue.cardId, "dateIssReprID", "DateTimePicker");
+        authIssReprID.params.value = await getControlValueFromPOA(sender, newValue.cardId, "authIssReprID", "TextArea");
 
         await clearTable(refPowersTable);
         const tableModel = await sender.layout.params.services.layoutController.getPartWithParams({
-            cardId: args.newValue.cardId, 
+            cardId: newValue.cardId, 
             layoutMode: PlatformModeConditionTypes.VIEW,
             locationName: undefined,
             controlName: "refPowersTable",
@@ -140,12 +140,20 @@ const onCardLinkDataChanged = async (sender: CardLink, args: IDataChangedEventAr
     }
 }
 
+const onParentalPOACardLinkDataChanged = (sender: CardLink, args: IDataChangedEventArgsEx<GenModels.CardLinkDataModel>) => {
+    const controls = sender.layout.controls;
+    const originalPOACardLink = controls.get<CardLink>("originalPOACardLink");
+    onCardLinkDataChanged(sender, args.newValue);
+    if (!args.newValue && originalPOACardLink.params.value) {
+        onCardLinkDataChanged(sender, originalPOACardLink.params.value);
+    }; 
+}
 
 const onOriginalPOACardLinkDataChanged = (sender: CardLink, args: IDataChangedEventArgsEx<GenModels.CardLinkDataModel>) => {
     const controls = sender.layout.controls;
     const substPOABasis = controls.get<CheckBox>("substPOABasis");
     if (!substPOABasis.params.value) {
-        onCardLinkDataChanged(sender, args);
+        onCardLinkDataChanged(sender, args.newValue);
     };
 }
 
