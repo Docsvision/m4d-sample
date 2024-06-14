@@ -13,12 +13,14 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
         private static Guid generalMachineReadablePowerOfAttorneySectionId = new Guid("29c1b4ef-48e4-47f0-ac67-c42cf68de986");
         private static Guid powersWithCodesSectionId = new Guid("0838CD2A-27C4-4EE1-B599-2DF6586AD2A7");
         private static Guid powersWithTextSectionId = new Guid("D78E3824-618D-44E4-98FF-045502363C3B");
+        private static Guid poaAdditionalSectionId = new Guid("28D30FFE-5255-4614-AC84-A2B468BC04A8");
 
         private readonly Document document;
         private readonly ObjectContext context;
 
         private readonly BaseCardSectionRow mainInfoSection;
         private readonly BaseCardSectionRow genMchdSection;
+        private readonly BaseCardSectionRow poaAdditionalSection;
 
         private readonly IList<BaseCardSectionRow> powersWithCodesSection;
         private readonly IList<BaseCardSectionRow> powersWithTextSection;
@@ -34,6 +36,10 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
             genMchdSection = genMchdSectionRows[0];
 
             mainInfoSection = (BaseCardSectionRow)document.GetSection(CardDocument.MainInfo.ID)[0];
+            if(document?.GetSection(poaAdditionalSectionId).Count > 0)
+            {
+                poaAdditionalSection = (BaseCardSectionRow)document?.GetSection(poaAdditionalSectionId)[0];
+            }
 
             powersWithCodesSection = (IList<BaseCardSectionRow>)document.GetSection(powersWithCodesSectionId);
             powersWithTextSection = (IList<BaseCardSectionRow>)document.GetSection(powersWithTextSectionId);
@@ -53,7 +59,7 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
             /// Утрачиваются
             /// </summary>
             lost = 2
-        }
+        } 
 
         /// <summary>
         /// Признак совместного осуществления полномочий

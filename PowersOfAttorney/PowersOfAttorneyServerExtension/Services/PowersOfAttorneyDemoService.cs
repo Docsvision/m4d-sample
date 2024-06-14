@@ -9,6 +9,7 @@ using PowersOfAttorney.UserCard.Common.Helpers;
 using PowersOfAttorneyServerExtension.Models;
 
 using System;
+using static DocsVision.BackOffice.CardLib.CardDefs.CardSignatureList;
 
 namespace PowersOfAttorneyServerExtension.Services
 {
@@ -26,15 +27,26 @@ namespace PowersOfAttorneyServerExtension.Services
             var userCardPowerOfAttorney = GetUserCardPowerOfAttorney(context, powerOfAttorneyUserCardId);
             var powerOfAttorneyData = GetPowerOfAttorneyData(userCardPowerOfAttorney, formatId);
 
-            var representativeID = GetRepresentative(userCardPowerOfAttorney, formatId);
             var signerID = GetSigner(userCardPowerOfAttorney, formatId);
-
-            var representative = context.GetObject<StaffEmployee>(representativeID);
             var signer = context.GetObject<StaffEmployee>(signerID);
             var format = context.GetObject<PowersPowerOfAttorneyFormat>(formatId);
+            var representativeType = userCardPowerOfAttorney.RepresentativeEnumValue;
+            PowerOfAttorney powerOfAttorney = null;
+            if (representativeType == null || representativeType.Value == UserCardPowerOfAttorney.RepresentativeType.individual)
+            {
+                var representativeID = GetRepresentative(userCardPowerOfAttorney, formatId);
+                var representative = context.GetObject<StaffEmployee>(representativeID);
 
-            var powerOfAttorney = PowerOfAttorneyService.CreatePowerOfAttorney(powerOfAttorneyData,
-                representative, signer, format, PowerOfAttorneyHandlingFlags.SupportDistributedRegistryFederalTaxService);
+                powerOfAttorney = PowerOfAttorneyService.CreatePowerOfAttorney(powerOfAttorneyData,
+                    representative, signer, format, PowerOfAttorneyHandlingFlags.SupportDistributedRegistryFederalTaxService);
+            }
+            else if(representativeType == UserCardPowerOfAttorney.RepresentativeType.entity)
+            {                
+                var representative = userCardPowerOfAttorney.EntityRepresentative.Value;
+
+                powerOfAttorney = PowerOfAttorneyService.CreatePowerOfAttorney(powerOfAttorneyData,
+                    representative, signer, format, PowerOfAttorneyHandlingFlags.SupportDistributedRegistryFederalTaxService);
+            }
 
             powerOfAttorney.MainInfo.UserCard = powerOfAttorneyUserCardId;
             if(string.IsNullOrEmpty(powerOfAttorney.MainInfo.PrincipalINN))
@@ -63,7 +75,6 @@ namespace PowersOfAttorneyServerExtension.Services
             var representative = context.GetObject<StaffEmployee>(representativeID);
             var signer = context.GetObject<StaffEmployee>(signerID);
             var parent = context.GetObject<PowerOfAttorney>(parentalPowerOfAttorney);
-
 
             var powerOfAttorney = PowerOfAttorneyService.RetrustPowerOfAttorney(powerOfAttorneyData, representative, signer, parent, PowerOfAttorneyHandlingFlags.SupportDistributedRegistryFederalTaxService);
 
@@ -185,6 +196,14 @@ namespace PowersOfAttorneyServerExtension.Services
                 return userCardPowerOfAttorney.GenOriginaPowerOfAttorney.GetObjectId();
             }
 
+            if(formatId == PowerOfAttorneyFNSDOVEL502Data.FormatId)
+            {
+                if (userCardPowerOfAttorney.GenParentalPowerOfAttorneyUserCard.HasValue)
+                    return userCardPowerOfAttorney.GenParentalPowerOfAttorney.GetObjectId();
+
+                return userCardPowerOfAttorney.GenOriginaPowerOfAttorney.GetObjectId();
+            }
+
             throw new ArgumentOutOfRangeException(string.Format(Resources.InvalidPowerOfAttorneyFormat, formatId));
         }
 
@@ -196,6 +215,8 @@ namespace PowersOfAttorneyServerExtension.Services
             if (formatId == PowerOfAttorneyEMCHDData.FormatId)
                 return userCardPowerOfAttorney.GenRepresentative.GetValueOrThrow(Resources.Error_EmptyRepresentativeIndividual).GetObjectId();
 
+            if (formatId == PowerOfAttorneyFNSDOVEL502Data.FormatId)
+                return userCardPowerOfAttorney.GenRepresentative.GetValueOrThrow(Resources.Error_EmptyRepresentativeIndividual).GetObjectId();
 
             throw new ArgumentOutOfRangeException(string.Format(Resources.InvalidPowerOfAttorneyFormat, formatId));
         }
@@ -208,6 +229,9 @@ namespace PowersOfAttorneyServerExtension.Services
             if (formatId == PowerOfAttorneyEMCHDData.FormatId)
                 return userCardPowerOfAttorney.GenEntityPrinINN ?? userCardPowerOfAttorney.GenEntityPrincipal.Value?.INN.AsNullable();
 
+            if (formatId == PowerOfAttorneyFNSDOVEL502Data.FormatId)
+                return userCardPowerOfAttorney.GenEntityPrinINN;
+
             throw new ArgumentOutOfRangeException(string.Format(Resources.InvalidPowerOfAttorneyFormat, formatId));
         }
 
@@ -219,6 +243,8 @@ namespace PowersOfAttorneyServerExtension.Services
             if (formatId == PowerOfAttorneyEMCHDData.FormatId)
                 return userCard.ConvertToPowerOfAttorneyEMCHDData(currentObjectContextProvider.GetOrCreateCurrentSessionContext().ObjectContext);
 
+            if (formatId == PowerOfAttorneyFNSDOVEL502Data.FormatId)
+                return userCard.ConvertToPowerOfAttorneyFNSDOVEL502Data(currentObjectContextProvider.GetOrCreateCurrentSessionContext().ObjectContext);
 
             throw new ArgumentOutOfRangeException(string.Format(Resources.InvalidPowerOfAttorneyFormat, formatId));
         }
@@ -229,6 +255,9 @@ namespace PowersOfAttorneyServerExtension.Services
                 return userCardPowerOfAttorney.Signer.GetValueOrThrow(Resources.Error_EmptySigner).GetObjectId();
 
             if (formatId == PowerOfAttorneyEMCHDData.FormatId)
+                return userCardPowerOfAttorney.GenCeo.GetValueOrThrow(Resources.Error_EmptyCeo).GetObjectId();
+
+            if (formatId == PowerOfAttorneyFNSDOVEL502Data.FormatId)
                 return userCardPowerOfAttorney.GenCeo.GetValueOrThrow(Resources.Error_EmptyCeo).GetObjectId();
 
             throw new ArgumentOutOfRangeException(string.Format(Resources.InvalidPowerOfAttorneyFormat, formatId));
