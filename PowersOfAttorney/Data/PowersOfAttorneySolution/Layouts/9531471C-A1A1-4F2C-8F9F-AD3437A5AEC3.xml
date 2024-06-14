@@ -108,6 +108,7 @@
     <Binding PropertyName="bc4ab455-e0e2-4652-9724-1a2c74958501" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/29c1b4ef-48e4-47f0-ac67-c42cf68de986/authIssReprIDDoc" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
     <Binding PropertyName="bbb225a4-39d6-4d1b-b228-dd12e9de0488" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/0838cd2a-27c4-4ee1-b599-2df6586ad2a7/" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
     <Binding PropertyName="fead1ec5-f2a4-4189-9ab5-78b8abf0f344" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/0838cd2a-27c4-4ee1-b599-2df6586ad2a7/PowersCode" ResolverType="PowersValueResolver" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
+    <Binding PropertyName="b8413a40-51d8-4299-87cb-7780896660a5" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/29c1b4ef-48e4-47f0-ac67-c42cf68de986/POASysCardId" ConverterType="CardLinkConverter" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
   </Bindings>
   <Elements>
     <Element Id="9d9620dd-121c-4d3d-af7f-35f8f0196834" Type="Block">
@@ -5749,6 +5750,63 @@
                   </Elements>
                 </Element>
               </Elements>
+            </Element>
+            <Element Id="4cf34891-19dc-4163-8787-6e50a70727c0" Type="CardLink">
+              <Properties>
+                <Property Name="Name" Value="powerOfAttorneySysCard" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="Tag" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="LabelText" Value="bf04a922-bfeb-45ea-949b-62ed11dc40e2" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="true" />
+                <Property Name="StandardCssClass" Value="system-card-link" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="DataField" Value="POASysCardId" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="Binding" Value="b8413a40-51d8-4299-87cb-7780896660a5" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                <Property Name="EmptyText" Value="" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="true" />
+                <Property Name="FolderList" Value="" Type="System.String, mscorlib" ResolverType="FolderListResolver" IsAvailable="true" />
+                <Property Name="DisplayIcon" Value="true" Type="System.Boolean, mscorlib" IsAvailable="false" />
+                <Property Name="SearchQueryId" Value="d3da92d2-7a8c-4f0d-b79d-ea17e2e7001e" Type="System.Guid, mscorlib" IsAvailable="true" />
+                <Property Name="SearchQueryParamName" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="SearchDelay" Value="500" Type="System.Int32, mscorlib" IsAvailable="false" />
+                <Property Name="SearchIndex" Value="3" Type="System.Int32, mscorlib" IsAvailable="false" />
+                <Property Name="SearchViewMode" Value="0" Type="System.Int32, mscorlib" IsAvailable="true" />
+                <Property Name="ShowEmptyLabel" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                <Property Name="Visibility" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
+                  <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                    <Desktop>false</Desktop>
+                    <Tablet>false</Tablet>
+                    <Smartphone>false</Smartphone>
+                    <CanChange>true</CanChange>
+                  </DeviceDependentPropertyOfBoolean>
+                </Property>
+                <Property Name="VisibilityEditOperation" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
+                <Property Name="TabStop" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                <Property Name="Required" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                <Property Name="EditMode" Value="2" Type="System.Int32, mscorlib" IsAvailable="true" />
+                <Property Name="DataSource" Value="29c1b4ef-48e4-47f0-ac67-c42cf68de986" Type="System.Guid, mscorlib" IsAvailable="true" />
+                <Property Name="ExtendedDataSource" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
+                <Property Name="IsInheritedEditOperation" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                <Property Name="Disabled" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
+                  <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                    <Desktop>false</Desktop>
+                    <Tablet>false</Tablet>
+                    <Smartphone>false</Smartphone>
+                    <CanChange>true</CanChange>
+                  </DeviceDependentPropertyOfBoolean>
+                </Property>
+                <Property Name="Click" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="MouseOver" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="MouseOut" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="Focus" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="Blur" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="DataChanged" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="WindowOpeninig" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="WindowOpened" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="WindowClosing" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="WindowClosed" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="LinkDeleting" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="LinkDeleted" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="LinkFilePreviewing" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="LinkFilePreviewed" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="LinkCardOpening" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+              </Properties>
             </Element>
           </Elements>
         </Element>
