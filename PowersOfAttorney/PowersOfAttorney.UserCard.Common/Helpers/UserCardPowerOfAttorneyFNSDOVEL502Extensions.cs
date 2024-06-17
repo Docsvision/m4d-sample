@@ -20,6 +20,15 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
 {
     public static class UserCardPowerOfAttorneyFNSDOVEL502Extensions
     {
+        /* [Explain]
+         * Если кто-то продолжит с этого коммита - это тебе.
+         * Файл поделён на 2 региона: 
+         *  - Первоначальная доверенность
+         *  - Передоверие
+         * Все что касается первоначальной доверенности я сделал, как мне кажется(хотя я сам в это не верю),
+         * Остановился на передоверии, проблема с "Родительской карточкой передоверия", "Корневой карточкой передоверия" 
+         * и с тем как это все на самом деле должно заполняться.
+         */
         public static PowerOfAttorneyData ConvertToPowerOfAttorneyFNSDOVEL502Data(this UserCardPowerOfAttorney userCard, ObjectContext context)
         {
 
@@ -61,6 +70,8 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
                 poaFNSDOVEL502Data.SenderID = GetSenderID();
                 return poaFNSDOVEL502Data;
             }
+
+            #region Первоначальная доверенность
 
             /* Состав и структура документа (Документ) */
             private PowerOfAttorneyDocument CreatePowerOfAttorteyDocument()
@@ -210,140 +221,6 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
                 return result;
             }
 
-            /* Передоверие (Передов) - 4.11 */
-            private RetrustPowerOfAttorneyDocumentData GetRetrustPowerOfAttorneyDocumentData()
-            {
-                var result = new RetrustPowerOfAttorneyDocumentData();
-                /* Сведения доверенности, совершённой (выданной) в рамках передоверия(Обязательный) */
-                result.PowerOfAttorney = GetRetrustPowerOfAttorneyInfo();
-                /* Сведения о доверителе в порядке передоверия(Обязательный) */
-                result.Principal = GetRetrustPrincipalInfo();
-                /* Сведения об уполномоченном представителе(Обязательный) */
-                result.Representative = GetRepresentativeInfo();
-                /* Признак(код) области полномочий уполномоченного представителя(Обязательный) */
-                result.RepresentativePowers = GetRepresentativePowers();
-                return result;
-            }
-
-            /* Сведения доверенности, совершённой (выданной) в рамках передоверия (СвДовП) - 4.12 */
-            private RetrustPowerOfAttorneyInfo GetRetrustPowerOfAttorneyInfo()
-            {
-                var result = new RetrustPowerOfAttorneyInfo();
-                /* Регистрационный номер доверенности, в отношении которой производится передоверие (Обязательный) */
-                result.ParentPowerOfAttorneyNumber = userCard.GenParentalPowerOfAttorneyUserCard.Value.GetObjectId();
-                /* Номер доверенности */
-                result.InternalPowerOfAttorneyNumber = userCard.GenInternalPOANumber;
-                /* Дата совершения (выдачи) доверенности (Обязательный) */
-                result.PowerOfAttorneyStartDate = userCard.GenPoaDateOfIssue;
-                /* Дата окончания срока действия доверенности (Обязательный) */
-                result.PowerOfAttorneyEndDate = userCard.GenPoaExpirationDate;
-                /* Признак возможности оформления передоверия (Обязательный) */
-                result.RetrustType = userCard.PossibilityOfSubstitution502EnumValue;
-                /* Сведения об основной доверенности (Обязательный) */
-                result.ParentPrincipal = GetParentPrincipalInfo();
-                if(result.ParentPrincipal == null)
-                {
-                    /* Сведения о доверителе из доверенности, на основании которой осуществляется передоверие (Обязательный с условием) */
-                    result.PrimaryPowerOfAttorney = GetPrimaryPowerOfAttorneyInfo();
-                }                
-                /* Код налогового органа, в отношении которого действует доверенность */
-                result.TaxCodes = GetTaxCodes();
-                return result;
-            }
-
-            /* Сведения об основной доверенности (СвОснДов) - 4.13 */
-            private PrimaryPowerOfAttorneyInfo GetPrimaryPowerOfAttorneyInfo()
-            {
-                var result = new PrimaryPowerOfAttorneyInfo();
-                /* Единый регистрационный номер основной доверенности (Обязательный) */
-                result.PowerOfAttorneyNumber = userCard.GenOriginalPowerOfAttorneyUserCard.Value.GetObjectId();
-                /* Сведения о доверителе основной доверенности (Обязательный) */
-                result.Principal = GetPrimaryPrincipalInfo();
-                return result;
-            }
-
-            /* Сведения об основной доверенности (СвОснДов) - 4.13 */
-            private PrimaryPrincipalInfo GetPrimaryPrincipalInfo()
-            {
-                var result = new PrimaryPrincipalInfo();
-
-                /* Сведения о доверителе – российском юридическом лице (Обязательный с условием) */
-                result.RussianCompany = GetRussianCompanyInfo1();
-                /* Сведения о доверителе – физическом лице (Обязательный с условием) */
-                result.Individual = GetIndividualInfo2();
-                return result;
-            }
-
-
-            /* Сведения о доверителе из доверенности, на основании которой осуществляется передоверие */
-            private ParentPrincipalInfo GetParentPrincipalInfo()
-            {                
-                var result = new ParentPrincipalInfo();                
-                if(userCard.GenOriginalPowerOfAttorneyUserCard == null)
-                {
-                    return null;
-                }
-                var poaOrigCard = userCard.GenOriginalPowerOfAttorneyUserCard.Value;
-                var poaAddSection = poaOrigCard.GetSection(new Guid("28D30FFE-5255-4614-AC84-A2B468BC04A8"))[0] as BaseCardSectionRow;
-                var origExecBodyType = poaAddSection.GetEnumValue<ExecutiveBodyType>("ExecutiveBodyType");
-
-                switch (origExecBodyType.Value)
-                {
-                    case ExecutiveBodyType.individual:
-                        /* Сведения о доверителе – физическом лице (Обязательный с условием) */
-                        result.Individual = GetIndividualInfo2();
-                        break;
-                    case ExecutiveBodyType.entity:
-                        /* Сведения о доверителе – российском юридическом лице (Обязательный с условием) */
-                        result.RussianCompany = GetOrganizationInfoForRetrust();
-                        break;
-                    default:
-                        throw new InvalidEnumArgumentException(nameof(ExecutiveBodyType));
-                }                                
-                return result;
-            }
-
-            private OrganizationInfo GetOrganizationInfoForRetrust() 
-            {                
-                var originalPOA = userCard.GenOriginalPowerOfAttorneyUserCard.Value;
-                var poaSection = originalPOA.GetSection(new Guid("29C1B4EF-48E4-47F0-AC67-C42CF68DE986"))[0] as BaseCardSectionRow;                
-                var entityPrincipalCardId = poaSection.GetGuid("entityPrincipal");
-                var entityPrincipalCard = context.GetObject<StaffUnit>(entityPrincipalCardId);
-
-                var result = new OrganizationInfo();
-                result.Name = entityPrincipalCard.Name;
-                result.Inn = poaSection.GetStringValue("entPrinINN");
-                result.Kpp = poaSection.GetStringValue("entityPrinKPP");
-                result.Ogrn = poaSection.GetStringValue("entPrinOGRN");
-                
-                return result;
-            }
-
-            /* Сведения о доверителе в порядке передоверия (СвДоверщ) - 4.17 */
-            private RetrustPrincipalInfo GetRetrustPrincipalInfo()
-            {
-                var result = new RetrustPrincipalInfo();
-                var poaOrigCard = userCard.GenOriginalPowerOfAttorneyUserCard.Value;
-                var poaAddSection = poaOrigCard.GetSection(new Guid("28D30FFE-5255-4614-AC84-A2B468BC04A8"))[0] as BaseCardSectionRow;
-                var origExecBodyType = poaAddSection.GetEnumValue<ExecutiveBodyType>("ExecutiveBodyType");
-                switch (origExecBodyType.Value) 
-                {
-                    case ExecutiveBodyType.individual:
-                        /* Сведения по физическому лицу (Обязательный) */
-                        result.Individual = GetIndividualInfo3();
-                        break;
-                    case ExecutiveBodyType.entity:
-                        /* Сведения по физическому лицу (Обязательный) */
-                        result.Individual = GetIndividualInfo3();
-                        /* Сведения об организации (Обязательный с условием) */
-                        result.Organization = GetOrganizationInfo();
-                        break;
-                    default:
-                        throw new InvalidEnumArgumentException(nameof(ExecutiveBodyType));
-                }
-                return result;
-            }
-
             /* Сведения об организации (СвОргТип) - 4.18 */
             private OrganizationInfo GetOrganizationInfo()
             {
@@ -481,7 +358,7 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
             {
                 var result = new IndividualInfo3();
                 /* ИНН физического лица */
-                result.Inn = userCard?.GenCeoIIN;                
+                result.Inn = userCard?.GenCeoIIN;
                 /* СНИЛС (Обязательный) */
                 result.Snils = userCard?.GenCeoSNILS;
                 /* Гражданство */
@@ -546,6 +423,167 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
                 result.MiddleName = employee?.MiddleName;
                 return result;
             }
+            #endregion
+            #region Передоверие
+            /* Передоверие (Передов) - 4.11 */
+            private RetrustPowerOfAttorneyDocumentData GetRetrustPowerOfAttorneyDocumentData()
+            {
+                var result = new RetrustPowerOfAttorneyDocumentData();
+                /* Сведения доверенности, совершённой (выданной) в рамках передоверия(Обязательный) */
+                result.PowerOfAttorney = GetRetrustPowerOfAttorneyInfo();
+                /* Сведения о доверителе в порядке передоверия(Обязательный) */
+                result.Principal = GetRetrustPrincipalInfo();
+                /* Сведения об уполномоченном представителе(Обязательный) */
+                result.Representative = GetRepresentativeInfo();
+                /* Признак(код) области полномочий уполномоченного представителя(Обязательный) */
+                result.RepresentativePowers = GetRepresentativePowers();
+                return result;
+            }
+
+            private OrganizationInfo GetOrganizationInfoForRetrust()
+            {
+                var originalPOA = userCard.GenOriginalPowerOfAttorneyUserCard.Value;
+                var poaSection = originalPOA.GetSection(new Guid("29C1B4EF-48E4-47F0-AC67-C42CF68DE986"))[0] as BaseCardSectionRow;
+                var entityPrincipalCardId = poaSection.GetGuid("entityPrincipal");
+                var entityPrincipalCard = context.GetObject<StaffUnit>(entityPrincipalCardId);
+
+                var result = new OrganizationInfo();
+                result.Name = entityPrincipalCard.Name;
+                result.Inn = poaSection.GetStringValue("entPrinINN");
+                result.Kpp = poaSection.GetStringValue("entityPrinKPP");
+                result.Ogrn = poaSection.GetStringValue("entPrinOGRN");
+
+                return result;
+            }
+
+            /* Сведения о доверителе в порядке передоверия (СвДоверщ) - 4.17 */
+            private RetrustPrincipalInfo GetRetrustPrincipalInfo()
+            {
+                var result = new RetrustPrincipalInfo();
+                var poaOrigCard = userCard.GenOriginalPowerOfAttorneyUserCard.Value;
+                var poaAddSection = poaOrigCard.GetSection(new Guid("28D30FFE-5255-4614-AC84-A2B468BC04A8"))[0] as BaseCardSectionRow;
+                var origExecBodyType = poaAddSection.GetEnumValue<ExecutiveBodyType>("ExecutiveBodyType");
+                switch (origExecBodyType.Value)
+                {
+                    case ExecutiveBodyType.individual:
+                        /* Сведения по физическому лицу (Обязательный) */
+                        result.Individual = GetIndividualInfo3();
+                        break;
+                    case ExecutiveBodyType.entity:
+                        /* Сведения по физическому лицу (Обязательный) */
+                        result.Individual = GetIndividualInfo3();
+                        /* Сведения об организации (Обязательный с условием) */
+                        result.Organization = GetOrganizationInfo();
+                        break;
+                    default:
+                        throw new InvalidEnumArgumentException(nameof(ExecutiveBodyType));
+                }
+                return result;
+            }
+
+            /* Сведения о доверителе из доверенности, на основании которой осуществляется передоверие */
+            private ParentPrincipalInfo GetParentPrincipalInfo()
+            {
+                var result = new ParentPrincipalInfo();
+                if (userCard.GenOriginalPowerOfAttorneyUserCard == null)
+                {
+                    return null;
+                }
+                //тут не ту карточку беру
+                var poaOrigCard = userCard.GenOriginalPowerOfAttorneyUserCard.Value;
+                var poaAddSection = poaOrigCard.GetSection(new Guid("28D30FFE-5255-4614-AC84-A2B468BC04A8"))[0] as BaseCardSectionRow;
+                var origExecBodyType = poaAddSection.GetEnumValue<ExecutiveBodyType>("ExecutiveBodyType");
+
+                switch (origExecBodyType.Value)
+                {
+                    case ExecutiveBodyType.individual:
+                        /* Сведения о доверителе – физическом лице (Обязательный с условием) */
+                        result.Individual = GetIndividualInfo2();
+                        break;
+                    case ExecutiveBodyType.entity:
+                        /* Сведения о доверителе – российском юридическом лице (Обязательный с условием) */
+                        result.RussianCompany = GetOrganizationInfoForRetrust();
+                        break;
+                    default:
+                        throw new InvalidEnumArgumentException(nameof(ExecutiveBodyType));
+                }
+                return result;
+            }
+
+            /* Сведения доверенности, совершённой (выданной) в рамках передоверия (СвДовП) - 4.12 */
+            private RetrustPowerOfAttorneyInfo GetRetrustPowerOfAttorneyInfo()
+            {
+                if (userCard.SubstitutionPOAInBasis == null || userCard.SubstitutionPOAInBasis.Value)
+                {
+                    return GetParentRetrustPOAInfo();
+                }
+                else
+                {
+                    return GetRetrustPOAOriginal();
+                }
+            }
+            
+            /// <summary>
+            /// Если передоверие оформляется на основании другого передоверия
+            /// (это не точно, это я так понял)
+            /// </summary>
+            /// <returns></returns>
+            private RetrustPowerOfAttorneyInfo GetParentRetrustPOAInfo() 
+            {
+                throw new NotImplementedException("Передоверие на основании другого передоверия не поддерживается!");
+            }
+
+            /// <summary>
+            /// Если передоверие оформляется на основании основной доверенноси
+            /// (это не точно, это я так понял)
+            /// </summary>
+            /// <returns></returns>
+            private RetrustPowerOfAttorneyInfo GetRetrustPOAOriginal()
+            {
+                var result = new RetrustPowerOfAttorneyInfo();
+                /* Регистрационный номер доверенности, в отношении которой производится передоверие (Обязательный) */                
+                result.ParentPowerOfAttorneyNumber = userCard.GenOriginalPowerOfAttorneyUserCard?.Value.GetObjectId();
+                /* Номер доверенности */
+                result.InternalPowerOfAttorneyNumber = userCard.GenInternalPOANumber;
+                /* Дата совершения (выдачи) доверенности (Обязательный) */
+                result.PowerOfAttorneyStartDate = userCard.GenPoaDateOfIssue;
+                /* Дата окончания срока действия доверенности (Обязательный) */
+                result.PowerOfAttorneyEndDate = userCard.GenPoaExpirationDate;
+                /* Признак возможности оформления передоверия (Обязательный) */
+                result.RetrustType = userCard.PossibilityOfSubstitution502EnumValue;
+                /* Сведения об основной доверенности (Обязательный) */
+                result.PrimaryPowerOfAttorney = GetPrimaryPowerOfAttorneyInfo();
+                /* Сведения о доверителе из доверенности, на основании которой осуществляется передоверие */
+                result.ParentPrincipal = GetParentPrincipalInfo();
+                /* Код налогового органа, в отношении которого действует доверенность */
+                result.TaxCodes = GetTaxCodes();
+                return result;                
+            }
+
+            /* Сведения об основной доверенности (СвОснДов) - 4.13 */
+            private PrimaryPowerOfAttorneyInfo GetPrimaryPowerOfAttorneyInfo()
+            {
+                var result = new PrimaryPowerOfAttorneyInfo();
+                /* Единый регистрационный номер основной доверенности (Обязательный) */
+                result.PowerOfAttorneyNumber = userCard.GenOriginalPowerOfAttorneyUserCard.Value.GetObjectId();
+                /* Сведения о доверителе основной доверенности (Обязательный) */
+                result.Principal = GetPrimaryPrincipalInfo();
+                return result;
+            }
+
+            /* Сведения об основной доверенности (СвОснДов) - 4.13 */
+            private PrimaryPrincipalInfo GetPrimaryPrincipalInfo()
+            {
+                var result = new PrimaryPrincipalInfo();
+
+                /* Сведения о доверителе – российском юридическом лице (Обязательный с условием) */
+                result.RussianCompany = GetRussianCompanyInfo1();
+                /* Сведения о доверителе – физическом лице (Обязательный с условием) */
+                result.Individual = GetIndividualInfo2();
+                return result;
+            }
+
+            #endregion
         }
     }
 }

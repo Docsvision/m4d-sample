@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using DocsVision.BackOffice.ObjectModel;
 using static DocsVision.BackOffice.ObjectModel.Services.Entities.PowerOfAttorneyFNSDOVEL502Data;
 
@@ -85,6 +86,8 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
             public const string KPPEntityRepresentative = "KPPEntityRepresentative";
             // [enum] Признак возможности оформления передоверия
             public const string PossibilityOfSubstitution502 = "PossibilityOfSubstitution502";
+            // [bool] Доверенность формируется на основании доверенности, ранее выданной в порядке передоверия
+            public const string SubstitutionPOAInBasis = "substitutionPOAInBasis";
         }
                 
         public Guid InstanceId => document.GetObjectId();
@@ -97,5 +100,6 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
         public ExecutiveBodyType? ExecutiveBodyEnumValue => poaAdditionalSection.GetEnumValue<ExecutiveBodyType>(AdditionalFields.ExecutiveBodyType);
         public RepresentativeType? RepresentativeEnumValue => poaAdditionalSection.GetEnumValue<RepresentativeType>(AdditionalFields.RepresentativeType);
         public RetrustType? PossibilityOfSubstitution502EnumValue => poaAdditionalSection.GetEnumValue<RetrustType>(AdditionalFields.PossibilityOfSubstitution502);
+        public bool? SubstitutionPOAInBasis => genMchdSection.GetBoolValue(AdditionalFields.SubstitutionPOAInBasis);
     }
 }
