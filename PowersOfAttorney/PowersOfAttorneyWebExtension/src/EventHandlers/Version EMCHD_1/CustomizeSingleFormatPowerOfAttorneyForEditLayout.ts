@@ -175,11 +175,12 @@ const onPrincipalDataChanged = async (sender: StaffDirectoryItems, args: IDataCh
         princPhone.params.value = data.fields.find(field => field.alias === "Phone").value;
         princEmail.params.value = data.fields.find(field => field.alias === "Email").value;
 
-        const addressData = data.sections.find(section => section.id === "dc55dca5-5d69-4fc4-90b1-c62e93a91b73").rows[0];
-        const zipCode = addressData.fields.find(field => field.alias === "ZipCode").value;
-        const country = addressData.fields.find(field => field.alias === "Country").value;
-        const city = addressData.fields.find(field => field.alias === "City").value;
-        const address = addressData.fields.find(field => field.alias === "Address").value;
+        const addressSection = data.sections.find(section => section.id === "dc55dca5-5d69-4fc4-90b1-c62e93a91b73");
+        const addressData = addressSection.rows.length ? addressSection.rows[0] : null;
+        const zipCode = addressData?.fields.find(field => field.alias === "ZipCode").value || "";
+        const country = addressData?.fields.find(field => field.alias === "Country").value || "";
+        const city = addressData?.fields.find(field => field.alias === "City").value || "";
+        const address = addressData?.fields.find(field => field.alias === "Address").value || "";
         princAddrRus.params.value = `${zipCode} ${country} ${city} ${address}`;
     } else {
         princINN.params.value = "";
