@@ -24,7 +24,7 @@ import { MessageBox } from "@docsvision/webclient/Helpers/MessageBox/MessageBox"
 import { IEventArgs } from "@docsvision/webclient/System/IEventArgs";
 
 
-export const revokePowerOfAttorney = async (sender: CustomButton, e: IEventArgs, onAttachSignatureToCardCallback: Function = null, showMessage: boolean = true) => {
+export const revokePowerOfAttorney = async (sender: CustomButton, e: IEventArgs, onAttachSignatureToCardCallback: Function = null, showMessage: boolean = true, showRevocationType: boolean = true) => {
     const items = [{ key: PowerOfAttorneyRevocationType.Principal.toString(), value: resources.CancellationOfThePowerOfAttorneyByThePrincipal }, { key: PowerOfAttorneyRevocationType.Representative.toString(), value: resources.RefusalOfTheRepresentativeFromThePowers }]
     const powerOfAttorneyUserCardId = sender.layout.getService($CardId);
     const powerOfAttorneyNumber = await sender.layout.getService($PowersOfAttorneyDemoController).getPowerOfAttorneyNumber(powerOfAttorneyUserCardId);
@@ -93,7 +93,7 @@ export const revokePowerOfAttorney = async (sender: CustomButton, e: IEventArgs,
                     <ModalDialogContent>
                         <div style={{padding: "0 30px"}}>
                             <div>{`${resources.PowerOfAttorney} № ${powerOfAttorneyNumber}`}</div>
-                            <RadioGroup ref={el => typeElement = el} value={PowerOfAttorneyRevocationType.Principal.toString()} items={items} labelText={resources.SelectTheTypeOfApplicationForRevocation}></RadioGroup>
+                            <RadioGroup ref={el => typeElement = el} value={PowerOfAttorneyRevocationType.Principal.toString()} items={items} labelText={resources.SelectTheTypeOfApplicationForRevocation} visibility={showRevocationType}></RadioGroup>
                             <label>{resources.Reason}:</label>
                             <textarea ref={el => reasonElement = el} required={true} maxLength={150} rows={4} style={{ height: "auto" }} placeholder={resources.SpecifyTheReasonForCancellationOrRefusal}></textarea>
                         </div>
