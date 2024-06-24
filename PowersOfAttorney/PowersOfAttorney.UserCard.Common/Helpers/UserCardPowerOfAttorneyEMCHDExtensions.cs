@@ -97,7 +97,7 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
                                     Citizenship = userCard.GenCeoCitizenship,
                                     CitizenshipType = userCard.IsB2BScopeOnly() ? null : userCard.GenCeoCitizenshipSign,
                                     ContactPhone = userCard.GenCeoPhoneNum,
-                                    EMail = userCard.GenCeoPhoneNum,
+                                    EMail = userCard.GenCeoEmail,
                                     Fio = new PowerOfAttorneyEMCHDData.FIO
                                     {
                                         FirstName = ceo.FirstName.AsNullable(),
@@ -264,7 +264,7 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
                 };
 
                 if (userCard.GenLossPowersTransfer != null)
-                    part.LossOfAuthorityType = userCard.GenLossPowersTransfer;
+                    part.LossOfAuthorityType = Convert(userCard.GenLossPowersTransfer);
 
                 if (powersType == PowerOfAttorneyEMCHDData.AuthorityType.Code)
                 {
@@ -382,20 +382,13 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
                 var ceo = userCard.GenCeo.GetValueOrThrow(Resources.Error_EmptyCeo);
                 return new PowerOfAttorneyEMCHDData.SoleExecutiveIndividualInfo
                 {
-                    ConfirmationDocument = new PowerOfAttorneyEMCHDData.ConfirmationOfAuthorityDocument
-                    {
-                        DocumentName = userCard.GenDocConfAuthCEO,
-                        IdentityOfDocument = userCard.GenSerNumCEOIDDoc,
-                        IssueDate = userCard.GenDateIssCEOIDDoc,
-                        Issuer = userCard.GenAuthIssCEOIDDoc
-                    },
                     IndividualInfo = new PowerOfAttorneyEMCHDData.IndividualInfo
                     {                        
                         BirthPlace = userCard.GenCeoPlaceOfBirth,
                         Citizenship = userCard.GenCeoCitizenship,
                         CitizenshipType = userCard.IsB2BScopeOnly() ? null : userCard.GenCeoCitizenshipSign,
                         ContactPhone = userCard.GenCeoPhoneNum,
-                        EMail = userCard.GenCeoPhoneNum,
+                        EMail = userCard.GenCeoEmail,
                         Fio = new PowerOfAttorneyEMCHDData.FIO
                         {
                             FirstName = ceo.FirstName.AsNullable(),

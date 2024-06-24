@@ -286,6 +286,15 @@ namespace PowersOfAttorneyServerExtension {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на The reason for revocation of the power of attorney is not specified.
+        /// </summary>
+        internal static string Error_EmptyRevokeReason {
+            get {
+                return ResourceManager.GetString("Error_EmptyRevokeReason", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Could not get the data of the signatory.
         /// </summary>
         internal static string Error_EmptySigner {
@@ -592,6 +601,26 @@ namespace PowersOfAttorneyServerExtension {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на A signed application to revoke the power of attorney was sent to the blockchain of the Federal Tax Service of Russia.
+        ///The result of the operation can be tracked in the exchange log..
+        /// </summary>
+        internal static string M4DRegistry_Recall_Success {
+            get {
+                return ResourceManager.GetString("M4DRegistry_Recall_Success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на The power of attorney was signed and sent to the blockchain of the Federal Tax Service of Russia.
+        ///The result of the operation can be tracked in the exchange log..
+        /// </summary>
+        internal static string M4DRegistry_Register_Success {
+            get {
+                return ResourceManager.GetString("M4DRegistry_Register_Success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на The power of attorney card is not available for signing..
         /// </summary>
         internal static string POABatchSign_AccessError {
@@ -687,6 +716,15 @@ namespace PowersOfAttorneyServerExtension {
         internal static string PowerOfAttorneyCloudSignatureWarning {
             get {
                 return ResourceManager.GetString("PowerOfAttorneyCloudSignatureWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Error when signing the power of attorney..
+        /// </summary>
+        internal static string PowerOfAttorneyErrorSigning {
+            get {
+                return ResourceManager.GetString("PowerOfAttorneyErrorSigning", resourceCulture);
             }
         }
         

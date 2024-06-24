@@ -26,10 +26,12 @@ import * as SignAndSendPowerOfAttorneyToRegistrationAsFile from "./EventHandlers
 import * as SignAndSendPowerOfAttorneyToRegistrationAsFileFromTask from "./EventHandlers/SignAndsEndPowerOfAttorneyToRegistrationAsFileFromTask";
 import * as SendForRegistrationToRegistry  from "./EventHandlers/SendForRegistrationToRegistry";
 import * as RecallPOwerOfAttorney from "./EventHandlers/RecallPowerOfAttorney";
+import * as CheckPowerOfAttorney from './EventHandlers/CheckPowerOfAttorney'
 import { $PowersOfAttorneyButtonController, PowersOfAttorneyButtonController } from "./ServerRequests/PowersOfAttorneyButtonController";
 import * as CustomizeSingleFormatPowerOfAttorneyForLocationLayout from "./EventHandlers/Version EMCHD_1/CustomizeSingleFormatPowerOfAttorneyForLocationLayout";
 import * as CustomizeSingleFormatSPOAForLocationLayout from "./EventHandlers/Version EMCHD_1/CustomizeSingleFormatSPOAForLocationLayout";
 import { SignPOABatchOperation } from "./DocumentSignBatchOperation/DocumentSignBatchOperationWebExtension/src/Controls/DocumentSignBatchOperation/DocumentSignBatchOperation";
+import * as SignAndSendPowerOfAttorneyToKonturForRegistrationAsFileFromTask from "./EventHandlers/SignAndSendPowerOfAttorneyToKonturForRegistrationAsFileFromTask";
 
 // Главная входная точка всего расширения
 // Данный файл должен импортировать прямо или косвенно все остальные файлы, 
@@ -44,7 +46,7 @@ extensionManager.registerExtension({
         CustomizePowerOfAttorneyCardForEditLayout, CustomizePowerOfAttorneyCardForViewCard, CustomizeSubstitutionPowerOfAttorneyCardForEditLayout, CustomizeSubstitutionPowerOfAttorneyCardForViewLayout,
         CustomizeSingleFormatPowerOfAttorneyForEditLayout, CustomizeSingleFormatPowerOfAttorneyForViewLayout, CustomizeSingleFormatPowerOfAttorneyForLocationLayout, CustomizeSingleFormatSPOAForLocationLayout, CreateEMCHDPowerOfAttorney, SignPowerOfAttorneyFromTask, ShowRequiredFields, CustomizeSingleFormatSPOACardForEditLayout, 
         CustomizeSingleFormatSPOACardForViewLayout, CreateEMCHDRetrustPowerOfAttorney, ExportApplicationForRevocation,
-        PowerOfAttorneyRegistration, SignAndSendPowerOfAttorneyToRegistrationAsFile, SignAndSendPowerOfAttorneyToRegistrationAsFileFromTask, SendForRegistrationToRegistry, RecallPOwerOfAttorney ],
+        PowerOfAttorneyRegistration, SignAndSendPowerOfAttorneyToRegistrationAsFile, SignAndSendPowerOfAttorneyToRegistrationAsFileFromTask, SendForRegistrationToRegistry, RecallPOwerOfAttorney, CheckPowerOfAttorney, SignAndSendPowerOfAttorneyToKonturForRegistrationAsFileFromTask ],
     layoutServices: [ 
         Service.fromFactory($PowersOfAttorneyDemoController, (services: $RequestManager) => new PowersOfAttorneyDemoController(services)),
         Service.fromFactory($PowersOfAttorneyButtonController, (services: $RequestManager) => new PowersOfAttorneyButtonController(services)),
