@@ -52,6 +52,6 @@ extensionManager.registerExtension({
         Service.fromFactory($PowersOfAttorneyButtonController, (services: $RequestManager) => new PowersOfAttorneyButtonController(services)),
     ],
     controls: [
-        { controlTypeName: "signPOABatchOperation", constructor: SignPOABatchOperation },
+        { controlTypeName: "SignPOABatchOperation", constructor: SignPOABatchOperation },
     ]
 })
