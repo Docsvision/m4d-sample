@@ -324,4 +324,16 @@
   <data name="Error_ValueLength" xml:space="preserve">
     <value>Значение не может быть меньше {0} символов</value>
   </data>
+  <data name="Error_AuthIssIDDoc" xml:space="preserve">
+    <value>Не удалось получить данные о наименовании органа, выдавшего документ, удостоверяющего личность представителя</value>
+  </data>
+  <data name="Error_EmptyEnitityWithoutPOAOrganization" xml:space="preserve">
+    <value>Не удалось получить данные юр. лица, действующего от имени доверителя без доверенности</value>
+  </data>
+  <data name="Error_EmptyExecutiveBodyType" xml:space="preserve">
+    <value>Не указан тип лица, действующего от имени доверителя без доверенности</value>
+  </data>
+  <data name="Error_EmptyRepresentativeOrganization" xml:space="preserve">
+    <value>Не удалось получить данные организации-представителя</value>
+  </data>
 </root>

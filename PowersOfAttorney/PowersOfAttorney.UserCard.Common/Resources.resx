@@ -324,4 +324,16 @@
   <data name="Error_ValueLength" xml:space="preserve">
     <value>Value cannot be less than {0} characters</value>
   </data>
+  <data name="Error_AuthIssIDDoc" xml:space="preserve">
+    <value>Failed to get value of the name of the authority that issued representative identification document</value>
+  </data>
+  <data name="Error_EmptyEnitityWithoutPOAOrganization" xml:space="preserve">
+    <value>Failed to get the data of the entity acting on behalf of principal without POA</value>
+  </data>
+  <data name="Error_EmptyExecutiveBodyType" xml:space="preserve">
+    <value>The executive body type is not specified</value>
+  </data>
+  <data name="Error_EmptyRepresentativeOrganization" xml:space="preserve">
+    <value>Failed to get value of the entity representative</value>
+  </data>
 </root>

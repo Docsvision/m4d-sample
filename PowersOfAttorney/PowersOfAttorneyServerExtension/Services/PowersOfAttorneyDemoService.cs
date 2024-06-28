@@ -30,9 +30,9 @@ namespace PowersOfAttorneyServerExtension.Services
             var signerID = GetSigner(userCardPowerOfAttorney, formatId);
             var signer = context.GetObject<StaffEmployee>(signerID);
             var format = context.GetObject<PowersPowerOfAttorneyFormat>(formatId);
-            var representativeType = userCardPowerOfAttorney.RepresentativeEnumValue;
+            var representativeType = userCardPowerOfAttorney.GenRepresentativeType;
             PowerOfAttorney powerOfAttorney = null;
-            if (representativeType == null || representativeType.Value == UserCardPowerOfAttorney.RepresentativeType.individual)
+            if (representativeType == null || representativeType.Value == UserCardPowerOfAttorney.GenRepresentativeTypes.individual)
             {
                 var representativeID = GetRepresentative(userCardPowerOfAttorney, formatId);
                 var representative = context.GetObject<StaffEmployee>(representativeID);
@@ -40,7 +40,7 @@ namespace PowersOfAttorneyServerExtension.Services
                 powerOfAttorney = PowerOfAttorneyService.CreatePowerOfAttorney(powerOfAttorneyData,
                     representative, signer, format, PowerOfAttorneyHandlingFlags.SupportDistributedRegistryFederalTaxService);
             }
-            else if(representativeType == UserCardPowerOfAttorney.RepresentativeType.entity)
+            else if(representativeType == UserCardPowerOfAttorney.GenRepresentativeTypes.entity)
             {                
                 var representative = userCardPowerOfAttorney.EntityRepresentative.Value;
 
