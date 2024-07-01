@@ -330,18 +330,21 @@
   <data name="Error_EmptyRevokeReason" xml:space="preserve">
     <value>The reason for revocation of the power of attorney is not specified</value>
   </data>
-	<data name="M4DRegistry_Register_Success" xml:space="preserve">
+  <data name="M4DRegistry_Register_Success" xml:space="preserve">
     <value>The power of attorney was signed and sent to the blockchain of the Federal Tax Service of Russia.
 The result of the operation can be tracked in the exchange log.</value>
   </data>
-	<data name="M4DRegistry_Recall_Success" xml:space="preserve">
+  <data name="M4DRegistry_Recall_Success" xml:space="preserve">
     <value>A signed application to revoke the power of attorney was sent to the blockchain of the Federal Tax Service of Russia.
 The result of the operation can be tracked in the exchange log.</value>
   </data>
-	<data name="PowerOfAttorneyCloudSignatureWarning" xml:space="preserve">
+  <data name="PowerOfAttorneyCloudSignatureWarning" xml:space="preserve">
     <value>Signing a machine-readable power of attorney with a cloud certificate is not currently supported</value>
   </data>
-	<data name="PowerOfAttorneyErrorSigning" xml:space="preserve">
+  <data name="PowerOfAttorneyErrorSigning" xml:space="preserve">
     <value>Error when signing the power of attorney.</value>
+  </data>
+  <data name="Error_AuthIssIDDoc" xml:space="preserve">
+    <value>Failed to get value of the name of the authority that issued representative identification document</value>
   </data>
 </root>

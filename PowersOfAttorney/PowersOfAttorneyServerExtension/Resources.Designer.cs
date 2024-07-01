@@ -88,6 +88,15 @@ namespace PowersOfAttorneyServerExtension {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Failed to get value of the name of the authority that issued representative identification document.
+        /// </summary>
+        internal static string Error_AuthIssIDDoc {
+            get {
+                return ResourceManager.GetString("Error_AuthIssIDDoc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Date of issue of identity document of head of the organization is not specified.
         /// </summary>
         internal static string Error_DateIssCEOIDDocIsEmpty {

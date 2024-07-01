@@ -192,11 +192,24 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
             /* Сведения о лице, действующем от имени юридического лица без доверенности (ЛицоБезДов) */
             private PrincipalWithoutPowerOfAttorneyInfo CreatePrincipalWithoutPowerOfAttorney()
             {
-                return new PrincipalWithoutPowerOfAttorneyInfo
+                var executiveType = userCard.GenExecutiveBodyType.Value;
+                var result = new PrincipalWithoutPowerOfAttorneyInfo();
+                switch (executiveType)
                 {
-                    Individual = GetIndividualInfo(),
-                    Organization = CreatePrincipalOrganizationInfo()
-                };                
+                    case ExecutiveBodyType.entity:
+                        /* Сведения об организации (Обязательный с условием) */
+                        result.Organization = CreatePrincipalOrganizationInfo();
+                        result.Individual = GetIndividualInfo();
+                        break;
+                    case ExecutiveBodyType.individual:
+                        /* Сведения о физическом лице, в том числе индивидуальном предпринимателе (Обязательный) */
+                        result.Individual = GetIndividualInfo();
+                        break;
+                    default:
+                        throw new InvalidEnumArgumentException(nameof(userCard.GenExecutiveBodyType));
+                }
+
+                return result;                            
             }
 
             /* Сведения по физическому лицу (СвФЛ) - 4.8 */

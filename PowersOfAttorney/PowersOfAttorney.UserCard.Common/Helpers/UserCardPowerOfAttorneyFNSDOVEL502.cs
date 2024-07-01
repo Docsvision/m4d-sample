@@ -95,6 +95,7 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
         }
                 
         public Guid InstanceId => document.GetObjectId();
+        public Guid MainInfoRowId => mainInfoSection.GetObjectId();
         public string KPPEntityWithoutPOA => poaAdditionalSection.GetStringValue(AdditionalFields.KPPEntityWithoutPOA);
         public string INNEntityWithoutPOA => poaAdditionalSection.GetStringValue(AdditionalFields.INNEntityWithoutPOA);
         // ИНН организации представителя
