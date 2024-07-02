@@ -386,11 +386,11 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
                     return null;
                 if (documentKindCode == DocumentKindTypes.Passport)
                 {
-                    authIssuer = userCard?.GenAuthIssCEOIDDoc ?? throw new ArgumentException(Resources.Error_AuthIssIDDoc);
+                    authIssuer = userCard?.RepresentativeIndividualDocumentIssuer ?? throw new ArgumentException(Resources.Error_AuthIssIDDoc);
                 }
                 else
                 {
-                    authIssuer = userCard?.GenAuthIssCEOIDDoc;
+                    authIssuer = userCard?.RepresentativeIndividualDocumentIssuer;
                 }                
                 return new IdentityCardInfo
                 {

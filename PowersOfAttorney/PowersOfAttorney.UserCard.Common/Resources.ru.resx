@@ -178,7 +178,7 @@
     <value>Не указан признак безотзывной доверенности</value>
   </data>
   <data name="Error_GenRepresentativeIsEmpty" xml:space="preserve">
-    <value>Не указан Тип доверителя</value>
+    <value>Не указан Тип представителя</value>
   </data>
   <data name="Error_IncorrectUserCardData" xml:space="preserve">
     <value>Заполнены не все обязательные данные или данные некорректны. Ошибка: {0}</value>

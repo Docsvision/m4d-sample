@@ -89,23 +89,22 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
                 
         public Guid InstanceId => document.GetObjectId();
         public Guid MainInfoRowId => mainInfoSection.GetObjectId();
-        public string KPPEntityWithoutPOA => poaAdditionalSection.GetStringValue(AdditionalFields.KPPEntityWithoutPOA);
-        public string INNEntityWithoutPOA => poaAdditionalSection.GetStringValue(AdditionalFields.INNEntityWithoutPOA);
+        public string KPPEntityWithoutPOA => poaAdditionalSection?.GetStringValue(AdditionalFields.KPPEntityWithoutPOA);
+        public string INNEntityWithoutPOA => poaAdditionalSection?.GetStringValue(AdditionalFields.INNEntityWithoutPOA);
         // ИНН организации представителя
-        public string INNEntityRepresentative => poaAdditionalSection.GetStringValue(AdditionalFields.INNEntityRepresentative);
+        public string INNEntityRepresentative => poaAdditionalSection?.GetStringValue(AdditionalFields.INNEntityRepresentative);
         // КПП оргранизации представителя
-        public string KPPEntityRepresentative => poaAdditionalSection.GetStringValue(AdditionalFields.KPPEntityRepresentative);
+        public string KPPEntityRepresentative => poaAdditionalSection?.GetStringValue(AdditionalFields.KPPEntityRepresentative);
         // Организация-представитель 
-        public NullableReference<StaffUnit> EntityRepresentative => poaAdditionalSection.GetReferenceFieldValue<StaffUnit>(context, AdditionalFields.EntityRepresentative);
+        public NullableReference<StaffUnit> EntityRepresentative => poaAdditionalSection?.GetReferenceFieldValue<StaffUnit>(context, AdditionalFields.EntityRepresentative);
         // Юридическое лицо, действующее от имени доверителя без доверенности
-        public NullableReference<StaffUnit> EntityWithoutPOA => poaAdditionalSection.GetReferenceFieldValue<StaffUnit>(context, AdditionalFields.EntityWithoutPOA);
+        public NullableReference<StaffUnit> EntityWithoutPOA => poaAdditionalSection?.GetReferenceFieldValue<StaffUnit>(context, AdditionalFields.EntityWithoutPOA);
         // Тип лица действующего от имени доверителя
-        public ExecutiveBodyType? GenExecutiveBodyType => poaAdditionalSection.GetEnumValue<ExecutiveBodyType>(AdditionalFields.ExecutiveBodyType);
+        public ExecutiveBodyType? GenExecutiveBodyType => poaAdditionalSection?.GetEnumValue<ExecutiveBodyType>(AdditionalFields.ExecutiveBodyType);
         // Тип представителя
-        public RepresentativeType? GenRepresentativeType502 => poaAdditionalSection.GetEnumValue<RepresentativeType>(AdditionalFields.RepresentativeType);
+        public RepresentativeType? GenRepresentativeType502 => poaAdditionalSection?.GetEnumValue<RepresentativeType>(AdditionalFields.RepresentativeType);
         // Признак возможности оформления передоверия
-        public GenPossibilityOfSubstitution502Type? GenPossibilityOfSubstitution502 => poaAdditionalSection.GetEnumValue<GenPossibilityOfSubstitution502Type>(AdditionalFields.PossibilityOfSubstitution502);
-        // Доверенность формируется на основании доверенности, ранее выданной в порядке передоверия
-        public bool? SubstitutionPOAInBasis => genMchdSection.GetBoolValue(AdditionalFields.SubstitutionPOAInBasis);
+        public GenPossibilityOfSubstitution502Type? GenPossibilityOfSubstitution502 => poaAdditionalSection?.GetEnumValue<GenPossibilityOfSubstitution502Type>(AdditionalFields.PossibilityOfSubstitution502);
+        
     }
 }

@@ -322,7 +322,7 @@ namespace PowersOfAttorneyServerExtension {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Type of principal is not specified.
+        ///   Ищет локализованную строку, похожую на Type of representative is not specified.
         /// </summary>
         internal static string Error_GenRepresentativeIsEmpty {
             get {

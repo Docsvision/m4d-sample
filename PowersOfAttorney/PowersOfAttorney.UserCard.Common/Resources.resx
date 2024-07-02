@@ -178,7 +178,7 @@
     <value>The sign of an irrevocable power of attorney is not specified</value>
   </data>
   <data name="Error_GenRepresentativeIsEmpty" xml:space="preserve">
-    <value>Type of principal is not specified</value>
+    <value>Type of representative is not specified</value>
   </data>
   <data name="Error_IncorrectUserCardData" xml:space="preserve">
     <value>Not all required data is filled in or the data is incorrect. Error message: {0}"</value>

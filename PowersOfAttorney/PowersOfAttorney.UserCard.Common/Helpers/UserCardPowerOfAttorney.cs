@@ -39,10 +39,8 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
 
 
             var poaAdditionalSectionRows = (IList<BaseCardSectionRow>)document.GetSection(poaAdditionalSectionId);
-            if (!poaAdditionalSectionRows.Any())
-                throw new ApplicationException(Resources.Error_EmptyMachineReadablePowerOfAttorney);
-
-            poaAdditionalSection = poaAdditionalSectionRows[0];           
+            if (poaAdditionalSectionRows.Any())
+                poaAdditionalSection = poaAdditionalSectionRows[0];
 
             powersWithCodesSection = (IList<BaseCardSectionRow>)document.GetSection(powersWithCodesSectionId);
             powersWithTextSection = (IList<BaseCardSectionRow>)document.GetSection(powersWithTextSectionId);
