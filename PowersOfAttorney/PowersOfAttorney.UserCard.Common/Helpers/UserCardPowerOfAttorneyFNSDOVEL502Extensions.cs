@@ -1,18 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data.Odbc;
-using System.Diagnostics;
 using System.Linq;
-using System.Runtime.Remoting.Contexts;
-using System.Security.Principal;
-using System.Text;
-using System.Threading.Tasks;
 using DocsVision.BackOffice.ObjectModel;
-using DocsVision.BackOffice.ObjectModel.Services;
 using DocsVision.BackOffice.ObjectModel.Services.Entities;
 using DocsVision.Platform.ObjectModel;
-
 using static DocsVision.BackOffice.ObjectModel.Services.Entities.PowerOfAttorneyFNSData;
 using static DocsVision.BackOffice.ObjectModel.Services.Entities.PowerOfAttorneyFNSDOVEL502Data;
 using static PowersOfAttorney.UserCard.Common.Helpers.UserCardPowerOfAttorney;
@@ -20,22 +12,17 @@ using static PowersOfAttorney.UserCard.Common.Helpers.UserCardPowerOfAttorney;
 namespace PowersOfAttorney.UserCard.Common.Helpers
 {
     public static class UserCardPowerOfAttorneyFNSDOVEL502Extensions
-    {
-        /* [Explain]
-         * Если кто-то продолжит с этого коммита - это тебе.
-         * Файл поделён на 2 региона: 
-         *  - Первоначальная доверенность
-         *  - Передоверие
-         * Все что касается первоначальной доверенности я сделал, как мне кажется(хотя я сам в это не верю),
-         * Остановился на передоверии, проблема с "Родительской карточкой передоверия", "Корневой карточкой передоверия" 
-         * и с тем как это все на самом деле должно заполняться.
-         */
+    {        
         public static PowerOfAttorneyData ConvertToPowerOfAttorneyFNSDOVEL502Data(this UserCardPowerOfAttorney userCard, ObjectContext context)
         {
-
             return Converter.Convert(userCard, context);
         }
 
+        public static PowerOfAttorneyRevocationData ConvertToPowerOfAttorneyFNSDOVEL502RevocationData(this UserCardPowerOfAttorney userCard, ObjectContext context, string revocationReason)
+        {
+            return RevocationFNSDOVEL502Converter.Convert(userCard, context, revocationReason);
+        }
+        
         private class Converter
         {
             private readonly UserCardPowerOfAttorney userCard;

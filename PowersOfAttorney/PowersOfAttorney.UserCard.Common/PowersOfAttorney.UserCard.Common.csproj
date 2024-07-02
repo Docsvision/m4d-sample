@@ -63,12 +63,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helpers\BaseCardSectionRowExtensions.cs" />
+    <Compile Include="Helpers\RevocationFNSDOVEL502Converter.cs" />
     <Compile Include="Helpers\StringExtensions.cs" />
     <Compile Include="Helpers\UserCardEMCHDPowerOfAttorney.cs" />
     <Compile Include="Helpers\UserCardPowerOfAttorney.cs" />
     <Compile Include="Helpers\UserCardPowerOfAttorneyDovBB.cs" />
     <Compile Include="Helpers\UserCardPowerOfAttorneyEmchd.cs" />
     <Compile Include="Helpers\UserCardPowerOfAttorneyEMCHDExtensions.cs" />
+    <Compile Include="Helpers\UserCardPowerOfAttorneyExtensions.cs" />
     <Compile Include="Helpers\UserCardPowerOfAttorneyFNSDOVBBExtensions.cs" />
     <Compile Include="Helpers\UserCardPowerOfAttorneyFNSDOVEL502.cs" />
     <Compile Include="Helpers\UserCardPowerOfAttorneyFNSDOVEL502Extensions.cs" />

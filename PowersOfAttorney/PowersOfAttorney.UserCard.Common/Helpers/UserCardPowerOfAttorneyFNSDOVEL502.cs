@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
 using DocsVision.BackOffice.ObjectModel;
 using static DocsVision.BackOffice.ObjectModel.Services.Entities.PowerOfAttorneyFNSDOVEL502Data;
 
@@ -47,9 +42,7 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
             /// </summary>
             individual = 1
         }
-
-        /* [ISSUE] Там короче есть енам в конструкторе разметок в мета данных свои названия, а в 
-         PowerOfAttorneyFNSDOVEL502Data совои и они РАЗНЫЕ */
+      
         ///// <summary>
         ///// Признак возможности оформления передоверия (5.02)
         ///// </summary>
