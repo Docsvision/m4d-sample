@@ -172,15 +172,15 @@ namespace PowersOfAttorneyServerExtension.Services
 
         private PowerOfAttorney CreateFNSDOVEL502502PowerOfAttorney(ObjectContext context, PowerOfAttorneyData powerOfAttorneyData, UserCardPowerOfAttorney userCardPowerOfAttorney, StaffEmployee signer, PowersPowerOfAttorneyFormat format)
         {
-            var representativeType = userCardPowerOfAttorney.GenRepresentativeType ?? throw new ApplicationException(Resources.Error_GenRepresentativeIsEmpty);
-            if (representativeType == UserCardPowerOfAttorney.GenRepresentativeTypes.individual)
+            var representativeType = userCardPowerOfAttorney.GenRepresentativeType502 ?? throw new ApplicationException(Resources.Error_GenRepresentativeIsEmpty);
+            if (representativeType == UserCardPowerOfAttorney.RepresentativeType.individual)
             {
                 var representativeID = GetRepresentative(userCardPowerOfAttorney, format.GetObjectId());
                 var representative = context.GetObject<StaffEmployee>(representativeID);
                 return PowerOfAttorneyService.CreatePowerOfAttorney(powerOfAttorneyData,
                     representative, signer, format, PowerOfAttorneyHandlingFlags.SupportDistributedRegistryFederalTaxService);
             }
-            else if (representativeType == UserCardPowerOfAttorney.GenRepresentativeTypes.entity)
+            else if (representativeType == UserCardPowerOfAttorney.RepresentativeType.entity)
             {
                 var representative = userCardPowerOfAttorney.EntityRepresentative.Value;
                 return PowerOfAttorneyService.CreatePowerOfAttorney(powerOfAttorneyData,

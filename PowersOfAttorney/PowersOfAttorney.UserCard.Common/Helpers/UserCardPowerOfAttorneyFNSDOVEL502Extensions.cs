@@ -275,7 +275,7 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
                         result.Individual = GetIndividualInfo2(false);
                         break;
                     default:
-                        throw new InvalidEnumArgumentException(nameof(userCard.GenRepresentativeType));
+                        throw new InvalidEnumArgumentException(nameof(userCard.GenRepresentativeType502));
                 }
 
                 return result;
