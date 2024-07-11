@@ -330,18 +330,18 @@
   <data name="Error_EmptyRevokeReason" xml:space="preserve">
     <value>The reason for revocation of the power of attorney is not specified</value>
   </data>
-	<data name="M4DRegistry_Register_Success" xml:space="preserve">
+  <data name="M4DRegistry_Register_Success" xml:space="preserve">
     <value>The power of attorney was signed and sent to the blockchain of the Federal Tax Service of Russia.
 The result of the operation can be tracked in the exchange log.</value>
   </data>
-	<data name="M4DRegistry_Recall_Success" xml:space="preserve">
+  <data name="M4DRegistry_Recall_Success" xml:space="preserve">
     <value>A signed application to revoke the power of attorney was sent to the blockchain of the Federal Tax Service of Russia.
 The result of the operation can be tracked in the exchange log.</value>
   </data>
-	<data name="PowerOfAttorneyCloudSignatureWarning" xml:space="preserve">
+  <data name="PowerOfAttorneyCloudSignatureWarning" xml:space="preserve">
     <value>Signing a machine-readable power of attorney with a cloud certificate is not currently supported</value>
   </data>
-	<data name="PowerOfAttorneyErrorSigning" xml:space="preserve">
+  <data name="PowerOfAttorneyErrorSigning" xml:space="preserve">
     <value>Error when signing the power of attorney.</value>
   </data>
   <data name="POABatchSign_AccessError" xml:space="preserve">
@@ -363,9 +363,12 @@ The result of the operation can be tracked in the exchange log.</value>
     <value>Wait, please. Operation "{0}" is in progress. This may take some time depending on the number of documents.</value>
   </data>
   <data name="POABatchSign_SignOperationName" xml:space="preserve">
-    <value>Power of attorney sign</value>
+    <value>Powers of attorney sign</value>
   </data>
   <data name="POABatchSign_СertificateError" xml:space="preserve">
     <value>No signing certificate was selected.</value>
+  </data>
+  <data name="POABatchSign_ErrorCreateSign" xml:space="preserve">
+    <value>Failed to create signature. Check that the selected certificate is correct.</value>
   </data>
 </root>

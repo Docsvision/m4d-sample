@@ -22,6 +22,10 @@ export class SignPOABatchOperationParams extends BaseControlParams {
      * карточки в списке групповой операции.
      */
     @r columnNameForPresentation?: string;
+    /** Столбец представления с состоянием карточки. */
+    @r columnNameWithState: string;
+    /** Столбец представления с идентификатором типа документа. */
+    @r columnNameWithKindId: string;
     /** Текст кнопки операции. */
     @rw buttonText?: string = resources.POABatchSign_signOperationName;
 

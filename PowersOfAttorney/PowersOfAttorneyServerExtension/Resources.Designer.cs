@@ -648,6 +648,15 @@ namespace PowersOfAttorneyServerExtension {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Failed to create signature. Check that the selected certificate is correct..
+        /// </summary>
+        internal static string POABatchSign_ErrorCreateSign {
+            get {
+                return ResourceManager.GetString("POABatchSign_ErrorCreateSign", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Review the documents and confirm the signing:.
         /// </summary>
         internal static string POABatchSign_SignConfirmationHeader {
@@ -675,7 +684,7 @@ namespace PowersOfAttorneyServerExtension {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Power of attorney sign.
+        ///   Ищет локализованную строку, похожую на Powers of attorney sign.
         /// </summary>
         internal static string POABatchSign_SignOperationName {
             get {

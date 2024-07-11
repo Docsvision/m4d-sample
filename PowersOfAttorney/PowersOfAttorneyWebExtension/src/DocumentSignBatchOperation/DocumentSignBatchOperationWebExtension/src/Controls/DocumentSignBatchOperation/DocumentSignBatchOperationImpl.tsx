@@ -31,8 +31,7 @@ export class SignPOABatchOperationImpl extends BaseControlImpl<SignPOABatchOpera
         super(state, props);
         this.onSignClick = this.onSignClick.bind(this);
         this.state.selectedRowsInfo = [];
-        this.columnNameWithState = 'Column_13';
-        this.columnNameWithKindId = 'Column_14';
+        
     }
 
     componentDidMount() {
@@ -40,6 +39,8 @@ export class SignPOABatchOperationImpl extends BaseControlImpl<SignPOABatchOpera
 
         this.state.services.batchOperations?.register(this.getOperationInfo());
         this.state.services.tableRowSelection?.selectionChanged?.subscribe(this.onSelectionChanged);
+        this.columnNameWithState = this.state.columnNameWithState;
+        this.columnNameWithKindId = this.state.columnNameWithKindId;
     }
 
     componentWillUnmount() {
@@ -127,7 +128,14 @@ export class SignPOABatchOperationImpl extends BaseControlImpl<SignPOABatchOpera
                     }
                     const info = new EncryptedInfo(selectedMethod.certificateInfo.thumberprint);
                     info.Attributes.push(new EncryptedAttribute(Crypto.DocumentNameOIDAttribute, getBstrBase64(POASignatureData.powerOfAttorneyContent)));
-                    const signature = await Crypto.SignData(info, POASignatureData.powerOfAttorneyContent);
+                    let signature;
+                    try {
+                        signature = await Crypto.SignData(info, POASignatureData.powerOfAttorneyContent);
+                    } catch (error) {
+                        pushError(cardName, resources.POABatchSign_ErrorCreateSign);
+                        resolve(errors);
+                        return
+                    }
                     if (signature) {
                         await this.state.services.powerOfAttorneyApiController.attachSignatureToPowerOfAttorney({ powerOfAttorneyId: POASignatureData.powerOfAttorneyId, signature }, { disableDialogsOnErrors: true})                            
                         const signOperationPOA = POASignatureData.operations.find(operation => operation.alias === "Sign");
@@ -139,7 +147,7 @@ export class SignPOABatchOperationImpl extends BaseControlImpl<SignPOABatchOpera
                     if (typeof responseObject === "string" && responseObject.includes(resources.Error_AccessDenied)) {
                         responseObject = resources.SignatureNotAllowed
                     }
-                    pushError(responseObject.data || cardName, responseObject.message || responseObject);
+                    pushError(responseObject?.data || cardName, responseObject?.message || responseObject);
                 }  
                 resolve(errors);
             });
