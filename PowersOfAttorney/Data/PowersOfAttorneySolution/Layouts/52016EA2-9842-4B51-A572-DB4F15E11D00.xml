@@ -13,7 +13,7 @@
     <Property Name="CardSaved" Value="" Type="System.String, mscorlib" IsAvailable="true" />
     <Property Name="CardStateChanging" Value="" Type="System.String, mscorlib" IsAvailable="true" />
     <Property Name="CardLayoutSwitching" Value="" Type="System.String, mscorlib" IsAvailable="true" />
-    <Property Name="CardDeleting" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+    <Property Name="CardDeleting" Value="deletePowerOfAttorney" Type="System.String, mscorlib" IsAvailable="true" />
     <Property Name="CardDeleted" Value="" Type="System.String, mscorlib" IsAvailable="true" />
     <Property Name="AllControlsLoaded" Value="customizeSingleFormatPowerOfAttorneyForViewLayout" Type="System.String, mscorlib" IsAvailable="true" />
     <Property Name="Click" Value="" Type="System.String, mscorlib" IsAvailable="true" />
@@ -1209,6 +1209,7 @@
                 <Property Name="SearchQueryParamName" Value="" Type="System.String, mscorlib" IsAvailable="true" />
                 <Property Name="SearchDelay" Value="500" Type="System.Int32, mscorlib" IsAvailable="false" />
                 <Property Name="SearchIndex" Value="3" Type="System.Int32, mscorlib" IsAvailable="false" />
+                <Property Name="SearchViewMode" Value="0" Type="System.Int32, mscorlib" IsAvailable="true" />
                 <Property Name="ShowEmptyLabel" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
                 <Property Name="Visibility" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
                   <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">

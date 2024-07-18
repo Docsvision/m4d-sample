@@ -6016,7 +6016,7 @@
                   </DeviceDependentPropertyOfBoolean>
                 </Property>
                 <Property Name="StandardCssClass" Value="system-saving-buttons" Type="System.String, mscorlib" IsAvailable="true" />
-                <Property Name="OkButtonText" Value="908875f2-0d15-4e20-93e9-7c514b007e03" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="true" />
+                <Property Name="OkButtonText" Value="1723ddb5-4e34-434b-b24c-e2d237b79733" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="true" />
                 <Property Name="CancelButtonText" Value="f0553208-b799-40d5-9b54-ba8804336590" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="true" />
                 <Property Name="Click" Value="" Type="System.String, mscorlib" IsAvailable="true" />
                 <Property Name="Clicking" Value="" Type="System.String, mscorlib" IsAvailable="true" />
