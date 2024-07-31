@@ -175,8 +175,9 @@ namespace PowersOfAttorneyServerExtension.Services
             var representativeType = userCardPowerOfAttorney.GenRepresentativeType502 ?? throw new ApplicationException(Resources.Error_GenRepresentativeIsEmpty);
             if (representativeType == UserCardPowerOfAttorney.RepresentativeType.individual)
             {
-                var representativeID = GetRepresentative(userCardPowerOfAttorney, format.GetObjectId());
+                var representativeID = GetRepresentative(userCardPowerOfAttorney, PowerOfAttorneyFNSDOVEL502Data.FormatId);
                 var representative = context.GetObject<StaffEmployee>(representativeID);
+
                 return PowerOfAttorneyService.CreatePowerOfAttorney(powerOfAttorneyData,
                     representative, signer, format, PowerOfAttorneyHandlingFlags.SupportDistributedRegistryFederalTaxService);
             }

@@ -700,11 +700,11 @@ namespace PowersOfAttorney.UserCard.Common {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Specify the reason for cancellation or refusal.
+        ///   Ищет локализованную строку, похожую на Specify the reason for revoking the power of attorney.
         /// </summary>
-        internal static string SpecifyTheReasonForCancellationOrRefusal {
+        internal static string SpecifyTheReasonForRevocation {
             get {
-                return ResourceManager.GetString("SpecifyTheReasonForCancellationOrRefusal", resourceCulture);
+                return ResourceManager.GetString("SpecifyTheReasonForRevocation", resourceCulture);
             }
         }
         

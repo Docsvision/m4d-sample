@@ -95,7 +95,7 @@ export const revokePowerOfAttorney = async (sender: CustomButton, e: IEventArgs,
                             <div>{`${resources.PowerOfAttorney} № ${powerOfAttorneyNumber}`}</div>
                             <RadioGroup ref={el => typeElement = el} value={PowerOfAttorneyRevocationType.Principal.toString()} items={items} labelText={resources.SelectTheTypeOfApplicationForRevocation} visibility={showRevocationType}></RadioGroup>
                             <label>{resources.Reason}:</label>
-                            <textarea ref={el => reasonElement = el} required={true} maxLength={150} rows={4} style={{ height: "auto" }} placeholder={resources.SpecifyTheReasonForCancellationOrRefusal}></textarea>
+                            <textarea ref={el => reasonElement = el} required={true} maxLength={150} rows={4} style={{ height: "auto" }} placeholder={resources.SpecifyTheReasonForRevocation}></textarea>
                         </div>
                         
                     </ModalDialogContent>

@@ -12,7 +12,7 @@ using static PowersOfAttorney.UserCard.Common.Helpers.UserCardPowerOfAttorney;
 namespace PowersOfAttorney.UserCard.Common.Helpers
 {
     public static class UserCardPowerOfAttorneyFNSDOVEL502Extensions
-    {        
+    {
         public static PowerOfAttorneyData ConvertToPowerOfAttorneyFNSDOVEL502Data(this UserCardPowerOfAttorney userCard, ObjectContext context)
         {
             return Converter.Convert(userCard, context);
@@ -22,7 +22,7 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
         {
             return RevocationFNSDOVEL502Converter.Convert(userCard, context, revocationReason);
         }
-        
+
         private class Converter
         {
             private readonly UserCardPowerOfAttorney userCard;
@@ -196,7 +196,7 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
                         throw new InvalidEnumArgumentException(nameof(userCard.GenExecutiveBodyType));
                 }
 
-                return result;                            
+                return result;
             }
 
             /* Сведения по физическому лицу (СвФЛ) - 4.8 */
@@ -288,20 +288,15 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
                 //     для физических лиц – двенадцатиразрядный код (ИНН физического лица, при наличии.
                 //     При отсутствии ИНН – последовательность из двенадцати нулей)    
                 //     НО!!! В примере разрешены только юр. лица
-                if (principalType.Value == GenPrincipalTypes.entity)
+                if (isRetrusted)
                 {
-                    if (isRetrusted)
-                    {
-                        var originalPOAUserCard = GetOriginalPowerOfAttorneyUserCard();
-                        return $"{originalPOAUserCard.GenEntityPrinINN}{originalPOAUserCard.GenEntityPrinKPP}";
-                    }
-                    else
-                    {
-                        return $"{userCard.GenEntityPrinINN}{userCard.GenEntityPrinKPP}";
-                    }
+                    var originalPOAUserCard = GetOriginalPowerOfAttorneyUserCard();
+                    return $"{originalPOAUserCard.GenEntityPrinINN}{originalPOAUserCard.GenEntityPrinKPP}";
                 }
-
-                throw new ArgumentOutOfRangeException(nameof(principalType));
+                else
+                {
+                    return $"{userCard.GenEntityPrinINN}{userCard.GenEntityPrinKPP}";
+                }
             }
 
             private UserCardPowerOfAttorney GetOriginalPowerOfAttorneyUserCard()
@@ -359,7 +354,7 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
                     /* ИНН физического лица */
                     Inn = userCard?.GenCeoIIN,
                     /* СНИЛС (Обязательный) */
-                    Snils = userCard?.GenCeoSNILS,                    
+                    Snils = userCard?.GenCeoSNILS,
                     /* Дата рождения */
                     BirthDate = userCard?.GenCeoDateOfBirth,
                     /* Сведения о документе, удостоверяющем личность физического лица (Обязательный) */
@@ -391,7 +386,7 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
                 else
                 {
                     authIssuer = userCard?.RepresentativeIndividualDocumentIssuer;
-                }                
+                }
                 return new IdentityCardInfo
                 {
                     /* Код вида документа (Обязательный) */
@@ -415,7 +410,8 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
                 if (documentKindCode == DocumentKindTypes.Passport)
                 {
                     authIssuer = userCard?.GenAuthIssCEOIDDoc ?? throw new ArgumentException(Resources.Error_AuthIssIDDoc);
-                } else
+                }
+                else
                 {
                     authIssuer = userCard?.GenAuthIssCEOIDDoc;
                 }
@@ -540,7 +536,7 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
                 }
                 return retrustPOAInfo;
             }
-           
+
 
             /* Сведения об основной доверенности (СвОснДов) - 4.13 */
             private PrimaryPowerOfAttorneyInfo CreatePrimaryPowerOfAttorneyInfo(Document document)

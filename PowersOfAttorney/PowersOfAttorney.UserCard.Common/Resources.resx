@@ -255,8 +255,8 @@
   <data name="SignTheApplication" xml:space="preserve">
     <value>Sign the application</value>
   </data>
-  <data name="SpecifyTheReasonForCancellationOrRefusal" xml:space="preserve">
-    <value>Specify the reason for cancellation or refusal</value>
+  <data name="SpecifyTheReasonForRevocation" xml:space="preserve">
+    <value>Specify the reason for revoking the power of attorney</value>
   </data>
   <data name="TheFollowingFieldsAreRequired" xml:space="preserve">
     <value>The following fields are required</value>

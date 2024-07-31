@@ -525,8 +525,17 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
 
         /// <summary>
         /// Внутренний номер доверенности
-        /// </summary>
-        public string GenInternalPOANumber => genMchdSection.GetStringValue("internalPOANumber");
+        /// </summary>        
+        public string GenInternalPOANumber
+        {
+            get
+            {
+                var internalPOANumberId = genMchdSection.GetGuidValue("internalPOANumber");
+                var numerationRulesService = context.GetService<INumerationRulesService>();
+                var number = (internalPOANumberId.HasValue && internalPOANumberId != Guid.Empty) ? numerationRulesService.GetNumber(document, internalPOANumberId.Value) : null;
+                return number?.Number ?? string.Empty;
+            }
+        }
 
         /// <summary>
         /// Регистрационный номер документа (он же - Внутренний номер доверенности - см.ERR-5856)
