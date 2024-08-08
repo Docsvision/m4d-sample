@@ -64,16 +64,23 @@ namespace PowersOfAttorneyServerExtension.Services
         {
             var userCardPowerOfAttorney = GetUserCardPowerOfAttorney(context, powerOfAttorneyUserCardId);
             var powerOfAttorneyData = GetPowerOfAttorneyData(userCardPowerOfAttorney, formatId);
-
-            var representativeID = GetRepresentative(userCardPowerOfAttorney, formatId);
+            
             var signerID = GetSigner(userCardPowerOfAttorney, formatId);
-            var parentalPowerOfAttorney = GetParentalPowerOfAttorney(userCardPowerOfAttorney, formatId);
-
-            var representative = context.GetObject<StaffEmployee>(representativeID);
+            var parentalPowerOfAttorney = GetParentalPowerOfAttorney(userCardPowerOfAttorney, formatId);            
             var signer = context.GetObject<StaffEmployee>(signerID);
             var parent = context.GetObject<PowerOfAttorney>(parentalPowerOfAttorney);
 
-            var powerOfAttorney = PowerOfAttorneyService.RetrustPowerOfAttorney(powerOfAttorneyData, representative, signer, parent, PowerOfAttorneyHandlingFlags.SupportDistributedRegistryFederalTaxService);
+            PowerOfAttorney powerOfAttorney;
+            if (formatId == PowerOfAttorneyFNSDOVEL502Data.FormatId)
+            {
+                powerOfAttorney = CreateFNSDOVEL502RetrustPowerOfAttorney(context, powerOfAttorneyData, userCardPowerOfAttorney, parent, signer);
+            }
+            else
+            {
+                var representativeID = GetRepresentative(userCardPowerOfAttorney, formatId);
+                var representative = context.GetObject<StaffEmployee>(representativeID);
+                powerOfAttorney = PowerOfAttorneyService.RetrustPowerOfAttorney(powerOfAttorneyData, representative, signer, parent, PowerOfAttorneyHandlingFlags.SupportDistributedRegistryFederalTaxService);
+            }
 
             powerOfAttorney.MainInfo.UserCard = powerOfAttorneyUserCardId;
             if (string.IsNullOrEmpty(powerOfAttorney.MainInfo.PrincipalINN))
@@ -186,6 +193,28 @@ namespace PowersOfAttorneyServerExtension.Services
                 var representative = userCardPowerOfAttorney.EntityRepresentative.Value;
                 return PowerOfAttorneyService.CreatePowerOfAttorney(powerOfAttorneyData,
                     representative, signer, format, PowerOfAttorneyHandlingFlags.SupportDistributedRegistryFederalTaxService);
+            }
+
+            throw new ArgumentOutOfRangeException(nameof(representativeType));
+        }
+
+        private PowerOfAttorney CreateFNSDOVEL502RetrustPowerOfAttorney(ObjectContext context, PowerOfAttorneyData powerOfAttorneyData,
+             UserCardPowerOfAttorney userCardPowerOfAttorney, PowerOfAttorney parent, StaffEmployee signer)
+        {
+            var representativeType = userCardPowerOfAttorney.GenRepresentativeType502 ?? throw new ApplicationException(Resources.Error_GenRepresentativeIsEmpty);
+            if (representativeType == UserCardPowerOfAttorney.RepresentativeType.individual)
+            {
+                var representativeID = GetRepresentative(userCardPowerOfAttorney, PowerOfAttorneyFNSDOVEL502Data.FormatId);
+                var representative = context.GetObject<StaffEmployee>(representativeID);
+
+                return PowerOfAttorneyService.RetrustPowerOfAttorney(powerOfAttorneyData, representative, signer,
+                    parent, PowerOfAttorneyHandlingFlags.SupportDistributedRegistryFederalTaxService);
+            }
+            else if (representativeType == UserCardPowerOfAttorney.RepresentativeType.entity)
+            {
+                var representative = userCardPowerOfAttorney.EntityRepresentative.Value;
+                return PowerOfAttorneyService.RetrustPowerOfAttorney(powerOfAttorneyData, representative, signer,
+                    parent, PowerOfAttorneyHandlingFlags.SupportDistributedRegistryFederalTaxService);
             }
 
             throw new ArgumentOutOfRangeException(nameof(representativeType));
