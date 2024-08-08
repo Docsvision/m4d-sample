@@ -52,10 +52,11 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
                 poaData = new PowerOfAttorneyFNSDOVEL502Data();
 
                 poaData.RecipientID = userCard.GenTaxAuthPOASubmit;
-                poaData.FinalRecipientID = userCard.GenFinalRecipientTaxID;
+                // Если конечный получатель не назначен - берём получаетеля
+                poaData.FinalRecipientID = string.IsNullOrEmpty(userCard.GenFinalRecipientTaxID) ? poaData.RecipientID : userCard.GenFinalRecipientTaxID;
                 poaData.SenderID = GetSenderID();
                 poaData.Document = CreatePowerOfAttorteyDocument();
-
+                
                 return poaData;
             }
 
@@ -260,7 +261,7 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
             }
 
             /* Сведения об уполномоченном представителе (уполномоченных представителях) (СвПредТип) - 4.20 */
-            private RepresentativeInfo GetRepresentativeInfo(bool isRetrust = false)
+            private RepresentativeInfo GetRepresentativeInfo()
             {
                 var result = new RepresentativeInfo();
                 switch (representativeType)
@@ -268,11 +269,11 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
                     case RepresentativeType.entity:
                         /* Сведения об организации (Обязательный с условием) */
                         result.Organization = CreateRepresentativeOrganizationInfo();
-                        result.Individual = GetIndividualInfo2(!isRetrust || userCard.GenExecutiveBodyType.HasValue && userCard.GenExecutiveBodyType.Value == ExecutiveBodyType.entity);
+                        result.Individual = GetIndividualInfo2();
                         break;
                     case RepresentativeType.individual:
                         /* Сведения о физическом лице, в том числе индивидуальном предпринимателе (Обязательный) */
-                        result.Individual = GetIndividualInfo2(false);
+                        result.Individual = GetIndividualInfo2();
                         break;
                     default:
                         throw new InvalidEnumArgumentException(nameof(userCard.GenRepresentativeType502));
@@ -313,7 +314,7 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
 
 
             /* Сведения о физическом лице, в том числе индивидуальном предпринимателе (СвФизЛицТип) - 4.21 */
-            private IndividualInfo2 GetIndividualInfo2(bool isEnity)
+            private IndividualInfo2 GetIndividualInfo2()
             {
                 var info = new IndividualInfo2();
                 /* ИНН физического лица */
@@ -321,26 +322,13 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
                 /* СНИЛС (Обязательный) */
                 info.Snils = userCard?.GenRepresentativeSNILS;
                 /* Фамилия, имя, отчество физического лица (Обязательный) */
-                if (isEnity)
+                var representative = userCard.GenRepresentative.GetValueOrThrow(Resources.Error_EmptyRepresentativeIndividual);
+                info.Fio = new FIO
                 {
-                    var representative = userCard.GenRepresentative.GetValueOrThrow(Resources.Error_EmptyRepresentativeIndividual);
-                    info.Fio = new FIO
-                    {
-                        LastName = representative.LastName,
-                        MiddleName = representative?.MiddleName,
-                        FirstName = representative.FirstName
-                    };
-                }
-                else
-                {
-                    info.Fio = new FIO
-                    {
-                        LastName = userCard.GenReprLastName,
-                        FirstName = userCard.GenReprName,
-                        MiddleName = userCard?.GenReprMiddleName
-                    };
-                }
-
+                    LastName = representative.LastName,
+                    MiddleName = representative?.MiddleName,
+                    FirstName = representative.FirstName
+                };
                 /* Сведения о документе, удостоверяющем личность физического лица (Обязательный) */
                 info.IdentityCard = CreateRepresentativeIdentityCardInfo();
                 return info;
@@ -468,7 +456,7 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
                 /* Сведения о доверителе в порядке передоверия(Обязательный) */
                 result.Principal = CreateRetrustPrincipalInfo();
                 /* Сведения об уполномоченном представителе(Обязательный) */
-                result.Representative = GetRepresentativeInfo(true);
+                result.Representative = GetRepresentativeInfo();
                 /* Признак(код) области полномочий уполномоченного представителя(Обязательный) */
                 result.RepresentativePowers = GetRepresentativePowers();
                 return result;
@@ -509,10 +497,9 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
                 var parentPOA = userCard.GenParentalPowerOfAttorneyUserCard;
 
                 var retrustPOAInfo = new RetrustPowerOfAttorneyInfo();
-                // Если доверенность в рамках передоверия второго уровня
-                if (parentPOA.HasValue)
-                    /* Регистрационный номер доверенности, в отношении которой производится передоверие (Обязательный) */
-                    retrustPOAInfo.ParentPowerOfAttorneyNumber = parentPOA.HasValue ? parentPOA.Value.GetObjectId() : originalPOA.GetObjectId();
+                
+                /* Регистрационный номер доверенности, в отношении которой производится передоверие (Обязательный) */
+                retrustPOAInfo.ParentPowerOfAttorneyNumber = parentPOA.HasValue ? parentPOA.Value.GetObjectId() : originalPOA.GetObjectId();
                 /* Номер доверенности */
                 retrustPOAInfo.InternalPowerOfAttorneyNumber = userCard.GenInternalPOANumber;
                 /* Дата совершения (выдачи) доверенности (Обязательный) */
