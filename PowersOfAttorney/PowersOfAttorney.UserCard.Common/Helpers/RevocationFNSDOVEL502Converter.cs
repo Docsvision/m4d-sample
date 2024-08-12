@@ -32,7 +32,7 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
             PowerOfAttorneyFNSDOVEL502RevocationData revocationData = new PowerOfAttorneyFNSDOVEL502RevocationData
             {
                 RecipientID = userCard.GenTaxAuthPOASubmit,
-                FinalRecipientID = userCard.GenFinalRecipientTaxID,
+                FinalRecipientID = string.IsNullOrEmpty(userCard.GenFinalRecipientTaxID) ? userCard.GenTaxAuthPOASubmit : userCard.GenFinalRecipientTaxID,
                 SenderID = GetSenderID(isRetrusted),
                 Document = CreateRevocationDocument(revocationReason, isRetrusted)
             };
@@ -42,25 +42,19 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
 
         private string GetSenderID(bool isRetrusted)
         {
-            var principalType = userCard.GenPrincipalType;
             //     Значение: для организаций – девятнадцатиразрядный код (ИНН и КПП организации)
             //     для физических лиц – двенадцатиразрядный код (ИНН физического лица, при наличии.
             //     При отсутствии ИНН – последовательность из двенадцати нулей)    
             //     НО!!! В примере разрешены только юр. лица
-            if (principalType.Value == GenPrincipalTypes.entity)
+            if (isRetrusted)
             {
-                if (isRetrusted)
-                {
-                    var originalPOAUserCard = GetOriginalPowerOfAttorneyUserCard();
-                    return $"{originalPOAUserCard.GenEntityPrinINN}{originalPOAUserCard.GenEntityPrinKPP}";
-                }
-                else
-                {
-                    return $"{userCard.GenEntityPrinINN}{userCard.GenEntityPrinKPP}";
-                }
+                var originalPOAUserCard = GetOriginalPowerOfAttorneyUserCard();
+                return $"{originalPOAUserCard.GenEntityPrinINN}{originalPOAUserCard.GenEntityPrinKPP}";
             }
-
-            throw new ArgumentOutOfRangeException(nameof(principalType));
+            else
+            {
+                return $"{userCard.GenEntityPrinINN}{userCard.GenEntityPrinKPP}";
+            }
         }
 
         private UserCardPowerOfAttorney GetOriginalPowerOfAttorneyUserCard()
@@ -146,14 +140,14 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
 
         private PrincipalInfo GetPrincipalInfo(UserCardPowerOfAttorney userCard)
         {
-            var executiveType = userCard.GenExecutiveBodyType.Value;
+            var executiveType = userCard.GenExecutiveBodyType;
 
             var principalWithoutInfo = new PrincipalWithoutPowerOfAttorneyInfo
             {
                 Position = userCard.GenCeoPosition
             };
 
-            if (executiveType == ExecutiveBodyType.entity)
+            if (executiveType.HasValue && executiveType == ExecutiveBodyType.entity)
             {
                 principalWithoutInfo.Organization = new OrganizationInfo
                 {
