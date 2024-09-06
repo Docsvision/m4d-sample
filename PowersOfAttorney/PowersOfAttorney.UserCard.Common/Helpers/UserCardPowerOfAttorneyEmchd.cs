@@ -533,7 +533,7 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
                 var internalPOANumberId = genMchdSection.GetGuidValue("internalPOANumber");
                 var numerationRulesService = context.GetService<INumerationRulesService>();
                 var number = (internalPOANumberId.HasValue && internalPOANumberId != Guid.Empty) ? numerationRulesService.GetNumber(document, internalPOANumberId.Value) : null;
-                return number?.Number ?? string.Empty;
+                return number?.Number;
             }
         }
 
