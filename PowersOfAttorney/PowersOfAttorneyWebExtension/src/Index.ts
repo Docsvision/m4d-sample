@@ -40,7 +40,7 @@ import * as SignAndSendPowerOfAttorneyToKonturForRegistrationAsFileFromTask from
 // обработчики событий, сервисы и прочие сущности web-приложения.
 extensionManager.registerExtension({
     name: "Powers Of Attorney web extension",
-    version: "5.5.17",
+    version: "6.1",
     globalEventHandlers: [ CreatePowerOfAttorney, CreateRetrustPowerOfAttorney, ExportPowerOfAttorney, SignPowerOfAttorney, RevokePowerOfAttorney, DeletePowerOfAttorney,
         CustomizePowerOfAttorneyCardForEditLayout, CustomizePowerOfAttorneyCardForViewCard, CustomizeSubstitutionPowerOfAttorneyCardForEditLayout, CustomizeSubstitutionPowerOfAttorneyCardForViewLayout,
         CustomizeSingleFormatPowerOfAttorneyForEditLayout, CustomizeSingleFormatPowerOfAttorneyForViewLayout, CustomizeSingleFormatPowerOfAttorneyForLocationLayout, CustomizeSingleFormatSPOAForLocationLayout, CreateEMCHDPowerOfAttorney, SignPowerOfAttorneyFromTask, ShowRequiredFields, CustomizeSingleFormatSPOACardForEditLayout, 
