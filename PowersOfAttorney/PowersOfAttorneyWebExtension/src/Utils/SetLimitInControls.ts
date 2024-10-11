@@ -13,7 +13,7 @@ export const setLimitInControls = (sender: Layout, limitations: ILimitation[]) =
         const element = document.querySelector(`[data-control-name="${limitation.name}"] input`);
         element.setAttribute("maxLength", `${limitation.length}`);
         sender.controls.get<TextBox>(limitation.name).params.blur.subscribe((sender: TextBox) => {   
-            checkValueLength(element, sender.params.value?.length && 0, sender.layout.params.services, limitation.length);
+            checkValueLength(element, sender.params.value?.length || 0, sender.layout.params.services, limitation.length);
         })
     })
 }
