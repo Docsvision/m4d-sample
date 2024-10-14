@@ -13,8 +13,8 @@
     <Property Name="CardSaved" Value="" Type="System.String, mscorlib" IsAvailable="true" />
     <Property Name="CardStateChanging" Value="" Type="System.String, mscorlib" IsAvailable="true" />
     <Property Name="CardLayoutSwitching" Value="" Type="System.String, mscorlib" IsAvailable="true" />
-    <Property Name="CardDeleting" Value="deletePowerOfAttorney" Type="System.String, mscorlib" IsAvailable="true" />
-    <Property Name="CardDeleted" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+    <Property Name="CardDeleting" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+    <Property Name="CardDeleted" Value="deletePowerOfAttorney" Type="System.String, mscorlib" IsAvailable="true" />
     <Property Name="AllControlsLoaded" Value="customizeSubstitutionPowerOfAttorneyCardForViewLayout" Type="System.String, mscorlib" IsAvailable="true" />
     <Property Name="Click" Value="" Type="System.String, mscorlib" IsAvailable="true" />
     <Property Name="MouseOver" Value="" Type="System.String, mscorlib" IsAvailable="true" />
