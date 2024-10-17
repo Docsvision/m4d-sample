@@ -9,6 +9,10 @@ import { EMPLOYEE_SECTION_ID, STAFF_DIRECTORY_ID, UNIT_STAFF_SECTION_ID } from "
 import { RadioGroup } from "@docsvision/webclient/Platform/RadioGroup";
 import { ILimitation, setLimitInControls } from "../../Utils/SetLimitInControls";
 import { setSnilsMask } from "../../Utils/SetSnilsMask";
+import { ICancelableEventArgs } from "@docsvision/webclient/System/ICancelableEventArgs";
+import { Table } from "@docsvision/webclient/Platform/Table";
+import { ILayoutBeforeSavingEventArgs } from "@docsvision/webclient/System/ILayoutParams";
+import { resources } from "@docsvision/webclient/System/Resources";
 
 const limitations: ILimitation[] = [
     { name: "codeTaxAuthSubmit", length: 4 },
@@ -37,6 +41,7 @@ export const customize502POACardForEditLayout = (sender: Layout) => {
     onReprTypeDataChanged(sender);
     onReprIDDataChanged(sender);
     
+    sender.params.beforeCardSaving.subscribe(checkPowersBeforeSaving);
     entityPrincipal && entityPrincipal.params.dataChanged.subscribe(onPrincipalDataChanged);
     entityExecutiveBody && entityExecutiveBody.params.dataChanged.subscribe(onEntityExecutiveBodyDataChanged);
     executiveBodyType && executiveBodyType.params.dataChanged.subscribe(onExecutiveBodyTypeDataChanged);
@@ -50,6 +55,14 @@ const customizeInputFields = (sender: Layout) => {
     setSnilsMask(sender, "ceoSNILS");
     setSnilsMask(sender, "reprSNILS");
     document.querySelector('[data-control-name="princAddrRus"] textarea').setAttribute("maxLength", "255");
+}
+
+const checkPowersBeforeSaving = (sender: Layout, args: ICancelableEventArgs<ILayoutBeforeSavingEventArgs>) => {
+    const refPowersTable = sender.controls.get<Table>("refPowersTable");    
+    if (refPowersTable.params.rows.length === 0) {
+        sender.params.services.messageWindow.showError(resources.Error_PowersEmpty);
+        args.cancel();
+    }
 }
 
 const onPrincipalDataChanged = async (sender: StaffDirectoryItems, args: IDataChangedEventArgs) => {

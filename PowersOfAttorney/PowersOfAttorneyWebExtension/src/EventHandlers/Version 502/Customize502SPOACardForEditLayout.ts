@@ -18,6 +18,9 @@ import { getControlValueFromPOA } from "../../Utils/GetControlValueFromPOA";
 import { ILimitation, setLimitInControls } from "../../Utils/SetLimitInControls";
 import { setSnilsMask } from "../../Utils/SetSnilsMask";
 import { clearTable } from "../../Utils/ClearTeable";
+import { ICancelableEventArgs } from "@docsvision/webclient/System/ICancelableEventArgs";
+import { ILayoutBeforeSavingEventArgs } from "@docsvision/webclient/System/ILayoutParams";
+import { resources } from "@docsvision/webclient/System/Resources";
 
 let entityExecutiveBodyChangedFromCardLink: boolean;
 
@@ -49,6 +52,7 @@ export const customize502SPOACardForEditLayout = (sender: Layout) => {
     onReprIDDataChanged(sender);
     onCeoIDDataChanged(sender);
 
+    sender.params.beforeCardSaving.subscribe(checkPowersBeforeSaving);
     substPOABasis && substPOABasis.params.dataChanged.subscribe(onSubstPOABasisDataChanged);
     parentalPOACardLink && parentalPOACardLink.params.dataChanged.subscribe(onParentalPOACardLinkDataChanged);
     originalPOACardLink && originalPOACardLink.params.dataChanged.subscribe(onOriginalPOACardLinkDataChanged);
@@ -65,6 +69,13 @@ const customizeInputFields = (sender: Layout) => {
     setSnilsMask(sender, "reprSNILS");
 }
 
+const checkPowersBeforeSaving = (sender: Layout, args: ICancelableEventArgs<ILayoutBeforeSavingEventArgs>) => {
+    const refPowersTable = sender.controls.get<Table>("refPowersTable");    
+    if (refPowersTable.params.rows.length === 0) {
+        sender.params.services.messageWindow.showError(resources.Error_PowersEmpty);
+        args.cancel();
+    }
+}
 
 const onSubstPOABasisDataChanged = (sender: Layout) => {
     const controls = sender.layout.controls;
