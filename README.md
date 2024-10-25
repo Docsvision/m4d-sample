@@ -28,6 +28,7 @@
 
 - PowersOfAttorney > PowersOfAttorneyServerExtension – папка с серверным расширением Web-клиента, в котором реализованы функции создания СКД из демонстрационной карточки доверенностей.
 - PowersOfAttorney > PowersOfAttorneyWebExtension – папка с клиентским расширением, в котором реализованы обработчики смены состояния ПКД и управления МЧД, видимостью и обязательностью полей.
+- PowersOfAttorney > PowersOfAttorneyDesignerExtension – папка с расширением конструктора разметок, в котором реализовано описание элемента управления для группового подписания.
 - PowersOfAttorney > PowersOfAttorney.UserCard.Common - папка с проектом PowersOfAttorney.UserCard.Common, который используется и для Web-клиента и для Windows клиента. 
 - PowersOfAttorney > PowersOfAttorney.Scripts - содержит файл скрипта для Windows клиента. 
 - PowersOfAttorney > Data > PowersOfAttorneySolution - папка с решением, включающим разметки тестовой карточки доверенности.
@@ -88,6 +89,7 @@
 1. Сборка серверной части.
    1. Откройте решение PowersOfAttorney > PowersOfAttorneyServerExtension.sln
    2. Соберите проект PowersOfAttorneyServerExtension
+   3. Соберите проект PowersOfAttorneyDesignerExtension
 
 2. Сборка клиентской части.
    1. Откройте в командной строке папку PowersOfAttorney > PowersOfAttorneyWebExtension.
@@ -105,9 +107,10 @@
    1. Скопируйте папку `PowersOfAttorney\SamplesOutput\Site\Content\Modules\PowersOfAttorneyWebExtension` в  `<Каталог установки Web-клиента>\Site\Content\Modules`.
    2. Скопируйте файл `PowersOfAttorney\SamplesOutput\Site\Extensions\PowersOfAttorneyServerExtension\PowersOfAttorneyServerExtension.dll` в  `<Каталог установки Web-клиента>\Site\Extensions`.
    3. Скопируйте файл `PowersOfAttorney\SamplesOutput\Site\Extensions\PowersOfAttorneyServerExtension\PowersOfAttorneyServerExtension.resources.dll` в  `<Каталог установки Web-клиента>\Site\Extensions\ru`.
-   4. Скопируйте файл `PowersOfAttorney\SamplesOutput\Site\Extensions\PowersOfAttorney.UserCard.Common\PowersOfAttorney.UserCard.Common.dll` в `<Каталог установки Web-клиента>\Site\Extensions`.
-   5. Скопируйте файл `PowersOfAttorney\SamplesOutput\Site\Extensions\PowersOfAttorney.UserCard.Common\PowersOfAttorney.UserCard.Common.resources.dll` в `<Каталог установки Web-клиента>\Site\Extensions\ru`.
-   6. Перезапустите IIS.
+   4. Скопируйте содержимое `PowersOfAttorney\SamplesOutput\Plugins` в  `<Каталог установки Web-клиента>\Plugins`.
+   5. Скопируйте файл `PowersOfAttorney\SamplesOutput\Site\Extensions\PowersOfAttorney.UserCard.Common\PowersOfAttorney.UserCard.Common.dll` в `<Каталог установки Web-клиента>\Site\Extensions`.
+   6. Скопируйте файл `PowersOfAttorney\SamplesOutput\Site\Extensions\PowersOfAttorney.UserCard.Common\PowersOfAttorney.UserCard.Common.resources.dll` в `<Каталог установки Web-клиента>\Site\Extensions\ru`.
+   7. Перезапустите IIS.
 
 ## Проверка примера
 
