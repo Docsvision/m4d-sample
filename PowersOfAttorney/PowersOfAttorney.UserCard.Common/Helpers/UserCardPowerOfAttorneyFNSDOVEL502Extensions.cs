@@ -291,7 +291,7 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
                 //     НО!!! В примере разрешены только юр. лица
                 if (isRetrusted)
                 {
-                    var originalPOAUserCard = GetOriginalPowerOfAttorneyUserCard();
+                    var originalPOAUserCard = GetOriginalPowerOfAttorneyUserCard(userCard);
                     return $"{originalPOAUserCard.GenEntityPrinINN}{originalPOAUserCard.GenEntityPrinKPP}";
                 }
                 else
@@ -300,7 +300,7 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
                 }
             }
 
-            private UserCardPowerOfAttorney GetOriginalPowerOfAttorneyUserCard()
+            private UserCardPowerOfAttorney GetOriginalPowerOfAttorneyUserCard(UserCardPowerOfAttorney userCard)
             {
                 return GetUserCardPowerOfAttorney(userCard.GenOriginalPowerOfAttorneyUserCard.GetValueOrThrow(Resources.Error_UnableToGetOriginalPowerOfAttorneyUserCard));
             }
@@ -532,7 +532,16 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
                 /* Единый регистрационный номер основной доверенности (Обязательный) */
                 primaryPOAInfo.PowerOfAttorneyNumber = document.GetObjectId();
                 /* Сведения о доверителе основной доверенности (Обязательный) */
-                primaryPOAInfo.Principal = CreatePrimaryPrincipalInfo(GetOriginalPowerOfAttorneyUserCard());
+                var originalUserCard = GetOriginalPowerOfAttorneyUserCard(userCard);
+                var isRetrusted = originalUserCard.IsRetrusted();                
+
+                while (isRetrusted)
+                {
+                    originalUserCard = GetOriginalPowerOfAttorneyUserCard(originalUserCard);
+                    isRetrusted = originalUserCard.IsRetrusted();
+                }
+                
+                primaryPOAInfo.Principal = CreatePrimaryPrincipalInfo(originalUserCard);                
                 return primaryPOAInfo;
             }
 
