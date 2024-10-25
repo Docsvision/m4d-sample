@@ -30,8 +30,8 @@ import * as CheckPowerOfAttorney from './EventHandlers/CheckPowerOfAttorney'
 import { $PowersOfAttorneyButtonController, PowersOfAttorneyButtonController } from "./ServerRequests/PowersOfAttorneyButtonController";
 import * as CustomizeSingleFormatPowerOfAttorneyForLocationLayout from "./EventHandlers/Version EMCHD_1/CustomizeSingleFormatPowerOfAttorneyForLocationLayout";
 import * as CustomizeSingleFormatSPOAForLocationLayout from "./EventHandlers/Version EMCHD_1/CustomizeSingleFormatSPOAForLocationLayout";
-import { SignPOABatchOperation } from "./DocumentSignBatchOperation/DocumentSignBatchOperationWebExtension/src/Controls/DocumentSignBatchOperation/DocumentSignBatchOperation";
 import * as SignAndSendPowerOfAttorneyToKonturForRegistrationAsFileFromTask from "./EventHandlers/SignAndSendPowerOfAttorneyToKonturForRegistrationAsFileFromTask";
+import { SignPOABatchOperation } from "./Controls/SignPOABatchOperation/SignPOABatchOperation";
 
 // Главная входная точка всего расширения
 // Данный файл должен импортировать прямо или косвенно все остальные файлы, 

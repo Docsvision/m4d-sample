@@ -16,8 +16,8 @@ import { urlStore } from "@docsvision/webclient/System/UrlStore";
 import { Crypto, getBstrBase64 } from "@docsvision/webclient/Libs/CryptoPro/Crypto";
 
 import React from "react";
-import { POWER_OF_ATTORNEY_KIND_ID, EMCHD_POWER_OF_ATTORNEY_KIND_ID } from "../../../../../PowerOfAttorneyConstants";
-import { SignPOABatchOperationParams } from "./DocumentSignBatchOperation";
+import { POWER_OF_ATTORNEY_KIND_ID, EMCHD_POWER_OF_ATTORNEY_KIND_ID } from "../../PowerOfAttorneyConstants";
+import { SignPOABatchOperationParams } from "./SignPOABatchOperation";
 import { IRow } from "@docsvision/web/components/table/interfaces/IRow";
 
 export interface ISignPOABatchOperationState extends SignPOABatchOperationParams, BaseControlState {

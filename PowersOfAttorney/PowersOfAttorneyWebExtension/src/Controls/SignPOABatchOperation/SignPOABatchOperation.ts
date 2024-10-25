@@ -12,7 +12,7 @@ import { BaseControl, BaseControlParams } from "@docsvision/webclient/System/Bas
 import { r } from "@docsvision/webclient/System/Readonly";
 import { rw } from "@docsvision/webclient/System/Readwrite";
 import { resources } from "@docsvision/webclient/System/Resources";
-import { ISignPOABatchOperationState, SignPOABatchOperationImpl } from "./DocumentSignBatchOperationImpl";
+import { ISignPOABatchOperationState, SignPOABatchOperationImpl } from "./SignPOABatchOperationImpl";
 
 
 export class SignPOABatchOperationParams extends BaseControlParams {       
