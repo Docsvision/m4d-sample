@@ -345,7 +345,7 @@
     <value>При подписании произошла ошибка.</value>
   </data>
   <data name="POABatchSign_AccessError" xml:space="preserve">
-    <value>Карточка довренности не доступна для подписания.</value>
+    <value>Карточка доверенности не доступна для подписания.</value>
   </data>
   <data name="POABatchSign_AccessSignDialogError" xml:space="preserve">
     <value>Некоторые карточки не доступны для подписания или операция прервана пользователем.</value>
