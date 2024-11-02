@@ -41,54 +41,54 @@
   <ItemGroup>
     <Reference Include="DocsVision.ApprovalDesigner.ObjectModel, Version=5.5.0.0, Culture=neutral, PublicKeyToken=7148afe997f90519, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>$(DocsvisionWebClientSDK)Assemblies\Docsvision\DocsVision.ApprovalDesigner.ObjectModel.dll</HintPath>
+      <HintPath>..\..\Assemblies\Docsvision\DocsVision.ApprovalDesigner.ObjectModel.dll</HintPath>
     </Reference>
     <Reference Include="DocsVision.BackOffice.ObjectModel, Version=5.5.0.0, Culture=neutral, PublicKeyToken=7148afe997f90519, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>$(DocsvisionWebClientSDK)Assemblies\Docsvision\DocsVision.BackOffice.ObjectModel.dll</HintPath>
+      <HintPath>..\..\Assemblies\Docsvision\DocsVision.BackOffice.ObjectModel.dll</HintPath>
     </Reference>
     <Reference Include="DocsVision.BackOffice.WebLayoutsDesignerExtension, Version=5.5.0.0, Culture=neutral, PublicKeyToken=7148afe997f90519, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>$(DocsvisionWebClientSDK)Assemblies\Docsvision\DocsVision.BackOffice.WebLayoutsDesignerExtension.dll</HintPath>
+      <HintPath>..\..\Assemblies\Docsvision\DocsVision.BackOffice.WebLayoutsDesignerExtension.dll</HintPath>
     </Reference>
     <Reference Include="DocsVision.LayoutEditor.ObjectModel">
-      <HintPath>$(DocsvisionWebClientSDK)Assemblies\Docsvision\DocsVision.LayoutEditor.ObjectModel.dll</HintPath>
+      <HintPath>..\..\Assemblies\Docsvision\DocsVision.LayoutEditor.ObjectModel.dll</HintPath>
     </Reference>
     <Reference Include="DocsVision.Platform.ObjectManager, Version=5.5.0.0, Culture=neutral, PublicKeyToken=7148afe997f90519, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>$(DocsvisionWebClientSDK)Assemblies\Docsvision\DocsVision.Platform.ObjectManager.dll</HintPath>
+      <HintPath>..\..\Assemblies\Docsvision\DocsVision.Platform.ObjectManager.dll</HintPath>
     </Reference>
     <Reference Include="DocsVision.Platform.ObjectModel, Version=5.5.0.0, Culture=neutral, PublicKeyToken=7148afe997f90519, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>$(DocsvisionWebClientSDK)Assemblies\Docsvision\DocsVision.Platform.ObjectModel.dll</HintPath>
+      <HintPath>..\..\Assemblies\Docsvision\DocsVision.Platform.ObjectModel.dll</HintPath>
     </Reference>
     <Reference Include="DocsVision.Platform.StorageServer, Version=5.5.0.0, Culture=neutral, PublicKeyToken=7148afe997f90519, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>$(DocsvisionWebClientSDK)Assemblies\Docsvision\DocsVision.Platform.StorageServer.dll</HintPath>
+      <HintPath>..\..\Assemblies\Docsvision\DocsVision.Platform.StorageServer.dll</HintPath>
     </Reference>
     <Reference Include="DocsVision.Platform.SystemCards.ObjectModel, Version=5.5.0.0, Culture=neutral, PublicKeyToken=7148afe997f90519, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>$(DocsvisionWebClientSDK)Assemblies\Docsvision\DocsVision.Platform.SystemCards.ObjectModel.dll</HintPath>
+      <HintPath>..\..\Assemblies\Docsvision\DocsVision.Platform.SystemCards.ObjectModel.dll</HintPath>
     </Reference>
     <Reference Include="DocsVision.Platform.SystemObjects, Version=5.5.0.0, Culture=neutral, PublicKeyToken=7148afe997f90519, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>$(DocsvisionWebClientSDK)Assemblies\Docsvision\DocsVision.Platform.SystemObjects.dll</HintPath>
+      <HintPath>..\..\Assemblies\Docsvision\DocsVision.Platform.SystemObjects.dll</HintPath>
     </Reference>
     <Reference Include="DocsVision.Platform.WebLayoutsDesignerExtension, Version=5.5.0.0, Culture=neutral, PublicKeyToken=7148afe997f90519, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>$(DocsvisionWebClientSDK)Assemblies\Docsvision\DocsVision.Platform.WebLayoutsDesignerExtension.dll</HintPath>
+      <HintPath>..\..\Assemblies\Docsvision\DocsVision.Platform.WebLayoutsDesignerExtension.dll</HintPath>
     </Reference>
     <Reference Include="DocsVision.WebClientLibrary.ObjectModel, Version=5.5.0.0, Culture=neutral, PublicKeyToken=7148afe997f90519, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>$(DocsvisionWebClientSDK)Assemblies\Docsvision\DocsVision.WebClientLibrary.ObjectModel.dll</HintPath>
+      <HintPath>..\..\Assemblies\Docsvision\DocsVision.WebClientLibrary.ObjectModel.dll</HintPath>
     </Reference>
     <Reference Include="DocsVision.Workflow.Interfaces, Version=5.5.0.0, Culture=neutral, PublicKeyToken=7148afe997f90519, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>$(DocsvisionWebClientSDK)Assemblies\Docsvision\DocsVision.Workflow.Interfaces.dll</HintPath>
+      <HintPath>..\..\Assemblies\Docsvision\DocsVision.Workflow.Interfaces.dll</HintPath>
     </Reference>
     <Reference Include="DocsVision.Workflow.Objects, Version=5.5.0.0, Culture=neutral, PublicKeyToken=7148afe997f90519, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>$(DocsvisionWebClientSDK)Assemblies\Docsvision\DocsVision.Workflow.Objects.dll</HintPath>
+      <HintPath>..\..\Assemblies\Docsvision\DocsVision.Workflow.Objects.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -103,12 +103,12 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
     <Reference Include="WebLayoutsDesigner">
-      <HintPath>$(DocsvisionWebClientSDK)Assemblies\Docsvision\WebLayoutsDesigner.exe</HintPath>
+      <HintPath>..\..\Assemblies\Docsvision\WebLayoutsDesigner.exe</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="Xceed.Wpf.Toolkit.Fixed">
-      <HintPath>$(DocsvisionWebClientSDK)Assemblies\Others\Xceed.Wpf.Toolkit.Fixed.dll</HintPath>
+      <HintPath>..\..\Assemblies\Others\Xceed.Wpf.Toolkit.Fixed.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>
