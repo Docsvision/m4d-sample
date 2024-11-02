@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Sample extension for Docsvision WebClient.",
   "scripts": {
-    "build": " rollup -c rollup.config.js && gulp styles && gulp copy-plugins",
+    "build": " rollup -c rollup.config.js && gulp styles",
     "build:prod": "SET buildTarget=PROD&& npm run build",
     "watch": "concurrently \"rollup -c rollup.config.js --watch\" \"gulp watch\""
   },
