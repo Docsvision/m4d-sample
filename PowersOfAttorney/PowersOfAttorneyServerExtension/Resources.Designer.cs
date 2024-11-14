@@ -621,6 +621,87 @@ namespace PowersOfAttorneyServerExtension {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на The power of attorney card is not available for signing..
+        /// </summary>
+        internal static string POABatchSign_AccessError {
+            get {
+                return ResourceManager.GetString("POABatchSign_AccessError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Some cards are not available for signing or the operation was interrupted by the user.
+        /// </summary>
+        internal static string POABatchSign_AccessSignDialogError {
+            get {
+                return ResourceManager.GetString("POABatchSign_AccessSignDialogError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Power of attorney card.
+        /// </summary>
+        internal static string POABatchSign_Card {
+            get {
+                return ResourceManager.GetString("POABatchSign_Card", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Failed to create signature. Check that the selected certificate is correct..
+        /// </summary>
+        internal static string POABatchSign_ErrorCreateSign {
+            get {
+                return ResourceManager.GetString("POABatchSign_ErrorCreateSign", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Review the documents and confirm the signing:.
+        /// </summary>
+        internal static string POABatchSign_SignConfirmationHeader {
+            get {
+                return ResourceManager.GetString("POABatchSign_SignConfirmationHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Power of attorney cards are signed..
+        /// </summary>
+        internal static string POABatchSign_Signed {
+            get {
+                return ResourceManager.GetString("POABatchSign_Signed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Wait, please. Operation &quot;{0}&quot; is in progress. This may take some time depending on the number of documents..
+        /// </summary>
+        internal static string POABatchSign_SignOperationDescription {
+            get {
+                return ResourceManager.GetString("POABatchSign_SignOperationDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Powers of attorney sign.
+        /// </summary>
+        internal static string POABatchSign_SignOperationName {
+            get {
+                return ResourceManager.GetString("POABatchSign_SignOperationName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на No signing certificate was selected..
+        /// </summary>
+        internal static string POABatchSign_СertificateError {
+            get {
+                return ResourceManager.GetString("POABatchSign_СertificateError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Not submitted.
         /// </summary>
         internal static string PoaDidNotSendToRegistrationStatus {

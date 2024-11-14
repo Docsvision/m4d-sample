@@ -330,18 +330,45 @@
   <data name="Error_EmptyRevokeReason" xml:space="preserve">
     <value>Не указана причина отзыва доверенности</value>
   </data>
-	<data name="M4DRegistry_Register_Success" xml:space="preserve">
+  <data name="M4DRegistry_Register_Success" xml:space="preserve">
     <value>Доверенность была подписана и отправлена в ЦПРР ФНС.
 Результат выполнения операции можно отследить в журнале обмена.</value>
   </data>
-	<data name="M4DRegistry_Recall_Success" xml:space="preserve">
+  <data name="M4DRegistry_Recall_Success" xml:space="preserve">
     <value>Подписанное заявление на отзыв доверенности было отправлено в ЦПРР ФНС.
 Результат выполнения операции можно отследить в журнале обмена.</value>
   </data>
-	<data name="PowerOfAttorneyCloudSignatureWarning" xml:space="preserve">
+  <data name="PowerOfAttorneyCloudSignatureWarning" xml:space="preserve">
     <value>На данный момент подписание машиночитаемой доверенности облачным сертификатом не поддерживается</value>
   </data>
-	<data name="PowerOfAttorneyErrorSigning" xml:space="preserve">
+  <data name="PowerOfAttorneyErrorSigning" xml:space="preserve">
     <value>При подписании произошла ошибка.</value>
+  </data>
+  <data name="POABatchSign_AccessError" xml:space="preserve">
+    <value>Карточка доверенности не доступна для подписания.</value>
+  </data>
+  <data name="POABatchSign_AccessSignDialogError" xml:space="preserve">
+    <value>Некоторые карточки не доступны для подписания или операция прервана пользователем.</value>
+  </data>
+  <data name="POABatchSign_Card" xml:space="preserve">
+    <value>Карточка доверенности</value>
+  </data>
+  <data name="POABatchSign_SignConfirmationHeader" xml:space="preserve">
+    <value>Просмотрите документы и подтвердите подписание:</value>
+  </data>
+  <data name="POABatchSign_Signed" xml:space="preserve">
+    <value>Доверенности подписаны.</value>
+  </data>
+  <data name="POABatchSign_SignOperationDescription" xml:space="preserve">
+    <value>Пожалуйста, подождите. Выполняется операция "{0}". Это может занять некоторое время, в зависимости от количества документов.</value>
+  </data>
+  <data name="POABatchSign_SignOperationName" xml:space="preserve">
+    <value>Подписать доверенности</value>
+  </data>
+  <data name="POABatchSign_СertificateError" xml:space="preserve">
+    <value>Не был выбран сертификат для подписи.</value>
+  </data>
+  <data name="POABatchSign_ErrorCreateSign" xml:space="preserve">
+    <value>При создании подписи произошла ошибка. Проверьте корректность выбранного сертификата.</value>
   </data>
 </root>

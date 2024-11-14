@@ -1,6 +1,9 @@
 const gulp = require("gulp");
 const docsvision = require("@docsvision/webclient-extension-build/gulpfile.js");
-const { STYLES_DIR } = require("./copy-path");
+const { STYLES_DIR} = require("./copy-path");
+const log = require('fancy-log');
+const colors = require('ansi-colors');
+const path = require('path');
 
 var sources = { };
 sources.src = "src";
