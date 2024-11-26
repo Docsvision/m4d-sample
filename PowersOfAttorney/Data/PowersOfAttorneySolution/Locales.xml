@@ -547,6 +547,7 @@
   <Property Key="60aec81d-a669-41d9-8f96-bf0dc90197ed" />
   <Property Key="7f765351-6f3b-43d4-a249-9d5819a8985d" />
   <Property Key="1bae2d3b-dfe2-46bf-af8c-355841b95db8" />
+  <Property Key="199905c9-9519-468d-b0b4-5af0ebed02e7" />
 </LayoutLocalization>
     </File>
   </Locale>
@@ -1097,6 +1098,7 @@
   <Property Key="60aec81d-a669-41d9-8f96-bf0dc90197ed" />
   <Property Key="7f765351-6f3b-43d4-a249-9d5819a8985d" />
   <Property Key="1bae2d3b-dfe2-46bf-af8c-355841b95db8" />
+  <Property Key="199905c9-9519-468d-b0b4-5af0ebed02e7" />
 </LayoutLocalization>
     </File>
   </Locale>
@@ -1563,8 +1565,8 @@
   <Property Key="15b3993b-f252-4136-a9af-eefe40330fe4" PropertyValue="Editing a file" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="d0c73b70-42c8-4b19-b88f-b6634d8bf332" PropertyValue="Новая доверенность" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="7177b148-f6a9-4157-9dcf-88ce88178b8d" PropertyValue="Сведения о доверенности" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
-  <Property Key="074344f7-2e9d-4019-83c2-7bcb3eb2a74f" PropertyValue="Unified power of attorney registration number" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
-  <Property Key="0d52ce93-17cb-4c77-9620-035acdc9bba9" PropertyValue="Date of execution (issue) of the power of attorney" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="074344f7-2e9d-4019-83c2-7bcb3eb2a74f" PropertyValue="Единый регистрационный номер доверенности" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="0d52ce93-17cb-4c77-9620-035acdc9bba9" PropertyValue="Дата совершения (выдачи) доверенности" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="b63ab5e4-0487-4432-8b0d-a4a52e942f12" PropertyValue="Дата окончания действия доверенности" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="645c3d02-607a-420b-a88a-59cdb36ded23" PropertyValue="Признак возможности оформления передоверия" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="050bfffb-c082-4e22-b408-8bb24732024b" PropertyValue="Сведения доверенности" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
@@ -1576,7 +1578,7 @@
   <Property Key="86e5f16b-d095-41f8-813b-09e8024bbaf1" PropertyValue="Описание условия отзыва" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="bed6787f-5c43-46bf-a072-a9977c22cd1e" PropertyValue="Признак утраты полномочий при передоверии" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="0c205580-47b7-48cd-ad11-1116e29c02e0" PropertyValue="Сведения о доверителе" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
-  <Property Key="bffdabe2-64a4-4c2e-87dc-611694163b38" PropertyValue="Principal type" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="bffdabe2-64a4-4c2e-87dc-611694163b38" PropertyValue="Тип доверителя" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="ee00cfc9-219a-46db-bfb5-fd89b0ef78ff" PropertyValue="Сведения о доверителе – российском юридическом лице" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="418a0288-fdc0-4b14-b60d-2236082cee43" PropertyValue="Сведения о российском юридическом лице" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="3e1aec85-f9ed-420a-b2c8-04074be2c10f" PropertyValue="Сведения о лице, действующем от имени юридического лица без доверенности" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
@@ -1590,13 +1592,13 @@
   <Property Key="125e640e-31ac-4460-bd09-67867648bfd9" PropertyValue="Адрес фактического места нахождения" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="eb261128-1cb2-4428-82ec-6a5279ac683e" PropertyValue="Сведения по физическому лицу" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="d269f4ff-9463-494b-b539-8fd4cc1781fc" PropertyValue="ИНН физического лица" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
-  <Property Key="f23f5151-481f-4a59-85eb-00eefd700aac" PropertyValue="Individual insurance account number" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="f23f5151-481f-4a59-85eb-00eefd700aac" PropertyValue="СНИЛС" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="f61e84cf-2691-48b2-b677-d9692a89e116" PropertyValue="Наименование документа, подтверждающего полномочия" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="b5f01490-07cf-434e-b1a7-a22177392507" PropertyValue="Реквизиты документа, подтверждающего полномочия" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="64545e66-c23b-4be2-a7b5-2c0d1e4869e2" PropertyValue="Дата выдачи" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="09754eee-4176-44c3-90e6-77a442d6b065" PropertyValue="Кем выдан" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="043eaf33-9ec8-4df2-bfb4-13c79d2288e1" PropertyValue="Сведения об удостоверении документа, если он удостоверен" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
-  <Property Key="c7e6eee4-4e88-47c1-b80c-795e0d7114ac" PropertyValue="Individual" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="c7e6eee4-4e88-47c1-b80c-795e0d7114ac" PropertyValue="Физическое лицо" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="84e0d7ac-c261-435a-8e4e-00a1621abed9" PropertyValue="Место рождения" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="85b86e13-6834-4b1b-a4e0-d7fb8ffa6996" PropertyValue="Место рожденияПризнак наличия гражданства" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="c9099c99-a799-4083-bb32-000d2e521f64" PropertyValue="Признак наличия гражданства" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
@@ -1605,9 +1607,9 @@
   <Property Key="8faa300a-9be4-47e3-a81a-66b5bfe56426" PropertyValue="Адрес места жительства" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="e120af8b-33c0-4d8b-b684-e2fff5f39076" PropertyValue="Сведения о документе, удостоверяющем личность физического лица" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="2c201d64-425d-4c80-9aba-2585f4d5d617" PropertyValue="Код вида документа" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
-  <Property Key="3a90af1b-c668-4c48-b09e-33a0c9f430d0" PropertyValue="Series and document number" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
-  <Property Key="ba26c860-baab-4755-b32d-a2cd343e2f13" PropertyValue="Document issue date" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
-  <Property Key="77f4e210-3714-4cb1-8e79-0fe9d1135dd4" PropertyValue="Name of the authority that issued the document" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="3a90af1b-c668-4c48-b09e-33a0c9f430d0" PropertyValue="Серия и номер документа" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="ba26c860-baab-4755-b32d-a2cd343e2f13" PropertyValue="Дата выдачи документа" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="77f4e210-3714-4cb1-8e79-0fe9d1135dd4" PropertyValue="Наименование органа, выдавшего документ" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="a10e048f-9155-43b4-8ba0-4498d1e3ff62" PropertyValue="Элемент обязателен для паспорта " SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="29882b30-9ecf-451c-8318-804b556dcdf0" PropertyValue="Элемент обязателен для паспорта гражданина Российской Федерации" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="3e2e38b1-a604-47cc-822b-f90ed8cb9ea7" PropertyValue="Код подразделения органа, выдавшего документ" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
@@ -1647,6 +1649,7 @@
   <Property Key="60aec81d-a669-41d9-8f96-bf0dc90197ed" PropertyValue="Фамилия, имя, отчество (при наличии) физического лица" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="7f765351-6f3b-43d4-a249-9d5819a8985d" PropertyValue="Сведения о полномочиях представителя (представителей)" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
   <Property Key="1bae2d3b-dfe2-46bf-af8c-355841b95db8" PropertyValue="Текстовое описание полномочий уполномоченного представителя" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
+  <Property Key="199905c9-9519-468d-b0b4-5af0ebed02e7" PropertyValue="номер будет сгенерирован автоматически после сохранения" SolutionId="70d44593-8859-4a7b-84e8-5e611294c0ab" />
 </LayoutLocalization>
     </File>
   </Locale>
@@ -2197,6 +2200,7 @@
   <Property Key="60aec81d-a669-41d9-8f96-bf0dc90197ed" PropertyValue="Фамилия, имя, отчество (при наличии) физического лица" />
   <Property Key="7f765351-6f3b-43d4-a249-9d5819a8985d" PropertyValue="Сведения о полномочиях представителя (представителей)" />
   <Property Key="1bae2d3b-dfe2-46bf-af8c-355841b95db8" PropertyValue="Текстовое описание полномочий уполномоченного представителя" />
+  <Property Key="199905c9-9519-468d-b0b4-5af0ebed02e7" PropertyValue="номер будет сгенерирован автоматически после сохранения" />
 </LayoutLocalization>
     </File>
   </Locale>

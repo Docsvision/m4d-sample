@@ -26,7 +26,7 @@
     <Binding PropertyName="3acb136f-d804-4a38-8ca6-e4b369e168dc" BindingMode="1" Path="v1|@00000000-0000-0000-0000-000000000000/00000000-0000-0000-0000-000000000000/" ConverterType="AdminPanelMessageCardsIdsConverter" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
     <Binding PropertyName="45ffc941-5821-4d0e-9c47-9c78e4683067" BindingMode="0" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
     <Binding PropertyName="70d863c1-1dd5-4b2f-ba37-511c59022f12" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/00000000-0000-0000-0000-000000000000/" ConverterType="State" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
-    <Binding PropertyName="0e115d11-ec06-41ee-a0d0-ddb920ad41fd" BindingMode="0" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
+    <Binding PropertyName="0e115d11-ec06-41ee-a0d0-ddb920ad41fd" BindingMode="0" EditOperation="53f1708d-143d-4425-b826-4354ff4325fe" IsAsync="false" />
     <Binding PropertyName="5cbdf792-bb08-4d47-8ece-b7ef16eefc20" BindingMode="0" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
     <Binding PropertyName="b7a5a501-cfca-44a7-a545-49d3e2b5d139" BindingMode="1" Path="v1|@00000000-0000-0000-0000-000000000000/00000000-0000-0000-0000-000000000000/" ConverterType="AgreementManagementData" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
     <Binding PropertyName="d6b66552-ed2c-4fb5-90b3-f6f997e71c8b" BindingMode="0" ConverterType="AgreementManagementButtonNames" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false">
@@ -1841,7 +1841,7 @@
                     <Property Name="StandardCssClass" Value="system-numerator" Type="System.String, mscorlib" IsAvailable="true" />
                     <Property Name="TabStop" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
                     <Property Name="Required" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
-                    <Property Name="EditMode" Value="1" Type="System.Int32, mscorlib" IsAvailable="true" />
+                    <Property Name="EditMode" Value="0" Type="System.Int32, mscorlib" IsAvailable="true" />
                     <Property Name="DataSource" Value="29c1b4ef-48e4-47f0-ac67-c42cf68de986" Type="System.Guid, mscorlib" IsAvailable="true" />
                     <Property Name="ExtendedDataSource" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
                     <Property Name="DataField" Value="internalPOANumber" Type="System.String, mscorlib" IsAvailable="true" />

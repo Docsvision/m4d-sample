@@ -42,7 +42,7 @@
         </Item>
       </Items>
     </Binding>
-    <Binding PropertyName="146eeee3-0fa5-4c3c-8a51-bd7ab9fad160" BindingMode="0" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
+    <Binding PropertyName="146eeee3-0fa5-4c3c-8a51-bd7ab9fad160" BindingMode="0" EditOperation="53f1708d-143d-4425-b826-4354ff4325fe" IsAsync="false" />
     <Binding PropertyName="7882a88e-ef02-40d4-8a76-65dacd641c95" BindingMode="0" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
     <Binding PropertyName="d2def0da-24df-423c-ac75-2cc8367e1227" BindingMode="1" Path="v1|@00000000-0000-0000-0000-000000000000/00000000-0000-0000-0000-000000000000/" ConverterType="AgreementManagementData" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
     <Binding PropertyName="2ca7466e-3a2a-4eb2-a777-9db6d7c7074f" BindingMode="0" ConverterType="AgreementManagementButtonNames" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false">
