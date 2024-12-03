@@ -10,15 +10,7 @@ import { $PowersOfAttorneyDemoController } from "../../ServerRequests/PowersOfAt
 
 export const create502RetrustPowerOfAttorney = async (sender: CustomButton) => {
     const powerOfAttorneyUserCardId = sender.layout.getService($CardId);
-    const powerOfAttorneyId = sender.layout.controls.powerOfAttorneySysCard.params.value?.cardId;    
     await sender.layout.getService($PowersOfAttorneyDemoController).create502RetrustPowerOfAttorney(powerOfAttorneyUserCardId);
-    if (powerOfAttorneyId) {
-        const cardInfo = await sender.layout.getService($PowerOfAttorneyApiController).getPowerOfAttorneyInfo(powerOfAttorneyId);
-        const resources = sender.layout.getService($Resources);
-        if (cardInfo.status === resources.PowerOfAttorney_StatusPreparation) {
-            sender.layout.getService($LayoutCardController).delete({cardId: powerOfAttorneyId, isNew: false})
-        }  
-    }
     const operationId = sender.layout.layoutInfo.operations.find(operation => operation.alias === "Create").id;
     await sender.layout.getService($LayoutCardController).changeState({cardId:powerOfAttorneyUserCardId, operationId: operationId, timestamp: sender.layout.cardInfo.timestamp, comment: "", layoutParams: sender.layout.layoutInfo.layoutParams});
     sender.layout.getService($Router).refresh();
