@@ -178,7 +178,7 @@
     <value>The sign of an irrevocable power of attorney is not specified</value>
   </data>
   <data name="Error_GenRepresentativeIsEmpty" xml:space="preserve">
-    <value>Type of principal is not specified</value>
+    <value>Type of representative is not specified</value>
   </data>
   <data name="Error_IncorrectUserCardData" xml:space="preserve">
     <value>Not all required data is filled in or the data is incorrect. Error message: {0}"</value>
@@ -255,8 +255,8 @@
   <data name="SignTheApplication" xml:space="preserve">
     <value>Sign the application</value>
   </data>
-  <data name="SpecifyTheReasonForCancellationOrRefusal" xml:space="preserve">
-    <value>Specify the reason for cancellation or refusal</value>
+  <data name="SpecifyTheReasonForRevocation" xml:space="preserve">
+    <value>Specify the reason for revoking the power of attorney</value>
   </data>
   <data name="TheFollowingFieldsAreRequired" xml:space="preserve">
     <value>The following fields are required</value>
@@ -344,6 +344,8 @@ The result of the operation can be tracked in the exchange log.</value>
   <data name="PowerOfAttorneyErrorSigning" xml:space="preserve">
     <value>Error when signing the power of attorney.</value>
   </data>
+  <data name="Error_AuthIssIDDoc" xml:space="preserve">
+    <value>Failed to get value of the name of the authority that issued representative identification document</value>
   <data name="POABatchSign_AccessError" xml:space="preserve">
     <value>The power of attorney card is not available for signing.</value>
   </data>

@@ -22,7 +22,7 @@ export const recallPowerOfAttorney = async (sender: CustomButton) => {
     });
 };
 
-export const revokeAndRecallPowerOfAttorney = async (sender: CustomButton, e: IEventArgs) => {
+export const revokeAndRecallPowerOfAttorney = async (sender: CustomButton, e: IEventArgs, showRevocationType: boolean = true) => {
     const powersOfAttorneyButtonController = sender.layout.getService($PowersOfAttorneyButtonController);
     const employeeId = sender.layout.getService($ApplicationSettings).employee.id;
     const powerOfAttorneyId = sender.layout.controls.powerOfAttorneySysCard.params.value?.cardId;
@@ -40,7 +40,7 @@ export const revokeAndRecallPowerOfAttorney = async (sender: CustomButton, e: IE
 
     powersOfAttorneyButtonController?.checkCardTransferLogStatus(powerOfAttorneyId, employeeId).then(async msg => {
         if (msg.Success) {
-            await revokePowerOfAttorney(sender, e, onAttachSignatureToCard, false);
+            await revokePowerOfAttorney(sender, e, onAttachSignatureToCard, false, showRevocationType);
         } else {
             MessageBox.ShowError(msg.Message);
         }

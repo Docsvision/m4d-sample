@@ -3,12 +3,15 @@ using DocsVision.BackOffice.ObjectModel.Services;
 using DocsVision.BackOffice.ObjectModel.Services.Entities;
 using DocsVision.Platform.ObjectModel;
 using DocsVision.Platform.WebClient;
-
+using Microsoft.SqlServer.Server;
 using PowersOfAttorney.UserCard.Common.Helpers;
-
 using PowersOfAttorneyServerExtension.Models;
-
 using System;
+using System.Net.Security;
+using System.Runtime.Remoting.Contexts;
+using static DocsVision.BackOffice.CardLib.CardDefs.CardDocument;
+using static DocsVision.BackOffice.CardLib.CardDefs.CardSignatureList;
+
 
 namespace PowersOfAttorneyServerExtension.Services
 {
@@ -25,19 +28,25 @@ namespace PowersOfAttorneyServerExtension.Services
         {
             var userCardPowerOfAttorney = GetUserCardPowerOfAttorney(context, powerOfAttorneyUserCardId);
             var powerOfAttorneyData = GetPowerOfAttorneyData(userCardPowerOfAttorney, formatId);
-
-            var representativeID = GetRepresentative(userCardPowerOfAttorney, formatId);
             var signerID = GetSigner(userCardPowerOfAttorney, formatId);
-
-            var representative = context.GetObject<StaffEmployee>(representativeID);
             var signer = context.GetObject<StaffEmployee>(signerID);
             var format = context.GetObject<PowersPowerOfAttorneyFormat>(formatId);
+            
+            PowerOfAttorney powerOfAttorney;
+            if (formatId == PowerOfAttorneyFNSDOVEL502Data.FormatId)
+            {
+                powerOfAttorney = CreateFNSDOVEL502502PowerOfAttorney(context, powerOfAttorneyData, userCardPowerOfAttorney, signer, format);
+            } else
+            {
+                var representativeID = GetRepresentative(userCardPowerOfAttorney, formatId);
+                var representative = context.GetObject<StaffEmployee>(representativeID);
 
-            var powerOfAttorney = PowerOfAttorneyService.CreatePowerOfAttorney(powerOfAttorneyData,
-                representative, signer, format, PowerOfAttorneyHandlingFlags.SupportDistributedRegistryFederalTaxService);
+                powerOfAttorney = PowerOfAttorneyService.CreatePowerOfAttorney(powerOfAttorneyData,
+                    representative, signer, format, PowerOfAttorneyHandlingFlags.SupportDistributedRegistryFederalTaxService);
+            }                       
 
             powerOfAttorney.MainInfo.UserCard = powerOfAttorneyUserCardId;
-            if(string.IsNullOrEmpty(powerOfAttorney.MainInfo.PrincipalINN))
+            if (string.IsNullOrEmpty(powerOfAttorney.MainInfo.PrincipalINN))
                 powerOfAttorney.MainInfo.PrincipalINN = GetPrincipalInn(userCardPowerOfAttorney, formatId);
 
             context.SaveObject(powerOfAttorney);
@@ -55,20 +64,26 @@ namespace PowersOfAttorneyServerExtension.Services
         {
             var userCardPowerOfAttorney = GetUserCardPowerOfAttorney(context, powerOfAttorneyUserCardId);
             var powerOfAttorneyData = GetPowerOfAttorneyData(userCardPowerOfAttorney, formatId);
-
-            var representativeID = GetRepresentative(userCardPowerOfAttorney, formatId);
+            
             var signerID = GetSigner(userCardPowerOfAttorney, formatId);
-            var parentalPowerOfAttorney = GetParentalPowerOfAttorney(userCardPowerOfAttorney, formatId);
-
-            var representative = context.GetObject<StaffEmployee>(representativeID);
+            var parentalPowerOfAttorney = GetParentalPowerOfAttorney(userCardPowerOfAttorney, formatId);            
             var signer = context.GetObject<StaffEmployee>(signerID);
             var parent = context.GetObject<PowerOfAttorney>(parentalPowerOfAttorney);
 
-
-            var powerOfAttorney = PowerOfAttorneyService.RetrustPowerOfAttorney(powerOfAttorneyData, representative, signer, parent, PowerOfAttorneyHandlingFlags.SupportDistributedRegistryFederalTaxService);
+            PowerOfAttorney powerOfAttorney;
+            if (formatId == PowerOfAttorneyFNSDOVEL502Data.FormatId)
+            {
+                powerOfAttorney = CreateFNSDOVEL502RetrustPowerOfAttorney(context, powerOfAttorneyData, userCardPowerOfAttorney, parent, signer);
+            }
+            else
+            {
+                var representativeID = GetRepresentative(userCardPowerOfAttorney, formatId);
+                var representative = context.GetObject<StaffEmployee>(representativeID);
+                powerOfAttorney = PowerOfAttorneyService.RetrustPowerOfAttorney(powerOfAttorneyData, representative, signer, parent, PowerOfAttorneyHandlingFlags.SupportDistributedRegistryFederalTaxService);
+            }
 
             powerOfAttorney.MainInfo.UserCard = powerOfAttorneyUserCardId;
-            if(string.IsNullOrEmpty(powerOfAttorney.MainInfo.PrincipalINN))
+            if (string.IsNullOrEmpty(powerOfAttorney.MainInfo.PrincipalINN))
                 powerOfAttorney.MainInfo.PrincipalINN = GetPrincipalInn(userCardPowerOfAttorney, formatId);
 
             context.SaveObject(powerOfAttorney);
@@ -85,56 +100,10 @@ namespace PowersOfAttorneyServerExtension.Services
         public RequestRevocationResponse RequestRevocationPowerOfAttorney(ObjectContext context, Guid powerOfAttorneyUserCardId, PowerOfAttorneyRevocationType revocationType, string revocationReason)
         {
             var userCardPowerOfAttorney = GetUserCardPowerOfAttorney(context, powerOfAttorneyUserCardId);
-
-            PowerOfAttorneyRevocationData revocationData = new PowerOfAttorneyRevocationData
-            {
-                RevocationReason = revocationReason,
-                RevocationType = revocationType
-            };
-
-            switch (revocationType)
-            {
-                case PowerOfAttorneyRevocationType.Representative:
-                    var representative = userCardPowerOfAttorney.GenRepresentative.GetValueOrThrow(Resources.Error_EmptyRepresentativeIndividual);
-                    revocationData.ApplicantInfo = new PowerOfAttorneyRevocationApplicantInfo
-                    {
-                        ApplicantType = PowerOfAttorneyRevocationApplicantType.Individual,
-                        FirstName = representative.FirstName,
-                        LastName = representative.LastName,
-                        MiddleName = representative.MiddleName,
-                        Inn = userCardPowerOfAttorney.GenRepresentativeINN,
-                        Snils = userCardPowerOfAttorney.GenRepresentativeSNILS,
-                        Phone = userCardPowerOfAttorney.GenReprPhoneNum
-                    };
-                    break;
-                case PowerOfAttorneyRevocationType.Principal:
-                    var ceo = userCardPowerOfAttorney.GenCeo.GetValueOrThrow(Resources.Error_EmptyCeo);
-
-                    revocationData.ApplicantInfo = new PowerOfAttorneyRevocationApplicantInfo
-                    {
-                        ApplicantType = PowerOfAttorneyRevocationApplicantType.Organization,
-                        FirstName = ceo.FirstName,
-                        LastName = ceo.LastName,
-                        MiddleName = ceo.MiddleName,
-                        Inn = userCardPowerOfAttorney.GenCeoIIN,
-                        Snils = userCardPowerOfAttorney.GenCeoSNILS,
-                        Phone = userCardPowerOfAttorney.GenCeoPhoneNum,
-                    };
-
-                    // Для передоверия данные организации требуется брать из родительской доверености
-                    var cardWithPrincipalData = userCardPowerOfAttorney.IsRetrusted() ? GetUserCardPowerOfAttorney(context, userCardPowerOfAttorney.ParentalPowerOfAttorneyUserCard.GetValueOrThrow(Resources.Error_ParentalCardNotFound).GetObjectId()) : userCardPowerOfAttorney;
-
-                    revocationData.ApplicantInfo.Kpp = cardWithPrincipalData.GenEntityPrincipal.HasValue ? cardWithPrincipalData.GenEntityPrincipal.Value.KPP : cardWithPrincipalData.GenEntityPrinKPP;
-                    revocationData.ApplicantInfo.Inn = cardWithPrincipalData.GenEntityPrincipal.HasValue ? cardWithPrincipalData.GenEntityPrincipal.Value.INN : cardWithPrincipalData.GenEntityPrinINN;
-                    revocationData.ApplicantInfo.Ogrn = cardWithPrincipalData.GenEntityPrincipal.HasValue ? cardWithPrincipalData.GenEntityPrincipal.Value.OGRN : cardWithPrincipalData.GenEntPrinOGRN;
-                    revocationData.ApplicantInfo.Name = cardWithPrincipalData.GenEntityPrincipal.HasValue ? cardWithPrincipalData.GenEntityPrincipal.Value.Name : cardWithPrincipalData.GenEntityPrinName;
-                    break;
-
-                default:
-                    throw new ArgumentOutOfRangeException($"Unsupported revocation type: {revocationType}");
-            }
-
             var powerOfAttorney = context.GetObject<PowerOfAttorney>(userCardPowerOfAttorney.PowerOfAttorneyCardId.Value);
+            var poaFormatId = powerOfAttorney.MainInfo.PowerOfAttorneyFormat.GetObjectId();
+
+            PowerOfAttorneyRevocationData revocationData = GetPowerOfAttorneyRevocationData(context, userCardPowerOfAttorney, poaFormatId, revocationType, revocationReason);
 
             PowerOfAttorneyService.RequestRevocation(powerOfAttorney, revocationData);
             context.SaveObject(powerOfAttorney);
@@ -171,13 +140,12 @@ namespace PowersOfAttorneyServerExtension.Services
             return new UserCardPowerOfAttorney(card, context);
         }
 
-
         private Guid GetParentalPowerOfAttorney(UserCardPowerOfAttorney userCardPowerOfAttorney, Guid formatId)
         {
             if (formatId == PowerOfAttorneyFNSDOVBBData.FormatId)
                 return userCardPowerOfAttorney.ParentalPowerOfAttorney.GetObjectId();
 
-            if (formatId == PowerOfAttorneyEMCHDData.FormatId)
+            if (formatId == PowerOfAttorneyEMCHDData.FormatId || formatId == PowerOfAttorneyFNSDOVEL502Data.FormatId)
             {
                 if (userCardPowerOfAttorney.GenParentalPowerOfAttorneyUserCard.HasValue)
                     return userCardPowerOfAttorney.GenParentalPowerOfAttorney.GetObjectId();
@@ -188,16 +156,68 @@ namespace PowersOfAttorneyServerExtension.Services
             throw new ArgumentOutOfRangeException(string.Format(Resources.InvalidPowerOfAttorneyFormat, formatId));
         }
 
+        private PowerOfAttorneyRevocationData GetPowerOfAttorneyRevocationData(ObjectContext context, UserCardPowerOfAttorney userCardPowerOfAttorney, Guid formatId, PowerOfAttorneyRevocationType revocationType, string revocationReason)
+        {
+            if (formatId == PowerOfAttorneyFNSDOVEL502Data.FormatId)
+            {
+                return userCardPowerOfAttorney.ConvertToPowerOfAttorneyFNSDOVEL502RevocationData(context, revocationReason);
+            }
+
+            return userCardPowerOfAttorney.ConvertToPowerOfAttorneyRevocationData(context, revocationType, revocationReason);
+        }
+
         private Guid GetRepresentative(UserCardPowerOfAttorney userCardPowerOfAttorney, Guid formatId)
         {
             if (formatId == PowerOfAttorneyFNSDOVBBData.FormatId)
                 return userCardPowerOfAttorney.RepresentativeIndividual.GetValueOrThrow(Resources.Error_EmptyRepresentativeIndividual).GetObjectId();
 
-            if (formatId == PowerOfAttorneyEMCHDData.FormatId)
+            if (formatId == PowerOfAttorneyEMCHDData.FormatId || formatId == PowerOfAttorneyFNSDOVEL502Data.FormatId)
                 return userCardPowerOfAttorney.GenRepresentative.GetValueOrThrow(Resources.Error_EmptyRepresentativeIndividual).GetObjectId();
 
-
             throw new ArgumentOutOfRangeException(string.Format(Resources.InvalidPowerOfAttorneyFormat, formatId));
+        }
+
+        private PowerOfAttorney CreateFNSDOVEL502502PowerOfAttorney(ObjectContext context, PowerOfAttorneyData powerOfAttorneyData, UserCardPowerOfAttorney userCardPowerOfAttorney, StaffEmployee signer, PowersPowerOfAttorneyFormat format)
+        {
+            var representativeType = userCardPowerOfAttorney.GenRepresentativeType502 ?? throw new ApplicationException(Resources.Error_GenRepresentativeIsEmpty);
+            if (representativeType == UserCardPowerOfAttorney.RepresentativeType.individual)
+            {
+                var representativeID = GetRepresentative(userCardPowerOfAttorney, PowerOfAttorneyFNSDOVEL502Data.FormatId);
+                var representative = context.GetObject<StaffEmployee>(representativeID);
+
+                return PowerOfAttorneyService.CreatePowerOfAttorney(powerOfAttorneyData,
+                    representative, signer, format, PowerOfAttorneyHandlingFlags.SupportDistributedRegistryFederalTaxService);
+            }
+            else if (representativeType == UserCardPowerOfAttorney.RepresentativeType.entity)
+            {
+                var representative = userCardPowerOfAttorney.EntityRepresentative.Value;
+                return PowerOfAttorneyService.CreatePowerOfAttorney(powerOfAttorneyData,
+                    representative, signer, format, PowerOfAttorneyHandlingFlags.SupportDistributedRegistryFederalTaxService);
+            }
+
+            throw new ArgumentOutOfRangeException(nameof(representativeType));
+        }
+
+        private PowerOfAttorney CreateFNSDOVEL502RetrustPowerOfAttorney(ObjectContext context, PowerOfAttorneyData powerOfAttorneyData,
+             UserCardPowerOfAttorney userCardPowerOfAttorney, PowerOfAttorney parent, StaffEmployee signer)
+        {
+            var representativeType = userCardPowerOfAttorney.GenRepresentativeType502 ?? throw new ApplicationException(Resources.Error_GenRepresentativeIsEmpty);
+            if (representativeType == UserCardPowerOfAttorney.RepresentativeType.individual)
+            {
+                var representativeID = GetRepresentative(userCardPowerOfAttorney, PowerOfAttorneyFNSDOVEL502Data.FormatId);
+                var representative = context.GetObject<StaffEmployee>(representativeID);
+
+                return PowerOfAttorneyService.RetrustPowerOfAttorney(powerOfAttorneyData, representative, signer,
+                    parent, PowerOfAttorneyHandlingFlags.SupportDistributedRegistryFederalTaxService);
+            }
+            else if (representativeType == UserCardPowerOfAttorney.RepresentativeType.entity)
+            {
+                var representative = userCardPowerOfAttorney.EntityRepresentative.Value;
+                return PowerOfAttorneyService.RetrustPowerOfAttorney(powerOfAttorneyData, representative, signer,
+                    parent, PowerOfAttorneyHandlingFlags.SupportDistributedRegistryFederalTaxService);
+            }
+
+            throw new ArgumentOutOfRangeException(nameof(representativeType));
         }
 
         private string GetPrincipalInn(UserCardPowerOfAttorney userCardPowerOfAttorney, Guid formatId)
@@ -205,7 +225,7 @@ namespace PowersOfAttorneyServerExtension.Services
             if (formatId == PowerOfAttorneyFNSDOVBBData.FormatId)
                 return userCardPowerOfAttorney.PrincipalOrganization.Value?.INN;
 
-            if (formatId == PowerOfAttorneyEMCHDData.FormatId)
+            if (formatId == PowerOfAttorneyEMCHDData.FormatId || formatId == PowerOfAttorneyFNSDOVEL502Data.FormatId)
                 return userCardPowerOfAttorney.GenEntityPrinINN ?? userCardPowerOfAttorney.GenEntityPrincipal.Value?.INN.AsNullable();
 
             throw new ArgumentOutOfRangeException(string.Format(Resources.InvalidPowerOfAttorneyFormat, formatId));
@@ -219,6 +239,8 @@ namespace PowersOfAttorneyServerExtension.Services
             if (formatId == PowerOfAttorneyEMCHDData.FormatId)
                 return userCard.ConvertToPowerOfAttorneyEMCHDData(currentObjectContextProvider.GetOrCreateCurrentSessionContext().ObjectContext);
 
+            if (formatId == PowerOfAttorneyFNSDOVEL502Data.FormatId)
+                return userCard.ConvertToPowerOfAttorneyFNSDOVEL502Data(currentObjectContextProvider.GetOrCreateCurrentSessionContext().ObjectContext);
 
             throw new ArgumentOutOfRangeException(string.Format(Resources.InvalidPowerOfAttorneyFormat, formatId));
         }
@@ -228,7 +250,7 @@ namespace PowersOfAttorneyServerExtension.Services
             if (formatId == PowerOfAttorneyFNSDOVBBData.FormatId)
                 return userCardPowerOfAttorney.Signer.GetValueOrThrow(Resources.Error_EmptySigner).GetObjectId();
 
-            if (formatId == PowerOfAttorneyEMCHDData.FormatId)
+            if (formatId == PowerOfAttorneyEMCHDData.FormatId || formatId == PowerOfAttorneyFNSDOVEL502Data.FormatId)
                 return userCardPowerOfAttorney.GenCeo.GetValueOrThrow(Resources.Error_EmptyCeo).GetObjectId();
 
             throw new ArgumentOutOfRangeException(string.Format(Resources.InvalidPowerOfAttorneyFormat, formatId));

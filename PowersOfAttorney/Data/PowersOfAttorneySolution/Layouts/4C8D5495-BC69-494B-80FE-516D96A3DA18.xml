@@ -1,0 +1,870 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Layout LayoutID="4C8D5495-BC69-494B-80FE-516D96A3DA18" Name="Группа заданий УД (создание)_Copy" LayoutFileID="B7F6E369-B210-473E-BCDD-075FCBD25766" LocationID="6d76d0a7-5434-40f2-912e-6370d33c3151" LayoutType="1" InstanceID="3200c1f1-6caa-4c73-a169-78f3a12d155c" RowID="567BEA39-DFAE-493F-88AC-68D8F734FD17" OwnServerID="00000000-0000-0000-0000-000000000000" ChangeServerID="00000000-0000-0000-0000-000000000000">
+  <File FileID="B7F6E369-B210-473E-BCDD-075FCBD25766" OwnerCardID="3200C1F1-6CAA-4C73-A169-78F3A12D155C" Name="Группа заданий УД (создание)_Copy" StandardAttribs="0" ExtendedAttribs="0">
+    <Element Id="1217719a-451c-4679-86b1-058a3793fc97" Type="Layout">
+  <Properties>
+    <Property Name="Name" Value="root" Type="System.String, mscorlib" IsAvailable="true" />
+    <Property Name="CustomCssClasses" Value="expansion-panel-header system-layout-independent-scroll center-screen" Type="System.String, mscorlib" IsAvailable="true" />
+    <Property Name="CardOpening" Value="addNewStyleForControls" Type="System.String, mscorlib" IsAvailable="true" />
+    <Property Name="CardOpened" Value="dmTaskGroupTaskGroupCreateCardOpened, addStyleToCard" Type="System.String, mscorlib" IsAvailable="true" />
+    <Property Name="CardSaving" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+    <Property Name="PrepareCardSaving" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+    <Property Name="BeforeCardSaving" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+    <Property Name="CardSaved" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+    <Property Name="CardStateChanging" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+    <Property Name="CardLayoutSwitching" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+    <Property Name="CardDeleting" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+    <Property Name="CardDeleted" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+    <Property Name="AllControlsLoaded" Value="replaceServices" Type="System.String, mscorlib" IsAvailable="true" />
+    <Property Name="Click" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+    <Property Name="MouseOver" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+    <Property Name="MouseOut" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+    <Property Name="BackgroundType" Value="0" Type="System.Int32, mscorlib" IsAvailable="false" />
+    <Property Name="BackgroundStyle" Value="0" Type="System.Int32, mscorlib" IsAvailable="false" />
+  </Properties>
+  <Bindings>
+    <Binding PropertyName="95b6b99e-baa1-43e0-ac11-c49720110667" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/7a6593bb-0bdb-4082-b43b-8f26594eff91/Name" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
+    <Binding PropertyName="74a22213-ed9c-4970-b16d-d10ed0253d4c" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/7a6593bb-0bdb-4082-b43b-8f26594eff91/Content" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
+    <Binding PropertyName="9f72cbac-2b73-478c-8672-f69a2aa87624" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/00000000-0000-0000-0000-000000000000/" ConverterType="UseBusinessCalendarKindSettingConverter" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
+    <Binding PropertyName="87fa7ed6-a1ec-4096-afa0-7cd8eea35c44" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/7a6593bb-0bdb-4082-b43b-8f26594eff91/StartDate" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
+    <Binding PropertyName="41e0261d-af8a-4ab1-a0c4-1f064521e58f" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/7a6593bb-0bdb-4082-b43b-8f26594eff91/StartDate" ConverterType="DateTimeDefaultValueConverter" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
+    <Binding PropertyName="f28a205b-a840-40d7-8846-1d0e16f517f9" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/7a6593bb-0bdb-4082-b43b-8f26594eff91/StartDate" ConverterType="DateTimeDefaultWorkTimeConverter" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
+    <Binding PropertyName="d7aee6d9-4720-4247-b348-4d18215879fa" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/7a6593bb-0bdb-4082-b43b-8f26594eff91/EndDate" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
+    <Binding PropertyName="d6b76d5a-051f-4536-b5a5-fb35b4cd4684" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/7a6593bb-0bdb-4082-b43b-8f26594eff91/EndDate" ConverterType="DateTimeDefaultValueConverter" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
+    <Binding PropertyName="94eb64ee-cee4-456c-84c7-9d3f5e5774c9" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/7a6593bb-0bdb-4082-b43b-8f26594eff91/EndDate" ConverterType="DateTimeDefaultWorkTimeConverter" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
+    <Binding PropertyName="79072bd6-36ee-4afb-897c-d2c9d7af3e6c" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/e5b0bb1a-4862-4c18-a558-0b92be789696/" ResolverType="NumberBindingResolver" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
+    <Binding PropertyName="444413a8-dacc-43e3-a214-f7f28793c6f5" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/00000000-0000-0000-0000-000000000000/" ResolverType="GroupTaskCardSelectPerformersBindingResolver" ConverterType="GroupTaskCardPerformersPanelConverter" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
+    <Binding PropertyName="e478bd72-060a-475e-8d02-fdac74ace75b" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/00000000-0000-0000-0000-000000000000/" ConverterType="UseBusinessCalendarKindSettingConverter" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
+    <Binding PropertyName="ec57f5d0-65d1-4c48-91ec-81194c1077fe" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/00000000-0000-0000-0000-000000000000/" ConverterType="GroupTaskPerformersPredefinedFilterConverter" EditOperation="00000000-0000-0000-0000-000000000000" IsInheritedEditOperation="true" IsAsync="false" />
+    <Binding PropertyName="2a2b9253-95b9-4622-9ff0-a1a7d6076f1e" BindingMode="0" Path="v1|@00000000-0000-0000-0000-000000000000/00000000-0000-0000-0000-000000000000/" ResolverType="TaskGroupFileBindingResolver" ConverterType="RazorContentConverter" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false" />
+    <Binding PropertyName="ed3dd3ac-a4e5-4732-aa24-98e10751757e" BindingMode="0" ConverterType="Operations" EditOperation="00000000-0000-0000-0000-000000000000" IsAsync="false">
+      <Items>
+        <Item>
+          <Operations AllStateOperations="False">
+            <Operation OperationId="d242731c-5715-4482-8aab-642572271ed7">
+              <IsChecked>True</IsChecked>
+              <DisplayNameLocalizationKey></DisplayNameLocalizationKey>
+              <TooltipLocalizationKey></TooltipLocalizationKey>
+              <DisplayMode>Main</DisplayMode>
+              <BuiltInOperationId>c95d8738-90a4-4f92-ad2f-8e132fc27d33</BuiltInOperationId>
+              <RequestConfirmation>False</RequestConfirmation>
+            </Operation>
+          </Operations>
+        </Item>
+      </Items>
+    </Binding>
+  </Bindings>
+  <Elements>
+    <Element Id="7d6203f1-299a-4bdc-a3a2-2dce107c4c2c" Type="Block">
+      <Properties>
+        <Property Name="Tag" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+        <Property Name="Name" Value="contentBlock" Type="System.String, mscorlib" IsAvailable="true" />
+        <Property Name="Visibility" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
+          <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <Desktop>true</Desktop>
+            <Tablet>true</Tablet>
+            <Smartphone>true</Smartphone>
+            <CanChange>true</CanChange>
+          </DeviceDependentPropertyOfBoolean>
+        </Property>
+        <Property Name="VisibilityEditOperation" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
+        <Property Name="StandardCssClass" Value="system-block" Type="System.String, mscorlib" IsAvailable="true" />
+        <Property Name="CustomCssClasses" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+        <Property Name="Collapsible" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
+        <Property Name="IsCollapsed" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
+          <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <Desktop>false</Desktop>
+            <Tablet>false</Tablet>
+            <Smartphone>false</Smartphone>
+            <CanChange>false</CanChange>
+          </DeviceDependentPropertyOfBoolean>
+        </Property>
+        <Property Name="MinWidth" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
+          <DeviceDependentPropertyOfDouble xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <Desktop>10</Desktop>
+            <Tablet>10</Tablet>
+            <Smartphone>10</Smartphone>
+            <CanChange>true</CanChange>
+          </DeviceDependentPropertyOfDouble>
+        </Property>
+        <Property Name="Width" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
+          <DeviceDependentPropertyOfDouble xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <Desktop>100</Desktop>
+            <Tablet>100</Tablet>
+            <Smartphone>100</Smartphone>
+            <CanChange>true</CanChange>
+          </DeviceDependentPropertyOfDouble>
+        </Property>
+        <Property Name="LabelWidth" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
+          <DeviceDependentPropertyOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <Desktop />
+            <Tablet />
+            <Smartphone />
+            <CanChange>true</CanChange>
+          </DeviceDependentPropertyOfString>
+        </Property>
+        <Property Name="Order" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
+          <DeviceDependentPropertyOfInt32 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <Desktop>0</Desktop>
+            <Tablet>0</Tablet>
+            <Smartphone>0</Smartphone>
+            <CanChange>true</CanChange>
+          </DeviceDependentPropertyOfInt32>
+        </Property>
+        <Property Name="Alignment" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
+          <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <Desktop>true</Desktop>
+            <Tablet>true</Tablet>
+            <Smartphone>true</Smartphone>
+            <CanChange>true</CanChange>
+          </DeviceDependentPropertyOfBoolean>
+        </Property>
+        <Property Name="EditOperation" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
+        <Property Name="IsInheritedEditOperation" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
+        <Property Name="Paddings" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
+        <Property Name="MaxHeight" Value="0" Type="System.Int32, mscorlib" IsAvailable="true" />
+        <Property Name="DisplayIcon" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
+        <Property Name="Click" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+        <Property Name="MouseOver" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+        <Property Name="MouseOut" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+        <Property Name="Collapsed" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+        <Property Name="Collapsing" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+        <Property Name="Expanded" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+        <Property Name="Expanding" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+      </Properties>
+      <Elements>
+        <Element Id="412cd7f9-cff1-4787-90f1-2ee04f024deb" Type="Label">
+          <Properties>
+            <Property Name="Tag" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+            <Property Name="Name" Value="headerLabel" Type="System.String, mscorlib" IsAvailable="true" />
+            <Property Name="Text" Value="f408cea9-4cbf-493c-aca5-c138c41088bf" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="true" />
+            <Property Name="StandardCssClass" Value="system-label" Type="System.String, mscorlib" IsAvailable="true" />
+            <Property Name="CustomCssClasses" Value="document-name-small document-view" Type="System.String, mscorlib" IsAvailable="true" />
+            <Property Name="Visibility" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
+              <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                <Desktop>true</Desktop>
+                <Tablet>true</Tablet>
+                <Smartphone>true</Smartphone>
+                <CanChange>true</CanChange>
+              </DeviceDependentPropertyOfBoolean>
+            </Property>
+            <Property Name="VisibilityEditOperation" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
+            <Property Name="Click" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+            <Property Name="MouseOver" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+            <Property Name="MouseOut" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+          </Properties>
+        </Element>
+        <Element Id="8a6b1561-d443-4e7b-b3b9-4b64607b5ad8" Type="Block">
+          <Properties>
+            <Property Name="Tag" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+            <Property Name="Name" Value="mainBlock" Type="System.String, mscorlib" IsAvailable="true" />
+            <Property Name="Visibility" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
+              <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                <Desktop>true</Desktop>
+                <Tablet>true</Tablet>
+                <Smartphone>true</Smartphone>
+                <CanChange>true</CanChange>
+              </DeviceDependentPropertyOfBoolean>
+            </Property>
+            <Property Name="VisibilityEditOperation" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
+            <Property Name="StandardCssClass" Value="system-block" Type="System.String, mscorlib" IsAvailable="true" />
+            <Property Name="CustomCssClasses" Value="block-with-border block-with-shadow" Type="System.String, mscorlib" IsAvailable="true" />
+            <Property Name="Collapsible" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
+            <Property Name="IsCollapsed" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
+              <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                <Desktop>false</Desktop>
+                <Tablet>false</Tablet>
+                <Smartphone>false</Smartphone>
+                <CanChange>false</CanChange>
+              </DeviceDependentPropertyOfBoolean>
+            </Property>
+            <Property Name="MinWidth" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
+              <DeviceDependentPropertyOfDouble xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                <Desktop>10</Desktop>
+                <Tablet>10</Tablet>
+                <Smartphone>10</Smartphone>
+                <CanChange>true</CanChange>
+              </DeviceDependentPropertyOfDouble>
+            </Property>
+            <Property Name="Width" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
+              <DeviceDependentPropertyOfDouble xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                <Desktop>100</Desktop>
+                <Tablet>100</Tablet>
+                <Smartphone>100</Smartphone>
+                <CanChange>true</CanChange>
+              </DeviceDependentPropertyOfDouble>
+            </Property>
+            <Property Name="LabelWidth" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
+              <DeviceDependentPropertyOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                <Desktop />
+                <Tablet />
+                <Smartphone />
+                <CanChange>true</CanChange>
+              </DeviceDependentPropertyOfString>
+            </Property>
+            <Property Name="Order" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
+              <DeviceDependentPropertyOfInt32 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                <Desktop>0</Desktop>
+                <Tablet>0</Tablet>
+                <Smartphone>0</Smartphone>
+                <CanChange>true</CanChange>
+              </DeviceDependentPropertyOfInt32>
+            </Property>
+            <Property Name="Alignment" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
+              <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                <Desktop>true</Desktop>
+                <Tablet>true</Tablet>
+                <Smartphone>true</Smartphone>
+                <CanChange>true</CanChange>
+              </DeviceDependentPropertyOfBoolean>
+            </Property>
+            <Property Name="EditOperation" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
+            <Property Name="IsInheritedEditOperation" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
+            <Property Name="Paddings" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
+            <Property Name="MaxHeight" Value="0" Type="System.Int32, mscorlib" IsAvailable="true" />
+            <Property Name="DisplayIcon" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
+            <Property Name="Click" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+            <Property Name="MouseOver" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+            <Property Name="MouseOut" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+            <Property Name="Collapsed" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+            <Property Name="Collapsing" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+            <Property Name="Expanded" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+            <Property Name="Expanding" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+          </Properties>
+          <Elements>
+            <Element Id="b9c04c5d-bbd8-42f9-9a75-88b8366d0355" Type="TextBox">
+              <Properties>
+                <Property Name="Tag" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="Name" Value="taskName" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="PlaceHolder" Value="a72a8aa0-4d94-4bab-bf8b-c2071de83ad4" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="true" />
+                <Property Name="Tip" Value="a72a8aa0-4d94-4bab-bf8b-c2071de83ad4" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="true" />
+                <Property Name="LabelText" Value="a72a8aa0-4d94-4bab-bf8b-c2071de83ad4" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="true" />
+                <Property Name="ShowEmptyLabel" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                <Property Name="Visibility" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
+                  <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                    <Desktop>true</Desktop>
+                    <Tablet>true</Tablet>
+                    <Smartphone>true</Smartphone>
+                    <CanChange>true</CanChange>
+                  </DeviceDependentPropertyOfBoolean>
+                </Property>
+                <Property Name="VisibilityEditOperation" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
+                <Property Name="StandardCssClass" Value="system-textbox" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="CustomCssClasses" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="TabStop" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                <Property Name="Required" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                <Property Name="EditMode" Value="2" Type="System.Int32, mscorlib" IsAvailable="true" />
+                <Property Name="ExtendedDataSource" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
+                <Property Name="DataSource" Value="7a6593bb-0bdb-4082-b43b-8f26594eff91" Type="System.Guid, mscorlib" IsAvailable="true" />
+                <Property Name="DataField" Value="Name" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="Binding" Value="95b6b99e-baa1-43e0-ac11-c49720110667" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                <Property Name="IsInheritedEditOperation" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                <Property Name="Disabled" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
+                  <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                    <Desktop>false</Desktop>
+                    <Tablet>false</Tablet>
+                    <Smartphone>false</Smartphone>
+                    <CanChange>true</CanChange>
+                  </DeviceDependentPropertyOfBoolean>
+                </Property>
+                <Property Name="TrimValue" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                <Property Name="Click" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="MouseOver" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="MouseOut" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="Focus" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="Blur" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="DataChanged" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="InPlaceEditOpeninig" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="InPlaceEditOpened" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="InPlaceEditClosinig" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="InPlaceEditClosed" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+              </Properties>
+            </Element>
+            <Element Id="e8429034-613d-4efc-8e5a-f4846211a17b" Type="TextArea" ResolverType="TextAreaResolver">
+              <Properties>
+                <Property Name="Tag" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="Name" Value="description" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="PlaceHolder" Value="af53f750-8d00-4ad3-9c6b-4d79537eed76" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="true" />
+                <Property Name="Tip" Value="af53f750-8d00-4ad3-9c6b-4d79537eed76" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="true" />
+                <Property Name="LabelText" Value="af53f750-8d00-4ad3-9c6b-4d79537eed76" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="true" />
+                <Property Name="ShowEmptyLabel" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                <Property Name="Visibility" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
+                  <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                    <Desktop>true</Desktop>
+                    <Tablet>true</Tablet>
+                    <Smartphone>true</Smartphone>
+                    <CanChange>true</CanChange>
+                  </DeviceDependentPropertyOfBoolean>
+                </Property>
+                <Property Name="VisibilityEditOperation" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
+                <Property Name="StandardCssClass" Value="system-textarea" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="CustomCssClasses" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="TabStop" Value="True" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="Required" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                <Property Name="EditMode" Value="2" Type="System.Int32, mscorlib" IsAvailable="true" />
+                <Property Name="UseHtml" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                <Property Name="HtmlEditorHeight" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
+                  <DeviceDependentPropertyOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                    <Desktop>200px</Desktop>
+                    <Tablet>200px</Tablet>
+                    <Smartphone>200px</Smartphone>
+                    <CanChange>true</CanChange>
+                  </DeviceDependentPropertyOfString>
+                </Property>
+                <Property Name="HtmlEditorWidth" Value="80%" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="ExtendedDataSource" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
+                <Property Name="DataSource" Value="7a6593bb-0bdb-4082-b43b-8f26594eff91" Type="System.Guid, mscorlib" IsAvailable="true" />
+                <Property Name="DataField" Value="Content" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="Binding" Value="74a22213-ed9c-4970-b16d-d10ed0253d4c" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                <Property Name="IsInheritedEditOperation" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                <Property Name="Disabled" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
+                  <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                    <Desktop>false</Desktop>
+                    <Tablet>false</Tablet>
+                    <Smartphone>false</Smartphone>
+                    <CanChange>true</CanChange>
+                  </DeviceDependentPropertyOfBoolean>
+                </Property>
+                <Property Name="MaxImageSize" Value="100" Type="System.Int32, mscorlib" IsAvailable="true" />
+                <Property Name="TrimValue" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                <Property Name="SyncLoadingLimit" Value="100" Type="System.Int32, mscorlib" IsAvailable="true" />
+                <Property Name="Click" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="MouseOver" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="MouseOut" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="Focus" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="Blur" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="DataChanged" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="InPlaceEditOpeninig" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="InPlaceEditOpened" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="InPlaceEditClosinig" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="InPlaceEditClosed" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+              </Properties>
+            </Element>
+            <Element Id="de2951fe-f1e7-4ba4-8ab0-6c2fa1673864" Type="TimeOfPerformance">
+              <Properties>
+                <Property Name="Tag" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="Name" Value="periodOfExecution" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="Visibility" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
+                  <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                    <Desktop>true</Desktop>
+                    <Tablet>true</Tablet>
+                    <Smartphone>true</Smartphone>
+                    <CanChange>true</CanChange>
+                  </DeviceDependentPropertyOfBoolean>
+                </Property>
+                <Property Name="VisibilityEditOperation" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
+                <Property Name="StandardCssClass" Value="system-time-of-performance" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="Required" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                <Property Name="Orientation" Value="0" Type="System.Int32, mscorlib" IsAvailable="true" />
+                <Property Name="StartDateControlName" Value="startDate_periodOfExecution" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="EndDateControlName" Value="endDate_periodOfExecution" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="DurationControlName" Value="duration_periodOfExecution" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="UseBusinessCalendarBinding" Value="9f72cbac-2b73-478c-8672-f69a2aa87624" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                <Property Name="Click" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="MouseOver" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="MouseOut" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="GettingDuration" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="GotDuration" Value="timeOfPerformanceToPerformersSync" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="GettingEndDate" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="GotEndDate" Value="timeOfPerformanceToPerformersSync" Type="System.String, mscorlib" IsAvailable="true" />
+              </Properties>
+              <Elements>
+                <Element Id="c37dd736-d1db-4331-926b-be88342035c8" Type="DateTimePicker">
+                  <Properties>
+                    <Property Name="Tag" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                    <Property Name="Name" Value="startDate_periodOfExecution" Type="System.String, mscorlib" IsAvailable="true" />
+                    <Property Name="PlaceHolder" Value="cce50969-4ade-4dbc-9022-77738a63c138" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="true" />
+                    <Property Name="Tip" Value="cce50969-4ade-4dbc-9022-77738a63c138" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="true" />
+                    <Property Name="LabelText" Value="cce50969-4ade-4dbc-9022-77738a63c138" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="true" />
+                    <Property Name="ShowEmptyLabel" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                    <Property Name="Visibility" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
+                      <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                        <Desktop>false</Desktop>
+                        <Tablet>false</Tablet>
+                        <Smartphone>false</Smartphone>
+                        <CanChange>true</CanChange>
+                      </DeviceDependentPropertyOfBoolean>
+                    </Property>
+                    <Property Name="VisibilityEditOperation" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
+                    <Property Name="StandardCssClass" Value="system-datetimepicker" Type="System.String, mscorlib" IsAvailable="true" />
+                    <Property Name="CustomCssClasses" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                    <Property Name="HighlightOverdue" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                    <Property Name="TabStop" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                    <Property Name="Type" Value="0" Type="System.Int32, mscorlib" IsAvailable="true" />
+                    <Property Name="Required" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                    <Property Name="ExtendedDataSource" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
+                    <Property Name="DataSource" Value="7a6593bb-0bdb-4082-b43b-8f26594eff91" Type="System.Guid, mscorlib" IsAvailable="true" />
+                    <Property Name="DataField" Value="StartDate" Type="System.String, mscorlib" IsAvailable="true" />
+                    <Property Name="Binding" Value="87fa7ed6-a1ec-4096-afa0-7cd8eea35c44" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                    <Property Name="EditMode" Value="2" Type="System.Int32, mscorlib" IsAvailable="true" />
+                    <Property Name="DisplayIcon" Value="true" Type="System.Boolean, mscorlib" IsAvailable="false" />
+                    <Property Name="IsInheritedEditOperation" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                    <Property Name="Disabled" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
+                      <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                        <Desktop>false</Desktop>
+                        <Tablet>false</Tablet>
+                        <Smartphone>false</Smartphone>
+                        <CanChange>true</CanChange>
+                      </DeviceDependentPropertyOfBoolean>
+                    </Property>
+                    <Property Name="DefaultCurrentDate" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                    <Property Name="DisablePast" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                    <Property Name="DisableFuture" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                    <Property Name="DefaultDateTimeBinding" Value="41e0261d-af8a-4ab1-a0c4-1f064521e58f" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" RepresentsDefaultBindingValue="true" />
+                    <Property Name="DefaultDateTimeShift" Value="0" Type="System.Int32, mscorlib" IsAvailable="true" />
+                    <Property Name="DefaultTime" Value="0" Type="System.Int32, mscorlib" IsAvailable="true" />
+                    <Property Name="DefaultWorkTimeBinding" Value="f28a205b-a840-40d7-8846-1d0e16f517f9" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                    <Property Name="ShowPickTimeDialog" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
+                      <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                        <Desktop>true</Desktop>
+                        <Tablet>true</Tablet>
+                        <Smartphone>true</Smartphone>
+                        <CanChange>true</CanChange>
+                      </DeviceDependentPropertyOfBoolean>
+                    </Property>
+                    <Property Name="Click" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                    <Property Name="MouseOver" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                    <Property Name="MouseOut" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                    <Property Name="DataChanged" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                  </Properties>
+                </Element>
+                <Element Id="3e3eb9fd-a0bc-45e1-ba72-0ae3356f3541" Type="DateTimePicker">
+                  <Properties>
+                    <Property Name="Tag" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                    <Property Name="Name" Value="endDate_periodOfExecution" Type="System.String, mscorlib" IsAvailable="true" />
+                    <Property Name="PlaceHolder" Value="0e748936-fdc3-43e5-b924-e3976a1e75fd" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="true" />
+                    <Property Name="Tip" Value="0e748936-fdc3-43e5-b924-e3976a1e75fd" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="true" />
+                    <Property Name="LabelText" Value="0e748936-fdc3-43e5-b924-e3976a1e75fd" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="true" />
+                    <Property Name="ShowEmptyLabel" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                    <Property Name="Visibility" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
+                      <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                        <Desktop>true</Desktop>
+                        <Tablet>true</Tablet>
+                        <Smartphone>true</Smartphone>
+                        <CanChange>true</CanChange>
+                      </DeviceDependentPropertyOfBoolean>
+                    </Property>
+                    <Property Name="VisibilityEditOperation" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
+                    <Property Name="StandardCssClass" Value="system-datetimepicker" Type="System.String, mscorlib" IsAvailable="true" />
+                    <Property Name="CustomCssClasses" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                    <Property Name="HighlightOverdue" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                    <Property Name="TabStop" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                    <Property Name="Type" Value="0" Type="System.Int32, mscorlib" IsAvailable="true" />
+                    <Property Name="Required" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                    <Property Name="ExtendedDataSource" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
+                    <Property Name="DataSource" Value="7a6593bb-0bdb-4082-b43b-8f26594eff91" Type="System.Guid, mscorlib" IsAvailable="true" />
+                    <Property Name="DataField" Value="EndDate" Type="System.String, mscorlib" IsAvailable="true" />
+                    <Property Name="Binding" Value="d7aee6d9-4720-4247-b348-4d18215879fa" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                    <Property Name="EditMode" Value="2" Type="System.Int32, mscorlib" IsAvailable="true" />
+                    <Property Name="DisplayIcon" Value="true" Type="System.Boolean, mscorlib" IsAvailable="false" />
+                    <Property Name="IsInheritedEditOperation" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                    <Property Name="Disabled" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
+                      <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                        <Desktop>false</Desktop>
+                        <Tablet>false</Tablet>
+                        <Smartphone>false</Smartphone>
+                        <CanChange>true</CanChange>
+                      </DeviceDependentPropertyOfBoolean>
+                    </Property>
+                    <Property Name="DefaultCurrentDate" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                    <Property Name="DisablePast" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                    <Property Name="DisableFuture" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                    <Property Name="DefaultDateTimeBinding" Value="d6b76d5a-051f-4536-b5a5-fb35b4cd4684" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" RepresentsDefaultBindingValue="true" />
+                    <Property Name="DefaultDateTimeShift" Value="0" Type="System.Int32, mscorlib" IsAvailable="true" />
+                    <Property Name="DefaultTime" Value="0" Type="System.Int32, mscorlib" IsAvailable="true" />
+                    <Property Name="DefaultWorkTimeBinding" Value="94eb64ee-cee4-456c-84c7-9d3f5e5774c9" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                    <Property Name="ShowPickTimeDialog" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
+                      <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                        <Desktop>true</Desktop>
+                        <Tablet>true</Tablet>
+                        <Smartphone>true</Smartphone>
+                        <CanChange>true</CanChange>
+                      </DeviceDependentPropertyOfBoolean>
+                    </Property>
+                    <Property Name="Click" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                    <Property Name="MouseOver" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                    <Property Name="MouseOut" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                    <Property Name="DataChanged" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                  </Properties>
+                </Element>
+                <Element Id="7a2e39d4-055e-48e9-b45a-8bfe9da9d0fa" Type="Number">
+                  <Properties>
+                    <Property Name="Name" Value="duration_periodOfExecution" Type="System.String, mscorlib" IsAvailable="true" />
+                    <Property Name="Tag" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                    <Property Name="PlaceHolder" Value="4723c882-0a25-4e6c-bd39-3a2821e30ef1" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="true" />
+                    <Property Name="Tip" Value="4723c882-0a25-4e6c-bd39-3a2821e30ef1" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="true" />
+                    <Property Name="LabelText" Value="4723c882-0a25-4e6c-bd39-3a2821e30ef1" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="true" />
+                    <Property Name="ShowEmptyLabel" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                    <Property Name="Visibility" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
+                      <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                        <Desktop>true</Desktop>
+                        <Tablet>true</Tablet>
+                        <Smartphone>true</Smartphone>
+                        <CanChange>true</CanChange>
+                      </DeviceDependentPropertyOfBoolean>
+                    </Property>
+                    <Property Name="VisibilityEditOperation" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
+                    <Property Name="ExtendedDataSource" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
+                    <Property Name="StandardCssClass" Value="system-realnumber" Type="System.String, mscorlib" IsAvailable="true" />
+                    <Property Name="FractionDigits" Value="2" Type="System.UInt32, mscorlib" IsAvailable="true" />
+                    <Property Name="DigitSeparators" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                    <Property Name="CustomCssClasses" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                    <Property Name="TabStop" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                    <Property Name="DataSource" Value="e5b0bb1a-4862-4c18-a558-0b92be789696" Type="System.Guid, mscorlib" IsAvailable="true" />
+                    <Property Name="DataField" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                    <Property Name="Binding" Value="79072bd6-36ee-4afb-897c-d2c9d7af3e6c" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                    <Property Name="IsInheritedEditOperation" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                    <Property Name="Disabled" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
+                      <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                        <Desktop>false</Desktop>
+                        <Tablet>false</Tablet>
+                        <Smartphone>false</Smartphone>
+                        <CanChange>true</CanChange>
+                      </DeviceDependentPropertyOfBoolean>
+                    </Property>
+                    <Property Name="Default" Value="0" Type="System.String, mscorlib" ResolverType="NumberDefaultValueResolver" IsAvailable="true" RepresentsDefaultBindingValue="true" />
+                    <Property Name="Required" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                    <Property Name="EditMode" Value="2" Type="System.Int32, mscorlib" IsAvailable="true" />
+                    <Property Name="Click" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                    <Property Name="MouseOver" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                    <Property Name="Focus" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                    <Property Name="Blur" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                    <Property Name="MouseOut" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                    <Property Name="DataChanged" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                    <Property Name="InPlaceEditOpening" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                    <Property Name="InPlaceEditOpened" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                    <Property Name="InPlaceEditClosing" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                    <Property Name="InPlaceEditClosed" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                  </Properties>
+                </Element>
+              </Elements>
+            </Element>
+            <Element Id="445d46d5-8887-441a-85e2-9cae6b4be492" Type="GroupTaskCardSelectPerformers">
+              <Properties>
+                <Property Name="Tag" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="Name" Value="groupTaskCardPerformersPanel" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="StandardCssClass" Value="system-group-task-performers-panel" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="CustomCssClasses" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="Required" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                <Property Name="GroupTaskCardPerformersPanelContent" Value="444413a8-dacc-43e3-a214-f7f28793c6f5" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                <Property Name="UseBusinessCalendarBinding" Value="e478bd72-060a-475e-8d02-fdac74ace75b" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                <Property Name="PerformersPredefinedFilterBinding" Value="ec57f5d0-65d1-4c48-91ec-81194c1077fe" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                <Property Name="UseBusinessCalendar" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                <Property Name="AutoDurationsRecalculation" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                <Property Name="DefaultExecutionType" Value="1" Type="System.Int32, mscorlib" IsAvailable="true" />
+                <Property Name="DefaultTaskDistribution" Value="0" Type="System.Int32, mscorlib" IsAvailable="true" />
+                <Property Name="IsInheritedEditOperation" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                <Property Name="Disabled" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
+                  <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                    <Desktop>false</Desktop>
+                    <Tablet>false</Tablet>
+                    <Smartphone>false</Smartphone>
+                    <CanChange>true</CanChange>
+                  </DeviceDependentPropertyOfBoolean>
+                </Property>
+                <Property Name="PerformersTypeDialog" Type="System.String, mscorlib" IsAvailable="true">
+                  <Value>
+                    <selectFromOrganization>"00000000-0000-0000-0000-000000000000",
+</selectFromOrganization>
+                    <selectFromGroup>"00000000-0000-0000-0000-000000000000",
+</selectFromGroup>
+                    <groupAreaEnabled>true,
+</groupAreaEnabled>
+                    <roleAreaEnabled>true,
+</roleAreaEnabled>
+                    <unitAreaEnabled>true,
+</unitAreaEnabled>
+                    <employeeValueEnabled>true,
+</employeeValueEnabled>
+                    <groupValueEnabled>true,
+</groupValueEnabled>
+                    <roleValueEnabled>true,
+</roleValueEnabled>
+                    <unitValueEnabled>true
+</unitValueEnabled>
+                  </Value>
+                </Property>
+                <Property Name="EnableFavorites" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                <Property Name="Click" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="MouseOver" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="MouseOut" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="DataChanged" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="AddingPerformers" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="ChangingTaskInterval" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="ChangingTaskPerformer" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="ChangingTaskDescription" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="ChangingResponsible" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="EditTaskDurationDialogOpened" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="EditTaskDescriptionDialogOpened" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="DeletingTask" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="ChangingExecutionType" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="ChangingTaskDistribution" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="PerformersLoading" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="ChangingOrder" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="TaskGroupIntervalChanging" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="TaskGroupIntervalChanged" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+              </Properties>
+            </Element>
+            <Element Id="df526008-c7fd-4ddd-b50e-d9e71061faa0" Type="TaskGroupCardFilePanel">
+              <Properties>
+                <Property Name="Tag" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="Name" Value="taskGroupCardFilePanel" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="StandardCssClass" Value="system-task-group-card-file-panel" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="Required" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                <Property Name="RazorContent" Value="2a2b9253-95b9-4622-9ff0-a1a7d6076f1e" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                <Property Name="RazorViewControlName" Value="TaskGroupCardFilePanel" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="RazorEditControlName" Value="TaskGroupCardUploadFilePanel" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="LoadSyncCount" Value="10" Type="System.Int32, mscorlib" IsAvailable="true" />
+                <Property Name="FileSaveByWebDAV" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="Click" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="MouseOver" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="MouseOut" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+              </Properties>
+            </Element>
+            <Element Id="105b3bf4-31a8-4b09-be50-7a5d986ea0c1" Type="Block">
+              <Properties>
+                <Property Name="Tag" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="Name" Value="saveBlock" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="Visibility" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
+                  <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                    <Desktop>true</Desktop>
+                    <Tablet>true</Tablet>
+                    <Smartphone>true</Smartphone>
+                    <CanChange>true</CanChange>
+                  </DeviceDependentPropertyOfBoolean>
+                </Property>
+                <Property Name="VisibilityEditOperation" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
+                <Property Name="StandardCssClass" Value="system-block" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="Collapsible" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                <Property Name="IsCollapsed" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
+                  <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                    <Desktop>false</Desktop>
+                    <Tablet>false</Tablet>
+                    <Smartphone>false</Smartphone>
+                    <CanChange>false</CanChange>
+                  </DeviceDependentPropertyOfBoolean>
+                </Property>
+                <Property Name="MinWidth" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
+                  <DeviceDependentPropertyOfDouble xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                    <Desktop>10</Desktop>
+                    <Tablet>10</Tablet>
+                    <Smartphone>10</Smartphone>
+                    <CanChange>true</CanChange>
+                  </DeviceDependentPropertyOfDouble>
+                </Property>
+                <Property Name="Width" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
+                  <DeviceDependentPropertyOfDouble xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                    <Desktop>60</Desktop>
+                    <Tablet>100</Tablet>
+                    <Smartphone>100</Smartphone>
+                    <CanChange>true</CanChange>
+                  </DeviceDependentPropertyOfDouble>
+                </Property>
+                <Property Name="LabelWidth" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
+                  <DeviceDependentPropertyOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                    <Desktop />
+                    <Tablet />
+                    <Smartphone />
+                    <CanChange>true</CanChange>
+                  </DeviceDependentPropertyOfString>
+                </Property>
+                <Property Name="Order" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
+                  <DeviceDependentPropertyOfInt32 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                    <Desktop>0</Desktop>
+                    <Tablet>0</Tablet>
+                    <Smartphone>0</Smartphone>
+                    <CanChange>true</CanChange>
+                  </DeviceDependentPropertyOfInt32>
+                </Property>
+                <Property Name="Alignment" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
+                  <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                    <Desktop>true</Desktop>
+                    <Tablet>true</Tablet>
+                    <Smartphone>true</Smartphone>
+                    <CanChange>true</CanChange>
+                  </DeviceDependentPropertyOfBoolean>
+                </Property>
+                <Property Name="EditOperation" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
+                <Property Name="IsInheritedEditOperation" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                <Property Name="Paddings" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                <Property Name="MaxHeight" Value="0" Type="System.Int32, mscorlib" IsAvailable="true" />
+                <Property Name="DisplayIcon" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                <Property Name="Click" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="MouseOver" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="MouseOut" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="Collapsed" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="Collapsing" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="Expanded" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="Expanding" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+              </Properties>
+              <Elements>
+                <Element Id="2258ce46-9a45-40eb-9b02-f040c830eacc" Type="SavingButtons">
+                  <Properties>
+                    <Property Name="Tag" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                    <Property Name="Name" Value="savingButtons" Type="System.String, mscorlib" IsAvailable="true" />
+                    <Property Name="Visibility" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
+                      <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                        <Desktop>true</Desktop>
+                        <Tablet>true</Tablet>
+                        <Smartphone>true</Smartphone>
+                        <CanChange>true</CanChange>
+                      </DeviceDependentPropertyOfBoolean>
+                    </Property>
+                    <Property Name="VerticalOrientation" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
+                      <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                        <Desktop>false</Desktop>
+                        <Tablet>false</Tablet>
+                        <Smartphone>false</Smartphone>
+                        <CanChange>true</CanChange>
+                      </DeviceDependentPropertyOfBoolean>
+                    </Property>
+                    <Property Name="StandardCssClass" Value="system-saving-buttons" Type="System.String, mscorlib" IsAvailable="true" />
+                    <Property Name="CustomCssClasses" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                    <Property Name="CancelButtonText" Value="f0553208-b799-40d5-9b54-ba8804336590" Type="System.String, mscorlib" ResolverType="Localized" IsAvailable="true" />
+                    <Property Name="Click" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                    <Property Name="Clicking" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                    <Property Name="MouseOver" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                    <Property Name="MouseOut" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                  </Properties>
+                </Element>
+              </Elements>
+            </Element>
+            <Element Id="d5a59a64-426d-4118-a646-e8b918da63f1" Type="Block">
+              <Properties>
+                <Property Name="Tag" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="Name" Value="operationButtonBlock" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="Visibility" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
+                  <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                    <Desktop>true</Desktop>
+                    <Tablet>true</Tablet>
+                    <Smartphone>true</Smartphone>
+                    <CanChange>true</CanChange>
+                  </DeviceDependentPropertyOfBoolean>
+                </Property>
+                <Property Name="VisibilityEditOperation" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
+                <Property Name="StandardCssClass" Value="system-block" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="Collapsible" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                <Property Name="IsCollapsed" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
+                  <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                    <Desktop>false</Desktop>
+                    <Tablet>false</Tablet>
+                    <Smartphone>false</Smartphone>
+                    <CanChange>false</CanChange>
+                  </DeviceDependentPropertyOfBoolean>
+                </Property>
+                <Property Name="MinWidth" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
+                  <DeviceDependentPropertyOfDouble xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                    <Desktop>10</Desktop>
+                    <Tablet>10</Tablet>
+                    <Smartphone>10</Smartphone>
+                    <CanChange>true</CanChange>
+                  </DeviceDependentPropertyOfDouble>
+                </Property>
+                <Property Name="Width" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
+                  <DeviceDependentPropertyOfDouble xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                    <Desktop>40</Desktop>
+                    <Tablet>100</Tablet>
+                    <Smartphone>100</Smartphone>
+                    <CanChange>true</CanChange>
+                  </DeviceDependentPropertyOfDouble>
+                </Property>
+                <Property Name="LabelWidth" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
+                  <DeviceDependentPropertyOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                    <Desktop />
+                    <Tablet />
+                    <Smartphone />
+                    <CanChange>true</CanChange>
+                  </DeviceDependentPropertyOfString>
+                </Property>
+                <Property Name="Order" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
+                  <DeviceDependentPropertyOfInt32 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                    <Desktop>0</Desktop>
+                    <Tablet>0</Tablet>
+                    <Smartphone>0</Smartphone>
+                    <CanChange>true</CanChange>
+                  </DeviceDependentPropertyOfInt32>
+                </Property>
+                <Property Name="Alignment" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
+                  <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                    <Desktop>false</Desktop>
+                    <Tablet>false</Tablet>
+                    <Smartphone>false</Smartphone>
+                    <CanChange>true</CanChange>
+                  </DeviceDependentPropertyOfBoolean>
+                </Property>
+                <Property Name="EditOperation" Value="00000000-0000-0000-0000-000000000000" Type="System.Guid, mscorlib" IsAvailable="true" />
+                <Property Name="IsInheritedEditOperation" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                <Property Name="Paddings" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                <Property Name="MaxHeight" Value="0" Type="System.Int32, mscorlib" IsAvailable="true" />
+                <Property Name="DisplayIcon" Value="true" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                <Property Name="Click" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="MouseOver" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="MouseOut" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="Collapsed" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="Collapsing" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="Expanded" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                <Property Name="Expanding" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+              </Properties>
+              <Elements>
+                <Element Id="fd3982cf-0174-4061-bbbc-bc391984714d" Type="StateButtons">
+                  <Properties>
+                    <Property Name="Name" Value="stateButtons" Type="System.String, mscorlib" IsAvailable="true" />
+                    <Property Name="Tag" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                    <Property Name="Visibility" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
+                      <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                        <Desktop>true</Desktop>
+                        <Tablet>true</Tablet>
+                        <Smartphone>true</Smartphone>
+                        <CanChange>true</CanChange>
+                      </DeviceDependentPropertyOfBoolean>
+                    </Property>
+                    <Property Name="StandardCssClass" Value="system-statebuttons" Type="System.String, mscorlib" IsAvailable="true" />
+                    <Property Name="CustomCssClasses" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                    <Property Name="TabStop" Value="false" Type="System.Boolean, mscorlib" IsAvailable="true" />
+                    <Property Name="Disabled" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
+                      <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                        <Desktop>false</Desktop>
+                        <Tablet>false</Tablet>
+                        <Smartphone>false</Smartphone>
+                        <CanChange>true</CanChange>
+                      </DeviceDependentPropertyOfBoolean>
+                    </Property>
+                    <Property Name="BindingStateButtons" Value="ed3dd3ac-a4e5-4732-aa24-98e10751757e" Type="System.String, mscorlib" ResolverType="Binding" IsAvailable="true" />
+                    <Property Name="VerticalOrientation" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
+                      <DeviceDependentPropertyOfBoolean xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                        <Desktop>true</Desktop>
+                        <Tablet>true</Tablet>
+                        <Smartphone>true</Smartphone>
+                        <CanChange>true</CanChange>
+                      </DeviceDependentPropertyOfBoolean>
+                    </Property>
+                    <Property Name="ButtonsLimit" Type="System.String, mscorlib" ResolverType="DeviceDependent" IsAvailable="true">
+                      <DeviceDependentPropertyOfInt32 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                        <Desktop>0</Desktop>
+                        <Tablet>0</Tablet>
+                        <Smartphone>0</Smartphone>
+                        <CanChange>true</CanChange>
+                      </DeviceDependentPropertyOfInt32>
+                    </Property>
+                    <Property Name="GeneratingConfirmationTextFunction" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                    <Property Name="Click" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                    <Property Name="MouseOver" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                    <Property Name="MouseOut" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                    <Property Name="CardStateChanging" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                    <Property Name="CardStateChanged" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                    <Property Name="OperationExecuting" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                    <Property Name="ParametersPanelOpening" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                    <Property Name="ParametersPanelOpened" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                    <Property Name="ButtonClicking" Value="" Type="System.String, mscorlib" IsAvailable="true" />
+                  </Properties>
+                </Element>
+              </Elements>
+            </Element>
+          </Elements>
+        </Element>
+      </Elements>
+    </Element>
+  </Elements>
+</Element>
+  </File>
+</Layout>

@@ -178,7 +178,7 @@
     <value>Не указан признак безотзывной доверенности</value>
   </data>
   <data name="Error_GenRepresentativeIsEmpty" xml:space="preserve">
-    <value>Не указан Тип доверителя</value>
+    <value>Не указан Тип представителя</value>
   </data>
   <data name="Error_IncorrectUserCardData" xml:space="preserve">
     <value>Заполнены не все обязательные данные или данные некорректны. Ошибка: {0}</value>
@@ -255,8 +255,8 @@
   <data name="SignTheApplication" xml:space="preserve">
     <value>Подписать заявление</value>
   </data>
-  <data name="SpecifyTheReasonForCancellationOrRefusal" xml:space="preserve">
-    <value>Укажите причину отмены или отказа</value>
+  <data name="SpecifyTheReasonForRevocation" xml:space="preserve">
+    <value>Укажите причину отзыва доверенности</value>
   </data>
   <data name="TheFollowingFieldsAreRequired" xml:space="preserve">
     <value>Необходимо заполнить следующие поля</value>
@@ -344,6 +344,7 @@
   <data name="PowerOfAttorneyErrorSigning" xml:space="preserve">
     <value>При подписании произошла ошибка.</value>
   </data>
+  <data name="Error_AuthIssIDDoc" xml:space="preserve">
   <data name="POABatchSign_AccessError" xml:space="preserve">
     <value>Карточка доверенности не доступна для подписания.</value>
   </data>

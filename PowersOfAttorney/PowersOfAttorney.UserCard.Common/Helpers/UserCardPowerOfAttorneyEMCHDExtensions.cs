@@ -4,7 +4,6 @@ using DocsVision.Platform.ObjectModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.ConstrainedExecution;
 
 using static PowersOfAttorney.UserCard.Common.Helpers.UserCardPowerOfAttorney;
 

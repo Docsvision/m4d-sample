@@ -88,6 +88,15 @@ namespace PowersOfAttorney.UserCard.Common {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Failed to get value of the name of the authority that issued representative identification document.
+        /// </summary>
+        internal static string Error_AuthIssIDDoc {
+            get {
+                return ResourceManager.GetString("Error_AuthIssIDDoc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Date of issue of identity document of head of the organization is not specified.
         /// </summary>
         internal static string Error_DateIssCEOIDDocIsEmpty {
@@ -138,6 +147,24 @@ namespace PowersOfAttorney.UserCard.Common {
         internal static string Error_EmptyDelegatorType {
             get {
                 return ResourceManager.GetString("Error_EmptyDelegatorType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Failed to get the data of the entity acting on behalf of principal without POA.
+        /// </summary>
+        internal static string Error_EmptyEnitityWithoutPOAOrganization {
+            get {
+                return ResourceManager.GetString("Error_EmptyEnitityWithoutPOAOrganization", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на The executive body type is not specified.
+        /// </summary>
+        internal static string Error_EmptyExecutiveBodyType {
+            get {
+                return ResourceManager.GetString("Error_EmptyExecutiveBodyType", resourceCulture);
             }
         }
         
@@ -259,6 +286,15 @@ namespace PowersOfAttorney.UserCard.Common {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Failed to get value of the entity representative.
+        /// </summary>
+        internal static string Error_EmptyRepresentativeOrganization {
+            get {
+                return ResourceManager.GetString("Error_EmptyRepresentativeOrganization", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на The type of authorized representative is not specified.
         /// </summary>
         internal static string Error_EmptyRepresentativeType {
@@ -304,7 +340,7 @@ namespace PowersOfAttorney.UserCard.Common {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Type of principal is not specified.
+        ///   Ищет локализованную строку, похожую на Type of representative is not specified.
         /// </summary>
         internal static string Error_GenRepresentativeIsEmpty {
             get {
@@ -664,11 +700,11 @@ namespace PowersOfAttorney.UserCard.Common {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Specify the reason for cancellation or refusal.
+        ///   Ищет локализованную строку, похожую на Specify the reason for revoking the power of attorney.
         /// </summary>
-        internal static string SpecifyTheReasonForCancellationOrRefusal {
+        internal static string SpecifyTheReasonForRevocation {
             get {
-                return ResourceManager.GetString("SpecifyTheReasonForCancellationOrRefusal", resourceCulture);
+                return ResourceManager.GetString("SpecifyTheReasonForRevocation", resourceCulture);
             }
         }
         

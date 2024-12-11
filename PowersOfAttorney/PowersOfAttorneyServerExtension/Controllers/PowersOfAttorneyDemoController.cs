@@ -157,6 +157,17 @@ namespace PowersOfAttorneyServerExtension.Controllers
         }
 
         
+        [HttpPost]
+        public CommonResponse<Guid> CreateFNSDOVEL502PowerOfAttorney(Guid powerOfAttorneyUserCardId)
+        {
+            return CreatePowerOfAttorneyInternal(powerOfAttorneyUserCardId, PowerOfAttorneyFNSDOVEL502Data.FormatId);
+        }
+
+        [HttpPost]
+        public CommonResponse<Guid> CreateFNSDOVEL502RetrustPowerOfAttorney(Guid powerOfAttorneyUserCardId)
+        {
+            return CreateRetrustPowerOfAttorneyInternal(powerOfAttorneyUserCardId, PowerOfAttorneyFNSDOVEL502Data.FormatId);
+        }
 
         private CommonResponse<Guid> CreatePowerOfAttorneyInternal(Guid powerOfAttorneyUserCardId, Guid formatId)
         {

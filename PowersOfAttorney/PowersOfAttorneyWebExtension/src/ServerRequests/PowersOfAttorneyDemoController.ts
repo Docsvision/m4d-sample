@@ -39,6 +39,14 @@ export class PowersOfAttorneyDemoController {
         }
         return this.services.requestManager.post(`api/PowersOfAttorneyDemo/RequestRevocationPowerOfAttorney`, JSON.stringify(data));
     }
+
+    create502PowerOfAttorney(powerOfAttorneyUserCardId: string): Promise<string | null> {
+        return this.services.requestManager.post(`api/PowersOfAttorneyDemo/CreateFNSDOVEL502PowerOfAttorney?powerOfAttorneyUserCardId=${powerOfAttorneyUserCardId}`, "");
+    }
+
+    create502RetrustPowerOfAttorney(powerOfAttorneyUserCardId: string): Promise<string | null> {
+        return this.services.requestManager.post(`api/PowersOfAttorneyDemo/CreateFNSDOVEL502RetrustPowerOfAttorney?powerOfAttorneyUserCardId=${powerOfAttorneyUserCardId}`, "");
+    }
 }
 
 export type $PowersOfAttorneyDemoController = {  powersOfAttorneyDemoController: PowersOfAttorneyDemoController }

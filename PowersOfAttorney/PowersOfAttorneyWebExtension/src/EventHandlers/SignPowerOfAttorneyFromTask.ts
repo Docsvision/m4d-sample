@@ -6,7 +6,7 @@ import { IEncryptedInfo } from "@docsvision/webclient/BackOffice/$DigitalSignatu
 import { LayoutControl } from "@docsvision/webclient/System/BaseControl";
 import { OperationExecutingEventArgs } from "@docsvision/webclient/BackOffice/OperationExecutingEventArgs";
 import { ICancelableEventArgs } from "@docsvision/webclient/System/ICancelableEventArgs";
-import { EMCHD_POWER_OF_ATTORNEY_KIND_ID, EMCHD_RETRUST_POWER_OF_ATTORNEY_KIND_ID, POWER_OF_ATTORNEY_KIND_ID, RETRUST_POWER_OF_ATTORNEY_KIND_ID, SIGN_OPERATION_ID } from '../PowerOfAttorneyConstants';
+import { EMCHD_POWER_OF_ATTORNEY_KIND_ID, EMCHD_RETRUST_POWER_OF_ATTORNEY_KIND_ID, POWER_OF_ATTORNEY_KIND_ID, RETRUST_POWER_OF_ATTORNEY_KIND_ID, SIGN_OPERATION_ID, VERSION502_POWER_OF_ATTORNEY_KIND_ID, VERSION502_RETRUST_POWER_OF_ATTORNEY_KIND_ID } from '../PowerOfAttorneyConstants';
 import { MessageBox } from '@docsvision/webclient/Helpers/MessageBox/MessageBox';
 import { resources } from '@docsvision/webclient/System/Resources';
 
@@ -23,6 +23,10 @@ export const signPowerOfAttorneyFromTask = async (sender: LayoutControl, e: ICan
             await sender.layout.getService($PowersOfAttorneyDemoController).createEMCHDPowerOfAttorney(powerOfAttorneyUserCardId);
         } else if (powerOfAttorneyUserKindId === EMCHD_RETRUST_POWER_OF_ATTORNEY_KIND_ID) {
             await sender.layout.getService($PowersOfAttorneyDemoController).createEMCHDRetrustPowerOfAttorney(powerOfAttorneyUserCardId);
+        } else if (powerOfAttorneyUserKindId === VERSION502_POWER_OF_ATTORNEY_KIND_ID) {
+            await sender.layout.getService($PowersOfAttorneyDemoController).create502PowerOfAttorney(powerOfAttorneyUserCardId);
+        } else if (powerOfAttorneyUserKindId === VERSION502_RETRUST_POWER_OF_ATTORNEY_KIND_ID) {
+            await sender.layout.getService($PowersOfAttorneyDemoController).create502RetrustPowerOfAttorney(powerOfAttorneyUserCardId);
         }
         const powerOfAttorneyId = await sender.layout.getService($PowersOfAttorneyDemoController).getPowerOfAttorneyCardId(powerOfAttorneyUserCardId);
         await sender.layout.params.services.digitalSignature.showDocumentSignDialog(powerOfAttorneyUserCardId,

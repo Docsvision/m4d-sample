@@ -88,6 +88,15 @@ namespace PowersOfAttorneyServerExtension {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Failed to get value of the name of the authority that issued representative identification document.
+        /// </summary>
+        internal static string Error_AuthIssIDDoc {
+            get {
+                return ResourceManager.GetString("Error_AuthIssIDDoc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Date of issue of identity document of head of the organization is not specified.
         /// </summary>
         internal static string Error_DateIssCEOIDDocIsEmpty {
@@ -313,7 +322,7 @@ namespace PowersOfAttorneyServerExtension {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Type of principal is not specified.
+        ///   Ищет локализованную строку, похожую на Type of representative is not specified.
         /// </summary>
         internal static string Error_GenRepresentativeIsEmpty {
             get {
@@ -801,11 +810,11 @@ namespace PowersOfAttorneyServerExtension {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Specify the reason for cancellation or refusal.
+        ///   Ищет локализованную строку, похожую на Specify the reason for revoking the power of attorney.
         /// </summary>
-        internal static string SpecifyTheReasonForCancellationOrRefusal {
+        internal static string SpecifyTheReasonForRevocation {
             get {
-                return ResourceManager.GetString("SpecifyTheReasonForCancellationOrRefusal", resourceCulture);
+                return ResourceManager.GetString("SpecifyTheReasonForRevocation", resourceCulture);
             }
         }
         

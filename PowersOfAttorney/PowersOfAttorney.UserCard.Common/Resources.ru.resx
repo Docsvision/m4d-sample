@@ -178,7 +178,7 @@
     <value>Не указан признак безотзывной доверенности</value>
   </data>
   <data name="Error_GenRepresentativeIsEmpty" xml:space="preserve">
-    <value>Не указан Тип доверителя</value>
+    <value>Не указан Тип представителя</value>
   </data>
   <data name="Error_IncorrectUserCardData" xml:space="preserve">
     <value>Заполнены не все обязательные данные или данные некорректны. Ошибка: {0}</value>
@@ -255,8 +255,8 @@
   <data name="SignTheApplication" xml:space="preserve">
     <value>Подписать заявление</value>
   </data>
-  <data name="SpecifyTheReasonForCancellationOrRefusal" xml:space="preserve">
-    <value>Укажите причину отмены или отказа</value>
+  <data name="SpecifyTheReasonForRevocation" xml:space="preserve">
+    <value>Укажите причину отзыва доверенности</value>
   </data>
   <data name="TheFollowingFieldsAreRequired" xml:space="preserve">
     <value>Необходимо заполнить следующие поля</value>
@@ -323,5 +323,17 @@
   </data>
   <data name="Error_ValueLength" xml:space="preserve">
     <value>Значение не может быть меньше {0} символов</value>
+  </data>
+  <data name="Error_AuthIssIDDoc" xml:space="preserve">
+    <value>Не удалось получить данные о наименовании органа, выдавшего документ, удостоверяющего личность представителя</value>
+  </data>
+  <data name="Error_EmptyEnitityWithoutPOAOrganization" xml:space="preserve">
+    <value>Не удалось получить данные юр. лица, действующего от имени доверителя без доверенности</value>
+  </data>
+  <data name="Error_EmptyExecutiveBodyType" xml:space="preserve">
+    <value>Не указан тип лица, действующего от имени доверителя без доверенности</value>
+  </data>
+  <data name="Error_EmptyRepresentativeOrganization" xml:space="preserve">
+    <value>Не удалось получить данные организации-представителя</value>
   </data>
 </root>
