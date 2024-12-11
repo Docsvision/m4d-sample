@@ -11,6 +11,7 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
 {
     public static class UserCardPowerOfAttorneyEMCHDExtensions
     {
+        private const int PassportCitizenRF = 21;
         public static PowerOfAttorneyData ConvertToPowerOfAttorneyEMCHDData(this UserCardPowerOfAttorney userCard, ObjectContext context)
         {
             return Converter.Convert(userCard, context);
@@ -332,7 +333,7 @@ namespace PowersOfAttorney.UserCard.Common.Helpers
                     {
                         DocumentKindCode = userCard.GenTypeCodeReprIDDoc?.ToString(),
                         DocumentSerialNumber = userCard.GenSerNumReprIDDoc,
-                        ExpDate = userCard.GenDateExpReprIDDoc,
+                        ExpDate = (userCard.GenTypeCodeReprIDDoc.HasValue && userCard.GenTypeCodeReprIDDoc != PassportCitizenRF) ? userCard.GenDateExpReprIDDoc : null,
                         IssueDate = userCard.GenDateIssReprIDDoc ?? throw new ApplicationException(Resources.Error_DateIssReprIDDocIsEmpty),
                         Issuer = userCard.GenAuthIssReprIDDoc,
                         IssuerCode = userCard.GenCodeAuthDivIssReprIDDoc

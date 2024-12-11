@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Controls>
+    <Control Name="SignPOABatchOperation" ResourceKey="SignPOABatchOperation_DisplayName" ControlGroupResourceKey="ControlGroup_BatchOperations">
+        <Properties>
+            <Property Type="Name" />
+            <Property Type="StandardCssClass" DefaultValue="system-power-of-attorney-batch-sign-operation" />
+			<Property Type="CustomCssClasses"/>
+			<Property Name="ButtonText" ResourceKey="ControlTypes_ButtonTextProperty"
+                Editor="LocalizedPropertyEditor" Localized="true"
+                Category="AppearanceCategory" DataType="System.String"/>
+			<Property Name="ColumnNameForPresentation" ResourceKey="ColumnNameForPresentation"
+                DefaultValue="Column_1,Column_12" Category="AppearanceCategory" DataType="System.String"/>
+            <Property Name="ColumnNameWithState" ResourceKey="ColumnNameWithState"
+                DefaultValue="Column_13" Category="AppearanceCategory" DataType="System.String"/>
+            <Property Name="ColumnNameWithKindId" ResourceKey="ColumnNameWithKindId"
+                DefaultValue="Column_14" Category="AppearanceCategory" DataType="System.String"/>
+            <Property Type="Visibility" />
+        </Properties>
+		<Events>
+		  <Event Name="Click" ResourceKey="ControlTypes_ClickEventProperty" />
+		  <Event Name="MouseOver" ResourceKey="ControlTypes_MouseOverEventProperty" />
+		  <Event Name="MouseOut" ResourceKey="ControlTypes_MouseOutEventProperty" />
+		</Events>
+    </Control>
+</Controls>

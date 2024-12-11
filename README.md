@@ -28,6 +28,7 @@
 
 - PowersOfAttorney > PowersOfAttorneyServerExtension – папка с серверным расширением Web-клиента, в котором реализованы функции создания СКД из демонстрационной карточки доверенностей.
 - PowersOfAttorney > PowersOfAttorneyWebExtension – папка с клиентским расширением, в котором реализованы обработчики смены состояния ПКД и управления МЧД, видимостью и обязательностью полей.
+- PowersOfAttorney > PowersOfAttorneyDesignerExtension – папка с расширением конструктора разметок, в котором реализовано описание элемента управления для группового подписания.
 - PowersOfAttorney > PowersOfAttorney.UserCard.Common - папка с проектом PowersOfAttorney.UserCard.Common, который используется и для Web-клиента и для Windows клиента. 
 - PowersOfAttorney > PowersOfAttorney.Scripts - содержит файл скрипта для Windows клиента. 
 - PowersOfAttorney > Data > PowersOfAttorneySolution - папка с решением, включающим разметки тестовой карточки доверенности.
@@ -88,6 +89,7 @@
 1. Сборка серверной части.
    1. Откройте решение PowersOfAttorney > PowersOfAttorneyServerExtension.sln
    2. Соберите проект PowersOfAttorneyServerExtension
+   3. Соберите проект PowersOfAttorneyDesignerExtension
 
 2. Сборка клиентской части.
    1. Откройте в командной строке папку PowersOfAttorney > PowersOfAttorneyWebExtension.
@@ -102,9 +104,13 @@
 
 3. Публикация компонентов на сервере Web-клиент.
 
-   1. Скопируйте папку `PowersOfAttorney\SamplesOutput\Site\Content\Modules\PowersOfAttorneyWebExtension\` в  `<Каталог установки Web-клиента>\Site\Content\Modules`.
-   2. Скопируйте папку `PowersOfAttorney\SamplesOutput\Site\Extensions\PowersOfAttorneyServerExtension` в  `<Каталог установки Web-клиента>\Site\Extensions`.
-   3. Перезапустите IIS.
+   1. Скопируйте папку `PowersOfAttorney\SamplesOutput\Site\Content\Modules\PowersOfAttorneyWebExtension` в  `<Каталог установки Web-клиента>\Site\Content\Modules`.
+   2. Скопируйте файл `PowersOfAttorney\SamplesOutput\Site\Extensions\PowersOfAttorneyServerExtension\PowersOfAttorneyServerExtension.dll` в  `<Каталог установки Web-клиента>\Site\Extensions`.
+   3. Скопируйте файл `PowersOfAttorney\SamplesOutput\Site\Extensions\PowersOfAttorneyServerExtension\PowersOfAttorneyServerExtension.resources.dll` в  `<Каталог установки Web-клиента>\Site\Extensions\ru`.
+   4. Скопируйте содержимое `PowersOfAttorney\SamplesOutput\Plugins` в  `<Каталог установки Web-клиента>\Plugins`.
+   5. Скопируйте файл `PowersOfAttorney\SamplesOutput\Site\Extensions\PowersOfAttorney.UserCard.Common\PowersOfAttorney.UserCard.Common.dll` в `<Каталог установки Web-клиента>\Site\Extensions`.
+   6. Скопируйте файл `PowersOfAttorney\SamplesOutput\Site\Extensions\PowersOfAttorney.UserCard.Common\PowersOfAttorney.UserCard.Common.resources.dll` в `<Каталог установки Web-клиента>\Site\Extensions\ru`.
+   7. Перезапустите IIS.
 
 ## Проверка примера
 
@@ -205,6 +211,27 @@
     - При работе через Контур.Диадок, для создания своей разметки нужно добавить скрипт signAndSendPowerOfAttorneyToRegistrationAsFileFromTask в качестве обработчика события "Before executing operation" на ЭУ StateButtons для подписания и последующей регистрации доверенности по файлу.
 	 - При работе через Контур.Доверенность, для создания своей разметки нужно добавить скрипт signAndSendPowerOfAttorneyToKonturForRegistrationAsFileFromTask в качестве обработчика события "Before executing operation" на ЭУ StateButtons для подписания и последующей регистрации доверенности по файлу.
 	Для подписания без регистрации используйте скрипт signPowerOfAttorneyFromTask.
+   
+16. Проверить текущий статус доверенности можно при работе через сервис Контур.Доверенность. Для этого в разметку ПКД необходимо добавить соответствующую кнопку, на которую нужно добавить скрипт checkPowerOfAttorney в качестве обработчика события "On click". Также в разметке должен быть добавлен "Журнал обмена с реестром МЧД" - Data grid control, с назначенным LogTransferPlugin (по аналогии со стандартными, преднастроенными разметками для сервиса Контур.Доверенность). После ответа сервиса, информация о текущем статусе доверенности появится в этом контроле.
+
+### Массовое подписание ПКД
+1. Выполните описанные выше шаги по сборке и добавлению общей функциональности примера. 
+2. Скопируйте файл `PowersOfAttorney\SamplesOutput\Plugins\signPOABatchOperationControl.xml` в `<Каталог установки Web-клиента>\Plugins`.
+3. Перезапустите IIS.
+4. В конструкторе разметок сделайте разметку DV.Folder_M4D активной.
+5. Откройте папку с ПКД в представлении "МЧД единого формата - представление". В представлении должны присутствовать поля "Состояние" и "Идентификатор вида" (допустимо, если они будут скрытые). Эти поля должны быть указаны в параметрах ЭУ "Подписать доверенности" в разметке DV.Folder_M4D.
+6. Опционально. Для отправки на регистрацию уже подписанных документов добавьте в разметки кнопку "Отправить" с обработчиком sendPowerOfAttorneyToRegistrationAsFile. Привяжите видимость кнопки к операции редактирования "Отправка доверенности на регистрацию" (SendingPOAForRegistration).
+Управлять видимостью кнопки "Отправить" возможно с помощью клиентского скрипта. Необходимо получить текущий статус регистрации МЧД с помощью метода getPowerOfAttorneyRegistrationStatus сервиса $EdiPowerOfAttorney (пример веб-расширения "Модуль интеграции с операторами ЭДО").
+В скрипте, в зависимости от полученного статуса, скрывайте/показывайте кнопку "Отправить".
+Образец кода с получением статуса регистрации можно найти в методе edi_getPowerOfAttorneyRegistrationStatus примера веб-расширения "Модуль интеграции с операторами ЭДО".
+7. Выделите при помощи чекбоксов документы для подписания. На панели групповых операций нажмите кнопку "Подписать доверенности".
+8. При необходимости просмотрите подписываемые документы, кликая на ссылки карточек в открывшемся окне подтверждения. Нажмите OK.
+9. Проверьте на нескольких документах, что подписание прошло корректно.
+
+При необходимости можно настроить свойство "Столбцы представления для презентации" ЭУ signPOABatchOperation в Конструкторе разметок. Следует через запятую указать columnName столбцов предствления, выбранных для отображения.
+
+Внимание! Если в выбор документов в таблице попадет документ, не доступный для подписания по состоянию или настройкам, будет выведено сообщение об ошибке, и подписания документа не произойдет. Для остальных документов процесс подписания будет продолжен.
+
 
 ## Пример скриптов для Windows клиента
 
@@ -214,7 +241,7 @@
 4. Необходимо закомментировать в файле скрипта для обоих видов строчку "using CardDocumentМЧДScript = DocsVision.BackOffice.WinForms.ScriptClassBase;" 
 Она нужна только для компиляции файла скрипта в составе проекта PowersOfAttorney.Scripts.
 5. Скрипты для этих видов отличаются только названиями классов. Необходимо для каждого вида оставить только одно соответствующее ему название класса (см. комментарий в скрипте) 
-6. В скриптах необходимо добавить ссылку на сборку PowersOfAttorney.UserCard.Common.dll, которую также необходимо распрастранить на все клиентские рабочие места.
+6. В скриптах необходимо добавить ссылку на сборку PowersOfAttorney.UserCard.Common.dll, которую также необходимо распространить на все клиентские рабочие места.
 7. В конструкторе разметок необходимо добавить кнопки (например в риббон). Названия кнопок должны соответствовать обработчикам в скрипте.
 В скрипте обработчики выглядят как имяКнопки__ItemClick(); Если названия кнопки будут соответствовать обработчикам, то обработчики к кнопкам
 привяжутся автоматически, вручную их создавать не надо.

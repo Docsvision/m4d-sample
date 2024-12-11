@@ -1,5 +1,8 @@
 ﻿using DocsVision.BackOffice.ObjectModel;
 using DocsVision.BackOffice.ObjectModel.Services.Entities;
+using DocsVision.BackOffice.WebClient.CardKind;
+using DocsVision.BackOffice.WebClient.PowersOfAttorney;
+using DocsVision.BackOffice.WebClient.State;
 using DocsVision.Platform.WebClient;
 using DocsVision.Platform.WebClient.Models;
 using DocsVision.Platform.WebClient.Models.Generic;
@@ -19,14 +22,24 @@ namespace PowersOfAttorneyServerExtension.Controllers
     {
         private readonly ICurrentObjectContextProvider currentObjectContextProvider;
         private readonly IPowersOfAttorneyDemoService powersOfAttorneyDemoService;
+        private readonly IPowerOfAttorneyProxyService powerOfAttorneyProxyService;
+        private readonly ICardKindService cardKindService;
+        private readonly IStateService stateService;
 
         /// <summary>
         /// Создаёт новый экземпляр <see cref="PowersOfAttorneyDemoController"/>
         /// </summary>
-        public PowersOfAttorneyDemoController(ICurrentObjectContextProvider currentObjectContextProvider, IPowersOfAttorneyDemoService powersOfAttorneyDemoService)
+        public PowersOfAttorneyDemoController(ICurrentObjectContextProvider currentObjectContextProvider, 
+            IPowersOfAttorneyDemoService powersOfAttorneyDemoService,
+            IPowerOfAttorneyProxyService powerOfAttorneyProxyService,
+            ICardKindService cardKindService,
+            IStateService stateService)
         {
             this.currentObjectContextProvider = currentObjectContextProvider;
             this.powersOfAttorneyDemoService = powersOfAttorneyDemoService;
+            this.powerOfAttorneyProxyService = powerOfAttorneyProxyService;
+            this.cardKindService = cardKindService;
+            this.stateService = stateService;
         }
 
         /// <summary>
@@ -118,6 +131,32 @@ namespace PowersOfAttorneyServerExtension.Controllers
             return CommonResponse.CreateSuccess(result);
         }
 
+        [HttpGet]
+        public CommonResponse<PowerOfAttorneySignatureDataResponse> GetSignatureData(Guid powerOfAttorneyUserCardId)
+        {
+            var sessionContext = currentObjectContextProvider.GetOrCreateCurrentSessionContext();
+            Guid powerOfAttorneyId = powersOfAttorneyDemoService.GetPowerOfAttorneyCardId(sessionContext.ObjectContext, powerOfAttorneyUserCardId);
+            var machineReadablePowerOfAttorney = powerOfAttorneyProxyService.GetMachineReadablePowerOfAttorneyBase64Content(powerOfAttorneyId, out string fileName);
+            var kindId = this.cardKindService.GetCardKindId(sessionContext, powerOfAttorneyUserCardId);
+            var state = stateService.GetCardState(sessionContext, powerOfAttorneyUserCardId);
+            var operations = sessionContext.AdvancedCardManager.GetOperations(powerOfAttorneyUserCardId);
+            var timestamp = sessionContext.AdvancedCardManager.GetCardTimestamp(powerOfAttorneyUserCardId);
+
+            var result = new PowerOfAttorneySignatureDataResponse()
+            {
+                CardId = powerOfAttorneyUserCardId,
+                KindId = kindId,
+                Operations = operations,
+                PowerOfAttorneyContent = machineReadablePowerOfAttorney,
+                PowerOfAttorneyFileName = fileName,
+                PowerOfAttorneyId = powerOfAttorneyId,
+                State = state,
+                Timestamp = timestamp
+            };
+            return CommonResponse.CreateSuccess(result);
+        }
+
+        
         [HttpPost]
         public CommonResponse<Guid> CreateFNSDOVEL502PowerOfAttorney(Guid powerOfAttorneyUserCardId)
         {
