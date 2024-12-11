@@ -345,6 +345,8 @@
     <value>При подписании произошла ошибка.</value>
   </data>
   <data name="Error_AuthIssIDDoc" xml:space="preserve">
+	<value>Не удалось получить значение имени органа, выдавшего документ, удостоверяющий личность представителя</value>
+  </data>
   <data name="POABatchSign_AccessError" xml:space="preserve">
     <value>Карточка доверенности не доступна для подписания.</value>
   </data>

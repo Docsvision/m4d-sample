@@ -346,6 +346,7 @@ The result of the operation can be tracked in the exchange log.</value>
   </data>
   <data name="Error_AuthIssIDDoc" xml:space="preserve">
     <value>Failed to get value of the name of the authority that issued representative identification document</value>
+  </data>
   <data name="POABatchSign_AccessError" xml:space="preserve">
     <value>The power of attorney card is not available for signing.</value>
   </data>
