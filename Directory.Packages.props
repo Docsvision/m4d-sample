@@ -1,0 +1,17 @@
+<Project>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageVersion Include="DocsVision.BackOffice.ObjectModel" Version="6.1.223" />
+    <PackageVersion Include="DocsVision.BackOffice.WinForms" Version="6.1.223" />
+    <PackageVersion Include="DocsVision.Platform.ObjectManager" Version="6.1.417" />
+    <PackageVersion Include="DocsVision.Platform.ObjectModel" Version="6.1.417" />
+	<PackageVersion Include="DocsVision.Platform.StorageServer" Version="6.1.417" />
+    <PackageVersion Include="DocsVision.Platform.WinForms" Version="6.1.417" />
+	<PackageVersion Include="DocsVision.BackOffice.WebClient" Version="6.1.716" />
+	<PackageVersion Include="DocsVision.Platform.WebClient" Version="6.1.716" />
+	<PackageVersion Include="Docsvision.WebClient.Extensibility" Version="6.1.716" />
+  </ItemGroup>
+</Project>
