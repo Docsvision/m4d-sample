@@ -7,17 +7,6 @@
 		<ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 	</PropertyGroup>
-	
-	<ItemGroup>
-		<Reference Include="DevExpress.Utils.v21.1, Version=21.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
-			<HintPath>..\..\Assemblies\DevExpress.Utils.v21.1.dll</HintPath>
-			<Private>False</Private>
-		</Reference>
-		<Reference Include="DevExpress.XtraBars.v21.1, Version=21.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
-			<HintPath>..\..\Assemblies\DevExpress.XtraBars.v21.1.dll</HintPath>
-			<Private>False</Private>
-		</Reference> 
-	</ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="DocsVision.Platform.ObjectManager" />
@@ -26,6 +15,8 @@
     <PackageReference Include="DocsVision.BackOffice.ObjectModel" />
     <PackageReference Include="DocsVision.BackOffice.WinForms" />
     <PackageReference Include="DocsVision.Platform.WinForms" />
+    <PackageReference Include="DevExpress.Utils" />
+    <PackageReference Include="DevExpress.Win.Navigation" />
   </ItemGroup>
   
 	<ItemGroup>

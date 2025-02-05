@@ -13,5 +13,7 @@
 	<PackageVersion Include="DocsVision.BackOffice.WebClient" Version="6.1.716" />
 	<PackageVersion Include="DocsVision.Platform.WebClient" Version="6.1.716" />
 	<PackageVersion Include="Docsvision.WebClient.Extensibility" Version="6.1.716" />
+	<PackageVersion Include="DevExpress.Utils" Version="21.1.5" />
+	<PackageVersion Include="DevExpress.Win.Navigation" Version="21.1.5" />
   </ItemGroup>
 </Project>
