@@ -4,13 +4,13 @@
     <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
   </PropertyGroup>
   <ItemGroup>
-    <PackageVersion Include="DocsVision.BackOffice.ObjectModel" Version="6.1.223" />
-    <PackageVersion Include="DocsVision.BackOffice.WinForms" Version="6.1.223" />
-    <PackageVersion Include="DocsVision.Platform.ObjectManager" Version="6.1.417" />
-    <PackageVersion Include="DocsVision.Platform.ObjectModel" Version="6.1.417" />
-	<PackageVersion Include="DocsVision.Platform.StorageServer" Version="6.1.417" />
-    <PackageVersion Include="DocsVision.Platform.WinForms" Version="6.1.417" />
-	<PackageVersion Include="DocsVision.BackOffice.WebClient" Version="6.1.716" />
+    <PackageVersion Include="DocsVision.BackOffice.ObjectModel" Version="6.1.250-gdfab6fbb13" />
+    <PackageVersion Include="DocsVision.BackOffice.WinForms" Version="6.1.250-gdfab6fbb13" />
+    <PackageVersion Include="DocsVision.Platform.ObjectManager" Version="6.1.481-g008ecb4e8f" />
+    <PackageVersion Include="DocsVision.Platform.ObjectModel" Version="6.1.481-g008ecb4e8f" />
+	<PackageVersion Include="DocsVision.Platform.StorageServer" Version="6.1.481-g008ecb4e8f" />
+    <PackageVersion Include="DocsVision.Platform.WinForms" Version="6.1.481-g008ecb4e8f" />
+	<PackageVersion Include="DocsVision.BackOffice.WebClient" Version="6.1.842-g94379fad2a" />
 	<PackageVersion Include="DocsVision.Platform.WebClient" Version="6.1.716" />
 	<PackageVersion Include="Docsvision.WebClient.Extensibility" Version="6.1.716" />
 	<PackageVersion Include="DevExpress.Utils" Version="21.1.5" />
@@ -129,7 +129,7 @@
     <PackageVersion Include="runtime.win-x86.runtime.native.System.Data.SqlClient.sni" Version="4.4.0" />
     <PackageVersion Include="SharpZipLib" Version="1.4.2" />
     <PackageVersion Include="ShimSkiaSharp" Version="2.0.0.4" />
-    <PackageVersion Include="SixLabors.ImageSharp" Version="3.1.6" />
+    <PackageVersion Include="SixLabors.ImageSharp" Version="3.1.7" />
     <PackageVersion Include="SkiaSharp" Version="3.116.1" />
     <PackageVersion Include="SkiaSharp.HarfBuzz" Version="2.88.8" />
     <PackageVersion Include="SkiaSharp.NativeAssets.Linux" Version="3.116.1" />
@@ -208,7 +208,7 @@
     <PackageVersion Include="System.Security.Cryptography.Csp" Version="4.3.0" />
     <PackageVersion Include="System.Security.Cryptography.Encoding" Version="4.3.0" />
     <PackageVersion Include="System.Security.Cryptography.OpenSsl" Version="4.3.0" />
-    <PackageVersion Include="System.Security.Cryptography.Pkcs" Version="8.0.0" />
+    <PackageVersion Include="System.Security.Cryptography.Pkcs" Version="8.0.1" />
     <PackageVersion Include="System.Security.Cryptography.Primitives" Version="4.3.0" />
     <PackageVersion Include="System.Security.Cryptography.ProtectedData" Version="8.0.0" />
     <PackageVersion Include="System.Security.Cryptography.X509Certificates" Version="4.3.0" />
