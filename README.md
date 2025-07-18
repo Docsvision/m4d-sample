@@ -72,8 +72,8 @@
 ## Настройка среды разработки
 
 **Перечень необходимых инструментов:** 
-* [Visual Studio 2017/2019](https://www.visualstudio.com)
-* [NodeJS v14.17.0+](https://nodejs.org/en/)
+* [Visual Studio 2022](https://www.visualstudio.com). Более ранние версии Visual Studio [несовместимы с .NET6](https://github.com/dotnet/core/issues/5567).
+* [NodeJS v22.14.0+](https://nodejs.org/en/)
 
 ## Сборка проекта
 
