@@ -28,18 +28,22 @@ export const signPowerOfAttorney = async (sender: CustomButton, refreshLayout = 
                     const signatureData = await sender.layout.getService($PowerOfAttorneyApiController).getMachineReadablePowerOfAttorneyData(powerOfAttorneyId);
                     const info = new EncryptedInfo(options.method.certificateInfo.thumberprint);
                     info.Attributes.push(new EncryptedAttribute(Crypto.DocumentNameOIDAttribute, getBstrBase64(signatureData.fileName)));
-                    const signature = await Crypto.SignData(info, signatureData.content);
-                    if (signature) {
-                        try {
-                            await sender.layout.getService($PowerOfAttorneyApiController).attachSignatureToPowerOfAttorney({ powerOfAttorneyId, signature });
-                            const operationId = sender.layout.layoutInfo.operations.find(operation => operation.alias === "Sign").id;
-                            if (refreshLayout) {
-                                await sender.layout.changeState(operationId);
-                                sender.layout.getService($Router).refresh();
+                    const certificate = await Crypto.GetCertificateByThumbprint(options.method.certificateInfo.thumberprint);
+                    if (certificate) {
+                        const signType = await Crypto.GetSignatureType(sender.getControlServices(), certificate);                        
+                        const signature = await Crypto.SignData(info, signatureData.content, signType.cadesSignType, signType.tspAddress);                    
+                        if (signature) {
+                            try {
+                                await sender.layout.getService($PowerOfAttorneyApiController).attachSignatureToPowerOfAttorney({ powerOfAttorneyId, signature });
+                                const operationId = sender.layout.layoutInfo.operations.find(operation => operation.alias === "Sign").id;
+                                if (refreshLayout) {
+                                    await sender.layout.changeState(operationId);
+                                    sender.layout.getService($Router).refresh();
+                                }
+                            } catch (err) {
+                                console.error(err);
+                                return Promise.reject();
                             }
-                        } catch (err) {
-                            console.error(err);
-                            return Promise.reject();
                         }
                     }
                     if (showMessage) {
