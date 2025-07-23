@@ -30,7 +30,8 @@ export const signPowerOfAttorney = async (sender: CustomButton, refreshLayout = 
                     info.Attributes.push(new EncryptedAttribute(Crypto.DocumentNameOIDAttribute, getBstrBase64(signatureData.fileName)));
                     const certificate = await Crypto.GetCertificateByThumbprint(options.method.certificateInfo.thumberprint);
                     if (certificate) {
-                        const signType = await Crypto.GetSignatureType(sender.getControlServices(), certificate);                        
+                        const signType = await Crypto.GetSignatureType(sender.getControlServices(), certificate);
+                        console.log("sign type: "+ signType.cadesSignType + "  tspAddress: " + signType.tspAddress);                       
                         const signature = await Crypto.SignData(info, signatureData.content, signType.cadesSignType, signType.tspAddress);                    
                         if (signature) {
                             try {
