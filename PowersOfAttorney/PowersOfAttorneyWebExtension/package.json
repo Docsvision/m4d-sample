@@ -9,7 +9,8 @@
   },
   "author": "Docsvision",
   "dependencies": {
-    "imask": "^6.6.1"
+    "imask": "^6.6.1",
+    "react": "17.0.2"
   },
   "repository": {
     "type": "git",
@@ -17,9 +18,10 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@docsvision/webclient": "5.17.2-beta.4",
-    "@docsvision/webclient-extension-build": "~5.17.0-beta.1",
-    "@docsvision/web": "^5.16.0",
+    "@docsvision/webclient": "~5.17.0",
+    "@docsvision/webclient-extension-build": "~5.17.0",
+    "@docsvision/web": "~5.17.0",
+    "@types/react": "17.0.3",
     "concurrently": "^5.3.0"
   }
 }
