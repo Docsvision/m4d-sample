@@ -104,17 +104,22 @@ const createAndSignApplication = async (sender: CustomButton, typeElement: Radio
         onCreateSignature: async (options) => {
             const info = new EncryptedInfo(options.method.certificateInfo.thumberprint);
             info.Attributes.push(new EncryptedAttribute(Crypto.DocumentNameOIDAttribute, getBstrBase64(signatureData.fileName)));
-            const signature = await Crypto.SignData(info, signatureData.content);
-            if (signature) {
-                try {
-                    await sender.layout.getService($PowerOfAttorneyApiController).attachSignatureToRevocationPowerOfAttorney({ powerOfAttorneyId, signature });
-                    await sender.layout.getService($PowerOfAttorneyApiController).revokePowerOfAttorney({ powerOfAttorneyId, withChildrenPowerOfAttorney: true });
-                    if (showMessage) {
-                        sender.layout.getService($MessageWindow).showInfo(resources.PowerOfAttorneyRevoked);
+            const certificate = await Crypto.GetCertificateByThumbprint(options.method.certificateInfo.thumberprint);
+            if (certificate) {
+                const signType = await Crypto.GetSignatureType(sender.getControlServices(), certificate);                        
+                const signature = await Crypto.SignData(info, signatureData.content, signType.cadesSignType, signType.tspAddress);                 
+            
+                if (signature) {
+                    try {
+                        await sender.layout.getService($PowerOfAttorneyApiController).attachSignatureToRevocationPowerOfAttorney({ powerOfAttorneyId, signature });
+                        await sender.layout.getService($PowerOfAttorneyApiController).revokePowerOfAttorney({ powerOfAttorneyId, withChildrenPowerOfAttorney: true });
+                        if (showMessage) {
+                            sender.layout.getService($MessageWindow).showInfo(resources.PowerOfAttorneyRevoked);
+                        }
+                    } catch (err) {
+                        isFail = true;
+                        console.error(err);
                     }
-                } catch (err) {
-                    isFail = true;
-                    console.error(err);
                 }
             }
             return {} as IEncryptedInfo;

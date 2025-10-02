@@ -36,25 +36,30 @@ export const signPowerOfAttorneyFromTask = async (sender: LayoutControl, e: ICan
                     const signatureData = await sender.layout.getService($PowerOfAttorneyApiController).getMachineReadablePowerOfAttorneyData(powerOfAttorneyId);
                     const info = new EncryptedInfo(options.method.certificateInfo.thumberprint);
                     info.Attributes.push(new EncryptedAttribute(Crypto.DocumentNameOIDAttribute, getBstrBase64(signatureData.fileName)));
-                    const signature = await Crypto.SignData(info, signatureData.content);
-                    if (signature) {
-                        try {
-                            await sender.layout.getService($PowerOfAttorneyApiController).attachSignatureToPowerOfAttorney({ powerOfAttorneyId, signature })
-                            if (refreshLayout) {                               
-                                const signOperationIdPOA = sender.layout.controls.locationContainer.params.layoutModel.layoutModel.layoutInfo.operations.find(operation => operation.alias === "Sign").id;
-                                await sender.layout.getService($LayoutCardController).changeState({ cardId: powerOfAttorneyUserCardId, operationId: signOperationIdPOA, timestamp: sender.layout.controls.locationContainer.params.layoutModel.cardInfo.timestamp, comment: "", layoutParams: sender.layout.controls.locationContainer.params.layoutModel.layoutModel.layoutInfo.layoutParams });
-                                e.accept();
+                    const certificate = await Crypto.GetCertificateByThumbprint(options.method.certificateInfo.thumberprint);
+                    if (certificate) {
+                        const signType = await Crypto.GetSignatureType(sender.getControlServices(), certificate);                        
+                        const signature = await Crypto.SignData(info, signatureData.content, signType.cadesSignType, signType.tspAddress);                            
+                            if (signature) {
+                                try {
+                                    await sender.layout.getService($PowerOfAttorneyApiController).attachSignatureToPowerOfAttorney({ powerOfAttorneyId, signature })
+                                    if (refreshLayout) {                               
+                                        const signOperationIdPOA = sender.layout.controls.locationContainer.params.layoutModel.layoutModel.layoutInfo.operations.find(operation => operation.alias === "Sign").id;
+                                        await sender.layout.getService($LayoutCardController).changeState({ cardId: powerOfAttorneyUserCardId, operationId: signOperationIdPOA, timestamp: sender.layout.controls.locationContainer.params.layoutModel.cardInfo.timestamp, comment: "", layoutParams: sender.layout.controls.locationContainer.params.layoutModel.layoutModel.layoutInfo.layoutParams });
+                                        e.accept();
+                                    }
+                                    
+                                } catch (err) {
+                                    console.error(err);
+                                    MessageBox.ShowError(resources.PowerOfAttorneyErrorSigning)
+                                    e.cancel()
+                                    return Promise.reject();
+                                }
+                            } else {
+                                e.cancel()
                             }
-                            
-                        } catch (err) {
-                            console.error(err);
-                            MessageBox.ShowError(resources.PowerOfAttorneyErrorSigning)
-                            e.cancel()
-                            return Promise.reject();
-                        }
-                    } else {
-                        e.cancel()
-                    }
+                    }                    
+                    
                     return {} as IEncryptedInfo;
                 },
                 onAttachSignatureToCard: async () => { }
