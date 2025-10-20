@@ -1,62 +1,40 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFramework>net6.0-windows</TargetFramework>
+		<TargetFramework>net8.0-windows</TargetFramework>
 		<OutputType>Library</OutputType>
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 		<UseWindowsForms>true</UseWindowsForms>
 		<ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 	</PropertyGroup>
-	
-	<ItemGroup>
-		<Reference Include="DevExpress.Utils.v21.1, Version=21.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
-			<HintPath>..\..\Assemblies\Docsvision\DevExpress.Utils.v21.1.dll</HintPath>
-			<Private>False</Private>
-		</Reference>
-		<Reference Include="DevExpress.XtraBars.v21.1, Version=21.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
-			<HintPath>..\..\Assemblies\Docsvision\DevExpress.XtraBars.v21.1.dll</HintPath>
-			<Private>False</Private>
-		</Reference>
-		<Reference Include="DocsVision.BackOffice.ObjectModel">
-			<HintPath>..\..\Assemblies\Docsvision\DocsVision.BackOffice.ObjectModel.dll</HintPath>
-			<Private>False</Private>
-		</Reference>
-		<Reference Include="DocsVision.Platform.ObjectManager">
-			<SpecificVersion>False</SpecificVersion>
-			<HintPath>..\..\Assemblies\Docsvision\DocsVision.Platform.ObjectManager.dll</HintPath>
-			<Private>False</Private>
-		</Reference>
-		<Reference Include="DocsVision.Platform.ObjectModel">
-			<SpecificVersion>False</SpecificVersion>
-			<HintPath>..\..\Assemblies\Docsvision\DocsVision.Platform.ObjectModel.dll</HintPath>
-			<Private>False</Private>
-		</Reference>
-		<Reference Include="DocsVision.Platform.StorageServer">
-			<HintPath>..\..\Assemblies\Docsvision\DocsVision.Platform.StorageServer.dll</HintPath>
-			<SpecificVersion>False</SpecificVersion>
-			<Private>False</Private>
-		</Reference>
-		<Reference Include="DocsVision.BackOffice.WinForms">
-			<HintPath>..\..\Assemblies\Docsvision\DocsVision.BackOffice.WinForms.dll</HintPath>
-			<Private>False</Private>
-		</Reference>
-		<Reference Include="DocsVision.Platform.WinForms">
-			<HintPath>..\..\Assemblies\Docsvision\DocsVision.Platform.WinForms.dll</HintPath>
-			<Private>False</Private>
-		</Reference>
-	</ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DocsVision.Platform.ObjectManager" />
+    <PackageReference Include="DocsVision.Platform.ObjectModel" />
+    <PackageReference Include="DocsVision.Platform.StorageServer" />
+    <PackageReference Include="DocsVision.BackOffice.ObjectModel" />
+    <PackageReference Include="DocsVision.BackOffice.WinForms" />
+    <PackageReference Include="DocsVision.Platform.WinForms" />
+    <PackageReference Include="DevExpress.Utils" />
+    <PackageReference Include="DevExpress.Win.Navigation" />
+  </ItemGroup>
+  
 	<ItemGroup>
 		<ProjectReference Include="..\PowersOfAttorney.UserCard.Common\PowersOfAttorney.UserCard.Common.csproj" />
 	</ItemGroup>
+  
 	<PropertyGroup>
 		<SignAssembly>true</SignAssembly>
 	</PropertyGroup>
+  
 	<PropertyGroup>
 		<AssemblyOriginatorKeyFile>..\..\StrongNameKey.snk</AssemblyOriginatorKeyFile>
 	</PropertyGroup>
+  
 	<PropertyGroup>
 		<SamplesOutput Condition=" '$(SamplesOutput)' == '' ">$(SolutionDir)SamplesOutput</SamplesOutput>
 		<PostBuildEvent>xcopy "$(MSBuildProjectDirectory)\bin\$(Configuration)\$(AssemblyName).dll" "$(SamplesOutput)\Scripts\$(AssemblyName)\" /Y /I</PostBuildEvent>
 	</PropertyGroup>
+  
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'" />
 </Project>

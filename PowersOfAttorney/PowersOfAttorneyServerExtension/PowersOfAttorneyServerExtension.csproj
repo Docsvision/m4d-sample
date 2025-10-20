@@ -1,45 +1,21 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 	<PropertyGroup>
-		<TargetFramework>net6.0</TargetFramework>
+		<TargetFramework>net8.0</TargetFramework>
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 		<WarningsAsErrors>CA1416</WarningsAsErrors>
 	</PropertyGroup>
+  
 	<ItemGroup>
-		<Reference Include="DocsVision.BackOffice.ObjectModel">
-			<HintPath>..\..\Assemblies\Docsvision\DocsVision.BackOffice.ObjectModel.dll</HintPath>
-			<Private>False</Private>
-		</Reference>
-		<Reference Include="DocsVision.BackOffice.WebClient">
-			<HintPath>..\..\Assemblies\Docsvision\DocsVision.BackOffice.WebClient.dll</HintPath>
-			<SpecificVersion>False</SpecificVersion>
-			<Private>False</Private>
-		</Reference>
-		<Reference Include="DocsVision.Platform.ObjectManager">
-			<SpecificVersion>False</SpecificVersion>
-			<HintPath>..\..\Assemblies\Docsvision\DocsVision.Platform.ObjectManager.dll</HintPath>
-			<Private>False</Private>
-		</Reference>
-		<Reference Include="DocsVision.Platform.ObjectModel">
-			<SpecificVersion>False</SpecificVersion>
-			<HintPath>..\..\Assemblies\Docsvision\DocsVision.Platform.ObjectModel.dll</HintPath>
-			<Private>False</Private>
-		</Reference>
-		<Reference Include="DocsVision.Platform.StorageServer">
-			<HintPath>..\..\Assemblies\Docsvision\DocsVision.Platform.StorageServer.dll</HintPath>
-			<SpecificVersion>False</SpecificVersion>
-			<Private>False</Private>
-		</Reference>
-		<Reference Include="DocsVision.Platform.WebClient">
-			<SpecificVersion>False</SpecificVersion>
-			<HintPath>..\..\Assemblies\Docsvision\DocsVision.Platform.WebClient.dll</HintPath>
-			<Private>False</Private>
-		</Reference>
-		<Reference Include="Docsvision.WebClient.Extensibility">
-			<HintPath>..\..\Assemblies\Docsvision\Docsvision.WebClient.Extensibility.dll</HintPath>
-			<Private>False</Private>
-		</Reference>
+    <PackageReference Include="DocsVision.BackOffice.ObjectModel" />
+    <PackageReference Include="DocsVision.Platform.ObjectManager" />
+    <PackageReference Include="DocsVision.Platform.ObjectModel" />
+    <PackageReference Include="DocsVision.Platform.StorageServer" />
+    <PackageReference Include="DocsVision.BackOffice.WebClient" />
+    <PackageReference Include="DocsVision.Platform.WebClient" />
+    <PackageReference Include="Docsvision.WebClient.Extensibility" />
 	</ItemGroup>
+  
 	<ItemGroup>
 		<Compile Update="Resources.Designer.cs">
 			<AutoGen>True</AutoGen>
@@ -47,6 +23,7 @@
 			<DependentUpon>Resources.resx</DependentUpon>
 		</Compile>
 	</ItemGroup>
+  
 	<ItemGroup>
 		<EmbeddedResource Update="Resources.resx">
 			<Generator>ResXFileCodeGenerator</Generator>
@@ -54,15 +31,19 @@
 			<SubType>Designer</SubType>
 		</EmbeddedResource>
 	</ItemGroup>
+  
 	<ItemGroup>
 		<ProjectReference Include="..\PowersOfAttorney.UserCard.Common\PowersOfAttorney.UserCard.Common.csproj" />
 	</ItemGroup>
+  
 	<PropertyGroup>
 		<SignAssembly>true</SignAssembly>
 	</PropertyGroup>
+  
 	<PropertyGroup>
 		<AssemblyOriginatorKeyFile>..\..\StrongNameKey.snk</AssemblyOriginatorKeyFile>
 	</PropertyGroup>
+  
 	<PropertyGroup>
 		<SamplesOutput Condition=" '$(SamplesOutput)' == '' ">$(SolutionDir)SamplesOutput</SamplesOutput>
 		<PostBuildEvent>xcopy "$(MSBuildProjectDirectory)\bin\$(Configuration)\$(AssemblyName).dll" "$(SamplesOutput)\Site\Extensions\$(AssemblyName)\" /Y /I
