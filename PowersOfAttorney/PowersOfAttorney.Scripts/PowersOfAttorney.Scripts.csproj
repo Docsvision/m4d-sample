@@ -15,7 +15,6 @@
     <PackageReference Include="DocsVision.BackOffice.ObjectModel" />
     <PackageReference Include="DocsVision.BackOffice.WinForms" />
     <PackageReference Include="DocsVision.Platform.WinForms" />
-    <PackageReference Include="DevExpress.Utils" />
     <PackageReference Include="DevExpress.Win.Navigation" />
   </ItemGroup>
   
