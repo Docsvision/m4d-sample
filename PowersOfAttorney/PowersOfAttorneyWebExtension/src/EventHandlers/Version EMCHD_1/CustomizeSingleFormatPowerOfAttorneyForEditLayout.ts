@@ -60,6 +60,7 @@ const onPoaScopeDataChanged = (sender: Layout) => {
     const ceoCitizenshipSignBlock = controls.get<Block>("ceoCitizenshipSignBlock");
     const ceoAddressBlock = controls.get<Block>("ceoAddressBlock");
     const reprCitizenshipSignBlock = controls.get<Block>("reprCitizenshipSignBlock");
+    const reprCitizenshipBlock = controls.get<Block>("reprCitizenshipBlock");
     const reprAddressBlock = controls.get<Block>("reprAddressBlock");
     const codeTaxAuthSubmit = controls.get<TextBox>("codeTaxAuthSubmit");
     const codeTaxAuthValid = controls.get<TextBox>("codeTaxAuthValid");
@@ -87,6 +88,10 @@ const onPoaScopeDataChanged = (sender: Layout) => {
     ceoAddrRus.params.required = isNotB2BValue;
     reprAddrSubRus.params.required = isNotB2BValue;
     reprAddrRus.params.required = isNotB2BValue;
+    if (reprCitizenshipBlock) {
+        reprCitizenshipBlock.params.required = isNotB2BValue;
+        reprCitizenshipBlock.params.visibility = isNotB2BValue;
+    }
     
     if (!isNotB2BValue) {
         codeTaxAuthSubmit.params.value = "";
@@ -127,6 +132,9 @@ const onReprIdChanged = (sender: Dropdown) => {
 const onReprCitizenshipSignDataChanged = (sender: Layout) => {
     const controls = sender.layout.controls;
     const reprCitizenshipSign = controls.get<Dropdown>("reprCitizenshipSign");
+    if (!reprCitizenshipSign.params.visibility) {
+        return;
+    }
     const reprCitizenship = controls.get<TextBox>("reprCitizenship");
     if (reprCitizenshipSign.params.value === 'statelessPerson') {
         reprCitizenship.params.value = "";
