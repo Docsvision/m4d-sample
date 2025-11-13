@@ -61,6 +61,7 @@ const onPoaScopeDataChanged = (sender: Layout) => {
     const ceoAddressBlock = controls.get<Block>("ceoAddressBlock");
     const reprCitizenshipSignBlock = controls.get<Block>("reprCitizenshipSignBlock");
     const reprCitizenshipBlock = controls.get<Block>("reprCitizenshipBlock");
+    const reprCitizenship = controls.get<TextBox>("reprCitizenship");
     const reprAddressBlock = controls.get<Block>("reprAddressBlock");
     const codeTaxAuthSubmit = controls.get<TextBox>("codeTaxAuthSubmit");
     const codeTaxAuthValid = controls.get<TextBox>("codeTaxAuthValid");
@@ -88,8 +89,8 @@ const onPoaScopeDataChanged = (sender: Layout) => {
     ceoAddrRus.params.required = isNotB2BValue;
     reprAddrSubRus.params.required = isNotB2BValue;
     reprAddrRus.params.required = isNotB2BValue;
-    if (reprCitizenshipBlock) {
-        reprCitizenshipBlock.params.required = isNotB2BValue;
+    if (reprCitizenshipBlock && reprCitizenship) {
+        reprCitizenship.params.required = isNotB2BValue;
         reprCitizenshipBlock.params.visibility = isNotB2BValue;
     }
     
